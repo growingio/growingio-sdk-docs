@@ -1,0 +1,1 @@
+(self.webpackChunkgrowingio_sdk_doc=self.webpackChunkgrowingio_sdk_doc||[]).push([[454],{4333:function(o){"use strict";o.exports=JSON.parse('{"allTagsPath":"/growingio-sdk-docs/blog/tags","slug":"facebook","name":"facebook","count":1,"permalink":"/growingio-sdk-docs/blog/tags/facebook"}')}}]);
