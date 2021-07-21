@@ -4,29 +4,15 @@
         <title>一站式数据增长引擎 Blog</title>
         <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog</link>
         <description>一站式数据增长引擎 Blog</description>
-        <lastBuildDate>Thu, 30 May 2019 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 21 Jul 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
-            <title><![CDATA[Welcome]]></title>
-            <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog/welcome</link>
-            <guid>welcome</guid>
-            <pubDate>Thu, 30 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Blog features are powered by the blog plugin. Simply add files to the blog directory. It supports tags as well!]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Hello]]></title>
-            <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog/hello-world</link>
-            <guid>hello-world</guid>
-            <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Welcome to this blog. This blog is created with Docusaurus 2.]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Hola]]></title>
-            <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog/hola</link>
-            <guid>hola</guid>
-            <pubDate>Tue, 28 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet]]></description>
+            <title><![CDATA[MavenCentral 迁移步骤]]></title>
+            <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog/MavenCentral</link>
+            <guid>MavenCentral</guid>
+            <pubDate>Wed, 21 Jul 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[随着 Jcenter 服务的即将过期，我们需要一个新的仓库来发行我们的SDK.于是我们找上了 MavenCentral，并针对如何在MavenCentral提交包写了这篇文章。]]></description>
         </item>
     </channel>
 </rss>

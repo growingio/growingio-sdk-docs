@@ -1,1 +1,0 @@
-(self.webpackChunkgrowingio_sdk_doc=self.webpackChunkgrowingio_sdk_doc||[]).push([[535],{6353:function(o){"use strict";o.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"/growingio-sdk-docs/blog/welcome"},{"title":"Hello","permalink":"/growingio-sdk-docs/blog/hello-world"},{"title":"Hola","permalink":"/growingio-sdk-docs/blog/hola"}]}')}}]);
