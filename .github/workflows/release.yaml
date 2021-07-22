@@ -1,0 +1,32 @@
+name: release
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  gh-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
+      - name: Release to GitHub Pages
+        env:
+          USE_SSH: true
+          GIT_USER: GIOSDK
+        run: |
+          git config --global user.email "sdk-integration@growingio.com"
+          git config --global user.name "GIOSDK"
+          if [ -e yarn.lock ]; then
+          yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci
+          else
+          npm i
+          fi
+          npm run deploy
