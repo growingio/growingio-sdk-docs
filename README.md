@@ -6,9 +6,9 @@
 目前将文档部署在 [Github Pages](https://growingio.github.io/growingio-sdk-docs/) 上，占用的为 `gh-pages` 分支，目前该分支已设置保护，除去 Github CI 可以访问外其他人无法修改。
 
 ## 关于发版
-所有人都可以对 master 分支进行 push 或 pr 操作，ci会自动检查是否存在错误。
+所有人只能对 master 分支提交 pr 操作，ci会自动检查是否存在错误。
 
-发布新的版本需要进行 `release` 操作，ci 此时会自动将站点部署到 [Github Pages](https://growingio.github.io/growingio-sdk-docs/) 上。
+合并分支后，ci 会自动将站点部署到 [Github Pages](https://growingio.github.io/growingio-sdk-docs/) 上。
 
 ## 关于本地
 clone 本站点后，若想在本地运行，请确保本地有以下环境：
