@@ -1,4 +1,6 @@
 
+## 站点地址
+[SDK 3.0技术文档-https://growingio.github.io/growingio-sdk-docs/](https://growingio.github.io/growingio-sdk-docs/)
 若想要修改文档请 clone 本项目到本地修改。 文档位于 docs 目录下，博客文章位于 blog 目录下。
 具体的写作教程请参考 [docusaurus](https://www.docusaurus.cn/docs/)
 
@@ -27,11 +29,18 @@ npm run start //启动开发服务器
 ## 项目结构概要
 
 `/blog/` - 包含博客的 Markdown 文件。如果你不想或不需要博客，则可以将此目录删除。在 博客指南 文档中可以找到更多详细信息
+
 `/docs/` - 包含文档的 Markdown 文件。可在 sidebars.js 中自定义文档侧边栏的顺序。在 文档指南 中可以找到更多详细信息
+
 `/src/` - 非文档文件，例如页面（pages）或自定义的 React 组件。你不必严格地将非文档文件放到这里，但是将它们集中在此目录下可以更轻松地进行管理，以便您需要进行某些格式校验或处理
+
 `/src/pages` - 此目录中的所有文件都将转换为网站页面(page)。 可以在 页面（pages）指南 中找到更多详细信息
+
 `/static/` - 静态文件目录。此处的所有内容都将复制到最终的 build 目录下
+
 `/docusaurus.config.js` - 包含站点配置的配置文件
+
 `/package.json` - Docusaurus 网站也是一个 React 应用程序。你可以在其中安装和使用所需的任何 npm 软件包
+
 `/sidebar.js` - 生成文档时使用此文件来指定侧边栏中的文档顺序
 
