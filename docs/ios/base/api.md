@@ -104,7 +104,7 @@ import TabItem from '@theme/TabItem';
 
 #### 示例
 
-```java
+```c
 [[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" itemKey:@"testkey" itemId:@"testid" withAttributes:@{@"ok":@"false"}];
 ```
 
@@ -120,7 +120,7 @@ import TabItem from '@theme/TabItem';
 
 #### 示例
 
-```java
+```c
 [[GrowingAutotracker sharedInstance] setLoginUserAttributes:@{@"fff":@"xxx"}];
 ```
 
@@ -131,7 +131,7 @@ import TabItem from '@theme/TabItem';
 
 #### 示例
 
-```java
+```c
 [[GrowingAutotracker sharedInstance] getDeviceId];
 ```
 

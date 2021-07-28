@@ -49,7 +49,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 // YourServerHost eg:http://106.75.81.105:8080
 // YourDatasourceId eg: 11223344aabbcc
 GrowingTrackConfiguration *configuration = [GrowingTrackConfiguration configurationWithProjectId:@"YourProjectId"];
-configuration.dataCollectionServerHost = @"YourProjectId";
+configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
 [GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```
@@ -82,7 +82,6 @@ continueUserActivity:(NSUserActivity *)userActivity
 - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
 }
 ```
-
 
 
 > 上述代理方法空实现即可，SDK会自动加入处理代码
@@ -137,7 +136,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 // YourServerHost eg:http://106.75.81.105:8080
 // YourDatasourceId eg: 11223344aabbcc
 GrowingTrackConfiguration *configuration = [GrowingTrackConfiguration configurationWithProjectId:@"YourProjectId"];
-configuration.dataCollectionServerHost = @"YourProjectId";
+configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
 [GrowingTracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```

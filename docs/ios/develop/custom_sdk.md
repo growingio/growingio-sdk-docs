@@ -130,7 +130,7 @@ s.subspec 'Autotracker' do |autotracker|
 
 Service必定继承其对应的Protocol，例如 加密Service 对应协议为 GrowingEncryptionService：
 
-```
+```c
 @protocol GrowingEncryptionService <GrowingBaseService>
 
 @optional
@@ -153,7 +153,7 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
 
 你可以创建一个类，遵循 GrowingEncryptionService 协议，在对应的方法中写你自己的逻辑，例如这里在CustomEncryptionClass中实现：
 
-```
+```c
 - (NSData *_Nonnull)encryptEventData:(NSData *_Nonnull)data factor:(unsigned char)hint {
     NSMutableData *dataM = [[NSMutableData alloc] initWithLength:data.length];
     // 加密逻辑处理你的数据
@@ -165,7 +165,7 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
 
 1. 注解 (推荐)
 
-```
+```c
 @GrowingService(GrowingEncryptionService, CustomEncryptionClass)
 ```
 
@@ -173,7 +173,7 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
 
 初始化SDK前调用
 
-```
+```c
 [[GrowingServiceManager sharedInstance] registerService:NSProtocolFromString(GrowingEncryptionService)
                                                                  implClass:NSClassFromString(@"CustomEncryptionClass")];
 ```
@@ -184,7 +184,7 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
 
 参考 Encryption 的配置，新增一个
 
-```
+```c
   s.subspec 'Encryption' do |service|
       service.source_files = 'Services/Encryption/**/*{.h,.m,.c,.cpp,.mm}'
       service.dependency 'GrowingAnalytics/TrackerCore'
@@ -193,7 +193,7 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
 
 并将 2.1 创建的代码放置对应的 CustomEncryption 目录下
 
-```
+```c
   s.subspec 'CustomEncryption' do |service|
       service.source_files = 'Services/CustomEncryption/**/*{.h,.m,.c,.cpp,.mm}'
       service.dependency 'GrowingAnalytics/TrackerCore'
@@ -202,7 +202,7 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
 
 修改 spec 文件进行配置：
 
-```
+```c
   s.subspec 'Autotracker' do |autotracker|
       autotracker.source_files = 'GrowingAutotracker/**/*{.h,.m,.c,.cpp,.mm}'
       autotracker.dependency 'GrowingAnalytics/AutotrackerCore'
@@ -232,7 +232,7 @@ SDK运行的同时，还想将事件写入自己的数据库中做额外操作
 
 1. 找到GrowingEventManager事件发送的入口 postEventBuidler: ，可以添加拦截者来处理事件信息
 
-```
+```c
 //拦截者做额外处理
 @protocol GrowingEventInterceptor <NSObject>
 @optional
@@ -250,7 +250,7 @@ SDK运行的同时，还想将事件写入自己的数据库中做额外操作
 
 那么我们只需要创建一个类，添加到GrowingEventManager拦截者中
 
-```
+```c
 /// 添加拦截者 - 执行顺序不保证有序
 /// @param interceptor 拦截者
 - (void)addInterceptor:(NSObject<GrowingEventInterceptor>* _Nonnull)interceptor;
@@ -262,7 +262,7 @@ SDK运行的同时，还想将事件写入自己的数据库中做额外操作
 
 module需要继承 GrowingModuleProtocol 协议
 
-```
+```c
 #import <Foundation/Foundation.h>
 #import "GrowingModuleProtocol.h"
 
@@ -277,7 +277,7 @@ NS_ASSUME_NONNULL_END
 
 同时使用 @GrowingMod 注册Module到SDK中，并实现growingModInit 方法，在方法中将自己添加到GrowingEventManager拦截者中 
 
-```
+```c
 #import "CustomEventModule.h"
 #import "GrowingEventManager.h"
 
@@ -305,7 +305,7 @@ SDK中事件少了，想添加自己的额外事件，这部分可以参考 http
 
 1. 首先SDK中的事件均继承自 GrowingBaseEvent , 你可以继承该类或者其子类，例如 GrowingActivateEvent
 
-```
+```c
 #import "GrowingReengageEvent.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -328,14 +328,14 @@ NS_ASSUME_NONNULL_END
 
 2. 发送时机由用户自定，再者就是事件如何发送，均使用 Builder 方式传入
 
-```
+```c
 GrowingReengageBuilder *builder = GrowingReengageEvent.builder.setExtraParams(params);
 [self postEventBuidler:builder];
 ```
 
 3. 如果事件发送地址需要自定义，可以参考 https://github.com/growingio/growingio-sdk-ios-advertising 中的处理
 
-```
+```c
 /// 由于vst 以及 reenage activate，发送地址和3.0不一致，需要另创建2个channel来发送
 - (void)growingEventManagerChannels:(NSMutableArray<GrowingEventChannel *> *)channels {
     [channels addObject:[GrowingEventChannel eventChannelWithEventTypes:@[@"vst"]

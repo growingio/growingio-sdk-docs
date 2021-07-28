@@ -175,7 +175,7 @@ public class MyApplication extends Application {
                 .setDataCollectionServerHost("<Your ServerHost>")
                 .setDataSourceId("<Your DataSourceId>")
                 // 初始化时先关闭数据收集
-                .setDataCollectionEnabled(true);
+                .setDataCollectionEnabled(false);
         GrowingAutotracker.startWithConfiguration(this,sConfiguration);
     }
 }
@@ -195,7 +195,7 @@ class MyApplication : Application() {
             .setDataCollectionServerHost("<Your ServerHost>")
             .setDataSourceId("<Your DataSourceId>")
             // 初始化时先关闭数据收集
-            .setDataCollectionEnabled(true)
+            .setDataCollectionEnabled(false)
         GrowingAutotracker.startWithConfiguration(this, sConfiguration)
     }
 }
