@@ -5,29 +5,28 @@ title: 新功能介绍
 slug: /
 ---
 
+-----
 
-### V3.2.0
-:::info ID-MAPPING
-SDK 中增加接口 `setLoginUserId(用户类型, 用户ID)` ,支持设置用户ID的类型, 存储方式与用户ID保持一致, 用户类型默认为空。
+## V3.2.1
+* SDK 中增加接口 `setLoginUserId(用户类型, 用户ID)` ,支持设置用户ID的类型, 存储方式与用户ID保持一致, 用户类型默认为空。
 
-具体接口请到各个平台的SDK查阅。
-:::
 
-### V3.1.0
+## V3.2.0 - 2021/06/21  
 
-:::info SDK模块化
-开发者可以根据已有的模块组合自定义SDK,也可以通过已有的模块协议来进行自定义模块的开发。
-已有模块包含：
-* 网络请求框架；
-* 网络数据传输格式；
-* 数据加密方式；
-* Web 自动埋点；
-* SDK崩溃上报机制；
-* App圈选功能；
-* Mobile Debugger 功能；
+* 通过模块配置实现数据加密
+* 修复多进程访问db, 进程锁的使用导致app崩溃的问题
+* 更新3.2.0 [测量协议](/docs/Measurement%20Protocol)
 
-更多详情请到 [模块化](/docs/) 查阅
-:::
+| 平台                       | 代码地址 |
+| :-------------------------   | :------   |
+| Android | [Release 3.2.0](https://github.com/growingio/growingio-sdk-android-autotracker/tree/1ebc2b4e85e8ceb248a8e79a5abb0ee8bda7dab4) | 
+| iOS | [v3.2.0](https://github.com/growingio/growingio-sdk-ios-autotracker/tree/fafc165648834fc006d580aa932d4e8ea5f4a5af) |
+| Web | |
+
+## V3.1.0 - 2021/06/04
+
+* SDK模块化 -开发者可以根据已有的模块组合自定义SDK,也可以通过已有的模块协议来进行自定义模块的开发。
+* 更多详情请到 [模块化](/docs/) 查阅
 
 
 ### 产品概述
