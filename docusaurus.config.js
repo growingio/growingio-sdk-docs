@@ -92,7 +92,7 @@ module.exports = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
-      additionalLanguages: ['groovy','java','kotlin','swift','objectivec'],
+      additionalLanguages: ['groovy','java','kotlin','swift','objectivec','php','dart'],
     },
   },
   presets: [
