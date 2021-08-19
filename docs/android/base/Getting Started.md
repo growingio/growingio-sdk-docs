@@ -28,9 +28,9 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:x.x.x'
+        
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.2.1'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.2.0'
     }
 }
 
@@ -53,17 +53,17 @@ apply plugin: 'com.growingio.android.autotracker'
 dependencies {
     ...
     //GrowingIO 无埋点 SDK
-    implementation 'com.growingio.android:autotracker-cdp:3.2.1'
+    implementation 'com.growingio.android:autotracker-cdp:3.2.0'
 }
 
 ```
 
 :::tip 关于版本
-最新版本请参考 [新功能介绍](/docs/)
+最新版本请参考 [Github Release](https://github.com/growingio/growingio-sdk-android-autotracker/releases)
 :::
 
 ### 添加URL Scheme
-URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用[圈选](/docs/),[Mobile Debugger](/docs/) 及[深度链接](/docs/)等功能时唤醒应用。
+URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用[圈选](/docs/debug),[Mobile Debugger](/docs/debug) 及[深度链接](/docs/debug)等功能时唤醒应用。
 将应用的 URLScheme 和应用权限添加到你的 AndroidManifest.xml 中的 LAUNCHER Activity 下。
 
 ```xml
@@ -117,9 +117,9 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("<Your ProjectId>", "<Your URLScheme>")
-                .setDataCollectionServerHost("<Your ServerHost>")
-                .setDataSourceId("<Your DataSourceId>")
+        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+                .setDataCollectionServerHost("Your ServerHost")
+                .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG);
         GrowingAutotracker.startWithConfiguration(this,sConfiguration);
     }
@@ -133,9 +133,9 @@ public class MyApplication extends Application {
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        val sConfiguration = CdpAutotrackConfiguration("<Your ProjectId>", "<Your URLScheme>")
-            .setDataCollectionServerHost("<Your ServerHost>")
-            .setDataSourceId("<Your DataSourceId>")
+        val sConfiguration = CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+            .setDataCollectionServerHost("Your ServerHost")
+            .setDataSourceId("Your DataSourceId")
             .setDebugEnabled(BuildConfig.DEBUG)
         GrowingAutotracker.startWithConfiguration(this, sConfiguration)
     }
@@ -171,11 +171,11 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("<Your ProjectId>", "<Your URLScheme>")
-                .setDataCollectionServerHost("<Your ServerHost>")
-                .setDataSourceId("<Your DataSourceId>")
+        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+                .setDataCollectionServerHost("Your ServerHost")
+                .setDataSourceId("Your DataSourceId")
                 // 初始化时先关闭数据收集
-                .setDataCollectionEnabled(true);
+                .setDataCollectionEnabled(false);
         GrowingAutotracker.startWithConfiguration(this,sConfiguration);
     }
 }
@@ -191,11 +191,11 @@ GrowingAutotracker.get().setDataCollectionEnabled(true);
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        val sConfiguration = CdpAutotrackConfiguration("<Your ProjectId>", "<Your URLScheme>")
-            .setDataCollectionServerHost("<Your ServerHost>")
-            .setDataSourceId("<Your DataSourceId>")
+        val sConfiguration = CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+            .setDataCollectionServerHost("Your ServerHost")
+            .setDataSourceId("Your DataSourceId")
             // 初始化时先关闭数据收集
-            .setDataCollectionEnabled(true)
+            .setDataCollectionEnabled(false)
         GrowingAutotracker.startWithConfiguration(this, sConfiguration)
     }
 }
@@ -218,7 +218,7 @@ GrowingAutotracker.get().setDataCollectionEnabled(true)
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.2.1 !!!`  
+`!!! GrowingIO Tracker version: 3.2.0 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
@@ -244,7 +244,7 @@ repositories {
 dependencies {
 
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.2.1'
+    implementation 'com.growingio.android:tracker-cdp:3.2.0'
 }
 ```
 
@@ -295,9 +295,9 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("<Your ProjectId>", "<Your URLScheme>")
-                .setDataCollectionServerHost("<Your ServerHost>")
-                .setDataSourceId("<Your DataSourceId>")
+        CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("Your ProjectId", "Your URLScheme")
+                .setDataCollectionServerHost("Your ServerHost")
+                .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG);
         GrowingTracker.startWithConfiguration(this, sConfiguration);
     }
@@ -312,9 +312,9 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         val sConfiguration: CdpTrackConfiguration =
-            CdpTrackConfiguration("<Your ProjectId>", "<Your URLScheme>")
-                .setDataCollectionServerHost("<Your ServerHost>")
-                .setDataSourceId("<Your DataSourceId>")
+            CdpTrackConfiguration("Your ProjectId", "Your URLScheme")
+                .setDataCollectionServerHost("Your ServerHost")
+                .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG)
         GrowingTracker.startWithConfiguration(this, sConfiguration)
     }
