@@ -1,0 +1,1 @@
+(self.webpackChunkgrowingio_sdk_doc=self.webpackChunkgrowingio_sdk_doc||[]).push([[9805],{9751:function(g){"use strict";g.exports=JSON.parse('{"allTagsPath":"/growingio-sdk-docs/blog/tags","slug":"gradle","name":"gradle","count":1,"permalink":"/growingio-sdk-docs/blog/tags/gradle"}')}}]);
