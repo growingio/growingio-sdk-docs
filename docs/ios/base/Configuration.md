@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 | `debugEnabled`            | `BOOL` | 否      | `NO`  | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |
 | `cellularDataLimit`       | `NSUInteger`     | 否      | `10`     | 每天发送数据的流量限制，单位MB | - |
 | `dataUploadInterval`      | `NSTimeInterval`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |
-| `sessionInterval`         | `NSTimeInterval`     | 否      | `30`     | 每次访问会话的最大时长，单位秒 | - |
+| `sessionInterval`         | `NSTimeInterval`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |
 | `dataCollectionEnabled`   | `BOOL` | 否      | `YES`   | 是否采集数据 | - |
 | `excludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - |
 | `ignoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |
@@ -34,8 +34,8 @@ import TabItem from '@theme/TabItem';
 4. **dataUploadInterval** 上报间隔  
 GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15秒的情况下向服务器发送事件包（最大50条事件）。
 
-5. **sessionInterval** 设置会话最大时长。  
-会话时长即指一个用户在应用上的使用时间，默认以30秒作为一个间隔。其他情况下也会重新生成一个新的会话，如设置用户ID等核心信息，重新打开数据收集等。
+5. **sessionInterval** 设置会话后台留存时长  
+指当前会话在应用进入后台后的最大留存时间，默认为30秒。另外，其他情况下也会重新生成一个新的会话，如设置用户ID等核心信息，重新打开数据收集等。
 
 6. **dataCollectionEnabled** 数据收集  
 当数据收集关闭时，SDK将不会再获取设备信息，也不会产生事件和上报事件。
