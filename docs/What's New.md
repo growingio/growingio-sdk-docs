@@ -7,8 +7,19 @@ slug: /
 
 -----
 
-## V3.2.1 - 开发中
-完成 SDK 模块化
+## V3.2.1 - 2021/09/01
+
+* 修复延迟初始化可能导致的session错误
+* 多进程session保持同步
+* 增加字段过滤和事件过滤
+* 更多请访问下方 Release 版本更新页面
+
+| 平台                       | 代码地址 |
+| :-------------------------   | :------   |
+| Android | [Release 3.2.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.2.1) | 
+| iOS | [v3.2.1](https://github.com/growingio/growingio-sdk-ios-autotracker/releases/tag/3.2.1) |
+| Web | |
+
 
 ## V3.2.0 - 2021/06/21  
 
