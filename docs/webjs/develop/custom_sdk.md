@@ -23,7 +23,7 @@ sidebar_position: 2
 #### 克隆sdk仓库到本地
 
 ```shell
-git clone https://......
+git clone https://github.com/growingio/growingio-sdk-web-autotracker.git
 ```
 
 #### 安装依赖
@@ -44,9 +44,9 @@ import '@/plugins/custom-track-plugin';
 import '@/plugins/embed-plugin';
 import '@/plugins/spa-page-plugin';
 import '@/plugins/action-track-plugin';
-import '@/plugins/hybrid-plugin';         // 删去
+import '@/plugins/hybrid-plugin';       
 import '@/plugins/web-circle-plugin';
-import '@/plugins/hybrid-circle-plugin';  // 删去
+import '@/plugins/hybrid-circle-plugin';
 import '@/plugins/marketing-plugin';
 
 // 受函数执行顺序的影响 入口必须放在最后导入
