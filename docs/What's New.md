@@ -18,7 +18,7 @@ slug: /
 | :-------------------------   | :------   |
 | Android | [Release 3.2.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.2.1) | 
 | iOS | [v3.2.1](https://github.com/growingio/growingio-sdk-ios-autotracker/releases/tag/3.2.1) |
-| Web | |
+| Web | [v3.3.9](https://github.com/growingio/growingio-sdk-web-autotracker)|
 
 
 ## V3.2.0 - 2021/06/21  

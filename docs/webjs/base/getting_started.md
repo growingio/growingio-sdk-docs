@@ -11,14 +11,14 @@ Web JS SDK3.0 将H5内嵌页，Hybrid SDK，Web JS SDK集成与一体，具备�
 * Web可视化圈选支持
 * Hybrid可视化圈选支持
 
-Web JS SDK代码已托管在[Github](http://lkangle.cn)
+Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-web-autotracker)
 
 ## Web JS SDK集成
 请将以下的页面代码放置到需要分析的页面中的`<head> 和 </head>`标签之间，即可完成最新 Web JS SDK 页面代码的添加。
 
 > 请注意使用具体的项目ID替换代码中的 your projectId、your DataSourceId 确保JS资源地址正确。
 > 
-> JS文件地址：https://xxxxx/cdp.js
+> JS文件地址：https://cdn.jsdelivr.net/npm/gio-web-autotracker/cdp.js
 
 ### Web使用集成
 
