@@ -94,6 +94,59 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 
 >  若小程序中改变了userId，但内嵌页并没有更新，则内嵌页的数据将无最新userId，这里要注意！
 
+#### 触发集成方式
+
+- 小程序端
+
+针对在webview上的地址，需要补充`gioInfo`相关字段，具体方式可参考如下
+
+```jsx
+// page.js
+const gio = gioGlobal.gio;
+Page({
+  data: {
+    url: `https://www.growingio.com/?foo=1&${gio('getGioInfo')}`
+  }
+});
+
+// page.wxml
+<view>
+  <web-view src="{{url}}"></web-view>
+</view>
+```
+
+**`gio('getGioInfo')`返回一个如下形式的字符串：**
+
+```json
+giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
+```
+
+- web端
+
+在集成时使用和小程序相同的projectId和appid即可，如小程序的projectId为pid11，appid为wx33
+
+```js
+gdp('init', 'pid11', 'ds22', 'wx33', {
+    host: 'your apiServerHost',
+    version: '1.0.0'
+});
+```
+
+#### 触发成功效果
+
+当触发了打通规则后，h5内嵌页中发数时以下字段的变化如下：
+
+```tex
+deviceId: 使用小程序的deviceId
+sessionId: 使用小程序的sessionId
+gioId: 使用小程序的gioId （web版本：3.3.11，小程序版本：3.2.5）
+userId: 使用小程序的userId
+userKey: 使用小程序的userKey
+dataSourceId: 使用小程序的dataSourceId
+platform: 使用小程序的platform
+domain: 使用小程序的appId
+```
+
 ### 8、web圈选插件
 
 插件名：web-circle-plugin
