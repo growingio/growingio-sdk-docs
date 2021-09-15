@@ -5,24 +5,6 @@ sidebar_position: 3
 
 通过`window.gdp`这个全局的方法可以调用到SDK中所有开放的接口，默认包括以下启动接口，动态配合接口和功能接口。您也可以通过插件来扩展更多的接口。
 
-### 如何调用暴露的接口
-
-sdk内部通过代理的方式来执行您需要调用的接口，如接口名为`track`，则按照以下方式调用。
-
-```javascript
-// 如定义的接口签名如下
-function track(eventId: String, attributes: object): void;
-
-/**
- * 通过全局的window.gio来调用
- * 第一个参数 代表要调用的方法名
- * 后面的多个参数则对应要调用的方法中所需的参数
- */
-window.gdp('track', 'eventId', {key: 1});
-```
-
-
-
 ## 核心接口
 
 ### 接口列表
@@ -51,10 +33,10 @@ gdp('setUserAttributes', properties, callback);
 
 #### 1、初始化接口
 
-用户初始化sdk，初始化配置等。在该阶段会进行一下工作
+用户初始化SDK，初始化配置等，执行以下工作：
 
 - 从配置中注册插件
-- 初始化sdk配置
+- 初始化SDK配置
 - 初始化用户数据（u，s，cs1等）
 - 加载插件，触发所有插件的onLoad方法
 
@@ -66,9 +48,9 @@ gdp('init', projectId, datasourceId[, options]);
 
 #### 2、启动接口
 
-正式运行sdk，可以开始发送数据。
+正式运行SDK，可以开始发送数据。
 
-- 判断是否初始化和是否已经运行
+- 判断是否已初始化和是否运行中
 - 触发pageShow，发送pv事件
 - 触发所有插件的onStart方法
 
@@ -86,43 +68,28 @@ gdp('send');
 
 ### 动态配置接口
 
-#### 1、配置scheme
-
-可在初始化后重新设置请求协议
-
-```
+#### 1、修改请求协议(scheme)
+```js
 gdp('setTrackerScheme', 'http');
 ```
 
-#### 2、配置host
-
-可以初始化后重新设置请求host
-
-```
+#### 2、修改数据上报地址(host)
+```js
 gdp('setTrackHost', 'api.growingio.com');
 ```
 
-#### 3、配置debug
-
-动态开启或关闭debug
-
-```
+#### 3、开启/关闭调试模式(debug)
+```js
 gdp('enableDebug', true);
 ```
 
-#### 4、配置dataCollect
-
-动态开启或关闭数据采集
-
-```
+#### 4、开启/关闭数据采集(dataCollect)
+```js
 gdp('setDataCollect', true);
 ```
 
-#### 5、配置autotrack
-
-动态开启或关闭无埋点采集
-
-```
+#### 5、开启/关闭无埋点数据采集(autotrack)
+```js
 gdp('setAutoTrack', true);
 ```
 
@@ -132,7 +99,7 @@ gdp('setAutoTrack', true);
 
 在用户登录后，可以调用setUserId，上报登录用户id。
 
-```
+```js
 gdp('setUserId', userId);
 ```
 
@@ -140,7 +107,7 @@ gdp('setUserId', userId);
 
 若在初始化是配置了enableIdMapping: true，则可以启用userKey的设置，方式如下
 
-```
+```js
 gdp('setUserId', userId, userKey);
 ```
 
@@ -148,13 +115,13 @@ gdp('setUserId', userId, userKey);
 
 清除设置的userId
 
-```
+```js
 gdp('clearUserId');
 ```
 
 #### 3、获取访问用户Id
 
-```
+```js
 gdp('getVisitorId');
 ```
 
@@ -162,7 +129,7 @@ gdp('getVisitorId');
 
 发送埋点事件
 
-```
+```js
 gdp('track', eventId, variables[, item[, callback]]);
 ```
 
@@ -177,7 +144,7 @@ gdp('track', eventId, variables[, item[, callback]]);
 
 设置用户属性，会直接上报LOGIN_USER_ATTRIBUTES事件。
 
-```
+```js
 gdp('setUserAttributes', properties, callback);
 ```
 

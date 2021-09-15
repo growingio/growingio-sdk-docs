@@ -8,7 +8,7 @@ Web JS SDK在初始化时，接收最后一个对象参数作为初始化配置�
 ```javascript
 // 最后一个参数即为初始化配置项
 gdp('init', 'your projectId', 'your dataSourceId', {
-  host: 'your apiServerHost', 
+  host: 'your apiServerHost',
   version: '1.0.0',
   debug: true
 });
@@ -22,7 +22,6 @@ gdp('init', 'your projectId', 'your dataSourceId', {
 | ----------------- | -------------- | ------------ | ------------------- | ------------------------------------------------------------ |
 | `projectId`       | `string`       | 是           | 无                  | 项目id                                                       |
 | `dataSourceId`    | `string`       | 是           | 无                  | 数据源id                                                     |
-| `appId`           | `string`       | 否           | 无                  | 小程序id                                                     |
 | `host`            | `string`       | 是           | 无                  | 发数请求host                                                 |
 | `scheme`          | `https | http` | 否           | `location.protocol` | 发数请求协议                                                 |
 | `compress`        | `boolean`      | 否           | `false`             | 是否进行数据压缩                                             |

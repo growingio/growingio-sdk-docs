@@ -9,36 +9,23 @@ sidebar_position: 3
 
 ### 动态配置接口
 
-#### 1、配置scheme
-
-可在初始化后重新设置请求协议
-
-```
+#### 1、修改请求协议(scheme)
+```js
 gdp('setTrackerScheme', 'http');
 ```
 
-
-#### 2、配置debug
-
-动态开启或关闭debug
-
-```
+#### 2、开启/关闭调试模式(debug)
+```js
 gdp('enableDebug', true);
 ```
 
-#### 3、配置dataCollect
-
-动态开启或关闭数据采集
-
-```
+#### 3、开启/关闭数据采集(dataCollect)
+```js
 gdp('setDataCollect', true);
 ```
 
-#### 4、配置autotrack
-
-动态开启或关闭无埋点采集
-
-```
+#### 4、开启/关闭无埋点数据采集(autotrack)
+```js
 gdp('setAutotrack', true);
 ```
 
@@ -48,7 +35,7 @@ gdp('setAutotrack', true);
 
 在用户登录后，获取 openId，调用 identify 设置访问用户id。
 
-```
+```js
 gdp('identify', openId);
 ```
 
@@ -56,7 +43,7 @@ gdp('identify', openId);
 
 在用户登录后，可以调用setUserId，上报登录用户id。
 
-```
+```js
 gdp('setUserId', userId);
 ```
 
@@ -64,7 +51,7 @@ gdp('setUserId', userId);
 
 清除设置的userId
 
-```
+```js
 gdp('clearUserId');
 ```
 
@@ -72,7 +59,7 @@ gdp('clearUserId');
 
 发送埋点事件
 
-```
+```js
 gdp('track', eventId, variables[, item]);
 ```
 
@@ -86,11 +73,20 @@ gdp('track', eventId, variables[, item]);
 
 设置用户属性，会直接上报LOGIN_USER_ATTRIBUTES事件。
 
-```
+```js
 gdp('setUserAttributes', properties);
 ```
 
 - properties：用户属性变量（object）
+
+<!-- #### 6、地理位置接口
+
+通过手动调用地理位置接口来补发地理位置信息，提升用户地域分布的分析准确性。
+
+注意：初始化配置项 location.autoGet 打开时，无需调用此接口。
+```js
+gdp('getLocation');
+``` -->
 
 ### 采集标记
 
@@ -98,13 +94,13 @@ gdp('setUserAttributes', properties);
 
 1、有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-title` 来补充SDK采集的内容。例：
 
-```js
+```html
 <view data-title="额外的上报信息">节点</view>
 ```
 
 2、有时我们页面中可能存在类似列表Dom结构一致使得SDK上报数据出现无法区分的情况。此时，我们可以通过索引标记 `data-index` 来准确描述节点信息。例：
 
-```js
+```html
 <view>
   <view data-index="1">节点1</view>
   <view data-index="2">节点2</view>
@@ -116,7 +112,7 @@ gdp('setUserAttributes', properties);
 
 3、有时我们表单页面中可能需要获取用户选择框、单/多选框的值进行上报以准确分析用户行为。此时，我们可以通过数值采集标记 `data-growing-track` 来获取值。例：
 
-```js
+```html
 <checkbox-group bindchange='checkboxChange' data-growing-track="true">
   <label class='checkbox'>
     <checkbox value='GrowingIO' checked='true' /> GrowingIO
@@ -137,7 +133,7 @@ gdp('setUserAttributes', properties);
 
 此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。例：
 
-```js
+```html
 <view data-growing-ignore="true">要忽略的节点</view>
 ```
 
@@ -146,7 +142,7 @@ gdp('setUserAttributes', properties);
 #### navigator组件
 
 如果您的小程序使用了navigator组件，需要您手动绑定一个空的点击事件，SDK才能实现跳转点击的采集。例：
-```js
+```html
 <navigator>
   <view bindtap="nameForThisClick">
      ...
