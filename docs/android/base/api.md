@@ -125,7 +125,7 @@ map["age"] = "12"
 GrowingAutotracker.get().trackCustomEvent("registerSuccess", map)
 GrowingAutotracker.get().trackCustomEvent("registerSuccess", map, "key", "id")
 ```
-    
+
 </TabItem>
 </Tabs>
 
@@ -164,7 +164,7 @@ map["gender"] = "male"
 map["age"] = "12"
 GrowingAutotracker.get().setLoginUserAttributes(map)
 ```
-    
+
 </TabItem>
 </Tabs>
 
@@ -252,7 +252,7 @@ map["gender"] = "male"
 map["age"] = "12"
 GrowingAutotracker.get().trackViewImpression(view, "buttonShowed", map)
 ```
-    
+
 </TabItem>
 </Tabs>
 
@@ -280,7 +280,8 @@ GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
 ```
 
 ### 15 Webview埋点 `bridgeWebView`
-手动注入js到webview,用来收集webview中的数据
+手动注入js到webview,用来收集webview中的数据, 如果使用无埋点SDK, 会自动注入相关代码, 不需要调用该方法
+
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|

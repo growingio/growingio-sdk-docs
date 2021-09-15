@@ -33,7 +33,7 @@ sidebar_position: 12
 | appVersion | string | ✅ | APP版本，用户配置 |
 | appName | string | ✅ | APP名称 |
 | language | string | ✅ | 语言, ISO 639标准 <br />Android：ISO 639 alpha-2 or alpha-3<br />iOS：ISO 639-1 code if available, or the ISO 639-2 code if not<br /> > ISO 639 不是一个稳定的标准 |
-| latitude | double | ❌ | 维度 | 
+| latitude | double | ❌ | 维度 |
 | longitude | double | ❌ | 经度 |
 | sdkVersion | string | ✅ | SDK 版本号 |
 | userKey | string | ❌ | 登录用户ID的类型(用户自定义) |
@@ -145,6 +145,10 @@ sidebar_position: 12
   "attributes": {
     "goods": "shoe",
     "brand": "Nick"
+  }
+  "resourceItem": {
+    "key": "itemKey",
+    "id": "itemId"
   }
 }
 ```
@@ -481,11 +485,11 @@ sidebar_position: 12
 | :---- | ---- | ---- | ---- |
 | path | string | ✅ | 元素所属页面名 |
 | pageShowTimestamp | long | ✅ | 页面显示时间 |
-| textValue | string | ❌ | 元素文本内容 | 
-| xpath | string | ✅ | xpath标识符 | 
+| textValue | string | ❌ | 元素文本内容 |
+| xpath | string | ✅ | xpath标识符 |
 | index | int | ❌ | 列表元素序号 |
-| hyperlink | string | ❌ | Hybrid页面元素的href| 
-| query | string | ❌ | Hybrid页面url 中的query | 
+| hyperlink | string | ❌ | Hybrid页面元素的href|
+| query | string | ❌ | Hybrid页面url 中的query |
 
 示例
 ```json

@@ -77,18 +77,33 @@ GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15�
 
 9. **setExcludeEvent** 事件过滤  
 默认情况下，事件不会进行过滤。但若不想采集某些事件可以在此设置。事件类型可以参考 [FilterEventParams](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/EventExcludeFilter.java)
-
-若想取消过滤，可以调用
 ```java
+// 初始化无埋点SDK时，调用方法设置过滤事件
+GrowingAutotracker.startWithConfiguration(this,
+    new CdpAutotrackConfiguration("projectId", "urlScheme")
+        ...
+       .setExcludeEvent(EventExcludeFilter.EVENT_MASK_TRIGGER))
+);
+```
+```java
+// 若想取消过滤，可以调用
 ConfigurationProvider.core().setExcludeEvent(EventExcludeFilter.EVENT_MASK_NONE)
 ```
 
 
 10. **setIgnoreField** 事件属性过滤  
 事件属性指上报事件中携带的属性参数。可过滤事件属性可以参考 [FieldIgnoreFilter](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/FieldIgnoreFilter.java)
-
-若想取消过滤，可以调用
+初始化时可以设置对应的事件过滤
 ```java
+// 初始化无埋点SDK时，调用方法设置过滤字段
+GrowingAutotracker.startWithConfiguration(this,
+    new CdpAutotrackConfiguration("projectId", "urlScheme")
+        ...
+       .setIgnoreField(FieldIgnoreFilter.FIELD_IGNORE_ALL)
+);
+```
+```java
+// 若想取消过滤，可以调用
 ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.FIELD_IGNORE_NONE)
 ```
 
