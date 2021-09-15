@@ -17,7 +17,7 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
 请将以下的页面代码放置到需要分析的页面中的`<head> 和 </head>`标签之间，即可完成最新 Web JS SDK 页面代码的添加。
 
 > 请注意使用具体的项目ID替换代码中的 your projectId、your DataSourceId 确保JS资源地址正确。
-> 
+>
 > JS文件地址：https://cdn.jsdelivr.net/npm/gio-web-autotracker/cdp.js
 
 ### Web使用集成
@@ -34,7 +34,7 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
     script.src = src;
     tag.parentNode.insertBefore(script, tag);
   })(window, document, 'script', 'JS 资源地址', 'gdp');
-  
+
   gdp('init', 'your projectId', 'your dataSourceId', {
     host: 'your apiServerHost',
     version: '1.0.0'
@@ -45,7 +45,7 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
 
 ### Hybrid使用集成
 
-集成方式和web使用集成一致就行，会自动判断桥的情况进行数据的转发，详细可见[Hybrid打通插件](/docs/webjs/plugins#6、hybrid打通插件)。
+集成方式和web使用集成一致，会自动判断桥的情况进行数据的转发，详见[Hybrid打通插件](/docs/webjs/plugins#6、hybrid打通插件)。
 
 ### 小程序内嵌页使用集成
 
@@ -61,7 +61,7 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
     script.src = src;
     tag.parentNode.insertBefore(script, tag);
   })(window, document, 'script', 'JS 资源地址', 'gdp');
-  
+
   gdp('init', 'your projectId', 'your dataSourceId', 'your AppId', {
     host: 'your apiServerHost',
     version: '1.0.0'
@@ -70,13 +70,12 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
 </script>
 ```
 
-在小程序内嵌页集成中，可能需要和小程序数据进行用户的打通，这时就需要填写您小程序的AppId来作为打通的判断，详细可见[小程序内嵌页打通插件](/docs/webjs/plugins#7、小程序内嵌页打通插件)。
+在小程序内嵌页集成中，可能需要和小程序数据进行用户的打通，这时就需要填写您小程序的AppId来作为打通的判断，详见[小程序内嵌页打通插件](/docs/webjs/plugins#7、小程序内嵌页打通插件)。
 
 ### 常见的初始化失败情况
 
-1. 初始化需要设置host，不设置会失败。
-2. 初始化必须填写projectId、datasourceId，否则会失败。
-3. 不支持file协议（3.2.0版本起支持）、localhost、127.0.0.1
+1. 初始化时需设置 host、projectId、datasourceId，否则初始化失败。
+2. 不支持file协议（3.2.0版本起支持）、localhost、127.0.0.1
 
 
 

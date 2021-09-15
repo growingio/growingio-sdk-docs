@@ -6,7 +6,7 @@ title: 如何集成
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-小程序 SDK 支持 `微信小程序` 平台，后续会逐步支持其他平台。具备一下功能特性：
+小程序 SDK 支持 `微信小程序` 平台，后续会逐步支持其他平台。具备以下功能特性：
 * 埋点能力，开发同学调用API主动采集自定义事件
 * 无埋点能力，自动采集用户行为事件，可通过开关控制
 
@@ -58,7 +58,7 @@ const App = global.GioApp;
 </Tabs>
 
 ### Taro
-在根目录main.js文件的顶部添加跟踪代码
+在根目录app.jsx文件的顶部添加跟踪代码
 
 <Tabs
   groupId="2"
@@ -99,7 +99,7 @@ gdp('init','your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
 在根目录main.js文件的顶部添加跟踪代码
 ```js
 import Vue from 'vue';
-import App from './App';
+import App from './App.vue';
 App.mpType = 'app';
 var gdp = require("utils/gio-minp/index.js").default;
 gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
@@ -125,7 +125,7 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
 
 ```js
 import Vue from 'vue';
-import App from './App';
+import App from './App.vue';
 App.mpType = 'app';
 var gdp = require("utils/gio-minp/index.js").default;
 gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
@@ -175,7 +175,7 @@ module.exports = {
 ```js
 
 import Vue from 'vue'; // 这里vue应该指向的是 /src/utils/vue.js
-import App from './App';
+import App from './App.vue';
 App.mpType = 'app';
 var gdp = require("utils/gio-minp/index.js").default;
 gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
