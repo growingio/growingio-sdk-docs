@@ -69,6 +69,7 @@ const App = global.GioApp;
   ]
 }>
 <TabItem value="2.x">
+在根目录main.js文件的顶部添加跟踪代码
 
 ```js
 import Taro from '@tarojs/taro';
@@ -84,19 +85,50 @@ gdp('init','your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
 </TabItem>
 <TabItem value="3.x">
 
+1、添加npm包 `babel-plugin-setname`
+
 ```js
-
-
-    暂不支持，适配开发中，敬请期待...
-
-
+npm install babel-plugin-setname --save-dev
 ```
 
+2、修改babel配置，如 `babel.config.js`
+
+```js
+module.exports = {
+  plugins: [
+    [
+      "babel-plugin-setname",
+      {
+        includes: ["src"],
+        callee: '__setname__',
+        package: '@gio/setname',
+        lower: false,
+        test: /^on[A-Z][a-zA-Z]+/
+      }
+    ]
+  ]
+}
+```
+
+3、在根目录main.js文件的顶部添加跟踪代码
+
+```js
+import Taro from '@tarojs/taro';
+var gdp = require("utils/gio-minp/index.js").default;
+gdp('init','your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
+    version: '小程序版本',
+    host: 'api.growingio.com',
+    taro: Taro,
+    ...其他配置项
+});
+```
 </TabItem>
 </Tabs>
 
 ### uni-app
+
 在根目录main.js文件的顶部添加跟踪代码
+
 ```js
 import Vue from 'vue';
 import App from './App.vue';
@@ -111,7 +143,6 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
 ```
 
 ### mpvue
-在根目录main.js文件的顶部添加跟踪代码
 
 <Tabs
   groupId="3"
@@ -122,6 +153,7 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
   ]
 }>
 <TabItem value="mpvue">
+在根目录main.js文件的顶部添加跟踪代码
 
 ```js
 import Vue from 'vue';
@@ -191,6 +223,7 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
 </Tabs>
 
 ### WePY
+
 在根目录app.wpy文件的顶部添加跟踪代码
 
 <Tabs
