@@ -18,7 +18,7 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
 
 > 请注意使用具体的项目ID替换代码中的 your projectId、your DataSourceId 确保JS资源地址正确。
 >
-> JS文件地址：https://cdn.jsdelivr.net/npm/gio-web-autotracker/cdp.js
+> JS文件地址：https://assets.giocdn.com/sdk/cdp/gio.js
 
 ### Web使用集成
 
