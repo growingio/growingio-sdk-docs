@@ -59,7 +59,7 @@ configuration.dataSourceId = @"YourDatasourceId";
 // url scheme跳转
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
-  sourceApplication:(NSNSString *)sourceApplication
+  sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
 
     return NO;
@@ -90,10 +90,10 @@ continueUserActivity:(NSUserActivity *)userActivity
 
 | API                        | 参数类型         | 是否必填 | 默认值 | 说明                                                      |
 | :------------------------- | :--------------- | :------: | :----- | :-------------------------------------------------------- |
-| `projectId`                | `NSNSString`     |    是    | `nil`  | 官网的中您的项目ID                                        |
-| `urlScheme`                | `NSNSString`     |    是    | `nil`  | 官网的中您的相应APP的UrlScheme                            |
-| `dataSourceId`             | `NSNSString`     |    是    | `nil`  | 官网的中您的相应APP的DataSourceId                         |
-| `dataCollectionServerHost` | `NSNSString`     |    是    | `nil`  | 您部署服务的后端Host                                      |
+| `projectId`                | `NSString`       |    是    | `nil`  | 官网的中您的项目ID                                        |
+| `urlScheme`                | `NSString`       |    是    | `nil`  | 官网的中您的相应APP的UrlScheme                            |
+| `dataSourceId`             | `NSString`       |    是    | `nil`  | 官网的中您的相应APP的DataSourceId                         |
+| `dataCollectionServerHost` | `NSString`       |    是    | `nil`  | 您部署服务的后端Host                                      |
 | `uploadExceptionEnable`    | `BOOL`           |    否    | `YES`  | 收集SDK内部异常上报服务端                                 |
 | `debugEnabled`             | `BOOL`           |    否    | `NO`   | 调试模式，会打印SDK log，抛出错误异常，在线上环境务必关闭 |
 | `cellularDataLimit`        | `NSUInteger`     |    否    | `10`   | 每天发送数据的流量限制，单位MB                            |
