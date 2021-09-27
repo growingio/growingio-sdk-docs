@@ -9,24 +9,27 @@ import TabItem from '@theme/TabItem';
 在初始化过程中，SDK会接收一个由用户传入的默认配置`Configuration`,配置相关说明如下表：
 ### 配置表格
 
-| Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 |
-| :-------------------------   | :------   | :----:  |:------  |:------| ----- |
-| `projectId`                  | `String`  | 是      | `null`   | 项目ID，每个应用对应唯一值 | - |
-| `urlScheme`                  | `String`  | 是      | `null`   | 应用的URLScheme，唯一值 | - |
-| `setDataSourceId`            | `String`  | 是      | `null`   | 应用的DataSourceId，唯一值 | - |
-| `setDataCollectionServerHost`| `String`  | 是      | `null`   | 服务端部署后的 ServerHost | - |
-| `setChannel`                 | `String`  | 否      | `null`   | 应用的分发渠道 | - |
-| `setDebugEnabled`            | `boolean` | 否      | `false`  | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |
-| `setCellularDataLimit`       | `int`     | 否      | `10`     | 每天发送数据的流量限制，单位MB | - |
-| `setDataUploadInterval`      | `int`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |
-| `setSessionInterval`         | `int`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |
-| `setDataCollectionEnabled`   | `boolean` | 否      | `true`   | 是否采集数据 | - |
-| `setOaidEnabled`             | `boolean` | 否      | `false`  | 是否采集Android OAID | - |
-| `setExcludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - |
-| `setIgnoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |
-| `setImpressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 |
+| Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 | 版本 |
+| :-------------------------   | :------   | :----:  |:------  |:------| ----- | --------------------------   |
+| `projectId`                  | `String`  | 是      | `null`   | 项目ID，每个应用对应唯一值 | - |  |
+| `urlScheme`                  | `String`  | 是      | `null`   | 应用的URLScheme，唯一值 | - |  |
+| `setDataSourceId`            | `String`  | 是      | `null`   | 应用的DataSourceId，唯一值 | - |  |
+| `setDataCollectionServerHost`| `String`  | 是      | `null`   | 服务端部署后的 ServerHost | - |  |
+| `setChannel`                 | `String`  | 否      | `null`   | 应用的分发渠道 | - |  |
+| `setDebugEnabled`            | `boolean` | 否      | `false`  | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |  |
+| `setCellularDataLimit`       | `int`     | 否      | `10`     | 每天发送数据的流量限制，单位MB | - |  |
+| `setDataUploadInterval`      | `int`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |  |
+| `setSessionInterval`         | `int`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |  |
+| `setDataCollectionEnabled`   | `boolean` | 否      | `true`   | 是否采集数据 | - |  |
+| `setOaidEnabled`             | `boolean` | 否      | `false`  | 是否采集Android OAID | - | < 3.2.3 |
+| `setExcludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - |  |
+| `setIgnoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |  |
+| `setIdMappingEnabled` | `boolean` | 否 | `false` | 是否开启多用户身份上报 | - | >= 3.2.3 |
+| `setPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、oaid模块) | - | >= 3.2.3 |
+| `setImpressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 |  |
 
 ### 详细说明
+
 1. **projectId** **urlScheme** **setDataSourceId** **setDataCollectionServerHost**   
 这四个参数为 CDP 用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 2. **channel** 对应应用的分发渠道字段，若设置了值则会在每个事件上报中含有渠道信息。  
@@ -87,12 +90,12 @@ GrowingAutotracker.startWithConfiguration(this,
 ```
 ```java
 // 若想取消过滤，可以调用
-ConfigurationProvider.core().setExcludeEvent(EventExcludeFilter.EVENT_MASK_NONE)
+ConfigurationProvider.core().setExcludeEvent(EventExcludeFilter.NONE)
 ```
 
 
 10. **setIgnoreField** 事件属性过滤  
-事件属性指上报事件中携带的属性参数。可过滤事件属性可以参考 [FieldIgnoreFilter](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/FieldIgnoreFilter.java)
+事件属性指上报事件中携带的属性参数。可过滤事件属性可以参考 [FieldIgnoreFilter](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/FieldIgnoreFilter.java)
 初始化时可以设置对应的事件过滤
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤字段
@@ -104,9 +107,26 @@ GrowingAutotracker.startWithConfiguration(this,
 ```
 ```java
 // 若想取消过滤，可以调用
-ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.FIELD_IGNORE_NONE)
+ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.NONE)
 ```
 
-11. **setImpressionScale** 曝光比例  
-与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为0则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
+11. **setIdMappingEnabled** 是否支持多用户身份上报, 默认不支持
+
+    是否支持多用户身份上报, 与api接口setLoginUserId(String userId, String userKey)对应, 开启时, userKey会在每次上报数据时携带, 关闭时, 接口与setLoginUserId(String userId)作用相同
+
+12. **setPreloadComponent** 注册模块
+
+    模块注册, 可以用来加载自定义/预定义的模块, 与api接口registerComponent功能相同, 用于在sdk初始化时需要优先加载的模块注册(如网络模块、加密模块、oaid模块等)
+
+    ```java
+    // 初始化无埋点SDK时, 调用方法注册加密模块
+    // 加密模块需要依赖对应 加密模块包encoder
+    GrowingAutotracker.startWithConfiguration(this, 
+                    new CdpAutotrackConfiguration("projectId", "urlScheme")
+                    ...
+                    .setPreloadComponent(new EncoderLibraryGioModule()));
+    ```
+
+13. **setImpressionScale** 曝光比例  
+    与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为0则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
 
