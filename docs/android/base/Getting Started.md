@@ -25,12 +25,13 @@ buildscript {
     repositories {
         // 添加maven仓库
         mavenCentral()
-        
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
         
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.2.0'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.2.3-SNAPSHOT'
     }
 }
 
@@ -38,6 +39,8 @@ allprojects {
     repositories {
         // 添加maven仓库
         mavenCentral()
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 ```
@@ -53,7 +56,7 @@ apply plugin: 'com.growingio.android.autotracker'
 dependencies {
     ...
     //GrowingIO 无埋点 SDK
-    implementation 'com.growingio.android:autotracker-cdp:3.2.0'
+    implementation 'com.growingio.android:autotracker-cdp:3.2.3-SNAPSHOT'
 }
 
 ```
@@ -141,7 +144,7 @@ class MyApplication : Application() {
     }
 }
 ```
-    
+
 </TabItem>
 </Tabs>
 
@@ -203,7 +206,7 @@ class MyApplication : Application() {
 // 当用户同意隐私协议后，再打开数据收集
 GrowingAutotracker.get().setDataCollectionEnabled(true)
 ```
-    
+
 </TabItem>
 </Tabs>
 
@@ -320,7 +323,7 @@ class MyApplication : Application() {
     }
 }
 ```
-    
+
 </TabItem>
 </Tabs>
 
