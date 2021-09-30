@@ -39,7 +39,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 
 ### 3. SDK初始化配置
 
-1. 导入头文件`"GrowingAutotracker.h"`请将以下 `GrowingTracker.startWithConfiguration`加在您的`AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中  
+1. 导入头文件`"GrowingAutotracker.h"`，并将以下代码加在您的`AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中  
    代码示例:
 
 ```c
@@ -48,7 +48,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg:http://106.75.81.105:8080
 // YourDatasourceId eg: 11223344aabbcc
-GrowingTrackConfiguration *configuration = [GrowingTrackConfiguration configurationWithProjectId:@"YourProjectId"];
+GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithProjectId:@"YourProjectId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
 [GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
@@ -126,7 +126,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 
 ### 3. SDK初始化配置
 
-1. 导入头文件`"GrowingTracker.h"`,请将以下 `GrowingTracker.startWithConfiguration`加在您的`AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中  
+1. 导入头文件`"GrowingTracker.h"`，并将以下代码加在您的`AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中  
    代码示例:
 
 ```c
