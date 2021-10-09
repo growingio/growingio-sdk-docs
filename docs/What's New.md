@@ -6,6 +6,16 @@ slug: /
 ---
 
 -----
+## V3.3.0 - 2021/10/09
+* 添加 idmapping 功能
+* 增加oaid本地发版配置，适配oaid1.0.27版本
+* 修复bug和代码优化
+
+| 平台                       | 代码地址 |
+| :-------------------------   | :------   |
+| Android | [Release 3.3.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.0) | 
+| iOS | [v3.3.0](https://github.com/growingio/growingio-sdk-ios-autotracker/releases/tag/3.3.0) |
+| Web | [v3.3.9](https://github.com/growingio/growingio-sdk-web-autotracker)|
 
 ## V3.2.1 - 2021/09/01
 
