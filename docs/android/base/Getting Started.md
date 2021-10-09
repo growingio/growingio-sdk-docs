@@ -31,7 +31,7 @@ buildscript {
     dependencies {
         
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.2.3-SNAPSHOT'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.3.0'
     }
 }
 
@@ -56,7 +56,7 @@ apply plugin: 'com.growingio.android.autotracker'
 dependencies {
     ...
     //GrowingIO 无埋点 SDK
-    implementation 'com.growingio.android:autotracker-cdp:3.2.3-SNAPSHOT'
+    implementation 'com.growingio.android:autotracker-cdp:3.3.0'
 }
 
 ```
@@ -221,7 +221,7 @@ GrowingAutotracker.get().setDataCollectionEnabled(true)
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.2.0 !!!`  
+`!!! GrowingIO Tracker version: 3.3.0 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
@@ -247,7 +247,7 @@ repositories {
 dependencies {
 
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.2.0'
+    implementation 'com.growingio.android:tracker-cdp:3.3.0'
 }
 ```
 

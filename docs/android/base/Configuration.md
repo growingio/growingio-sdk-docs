@@ -28,11 +28,12 @@ import TabItem from '@theme/TabItem';
 | `setPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、oaid模块) | - | >= 3.2.3 |
 | `setImpressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 |  |
 
-### 详细说明
 
-1. **projectId** **urlScheme** **setDataSourceId** **setDataCollectionServerHost**   
+### 1. SDK必需参数
+**projectId** **urlScheme** **setDataSourceId** **setDataCollectionServerHost**   
 这四个参数为 CDP 用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
-2. **channel** 对应应用的分发渠道字段，若设置了值则会在每个事件上报中含有渠道信息。  
+### 2. **channel** 
+对应应用的分发渠道字段，若设置了值则会在每个事件上报中含有渠道信息。  
 比如在初始化中设置了`.setChannel("Docs")`,则会在上报信息中出现 `appChannel` 字段：
 ```json
     ╔═══════════════════════════════════════════════════════════════════════════════════════
@@ -45,22 +46,39 @@ import TabItem from '@theme/TabItem';
     ║ }
     ╚═══════════════════════════════════════════════════════════════════════════════════════
 ```
-3. **setDebugEnabled** 默认不开启，开启后会输出如上所示的SDK Log 日志。  
+### 3. **setDebugEnabled** 
+默认不开启，开启后会输出如上所示的SDK Log 日志。  
 建议做法设为 `setDebugEnabled(BuildConfig.DEBUG)` 这样既能保证Debug时能够打印日志，正式发布时也能关闭日志；
 
-4. **setCellularDataLimit** 为每日在4G环境下的流量限制，默认为10M。WIFI环境下则不计流量。
+### 4. **setCellularDataLimit** 
+为每日在4G环境下的流量限制，默认为10M。WIFI环境下则不计流量。
 
-5. **setDataUploadInterval** 上报间隔  
-GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15秒的情况下向服务器发送事件包（最大50条事件）。
+### 5. **setDataUploadInterval** 
+上报间隔。GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15秒的情况下向服务器发送事件包（最大50条事件）。
 
-6. **setSessionInterval** 设置会话后台留存时长  
-指当前会话在应用进入后台后的最大留存时间，默认为30秒。另外，其他情况下也会重新生成一个新的会话，如设置用户ID等核心信息，重新打开数据收集等。
+### 6. **setSessionInterval** 
+设置会话后台留存时长。指当前会话在应用进入后台后的最大留存时间，默认为30秒。另外，其他情况下也会重新生成一个新的会话，如设置用户ID等核心信息，重新打开数据收集等。
 
-7. **setDataCollectionEnabled** 数据收集  
-当数据收集关闭时，SDK将不会再获取设备信息，也不会产生事件和上报事件。
+### 7. **setDataCollectionEnabled** 
+数据收集。当数据收集关闭时，SDK将不会再获取设备信息，也不会产生事件和上报事件。
 
-8. **setOaidEnabled** 是否采集 `oaid`作为设备信息  
-若 `setOaidEnabled(true)`且已经集成了[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的jar包，则会在 `Visit` 事件中添加 `oaid` 字段：
+### 8. 采集 `oaid` 作为设备信息  
+项目需要集成[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 Oaid 模块依赖(和 SDK 依赖同级)：
+
+```groovy
+...
+implementation "com.growingio.android:oaid:3.3.0"
+```
+SDK初始化时注册Oaid模块：
+```java
+// 初始化SDK时，可以提前注册 oaid 模块
+GrowingAutotracker.startWithConfiguration(this,
+        new CdpAutotrackConfiguration("projectId", "urlScheme")
+        ...
+        .setPreloadComponent(new OaidLibraryGioModule()));
+);
+```
+配置完成后之后会在 `Visit` 事件中添加 `oaid` 字段：
 
 ```json
     ╔═══════════════════════════════════════════════════════════════════════════════════════
@@ -78,8 +96,13 @@ GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15�
 目前腾讯， 头条， 网易广告SDK已经要求使用 OAID， OAID 的准确性和覆盖率均满足广告场景的使用需求，Android SDK 提供采集 OAID 的能力。
 :::
 
-9. **setExcludeEvent** 事件过滤  
-默认情况下，事件不会进行过滤。但若不想采集某些事件可以在此设置。事件类型可以参考 [FilterEventParams](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/EventExcludeFilter.java)
+:::danger
+`setOaidEnabled`已废弃，请通过 `setPreloadComponent` 进行注册 oaid 模块来实现 oaid 的功能
+:::
+
+
+### 9. **setExcludeEvent** 
+事件过滤。默认情况下，事件不会进行过滤。但若不想采集某些事件可以在此设置。事件类型可以参考 [FilterEventParams](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/EventExcludeFilter.java)
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤事件
 GrowingAutotracker.startWithConfiguration(this,
@@ -93,9 +116,8 @@ GrowingAutotracker.startWithConfiguration(this,
 ConfigurationProvider.core().setExcludeEvent(EventExcludeFilter.NONE)
 ```
 
-
-10. **setIgnoreField** 事件属性过滤  
-事件属性指上报事件中携带的属性参数。可过滤事件属性可以参考 [FieldIgnoreFilter](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/FieldIgnoreFilter.java)
+### 10. **setIgnoreField** 
+事件属性过滤。事件属性指上报事件中携带的属性参数。可过滤事件属性可以参考 [FieldIgnoreFilter](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/FieldIgnoreFilter.java)
 初始化时可以设置对应的事件过滤
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤字段
@@ -110,23 +132,22 @@ GrowingAutotracker.startWithConfiguration(this,
 ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.NONE)
 ```
 
-11. **setIdMappingEnabled** 是否支持多用户身份上报, 默认不支持
+### 11. **setIdMappingEnabled** 
+是否支持多用户身份上报, 默认不支持。
+是否支持多用户身份上报, 与api接口setLoginUserId(String userId, String userKey)对应, 开启时, userKey会在每次上报数据时携带, 关闭时, 接口与setLoginUserId(String userId)作用相同
 
-    是否支持多用户身份上报, 与api接口setLoginUserId(String userId, String userKey)对应, 开启时, userKey会在每次上报数据时携带, 关闭时, 接口与setLoginUserId(String userId)作用相同
+### 12. **setPreloadComponent** 
+注册模块。可以用来加载自定义/预定义的模块, 与api接口registerComponent功能相同, 用于在sdk初始化时需要优先加载的模块注册(如网络模块、加密模块、oaid模块等)
 
-12. **setPreloadComponent** 注册模块
+```java
+// 初始化无埋点SDK时, 调用方法注册加密模块
+// 加密模块需要依赖对应 加密模块包encoder
+GrowingAutotracker.startWithConfiguration(this, 
+                new CdpAutotrackConfiguration("projectId", "urlScheme")
+                ...
+                .setPreloadComponent(new EncoderLibraryGioModule()));
+```
 
-    模块注册, 可以用来加载自定义/预定义的模块, 与api接口registerComponent功能相同, 用于在sdk初始化时需要优先加载的模块注册(如网络模块、加密模块、oaid模块等)
-
-    ```java
-    // 初始化无埋点SDK时, 调用方法注册加密模块
-    // 加密模块需要依赖对应 加密模块包encoder
-    GrowingAutotracker.startWithConfiguration(this, 
-                    new CdpAutotrackConfiguration("projectId", "urlScheme")
-                    ...
-                    .setPreloadComponent(new EncoderLibraryGioModule()));
-    ```
-
-13. **setImpressionScale** 曝光比例  
-    与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为0则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
+### 13. **setImpressionScale** 
+曝光比例。与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为0则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
 
