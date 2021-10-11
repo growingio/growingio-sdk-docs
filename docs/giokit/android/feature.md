@@ -43,8 +43,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
  <img alt="埋点数据详情" src={useBaseUrl('/img/giokit/android/datadetail.png')}/>
 
-### 埋点追踪
+### XPath追踪
 
-开启该功能后，拖动圆点到对应控件上，即可显示该控件的 path 路径，便于对照已圈选的指标。目前只兼容 WebView。
+开启该功能后，拖动圆点到对应控件上，即可显示该控件的 path 路径，便于对照已圈选的指标。支持原生控件及原生 WebView。
 
  <img alt="埋点追踪" src={useBaseUrl('/img/giokit/android/circler.png')}/>
