@@ -53,7 +53,7 @@ configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
 [GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```
-- 在appDelegate.m文件中实现urlSchme跳转以及DeepLink跳转的代理方法
+2. 在appDelegate.m文件中实现urlSchme跳转以及DeepLink跳转的代理方法
 
 ```c
 // url scheme跳转
@@ -85,24 +85,6 @@ continueUserActivity:(NSUserActivity *)userActivity
 
 
 > 上述代理方法空实现即可，SDK会自动加入处理代码
-
-### 4. SDK 初始化配置项
-
-| API                        | 参数类型         | 是否必填 | 默认值 | 说明                                                      |
-| :------------------------- | :--------------- | :------: | :----- | :-------------------------------------------------------- |
-| `projectId`                | `NSString`       |    是    | `nil`  | 官网的中您的项目ID                                        |
-| `urlScheme`                | `NSString`       |    是    | `nil`  | 官网的中您的相应APP的UrlScheme                            |
-| `dataSourceId`             | `NSString`       |    是    | `nil`  | 官网的中您的相应APP的DataSourceId                         |
-| `dataCollectionServerHost` | `NSString`       |    是    | `nil`  | 您部署服务的后端Host                                      |
-| `uploadExceptionEnable`    | `BOOL`           |    否    | `YES`  | 收集SDK内部异常上报服务端                                 |
-| `debugEnabled`             | `BOOL`           |    否    | `NO`   | 调试模式，会打印SDK log，抛出错误异常，在线上环境务必关闭 |
-| `cellularDataLimit`        | `NSUInteger`     |    否    | `10`   | 每天发送数据的流量限制，单位MB                            |
-| `dataUploadInterval`       | `NSTimeInterval` |    否    | `15`   | 数据发送的间隔，单位秒                                    |
-| `sessionInterval`          | `NSTimeInterval` |    否    | `30`   | 每次访问会话的最大时长，单位秒                            |
-| `dataCollectionEnabled`    | `BOOL`           |    否    | `YES`  | 是否采集数据                                              |
-| `impressionScale`          | `float`          |    否    | `0`    | 元素曝光事件中的比例因子,范围 [0-1]                       |
-| `excludeEvent`             | `NSUInteger`     |    否    | `0`    | 需要过滤的事件类型计算的掩码值                            |
-| `ignoreField`              | `NSUInteger`     |    否    | `0`    | 事件中需要过滤的属性计算的掩码值                          |
 
 ### 埋点SDK集成
 
@@ -172,20 +154,3 @@ continueUserActivity:(NSUserActivity *)userActivity
 ```
 
 > 上述代理方法空实现即可，SDK会自动加入处理代码
-
-### 4. SDK 初始化配置项
-
-| API                        | 参数类型         | 是否必填 | 默认值 | 说明                                                      |
-| :------------------------- | :--------------- | :------: | :----- | :-------------------------------------------------------- |
-| `projectId`                | `NSString`       |    是    | `nil`  | 官网的中您的项目ID                                        |
-| `urlScheme`                | `NSString`       |    是    | `nil`  | 官网的中您的相应APP的UrlScheme                            |
-| `dataSourceId`             | `NSString`       |    是    | `nil`  | 官网的中您的相应APP的DataSourceId                         |
-| `dataCollectionServerHost` | `NSString`       |    是    | `nil`  | 您部署服务的后端Host                                      |
-| `uploadExceptionEnable`    | `BOOL`           |    否    | `YES`  | 收集SDK内部异常上报服务端                                 |
-| `debugEnabled`             | `BOOL`           |    否    | `NO`   | 调试模式，会打印SDK log，抛出错误异常，在线上环境务必关闭 |
-| `cellularDataLimit`        | `NSUInteger`     |    否    | `10`   | 每天发送数据的流量限制，单位MB                            |
-| `dataUploadInterval`       | `NSTimeInterval` |    否    | `15`   | 数据发送的间隔，单位秒                                    |
-| `sessionInterval`          | `NSTimeInterval` |    否    | `30`   | 每次访问会话的最大时长，单位秒                            |
-| `dataCollectionEnabled`    | `BOOL`           |    否    | `YES`  | 是否采集数据                                              |
-| `excludeEvent`             | `NSUInteger`     |    否    | `0`    | 需要过滤的事件类型计算的掩码值                            |
-| `ignoreField`              | `NSUInteger`     |    否    | `0`    | 事件中需要过滤的属性计算的掩码值                          |
