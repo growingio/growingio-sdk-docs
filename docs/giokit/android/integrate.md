@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 ## 集成 GioKit
 
-GioKit 代码已托管在 [Github](https://github.com/growingio/giokit-android) 上，欢迎 star, fork 一波。
+GioKit 代码后续将逐步开源，敬请期待！
 
 > **Gradle插件版本**： 3.2.1及以上  
 > **Android系统版本**：Android 5.0 及以上, **仅支持 AndroidX**
