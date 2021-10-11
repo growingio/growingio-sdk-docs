@@ -44,7 +44,7 @@ import TabItem from '@theme/TabItem';
 
 ### 3. 设置登录用户Id以及用户Key  `setLoginUserId:userKey:`
 
-支持设置userId的类型, 存储方式与userId保持一致, userKey默认为null
+支持设置 userId 的类型（**需在初始化 SDK 时设置`configuration.idMappingEnabled = YES`**），存储方式与 userId 保持一致，userKey 默认为 null
 
 #### 示例
 
