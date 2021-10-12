@@ -29,6 +29,14 @@ pod 'GrowingToolsKit', :configurations => ['Debug']
 pod 'GrowingToolsKit/SDK30202', :configurations => ['Debug']
 ```
 
+- 如果您的 GrowingIO iOS SDK 版本是 2.x，在您的 Podfile 文件中添加：
+
+```ruby
+pod 'GrowingToolsKit/SDK2nd', :configurations => ['Debug']
+```
+
+
+
 ### 2. 初始化
 
 在您的`AppDelegate`导入 GrowingToolsKit
