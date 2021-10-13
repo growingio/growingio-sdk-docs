@@ -21,11 +21,11 @@ import TabItem from '@theme/TabItem';
 | `setDataUploadInterval`      | `int`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |  |
 | `setSessionInterval`         | `int`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |  |
 | `setDataCollectionEnabled`   | `boolean` | 否      | `true`   | 是否采集数据 | - |  |
-| `setOaidEnabled`             | `boolean` | 否      | `false`  | 是否采集Android OAID | - | < 3.2.3 |
+| `setOaidEnabled`             | `boolean` | 否      | `false`  | 是否采集Android OAID | - | < 3.3.0 |
 | `setExcludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - |  |
 | `setIgnoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |  |
-| `setIdMappingEnabled` | `boolean` | 否 | `false` | 是否开启多用户身份上报 | - | >= 3.2.3 |
-| `setPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、oaid模块) | - | >= 3.2.3 |
+| `setIdMappingEnabled` | `boolean` | 否 | `false` | 是否开启多用户身份上报 | - | >= 3.3.0 |
+| `setPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、oaid模块) | - | >= 3.3.0 |
 | `setImpressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 |  |
 
 
