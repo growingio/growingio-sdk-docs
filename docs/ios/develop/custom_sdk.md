@@ -60,10 +60,10 @@ SDK 可以通过拆分成 模块、服务实现模块化，在 GrowingIO 的 SDK
 
 对于常用的可选配置，增加了配置项，通过Pod引入可以实现
 
-| 名称        |   说明    | 
-| :---------- | :-------: | 
-| DISABLE_IDFA     |  禁用IDFA，且SDK中不会再有相关的IDFA代码逻辑  | 
-| ENABLE_ENCRYPTION | 禁用数据加密，使用明文 | 
+| 名称        |   说明    |
+| :---------- | :-------: |
+| DISABLE_IDFA     |  禁用IDFA，且SDK中不会再有相关的IDFA代码逻辑  |
+| ENABLE_ENCRYPTION | 启用数据加密，防止明文传输 |
 
 > 如果仅需要禁用idfa，则在pod文件中添加 pod 'GrowingAnalytics/DISABLE_IDFA' 即可，而无需自定义SDK。
 
