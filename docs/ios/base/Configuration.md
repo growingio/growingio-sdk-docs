@@ -23,6 +23,7 @@ import TabItem from '@theme/TabItem';
 | `ignoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - | >=3.2.1 |
 | `impressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 | - |
 | `idMappingEnabled` | `BOOL` | 否 | `NO` | 是否开启多用户身份上报 |  | >=3.3.0 |
+| `urlScheme` | `NSString` | 否 | `nil` | 自定义 URL Scheme | | >=3.3.0 |
 
 ### 详细说明
 
@@ -44,4 +45,6 @@ GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15�
 与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为0则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
 10. **idMappingEnabled** 多用户身份上报  
   是否支持多用户身份上报，默认不支持。与 API 接口`setLoginUserId:userKey:`对应，开启时，userKey 会在每次上报数据时携带；关闭时，接口与`setLoginUserId`作用相同
+11. **urlScheme** 自定义 URL Scheme  
+   如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该[URL Scheme](https://growingio.github.io/growingio-sdk-docs/docs/ios/base/Getting_Started#2-%E6%B7%BB%E5%8A%A0-url-scheme)
 
