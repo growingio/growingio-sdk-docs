@@ -14,16 +14,16 @@ iOS SDK 提供了 `无埋点` 和 `埋点` 两个SDK版本：
 CDP无埋点SDK（包括埋点 SDK）代码托管在 [Github](https://github.com/growingio/growingio-sdk-ios-autotracker-cdp)
 
 欢迎 star,fork 一波。
-
-> **开发环境** <br/>
-> Xcode 9.0 及以上  
-> iOS 8.0 及以上
-
-### 无埋点SDK集成
+:::info
+**开发环境:** <br/>
+Xcode 9.0 及以上  
+iOS 8.0 及以上
+:::
+## 无埋点SDK集成
 
 ### 1. Cocoapods集成
 
-在你的Podfile文件中添加
+在您的Podfile文件中添加
 
 ```c
 pod 'GrowingAnalytics-cdp/Autotracker'
@@ -35,7 +35,9 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 
 选择工程 → Target  → Info  → URL Types  → 添加您的Url Scheme 即可
 
->  你需要在GrowingIO网站上先创建你的App应用，获取Url Scheme
+:::info
+需要在GrowingIO网站上先创建您的App应用，获取 Url Scheme
+:::
 
 ### 3. SDK初始化配置
 
@@ -73,7 +75,7 @@ continueUserActivity:(NSUserActivity *)userActivity
 }
 ```
 
-3. 若使用了iOS 13的 UIScene，请在你指定的SceneDelegate中设置如下
+3. 若使用了iOS 13的 UIScene，请在您指定的SceneDelegate中设置如下
 
 ```c
 - (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
@@ -82,17 +84,17 @@ continueUserActivity:(NSUserActivity *)userActivity
 - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
 }
 ```
+:::info
+上述代理方法空实现即可，SDK会自动加入处理代码
+:::
 
-
-> 上述代理方法空实现即可，SDK会自动加入处理代码
-
-### 埋点SDK集成
+## 埋点SDK集成
 
 埋点 SDK只自动采集用户访问事件和APP关闭事件，其他事件均需要开发同学调用相应埋点 API 采集自定义事件。
 
 ### 1. Cocoapods集成
 
-在你的Podfile文件中添加
+在您的Podfile文件中添加
 
 ```c
 pod 'GrowingAnalytics-cdp/Tracker'
@@ -103,13 +105,14 @@ pod 'GrowingAnalytics-cdp/Tracker'
 URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。把 URL Scheme 添加到您的项目，以便使用Mobile Debug等功能时唤醒您的应用。  
 
 选择工程 -> Target -> Info -> URL Types -> 添加您的Url Scheme 即可
-
->  你需要在GrowingIO网站上先创建你的App应用，获取Url Scheme
+:::info
+您需要在GrowingIO网站上先创建您的App应用，获取Url Scheme
+:::
 
 ### 3. SDK初始化配置
 
 1. 导入头文件`"GrowingTracker.h"`，并将以下代码加在您的`AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中  
-   代码示例:
+代码示例:
 
 ```c
 // Config GrowingIO
@@ -143,7 +146,7 @@ continueUserActivity:(NSUserActivity *)userActivity
 }
 ```
 
-3. 若使用了iOS 13的 UIScene，请在你指定的SceneDelegate中设置如下
+3. 若使用了iOS 13的 UIScene，请在您指定的SceneDelegate中设置如下
 
 ```c
 - (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
@@ -152,5 +155,56 @@ continueUserActivity:(NSUserActivity *)userActivity
 - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
 }
 ```
+:::info
+上述代理方法空实现即可，SDK会自动加入处理代码
+:::
+## App Store提交应用注意事项
+如果您添加了库`AdSupport.framework`, GrowingIO则会启用 `IDFA`，所以在向 App Store 提交应用时，需要：
 
-> 上述代理方法空实现即可，SDK会自动加入处理代码
+1. 对于问题 Does this app use the Advertising Identifier (IDFA)，选择 YES。
+
+2. 对于选项Attribute this app installation to a previously served advertisement，打勾。
+
+3. 对于选项Attribute an action taken within this app to a previously served advertisement，打勾。
+
+:::info
+为什么 GrowingIO 使用 `IDFA`? GrowingIO 使用 `IDFA` 来做来源管理激活设备的精确匹配，让您更好的衡量广告效果。如果您不希望启用IDFA，可以选择不引入 `AdSupport.framework`
+:::
+### 关于权限获取
+* 对于iOS 14之前，您无需主动获取 广告标识`IDFA`的权限
+
+* 对于iOS 14之后，您需要使用如下方法来开启您的 广告标识`IDFA` 的权限
+
+1. Plist 文件中添加 `NSUserTrackingUsageDescription`
+
+```c
+<key>NSUserTrackingUsageDescription</key>
+<string>GrowingIO测试demo 需要使用您的广告标识信息以用于数据追踪分析</string> //描述内容请根据App修改
+```
+
+2. 导入框架 `#import <AppTrackingTransparency/AppTrackingTransparency.h>`
+
+3. 调用获取权限代码
+```c
+ if (@available(iOS 14, *)) {
+     // iOS14及以上版本需要先请求权限
+     [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+         switch (status) {
+             case ATTrackingManagerAuthorizationStatusDenied:
+                 //用户拒绝向App授权
+                 break;
+             case ATTrackingManagerAuthorizationStatusAuthorized:
+                 //用户同意向App授权
+                 break;
+             case ATTrackingManagerAuthorizationStatusNotDetermined:
+                 //用户未做选择或未弹窗
+                 break;
+             case ATTrackingManagerAuthorizationStatusRestricted:
+                 //用户在系统级别开启了限制广告追踪
+                 break;
+             default:
+                 break;
+         }
+     }];
+ }
+```
