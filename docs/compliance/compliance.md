@@ -4,7 +4,7 @@ title: APP合规指南
 ---
 
 # APP合规指南
-
+**鉴于您需要使用GIO提供的服务，请您务必于使用GIO服务之前完成如下合规工作：**
 :::info
 合规指南适用于[Android SDK](/docs/android/base/Getting%20Started) 和 [iOS SDK](/docs/ios/base/Getting_Started)
 :::
