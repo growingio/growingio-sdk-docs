@@ -13,10 +13,10 @@ Android SDK 提供了 `无埋点` 和 `埋点` 两个SDK版本：
 ## 集成无埋点SDK
 
 无埋点SDK（包括埋点 SDK）代码已托管在 [Github](https://github.com/growingio/growingio-sdk-android-autotracker) 上，欢迎 star,fork 一波。
-
-> **Gradle插件版本**： 3.2.1及以上  
-> **Android系统版本**：Android 4.2及以上
-
+:::info
+**Gradle插件版本**： 3.2.1及以上  
+**Android系统版本**：Android 4.2及以上
+:::
 ### 添加依赖
 在 project 级别的build.gradle文件中添加autotracker-gradle-plugin依赖和maven仓库。
 
@@ -67,7 +67,7 @@ dependencies {
 
 ### 添加URL Scheme
 URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用[圈选](/docs/debug),[Mobile Debugger](/docs/debug) 及[深度链接](/docs/debug)等功能时唤醒应用。
-将应用的 URLScheme 和应用权限添加到你的 AndroidManifest.xml 中的 LAUNCHER Activity 下。
+将应用的 URLScheme 和应用权限添加到您的 AndroidManifest.xml 中的 LAUNCHER Activity 下。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -120,6 +120,13 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Config GrowingIO
+        // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
+        // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg:growing.xxxxxxxxxxx 
+        // YourServerHost eg:http://106.75.81.105:8080
+        // YourDatasourceId eg: 11223344aabbcc
         CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
@@ -136,6 +143,13 @@ public class MyApplication extends Application {
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        // Config GrowingIO
+        // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
+        // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg:growing.xxxxxxxxxxx 
+        // YourServerHost eg:http://106.75.81.105:8080
+        // YourDatasourceId eg: 11223344aabbcc
         val sConfiguration = CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
             .setDataCollectionServerHost("Your ServerHost")
             .setDataSourceId("Your DataSourceId")
@@ -174,6 +188,12 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        // Config GrowingIO
+        // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
+        // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg:growing.xxxxxxxxxxx 
+        // YourServerHost eg:http://106.75.81.105:8080
+        // YourDatasourceId eg: 11223344aabbcc
         CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
@@ -194,6 +214,12 @@ GrowingAutotracker.get().setDataCollectionEnabled(true);
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        // Config GrowingIO
+        // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
+        // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg:growing.xxxxxxxxxxx 
+        // YourServerHost eg:http://106.75.81.105:8080
+        // YourDatasourceId eg: 11223344aabbcc
         val sConfiguration = CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
             .setDataCollectionServerHost("Your ServerHost")
             .setDataSourceId("Your DataSourceId")
@@ -211,7 +237,7 @@ GrowingAutotracker.get().setDataCollectionEnabled(true)
 </Tabs>
 
 ### 代码混淆
-如果你启用了混淆，请在你的 proguard-rules.pro 中加入如下代码：
+如果您启用了混淆，请在您的 proguard-rules.pro 中加入如下代码：
 ```xml
 -keep class * extends com.growingio.android.sdk.GeneratedGioModule
 -keep class * extends com.growingio.android.sdk.LibraryGioModule
@@ -298,6 +324,12 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        // Config GrowingIO
+        // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
+        // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg:growing.xxxxxxxxxxx 
+        // YourServerHost eg:http://106.75.81.105:8080
+        // YourDatasourceId eg: 11223344aabbcc
         CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("Your ProjectId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
@@ -314,6 +346,12 @@ public class MyApplication extends Application {
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        // Config GrowingIO
+        // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
+        // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg:growing.xxxxxxxxxxx 
+        // YourServerHost eg:http://106.75.81.105:8080
+        // YourDatasourceId eg: 11223344aabbcc
         val sConfiguration: CdpTrackConfiguration =
             CdpTrackConfiguration("Your ProjectId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
@@ -328,8 +366,18 @@ class MyApplication : Application() {
 </Tabs>
 
 ### 混淆
-如果你启用了混淆，请在你的 proguard-rules.pro 中加入如下代码：
+如果您启用了混淆，请在您的 proguard-rules.pro 中加入如下代码：
 ```xml
 -keep class * extends com.growingio.android.sdk.GeneratedGioModule
 -keep class * extends com.growingio.android.sdk.LibraryGioModule
 ```
+
+### 查看集成效果
+运行应用，若 `Logcat` 中输出了  
+`!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
+`!!! GrowingIO Tracker version: 3.3.0 !!!`  
+则说明SDK已经集成成功。
+
+若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
+
+至此，无埋点 SDK 就已经完成集成步骤了。

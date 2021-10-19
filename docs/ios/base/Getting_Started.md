@@ -28,21 +28,25 @@ iOS 8.0 及以上
 ```c
 pod 'GrowingAnalytics-cdp/Autotracker'
 ```
-
+打开终端，切换到项目目录
+执行 `pod install` 或 `pod update`
 ### 2. 添加 URL Scheme
 
 URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。把 URL Scheme 添加到您的项目，以便使用Mobile Debug等功能时唤醒您的应用。  
 
-选择工程 → Target  → Info  → URL Types  → 添加您的Url Scheme 即可
+选择工程 → Target  → Info  → URL Types  → 添加您的 URL Scheme 即可
 
 :::info
-需要在GrowingIO网站上先创建您的App应用，获取 Url Scheme
+需要在GrowingIO网站上先创建您的App应用，获取 URL Scheme
 :::
 
 ### 3. SDK初始化配置
 
 1. 导入头文件`"GrowingAutotracker.h"`，并将以下代码加在您的`AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中  
    代码示例:
+```c
+#import "GrowingAutotracker.h"
+```
 
 ```c
 // Config GrowingIO
@@ -55,10 +59,10 @@ configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
 [GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```
-2. 在appDelegate.m文件中实现urlSchme跳转以及DeepLink跳转的代理方法
+2. 在appDelegate.m文件中实现 URL Scheme 跳转以及DeepLink跳转的代理方法
 
 ```c
-// url scheme跳转
+// URL Scheme跳转
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
@@ -99,20 +103,25 @@ continueUserActivity:(NSUserActivity *)userActivity
 ```c
 pod 'GrowingAnalytics-cdp/Tracker'
 ```
-
+打开终端，切换到项目目录
+执行 `pod install` 或 `pod update`
 ### 2. 添加 URL Scheme
 
 URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。把 URL Scheme 添加到您的项目，以便使用Mobile Debug等功能时唤醒您的应用。  
 
-选择工程 -> Target -> Info -> URL Types -> 添加您的Url Scheme 即可
+选择工程 -> Target -> Info -> URL Types -> 添加您的 URL Scheme 即可
 :::info
-您需要在GrowingIO网站上先创建您的App应用，获取Url Scheme
+您需要在GrowingIO网站上先创建您的App应用，获取 URL Scheme
 :::
 
 ### 3. SDK初始化配置
 
 1. 导入头文件`"GrowingTracker.h"`，并将以下代码加在您的`AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中  
 代码示例:
+
+```c
+#import "GrowingTracker.h"
+```
 
 ```c
 // Config GrowingIO
@@ -126,10 +135,10 @@ configuration.dataSourceId = @"YourDatasourceId";
 [GrowingTracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```
 
-2. 在appDelegate.m文件中实现urlSchme跳转以及DeepLink跳转的代理方法
+2. 在appDelegate.m文件中实现 URL Scheme 跳转以及DeepLink跳转的代理方法
 
 ```c
-// url scheme跳转
+// URL Scheme跳转
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
@@ -168,7 +177,8 @@ continueUserActivity:(NSUserActivity *)userActivity
 3. 对于选项Attribute an action taken within this app to a previously served advertisement，打勾。
 
 :::info
-为什么 GrowingIO 使用 `IDFA`? GrowingIO 使用 `IDFA` 来做来源管理激活设备的精确匹配，让您更好的衡量广告效果。如果您不希望启用IDFA，可以选择不引入 `AdSupport.framework`
+Q: 为什么 GrowingIO 使用 `IDFA`? 
+A: GrowingIO 使用 `IDFA` 来做来源管理激活设备的精确匹配，让您更好的衡量广告效果。如果您不希望启用 `IDFA`，可以选择不引入 `AdSupport.framework`
 :::
 ### 关于权限获取
 * 对于iOS 14之前，您无需主动获取 广告标识`IDFA`的权限
