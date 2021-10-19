@@ -88,13 +88,6 @@ SDK 不会主动获取 `IDFA` 权限，您需要自行获取 `IDFA` 权限, 请�
 ![](./../../static/img/compliance/datacollect_idenfier.png)
 ​​
 
-#### 4. 如果使用了 `GrowingMonitorKit` 并调用`+setUploadExceptionEnable:` 方法开启了Crash监控上报，还需要勾选 「崩溃数据」，如图
-
-![](./../../static/img/compliance/datacollect_crash.png)
-​​
-
-储后会在 App 隐私页面根据我们的选择生成一些列收集类型面板，点击对应面板后可以继续做详细的选择，下面会详细介绍。
-
 ### 4.1 位置
 
 #### 1. 请在 「位置」面板中，勾选 「分析」

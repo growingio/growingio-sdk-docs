@@ -37,7 +37,7 @@ GrowingAutotracker.get().registerComponent(module)
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|
-| `enabled` | `boolean` | `true`打开数据采集，`false`关闭数据采集 |
+| `enabled` | `boolean` | `true`打开数据采集，`false`关闭数据采集，默认 `true` |
 #### 示例
 ```java
 GrowingAutotracker.get().setDataCollectionEnabled(true)
@@ -45,11 +45,15 @@ GrowingAutotracker.get().setDataCollectionEnabled(true)
 
 ### 2. 设置登录用户ID `setLoginUserId`
 当用户登录之后调用`setLoginUserId` API，设置登录用户ID
+:::info
+支持 ID-MAPPING SDK版本 >=3.3.0
+**需在初始化 SDK 时设置`setIdMappingEnabled`为`true`**
+:::
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|
 | `userId`  | `String` | 长度限制大于0且小于等于1000，如果大于长度1000将只截取前1000长度 |
-| `userKey` | `String` | 适用于ID-MAPPING,可选填, 需要在配置中setIdMappingEnabled为true |
+| `userKey` | `String` | 适用于ID-MAPPING,可设置 `userId` 的类型,可选填|
 #### 示例
 ```java
 GrowingAutotracker.get().setLoginUserId("张三")
@@ -212,7 +216,7 @@ GrowingAutotracker.get().ignorePage(mActivity, IgnorePolicy.IGNORE_ALL)
 GrowingAutotracker.get().ignoreView(view, IgnorePolicy.IGNORE_SELF)
 ```
 
-### 12 设置采集View的曝光事件 `trackViewImpression`
+### 12. 设置采集View的曝光事件 `trackViewImpression`
 当被设置的View出现在屏幕内时将触发曝光事件
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
@@ -256,7 +260,7 @@ GrowingAutotracker.get().trackViewImpression(view, "buttonShowed", map)
 </TabItem>
 </Tabs>
 
-### 13 停止采集View的曝光事件 `stopTrackViewImpression`
+### 13. 停止采集View的曝光事件 `stopTrackViewImpression`
 停止采集View的曝光事件
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
@@ -267,7 +271,7 @@ GrowingAutotracker.get().trackViewImpression(view, "buttonShowed", map)
 GrowingAutotracker.get().stopTrackViewImpression(trackedView)
 ```
 
-### 14 设置View唯一Tag `setUniqueTag`
+### 14. 设置View唯一Tag `setUniqueTag`
 给View设置唯一的Tag，方便点击等事件确定唯一的View，一般用于动态布局的场景
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
@@ -279,19 +283,21 @@ GrowingAutotracker.get().stopTrackViewImpression(trackedView)
 GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
 ```
 
-### 15 Webview埋点 `bridgeWebView`
-手动注入js到webview,用来收集webview中的数据, 如果使用无埋点SDK, 会自动注入相关代码, 不需要调用该方法
-
+### 15. Webview埋点 `bridgeWebView`
+手动注入js到webview，用来收集webview中的数据，
+:::info
+如果使用无埋点SDK，会自动注入相关代码，不需要调用该方法
+:::
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|
 | `view` | `View` | 可选为 `webview`、`ucwebview`和`x5webview` |
 #### 示例
 ```java
-GrowingAutotracker.get().bridgeWebView(webview)
+GrowingTracker.get().bridgeWebView(webview)
 ```
 
-### 16 注册模块组件 `registerComponent`
+### 16. 注册模块组件 `registerComponent`
 可通过该方法手动注册SDK需要的可配置模块组件
 #### 参数说明
 | 参数     | 参数类型 | 说明 |

@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 
 | 参数      | 参数类型 | 说明                                |
 | :-------- | :------- | :---------------------------------- |
-| `enabled` | `BOOL`   | `YES`打开数据采集，`NO`关闭数据采集 |
+| `enabled` | `BOOL`   | `YES`打开数据采集，`NO`关闭数据采集，默认 `YES` |
 
 #### 示例
 
@@ -44,8 +44,11 @@ import TabItem from '@theme/TabItem';
 
 ### 3. 设置登录用户Id以及用户Key  `setLoginUserId:userKey:`
 
-支持设置 userId 的类型（**需在初始化 SDK 时设置`configuration.idMappingEnabled = YES`**），存储方式与 userId 保持一致，userKey 默认为 null
-
+适用于 ID-MAPPING,可设置 `userId` 的类型，存储方式与 `userId` 保持一致，userKey 默认为 null
+:::info
+支持 ID-MAPPING SDK版本 >=3.3.0
+**需在初始化 SDK 时设置`configuration.idMappingEnabled = YES`**
+:::
 #### 示例
 
 ```c
@@ -98,13 +101,16 @@ import TabItem from '@theme/TabItem';
 | 参数         | 参数类型                           | 说明                       |
 | :----------- | :--------------------------------- | :------------------------- |
 | `eventName`  | `NSString`                         | 事件名，事件标识符         |
-| `attributes` | `NSDictionary<NSString, NSString>` | 事件发生时所伴随的维度信息 |
-| `itemKey`    | `NSString`                         | 事件发生关联的物品模型Key  |
-| `itemId`     | `NSString`                         | 事件发生关联的物品模型ID   |
+| `attributes` | `NSDictionary<NSString, NSString>` | 事件发生时所伴随的维度信息（可选） |
+| `itemKey`    | `NSString`                         | 事件发生关联的物品模型Key（可选，与itemId参数一起传入）  |
+| `itemId`     | `NSString`                         | 事件发生关联的物品模型ID （可选，与itemKey参数一起传入）  |
 
 #### 示例
 
 ```c
+[[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest"];
+[[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" withAttributes:@{@"property": @"value"}];
+[[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" itemKey:@"testKey" itemId:@"testid"];
 [[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" itemKey:@"testkey" itemId:@"testid" withAttributes:@{@"ok":@"false"}];
 ```
 
@@ -135,7 +141,7 @@ import TabItem from '@theme/TabItem';
 [[GrowingAutotracker sharedInstance] getDeviceId];
 ```
 
-### 10. 设置页面别名 `setPageAlias`
+### 10. 设置页面别名 `growingPageAlias`
 
 给页面设置一个别名。
 
@@ -158,7 +164,7 @@ UIViewController分类声明的属性，设置需要在viewDidAppear执行之前
 }
 ```
 
-### 11. 设置忽略的页面 `ignorePage`
+### 11. 设置忽略的页面 `growingPageIgnorePolicy`
 
 被设置忽略的页面，不再触发无埋点的page事件。
 
@@ -181,7 +187,7 @@ UIViewController分类声明的属性，设置需要在viewDidAppear执行之前
 }
 ```
 
-### 12. 设置忽略的View `ignoreView`
+### 12. 设置忽略的View `growingViewIgnorePolicy	`
 
 被设置忽略的VIew，不再触发点击、曝光等任何事件，被忽略的WebView也不会采集Hybrid的事件。
 
@@ -199,7 +205,7 @@ UIView 分类声明的属性，设置需要在viewDidAppear执行之前
 view.growingViewIgnorePolicy = GrowingIgnoreSelf;
 ```
 
-### 13.设置采集View的曝光事件 `trackViewImpression`
+### 13.设置采集View的曝光事件 `growingTrackImpression`
 
 当被设置的View出现在屏幕内时将触发曝光事件
 
@@ -218,7 +224,7 @@ UIView分类方法
 [self.view growingTrackImpression:@"xxxx" attributes:@{@"111":@"222"}];
 ```
 
-### 14.停止采集View的曝光事件 `stopTrackViewImpression`
+### 14.停止采集View的曝光事件 `growingStopTrackImpression`
 
 停止采集View的曝光事件
 
@@ -232,7 +238,7 @@ UIView分类方法
 [self.view growingStopTrackImpression];
 ```
 
-### 15.设置View唯一Tag `setUniqueTag`
+### 15.设置View唯一Tag `growingUniqueTag`
 
 给View设置唯一的Tag，方便点击等事件确定唯一的View，一般用于动态布局的场景
 
