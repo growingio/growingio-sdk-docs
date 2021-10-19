@@ -9,12 +9,13 @@ import TabItem from '@theme/TabItem';
 ## 集成 GioKit
 
 GioKit 代码后续将逐步开源，敬请期待！
-
-> **Gradle插件版本**： 3.2.1及以上  
-> **Android系统版本**：Android 5.0 及以上, **仅支持 AndroidX**
-
+:::info
+**Gradle插件版本**： 3.2.1及以上  
+**Android系统版本**：Android 5.0 及以上, **<font color='red'>GioKit仅支持 AndroidX</font>**<br/>
+**请在 [Android SDK](/docs/android/base/Getting%20Started) 基础上使用 GioKit**
+:::
 ### 添加依赖
-在 project 级别的`build.gradle`文件中添加`autotracker-gradle-plugin`依赖和 maven 仓库。
+在 project 级别的`build.gradle`文件中添加`giokit-plugin`依赖和 maven 仓库。
 
 ```groovy
 buildscript {
@@ -40,16 +41,26 @@ allprojects {
 ```
 
 在 app 级别的`build.gradle`文件中添加`com.growingio.giokit`插件、`giokit`依赖。
+
+:::info
+**GrowingIO Android SDK 3.0及以上版本，请添加**
 ```groovy
-apply plugin: 'com.android.application'
-
-// 添加 GioKit 插件，针对SDK 3.0
 apply plugin: 'com.growingio.giokit'
-// 或者如果是SDK2.0
-apply plugin: 'com.growingio.giokit.saas'
-// 以上二者根据相应的sdk选择对应的插件，请不要一起使用！！
-...
+```
+:::
 
+:::info
+**GrowingIO Android SDK 2.x 版本，请添加**
+```groovy
+apply plugin: 'com.growingio.giokit.saas'
+```
+:::
+
+:::caution 注意
+以上二者根据相应的 GrowingIO Android SDK 选择对应的插件，请不要一起使用！！
+:::
+```groovy
+...
 dependencies {
     ...
     // GioKit
@@ -116,5 +127,6 @@ giokitExt {
     }
 }
 ```
-
->  默认查找域名为项目的`ApplicationId`
+:::info
+默认查找域名为项目的`ApplicationId`
+:::
