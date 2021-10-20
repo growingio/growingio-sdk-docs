@@ -50,9 +50,10 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 
 ```c
 // Config GrowingIO
-// 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
-// YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg:http://106.75.81.105:8080
+// 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+// YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// Your URLScheme eg: growing.xxxxxxxxxxx
+// YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
 // YourDatasourceId eg: 11223344aabbcc
 GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithProjectId:@"YourProjectId"];
 configuration.dataCollectionServerHost = @"YourServerHost";

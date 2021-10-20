@@ -35,6 +35,11 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
     tag.parentNode.insertBefore(script, tag);
   })(window, document, 'script', 'JS 资源地址', 'gdp');
 
+  // Config GrowingIO
+  // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+  // YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+  // YourServerHost eg: api.growingio.com 仅需填写对应host
+  // YourDatasourceId eg: 11223344aabbcc
   gdp('init', 'your projectId', 'your dataSourceId', {
     host: 'your apiServerHost',
     version: '1.0.0'
