@@ -84,7 +84,7 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 #### iOS APP
 如果集成的是无埋点SDK， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
-如果集成的是埋点SDK，则需要通过一下设置实现数据打通：
+如果集成的是埋点SDK，则需要通过以下设置实现数据打通：
 在您的Podfile文件中添加
 ```c
 pod 'GrowingAnalytics-cdp/Hybrid'
