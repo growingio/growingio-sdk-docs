@@ -122,10 +122,10 @@ public class MyApplication extends Application {
         super.onCreate();
 
         // Config GrowingIO
-        // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
-        // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
-        // Your URLScheme eg:growing.xxxxxxxxxxx 
-        // YourServerHost eg:http://106.75.81.105:8080
+        // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+        // YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg: growing.xxxxxxxxxxx
+        // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
         CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")

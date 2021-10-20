@@ -21,12 +21,12 @@ import TabItem from '@theme/TabItem';
 | `setDataUploadInterval`      | `int`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |  |
 | `setSessionInterval`         | `int`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |  |
 | `setDataCollectionEnabled`   | `boolean` | 否      | `true`   | 是否采集数据 | - |  |
-| <font color='red'>setOaidEnabled</font>             | `boolean` | 否      | `false`  | 是否采集Android OAID | - | <font color='red'>< 3.3.0</font> |
+| <font color='red'>~~setOaidEnabled~~</font> | `boolean` | 否      | `false`  | 是否采集Android OAID | - | <font color='red'>< 3.3.0</font> |
 | `setExcludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - |  |
 | `setIgnoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |  |
 | `setIdMappingEnabled` | `boolean` | 否 | `false` | 是否开启多用户身份上报 | - | <font color='red'>>= 3.3.0</font> |
 | `setImpressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 |  |
-| <font color='red'>setPreloadComponent</font> | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.0</font> |
+| setPreloadComponent | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.0</font> |
 
 
 
@@ -160,13 +160,14 @@ GrowingAutotracker.startWithConfiguration(this,
 目前腾讯， 头条， 网易广告SDK已经要求使用 OAID， OAID 的准确性和覆盖率均满足广告场景的使用需求，Android SDK 提供采集 OAID 的能力。
 :::
 
-### 2. **SDK数据加密传输** 
+### 2. **SDK数据加密传输**
+
 >SDK 版本 >=3.3.0
 
 项目需要添加加密模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:encoder:3.2.3-09141-SNAPSHOT"
+implementation "com.growingio.android:encoder:3.3.0"
 ```
 
 SDK初始化时注册加密模块：

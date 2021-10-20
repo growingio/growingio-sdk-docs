@@ -3,7 +3,7 @@ sidebar_position: 1
 title: JAVA SDK
 ---
 
-Java SDK 源码托管在 [growingio/growingio-java-sdk](https://github.com/growingio/growingio-java-sdk)
+Java SDK 源码托管在 [growingio/growingio-java-sdk](https://github.com/growingio/growingio-java-sdk/tree/gdp)
 
 GrowingIO提供在Server端部署的SDK，从而可以方便的进行事件上报等操作。
 > 支持 java6,7,8
@@ -16,23 +16,23 @@ GrowingIO提供在Server端部署的SDK，从而可以方便的进行事件上�
 
 pom.xml
 
-```maven
+```xml
 <dependencies>
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.9-cdp</version>
     </dependency>
 </dependencies>
 ```
 
 若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone     
 
-```maven
+```xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.9-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
@@ -44,25 +44,32 @@ pom.xml
             <artifactId>json</artifactId>
         </exclusion>
     </exclusions>
-</dependency>    
+</dependency>     
 ```
 
 ## 示例程序
 
 ```java
+// Config GrowingIO
+// 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+// YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourDatasourceId eg: 11223344aabbcc
+private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your projectId").setDataSourceId("your dataSourceId").build();
+
 //事件行为消息体
-GIOEventMessage eventMessage = new GIOEventMessage.Builder()
+GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
     .eventTime(System.currentTimeMillis())            // 默认为系统当前时间,选填
     .eventKey("3")                                    // 事件标识 (必填)
     .eventNumValue(1.0)                               // 打点事件数值 (选填)
-    .loginUserId("417abcabcabcbac")                   // 带用登陆用户ID的 (选填)
+    .loginUserId("417abcabcabcbac")                   // 登陆用户ID (选填)
     .addEventVariable("product_name", "苹果")          // 事件级变量 (选填)
     .addEventVariable("product_classify", "水果")      // 事件级变量 (选填)
     .addEventVariable("product_price", 14)            // 事件级变量 (选填)
+    .addItem("item_id", "item_key")                   // 物品模型id, key (选填)
     .build();
 
 //上传事件行为消息到服务器
-GrowingAPI.send(eventMessage);
+project.send(eventMessage);
 ```
 
 ## 配置文件信息
@@ -70,7 +77,7 @@ GrowingAPI.send(eventMessage);
 gio.properties
 
 ```properties
-#项目采集端地址
+#项目采集端地址, https://api.growingio.com 需要填写完整的url地址, 如不清楚请联系您的专属项目经理
 api.host=https://api.growingio.com
 #项目的AccountID
 project.id=填写您项目的AccountID
@@ -99,6 +106,13 @@ proxy.password=demo
 #connection.timeout=2000
 #http 连接读取时间,默认2秒
 #read.timeout=2000
+# 带拒绝策略的发送策略，默认不采用，此策略在队列快满时打印出debug日志，并且会使用新的线程（个数同send.msg.thread）加速消费队列元素
+# 但可能仍然消费速度不够，导致抛出GIOSendBeRejectedException异常，为了保险起见，使用者应当捕获该异常。
+# 并且此策略新增了shutdownAwait方法关联了队列状态和JVM关闭钩子，此举旨在防止主线程关闭时，内存队列未消费的元素丢失。
+# msg.store.strategy=abortPolicy
+# 队列负载率，当为0.5时，表明，队列中元素达到一半时，会出现debug日志，并会使用新线程加速消费队列。队列负载降低到0.5以下后，恢复
+# 此值越大，队列越接近满状态，加速线程执行的时间越提前。"加速"可能对接口接收服务造成压力，谨慎使用！
+# msg.store.queue.load_factor=0.5
 ```
 
 ## 事件消息
@@ -115,36 +129,35 @@ proxy.password=demo
 |setProjectKey|string|是|项目ID|
 |setDataSourceId|string|是|数据源ID|
 
+```java
+// Config GrowingIO
+// 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+// YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourDatasourceId eg: 11223344aabbcc
+private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your projectId").setDataSourceId("your dataSourceId").build();
+```
 
 ### 自定义事件API
+
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|eventKey|string|是|埋点事件的Key。|
-|loginUserId|string|是|登录用户ID。|
-|eventTime|long|否|事件发生时间。|
-|addEventVariable|(string, string|double|Int)|否|事件级变量。|
-|addEventVariables|map<string,object>|否|事件级变量集合。|
+|eventKey|string|是|埋点事件的Key|
+|loginUserId|string|是|登录用户ID|
+|eventTime|long|否|事件发生时间|
+|addEventVariable|(string, string\|double\|int)|否|事件级变量|
+|addEventVariables|map<string,object>|否|事件级变量集合|
+|addItem|(string, string)|否|物品模型id, 物品模型key|
 
 **代码示例**
 ```java
-public class Demo {
-    private static GrowingAPI projectA = new GrowingAPI.Builder().setProjectKey("项目ID").setDataSourceId("数据源ID").build();
-    
-    public static void main(String[] args) {
-        sendCdpCustomEvent();
-    }   
-    public static void sendCdpCustomEvent() {
-        Map<String, Object> map = new HashMap<String, Object>();
-        GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
-                        .eventTime(System.currentTimeMillis())  // 默认为系统当前时间(选填)
-                        .eventKey("test")  // 事件标识 (必填)
-                        .loginUserId("test")  // 登录用户ID (必填)
-                        .addEventVariable("product_name", "cdp苹果")  // 事件级变量 (选填)
-                        .addEventVariables(map)  // 事件级变量集合 (选填)
-                        .build();
-        projectA.send(msg);
-    }
-}
+GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
+                    .eventKey("eventKey")                            // 事件标识
+                    .loginUserId("loginUserId")                      // 登录用户id
+                    .anonymousId("anonymousId")                      // 访问用户id
+                    .addEventVariable("product_name", "cdp苹果")     // 事件级变量
+                    .addEventVariables(map)                         // 事件级变量集合
+                    .addItem("itemId", "itemKey")                   // 物品模型id, key
+                    .build();
 ```
 
 ### 物品模型API
@@ -156,20 +169,11 @@ public class Demo {
 |addItemVariable|map<string,string>|否|物品模型变量|
 
 ```java
- /**
- * send cdp item message
- */
-public static void sendCdpItem() {
-    //事件行为消息体
-    GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
-            .id("item-test")                        // 物品模型id
-            .key("test")                            // 物品模型key
-            .addItemVariable("item_name", "cdp苹果") // 物品模型变量 (选填)
-            .build();
-
-    projectA.send(msg);
-
-}
+GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
+                .id("1001")                        // 物品模型id
+                .key("product")                    // 物品模型key
+                .addItemVariable("color", "red")   // 物品模型变量 (选填)
+                .build();
 ```
 
 ### 用户变量 API
@@ -185,28 +189,12 @@ public static void sendCdpItem() {
 示例代码：
 
 ```java
-
-public class Demo {
-    private static GrowingAPI projectA = new GrowingAPI.Builder().setProjectKey("项目ID").setDataSourceId("数据源ID").build();
-    public static void main(String[] args) {
-        sendCdpUser();
-    }
-    public static void sendCdpUser() {
-        Map<String, Object> map = new HashMap<String, Object>();
-        //事件行为消息体
-        GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
-        .time(System.currentTimeMillis())      
-        // 默认为系统当前时间,选填
-        .loginUserId("417abcabcabcbac")        
-        // 带用登陆用户ID的 (必填)
-        .addUserVariable("user", "test")       
-        // 用户变量 (选填)
-        .addUserVariables(map)                 
-        // 用户变量集合 (选填)
-        .build();
-        projectB.send(msg);
-    }
-}
+GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
+                .time(System.currentTimeMillis())      // 默认为系统当前时间,选填
+                .loginUserId("loginUserId")            // 带用登陆用户ID的 (必填)
+                .addUserVariable("gender", "man")      // 用户变量 (选填)
+                .addUserVariables(map)                 // 用户变量集合 (选填)
+                .build();
 ```
 
 ## 程序测试
