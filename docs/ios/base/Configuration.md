@@ -86,7 +86,7 @@ pod 'GrowingAnalytics/ENABLE_ENCRYPTION'
 
 ### 3.**内嵌H5页面数据采集配置**
 APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web JS SDK
-如果需要H5页面采集数据与APP采集数据的数据打通，请参考[Hybrid打通插件](/docs/webjs/plugins#6、hybrid打通插件)
+如果需要H5页面采集数据与APP采集数据的数据打通，请参考[Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)
 :::info
 如果APP 集成的是无埋点SDK，请跳过；如果集成的是埋点SDK，否则需添加下方配置
 :::

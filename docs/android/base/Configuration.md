@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 | `setDataUploadInterval`      | `int`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |  |
 | `setSessionInterval`         | `int`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |  |
 | `setDataCollectionEnabled`   | `boolean` | 否      | `true`   | 是否采集数据 | - |  |
-| <font color='red'>~~setOaidEnabled~~</font>             | `boolean` | 否      | `false`  | 是否采集Android OAID | - | <font color='red'>< 3.3.0</font> |
+| <font color='red'>~~setOaidEnabled~~</font> | `boolean` | 否      | `false`  | 是否采集Android OAID | - | <font color='red'>< 3.3.0</font> |
 | `setExcludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - |  |
 | `setIgnoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |  |
 | `setIdMappingEnabled` | `boolean` | 否 | `false` | 是否开启多用户身份上报 | - | <font color='red'>>= 3.3.0</font> |
@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
 
 ### 8. <font color='red'>采集 `OAID` 作为设备信息</font> 
 :::danger
-`setOaidEnabled` SDK 3.3.0之后已删除，请通过 [采集 OAID 作为设备信息](/docs/android/base/Configuration#1-%E9%87%87%E9%9B%86oaid%E4%BD%9C%E4%B8%BA%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF) 进行注册 OAID 模块来实现 OAID 的功能
+`setOaidEnabled` SDK 3.3.0之后已废弃，请通过 [采集 OAID 作为设备信息](/docs/android/base/Configuration#1-%E9%87%87%E9%9B%86oaid%E4%BD%9C%E4%B8%BA%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF) 进行注册 OAID 模块来实现 OAID 的功能
 :::
 若 `setOaidEnabled(true)`且已经集成了[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的jar包，则会在 Visit 事件中添加 oaid 字段：  
 ```c
@@ -160,7 +160,8 @@ GrowingAutotracker.startWithConfiguration(this,
 目前腾讯， 头条， 网易广告SDK已经要求使用 OAID， OAID 的准确性和覆盖率均满足广告场景的使用需求，Android SDK 提供采集 OAID 的能力。
 :::
 
-### 2. **SDK数据加密传输** 
+### 2. **SDK数据加密传输**
+
 >SDK 版本 >=3.3.0
 
 项目需要添加加密模块依赖(和 SDK 依赖同级)

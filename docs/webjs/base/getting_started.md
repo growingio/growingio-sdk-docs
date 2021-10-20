@@ -11,7 +11,7 @@ Web JS SDK3.0 将H5内嵌页，Hybrid SDK，Web JS SDK集成与一体，具备�
 * Web可视化圈选支持
 * Hybrid可视化圈选支持
 
-Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-web-autotracker)
+Web JS SDK 代码尚未开源，后续会开源
 
 ## Web JS SDK集成
 请将以下的页面代码放置到需要分析的页面中的`<head> 和 </head>`标签之间，即可完成最新 Web JS SDK 页面代码的添加。
@@ -35,6 +35,11 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
     tag.parentNode.insertBefore(script, tag);
   })(window, document, 'script', 'JS 资源地址', 'gdp');
 
+  // Config GrowingIO
+  // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+  // YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+  // YourServerHost eg: api.growingio.com 仅需填写对应host
+  // YourDatasourceId eg: 11223344aabbcc
   gdp('init', 'your projectId', 'your dataSourceId', {
     host: 'your apiServerHost',
     version: '1.0.0'
