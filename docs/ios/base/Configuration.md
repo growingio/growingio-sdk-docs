@@ -62,8 +62,11 @@ urlScheme 是 SDK 3.3.0及其之后必传参数，其他参数为必传参数，
 
 ## 常用可选模块配置
 ### 1. **禁用IDFA**
-> SDK 版本>= 3.2.0
+:::info
+采集 SDK 版本 >=3.2.0
 
+**使用时注意模块版本需要与采集SDK版本保持一致**
+:::
 禁用IDFA，且SDK中不会再有相关获取IDFA代码逻辑
 
 在您的Podfile文件中添加
@@ -73,8 +76,11 @@ pod 'GrowingAnalytics/DISABLE_IDFA'
 打开终端，切换到项目目录
 执行 `pod install` 或 `pod update`
 ### 2. **SDK数据加密传输** 
-> SDK 版本>= 3.3.0
+:::info
+采集 SDK 版本 >=3.3.0
 
+**使用时注意模块版本需要与采集SDK版本保持一致**
+:::
 启用数据加密，防止采集数据明文传输
 
 在您的Podfile文件中添加
@@ -88,7 +94,10 @@ pod 'GrowingAnalytics/ENABLE_ENCRYPTION'
 APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web JS SDK
 如果需要H5页面采集数据与APP采集数据的数据打通，请参考[Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)
 :::info
-如果APP 集成的是无埋点SDK，请跳过；如果集成的是埋点SDK，否则需添加下方配置
+如果APP 集成的是无埋点SDK，请跳过；
+如果集成的是埋点SDK，否则需添加下方配置
+
+**使用时注意模块版本需要与采集SDK版本保持一致**
 :::
 在您的Podfile文件中添加
 ```c

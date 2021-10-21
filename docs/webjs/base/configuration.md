@@ -23,7 +23,7 @@ gdp('init', 'your projectId', 'your dataSourceId', {
 | `projectId`       | `string`       | 是           | 无                  | 项目id                                                       |
 | `dataSourceId`    | `string`       | 是           | 无                  | 数据源id                                                     |
 | `host`            | `string`       | 是           | 无                  | 发数请求host                                                 |
-| `scheme`          | `https` |否 | `location.protocol`获取      | `location.protocol` | 发数请求协议                                                 |
+| `scheme`          | `https` |否 | `location.protocol`获取      | 发数请求协议 |
 | `compress`        | `boolean`      | 否           | `false`             | 是否进行数据压缩                                             |
 | `dataCollect`     | `boolean`      | 否           | `true`              | 是否进行数据采集                                             |
 | `debug`           | `boolean`      | 否           | `false`             | 是否开启debug模式                                            |
