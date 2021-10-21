@@ -11,16 +11,17 @@ Web JS SDK3.0 将H5内嵌页，Hybrid SDK，Web JS SDK集成与一体，具备�
 * Web可视化圈选支持
 * Hybrid可视化圈选支持
 
-Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-web-autotracker)
+Web JS SDK 代码尚未开源，后续会开源
 
 ## Web JS SDK集成
-请将以下的页面代码放置到需要分析的页面中的`<head> 和 </head>`标签之间，即可完成最新 Web JS SDK 页面代码的添加。
-
-> 请注意使用具体的项目ID替换代码中的 your projectId、your DataSourceId 确保JS资源地址正确。
->
-> JS文件地址：https://assets.giocdn.com/sdk/cdp/gio.js
 
 ### Web使用集成
+请将以下的页面代码放置到需要分析的页面中的`<head> 和 </head>`标签之间，即可完成最新 Web JS SDK 页面代码的添加。
+:::info
+请注意使用具体的项目ID替换代码中的 your projectId、your DataSourceId 确保JS资源地址正确。
+
+JS文件地址：https://assets.giocdn.com/sdk/cdp/gio.js
+:::
 
 ```html
 <script type='text/javascript'>
@@ -48,12 +49,13 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
 </script>
 ```
 
-### Hybrid使用集成
+### APP 内嵌H5页面使用集
 
-集成方式和web使用集成一致，会自动判断桥的情况进行数据的转发，详见[Hybrid打通插件](/docs/webjs/plugins#6、hybrid打通插件)。
+集成方式和web使用集成一致；Web JS SDK会自动判断桥的情况进行数据的转发，详见[Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
 
 ### 小程序内嵌页使用集成
-
+小程序内嵌页集成方式和 Web 页面使用集成添加的跟踪代码一致；
+如果有和小程序数据进行用户打通的需求，这时就需要在SDK初始化时填写您小程序的 projectId，AppId 来作为打通的判断，详见[小程序内嵌页打通插件](/docs/webjs/plugins#7-小程序内嵌页打通插件)。
 ```html
 <script type='text/javascript'>
   (function(window, document, script, src, namespace) {
@@ -75,7 +77,6 @@ Web JS SDK代码已托管在[Github](https://github.com/growingio/growingio-sdk-
 </script>
 ```
 
-在小程序内嵌页集成中，可能需要和小程序数据进行用户的打通，这时就需要填写您小程序的AppId来作为打通的判断，详见[小程序内嵌页打通插件](/docs/webjs/plugins#7、小程序内嵌页打通插件)。
 
 ### 常见的初始化失败情况
 
