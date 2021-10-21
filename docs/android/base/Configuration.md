@@ -125,7 +125,11 @@ ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.NONE)
 
 可以用来加载自定义/预定义的模块, 与 API 接口registerComponent功能相同, 用于在 SDK 初始化时需要优先加载的模块注册(如网络模块、OAID模块、加密模块等)
 ### 1. **采集`OAID`作为设备信息**
->SDK 版本 >=3.3.0
+:::info
+采集 SDK 版本 >=3.3.0
+
+**使用时注意模块版本需要与采集SDK版本保持一致**
+:::
 
 项目需要添加[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 OAID模块依赖(和 SDK 依赖同级)：
 
@@ -161,9 +165,11 @@ GrowingAutotracker.startWithConfiguration(this,
 :::
 
 ### 2. **SDK数据加密传输**
+:::info
+采集 SDK 版本 >=3.3.0
 
->SDK 版本 >=3.3.0
-
+**使用时注意模块版本需要与采集SDK版本保持一致**
+:::
 项目需要添加加密模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
