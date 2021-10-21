@@ -123,11 +123,11 @@ public class MyApplication extends Application {
 
         // Config GrowingIO
         // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-        // YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+        // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
-        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG);
@@ -146,11 +146,11 @@ class MyApplication : Application() {
 
         // Config GrowingIO
         // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
-        // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // YourAccountId eg:0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg:growing.xxxxxxxxxxx 
         // YourServerHost eg:http://106.75.81.105:8080
         // YourDatasourceId eg: 11223344aabbcc
-        val sConfiguration = CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+        val sConfiguration = CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
             .setDataCollectionServerHost("Your ServerHost")
             .setDataSourceId("Your DataSourceId")
             .setDebugEnabled(BuildConfig.DEBUG)
@@ -190,11 +190,11 @@ public class MyApplication extends Application {
         super.onCreate();
         // Config GrowingIO
         // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-        // YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+        // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
-        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 // 初始化时先关闭数据收集
@@ -216,11 +216,11 @@ class MyApplication : Application() {
         super.onCreate()
         // Config GrowingIO
         // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
-        // YourProjectId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // YourAccountId eg:0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg:growing.xxxxxxxxxxx 
         // YourServerHost eg:http://106.75.81.105:8080
         // YourDatasourceId eg: 11223344aabbcc
-        val sConfiguration = CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+        val sConfiguration = CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
             .setDataCollectionServerHost("Your ServerHost")
             .setDataSourceId("Your DataSourceId")
             // 初始化时先关闭数据收集
@@ -326,11 +326,11 @@ public class MyApplication extends Application {
         super.onCreate();
         // Config GrowingIO
         // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-        // YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+        // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
-        CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("Your ProjectId", "Your URLScheme")
+        CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG);
@@ -348,12 +348,12 @@ class MyApplication : Application() {
         super.onCreate()
         // Config GrowingIO
         // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-        // YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+        // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
         val sConfiguration: CdpTrackConfiguration =
-            CdpTrackConfiguration("Your ProjectId", "Your URLScheme")
+            CdpTrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG)

@@ -52,9 +52,9 @@ pom.xml
 ```java
 // Config GrowingIO
 // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-// YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourDatasourceId eg: 11223344aabbcc
-private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your projectId").setDataSourceId("your dataSourceId").build();
+private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
 
 //事件行为消息体
 GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
@@ -132,9 +132,9 @@ proxy.password=demo
 ```java
 // Config GrowingIO
 // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-// YourProjectId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourDatasourceId eg: 11223344aabbcc
-private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your projectId").setDataSourceId("your dataSourceId").build();
+private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
 ```
 
 ### 自定义事件API

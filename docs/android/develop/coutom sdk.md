@@ -167,7 +167,7 @@ class GrowingIODemoAppModule : AppGioModule(){
 | 名称 | 参数 | 作用 | 
 | ---- | --- | ---- |
 | path| Class<?>| Tracker接口类路径 |
-| projectId| String| SDK初始化的项目id |
+| accountId| String| SDK初始化的项目id |
 | urlScheme| String | SDK初始化的urlScheme |
 
 `@GIOTracker` 具备两部分功能：
@@ -176,7 +176,7 @@ SDK 默认接口类为 `Tracker.class` （无埋点需要指定为 `Autotracker.
 最后的结果就是 `DemoAutotracker.get()`返回 `Autotracker` 实例。
 
 2. **简化配置**  
-上面有说过，`DemoAutotracker.start(Application)` 方法使用的前提就是 `@GIOTracker` 已经配置 projectId 和 urlScheme 这两个初始化参数。
+上面有说过，`DemoAutotracker.start(Application)` 方法使用的前提就是 `@GIOTracker` 已经配置 accountId 和 urlScheme 这两个初始化参数。
 
 <Tabs
   groupId="code-language"
@@ -192,10 +192,10 @@ SDK 默认接口类为 `Tracker.class` （无埋点需要指定为 `Autotracker.
 ```java
 @GIOAppModule(name = "DemoAutotracker", configName = "DemoTackerConfiguration")
 public class GrowingIODemoAppModule extends AppGioModule {
-    @GIOTracker(path = Autotracker.class, projectId = "<your projectid>", urlScheme = "<your urlscheme>")
+    @GIOTracker(path = Autotracker.class, projectId = "<your accountId>", urlScheme = "<your urlscheme>")
     public void config(DemoTackerConfiguration config) {
         config.setChannel("demo")
-                .setProject("<your projectid>","<your urlscheme>")//若在注解上声明可以省略
+                .setProject("<your accountId>","<your urlscheme>")//若在注解上声明可以省略
                 .setDataCollectionEnabled(true)
                 .setDebugEnabled(true);
     }
@@ -210,12 +210,12 @@ public class GrowingIODemoAppModule extends AppGioModule {
 class GrowingIODemoAppModule : AppGioModule() {
     @GIOTracker(
         path = Autotracker::class,
-        projectId = "<your projectid>",
+        projectId = "<your accountId>",
         urlScheme = "<your urlscheme>"
     )
     fun config(config: DemoTackerConfiguration) {
         config.setChannel("demo")
-            .setProject("<your projectid>", "<your urlscheme>") //若在注解上声明可以省略
+            .setProject("<your accountId>", "<your urlscheme>") //若在注解上声明可以省略
             .setDataCollectionEnabled(true)
             .setDebugEnabled(true)
     }

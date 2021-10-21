@@ -272,10 +272,10 @@ public class OkhttpLibraryGioModule extends LibraryGioModule {
 ```java
 @GIOAppModule(name = "DemoAutotracker", configName = "DemoTackerConfiguration",config = OkhttpConfig.class)
 public class GrowingIODemoAppModule extends AppGioModule {
-    @GIOTracker(path = Autotracker.class, projectId = "<your projectid>", urlScheme = "<your urlscheme>")
+    @GIOTracker(path = Autotracker.class, projectId = "<your accountId>", urlScheme = "<your urlscheme>")
     public void config(DemoTackerConfiguration config) {
         config.setChannel("demo")
-                .setProject("<your projectid>","<your urlscheme>")//若在注解上声明可以省略
+                .setProject("<your accountId>","<your urlscheme>")//若在注解上声明可以省略
                 .setDataCollectionEnabled(true)
                 .setDebugEnabled(true);
     }

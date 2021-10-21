@@ -20,7 +20,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 | **字段**          | **参数类型**   | **是否必填** | **默认值**          | **说明**                                                     |
 | ----------------- | -------------- | ------------ | ------------------- | ------------------------------------------------------------ |
-| `accountId`       | `string`       | 是           | 无                  | 项目id                                                       |
+| `prejectId`       | `string`       | 是           | 无                  | 项目id                                                       |
 | `dataSourceId`    | `string`       | 是           | 无                  | 数据源id                                                     |
 | `host`            | `string`       | 是           | 无                  | 发数请求host                                                 |
 | `scheme`          | `https`        |否 | `location.protocol`获取      | 发数请求协议
@@ -90,7 +90,7 @@ gdp('init', accountId, datasourceId, { enableIdMapping: true });
 如果网站在不停升级版本，同时想了解不同版本的数据情况，可以参考如下代码设置应用版本。在实际使用中应用版本对移动端 app 更有价值。
 
 ```js
-gdp('init', accountId, datasourceId, { version: 'v1.0.2' });
+gdp('init', , datasourceId, { version: 'v1.0.2' });
 ```
 
 > 对appVer进行了兼容，配置appVer也有效。但不保证后期持续支持！
