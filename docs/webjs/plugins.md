@@ -72,12 +72,12 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 
 该插件提供H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的数据打通能力，打通规则如下：
 
-* 当Web JS SDK 与APP GIO SDK集成使用的 projectId 一致时，H5页面上采集的数据仅由 APP 中 GIO SDK 发送；
+* 当Web JS SDK 与APP GIO SDK集成使用的 accountId 一致时，H5页面上采集的数据仅由 APP 中 GIO SDK 发送；
 
-* 当Web JS SDK 与APP GIO SDK集成使用的 projectId 不一致时，H5页面上采集的数据同时由 Web JS SDK 和 APP 中 GIO SDK发送；
+* 当Web JS SDK 与APP GIO SDK集成使用的 accountId 不一致时，H5页面上采集的数据同时由 Web JS SDK 和 APP 中 GIO SDK发送；
   
 :::info
-发送数据中 projectId,  datasourceId, host 与 发送数据SDK 中的对应字段保持一致
+发送数据中 accountId,  datasourceId, host 与 发送数据SDK 中的对应字段保持一致
 :::
 
 ### APP 中 GIO SDK 打通设置
@@ -106,9 +106,9 @@ GrowingTracker.get().bridgeWebView(webview)
 
 该插件提供内嵌页 Web JS SDK 采集的数据与小程序 SDK 采集的数据打通能力。插件从url的search中获取来自小程序的gioInfo, 打通规则如下：
 
-* 当满足“小程序 SDK 和内嵌页中Web JS SDK 的 projectId，appId 一致”条件时，可实现两边的数据打通，
+* 当满足“小程序 SDK 和内嵌页中Web JS SDK 的 accountId，appId 一致”条件时，可实现两边的数据打通，
 
-* 当不满足“小程序 SDK 和内嵌页中Web JS SDK 的 projectId，appId 一致”条件时，无法实现两边数据打通
+* 当不满足“小程序 SDK 和内嵌页中Web JS SDK 的 accountId，appId 一致”条件时，无法实现两边数据打通
 
 在打通后内嵌页中的setUserId将无效，只能使用从小程序继承来的登录用户ID。
 :::info 注意
@@ -147,14 +147,14 @@ giou 是访问用户ID
 gios 是 sessionID 
 giocs1 是登录用户ID
 giouserkey 是用户KEY
-gioprojectid 是 projectId
+gioprojectid 是 accountId
 gioappid 是 小程序appid
 gioplatform 是应用平台
 giodatasourceid 是 datasourceId
 :::
 #### Web端
 
-在集成时使用和小程序相同的projectId和appid即可，如小程序的projectId为pid11，appid为wx33
+在集成时使用和小程序相同的 accountId 和 appid 即可，如小程序的 accountId 为 pid11，appid 为 wx33
 
 ```js
 gdp('init', 'pid11', 'ds22', 'wx33', {
