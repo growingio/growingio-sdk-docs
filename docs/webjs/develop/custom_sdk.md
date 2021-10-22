@@ -3,7 +3,7 @@ title: 自定义SDK
 sidebar_position: 2
 ---
 
-在Web JS SDK中我们可以根据所需，自定义SDK拥有的功能。
+在Web JS SDK中可以根据所需，自定义SDK拥有的功能。
 
 ## Web JS SDK内部逻辑
 

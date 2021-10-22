@@ -25,6 +25,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 | `debug`               | `boolean`     | 否       | `false`        | 是否开启 debug 模式                                                                                                |
 | `followShare`         | `boolean`     | 否       | `true`         | 是否跟踪分享数据                                                                                                   |
 | `forceLogin`          | `boolean`     | 否       | `false`        | 是否开启 forceLogin 强制登录模式                                                                                   |
+| `compress`        | `boolean`      | 否           | `false`             | 是否进行数据压缩加密   |
 | `getLocation`         | `object`      | 否       | `见下两项配置` | 获取位置配置项                                                                                                     |
 | `getLocation.autoGet` | `boolean`     | 否       | `false`        | 自动获取用户位置信息（需要用户授权）                                                                               |
 | `getLocation.type`    | `wgs84/gcj02` | 否       | `wgs84`        | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系                                                                   |
