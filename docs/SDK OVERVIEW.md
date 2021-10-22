@@ -42,7 +42,7 @@ GrowingIO Web JS SDK 会在网站用户加载网页后自动启动，并收集�
 ### 使用流程
 
 1. 购买 CDP 产品;
-2. 获取 `ProjectId`,`UrlScheme`,`ServerHost` 和 `DataSourceId`;
+2. 获取 `AccountId`,`UrlScheme`,`ServerHost` 和 `DataSourceId`;
 3. 开始集成;
 
 :::info 关于 CDP 产品

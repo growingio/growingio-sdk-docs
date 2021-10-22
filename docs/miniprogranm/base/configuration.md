@@ -6,7 +6,7 @@ sidebar_position: 2
 小程序SDK在初始化时，接收最后一个对象参数作为初始化配置项，基本格式如下：
 
 ```javascript
-gdp('init','your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
     ...其他配置项(可配置项见下表)

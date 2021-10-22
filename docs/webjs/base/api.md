@@ -11,7 +11,7 @@ sidebar_position: 3
 
 ```javascript
 // 启动接口
-gdp('init', projectId, datasourceId[, options]);
+gdp('init', accountId, datasourceId[, options]);
 gdp('send');
 
 // 动态配置接口
@@ -43,7 +43,7 @@ gdp('setUserAttributes', properties, callback);
 接口原型如下
 
 ```
-gdp('init', projectId, datasourceId[, options]);
+gdp('init', accountId, datasourceId[, options]);
 ```
 
 #### 2、启动接口

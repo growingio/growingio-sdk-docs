@@ -7,7 +7,7 @@ Web JS SDK在初始化时，接收最后一个对象参数作为初始化配置�
 
 ```javascript
 // 最后一个参数即为初始化配置项
-gdp('init', 'your projectId', 'your dataSourceId', {
+gdp('init', 'your accountId', 'your dataSourceId', {
   host: 'your apiServerHost',
   version: '1.0.0',
   debug: true
@@ -20,10 +20,10 @@ gdp('init', 'your projectId', 'your dataSourceId', {
 
 | **字段**          | **参数类型**   | **是否必填** | **默认值**          | **说明**                                                     |
 | ----------------- | -------------- | ------------ | ------------------- | ------------------------------------------------------------ |
-| `projectId`       | `string`       | 是           | 无                  | 项目id                                                       |
+| `prejectId`       | `string`       | 是           | 无                  | 项目id                                                       |
 | `dataSourceId`    | `string`       | 是           | 无                  | 数据源id                                                     |
 | `host`            | `string`       | 是           | 无                  | 发数请求host                                                 |
-| `scheme`          | `https` |否 | `location.protocol`获取      | 发数请求协议 |
+| `scheme`          | `https`        |否 | `location.protocol`获取      | 发数请求协议
 | `compress`        | `boolean`      | 否           | `false`             | 是否进行数据压缩                                             |
 | `dataCollect`     | `boolean`      | 否           | `true`              | 是否进行数据采集                                             |
 | `debug`           | `boolean`      | 否           | `false`             | 是否开启debug模式                                            |
@@ -42,7 +42,7 @@ gdp('init', 'your projectId', 'your dataSourceId', {
 默认情况下，请求协议会根据您的网站协议来自定判断。如果你要指定协议，可以通过以下方法设置。
 
 ```js
-gdp('init', projectId, datasourceId, { scheme: 'https' });
+gdp('init', accountId, datasourceId, { scheme: 'https' });
 ```
 
 ### 设置请求host
@@ -50,7 +50,7 @@ gdp('init', projectId, datasourceId, { scheme: 'https' });
 设置上传当前应用埋点数据的接受服务器的域名。默认不配置发数的API，需要在初始化时设置host，否则会初始化失败。
 
 ```js
-gdp('init', projectId, datasourceId, { host: 'api.growingio.com' });
+gdp('init', accountId, datasourceId, { host: 'api.growingio.com' });
 ```
 
 ### 开启debug模式
@@ -58,7 +58,7 @@ gdp('init', projectId, datasourceId, { host: 'api.growingio.com' });
 在初始化时设置debug模式为true，打开浏览器控制台，即可看到实时采集的数据。
 
 ```js
-gdp('init', projectId, datasourceId, { debug: true });
+gdp('init', accountId, datasourceId, { debug: true });
 ```
 
 ### 开启hash识别
@@ -66,7 +66,7 @@ gdp('init', projectId, datasourceId, { debug: true });
 GrowingIO 默认不会把hash识别成页面URL的一部分。对于使用hash进行页面转跳的单页面网站应用来说，可以启用hashtag作为标识页面的一部分。
 
 ```js
-gdp('init', projectId, datasourceId, { hashtag: true });
+gdp('init', accountId, datasourceId, { hashtag: true });
 ```
 
 ### 设置无埋点采集
@@ -74,7 +74,7 @@ gdp('init', projectId, datasourceId, { hashtag: true });
 GrowingIO支持无埋点功能的控制，默认情况下是开启的，如果想关闭可以初始化时配置autotrack: false。
 
 ```js
-gdp('init', projectId, datasourceId, { autotrack: false });
+gdp('init', accountId, datasourceId, { autotrack: false });
 ```
 
 ### 设置IdMapping高级功能
@@ -82,7 +82,7 @@ gdp('init', projectId, datasourceId, { autotrack: false });
 GrowingIO提供id mapping的高级功能，默认情况是关闭的，如需开启可如下配置。（若不了解请勿配置）
 
 ```js
-gdp('init', projedtId, datasourceId, { enableIdMapping: true });
+gdp('init', accountId, datasourceId, { enableIdMapping: true });
 ```
 
 ### 设置应用版本version
@@ -90,7 +90,7 @@ gdp('init', projedtId, datasourceId, { enableIdMapping: true });
 如果网站在不停升级版本，同时想了解不同版本的数据情况，可以参考如下代码设置应用版本。在实际使用中应用版本对移动端 app 更有价值。
 
 ```js
-gdp('init', projectId, datasourceId, { version: 'v1.0.2' });
+gdp('init', , datasourceId, { version: 'v1.0.2' });
 ```
 
 > 对appVer进行了兼容，配置appVer也有效。但不保证后期持续支持！
@@ -100,7 +100,7 @@ gdp('init', projectId, datasourceId, { version: 'v1.0.2' });
 GrowingIO Web SDK 默认发送数据是明文，可以通过这个开关将数据压缩，一方面保证数据不能被直接查看，增强了数据的安全性。另一方面可以节省用户的流量。可以通过下面方式开启数据压缩传输。
 
 ```js
-gdp('init', projectId, datasourceId, { compress: true });
+gdp('init', accountId, datasourceId, { compress: true });
 ```
 
 ### 设置应用平台
@@ -110,6 +110,6 @@ gdp('init', projectId, datasourceId, { compress: true });
 该设置会体现在测量协议的platform字段上，如果在与小程序打通的情况下，不论初始时设置的为什么值，其都会被设置为对应的小程序平台。
 
 ```js
-gdp('init', projectId, datasourceId, { platform: 'web' });
+gdp('init', accountId, datasourceId, { platform: 'web' });
 ```
 

@@ -6,7 +6,7 @@ sidebar_position: 4
 您在集成小程序SDK后可通过调试模式来查看SDK是否集成成功
 
 ```js
-gdp('init', 'your projectId', 'your dataSourceId', 'your AppId' {
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
   host: 'your apiServerHost',
   version: '1.0.0',
   debug: true  // 打开debug调试能力

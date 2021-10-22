@@ -198,7 +198,7 @@ function MyPlugin(api, config) {
 3. 在初始化时注册插件
 
 ```js
-gdp('init', 'your projectId', 'your dataSourceId', {
+gdp('init', 'your accountId', 'your dataSourceId', {
   host: 'your apiServerHost',
   version: '1.0.0',
   plugins: [MyPlugin]
