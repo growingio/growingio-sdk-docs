@@ -9,18 +9,53 @@ title: React Native SDK
 ----
 
 ## 环境配置
-请确保已经添加埋点SDK, 如果没有, 请移步至原生端SDK集成文档
+
+请确保已经添加原生埋点SDK, 如果没有, 请移步至原生端SDK集成文档
 
 ## 添加依赖
 
-`$ npm install react-native-growing-tracker@1.0.0 --save`
+`$ npm install react-native-growing-tracker@1.0.1-cdp --save`
 
 ### 自动安装 (React Native 0.6.0版本及其以上可以跳过该步骤)
 
 `$ react-native link react-native-growing-tracker`
 
-### 手动安装
 
+
+### 使用本地模块安装 (进行自定义修改)
+
+1. git clone 插件仓库
+
+```shell
+git clone git@github.com:growingio/react-native-growingio-sdk-tracker-plugin.git
+git checkout cdp
+```
+
+2. 在项目的package.json中添加对应模块
+
+```json
+"dependencies": {
+    ...
+    "react-native-growing-tracker": "file:path/react-native-growingio-sdk-tracker-plugin"
+},
+```
+
+3.  获取依赖
+
+```shell
+yarn
+```
+
+4. 执行项目
+
+```shell
+react-native run-ios
+react-native run-android
+```
+
+
+
+### 手动安装
 
 #### iOS
 
@@ -151,13 +186,16 @@ GrowingTracker.setConversionVariables({
 });
 ```
 ### 10 自定义事件
-#### 10.1 `GrowingTracker.trackCustomEvent(eventName, attributes)`
+#### 10.1 `GrowingTracker.trackCustomEvent(eventName, attributes, itemKey, itemId))`
+
 自定义事件。
 #### 10.2 参数说明
 | 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
 | :----: | :-----: | :--: | :----: | :-----------------------------------: |
 | eventName | string |  是  |  undefine  | 事件名称 |
-| attributes | object | 是 |  undefine  | 事件属性 |
+| attributes | object | 否 |  null  | 事件属性 |
+| itemKey | string | 否 | null | 物品模型唯一标识属性 |
+| itemId | string | 否 | null | 物品模型唯一标识属性的值 |
 #### 10.3 代码示例
 ```javascript
 GrowingTracker.trackCustomEvent('trackCustomEvent(string)', null);
