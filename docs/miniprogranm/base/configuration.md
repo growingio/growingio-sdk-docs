@@ -14,12 +14,13 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ```
 
 ## 初始化可配置项
-
->  该表格列出了当前sdk内置的配置项，但也可以根据插件来新增自定义配置。
+:::info
+该表格列出了当前sdk内置的配置项，但也可以根据插件来新增自定义配置
+:::
 
 | **字段名**            | **参数类型**  | **必填** | **默认值**     | **说明**                                                                                                           |
 | --------------------- | ------------- | -------- | -------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `autotrack`           | `boolean`     | 否       | `true`         | 是否开启无埋点采集<br />影响事件：`VIEW_CLICK, VIEW_CHANGE, FORM_SUBMIT`                                           |
+| `autotrack`           | `boolean`     | 否       | `true`         | 是否开启无埋点采集<br />包括：`VIEW_CLICK, VIEW_CHANGE, FORM_SUBMIT`                                           |
 | `comAsPage`           | `boolean`     | 否       | `false`        | 是否将 Component 当做 Page 处理                                                                                    |
 | `dataCollect`         | `boolean`     | 否       | `true`         | 是否开启数据采集                                                                                                   |
 | `debug`               | `boolean`     | 否       | `false`        | 是否开启 debug 模式                                                                                                |
@@ -35,27 +36,51 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 | `usePlugin`           | `boolean`     | 否       | `false`        | 是否使用第三方插件                                                                                                 |
 | `version`             | `string`      | 否       | `-`            | 小程序应用版本（建议填写)                                                                                          |
 | `vue`                 | `any`         | 否       | `-`            | 使用 uni-app/mpvue/WePY 开发时使用的实例                                                                           |
-
+| `enableIdMapping` | `boolean` | 否 | `false` | 是否开启多用户身份上报(SDK版本<font color='red'>>= 3.3.0</font>)  |
 ## 详细说明
 
 ### 设置无埋点(autotrack)
 
 默认情况下，SDK开启无埋点采集。如果您不需要无埋点采集，可以通过指定 `autotrack: false` 关闭。
 关闭无埋点后 `VIEW_CLICK, VIEW_CHANGE, FORM_SUBMIT` 事件将不会再被采集和上报。
-
+```js
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+  host: 'your apiServerHost',
+  version: '1.0.0',
+  autotrack: false  
+});
+```
 ### 设置数据采集(dataCollect)
 
 默认情况下，SDK开启数据采集。如果您需要初始化时暂时关闭数据采集，可以通过指定 `dataCollect: false` 关闭。
 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
-
+```js
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+  host: 'your apiServerHost',
+  version: '1.0.0',
+  dataCollect: false  
+});
+```
 ### 开启调试模式(debug)
 
-在开发时设置 `debug: true`，打开浏览器控制台，即可看到实时采集的数据。
-
+默认为关闭。在开发时设置 `debug: true`，打开浏览器控制台，即可看到实时采集的数据。
+```js
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+  host: 'your apiServerHost',
+  version: '1.0.0',
+  debug: true  
+});
+```
 ### 设置跟踪分享数据(followShare)
 
 默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
-
+```js
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+  host: 'your apiServerHost',
+  version: '1.0.0',
+  followShare: false  
+});
+```
 在分享回调方法中，添加 `contentType` 和 `contentId` 字段。例：
 ```js
 onShareAppMessage: function() {
@@ -70,6 +95,13 @@ onShareAppMessage: function() {
 ### 设置强制登录模式(forceLogin)
 
 默认情况下，SDK通过自动生成的 uid 上报标识用户。如您需要根据 openId 标识用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
+```js
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+  host: 'your apiServerHost',
+  version: '1.0.0',
+  forceLogin: true  
+});
+```
 打开后SDK会暂停上报数据，待用户登录获取 openId，调用 `identify` 方法设置 访问用户id 为 openId 后继续数据采集，以此来关联用户。
 
 ```js

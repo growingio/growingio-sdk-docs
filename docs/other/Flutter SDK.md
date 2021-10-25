@@ -41,14 +41,20 @@ sdk需要初始化操作，否则会`异常退出`
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    GrowingTrackConfiguration *configuration = [GrowingTrackConfiguration configurationWithProjectId:@"0a1b4118dd954ec3bcc69da5138bdb96"];
-    configuration.dataSourceId = @"cdpDataSourceId";
-    configuration.debugEnabled = YES;
+        
+    // Config GrowingIO
+    // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+    // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+    // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+    // YourDatasourceId eg: 11223344aabbcc
+    GrowingTrackConfiguration *configuration = [GrowingTrackConfiguration configurationWithProjectId:@"YourAccountId"];
+    configuration.dataCollectionServerHost = @"YourServerHost";
+    configuration.dataSourceId = @"YourDatasourceId";
     
     [GrowingTracker startWithConfiguration:configuration launchOptions:launchOptions];
-  [GeneratedPluginRegistrant registerWithRegistry:self];
-  // Override point for customization after application launch.
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+    [GeneratedPluginRegistrant registerWithRegistry:self];
+    // Override point for customization after application launch.
+    return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 @end
@@ -75,9 +81,16 @@ public class MyApplication extends FlutterApplication {
 
 
         if (sConfiguration == null) {
-            sConfiguration = new CdpTrackConfiguration("bfc5d6a3693a110d", "growing.d80871b41ef40518")
-                    .setDataSourceId("cdpDataSourceId")
-                    .setDebugEnabled(true);
+          // Config GrowingIO
+          // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+          // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+          // Your URLScheme eg: growing.xxxxxxxxxxx
+          // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+          // YourDatasourceId eg: 11223344aabbcc
+          sConfiguration = new CdpTrackConfiguration("Your AccountId", "Your URLScheme")
+                  .setDataCollectionServerHost("Your ServerHost")
+                  .setDataSourceId("Your DataSourceId")
+                  .setDebugEnabled(BuildConfig.DEBUG);
         }
         GrowingTracker.startWithConfiguration(this, sConfiguration);
     }

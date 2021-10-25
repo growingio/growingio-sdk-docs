@@ -182,7 +182,7 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 | --- | --- | --- | --- |
 |loginUserId|string|是|登录用户ID。|
 |time|long|否|事件发生时间。|
-|addUserVariable|string, string|double|Int)|否|用户变量。|
+|addUserVariable|(string, string\|double\|int)|否|用户变量。|
 |addUserVariables|map<string,object>|否|用户变量集合。|
 
 

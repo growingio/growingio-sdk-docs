@@ -7,77 +7,100 @@ sidebar_position: 3
 
 一般您可在页面头部进行解构获取gdp方法。`const { gdp } = gioGlobal;`
 
-### 动态配置接口
+## 动态配置接口
 
-#### 1、修改请求协议(scheme)
+### 1、修改请求协议(scheme)
+默认为`https`，您可以在开发过程中自定义设置
 ```js
 gdp('setTrackerScheme', 'http');
 ```
 
-#### 2、开启/关闭调试模式(debug)
+### 2、开启/关闭调试模式(debug)
+默认不开启。当设置为 `true` 时， 开启后会输出 SDK Log 日志
 ```js
 gdp('enableDebug', true);
 ```
 
-#### 3、开启/关闭数据采集(dataCollect)
+### 3、开启/关闭数据采集(dataCollect)
+默认开启数据采集。当设置为 `false` 时，SDK将不会采集和上报事件。
 ```js
 gdp('setDataCollect', true);
 ```
 
-#### 4、开启/关闭无埋点数据采集(autotrack)
+### 4、开启/关闭无埋点数据采集(autotrack)
+默认开启无埋点数据采集。当设置为 `flase` 时，将不再采集view_click,view_change,form_submit无埋点事件。
 ```js
 gdp('setAutotrack', true);
 ```
 
-### 功能接口
+## 功能接口
 
-#### 1、设置访问用户id
+### 1、设置访问用户id
 
-在用户登录后，获取 openId，调用 identify 设置访问用户id。
+在用户登录后，获取 openId，调用 identify 设置访问用户ID。
 
 ```js
 gdp('identify', openId);
 ```
 
-#### 2、设置登录用户id
+### 2、设置登录用户id
 
-在用户登录后，可以调用setUserId，上报登录用户id。
-
+当用户登录之后调用`setUserId` API，设置登录用户ID
+:::info
+支持 ID-MAPPING SDK版本 >=3.3.0
+**需在初始化 SDK 时设置`enableIdMapping`为`true`**
+:::
+#### 参数说明
+| 参数     | 参数类型 | 说明 |
+| :-------  | :------   | :---|
+| `userId`  | `String` | 长度限制大于0且小于等于1000，如果大于长度1000将只截取前1000长度 |
+| `userKey` | `String` | 可选；适用于ID-MAPPING,可设置 `userId` 的类型|
+#### 示例
 ```js
-gdp('setUserId', userId);
+gdp('setUserId', 'userId');
+gdp('setUserId', 'userId', 'userKey');
 ```
 
-#### 3、清除登录用户id
+### 3、清除登录用户id
 
-清除设置的userId
+当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID
 
 ```js
 gdp('clearUserId');
 ```
 
-#### 4、埋点事件接口
-
-发送埋点事件
-
-```js
-gdp('track', eventId, variables[, item]);
-```
-
-- eventId： 事件名
-- variables：事件变量
-- item(可选)：物品模型
-  - key(必填)：物品模型唯一标识
-  - id(必填)：物品模型id
-
-#### 5、设置用户属性
-
-设置用户属性，会直接上报LOGIN_USER_ATTRIBUTES事件。
+### 4、埋点事件接口
+发送一个自定义事件。在添加所需要发送的事件代码之前，需要在事件管理用户界面配置事件以及事件级变量。
+#### 参数说明
+| 参数     | 参数类型 | 说明 |
+| :-------  | :------   | :---|
+| `eventId` | `String` | 事件名，事件标识符 |
+| `variables` | `Object` | 事件发生时所伴随的维度信息（可选）；限制：Object 类型，value 仅支持字符串、整数、小数；key 长度 <=50，value 长度 <=1000|
+| `item` | `Object` | 事件发生关联的物品模型item(可选);若需要传item，则key(必填)：物品模型唯一标识,id(必填)：物品模型id|
+#### 示例
 
 ```js
-gdp('setUserAttributes', properties);
+// gdp('track', eventId, variables[, item]);
+gdp('track', 'order');
+gdp('track', 'order', { type: 'hjh' });
+gdp('track', 'order', {}, { key: 'order_id', id: '12345' });
+gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' });
 ```
 
-- properties：用户属性变量（object）
+### 5、设置用户属性
+以登录用户的身份定义用户属性变量，用于用户信息相关分析。
+
+#### 参数说明
+
+| 参数         | 参数类型                           | 说明         |
+| :----------- | :--------------------------------- | :----------- |
+| `userAttributes` | `Object` | 包含用户变量的 Object 对象；限制：Object 类型，value 仅支持字符串、整数、小数|
+
+#### 示例
+
+```js
+gdp('setUserAttributes', { name: 'hjh' });
+```
 
 <!-- #### 6、地理位置接口
 
@@ -88,9 +111,9 @@ gdp('setUserAttributes', properties);
 gdp('getLocation');
 ``` -->
 
-### 采集标记
+## 采集标记
 
-#### 额外数据标记
+### 额外数据标记
 
 1、有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-title` 来补充SDK采集的内容。例：
 
@@ -137,9 +160,9 @@ gdp('getLocation');
 <view data-growing-ignore="true">要忽略的节点</view>
 ```
 
-### 其他
+## 其他
 
-#### navigator组件
+### navigator组件
 
 如果您的小程序使用了navigator组件，需要您手动绑定一个空的点击事件，SDK才能实现跳转点击的采集。例：
 ```html

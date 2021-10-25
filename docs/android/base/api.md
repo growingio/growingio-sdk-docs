@@ -6,6 +6,11 @@ title: 数据采集API
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::info
+以下均以集成无埋点SDK时调用示例；
+
+若集成的是埋点SDK,如果埋点SDK有对应的API，请将 `GrowingAutotracker` 替换为 `GrowingTracker`
+:::
 通过 `GrowingAutotracker` 类可以调用 SDK 中所有开放的API，通过这些API可以进行更改配置，设置参数等操作。
 
 ```java
@@ -173,11 +178,11 @@ GrowingAutotracker.get().setLoginUserAttributes(map)
 </Tabs>
 
 ### 8. 获取设备ID `getDeviceId`
-获取设备id，又称为匿名用户id，SDK 自动生成用来定义唯一设备。
+获取设备ID，又称为匿名用户ID，SDK 自动生成用来定义唯一设备。
 如果没有初始化SDK 或者关闭采集开关可能返回值为null，且可能有IO操作。
 #### 示例
 ```java
-GrowingTracker.get().getDeviceId()
+GrowingAutotracker.get().getDeviceId()
 ```
 
 ### 9. 设置页面别名 `setPageAlias`, `setPageAliasX`

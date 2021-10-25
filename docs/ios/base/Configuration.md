@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 | Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 | 版本 |
 | :-------------------------   | :------   | :----:  |:------  |:------| :---: | :------------------------:   |
-| `projectId`                  | `NSString`  | 是      | `null`   | 项目ID，每个应用对应唯一值 | - | - |
+| `projectId`                  | `NSString`  | 是      | `null`   | 项目ID(AccountID)，每个应用对应唯一值 | - | - |
 | `dataSourceId`            | `NSString`  | 是      | `null`   | 应用的DataSourceId，唯一值 | - | - |
 | `dataCollectionServerHost`| `NSString`  | 是      | `null`   | 服务端部署后的 ServerHost | - | - |
 | `debugEnabled`            | `BOOL` | 否      | `NO`  | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - | - |
@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
 #### 1. **projectId**， **urlScheme**， **setDataSourceId**， **setDataCollectionServerHost**
 urlScheme 是 SDK 3.3.0及其之后必传参数，其他参数为必传参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 #### 2. **debugEnabled**
-默认不开启，开启后会输出如上所示的SDK Log 日志。  
+默认不开启，开启后会输出SDK Log 日志。  
 #### 3. **cellularDataLimit**
 为每日在4G/5G环境下的流量限制，默认为10M。WIFI环境下则不计流量。
 #### 4. **dataUploadInterval**
