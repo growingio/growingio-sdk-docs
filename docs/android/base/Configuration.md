@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 | Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 | 版本 |
 | :-------------------------   | :------   | :----:  |:------  |:------| ----- | --------------------------   |
-| `projectId`                  | `String`  | 是      | `null`   | 项目ID，每个应用对应唯一值 | - |  |
+| `accounttId`                  | `String`  | 是      | `null`   | 项目ID，每个应用对应唯一值 | - |  |
 | `urlScheme`                  | `String`  | 是      | `null`   | 应用的URLScheme，唯一值 | - |  |
 | `setDataSourceId`            | `String`  | 是      | `null`   | 应用的DataSourceId，唯一值 | - |  |
 | `setDataCollectionServerHost`| `String`  | 是      | `null`   | 服务端部署后的 ServerHost | - |  |
@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 
 ### 1. SDK必需参数
-**projectId，** **urlScheme，** **setDataSourceId，** **setDataCollectionServerHost**   
+**accountId，** **urlScheme，** **setDataSourceId，** **setDataCollectionServerHost**   
 这四个参数为 CDP 用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 ### 2. **channel** 
 对应应用的分发渠道字段，若设置了值则会在每个事件上报中含有渠道信息。  
@@ -48,7 +48,7 @@ import TabItem from '@theme/TabItem';
     ╚═══════════════════════════════════════════════════════════════════════════════════════
 ```
 ### 3. **setDebugEnabled** 
-默认不开启，开启后会输出如上所示的SDK Log 日志。  
+默认不开启，开启后会输出 SDK Log 日志。  
 建议做法设为 `setDebugEnabled(BuildConfig.DEBUG)` 这样既能保证Debug时能够打印日志，正式发布时也能关闭日志；
 
 ### 4. **setCellularDataLimit** 
@@ -87,7 +87,7 @@ import TabItem from '@theme/TabItem';
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤事件
 GrowingAutotracker.startWithConfiguration(this,
-    new CdpAutotrackConfiguration("projectId", "urlScheme")
+    new CdpAutotrackConfiguration("accountId", "urlScheme")
         ...
        .setExcludeEvent(EventExcludeFilter.EVENT_MASK_TRIGGER))
 );
@@ -103,7 +103,7 @@ ConfigurationProvider.core().setExcludeEvent(EventExcludeFilter.NONE)
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤字段
 GrowingAutotracker.startWithConfiguration(this,
-    new CdpAutotrackConfiguration("projectId", "urlScheme")
+    new CdpAutotrackConfiguration("accountId", "urlScheme")
         ...
        .setIgnoreField(FieldIgnoreFilter.FIELD_IGNORE_ALL)
 );
@@ -141,7 +141,7 @@ SDK初始化时注册Oaid模块：
 ```java
 // 初始化SDK时，可以提前注册 oaid 模块
 GrowingAutotracker.startWithConfiguration(this,
-        new CdpAutotrackConfiguration("projectId", "urlScheme")
+        new CdpAutotrackConfiguration("accountId", "urlScheme")
         ...
         .setPreloadComponent(new OaidLibraryGioModule()));
 );
@@ -181,7 +181,7 @@ SDK初始化时注册加密模块：
 // 初始化无埋点SDK时, 调用方法注册加密模块
 // 加密模块需要依赖对应 加密模块包encoder
 GrowingAutotracker.startWithConfiguration(this, 
-                new CdpAutotrackConfiguration("projectId", "urlScheme")
+                new CdpAutotrackConfiguration("accountId", "urlScheme")
                 ...
                 .setPreloadComponent(new EncoderLibraryGioModule()));
 ```

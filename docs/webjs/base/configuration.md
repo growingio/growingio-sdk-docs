@@ -28,13 +28,12 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 | `dataCollect`     | `boolean`      | 否           | `true`              | 是否进行数据采集                                             |
 | `debug`           | `boolean`      | 否           | `false`             | 是否开启debug模式                                            |
 | `hashtag`         | `boolean`      | 否           | `false`             | 是否开启hash模式                                             |
-| `autotrack`       | `boolean`      | 否           | `true`              | 是否开启无埋点采集<br />`view_click,view_change,form_submit` |
-| `enableIdMapping` | `boolean`      | 否           | `false`             | 是否开启id mapping允许<br />设置userKey                      |
+| `autotrack`       | `boolean`      | 否           | `true`              | 是否开启无埋点采集<br />包括`view_click,view_change,form_submit` |
 | `ignoreFields`    | `string[]`     | 否           | 无                  | 要忽略的字段仅支持以下字段<br />`screenWidth,screenHeight`   |
 | `platform`        | `string`       | 否           | `web`               | 应用的平台支持字段<br />`web`<br />`wxwv`<br />`minp`<br />`alip`<br />`baidup`<br />`qq`<br />`bytedance` |
 | `version`         | `string`       | 否           | 无                  | 应用版本（建议填写）对appVer保持兼容                         |
 | `plugins`         | `GioPlugin[]`  | 否           | 无                  | 自定义要启用的插件详细可见插件篇                             |
-
+| `enableIdMapping` | `boolean` | 否 | `false` | 是否开启多用户身份上报(SDK版本<font color='red'>>= 3.3.0</font>)<br />设置userKey  |
 ## 详细说明
 
 ### 设置请求协议
@@ -90,7 +89,7 @@ gdp('init', accountId, datasourceId, { enableIdMapping: true });
 如果网站在不停升级版本，同时想了解不同版本的数据情况，可以参考如下代码设置应用版本。在实际使用中应用版本对移动端 app 更有价值。
 
 ```js
-gdp('init', , datasourceId, { version: 'v1.0.2' });
+gdp('init', accountId, datasourceId, { version: 'v1.0.2' });
 ```
 
 > 对appVer进行了兼容，配置appVer也有效。但不保证后期持续支持！
@@ -105,7 +104,7 @@ gdp('init', accountId, datasourceId, { compress: true });
 
 ### 设置应用平台
 
-这是一个不太好的配置，不建议主动设置除了web和wxwv之外的值。GrowingIO会对设置的值进行限制，如果合规，将下降为web。合规的选项可见上表格。
+不建议主动设置除了web和wxwv之外的值。GrowingIO会对设置的值进行限制，如果合规，将下降为web。合规的选项可见上表格。
 
 该设置会体现在测量协议的platform字段上，如果在与小程序打通的情况下，不论初始时设置的为什么值，其都会被设置为对应的小程序平台。
 

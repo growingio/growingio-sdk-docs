@@ -69,6 +69,7 @@ gdp('send');
 ### 动态配置接口
 
 #### 1、修改请求协议(scheme)
+默认通过`location.protocol`获取，您可以自定义设置
 ```js
 gdp('setTrackerScheme', 'http');
 ```
@@ -79,16 +80,19 @@ gdp('setTrackHost', 'api.growingio.com');
 ```
 
 #### 3、开启/关闭调试模式(debug)
+默认不开启.当设置为 `true` 时， 开启后会输出 SDK Log 日志
 ```js
 gdp('enableDebug', true);
 ```
 
 #### 4、开启/关闭数据采集(dataCollect)
+默认开启数据采集。当设置为 `false` 时，SDK将不会采集和上报事件。
 ```js
 gdp('setDataCollect', true);
 ```
 
 #### 5、开启/关闭无埋点数据采集(autotrack)
+默认开启无埋点数据采集。当设置为 `flase`时，将不再采集view_click,view_change,form_submit无埋点事件。 
 ```js
 gdp('setAutoTrack', true);
 ```
@@ -96,60 +100,76 @@ gdp('setAutoTrack', true);
 ### 功能接口
 
 #### 1、设置登录用户id
-
-在用户登录后，可以调用setUserId，上报登录用户id。
-
+当用户登录之后调用`setUserId` API，设置登录用户ID
+:::info
+支持 ID-MAPPING SDK版本 >=3.3.0
+**需在初始化 SDK 时设置`enableIdMapping`为`true`**
+:::
+#### 参数说明
+| 参数     | 参数类型 | 说明 |
+| :-------  | :------   | :---|
+| `userId`  | `String` | 长度限制大于0且小于等于1000，如果大于长度1000将只截取前1000长度 |
+| `userKey` | `String` | 可选；适用于ID-MAPPING,可设置 `userId` 的类型|
+#### 示例
 ```js
-gdp('setUserId', userId);
-```
-
-##### 高级功能
-
-若在初始化是配置了enableIdMapping: true，则可以启用userKey的设置，方式如下
-
-```js
-gdp('setUserId', userId, userKey);
+gdp('setUserId', 'userId');
+gdp('setUserId', 'userId', 'userKey');
 ```
 
 #### 2、清除登录用户id
 
-清除设置的userId
-
+当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID。
 ```js
 gdp('clearUserId');
 ```
 
 #### 3、获取访问用户Id
-
+获取设备ID，又称为匿名用户ID，SDK 自动生成用来定义唯一设备。 如果没有初始化SDK 或者关闭采集开关可能返回值为null
 ```js
 gdp('getVisitorId');
 ```
 
 #### 4、埋点事件接口
-
-发送埋点事件
+发送一个自定义事件。在添加所需要发送的事件代码之前，需要在事件管理用户界面配置事件以及事件级变量。
+#### 参数说明
+| 参数     | 参数类型 | 说明 |
+| :-------  | :------   | :---|
+| `eventId` | `String` | 事件名，事件标识符 |
+| `variables` | `Object` | 事件发生时所伴随的维度信息（可选）；限制：Object 类型，value 仅支持字符串、整数、小数；key 长度 <=50，value 长度 <=1000|
+| `item` | `Object` | 事件发生关联的物品模型item(可选);若需要传item，则key(必填)：物品模型唯一标识,id(必填)：物品模型id|
+| `callback` | 回调函数 | 可选；上报请求响应后的回调，参数为response;可以传入匿名函数，也可以传入自定义函数|
+#### 示例
 
 ```js
-gdp('track', eventId, variables[, item[, callback]]);
+// gdp('track', eventId, variables[, item[, callback]]);
+gdp('track', 'order');
+gdp('track', 'order', { type: 'hjh' });
+gdp('track', 'order', {}, { key: 'order_id', id: '12345' });
+gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' });
+// callback：上报请求响应后的回调，参数为response;可以使用匿名函数，也可以传入自定义函数
+// item如果没有，可以直接传入callback函数
+gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }, function(response){
+     console.log(response);
+});
 ```
-
-- eventId： 事件名
-- variables：事件变量
-- item：物品模型
-- callback：上报请求响应后的回调，参数为response
-
-注：item如果没有，可以直接传入callback函数
 
 #### 5、设置用户属性
+以登录用户的身份定义用户属性变量，用于用户信息相关分析。
 
-设置用户属性，会直接上报LOGIN_USER_ATTRIBUTES事件。
+#### 参数说明
+
+| 参数         | 参数类型                           | 说明         |
+| :----------- | :--------------------------------- | :----------- |
+| `userAttributes` | `Object` | 包含用户变量的 Object 对象；限制：Object 类型，value 仅支持字符串、整数、小数
+ |
+| `callback` | 回调函数 | 可选；上报请求响应后的回调，参数为response;可以使用匿名函数，也可以传入自定义函数
+ |
+
+#### 示例
 
 ```js
-gdp('setUserAttributes', properties, callback);
+gdp('setUserAttributes', { name: 'hjh' });
+gdp('setUserAttributes', { name: 'hjh' }, function(response){
+     console.log(response);
+});
 ```
-
-- properties：用户属性变量
-- callback：上报请求响应后的回调，参数为response
-
-
-

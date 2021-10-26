@@ -10,14 +10,15 @@ iOS SDK 提供了 `无埋点` 和 `埋点` 两个SDK版本：
 * 埋点 SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集自定义事件;
 * 无埋点 SDK 具备埋点 SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
-无埋点SDK（包括埋点 SDK）代码已托管在 [Github](https://github.com/growingio/growingio-sdk-ios-autotracker) <br/>
-CDP无埋点SDK（包括埋点 SDK）代码托管在 [Github](https://github.com/growingio/growingio-sdk-ios-autotracker-cdp)
+无埋点SDK（包括埋点 SDK）代码托管在 [Github](https://github.com/growingio/growingio-sdk-ios-autotracker-cdp)
 
 欢迎 star,fork 一波。
 :::info
 **开发环境:** <br/>
 Xcode 9.0 及以上  
 iOS 8.0 及以上
+
+**根据需要选择集成无埋点SDK或者埋点SDK**
 :::
 ## 无埋点SDK集成
 
@@ -108,11 +109,12 @@ pod 'GrowingAnalytics-cdp/Tracker'
 ### 2. 添加 URL Scheme
 
 URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。把 URL Scheme 添加到您的项目，以便使用Mobile Debug等功能时唤醒您的应用。  
-
-选择工程 -> Target -> Info -> URL Types -> 添加您的 URL Scheme 即可
 :::info
 您需要在GrowingIO网站上先创建您的App应用，获取 URL Scheme
 :::
+选择工程 -> Target -> Info -> URL Types -> 添加您的 URL Scheme 即可
+
+![](./../../../static/img/iOS_Setting_URLScheme.png)
 
 ### 3. SDK初始化配置
 
