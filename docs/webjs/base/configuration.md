@@ -29,12 +29,11 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 | `debug`           | `boolean`      | 否           | `false`             | 是否开启debug模式                                            |
 | `hashtag`         | `boolean`      | 否           | `false`             | 是否开启hash模式                                             |
 | `autotrack`       | `boolean`      | 否           | `true`              | 是否开启无埋点采集<br />包括`view_click,view_change,form_submit` |
-| `enableIdMapping` | `boolean`      | 否           | `false`             | 是否开启id mapping允许<br />设置userKey                      |
 | `ignoreFields`    | `string[]`     | 否           | 无                  | 要忽略的字段仅支持以下字段<br />`screenWidth,screenHeight`   |
 | `platform`        | `string`       | 否           | `web`               | 应用的平台支持字段<br />`web`<br />`wxwv`<br />`minp`<br />`alip`<br />`baidup`<br />`qq`<br />`bytedance` |
 | `version`         | `string`       | 否           | 无                  | 应用版本（建议填写）对appVer保持兼容                         |
 | `plugins`         | `GioPlugin[]`  | 否           | 无                  | 自定义要启用的插件详细可见插件篇                             |
-| `enableIdMapping` | `boolean` | 否 | `false` | 是否开启多用户身份上报(SDK版本<font color='red'>>= 3.3.0</font>)  |
+| `enableIdMapping` | `boolean` | 否 | `false` | 是否开启多用户身份上报(SDK版本<font color='red'>>= 3.3.0</font>)<br />设置userKey  |
 ## 详细说明
 
 ### 设置请求协议
