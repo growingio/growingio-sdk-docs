@@ -103,7 +103,8 @@ gdp('setAutoTrack', true);
 当用户登录之后调用`setUserId` API，设置登录用户ID
 :::info
 支持 ID-MAPPING SDK版本 >=3.3.0
-**需在初始化 SDK 时设置`enableIdMapping`为`true`**
+
+**需在初始化 SDK 时设置 `enableIdMapping` 为 `true` **
 :::
 #### 参数说明
 | 参数     | 参数类型 | 说明 |

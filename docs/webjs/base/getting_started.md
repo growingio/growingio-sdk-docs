@@ -20,7 +20,7 @@ Web JS SDK 代码尚未开源，后续会开源
 :::info
 请注意使用具体的项目ID替换代码中的 your accountId、your DataSourceId 确保JS资源地址正确。
 
-JS文件地址：https://assets.giocdn.com/sdk/cdp/gio.js
+JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
 :::
 
 ```html
