@@ -73,6 +73,8 @@ JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
   // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
   // YourServerHost eg: api.growingio.com 仅需填写对应host
   // YourDatasourceId eg: 11223344aabbcc
+  // YourAppId 小程序的APPID eg: wx678908r0r8rfgnvf
+
   gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
     host: 'your apiServerHost',
     version: '1.0.0'

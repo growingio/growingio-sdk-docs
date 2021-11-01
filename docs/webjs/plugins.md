@@ -82,19 +82,21 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 
 ### APP 中 GIO SDK 打通设置
 #### iOS APP
-如果集成的是无埋点SDK， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
+如果集成的是[**无埋点SDK**](/docs/ios/base/Getting_Started#无埋点sdk集成)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
-如果集成的是埋点SDK，则需要通过以下设置实现数据打通：
+
+如果集成的是[**埋点SDK**](/docs/ios/base/Getting_Started#埋点sdk集成)，则需要通过以下设置实现数据打通：
 在您的Podfile文件中添加
 ```c
 pod 'GrowingAnalytics-cdp/Hybrid'
 ```
-打开终端，切换到项目目录
-执行 `pod install` 或 `pod update`
-#### Android APP
-如果集成的是无埋点SDK， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
+打开终端，切换到项目目录执行 `pod install` 或 `pod update`
 
-如果集成的是埋点SDK，则需要设置桥接代码，实现数据打通：
+项目中无需其他设置
+#### Android APP
+如果集成的是[**无埋点SDK**](/docs/android/base/Getting%20Started#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
+
+如果集成的是[**埋点SDK**](/docs/android/base/Getting%20Started#集成埋点sdk)，则需要设置桥接代码，实现数据打通：
 ```java
 GrowingTracker.get().bridgeWebView(webview)
 ```
@@ -125,6 +127,8 @@ GrowingTracker.get().bridgeWebView(webview)
 const gio = gioGlobal.gio;
 Page({
   data: {
+    // foo=1 是您 H5 页面链接后的查询参数(如果没有就无需填写)
+    // ${gio('getGioInfo')} 是GIO需要拼接获取的参数，打通需必填
     url: `https://www.growingio.com/?foo=1&${gio('getGioInfo')}`
   }
 });
@@ -141,15 +145,14 @@ Page({
 giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
 ```
 :::info 
-以上数据是小程序中传到内嵌页的数据
-
-giou 是访问用户ID
-gios 是 sessionID 
-giocs1 是登录用户ID
-giouserkey 是用户KEY
-gioprojectid 是 accountId
-gioappid 是 小程序appid
-gioplatform 是应用平台
+以上数据是小程序中传到内嵌页的数据<br/>
+giou 是访问用户ID<br/>
+gios 是 sessionID<br/> 
+giocs1 是登录用户ID<br/>
+giouserkey 是用户KEY<br/>
+gioprojectid 是 accountId<br/>
+gioappid 是 小程序appid<br/>
+gioplatform 是应用平台<br/>
 giodatasourceid 是 datasourceId
 :::
 #### Web端

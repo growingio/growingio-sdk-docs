@@ -73,8 +73,9 @@ urlScheme 是 SDK 3.3.0及其之后必传参数，其他参数为必传参数，
 ```c
 pod 'GrowingAnalytics/DISABLE_IDFA'
 ```
-打开终端，切换到项目目录
-执行 `pod install` 或 `pod update`
+打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
+
+项目中无需其他额外设置
 ### 2. **SDK数据加密传输** 
 :::info
 采集 SDK 版本 >=3.3.0
@@ -87,9 +88,9 @@ pod 'GrowingAnalytics/DISABLE_IDFA'
 ```c
 pod 'GrowingAnalytics/ENABLE_ENCRYPTION'
 ```
-打开终端，切换到项目目录
-执行 `pod install` 或 `pod update`
+打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
 
+项目中无需其他额外设置
 ### 3.**内嵌H5页面数据采集配置**
 APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web JS SDK
 如果需要H5页面采集数据与APP采集数据的数据打通，请参考[Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)
@@ -103,5 +104,6 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 ```c
 pod 'GrowingAnalytics-cdp/Hybrid'
 ```
-打开终端，切换到项目目录
-执行 `pod install` 或 `pod update`
+打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
+
+项目中无需其他额外设置
