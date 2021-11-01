@@ -62,7 +62,7 @@ react-native run-android
 1. 打开Xcode，在您的工程目录中点击 `Libraries` ➜ `Add Files to [your project's name]`
 2. 选择添加 `node_modules` ➜ react-native-growingio-tracker ➜ `RNGrowingTracker.xcodeproj`
 3. 选择您的目标项目， `Build Phases` ➜ `Link Binary With Libraries`添加 `libRNGrowingTracker.a` 
-4. 运行项目 (`Cmd+R`)<
+4. 运行项目 (`Cmd+R`)
 
 #### Android
 
@@ -88,120 +88,98 @@ GrowingTracker;
 
 ## API说明
 
-### 1 设置登录用户标识
-#### 1.1 `GrowingTracker.setLoginUserId(userId)`
-设置登录用户标识。
-#### 1.2 参数说明
+### 1. 设置登录用户ID
+当用户登录之后调用 `setLoginUserId` ，设置登录用户ID
+#### 参数说明
 | 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
 | :----: | :-----: | :--: | :----: | :-----------------------------------: |
 | userId | string |  是  |  undefine  | 设置登录用户标识 |
-#### 1.3 代码示例
+#### 代码示例
 ```javascript
 GrowingTracker.setLoginUserId('loginUserId');
 ```
-### 2 清除登录用户标识
-#### 2.1 `GrowingTracker.cleanLoginUserId()`
-清除登录用户标识。
-#### 2.2 代码示例
+### 2. 清除登录用户ID
+当用户登出之后调用 `cleanLoginUserId`，清除已经设置的登录用户ID
+####  代码示例
 ```javascript
 GrowingTracker.cleanLoginUserId();
 ```
-### 3 设置坐标
-#### 3.1 `GrowingTracker.setLocation(latitude, longitude)`
-设置坐标。
-#### 3.2 参数说明
+### 3. 设置用户地理位置
+设置用户当前的地理位置，基于WGS-84坐标
+#### 参数说明
 | 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
 | :----: | :-----: | :--: | :----: | :-----------------------------------: |
 | latitude | number |  是  |  undefine  | 设置纬度 |
 | longitude | number |  是  |  undefine  | 设置经度 |
-#### 3.3 代码示例
+#### 代码示例
 ```javascript
 GrowingTracker.setLocation(100.0, 100.0);
 ```
-### 4 清除坐标
-#### 4.1 `GrowingTracker.cleanLocation()`
-清除坐标。
-#### 4.2 代码示例
+### 4. 清除用户的地理位置
+清除用户当前的地理位置
+#### 代码示例
 ```javascript
 GrowingTracker.cleanLocation();
 ```
-### 5 获取设备标识
-#### 5.1 `GrowingTracker.getDeviceId()`
-设置坐标。
-#### 5.2 代码示例
+### 5. 获取设备ID
+获取设备ID，又称为匿名用户ID，SDK 自动生成用来定义唯一设备
+#### 代码示例
 ```javascript
 GrowingTracker.getDeviceId().then(setDeviceId);
 ```
-### 6 设置坐标
-#### 6.1 `GrowingTracker.setDataCollectionEnabled(enabled)`
-是否采集数据。
-#### 6.2 参数说明
+### 6. 数据采集开关
+打开或关闭数据采集
+#### 参数说明
 | 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
 | :----: | :-----: | :--: | :----: | :-----------------------------------: |
-| enabled | boolean |  是  |  undefine  | 是否采集数据 |
-#### 6.3 代码示例
+| enabled | boolean |  是  |  true  | 是否采集数据 |
+#### 代码示例
 ```javascript
 GrowingTracker.setDataCollectionEnabled(true);
 ```
-### 7 设置访问用户属性
-#### 7.1 `GrowingTracker.setVisitorAttributes(attributes)`
-设置访问用户属性。
-#### 7.2 参数说明
+
+### 7. 设置登录用户变量
+以登录用户的身份定义用户属性变量，用于用户信息相关分析。
+#### 参数说明
 | 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
 | :----: | :-----: | :--: | :----: | :-----------------------------------: |
-| attributes | object |  是  |  undefine  | 访问用户属性 |
-#### 7.3 代码示例
-```javascript
-GrowingTracker.setVisitorAttributes({
-    key1: 'value1',
-    key2: 'value2',
-});
-```
-### 8 设置登录用户属性
-#### 8.1 `GrowingTracker.setLoginUserAttributes(attributes)`
-设置登录用户属性。
-#### 8.2 参数说明
-| 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
-| :----: | :-----: | :--: | :----: | :-----------------------------------: |
-| attributes | object |  是  |  undefine  | 登录用户属性 |
-#### 8.3 代码示例
+| attributes | object |  是  |  undefine  | 登录用户变量 |
+#### 代码示例
 ```javascript
 GrowingTracker.setLoginUserAttributes({
     key1: 'value1',
     key2: 'value2',
 });
 ```
-### 9 设置转换变量
-#### 9.1 `GrowingTracker.setConversionVariables(variables)`
-设置转换变量。
-#### 9.2 参数说明
+### 8. 自定义事件
+发送一个自定义事件。在添加所需要发送的事件代码之前，需要在事件管理用户界面配置事件以及事件级变量。
+#### 参数说明
 | 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
-| :----: | :-----: | :--: | :----: | :-----------------------------------: |
-| variables | object |  是  |  undefine  | 转换变量 |
-#### 9.3 代码示例
+| :----: | :-----: | :--: | :----: | :----------------------------------- |
+| eventName | string |  是  |  undefine  | 事件名，事件标识符 |
+| attributes | object | 否 |  null  | 事件发生时所伴随的维度信息（可选） |
+| itemKey | string | 否 | null | 事件发生关联的物品模型Key（可选，与itemId参数一起传入） |
+| itemId | string | 否 | null | 事件发生关联的物品模型ID （可选，与itemKey参数一起传入 |
+#### 代码示例
 ```javascript
-GrowingTracker.setConversionVariables({
-    key1: 'value1',
-    key2: 'value2',
-});
-```
-### 10 自定义事件
-#### 10.1 `GrowingTracker.trackCustomEvent(eventName, attributes, itemKey, itemId))`
-
-自定义事件。
-#### 10.2 参数说明
-| 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
-| :----: | :-----: | :--: | :----: | :-----------------------------------: |
-| eventName | string |  是  |  undefine  | 事件名称 |
-| attributes | object | 否 |  null  | 事件属性 |
-| itemKey | string | 否 | null | 物品模型唯一标识属性 |
-| itemId | string | 否 | null | 物品模型唯一标识属性的值 |
-#### 10.3 代码示例
-```javascript
-GrowingTracker.trackCustomEvent('trackCustomEvent(string)', null);
-
+GrowingTracker.trackCustomEvent('trackCustomEvent(string)');
 GrowingTracker.trackCustomEvent('trackCustomEvent(string)', {
-    key1: 'value1',
-    key2: 'value2',
+   key1: 'value1',
+   key2: 'value2',
 });
+GrowingTracker.trackCustomEvent(
+   'trackCustomEvent(string)',
+   null,
+   'itemKey',
+   'itemId'
+);
+GrowingTracker.trackCustomEvent(
+   'trackCustomEvent(string)',
+   {
+     key1: 'value1',
+     key2: 'value2',
+   },
+   'itemKey',
+   'itemId'
+);
 ```

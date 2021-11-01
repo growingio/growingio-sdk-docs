@@ -6,9 +6,12 @@ title: Flutter SDK
 
 源码托管在 [growingio/flutter-growingio-sdk-tracker-plugin](https://github.com/growingio/flutter-growingio-sdk-tracker-plugin)
 
-> 请下拉CDP分支，而不是master分支进行测试
+:::info
+集成环境：dart sdk: ">=2.7.0 且<3.0.0"
+  flutter: ">=1.20.0"
 
-----
+请下拉CDP分支，而不是master分支进行测试
+:::
 
 ## 添加依赖
 
@@ -137,3 +140,53 @@ dependencies {
 
 之后，运行你的app，即可进行正常埋点。
 
+## API说明
+
+### 1. 设置登录用户ID
+当用户登录之后调用 `setLoginUserId` ，设置登录用户ID
+#### 参数说明
+| 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
+| :----: | :-----: | :--: | :----: | :-----------------------------------: |
+| userId | String |  是  |  undefine  | 设置登录用户标识 |
+#### 代码示例
+```javascript
+GrowingTracker.setLoginUserId('loginUserId');
+```
+### 2. 清除登录用户ID
+当用户登出之后调用 `cleanLoginUserId`，清除已经设置的登录用户ID
+####  代码示例
+```javascript
+GrowingTracker.cleanLoginUserId();
+```
+### 3. 设置登录用户变量
+以登录用户的身份定义用户属性变量，用于用户信息相关分析。
+#### 参数说明
+| 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
+| :----: | :-----: | :--: | :----: | :-----------------------------------: |
+| attributes | Map |  是  |  undefine  | 登录用户变量 |
+#### 代码示例
+```javascript
+GrowingTracker.setLoginUserAttributes({
+    key1: 'value1',
+    key2: 'value2',
+});
+```
+### 4. 自定义事件
+发送一个自定义事件。在添加所需要发送的事件代码之前，需要在事件管理用户界面配置事件以及事件级变量。
+#### 参数说明
+| 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
+| :----: | :-----: | :--: | :----: | :----------------------------------- |
+| eventName | String |  是  |  undefine  | 事件名，事件标识符 |
+| attributes | Map | 否 |  null  | 事件发生时所伴随的维度信息（可选） |
+| itemKey | String | 否 | null | 事件发生关联的物品模型Key（可选，与itemId参数一起传入） |
+| itemId | String | 否 | null | 事件发生关联的物品模型ID （可选，与itemKey参数一起传入 |
+#### 代码示例
+```javascript
+GrowingTracker.trackCustomEvent('eventId'); 
+
+GrowingTracker.trackCustomEvent('eventId', variable: {'testkey': 'testValue', 'testNumKey': '2333'});
+
+GrowingTracker.trackCustomEventItemKeyId('eventId', 'testKey','testId');
+
+GrowingTracker.trackCustomEventItemKeyId('eventId', 'testKey','testId',variable: {'testkey': 'testValue', 'testNumKey': '2333'});
+```
