@@ -24,7 +24,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 | `comAsPage`           | `boolean`     | 否       | `false`        | 是否将 Component 当做 Page 处理                                                                                    |
 | `dataCollect`         | `boolean`     | 否       | `true`         | 是否开启数据采集                                                                                                   |
 | `debug`               | `boolean`     | 否       | `false`        | 是否开启 debug 模式                                                                                                |
-| `followShare`         | `boolean`     | 否       | `true`         | 是否跟踪分享数据                                                                                                   |
+| `followShare`         | `boolean`     | 否       | `false`         | 是否跟踪分享数据                                                                                                   |
 | `forceLogin`          | `boolean`     | 否       | `false`        | 是否开启 forceLogin 强制登录模式                                                                                   |
 | `compress`        | `boolean`      | 否           | `false`             | 是否进行数据压缩加密   |
 | `getLocation`         | `object`      | 否       | `见下两项配置` | 获取位置配置项                                                                                                     |
@@ -73,12 +73,12 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
 ```
 ### 设置跟踪分享数据(followShare)
 
-默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
+开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。默认情况下，SDK未开启该功能，如您需要此功能，可以通过指定 `followShare: true` 来开启跟踪分享。
 ```js
 gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
   host: 'your apiServerHost',
   version: '1.0.0',
-  followShare: false  
+  followShare: true  
 });
 ```
 在分享回调方法中，添加 `contentType` 和 `contentId` 字段。例：

@@ -34,6 +34,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 | `version`         | `string`       | 否           | 无                  | 应用版本（建议填写）对appVer保持兼容                         |
 | `plugins`         | `GioPlugin[]`  | 否           | 无                  | 自定义要启用的插件详细可见插件篇                             |
 | `enableIdMapping` | `boolean` | 否 | `false` | 是否开启多用户身份上报(SDK版本<font color='red'>>= 3.3.0</font>)<br />设置userKey  |
+
 ## 详细说明
 
 ### 设置请求协议
