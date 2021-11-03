@@ -85,21 +85,13 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 如果集成的是[**无埋点SDK**](/docs/ios/base/Getting_Started#无埋点sdk集成)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
 
-如果集成的是[**埋点SDK**](/docs/ios/base/Getting_Started#埋点sdk集成)，则需要通过以下设置实现数据打通：
-在您的Podfile文件中添加
-```c
-pod 'GrowingAnalytics-cdp/Hybrid'
-```
-打开终端，切换到项目目录执行 `pod install` 或 `pod update`
+如果集成的是[**埋点SDK**](/docs/ios/base/Getting_Started#埋点sdk集成)，则需要设置详情参考iOS[内嵌H5页面数据采集配置](/docs/ios/base/Configuration#3内嵌h5页面数据采集配置)
 
 项目中无需其他设置
 #### Android APP
 如果集成的是[**无埋点SDK**](/docs/android/base/Getting%20Started#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
-如果集成的是[**埋点SDK**](/docs/android/base/Getting%20Started#集成埋点sdk)，则需要设置桥接代码，实现数据打通：
-```java
-GrowingTracker.get().bridgeWebView(webview)
-```
+如果集成的是[**埋点SDK**](/docs/android/base/Getting%20Started#集成埋点sdk)，则需要设置，详细请参安卓[内嵌h5页面数据采集配置](/docs/android/base/Configuration#1-内嵌h5页面数据采集配置)
 ## 7. 小程序内嵌页打通插件
 
 插件名：embed-h5-plugin
@@ -173,7 +165,7 @@ gdp('init', 'pid11', 'ds22', 'wx33', {
 ```tex
 deviceId: 使用小程序的deviceId
 sessionId: 使用小程序的sessionId
-gioId: 使用小程序的gioId （web版本：3.3.11，小程序版本：3.2.5）
+gioId: 使用小程序的gioId （web版本>=3.3.11，小程序版本>=3.2.5）
 userId: 使用小程序的userId
 userKey: 使用小程序的userKey
 dataSourceId: 使用小程序的dataSourceId

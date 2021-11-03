@@ -35,6 +35,7 @@ import TabItem from '@theme/TabItem';
 
 当用户登录之后调用`setLoginUserId` API，设置登录用户ID
 
+如果您的App每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在用户每次升级App版本后初次访问时重新调用setLoginUserId方法
 #### 参数说明
 
 | 参数     | 参数类型   | 说明                                                         |

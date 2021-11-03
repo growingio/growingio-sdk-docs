@@ -44,7 +44,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 默认情况下，SDK开启无埋点采集。如果您不需要无埋点采集，可以通过指定 `autotrack: false` 关闭。
 关闭无埋点后 `VIEW_CLICK, VIEW_CHANGE, FORM_SUBMIT` 事件将不会再被采集和上报。
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
   autotrack: false  
@@ -55,7 +55,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
 默认情况下，SDK开启数据采集。如果您需要初始化时暂时关闭数据采集，可以通过指定 `dataCollect: false` 关闭。
 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
   dataCollect: false  
@@ -65,7 +65,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
 
 默认为关闭。在开发时设置 `debug: true`，打开浏览器控制台，即可看到实时采集的数据。
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
   debug: true  
@@ -75,7 +75,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
 
 开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。默认情况下，SDK未开启该功能，如您需要此功能，可以通过指定 `followShare: true` 来开启跟踪分享。
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
   followShare: true  
@@ -95,8 +95,9 @@ onShareAppMessage: function() {
 ### 设置强制登录模式(forceLogin)
 
 默认情况下，SDK通过自动生成的 uid 上报标识用户。如您需要根据 openId 标识用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
+
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your AppId' {
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
   forceLogin: true  
@@ -109,7 +110,8 @@ gdp('identify', openId);
 ```
 
 :::caution 注意：
-如果用户在打开您的微信小程后没有使用微信授权登录，但是小程序配置了forceLogin为true，会导致SDK不能采集数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们。
+开启此功能有助于访问用户数据关联性分析；同时可能会造成统计数据略微偏差的风险。
+设置为 true 后，必须要调用 identify，否则不发送数据；调用 identify 会替换 deviceId 为设定值（一般是小程序openId），包括identify之前触发的事件
 :::
 
 ### 获取地理位置信息(getLocation)

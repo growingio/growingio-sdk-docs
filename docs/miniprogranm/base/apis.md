@@ -46,6 +46,8 @@ gdp('identify', openId);
 ### 2、设置登录用户id
 
 当用户登录之后调用`setUserId` API，设置登录用户ID
+
+若您的小程序每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在监测到用户为登录用户后重新调用setLoginUserId方法。
 :::info
 支持 ID-MAPPING SDK版本 >=3.3.0
 **需在初始化 SDK 时设置`enableIdMapping`为`true`**

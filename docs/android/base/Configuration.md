@@ -124,7 +124,35 @@ ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.NONE)
 ## 常用可选模块配置
 
 可以用来加载自定义/预定义的模块, 与 API 接口registerComponent功能相同, 用于在 SDK 初始化时需要优先加载的模块注册(如网络模块、OAID模块、加密模块等)
-### 1. **采集`OAID`作为设备信息**
+### 1. **内嵌H5页面数据采集配置**
+APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web JS SDK
+
+如果集成的是[**无埋点SDK**](/docs/android/base/Getting%20Started#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
+
+如果集成的是[**埋点SDK**](/docs/android/base/Getting%20Started#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
+:::info
+**使用时注意模块版本需要与采集SDK版本保持一致**
+:::
+```groovy
+...
+implementation "com.growingio.android:hybrid:3.3.0"
+```
+
+SDK初始化时需要注册 hybrid 模块：
+```java
+// 在初始化SDK时，可以提前注册hybrid模块
+// hybrid模块需要依赖对应 hybrid模块包 hybrid
+GrowingAutotracker.startWithConfiguration(this, 
+                new CdpAutotrackConfiguration("accountId", "urlScheme")
+                ...
+                .setPreloadComponent(new HybridLibraryGioModule()));  
+```
+需要在 WebView 初始化之后调用桥接代码，实现访问用户数据打通:
+```java
+GrowingTracker.get().bridgeWebView(webview) 
+```
+
+### 2. **采集`OAID`作为设备信息**
 :::info
 采集 SDK 版本 >=3.3.0
 
@@ -140,8 +168,8 @@ implementation "com.growingio.android:oaid:3.3.0"
 SDK初始化时注册Oaid模块：
 ```java
 // 初始化SDK时，可以提前注册 oaid 模块
-GrowingAutotracker.startWithConfiguration(this,
-        new CdpAutotrackConfiguration("accountId", "urlScheme")
+GrowingTracker.startWithConfiguration(this,
+        new CdpTrackConfiguration("accountId", "urlScheme")
         ...
         .setPreloadComponent(new OaidLibraryGioModule()));
 );
@@ -164,7 +192,7 @@ GrowingAutotracker.startWithConfiguration(this,
 目前腾讯， 头条， 网易广告SDK已经要求使用 OAID， OAID 的准确性和覆盖率均满足广告场景的使用需求，Android SDK 提供采集 OAID 的能力。
 :::
 
-### 2. **SDK数据加密传输**
+### 3. **SDK数据加密传输**
 :::info
 采集 SDK 版本 >=3.3.0
 
