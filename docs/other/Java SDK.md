@@ -10,6 +10,12 @@ GrowingIO提供在Server端部署的SDK，从而可以方便的进行事件上�
 
 ----
 
+:::info
+Java SDK从1.0.10-cdp版本开始使用v3协议进行事件上报, 使用前确认平台版本支持v3协议
+
+支持的平台版本为 OP-13.6、OP-14.x、OP-2.x 版本
+:::
+
 ## 依赖
 
 我们推荐使用 Maven 管理Java 项目，请在 pom.xml 文件中，添加一下依赖信息，Maven将自动获取 Java SDK 并更新项目配置
@@ -21,7 +27,7 @@ pom.xml
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.9-cdp</version>
+        <version>1.0.10-cdp</version>
     </dependency>
 </dependencies>
 ```
@@ -32,16 +38,12 @@ pom.xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.9-cdp</version>
+    <version>1.0.10-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
-            <groupId>org.xerial.snappy</groupId>
-            <artifactId>snappy-java</artifactId>
-        </exclusion>
-        <exclusion>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
         </exclusion>
     </exclusions>
 </dependency>     
@@ -58,14 +60,16 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 
 //事件行为消息体
 GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
-    .eventTime(System.currentTimeMillis())            // 默认为系统当前时间,选填
+    .eventTime(System.currentTimeMillis())            // 默认为系统当前时间 (选填)
     .eventKey("3")                                    // 事件标识 (必填)
-    .eventNumValue(1.0)                               // 打点事件数值 (选填)
+    .eventNumValue(1.0)                               // 打点事件数值 (选填), 已废弃
+    .anonymousId("device_id")                         // 访问用户ID (选填)
+    .loginUserKey("account")                          // 登录用户KEY (选填)
     .loginUserId("417abcabcabcbac")                   // 登陆用户ID (选填)
     .addEventVariable("product_name", "苹果")          // 事件级变量 (选填)
     .addEventVariable("product_classify", "水果")      // 事件级变量 (选填)
     .addEventVariable("product_price", 14)            // 事件级变量 (选填)
-    .addItem("item_id", "item_key")                   // 物品模型id, key (选填)
+    .addItem("item_id", "item_key")                   // 物品模型ID, KEY (选填)
     .build();
 
 //上传事件行为消息到服务器
@@ -74,7 +78,8 @@ project.send(eventMessage);
 
 ## 配置文件信息
 
-gio.properties
+配置在资源目录
+resources/gio.properties
 
 ```properties
 #项目采集端地址, https://api.growingio.com 需要填写完整的url地址, 如不清楚请联系您的专属项目经理
@@ -97,11 +102,11 @@ logger.implemention=io.growing.sdk.java.logger.GioLoggerImpl
 #运行模式，test:仅输出消息体，不发送消息，production: 发送消息
 run.mode=test
 # 设置代理, 如果不设置，默认为不使用代理
-proxy.host=127.0.0.1
-proxy.port=3128
+# proxy.host=127.0.0.1
+# proxy.port=3128
 # 设置代理认证用户密码, 如果不设置，默认为不使用用户验证 [认证加密方式为 Basic base64]
-proxy.user=demo
-proxy.password=demo
+# proxy.user=demo
+# proxy.password=demo
 #http 连接超时时间,默认2秒
 #connection.timeout=2000
 #http 连接读取时间,默认2秒
@@ -141,60 +146,87 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|eventKey|string|是|埋点事件的Key|
-|loginUserId|string|是|登录用户ID|
-|eventTime|long|否|事件发生时间|
-|addEventVariable|(string, string\|double\|int)|否|事件级变量|
-|addEventVariables|map<string,object>|否|事件级变量集合|
-|addItem|(string, string)|否|物品模型id, 物品模型key|
+|eventTime|long|否|事件发生时间。|
+|eventKey|string|是|埋点事件的KEY。|
+|anonymousId|string|否|匿名用户ID。|
+|loginUserKey|string|否|登录用户KEY。|
+|loginUserId|string|否|登录用户ID。|
+|addEventVariable|(string, string\|double\|int)|否|事件级变量。|
+|addEventVariables|map<string,object>|否|事件级变量集合。|
+|addItem|(string, string)|否|物品模型ID, 物品模型KEY。|
 
 **代码示例**
+
 ```java
 GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
-                    .eventKey("eventKey")                            // 事件标识
-                    .loginUserId("loginUserId")                      // 登录用户id
-                    .anonymousId("anonymousId")                      // 访问用户id
-                    .addEventVariable("product_name", "cdp苹果")     // 事件级变量
-                    .addEventVariables(map)                         // 事件级变量集合
-                    .addItem("itemId", "itemKey")                   // 物品模型id, key
+                    .eventTime(System.currentTimeMillis())            // 默认为系统当前时间 (选填)
+                    .eventKey("eventKey")                             // 事件标识 (必填)
+                    .anonymousId("device_id")                         // 访问用户ID (选填)
+                    .loginUserKey("account")                          // 登录用户KEY (选填)
+                    .loginUserId("417abcabcabcbac")                   // 登录用户ID (选填)
+                    .addEventVariable("product_name", "cdp苹果")       // 事件级变量 (选填)
+                    .addEventVariables(map)                           // 事件级变量集合 (选填)
+                    .addItem("itemId", "itemKey")                     // 物品模型ID, KEY (选填)
                     .build();
-```
-
-### 物品模型API
-
-|参数名称|类型|是否必填|说明|
-| --- | --- | --- | --- |
-|id|string|是|物品模型id|
-|key|string|是|物品模型key|
-|addItemVariable|map<string,string>|否|物品模型变量|
-
-```java
-GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
-                .id("1001")                        // 物品模型id
-                .key("product")                    // 物品模型key
-                .addItemVariable("color", "red")   // 物品模型变量 (选填)
-                .build();
 ```
 
 ### 用户变量 API
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|loginUserId|string|是|登录用户ID。|
 |time|long|否|事件发生时间。|
+|anonymousId|string|否|匿名用户ID。|
+|loginUserKey|string|否|登录用户KEY。|
+|loginUserId|string|是|登录用户ID。|
 |addUserVariable|(string, string\|double\|int)|否|用户变量。|
 |addUserVariables|map<string,object>|否|用户变量集合。|
 
-
-示例代码：
+**代码示例**
 
 ```java
 GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
-                .time(System.currentTimeMillis())      // 默认为系统当前时间,选填
-                .loginUserId("loginUserId")            // 带用登陆用户ID的 (必填)
+                .time(System.currentTimeMillis())      // 默认为系统当前时间 (选填)
+                .anonymousId("device_id")              // 访问用户ID (选填)
+                .loginUserKey("account")               // 登录用户KEY (选填)
+                .loginUserId("loginUserId")            // 登录用户ID的 (必填)
                 .addUserVariable("gender", "man")      // 用户变量 (选填)
                 .addUserVariables(map)                 // 用户变量集合 (选填)
                 .build();
+```
+
+### 物品模型API
+
+|参数名称|类型|是否必填|说明|
+| --- | --- | --- | --- |
+|id|string|是|物品模型ID。|
+|key|string|是|物品模型KEY。|
+|addItemVariable|map<string,string>|否|物品模型变量。|
+
+**代码示例**
+
+```java
+GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
+                .id("1001")                        // 物品模型ID (必填)
+                .key("product")                    // 物品模型KEY (必填)
+                .addItemVariable("color", "red")   // 物品模型变量 (选填)
+                .build();
+```
+
+### 用户融合 API
+
+|参数名称|类型|是否必填|说明|
+| --- | --- | --- | --- |
+|addUserVariable|(string, string)|否|用户KEY, 用户ID。|
+|addUserVariables|map<string,string>|否|(用户KEY, 用户ID)集合。|
+
+**代码示例**
+
+```java
+GioCdpUserMappingMessage msg = new GioCdpUserMappingMessage.Builder()
+        .addIdentities("phone", "1**********1")          // 登录用户KEY, 登录用户ID
+        .addIdentities("email", "2********0@qq.com")     // 登录用户KEY, 登录用户ID
+        .addIdentities(map)
+        .build();
 ```
 
 ## 程序测试
