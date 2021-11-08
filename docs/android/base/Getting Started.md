@@ -20,7 +20,7 @@ Android SDK 提供了 `无埋点` 和 `埋点` 两个SDK版本：
 
 ## 集成无埋点SDK
 ### 添加依赖
-在 project 级别的build.gradle文件中添加autotracker-gradle-plugin依赖和maven仓库。
+在 project 级别的build.gradle文件中添加autotracker-gradle-plugin依赖。
 
 ```groovy
 buildscript {
@@ -36,7 +36,27 @@ buildscript {
         classpath 'com.growingio.android:autotracker-gradle-plugin:3.3.0'
     }
 }
+```
 
+如果项目中使用的Android Gradle插件为7.0及以上版本，需要在 project 中的settings.gradle文件中添加Maven仓库
+
+```groovy
+// 当AGP版本为7.0及以上添加
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        // 添加maven仓库，AndroidStudio会自动设置，如果已经存在不需要重复添加
+        mavenCentral()
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+
+```
+如果项目中使用的Android Gradle插件为4.2及以下版本，则需要在 project 级别的build.gradle文件中添加Maven仓库
+
+```groovy
+// 当AGP版本为4.2及以下添加
 allprojects {
     repositories {
         // 添加maven仓库
