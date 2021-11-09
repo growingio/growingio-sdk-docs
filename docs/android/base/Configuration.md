@@ -135,7 +135,7 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 :::
 ```groovy
 ...
-implementation "com.growingio.android:hybrid:3.3.0"
+implementation "com.growingio.android:hybrid:3.3.1"
 ```
 
 SDK初始化时需要注册 hybrid 模块：
@@ -163,7 +163,7 @@ GrowingTracker.get().bridgeWebView(webview)
 
 ```groovy
 ...
-implementation "com.growingio.android:oaid:3.3.0"
+implementation "com.growingio.android:oaid:3.3.1"
 ```
 SDK初始化时注册Oaid模块：
 ```java
@@ -201,7 +201,7 @@ GrowingTracker.startWithConfiguration(this,
 项目需要添加加密模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:encoder:3.3.0"
+implementation "com.growingio.android:encoder:3.3.1"
 ```
 
 SDK初始化时注册加密模块：
