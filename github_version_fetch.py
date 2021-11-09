@@ -101,21 +101,21 @@ if __name__ == '__main__':
         if platform['enable'] is False:
             continue
         platform_newest_tag = github_release(platform)
-    #     if platform_newest_tag is not None \
-    #             and platform_newest_tag != "" \
-    #             and "SNAPSHOT" not in platform_newest_tag.upper() \
-    #             and "BETA" not in platform_newest_tag.upper():
-    #         version = re.findall(version_pattern, platform_newest_tag)[0]
-    #         name = platform['name']
-    #
-    #         # update android version
-    #         if "android" == name.lower():
-    #             replace_android_version(platform["distPath"], version)
-    #         # update giokit android version
-    #         if "giokit android" == name.lower():
-    #             replace_giokit_android_version(platform["distPath"], version)
-    #
-    #         platform['version'] = version
-    #
-    # with(open(config_file, 'w')) as f:
-    #     json.dump(config, f, ensure_ascii=False, indent=2)
+        if platform_newest_tag is not None \
+                and platform_newest_tag != "" \
+                and "SNAPSHOT" not in platform_newest_tag.upper() \
+                and "BETA" not in platform_newest_tag.upper():
+            version = re.findall(version_pattern, platform_newest_tag)[0]
+            name = platform['name']
+
+            # update android version
+            if "android" == name.lower():
+                replace_android_version(platform["distPath"], version)
+            # update giokit android version
+            if "giokit android" == name.lower():
+                replace_giokit_android_version(platform["distPath"], version)
+
+            platform['version'] = version
+
+    with(open(config_file, 'w')) as f:
+        json.dump(config, f, ensure_ascii=False, indent=2)
