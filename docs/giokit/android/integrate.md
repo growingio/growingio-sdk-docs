@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 ## 集成 GioKit
 
-GioKit 代码后续将逐步开源，敬请期待！
+GioKit 代码已托管在 [Github](https://github.com/growingio/giokit-android) 上，欢迎 star,fork。
 :::info
 **Gradle插件版本**： 3.2.1及以上  
 **Android系统版本**：Android 5.0 及以上, **<font color='red'>GioKit仅支持 AndroidX</font>**<br/>
@@ -27,7 +27,7 @@ buildscript {
     }
     dependencies {
         // GioKit plugin
-        classpath "com.growingio.giokit:giokit-plugin:1.0.0-SNAPSHOT"
+        classpath "com.growingio.giokit:giokit-plugin:1.1.0-SNAPSHOT"
     }
 }
 
@@ -64,8 +64,8 @@ apply plugin: 'com.growingio.giokit.saas'
 dependencies {
     ...
     // GioKit
-    debugImplementation "com.growingio.giokit:giokit:1.0.0-SNAPSHOT"
-    releaseImplementation "com.growingio.giokit:giokit-no-op:1.0.0-SNAPSHOT"
+    debugImplementation "com.growingio.giokit:giokit:1.1.0-SNAPSHOT"
+    releaseImplementation "com.growingio.giokit:giokit-no-op:1.1.0-SNAPSHOT"
 }
 ```
 
@@ -113,11 +113,13 @@ class MyApplication : Application() {
 </TabItem>
 </Tabs>
 
-### 设置手动埋点范围
-为了方便统一查看用户的手动埋点信息，我们通过 GioKit Plugin 插件来查找在应用中手动埋点调用的位置。
+### 插件配置
+为了满足用户的需求，我们在 Giokit 插件中添加了多项配置。
 ```groovy
 giokitExt {
     debugMode false
+    enableIncremental false
+    enableRelease false
     // 统计该域值下所有埋点信息，如 com.growingio 表示统计 com.growingio 包名下的埋点代码
     trackFinder {
         domain = ["com.growingio.giokit.demo"]
@@ -127,6 +129,8 @@ giokitExt {
     }
 }
 ```
-:::info
-默认查找域名为项目的`ApplicationId`
-:::
+1. debugMode 为true时，项目编译的时候会输出相应的 Debug 信息；
+2. enableIncremental 是否打开增量编译，默认为true。由于 Giokit 会查找代码中的所有埋点信息，所以在增量编译时有时候会出现无法找到埋点代码的情况，这时候可以将其设置false，来保证每次查找的准确性；
+3. enableRelease 是否支持release打包。giokit 是只推荐在 debug 环境下使用，若一定要在release环境下使用，则需要打开此开关来使插件生效；
+4. 为了方便统一查看用户的手动埋点信息，我们通过 trackFinder 配置来查找在应用中手动埋点调用的位置。默认查找域名为项目的`ApplicationId`
+```
