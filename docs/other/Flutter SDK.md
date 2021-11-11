@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 title: Flutter SDK
 ---
 针对于SDK 3.0 上的flutter插件，当前仅支持埋点sdk。
@@ -10,10 +10,14 @@ title: Flutter SDK
 集成环境：dart sdk: ">=2.7.0 且<3.0.0"
   flutter: ">=1.20.0"
 
-请下拉CDP分支，而不是master分支进行测试
+对应的是CDP分支，而不是master分支进行测试
 :::
-
-## 添加依赖
+## 环境配置
+:::info
+请确保原生工程中已经添加**原生埋点SDK**, 如果没有, 请移步至原生端埋点SDK集成文档: [**Android 埋点SDK**](/docs/android/base/Getting%20Started#集成埋点sdk)、[**iOS 埋点SDK**](/docs/ios/base/Getting_Started#埋点sdk集成)
+:::
+## Flutter SDK 集成
+### 添加依赖
 
 以工程`flutter_app`为例，在`pubspec.yaml`文件中添加依赖
 
@@ -26,119 +30,9 @@ dependencies:
 ```
 
 然后执行 `flutter pub get` 指令
-
-> 注意：部分用户无法访问github.com，从而无法下拉插件库的情况，可以修改域名为hub.fastgit.org，即可解决
-
-## iOS 工程配置
-
-sdk需要初始化操作，否则会`异常退出`
-
-在`AppDelegate`文件中添加初始化sdk代码，例如如下所示：
-
-```c
-#import "AppDelegate.h"
-#import "GeneratedPluginRegistrant.h"
-#import "GrowingTracker.h"
-#import "GrowingTrackConfiguration.h"
-@implementation AppDelegate
-
-- (BOOL)application:(UIApplication *)application
-    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-        
-    // Config GrowingIO
-    // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-    // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-    // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
-    // YourDatasourceId eg: 11223344aabbcc
-    GrowingTrackConfiguration *configuration = [GrowingTrackConfiguration configurationWithProjectId:@"YourAccountId"];
-    configuration.dataCollectionServerHost = @"YourServerHost";
-    configuration.dataSourceId = @"YourDatasourceId";
-    
-    [GrowingTracker startWithConfiguration:configuration launchOptions:launchOptions];
-    [GeneratedPluginRegistrant registerWithRegistry:self];
-    // Override point for customization after application launch.
-    return [super application:application didFinishLaunchingWithOptions:launchOptions];
-}
-
-@end
-```
-
-使用Xcode，选择`Targets->Info->URL Types`配置好相关的`url scheme`
-
-## Android工程配置
-
-- 新建一个`MyApplication`继承自`FlutterApplication`
-
-```java
-package com.example.growingio_sdk_tracker_plugin_example;
-
-import com.growingio.android.sdk.track.CdpTrackConfiguration;
-import com.growingio.android.sdk.track.GrowingTracker;
-import io.flutter.app.FlutterApplication;
-
-public class MyApplication extends FlutterApplication {
-    private static CdpTrackConfiguration sConfiguration;
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-
-        if (sConfiguration == null) {
-          // Config GrowingIO
-          // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-          // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-          // Your URLScheme eg: growing.xxxxxxxxxxx
-          // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
-          // YourDatasourceId eg: 11223344aabbcc
-          sConfiguration = new CdpTrackConfiguration("Your AccountId", "Your URLScheme")
-                  .setDataCollectionServerHost("Your ServerHost")
-                  .setDataSourceId("Your DataSourceId")
-                  .setDebugEnabled(BuildConfig.DEBUG);
-        }
-        GrowingTracker.startWithConfiguration(this, sConfiguration);
-    }
-}
-
-```
-
-- 并修改` AndroidManifest.xml`文件中`android:name`字段
-
-```java
-<application
-        android:name="com.example.growingio_sdk_tracker_plugin_example.MyApplication" //修改这里
-        ...
-```
-
-- 在`app`下的`build.gradle`添加配置参数
-
-```groovy
-android {
-    compileSdkVersion 29
-
-    lintOptions {
-        disable 'InvalidPackage'
-    }
-
-    defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_app"
-        minSdkVersion 17   //提示：这里可能版本小于17，修改为17可以避免报错
-        targetSdkVersion 29
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-    resValue("string", "growingio_project_id", "9926fc6c1189e2fb") //这里是你的工程id
-    resValue("string", "growingio_url_scheme", "growing.da7e6c2879469314") //这里是你的url scheme
-```
-
-- 在`app`下的`build.gradle`中添加 `GrowingIO Tracker SDK`
-
-```groovy
-dependencies {
-    implementation 'com.growingio.android:tracker-cdp:latest.release' //可以指定你需要的版本 >3.0.0
-}
-```
-
-之后，运行你的app，即可进行正常埋点。
+:::info注意
+部分用户无法访问github.com，从而无法下拉插件库的情况，可以修改域名为hub.fastgit.org，即可解决
+:::
 
 ## API说明
 

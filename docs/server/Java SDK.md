@@ -53,7 +53,7 @@ pom.xml
 
 ```java
 // Config GrowingIO
-// 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+// 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourDatasourceId eg: 11223344aabbcc
 private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
@@ -92,9 +92,6 @@ send.msg.interval=100
 send.msg.thread=3
 #消息队列大小 （默认 500）
 msg.store.queue.size=500
-#数据压缩 false:不压缩,true:压缩
-#不压缩可节省cpu，压缩可省带宽
-compress=true
 #日志级别输出 (debug | error)
 logger.level=debug
 #自定义日志输出实现类
@@ -136,7 +133,7 @@ run.mode=test
 
 ```java
 // Config GrowingIO
-// 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+// 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourDatasourceId eg: 11223344aabbcc
 private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();

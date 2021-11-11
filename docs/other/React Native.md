@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 title: React Native SDK
 ---
 针对于SDK 3.0 上的 RN 插件，当前仅支持埋点sdk。
@@ -9,20 +9,23 @@ title: React Native SDK
 ----
 
 ## 环境配置
-
-请确保已经添加原生埋点SDK, 如果没有, 请移步至原生端SDK集成文档
-
-## 添加依赖
+:::info
+请确保原生工程中已经添加**原生埋点SDK**, 如果没有, 请移步至原生端埋点SDK集成文档: [**Android 埋点SDK**](/docs/android/base/Getting%20Started#集成埋点sdk)、[**iOS 埋点SDK**](/docs/ios/base/Getting_Started#埋点sdk集成)
+:::
+## React Native SDK集成
+### 添加依赖
 
 `$ npm install react-native-growing-tracker@1.0.1-cdp --save`
 
-### 自动安装 (React Native 0.6.0版本及其以上可以跳过该步骤)
-
+#### 自动安装
+:::info
+React Native 0.6.0版本及其以上可以跳过该步骤
+:::
 `$ react-native link react-native-growing-tracker`
 
 
 
-### 使用本地模块安装 (进行自定义修改)
+##### 使用本地模块安装 (进行自定义修改)
 
 1. git clone 插件仓库
 
@@ -55,16 +58,16 @@ react-native run-android
 
 
 
-### 手动安装
+#### 手动安装
 
-#### iOS
+##### iOS
 
 1. 打开Xcode，在您的工程目录中点击 `Libraries` ➜ `Add Files to [your project's name]`
 2. 选择添加 `node_modules` ➜ react-native-growingio-tracker ➜ `RNGrowingTracker.xcodeproj`
 3. 选择您的目标项目， `Build Phases` ➜ `Link Binary With Libraries`添加 `libRNGrowingTracker.a` 
 4. 运行项目 (`Cmd+R`)
 
-#### Android
+##### Android
 
 1. 打开您的首页Activity `android/app/src/main/java/[...]/MainActivity.java`
   - 导入包文件 `com.reactnativegrowingtracker.GrowingTrackerPackage;`
@@ -78,7 +81,7 @@ react-native run-android
     ```
     implementation project(':reactnativegrowingtracker')
     ```
-## 引入到文件
+### 引入到文件
 ```javascript
 import GrowingTracker from 'react-native-growing-tracker';
 
