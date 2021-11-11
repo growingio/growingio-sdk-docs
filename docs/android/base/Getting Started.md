@@ -6,16 +6,15 @@ title: 如何集成
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Android SDK 提供了 `无埋点` 和 `埋点` 两个SDK版本：
-* 埋点 SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集自定义事件;
-* 无埋点 SDK 具备埋点 SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
+Android SDK 提供了 <font color='red'>无埋点SDK</font> 和 <font color='red'>埋点SDK</font> 两个版本：
+* 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集自定义事件;
+* 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
 无埋点SDK（包括埋点 SDK）代码已托管在 [Github](https://github.com/growingio/growingio-sdk-android-autotracker) 上，欢迎 star,fork 一波。
 :::info
 **Gradle插件版本**： 3.2.1及以上  
-**Android系统版本**：Android 4.2及以上
-
-**根据需要选择集成无埋点SDK或者埋点SDK**
+**Android系统版本**：Android 4.2及以上<br/>
+**根据需要选择集成**<font color='red'> 无埋点SDK </font>或<font color='red'> 埋点SDK </font>
 :::
 
 ## 集成无埋点SDK
@@ -51,7 +50,6 @@ dependencyResolutionManagement {
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
-
 ```
 如果项目中使用的Android Gradle插件为4.2及以下版本，则需要在 project 级别的build.gradle文件中添加Maven仓库
 
@@ -124,8 +122,17 @@ URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把
 </manifest>
 ```
 ### SDK初始化配置
-请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。
 
+#### 获取 `AccountID`、`DataSourceID`、`Host`信息
+:::info
+`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
+`Host`需要服务端部署，如不清楚请联系您的专属项目经理
+:::
+##### 创建
+![新建数据源](./../../../static/img/createapplication.png)
+##### 查看
+![查看数据源](./../../../static/img/showappdatasourceid.png)
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -144,7 +151,6 @@ public class MyApplication extends Application {
         super.onCreate();
 
         // Config GrowingIO
-        // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
         // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
@@ -167,7 +173,6 @@ class MyApplication : Application() {
         super.onCreate()
 
         // Config GrowingIO
-        // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
         // YourAccountId eg:0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg:growing.xxxxxxxxxxx 
         // YourServerHost eg:http://106.75.81.105:8080
@@ -211,7 +216,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         // Config GrowingIO
-        // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+        // 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
         // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
@@ -237,7 +242,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         // Config GrowingIO
-        // 参数需要从GrowingIO网站上，创建新应用，或从已知应用中获取 
+        // 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理 
         // YourAccountId eg:0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg:growing.xxxxxxxxxxx 
         // YourServerHost eg:http://106.75.81.105:8080
@@ -328,8 +333,16 @@ dependencies {
 </manifest>
 ```
 ### SDK初始化配置
-请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。
-
+#### 获取 `AccountID`、`DataSourceID`、`Host`信息
+:::info
+`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
+`Host`需要服务端部署，如不清楚请联系您的专属项目经理
+:::
+##### 创建
+![新建数据源](./../../../static/img/createapplication.png)
+##### 查看
+![查看数据源](./../../../static/img/showappdatasourceid.png)
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -347,7 +360,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         // Config GrowingIO
-        // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
         // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
@@ -369,7 +381,6 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         // Config GrowingIO
-        // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
         // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址

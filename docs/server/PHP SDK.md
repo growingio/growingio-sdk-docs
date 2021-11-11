@@ -147,3 +147,24 @@ $gio->setItemAttributes(
     array('color' => 'red')
 );
 ```
+## 程序测试
+
+请按照如下步骤进行埋点数据的开发联调。
+
+### 完成埋点事件的配置
+
+在GrowingIO【数据】>【数据管理】中创建自定义事件及事件属性/登录用户属性，如图所示。
+![custom data](https://gblobscdn.gitbook.com/assets%2F-M2qbZInaXgdm8kkNosp%2F-M3jX91jAu6IT2O2PJVo%2F-M3jYpHFW7WpKIaXRTx1%2Fimage.png?alt=media&token=a2dae343-1204-4d36-ad08-9c7099016b11)
+
+### 测试程序配置
+
+1. 在您的PHP项目中集成增加GrowingIO PHP SDK的依赖（首次集成需要）
+2. SDK初始化配置中debug 配置为 true
+3. 在您的PHP项目中找到合适的埋点位置，调用自定义事件API/用户变量API上传数据
+4. 在输出的日志中查找是否包含期望事件内容
+   
+
+
+### 完成以上测试步骤后
+1. 修改SDK初始化时 debug 配置为 false 或不设置，并触发埋点事件
+2. 在线查询GrowingIO数据库，确认数据上传成功

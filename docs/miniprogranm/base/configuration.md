@@ -94,7 +94,7 @@ onShareAppMessage: function() {
 ```
 ### 设置强制登录模式(forceLogin)
 
-默认情况下，SDK通过自动生成的 uid 上报标识用户。如您需要根据 openId 标识用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
+默认情况下，SDK通过自动生成访问用户ID标识访问用户。如您需要根据 openId 标识用户，以此来关联用户，可以通过指定 `forceLogin: true` 打开强制登录模式，且必须调用 `identify` 接口设置openId为访问用户ID。
 
 ```js
 gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
@@ -103,15 +103,17 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   forceLogin: true  
 });
 ```
-打开后SDK会暂停上报数据，待用户登录获取 openId，调用 `identify` 方法设置 访问用户id 为 openId 后继续数据采集，以此来关联用户。
+打开小程序后SDK会采集数据，但暂停上报数据，在微信小程序调用[登录开放接口 `wx.login`](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)获取 openId ，调用 `identify` 方法设置 openId 为访问用户ID，之后继续采集上报数据(调用`identify`之前采集的数据也一同上报)。
 
 ```js
 gdp('identify', openId);
 ```
 
 :::caution 注意：
+此模式适用于打开就要求用户微信登录的小程序
 开启此功能有助于访问用户数据关联性分析；同时可能会造成统计数据略微偏差的风险。
-设置为 true 后，必须要调用 identify，否则不发送数据；调用 identify 会替换 deviceId 为设定值（一般是小程序openId），包括identify之前触发的事件
+设置为 true 后，必须要调用 `identify`，否则不上报数据；
+调用 `identify` 会替换 deviceId 为设定值（一般是小程序openId），包括调用`identify`之前采集的数据
 :::
 
 ### 获取地理位置信息(getLocation)

@@ -94,6 +94,8 @@ pod 'GrowingAnalytics/ENABLE_ENCRYPTION'
 ### 3.**内嵌H5页面数据采集配置**
 APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web JS SDK
 
+若需要 H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通，请参考内置 [Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
+
 如果APP集成的是[**无埋点SDK**](/docs/ios/base/Getting_Started#无埋点sdk集成)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
 如果APP集成的是[**埋点SDK**](/docs/ios/base/Getting_Started#埋点sdk集成)，则需要在您的 Podfile 文件中添加 Hybrid 依赖

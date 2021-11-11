@@ -70,15 +70,11 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 
 监听时机：onLoad
 
-该插件提供H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的数据打通能力，打通规则如下：
+该插件提供H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通能力，打通规则如下：
 
 * 当Web JS SDK 与APP GIO SDK集成使用的 accountId 一致时，H5页面上采集的数据仅由 APP 中 GIO SDK 发送；
 
 * 当Web JS SDK 与APP GIO SDK集成使用的 accountId 不一致时，H5页面上采集的数据同时由 Web JS SDK 和 APP 中 GIO SDK发送；
-  
-:::info
-发送数据中 accountId,  datasourceId, host 与 发送数据SDK 中的对应字段保持一致
-:::
 
 ### APP 中 GIO SDK 打通设置
 #### iOS APP
@@ -92,6 +88,20 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 如果集成的是[**无埋点SDK**](/docs/android/base/Getting%20Started#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
 如果集成的是[**埋点SDK**](/docs/android/base/Getting%20Started#集成埋点sdk)，则需要设置，详细请参安卓[内嵌h5页面数据采集配置](/docs/android/base/Configuration#1-内嵌h5页面数据采集配置)
+### 打通成功效果
+
+当触发了打通规则后，h5内嵌页采集的数据经 APP 中 GIO SDK发送的数据以下字段的变化如下：
+
+```tex
+deviceId: 使用原生App的deviceId
+sessionId: 使用原生App的sessionId
+gioId: 使用原生App的gioId 
+userId: 使用原生App的userId
+userKey: 使用原生App的userKey
+dataSourceId: 使用原生App的dataSourceId
+platform: 使用原生App的platform
+domain: 使用H5页面的域名
+```
 ## 7. 小程序内嵌页打通插件
 
 插件名：embed-h5-plugin
@@ -158,7 +168,7 @@ gdp('init', 'pid11', 'ds22', 'wx33', {
 });
 ```
 
-### 触发成功效果
+### 打通成功效果
 
 当触发了打通规则后，h5内嵌页中发数时以下字段的变化如下：
 

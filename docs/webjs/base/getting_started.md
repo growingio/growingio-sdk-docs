@@ -15,14 +15,24 @@ Web JS SDK 代码尚未开源，后续会开源
 
 ## Web JS SDK集成
 
+### 获取 `AccountID`、`DataSourceID`、`Host`信息
+:::info
+`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
+`Host`需要服务端部署，如不清楚请联系您的专属项目经理
+:::
+##### 创建
+![新建数据源](./../../../static/img/createapplication.png)
+##### 查看
+![查看数据源](./../../../static/img/showwebdatasourceid.png)
+
 ### Web使用集成
+
 请将以下的页面代码放置到需要分析的页面中的`<head> 和 </head>`标签之间，即可完成最新 Web JS SDK 页面代码的添加。
 :::info
 请注意使用具体的项目ID替换代码中的 your accountId、your DataSourceId 确保JS资源地址正确。
 
 JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
 :::
-
 ```html
 <script type='text/javascript'>
   (function(window, document, script, src, namespace) {
@@ -37,7 +47,6 @@ JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
   })(window, document, 'script', 'JS 资源地址', 'gdp');
 
   // Config GrowingIO
-  // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
   // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
   // YourServerHost eg: api.growingio.com 仅需填写对应host
   // YourDatasourceId eg: 11223344aabbcc
@@ -49,13 +58,18 @@ JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
 </script>
 ```
 
-### APP 内嵌H5页面使用集
+### APP内嵌H5页面使用集成
 
 集成方式和web使用集成一致；Web JS SDK会自动判断桥的情况进行数据的转发，详见[Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
 
 ### 小程序内嵌页使用集成
 小程序内嵌页集成方式和 Web 页面使用集成添加的跟踪代码一致；
 如果有和小程序数据进行用户打通的需求，这时就需要在SDK初始化时填写您小程序的 accountId，AppId 来作为打通的判断，详见[小程序内嵌页打通插件](/docs/webjs/plugins#7-小程序内嵌页打通插件)。
+:::info
+请注意使用具体的项目ID替换代码中的 your accountId、your DataSourceId 确保JS资源地址正确。
+
+JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
+:::
 ```html
 <script type='text/javascript'>
   (function(window, document, script, src, namespace) {
@@ -69,7 +83,6 @@ JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
     tag.parentNode.insertBefore(script, tag);
   })(window, document, 'script', 'JS 资源地址', 'gdp');
   // Config GrowingIO
-  // 参数需要从CDP网站上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
   // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
   // YourServerHost eg: api.growingio.com 仅需填写对应host
   // YourDatasourceId eg: 11223344aabbcc
@@ -86,8 +99,11 @@ JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
 
 ### 常见的初始化失败情况
 
-1. 初始化时需设置 host、accountId、datasourceId，否则初始化失败。
-2. 不支持file协议（3.2.0版本起支持）、localhost、127.0.0.1
+#### 1. 初始化时需设置 host、accountId、datasourceId，否则初始化失败。
+#### 2. 初始化 GrowingIO SDK失败。暂不支持 localhost，127.0.0.1
 
+请检查加载的页面链接是否是 不支持file协议（3.2.0版本起支持）、localhost、127.0.0.1；
 
+Web JS SDK 默认是不会采集本地页面（域名为 localhost 或者 file:// 协议），如果您希望 SDK 采集本地页面，需要在集成 SDK 代码的**最前面**添加如下代码：
+window._gr_ignore_local_rule=true; //开启本地页面采集
 

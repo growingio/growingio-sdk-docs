@@ -84,6 +84,8 @@ import TabItem from '@theme/TabItem';
 
 ### 9. **setExcludeEvent** 
 事件过滤。默认情况下，事件不会进行过滤。但若不想采集某些事件可以在此设置。事件类型可以参考 [FilterEventParams](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/EventExcludeFilter.java)
+
+**无埋点SDK示例代码：**
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤事件
 GrowingAutotracker.startWithConfiguration(this,
@@ -92,6 +94,18 @@ GrowingAutotracker.startWithConfiguration(this,
        .setExcludeEvent(EventExcludeFilter.EVENT_MASK_TRIGGER))
 );
 ```
+
+**埋点SDK示例代码：**
+```java
+// 初始化无埋点SDK时，调用方法设置过滤事件
+GrowingTracker.startWithConfiguration(this,
+    new CdpTrackConfiguration("accountId", "urlScheme")
+        ...
+       .setExcludeEvent(EventExcludeFilter.EVENT_MASK_TRIGGER))
+);
+```
+
+若想取消过滤，可以调用
 ```java
 // 若想取消过滤，可以调用
 ConfigurationProvider.core().setExcludeEvent(EventExcludeFilter.NONE)
@@ -100,6 +114,8 @@ ConfigurationProvider.core().setExcludeEvent(EventExcludeFilter.NONE)
 ### 10. **setIgnoreField** 
 事件属性过滤。事件属性指上报事件中携带的属性参数。可过滤事件属性可以参考 [FieldIgnoreFilter](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/FieldIgnoreFilter.java)
 初始化时可以设置对应的事件过滤
+
+**无埋点SDK示例代码：**
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤字段
 GrowingAutotracker.startWithConfiguration(this,
@@ -108,6 +124,18 @@ GrowingAutotracker.startWithConfiguration(this,
        .setIgnoreField(FieldIgnoreFilter.FIELD_IGNORE_ALL)
 );
 ```
+
+**埋点SDK示例代码：**
+```java
+// 初始化无埋点SDK时，调用方法设置过滤字段
+GrowingTracker.startWithConfiguration(this,
+    new CdpTrackConfiguration("accountId", "urlScheme")
+        ...
+       .setIgnoreField(FieldIgnoreFilter.FIELD_IGNORE_ALL)
+);
+```
+
+
 ```java
 // 若想取消过滤，可以调用
 ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.NONE)
@@ -122,10 +150,16 @@ ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.NONE)
 曝光比例。与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
 
 ## 常用可选模块配置
+:::info
+采集 SDK 版本 >=3.3.0
 
+**使用时注意模块版本需要与采集SDK版本保持一致**
+:::
 可以用来加载自定义/预定义的模块, 与 API 接口registerComponent功能相同, 用于在 SDK 初始化时需要优先加载的模块注册(如网络模块、OAID模块、加密模块等)
 ### 1. **内嵌H5页面数据采集配置**
 APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web JS SDK
+
+若需要 H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通，请参考内置 [Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
 
 如果集成的是[**无埋点SDK**](/docs/android/base/Getting%20Started#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
 
@@ -139,15 +173,19 @@ implementation "com.growingio.android:hybrid:3.3.1"
 ```
 
 SDK初始化时需要注册 hybrid 模块：
+
+**埋点SDK示例代码：**
 ```java
 // 在初始化SDK时，可以提前注册hybrid模块
 // hybrid模块需要依赖对应 hybrid模块包 hybrid
-GrowingAutotracker.startWithConfiguration(this, 
-                new CdpAutotrackConfiguration("accountId", "urlScheme")
+GrowingTracker.startWithConfiguration(this, 
+                new CdpTrackConfiguration("accountId", "urlScheme")
                 ...
                 .setPreloadComponent(new HybridLibraryGioModule()));  
 ```
 需要在 WebView 初始化之后调用桥接代码，实现访问用户数据打通:
+
+**埋点SDK示例代码：**
 ```java
 GrowingTracker.get().bridgeWebView(webview) 
 ```
@@ -160,12 +198,23 @@ GrowingTracker.get().bridgeWebView(webview)
 :::
 
 项目需要添加[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 OAID模块依赖(和 SDK 依赖同级)：
-
 ```groovy
 ...
 implementation "com.growingio.android:oaid:3.3.1"
 ```
 SDK初始化时注册Oaid模块：
+
+**无埋点SDK示例代码：**
+```java
+// 初始化SDK时，可以提前注册 oaid 模块
+GrowingAutotracker.startWithConfiguration(this,
+        new CdpAutotrackConfiguration("accountId", "urlScheme")
+        ...
+        .setPreloadComponent(new OaidLibraryGioModule()));
+);
+```
+
+**埋点SDK示例代码：**
 ```java
 // 初始化SDK时，可以提前注册 oaid 模块
 GrowingTracker.startWithConfiguration(this,
@@ -174,6 +223,7 @@ GrowingTracker.startWithConfiguration(this,
         .setPreloadComponent(new OaidLibraryGioModule()));
 );
 ```
+
 配置完成后之后会在 `Visit` 事件中添加 `oaid` 字段：
 
 ```json
@@ -205,11 +255,23 @@ implementation "com.growingio.android:encoder:3.3.1"
 ```
 
 SDK初始化时注册加密模块：
-```java
+
+**无埋点SDK示例代码：**
+  ```java
 // 初始化无埋点SDK时, 调用方法注册加密模块
 // 加密模块需要依赖对应 加密模块包encoder
 GrowingAutotracker.startWithConfiguration(this, 
                 new CdpAutotrackConfiguration("accountId", "urlScheme")
+                ...
+                .setPreloadComponent(new EncoderLibraryGioModule()));
+```
+
+**埋点SDK示例代码：**
+```java
+// 初始化无埋点SDK时, 调用方法注册加密模块
+// 加密模块需要依赖对应 加密模块包encoder
+GrowingTracker.startWithConfiguration(this, 
+                new CdpTrackConfiguration("accountId", "urlScheme")
                 ...
                 .setPreloadComponent(new EncoderLibraryGioModule()));
 ```
