@@ -4,6 +4,16 @@ sidebar_position: 0
 ---
 -----
 
+## V0.3.1 - 2021/11/11
+
+[v0.3.1](https://github.com/growingio/growingio-sdk-ios-toolskit/compare/0.3.0...0.3.1) 
+
+* 增加网络监控（仅埋点事件请求）
+* SDK Info 添加 urlScheme 和数据加密配置展示
+* events list 增加按照事件类型搜索
+
+
+
 ## V0.3.0 - 2021/10/21
 
 [v0.3.0](https://github.com/growingio/growingio-sdk-ios-toolskit/compare/0.2.0...0.3.0) 
