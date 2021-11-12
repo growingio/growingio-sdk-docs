@@ -1,5 +1,5 @@
 ---
-hide_title: false
+hide_title: true
 hide_table_of_contents: false
 sidebar_label: AGP7.0 共享依赖
 sidebar_position: 6
