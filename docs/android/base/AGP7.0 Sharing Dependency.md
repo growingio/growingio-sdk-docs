@@ -1,3 +1,14 @@
+---
+hide_title: false
+hide_table_of_contents: false
+sidebar_label: AGP7.0 共享依赖
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 ## 在项目之间共享依赖版本 
 
 在AGP7.0以上集成 Android SDK时，推荐在项目的 settings.gradle 进行统一的依赖设置，这样有利于在项目之间进行依赖版本的共享，这也是Gradle官方推荐的做法
@@ -17,6 +28,7 @@ gioCoordinates = com.growingio.android:autotracker-gradle-plugin:3.3.0
 
 2、在项目的 settings.gradle 文件中设置 pluginManagement 模块，设置全局仓库和插件
 
+
 <Tabs
   groupId="code-language"
   defaultValue="groovy"
@@ -26,7 +38,7 @@ gioCoordinates = com.growingio.android:autotracker-gradle-plugin:3.3.0
   ]
 }>
 
-<TabItem value="groovy">
+<TabItem value="groovy" default>
 
 ```groovy
 pluginManagement {
@@ -130,7 +142,6 @@ pluginManagement {
 
 <TabItem value="groovy">
 
-
 ```groovy
 enableFeaturePreview('VERSION_CATALOGS')
 dependencyResolutionManagement {
@@ -211,7 +222,6 @@ dependencyResolutionManagement {
 
 <TabItem value="groovy">
 
-
 ```groovy
 plugins {
 
@@ -260,9 +270,9 @@ dependencies {
 1、 在项目的 gradle.properties 文件中设置SDK当前最新的版本号
 
 ```groovy
+
 # 设置版本号
 gioVersion=3.3.0
-
 ```
 
 2、在项目的 settings.gradle 文件中设置 pluginManagement 模块，设置全局仓库和插件
@@ -330,7 +340,6 @@ pluginManagement {
 
 <TabItem value="groovy">
 
-
 ```groovy
 enableFeaturePreview('VERSION_CATALOGS')
 dependencyResolutionManagement {
@@ -378,6 +387,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
 
+            // 声明版本号，并且设置依赖
             val gioVersion: String by settings
             version("tracker", gioVersion)
             alias("gio-tracker").to("com.growingio.android","tracker-cdp").versionRef("tracker")
@@ -406,7 +416,6 @@ dependencyResolutionManagement {
 
 <TabItem value="groovy">
 
-
 ```groovy
 dependencies {
 
@@ -415,7 +424,6 @@ dependencies {
     ...
 }
 ```
-
 </TabItem>
 
 <TabItem value="kotlin">
@@ -423,12 +431,11 @@ dependencies {
 ```kotlin
 dependencies {
 
-	// 设置 GrowingIO 无埋点依赖
+	// 设置 GrowingIO 埋点依赖
     implementation(libs.gio.tracker)
     ...
 }
 ```
-
 </TabItem>
 </Tabs>
 
