@@ -36,7 +36,7 @@ buildscript {
 
 如果项目中使用的Android Gradle插件为7.0及以上版本，需要在 project 中的settings.gradle文件中添加Maven仓库
 
-如果用户需要在 project 中的settings.gradle文件中进行全局的共享依赖，可以参考 [AGP7.0共享依赖](/docs/android/base/AGP7.0 Sharing Dependency)的无埋点部分
+如果用户需要在 project 中的settings.gradle文件中进行全局的共享依赖，可以参考 [AGP7.0共享依赖](/docs/android/base/AGP7.0SharingDependency)的无埋点部分
 
 ```groovy
 // 当AGP版本为7.0及以上添加
@@ -303,7 +303,7 @@ dependencies {
 }
 ```
 
-如果用户需要在 project 中的settings.gradle文件中进行全局的共享依赖，可以参考 [AGP7.0共享依赖](/docs/android/base/AGP7.0 Sharing Dependency)的埋点部分
+如果用户需要在 project 中的settings.gradle文件中进行全局的共享依赖，可以参考 [AGP7.0共享依赖](/docs/android/base/AGP7.0SharingDependency)的埋点部分
 
 ### 添加URLScheme
 
