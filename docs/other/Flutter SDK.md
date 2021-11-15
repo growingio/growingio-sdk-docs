@@ -52,12 +52,12 @@ GrowingTracker.setLoginUserId('loginUserId');
 ```javascript
 GrowingTracker.cleanLoginUserId();
 ```
-### 3. 设置登录用户变量
-以登录用户的身份定义用户属性变量，用于用户信息相关分析。
+### 3. 设置登录用户属性
+以登录用户的身份定义登录用户属性，用于用户信息相关分析。
 #### 参数说明
 | 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
 | :----: | :-----: | :--: | :----: | :-----------------------------------: |
-| attributes | Map |  是  |  undefine  | 登录用户变量 |
+| attributes | Map |  是  |  undefine  | 登录用户属性 |
 #### 代码示例
 ```javascript
 GrowingTracker.setLoginUserAttributes({
@@ -65,8 +65,8 @@ GrowingTracker.setLoginUserAttributes({
     key2: 'value2',
 });
 ```
-### 4. 自定义事件
-发送一个自定义事件。在添加所需要发送的事件代码之前，需要在事件管理用户界面配置事件以及事件级变量。
+### 4. 埋点事件
+发送一个埋点事件。在添加所需要发送的事件代码之前，需要在事件管理用户界面配置事件以及事件属性。
 #### 参数说明
 | 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
 | :----: | :-----: | :--: | :----: | :----------------------------------- |

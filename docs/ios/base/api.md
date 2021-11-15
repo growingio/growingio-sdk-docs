@@ -130,9 +130,9 @@ import TabItem from '@theme/TabItem';
 [[GrowingTracker sharedInstance] cleanLocation];
 ```
 
-### 7. 设置自定义事件 
+### 7. 设置埋点事件 
 `trackCustomEvent`<br/>
-发送一个自定义事件。在添加所需要发送的事件代码之前，需要在事件管理用户界面配置事件以及事件级变量。
+发送一个埋点事件。在添加所需要发送的事件代码之前，需要在事件管理用户界面配置事件以及事件属性。
 
 #### 参数说明
 
@@ -163,9 +163,9 @@ import TabItem from '@theme/TabItem';
 
 
 
-### 8. 设置登录用户变量 
+### 8. 设置登录用户属性 
 `setLoginUserAttributes`<br/>
-以登录用户的身份定义用户属性变量，用于用户信息相关分析。
+以登录用户的身份定义登录用户属性，用于用户信息相关分析。
 
 #### 参数说明
 
