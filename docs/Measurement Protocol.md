@@ -90,7 +90,7 @@ sidebar_position: 12
 }
 ```
 
-### 自定义事件(CUSTOM)
+### 埋点事件(CUSTOM)
 
 * 请求发送时机：当用户主动调用track类型的接口时，半自动埋点，自主业务采集
 * 服务器请求地址
@@ -98,10 +98,10 @@ sidebar_position: 12
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
 | :---- | ---- | ---- | ---- |
-| eventName | string | ✅ | 自定义事件的名称 |
-| path | string | ❌ | 自定义事件关联的page |
-| pageShowTimestamp | long | ❌ | 自定义事件关联的page的显示时间戳 |
-| attributes | Map<string, string> | ❌ | 自定义事件属性 |
+| eventName | string | ✅ | 埋点事件的名称 |
+| path | string | ❌ | 埋点事件关联的page |
+| pageShowTimestamp | long | ❌ | 埋点事件关联的page的显示时间戳 |
+| attributes | Map<string, string> | ❌ | 埋点事件属性 |
 | query | string | ❌ | Hybrid页面url 中的query |
 | resourceItem | 对象 ResourceItem | ❌ | 物品模型（CDP 特有）|
 

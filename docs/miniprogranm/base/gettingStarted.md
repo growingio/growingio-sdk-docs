@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 小程序 SDK 支持 `微信小程序` 平台，后续会逐步支持其他平台。具备以下功能特性：
-* 埋点能力，开发同学调用API主动采集自定义事件
+* 埋点能力，开发同学调用API主动采集埋点事件
 * 无埋点能力，自动采集用户行为事件，可通过开关控制
 
 ## 小程序SDK集成

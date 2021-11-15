@@ -7,11 +7,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ### SDK 自检
 
-点击自检页中间的按钮，可以帮助你检测当前 SDK 集成状态，如：
+点击自检页中间的按钮，可以帮助您检测当前 SDK 集成状态，如：
 
 - 当前 SDK 版本
 - SDK 初始化状态
-- Project ID
+- 项目ID
 - ServerHost
 - URL Scheme 配置等等
 
@@ -25,7 +25,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ### SDK 信息
 
-收集了 SDK 以及应用的所有基本信息，你可以在这里查看对比所配置内容是否符合预期。如有任何问题，还可截长图发送给技术支持协助排查。
+收集了 SDK 以及应用的所有基本信息，您可以在这里查看对比所配置内容是否符合预期。如有任何问题，还可截长图发送给技术支持协助排查。
 
  <img alt="SDK 信息" src={useBaseUrl('/img/giokit/ios/sdkinfo.gif')}/>
 
@@ -43,6 +43,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ### 网络请求
 
-该界面会显示应用运行期间产生的所有网络请求，包括请求数量，请求大小和请求错误的个数。同时在详情页内可以查看使用了加密库之后的请求数据。
+该界面会显示应用**运行期间**产生的所有网络请求，包括请求数量，请求大小和请求错误的个数。同时在详情页内可以查看使用了加密库之后的请求数据。
 
  <img alt="网络请求" src={useBaseUrl('/img/giokit/ios/sdkhttp.gif')}/>

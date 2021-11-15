@@ -66,9 +66,9 @@ GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
     .anonymousId("device_id")                         // 访问用户ID (选填)
     .loginUserKey("account")                          // 登录用户KEY (选填)
     .loginUserId("417abcabcabcbac")                   // 登陆用户ID (选填)
-    .addEventVariable("product_name", "苹果")          // 事件级变量 (选填)
-    .addEventVariable("product_classify", "水果")      // 事件级变量 (选填)
-    .addEventVariable("product_price", 14)            // 事件级变量 (选填)
+    .addEventVariable("product_name", "苹果")          // 事件属性 (选填)
+    .addEventVariable("product_classify", "水果")      // 事件属性 (选填)
+    .addEventVariable("product_price", 14)            // 事件属性 (选填)
     .addItem("item_id", "item_key")                   // 物品模型ID, KEY (选填)
     .build();
 
@@ -139,7 +139,7 @@ run.mode=test
 private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
 ```
 
-### 自定义事件API
+### 埋点事件API
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
@@ -148,8 +148,8 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 |anonymousId|string|否|匿名用户ID。|
 |loginUserKey|string|否|登录用户KEY。|
 |loginUserId|string|否|登录用户ID。|
-|addEventVariable|(string, string\|double\|int)|否|事件级变量。|
-|addEventVariables|map<string,object>|否|事件级变量集合。|
+|addEventVariable|(string, string\|double\|int)|否|事件属性。|
+|addEventVariables|map<string,object>|否|事件属性集合。|
 |addItem|(string, string)|否|物品模型ID, 物品模型KEY。|
 
 **代码示例**
@@ -161,13 +161,13 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
                     .anonymousId("device_id")                         // 访问用户ID (选填)
                     .loginUserKey("account")                          // 登录用户KEY (选填)
                     .loginUserId("417abcabcabcbac")                   // 登录用户ID (选填)
-                    .addEventVariable("product_name", "cdp苹果")       // 事件级变量 (选填)
-                    .addEventVariables(map)                           // 事件级变量集合 (选填)
+                    .addEventVariable("product_name", "cdp苹果")       // 事件属性 (选填)
+                    .addEventVariables(map)                           // 事件属性集合 (选填)
                     .addItem("itemId", "itemKey")                     // 物品模型ID, KEY (选填)
                     .build();
 ```
 
-### 用户变量 API
+### 登录用户属性 API
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
@@ -175,8 +175,8 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 |anonymousId|string|否|匿名用户ID。|
 |loginUserKey|string|否|登录用户KEY。|
 |loginUserId|string|是|登录用户ID。|
-|addUserVariable|(string, string\|double\|int)|否|用户变量。|
-|addUserVariables|map<string,object>|否|用户变量集合。|
+|addUserVariable|(string, string\|double\|int)|否|登录用户属性。|
+|addUserVariables|map<string,object>|否|登录用户属性集合。|
 
 **代码示例**
 
@@ -186,8 +186,8 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
                 .anonymousId("device_id")              // 访问用户ID (选填)
                 .loginUserKey("account")               // 登录用户KEY (选填)
                 .loginUserId("loginUserId")            // 登录用户ID的 (必填)
-                .addUserVariable("gender", "man")      // 用户变量 (选填)
-                .addUserVariables(map)                 // 用户变量集合 (选填)
+                .addUserVariable("gender", "man")      // 登录用户属性 (选填)
+                .addUserVariables(map)                 // 登录用户属性集合 (选填)
                 .build();
 ```
 
@@ -197,7 +197,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 | --- | --- | --- | --- |
 |id|string|是|物品模型ID。|
 |key|string|是|物品模型KEY。|
-|addItemVariable|map<string,string>|否|物品模型变量。|
+|addItemVariable|map<string,string>|否|物品模型属性。|
 
 **代码示例**
 
@@ -205,7 +205,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
                 .id("1001")                        // 物品模型ID (必填)
                 .key("product")                    // 物品模型KEY (必填)
-                .addItemVariable("color", "red")   // 物品模型变量 (选填)
+                .addItemVariable("color", "red")   // 物品模型属性 (选填)
                 .build();
 ```
 
@@ -232,14 +232,14 @@ GioCdpUserMappingMessage msg = new GioCdpUserMappingMessage.Builder()
 
 ### 完成埋点事件的配置
 
-在GrowingIO【数据】>【数据管理】中创建自定义事件及事件属性/登录用户属性，如图所示。
+在GrowingIO【数据】>【数据管理】中创建埋点事件及事件属性/登录用户属性，如图所示。
 ![custom data](https://gblobscdn.gitbook.com/assets%2F-M2qbZInaXgdm8kkNosp%2F-M3jX91jAu6IT2O2PJVo%2F-M3jYpHFW7WpKIaXRTx1%2Fimage.png?alt=media&token=a2dae343-1204-4d36-ad08-9c7099016b11)
 
 ### 测试程序配置
 
 1. 在您的Java项目中的pom.xml中增加GrowingIO Java SDK的依赖（首次集成需要）
 2. 在gio.properties配置文件将run.mode定义为test
-3. 在您的Java项目中找到合适的埋点位置，调用自定义事件API/用户变量API上传数据
+3. 在您的Java项目中找到合适的埋点位置，调用埋点事件API/登录用户属性API上传数据
 4. 在输出的日志中查找是否包含期望事件内容，如下：
 > gio message is [{"cs1":"10324","t":"cstm","var":{"product_name":"苹果"},"tm":1575895053509,"n":"order"}]
 

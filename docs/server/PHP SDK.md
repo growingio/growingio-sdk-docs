@@ -52,9 +52,9 @@ $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 ```
 
 ### 数据采集API
-**1\. 采集自定义事件**
+**1\. 采集埋点事件**
 ###### 接口功能
-> 发送一个自定义事件。在添加所需要发送的事件代码之前,需要在事件管理用户界面配置事件以及事件级变量
+> 发送一个埋点事件。在添加所需要发送的事件代码之前,需要在事件管理用户界面配置事件以及事件属性
 
 ###### 请求参数
 |参数|必选|类型|默认值|说明|
@@ -74,9 +74,9 @@ $gio->track(
     'itemKey'
 );
 ```
-**2\. 设置登录用户变量**
+**2\. 设置登录用户属性**
 ###### 接口功能
-> 以登录用户的身份定义用户属性变量,用于用户信息相关分析
+> 以登录用户的身份定义登录用户属性,用于用户信息相关分析
 
 ###### 请求参数
 |参数|必选|类型|默认值|说明|
@@ -117,15 +117,15 @@ use com\growingio\GrowingIO;
 include_once 'path/src/GrowingIO.php'; // path为对应路径
 
 // 请在您调试前,将accountID修改为您的项目AccountID
-// 所有自定义事件需要提前在GrowingIO产品中进行定义
-// 所有自定义事件的属性也需要提前在GrowingIO产品中进行定义
+// 所有埋点事件需要提前在GrowingIO产品中进行定义
+// 所有埋点事件的属性也需要提前在GrowingIO产品中进行定义
 $accountID = '1234567887654321';
 $host = 'https://localhost.com';
 $dataSourceId = '12345678';
 $props = array('debug' => true);
 $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 
-// 采集自定义事件
+// 采集埋点事件
 $gio->track(
     'loginUserId',
     'eventName',
@@ -134,7 +134,7 @@ $gio->track(
     'itemKey'
 );
 
-// 设置登录用户变量
+// 设置登录用户属性
 $gio->setUserAttributes(
     'loginUserId', 
     array('gender' => 'male')
@@ -153,14 +153,14 @@ $gio->setItemAttributes(
 
 ### 完成埋点事件的配置
 
-在GrowingIO【数据】>【数据管理】中创建自定义事件及事件属性/登录用户属性，如图所示。
+在GrowingIO【数据】>【数据管理】中创建埋点事件及事件属性/登录用户属性，如图所示。
 ![custom data](https://gblobscdn.gitbook.com/assets%2F-M2qbZInaXgdm8kkNosp%2F-M3jX91jAu6IT2O2PJVo%2F-M3jYpHFW7WpKIaXRTx1%2Fimage.png?alt=media&token=a2dae343-1204-4d36-ad08-9c7099016b11)
 
 ### 测试程序配置
 
 1. 在您的PHP项目中集成增加GrowingIO PHP SDK的依赖（首次集成需要）
 2. SDK初始化配置中debug 配置为 true
-3. 在您的PHP项目中找到合适的埋点位置，调用自定义事件API/用户变量API上传数据
+3. 在您的PHP项目中找到合适的埋点位置，调用埋点事件API/登录用户属性API上传数据
 4. 在输出的日志中查找是否包含期望事件内容
    
 
