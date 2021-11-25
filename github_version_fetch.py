@@ -21,6 +21,8 @@ def github_release(platform):
             release_name = release["name"]
             if release_name is None or release_name == "":
                 release_name = release["tag_name"]
+            if hotfix_version(release_name):
+                continue
             readme += readme_item_title.format(title=release["tag_name"].upper(), name=release_name, url=release["html_url"],
                                                date=release["published_at"].split("T")[0])
             readme += release["body"]
@@ -55,6 +57,14 @@ class GithubVersionSub(object):
     def sub_replace(self, matched):
         return matched.group(1) + self.version
 
+def hotfix_version(tag):
+    if tag is not None \
+            and tag != "" \
+            and "SNAPSHOT" not in tag.upper() \
+            and "BETA" not in tag.upper() \
+            and "HOTFIX" not in tag.upper():
+        return False
+    return True
 
 def replace_android_version(dir, version):
     for root, dirs, files in os.walk(dir, followlinks=False):
@@ -101,10 +111,7 @@ if __name__ == '__main__':
         if platform['enable'] is False:
             continue
         platform_newest_tag = github_release(platform)
-        if platform_newest_tag is not None \
-                and platform_newest_tag != "" \
-                and "SNAPSHOT" not in platform_newest_tag.upper() \
-                and "BETA" not in platform_newest_tag.upper():
+        if not hotfix_version(platform_newest_tag):
             version = re.findall(version_pattern, platform_newest_tag)[0]
             name = platform['name']
 
