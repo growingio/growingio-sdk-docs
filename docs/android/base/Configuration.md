@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 | Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 | 版本 |
 | :-------------------------   | :------   | :----:  |:------  |:------| ----- | --------------------------   |
-| `accounttId`                  | `String`  | 是      | `null`   | 项目ID，每个应用对应唯一值 | - |  |
+| `accountId`                  | `String`  | 是      | `null`   | 项目ID，每个应用对应唯一值 | - |  |
 | `urlScheme`                  | `String`  | 是      | `null`   | 应用的URLScheme，唯一值 | - |  |
 | `setDataSourceId`            | `String`  | 是      | `null`   | 应用的DataSourceId，唯一值 | - |  |
 | `setDataCollectionServerHost`| `String`  | 是      | `null`   | 服务端部署后的 ServerHost | - |  |
@@ -169,7 +169,7 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 :::
 ```groovy
 ...
-implementation "com.growingio.android:hybrid:3.3.1"
+implementation "com.growingio.android:hybrid:3.3.2"
 ```
 
 SDK初始化时需要注册 hybrid 模块：
@@ -200,7 +200,7 @@ GrowingTracker.get().bridgeWebView(webview)
 项目需要添加[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 OAID模块依赖(和 SDK 依赖同级)：
 ```groovy
 ...
-implementation "com.growingio.android:oaid:3.3.1"
+implementation "com.growingio.android:oaid:3.3.2"
 ```
 SDK初始化时注册Oaid模块：
 
@@ -251,7 +251,7 @@ GrowingTracker.startWithConfiguration(this,
 项目需要添加加密模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:encoder:3.3.1"
+implementation "com.growingio.android:encoder:3.3.2"
 ```
 
 SDK初始化时注册加密模块：
