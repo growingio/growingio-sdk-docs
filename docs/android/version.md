@@ -13,15 +13,6 @@ sidebar_position: 0
 * remove unboxing and check data is not null ([2aebf29](https://github.com/growingio/growingio-sdk-android-autotracker/pull/123/commits/2aebf29d8e7f37efde353686fa87fa2e35af5597))
 * 支持对5G网络类型的判断 https://github.com/growingio/growingio-sdk-android-autotracker/pull/130
 
-## V3.3.1-11111-SNAPSHOT
- >[release-3.3.1-11111-SNAPSHOT](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.1-11111-SNAPSHOT) 日期: 2021-11-11 
-
-### Bug Fixes
-
-* databse or disk is full ([c83e64f](https://github.com/growingio/growingio-sdk-android-autotracker/commit/c83e64f712b94cce2942ac77dcfa756f5dc78ad6))
-* inject webview ([95eb1df](https://github.com/growingio/growingio-sdk-android-autotracker/commit/95eb1dfa9b221b226aedd4dfb80865cd29950258))
-* remove unboxing and check data is not null ([2aebf29](https://github.com/growingio/growingio-sdk-android-autotracker/pull/123/commits/2aebf29d8e7f37efde353686fa87fa2e35af5597))
-
 ## V3.3.1
  >[release-3.3.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.1) 日期: 2021-10-28 
 
@@ -59,13 +50,6 @@ Android 无埋点/埋点 SDK 3.3.0
 * idmapping ([5a4bac8](https://github.com/growingio/growingio-sdk-android-autotracker/commit/5a4bac88fc33f2ec1396b64583d5984224abae9b))
 * 适配oaid1.0.27版本 ([b216efa](https://github.com/growingio/growingio-sdk-android-autotracker/commit/b216efa533c7e2c9e869c47aa652f6725c407cf3))
 
-
-## V3.2.3-09141-SNAPSHOT
- >[release-3.2.3-09141-SNAPSHOT](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.2.3-09141-SNAPSHOT) 日期: 2021-09-14 
-
-### Bug Fixes
-
-* 延迟初始化访问webview导致NPE
 
 ## V3.2.2
  >[v3.2.2](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.2.2) 日期: 2021-09-09 
@@ -119,12 +103,5 @@ Android   无埋点/埋点 SDK 3.1.0
 1. 支持mobile debugger功能
 2. 仓库从JCenter迁移到MavenCentral
 3. 提高sdk稳定性
-
-## V3.1.0-SNAPSHOT
- >[V3.1.0-SNAPSHOT](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/V3.1.0-SNAPSHOT) 日期: 2021-04-13 
-
-1. 添加了Debugger Service圈选服务.
-2. 修复圈选部分 event xpath 路径问题.
-3. 迁移仓库到 MavenCentral.
 
 ### 更多发布细节请参考 [Github Releases](https://github.com/growingio/growingio-sdk-android-autotracker/releases)
