@@ -128,8 +128,8 @@ run.mode=test
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|setProjectKey|String|是|项目ID|
-|setDataSourceId|String|是|数据源ID|
+|setProjectKey|string|是|项目ID|
+|setDataSourceId|string|是|数据源ID|
 
 ```java
 // Config GrowingIO
@@ -144,13 +144,13 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
 |eventTime|long|否|事件发生时间。|
-|eventKey|String|是|埋点事件的KEY。|
-|anonymousId|String|否|匿名用户ID。|
-|loginUserKey|String|否|登录用户KEY。|
-|loginUserId|String|否|登录用户ID。|
-|addEventVariable|(String, String\|double\|int)|否|事件属性。|
-|addEventVariables|Map<String,object>|否|事件属性集合。|
-|addItem|(String, String)|否|物品模型ID, 物品模型KEY。|
+|eventKey|string|是|埋点事件的KEY。|
+|anonymousId|string|否|匿名用户ID。|
+|loginUserKey|string|否|登录用户KEY。|
+|loginUserId|string|否|登录用户ID。|
+|addEventVariable|(string, string\|double\|int)|否|事件属性。|
+|addEventVariables|map<string,object>|否|事件属性集合。|
+|addItem|(string, string)|否|物品模型ID, 物品模型KEY。|
 
 **代码示例**
 
@@ -172,11 +172,11 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
 |time|long|否|事件发生时间。|
-|anonymousId|String|否|匿名用户ID。|
-|loginUserKey|String|否|登录用户KEY。|
-|loginUserId|String|是|登录用户ID。|
-|addUserVariable|(String, String\|double\|int)|否|登录用户属性。|
-|addUserVariables|Map<String,object>|否|登录用户属性集合。|
+|anonymousId|string|否|匿名用户ID。|
+|loginUserKey|string|否|登录用户KEY。|
+|loginUserId|string|是|登录用户ID。|
+|addUserVariable|(string, string\|double\|int)|否|登录用户属性。|
+|addUserVariables|map<string,object>|否|登录用户属性集合。|
 
 **代码示例**
 
@@ -195,9 +195,9 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|id|String|是|物品模型ID。|
-|key|String|是|物品模型KEY。|
-|addItemVariable|(String,String)|否|物品模型属性。|
+|id|string|是|物品模型ID。|
+|key|string|是|物品模型KEY。|
+|addItemVariable|map<string,string>|否|物品模型属性。|
 
 **代码示例**
 
@@ -213,8 +213,8 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|addUserVariable|(String, String)|否|用户KEY, 用户ID。|
-|addUserVariables|Map<String,String>|否|(用户KEY, 用户ID)集合。|
+|addIdentities|(string, string)|否|用户KEY, 用户ID。|
+|addIdentities|map<string,string>|否|(用户KEY, 用户ID)集合。|
 
 **代码示例**
 
