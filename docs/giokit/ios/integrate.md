@@ -19,14 +19,14 @@ GioKit 代码已托管在 [Github](https://github.com/growingio/growingio-sdk-io
 ### 1. Cocoapods 集成
 在 `Podfile` 中添加依赖库
 :::info
-GrowingIO iOS SDK 版本在 **3.3.0 及以上**, 请添加
+GrowingIO iOS SDK 版本在 **3.2.1 及以上**, 请添加
 ```ruby
 pod 'GrowingToolsKit', :configurations => ['Debug']
 ```
 ::::
 
 :::info
-GrowingIO iOS SDK 版本在 **3.2.2 及以下**，请添加：
+GrowingIO iOS SDK 版本在 **3.2.0 及以下**，请添加：
 
 ```ruby
 pod 'GrowingToolsKit/SDK30202', :configurations => ['Debug']
