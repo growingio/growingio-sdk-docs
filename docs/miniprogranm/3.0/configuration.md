@@ -15,8 +15,6 @@ gdp('init','your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
 
 ## 初始化可配置项
 
->  该表格列出了当前sdk内置的配置项，但也可以根据插件来新增自定义配置。
-
 | **字段名**            | **参数类型**  | **必填** | **默认值**     | **说明**                                                                                                           |
 | --------------------- | ------------- | -------- | -------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `autotrack`           | `boolean`     | 否       | `true`         | 是否开启无埋点采集<br />影响事件：`VIEW_CLICK, VIEW_CHANGE, FORM_SUBMIT`                                           |
@@ -49,7 +47,7 @@ gdp('init','your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
 
 ### 开启调试模式(debug)
 
-在开发时设置 `debug: true`，打开浏览器控制台，即可看到实时采集的数据。
+在开发时设置 `debug: true`，打开开发者工具控制台，即可看到实时采集的数据。
 
 ### 设置跟踪分享数据(followShare)
 
