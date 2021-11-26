@@ -35,7 +35,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
  <img alt="代码埋点" src={useBaseUrl('/img/giokit/android/sdkcode.jpg')}/>
 
-### 埋点数据
+### 事件库
 
 以列表形式展示自插件启用后所有的埋点数据及其发送状态，点击单条数据可查看数据详情。数据格式请移步[测量协议](/docs/Measurement%20Protocol)。
 同时您可以通过输入事件类型来进行筛选，可以选中复制数据详情。
@@ -49,7 +49,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
  <img alt="埋点追踪" src={useBaseUrl('/img/giokit/android/sdktrack.gif')}/>
 
-### 网络请求
+### 网络记录
 该界面会显示应用**运行期间**产生的所有网络请求，包括请求数量，请求大小和请求错误的个数。同时在详情页内可以查看使用了加密库之后的请求数据。
 
  <img alt="网络请求" src={useBaseUrl('/img/giokit/android/sdkhttp.gif')}/>
