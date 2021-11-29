@@ -17,7 +17,9 @@ const gdp = require('./utils/gio/sdk.js').default;
 //          修改为 ↓↓↓
 import gdp from "./utils/gio/sdk.js";
 ```
-3、检查配置项，移除`usePlugin`配置，没有则跳过。
+3、检查初始化方式，如果使用 `setConfig` 方法初始化，请[参考文档](/docs/miniprogranm/3.5/integration/wx)修改；如果使用 `init` 方法则跳过。
+
+4、检查配置项，移除`usePlugin`配置，如果没有则跳过。
 ```js
 gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
     version: 'miniProgram version',
@@ -26,7 +28,7 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
     ...other settings
 });
 ```
-4、如果您是支付宝(天猫)小程序，请参考[集成支付宝(天猫)小程序](/docs/miniprogranm/3.5/integration/alipay)进行修改。
+5、如果您是支付宝(天猫)小程序，请参考[集成支付宝(天猫)小程序](/docs/miniprogranm/3.5/integration/alipay)进行修改。
 
 ## 页面
 

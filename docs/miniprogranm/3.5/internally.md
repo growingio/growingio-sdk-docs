@@ -31,7 +31,12 @@ title: 内置插件
 
 **支持范围：微信小程序、支付宝(天猫)小程序(基础库>=2.7.0)、百度小程序、字节跳动小程序、QQ小程序。快应用不支持。**
 
-使用方法：在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
+使用方法：
+
+1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
+
+2、在节点上添加 `data-gio-imp-eventId`、`data-gio-imp-props`、`data-gio-imp-item` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则[参考文档](/docs/miniprogranm/3.5/commonlyApi#4自定义埋点track)。
+
 ```html
 <view
   class="growing_collect_imp"
@@ -46,7 +51,7 @@ title: 内置插件
 
 **1、不兼容<3.5.0版本的半自动曝光事件，请注意修改。**
 
-**2、<3.5.0版本的半自动曝光事件需要手动在onShow中注册gio('collectImp', this)；3.5.0起无需手动注册，同时collectImp事件api废弃。**
+**2、<3.5.0版本的半自动曝光事件需要在onShow中手动注册；3.5.0起无需手动注册，同时collectImp事件api废弃。**
 
 ## mpvue适配插件
 
