@@ -21,13 +21,13 @@ title: 内置插件
 
 提供埋点(手动上报数据接口)事件的插件。
 
-**自定义埋点事件：** 对应 `CUSTOM` 事件。[调用方法](/docs/miniprogranm/3.5/commonlyApi#4自定义埋点)
+**自定义埋点事件：** 对应 `CUSTOM` 事件。[调用方法](/docs/miniprogram/3.5/commonlyApi#4自定义埋点)
 
-**登录用户属性事件：** 对应 `LOGIN_USER_ATTRIBUTES` 事件。[调用方法](/docs/miniprogranm/3.5/commonlyApi#5登录用户属性事件)
+**登录用户属性事件：** 对应 `LOGIN_USER_ATTRIBUTES` 事件。[调用方法](/docs/miniprogram/3.5/commonlyApi#5登录用户属性事件)
 
 ## 半自动曝光事件
 
-用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogranm/3.5/commonlyApi#4自定义埋点)在平台上进行事件类型和变量的预定义。
+用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogram/3.5/commonlyApi#4自定义埋点)在平台上进行事件类型和变量的预定义。
 
 **支持范围：微信小程序、支付宝(天猫)小程序(基础库>=2.7.0)、百度小程序、字节跳动小程序、QQ小程序。快应用不支持。**
 
@@ -35,7 +35,7 @@ title: 内置插件
 
 1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
 
-2、在节点上添加 `data-gio-imp-eventId`、`data-gio-imp-props`、`data-gio-imp-item` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则[参考文档](/docs/miniprogranm/3.5/commonlyApi#4自定义埋点track)。
+2、在节点上添加 `data-gio-imp-eventId`、`data-gio-imp-props`、`data-gio-imp-item` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则[参考文档](/docs/miniprogram/3.5/commonlyApi#4自定义埋点track)。
 
 ```html
 <view

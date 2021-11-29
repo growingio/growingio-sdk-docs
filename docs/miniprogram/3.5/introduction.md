@@ -43,7 +43,7 @@ import TabItem from '@theme/TabItem';
 >
 > 初始化配置项 `vue` 字段废弃，新增 `wepy`、`mpvue`、`uniVue`、`taroVue` 配置项字段。
 
-具体升级方式请见[升级到3.5](/docs/miniprogranm/3.5/upgrade)。
+具体升级方式请见[升级到3.5](/docs/miniprogram/3.5/upgrade)。
 
 ## 版本选择
 
@@ -63,7 +63,7 @@ import TabItem from '@theme/TabItem';
 
 目前内置可插拔的功能有 `埋点插件`、`无埋点插件`、`半自动曝光插件`、`mpvue适配插件`、`wepy适配插件`、`uni-app适配插件`、`Taro适配插件` 7个。
 
-内置插件介绍详情请见[内置插件](/docs/miniprogranm/3.5/internally)。
+内置插件介绍详情请见[内置插件](/docs/miniprogram/3.5/internally)。
 
 由于插件插拔功能直接影响SDK运行，暂不支持客户自行调整。
 

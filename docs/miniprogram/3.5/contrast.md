@@ -7,7 +7,7 @@ title: 3.0与3.5对比
 
 ## 初始化
 
-[对应文档](/docs/miniprogranm/3.5/initSettings)
+[对应文档](/docs/miniprogram/3.5/initSettings)
 
 **移除项：** `usePlugin`、`vue`、`setConfig`方法、
 
@@ -15,7 +15,7 @@ title: 3.0与3.5对比
 
 ## 数据采集API
 
-[对应文档](/docs/miniprogranm/3.5/commonlyApi)
+[对应文档](/docs/miniprogram/3.5/commonlyApi)
 
 **移除项：** `collectImp`
 
@@ -33,9 +33,9 @@ title: 3.0与3.5对比
 
 1、新增 `getOption` 接口，可轻松获取SDK当前配置。[参考文档](/3.5/commonlyApi#8获取sdk当前配置getoption)
 
-2、新增 `setOption` 接口，统一修改配置的方法。[参考文档](/docs/miniprogranm/3.5/commonlyApi#动态配置接口)
+2、新增 `setOption` 接口，统一修改配置的方法。[参考文档](/docs/miniprogram/3.5/commonlyApi#动态配置接口)
 
 ## 不兼容改动
 
-1、半自动曝光事件参数配置方式[参考文档](/docs/miniprogranm/3.5/internally#半自动曝光事件)
+1、半自动曝光事件参数配置方式[参考文档](/docs/miniprogram/3.5/internally#半自动曝光事件)
 

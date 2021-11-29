@@ -14,7 +14,7 @@ title: 数据采集API
 
 ### 1、初始化SDK(init)
 
-[参考集成文档](/docs/miniprogranm/3.5/integration/wx)
+[参考集成文档](/docs/miniprogram/3.5/integration/wx)
 
 ### 2、初始化SDK(setConfig)
 ***此方法废弃，请参考 init 初始化***
@@ -76,7 +76,7 @@ gdp('setOption', 'scheme', 'http' | 'https');
 ### 1、设置访问用户id(identify)
 :::info
 若使用此接口需要在初始化时将 forceLogin 设置为 true
-参考[设置强制登录模式](/docs/miniprogranm/3.5/initSettings#forcelogin)
+参考[设置强制登录模式](/docs/miniprogram/3.5/initSettings#forcelogin)
 :::
 在微信小程序调用[登录开放接口](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) `wx.login` 之后，获取 openId，调用 identify 设置访问用户ID。
 
