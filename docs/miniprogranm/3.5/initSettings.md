@@ -7,25 +7,26 @@ title: 集成配置
 
 下表中列出了所有小程序SDK的配置项，请按需设置。如您不确定是否需要，请咨询我们。
 
-| **字段名**            | **参数类型**  | **默认值**     | **说明**                                                 |
-| --------------------- | ------------- | -------------- | -------------------------------------------------------- |
-| `autotrack`           | `boolean`     | `true`         | 是否开启无埋点采集（需配合无埋点插件使用）               |
-| `comAsPage`           | `boolean`     | `false`        | 是否将 Component 组件 当做 Page 处理                     |
-| `dataCollect`         | `boolean`     | `true`         | 是否开启数据采集                                         |
-| `debug`               | `boolean`     | `false`        | 是否开启调试模式                                      |
-| `followShare`         | `boolean`     | `true`         | 是否跟踪分享数据                                         |
-| `forceLogin`          | `boolean`     | `false`        | 是否开启强制登录模式                         |
-| `getLocation`         | `object`      | `见下两项配置` | 获取位置配置项                                           |
-| `getLocation.autoGet` | `boolean`     | `false`        | 自动获取用户位置信息                                     |
-| `getLocation.type`    | `wgs84/gcj02` | `wgs84`        | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系         |
-| `host`                | `string`      | `-`            | 数据上报的服务端地址**（必填）**                                 |
-| `ignoreFields`        | `string[]`    | `-`            | 上报忽略字段                                             |
-| `mpvue`               | `any`         | `-`            | 使用 mpvue 开发时使用的实例                              |
-| `taroVue`             | `any`         | `-`            | 使用 Taro3vue2 开发时使用的实例（需配合 Taro 插件使用）  |
-| `taro`                | `any`         | `-`            | 使用 Taro 开发时使用的实例（需配合 Taro 插件使用）       |
-| `uniVue`              | `any`         | `-`            | 使用 uni-app 开发时使用的实例（需配合 uni-app 插件使用） |
-| `version`             | `string`      | `-`            | 小程序应用版本（建议填写)                                |
-| `wepy`                | `any`         | `-`            | 使用 WePY 开发时使用的实例（需配合 wepy 插件使用）       |
+| **字段名**            | **参数类型**  | **默认值** | **说明**                                                                |
+| --------------------- | ------------- | ---------- | ------------------------------------------------------------------- |
+| `autotrack`           | `boolean`     | `true`     | 是否开启无埋点采集（需配合无埋点插件使用）                                 |
+| `comAsPage`           | `boolean`     | `false`    | 是否将 Component 组件 当做 Page 处理                                   |
+| `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                                       |
+| `debug`               | `boolean`     | `false`    | 是否开启调试模式                                                       |
+| `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                                       |
+| `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                                   |
+| `getLocation`         | `object`      | `-`        | 获取位置配置项                                                        |
+| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                                   |
+| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系                          |
+| `host`                | `string`      | `-`        | 数据上报的服务端地址**(必填)**                                          |
+| `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                                          |
+| `mpvue`               | `any`         | `-`        | 使用 mpvue 开发时使用的实例**(>=3.5.0)**                               |
+| `singleSend`          | `boolean`     | `false`    | 是否每次只发送一个事件**(>=3.5.0)**                                     |
+| `taroVue`             | `any`         | `-`        | 使用 Taro3vue2 开发时使用的实例**(需配合 Taro 插件使用)(>=3.5.0)**        |
+| `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例**(需配合 Taro 插件使用)**                      |
+| `uniVue`              | `any`         | `-`        | 使用 uni-app 开发时使用的实例**(需配合 uni-app 插件使用)(>=3.5.0)**       |
+| `version`             | `string`      | `-`        | 小程序应用版本(建议填写)                                                |
+| `wepy`                | `any`         | `-`        | 使用 WePY 开发时使用的实例**(需配合 wepy 插件使用)(>=3.5.0)**             |
 
 ## 配置项详解
 
@@ -89,7 +90,7 @@ getLocation: {          //是否自动获取用户的地理位置信息, 并设�
 gdp('getLocation');      // 获取用户的地理位置信息并上报
 ```
 **注意：**<br/>
-**1、如果您初始化开启getLocation配置用户打开小程序即需要授权；手动调用getLocation方法时，需要用户授权。**<br/>
+**1、如果您初始化开启getLocation配置，用户打开小程序即需要授权；手动调用getLocation方法时，需要用户授权。**<br/>
 **2、如果您初始化开启getLocation配置或手动调用getLocation方法，都需要配置项目中的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)**
 
 ### ignoreFields
@@ -99,6 +100,13 @@ gdp('getLocation');      // 获取用户的地理位置信息并上报
 
 **支持的字段：`deviceBrand` , `deviceModel` , `deviceType` , `networkState` , `screenHeight` , `screenWidth`**
 
+### singleSend
+
+默认情况下，SDK上报发送请求时，1秒内产生的数据会打包成数组批量发送给服务端。但是天猫小程序使用云函数转发仅支持对象格式，因次我们需要开启单发，每次发送一个事件数据(单个事件数据格式为对象)。
+
 ### 其他
 
-**`mpvue` , `taroVue` , `taro` , `uniVue` , `wepy`**为小程序开发时使用的框架实例，请对号入座。
+**`mpvue` , `taroVue` , `taro` , `uniVue` , `wepy`**为小程序开发时使用的框架实例，请对号入座使用。
+
+##### 解惑：为什么以前使用一个`vue`字段即可，现在需要拆分为多个？
+##### 由于我们将不同的框架适配拆分为不同的独立插件，故而变量名不能共用一个。
