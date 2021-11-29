@@ -179,5 +179,5 @@ export default App;
   </TabItem>
 </Tabs>
 
-***更多配置项请在`集成配置`菜单中查看***
+***更多配置项请在[集成配置](/docs/miniprogranm/3.5/initSettings)菜单中查看***
 
