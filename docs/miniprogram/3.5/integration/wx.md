@@ -190,11 +190,11 @@ export default App;
 
 您需要在「小程序后台-开发-开发设置-服务器域名」中添加request合法域名，如下图：
 
-![request合法域名](/img/miniprogram/requestWhiteList.png)
+![request合法域名](/img/miniprogram/wx_white_list.png)
 
 ## 数据校验
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
 
-![debugLog](/img/miniprogram/debugLog.png)
+![debugLog](/img/miniprogram/wx_debug.png)
 
