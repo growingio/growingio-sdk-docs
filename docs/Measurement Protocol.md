@@ -33,12 +33,12 @@ sidebar_position: 12
 | appVersion | string | ✅ | APP版本，用户配置 |
 | appName | string | ✅ | APP名称 |
 | language | string | ✅ | 语言, ISO 639标准 <br />Android：ISO 639 alpha-2 or alpha-3<br />iOS：ISO 639-1 code if available, or the ISO 639-2 code if not<br /> > ISO 639 不是一个稳定的标准 |
-| latitude | double | ❌ | 维度 | 
+| latitude | double | ❌ | 维度 |
 | longitude | double | ❌ | 经度 |
 | sdkVersion | string | ✅ | SDK 版本号 |
 | userKey | string | ❌ | 登录用户ID的类型(用户自定义) |
 
-### 1. 访问事件(VISIT)
+### 访问事件(VISIT)
 
 * 请求发送时机：每当产生一个新的访问时
 * 服务器请求地址
@@ -90,7 +90,7 @@ sidebar_position: 12
 }
 ```
 
-### 2. 自定义事件(CUSTOM)
+### 埋点事件(CUSTOM)
 
 * 请求发送时机：当用户主动调用track类型的接口时，半自动埋点，自主业务采集
 * 服务器请求地址
@@ -98,10 +98,10 @@ sidebar_position: 12
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
 | :---- | ---- | ---- | ---- |
-| eventName | string | ✅ | 自定义事件的名称 |
-| path | string | ❌ | 自定义事件关联的page |
-| pageShowTimestamp | long | ❌ | 自定义事件关联的page的显示时间戳 |
-| attributes | Map<string, string> | ❌ | 自定义事件属性 |
+| eventName | string | ✅ | 埋点事件的名称 |
+| path | string | ❌ | 埋点事件关联的page |
+| pageShowTimestamp | long | ❌ | 埋点事件关联的page的显示时间戳 |
+| attributes | Map<string, string> | ❌ | 埋点事件属性 |
 | query | string | ❌ | Hybrid页面url 中的query |
 | resourceItem | 对象 ResourceItem | ❌ | 物品模型（CDP 特有）|
 
@@ -146,56 +146,14 @@ sidebar_position: 12
     "goods": "shoe",
     "brand": "Nick"
   }
-}
-```
-
-### 3. 访问用户属性事件(VISITOR_ATTRIBUTES)
-
-* 请求发送时机：当用户主动调用track类型的接口时
-* 服务器请求地址
-* 请求Body
-
-| 字段名称 | 数据类型 | 是否必有 | 解释说明 |
-| :---- | ---- | ---- | ---- |
-| attributes | Map<string, string> | ✅ | 访问用户属性 |
-
-示例
-
-```json
-{
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
-  "eventType": "VISITOR_ATTRIBUTES",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
-  "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
-  "screenWidth": 1080,
-  "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
-  "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "sdkVersion": "3.0.1",
-  "attributes": {
-    "sex": "male",
-    "age": "18"
+  "resourceItem": {
+    "key": "itemKey",
+    "id": "itemId"
   }
 }
 ```
 
-### 4. 登录用户属性事件(LOGIN_USER_ATTRIBUTES)
+### 登录用户属性事件(LOGIN_USER_ATTRIBUTES)
 
 * 请求发送时机：当用户主动调用track类型的接口时
 * 服务器请求地址
@@ -226,55 +184,7 @@ sidebar_position: 12
 }
 ```
 
-### 5. 转化变量事件(CONVERSION_VARIABLES)
-
-* 请求发送时机：当用户主动调用track类型的接口时
-
-* 服务器请求地址
-
-* 请求Body
-
-| 字段名称 | 数据类型 | 是否必有 | 解释说明 |
-| :---- | ---- | ---- | ---- |
-| attributes | Map<string, string> | ✅ | 转化变量 |
-
-示例
-
-```json
-{
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
-  "eventType": "CONVERSION_VARIABLES",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
-  "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
-  "screenWidth": 1080,
-  "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
-  "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "sdkVersion": "3.0.1",
-  "attributes": {
-    "campaignId": "10",
-    "campaignOwner": "xxx@growingio.com"
-  }
-}
-```
-
-### 6. APP关闭事件(APP_CLOSED)
+### APP、小程序关闭事件(APP_CLOSED)
 
 * 请求发送时机：当用户关闭APP时，立刻发送
 
@@ -318,7 +228,7 @@ sidebar_position: 12
 }
 ```
 
-### 7. 页面浏览事件(PAGE)
+### 页面浏览事件(PAGE)
 
 * 请求发送时机：当用户打开一个页面时
 * 服务器请求地址
@@ -368,57 +278,7 @@ sidebar_position: 12
 }
 ```
 
-### 8. 页面级属性事件(PAGE_ATTRIBUTES)
-
-* 请求发送时机：当用户主动调用track类型的接口时
-* 服务器请求地址
-* 请求Body
-
-| 字段名称 | 数据类型 | 是否必有 | 解释说明 |
-| :---- | ---- | ---- | ---- |
-| path |string | ✅ | 页面名 |
-| pageShowTimestamp | long| ✅ |页面显示时间 |
-| attributes | Map<string, string> |✅ | 页面属性 |
-| query | string | ❌ | Hybrid页面url 中的query |
-
-示例
-```json
-{
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
-  "eventType": "PAGE_ATTRIBUTES",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
-  "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "path": "/NestedFragmentActivity/GreenFragment[fragment1]",
-  "pageShowTimestamp": 1506069592985,
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
-  "screenWidth": 1080,
-  "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
-  "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "sdkVersion": "3.0.1",
-  "attributes": {
-    "color": "green",
-    "function": "nothing"
-  }
-}
-```
-
-### 9. 元素点击事件(VIEW_CLICK)
+### 元素点击事件(VIEW_CLICK)
 
 * 请求发送时机：当用户点击页面元素的时候
 * 服务器请求地址
@@ -470,7 +330,7 @@ sidebar_position: 12
 }
 ```
 
-### 10. 输入元素改变内容事件(VIEW_CHANGE)
+### 输入元素改变内容事件(VIEW_CHANGE)
 
 * 请求发送时机：当用户对App上的输入元素有改变的行为时
 * 服务器请求地址
@@ -481,11 +341,11 @@ sidebar_position: 12
 | :---- | ---- | ---- | ---- |
 | path | string | ✅ | 元素所属页面名 |
 | pageShowTimestamp | long | ✅ | 页面显示时间 |
-| textValue | string | ❌ | 元素文本内容 | 
-| xpath | string | ✅ | xpath标识符 | 
+| textValue | string | ❌ | 元素文本内容 |
+| xpath | string | ✅ | xpath标识符 |
 | index | int | ❌ | 列表元素序号 |
-| hyperlink | string | ❌ | Hybrid页面元素的href| 
-| query | string | ❌ | Hybrid页面url 中的query | 
+| hyperlink | string | ❌ | Hybrid页面元素的href|
+| query | string | ❌ | Hybrid页面url 中的query |
 
 示例
 ```json
@@ -522,9 +382,9 @@ sidebar_position: 12
 }
 ```
 
-### 11. Hybrid 表单提交事件(FORM_SUBMIT)
+### 网页、小程序表单提交事件(FORM_SUBMIT)
 
-* 请求发送时机：内嵌H5页面发生表单提交事件
+* 请求发送时机：网页、小程序页面发生表单提交事件
 * 服务器请求地址
 * 请求Body
 

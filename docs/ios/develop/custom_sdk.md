@@ -25,15 +25,15 @@ SDK 可以通过拆分成 模块、服务实现模块化，在 GrowingIO 的 SDK
 
 具有单个逻辑处理的单元，供Module使用，可替换，可去除。例如 网络发送服务、加密服务。对应的 Service Protocol 协议可以去 [Services](https://github.com/growingio/growingio-sdk-ios-autotracker/tree/master/GrowingTrackerCore/Core/Services) 下查看。
 
-> 你可以创建自己的Service服务并替换原有Service服务，例如选用自己的加密服务。你不应该去除任意Service，除非你的模块和核心库都没有使用该Service。
+> 您可以创建自己的Service服务并替换原有Service服务，例如选用自己的加密服务。您不应该去除任意Service，除非您的模块和核心库都没有使用该Service。
 
 |     名称      |                    说明                    | 是否可选 |
 | :-----------: | :----------------------------------------: | :------: |
 |   Database    |          数据库服务，处理事件数据          |    是    |
 |    Network    |                网络发送服务                |    是    |
 |   WebSocket   | websocket服务，用于圈选以及Mobile Debugger |    是    |
-|  Compression  |     压缩服务，用于网络发送时的数据压缩     |    是    |
-|  Encryption   |     加密服务，用于网络发送时的数据加密     |    是    |
+|  Compression  |     压缩服务，用于网络发送时的数据压缩(与Encryption一起使用)      |    是   |
+|  Encryption   |     加密服务，用于网络发送时的数据加密 (与Compression一起使用)     |    是    |
 | 更多开发中... |                                            |          |
 
 
@@ -49,7 +49,7 @@ SDK 可以通过拆分成 模块、服务实现模块化，在 GrowingIO 的 SDK
 
 `GrowingTracker` 和 `GrowingAutotracker` 属于外壳部分，相当于一个菜篮，里面装了从市场中选购的 `Module`以及`Service` ，外壳一般只要一个对外接口类，可以自行定义接口开放程度。
 
-> 如果需要高度定制化SDK，可以创建自己的外壳类，并在spec配置中选择你需要依赖的Module以及Service。
+> 如果需要高度定制化SDK，可以创建自己的外壳类，并在spec配置中选择您需要依赖的Module以及Service。
 
 | 名称        |   说明    |                             依赖                             |
 | :---------- | :-------: | :----------------------------------------------------------: |
@@ -60,14 +60,14 @@ SDK 可以通过拆分成 模块、服务实现模块化，在 GrowingIO 的 SDK
 
 对于常用的可选配置，增加了配置项，通过Pod引入可以实现
 
-| 名称        |   说明    | 
-| :---------- | :-------: | 
-| DISABLE_IDFA     |  禁用IDFA，且SDK中不会再有相关的IDFA代码逻辑  | 
-| ENABLE_ENCRYPTION | 禁用数据加密，使用明文 | 
+| 名称        |   说明    | 版本 |
+| :---------- | :-------: | :---------: |
+| DISABLE_IDFA     |  禁用IDFA，且SDK中不会再有相关获取IDFA代码逻辑  | <font color='red'>>=3.2.0</font> |
+| ENABLE_ENCRYPTION | 启用数据加密，防止采集数据明文传输(暂不支持自定义) | <font color='red'>>=3.3.0</font> |
 
-> 如果仅需要禁用idfa，则在pod文件中添加 pod 'GrowingAnalytics/DISABLE_IDFA' 即可，而无需自定义SDK。
-
-接下来，介绍如何自定义你的专属SDK
+:::info
+使用请参考 [**常用可选模块配置**](/docs/ios/base/Configuration#%E5%B8%B8%E7%94%A8%E5%8F%AF%E9%80%89%E6%A8%A1%E5%9D%97%E9%85%8D%E7%BD%AE)
+:::
 
 ## 二次开发
 
@@ -151,17 +151,17 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
 @end
 ```
 
-你可以创建一个类，遵循 GrowingEncryptionService 协议，在对应的方法中写你自己的逻辑，例如这里在CustomEncryptionClass中实现：
+您可以创建一个类，遵循 GrowingEncryptionService 协议，在对应的方法中写您自己的逻辑，例如这里在CustomEncryptionClass中实现：
 
 ```c
 - (NSData *_Nonnull)encryptEventData:(NSData *_Nonnull)data factor:(unsigned char)hint {
     NSMutableData *dataM = [[NSMutableData alloc] initWithLength:data.length];
-    // 加密逻辑处理你的数据
+    // 加密逻辑处理您的数据
     return dataM;
 }
 ```
 
-然后需要将 GrowingEncryptionService 对应的实现类implclass 修改为你自己创建的类，例如上述的 CustomEncryptionClass ，替换方案有：
+然后需要将 GrowingEncryptionService 对应的实现类implclass 修改为您自己创建的类，例如上述的 CustomEncryptionClass ，替换方案有：
 
 1. 注解 (推荐)
 
@@ -178,7 +178,7 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
                                                                  implClass:NSClassFromString(@"CustomEncryptionClass")];
 ```
 
-这样，加密服务就使用的你自己的了，下面我们需要将代码导入。
+这样，加密服务就使用的您自己的了，下面我们需要将代码导入。
 
 #### 2.2 替换Sevice
 
@@ -224,7 +224,7 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
 1. SDK运行的同时，还想将事件写入自己的数据库中做额外操作
 2. SDK中事件少了，想添加自己的额外事件
 
-但需要注意是单独的业务场景，你需要将逻辑全部封装在 Module 中，Module 可是使用 TrackerCore中的类，但 TrackerCore 不应该依赖 Module 中的类。
+但需要注意是单独的业务场景，您需要将逻辑全部封装在 Module 中，Module 可是使用 TrackerCore中的类，但 TrackerCore 不应该依赖 Module 中的类。
 
 #### 3.1 示例 1
 
@@ -303,7 +303,7 @@ NS_ASSUME_NONNULL_END
 
 SDK中事件少了，想添加自己的额外事件，这部分可以参考 https://github.com/growingio/growingio-sdk-ios-advertising 
 
-1. 首先SDK中的事件均继承自 GrowingBaseEvent , 你可以继承该类或者其子类，例如 GrowingActivateEvent
+1. 首先SDK中的事件均继承自 GrowingBaseEvent , 您可以继承该类或者其子类，例如 GrowingActivateEvent
 
 ```c
 #import "GrowingReengageEvent.h"

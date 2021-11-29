@@ -3,7 +3,7 @@ sidebar_position: 3
 title: 自定义模块
 ---
 
-自定义模块可以让你使用自己的代码实现的功能来替换现有的模块功能，现有的模块功能可以参考 [模块列表](/docs/android/develop/coutom%20sdk)
+自定义模块可以让您使用自己的代码实现的功能来替换现有的模块功能，现有的模块功能可以参考 [模块列表](/docs/android/develop/coutom%20sdk)
 
 在 GrowingIO SDK 中，模块加载具有唯一性——每一个输入源仅能注册一个模块，且该模块会被后注册的模块覆盖。
 
@@ -11,12 +11,12 @@ title: 自定义模块
 
 ## 如何自定义一个模块
 
-作为一个可扩展的SDK, 要添加或替换一种新的模块支持, 你需要按照以下步骤来执行(以替换网络库为例)
+作为一个可扩展的SDK, 要添加或替换一种新的模块支持, 您需要按照以下步骤来执行(以替换网络库为例)
 
 1. 实现一个 ModelLoader
 2. 实现一个 DataFetcher , 可以被定义的 ModelLoader 返回
 3. 实现一个 ModelLoaderFactory
-4. 将你的新 ModelLoader 注册到sdk, 使用 `@GIOLibraryModule`
+4. 将您的新 ModelLoader 注册到sdk, 使用 `@GIOLibraryModule`
 
 接下来以自定义一个 okhttp3 的网络请求自定义模块来举个例。
 
@@ -27,11 +27,11 @@ title: 自定义模块
 ```groovy
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:3.2.1'
+	implementation 'com.growingio.android:autotracker-core:3.3.2'
 
 	//注解解析
-	implementation 'com.growingio.android:annotation:3.2.1'
-	annotationProcessor 'com.growingio.android:compiler:3.2.1'
+	implementation 'com.growingio.android:annotation:3.3.2'
+	annotationProcessor 'com.growingio.android:compiler:3.3.2'
 }
 ```
 
@@ -150,7 +150,7 @@ public void cancel() {
 ```
 
 #### cleanup
-如果你正在加载一个 `InputStream` 或打开任何 I/O 类的资源, 你需要要在 `cleanup()` 方法中关闭并清理这些 `InputStream` 或资源, 如果对应模块没有资源需要清理, 可以留空
+如果您正在加载一个 `InputStream` 或打开任何 I/O 类的资源, 您需要要在 `cleanup()` 方法中关闭并清理这些 `InputStream` 或资源, 如果对应模块没有资源需要清理, 可以留空
 
 ```java
 @Override
@@ -170,7 +170,7 @@ public void cleanup() {
 ```
 
 #### executeData
-`executeData` 是模块中所期待你做那些繁重工作的地方, 你可以开启一个网络请求, 从磁盘加载数据, 或做任何你想做的事情. 在当前定制的模块中主要执行网络请求并返回对应数据.
+`executeData` 是模块中所期待您做那些繁重工作的地方, 您可以开启一个网络请求, 从磁盘加载数据, 或做任何您想做的事情. 在当前定制的模块中主要执行网络请求并返回对应数据.
 ```java
 @Override
 public EventResponse executeData() {
@@ -191,7 +191,7 @@ public EventResponse executeData() {
 ```
 
 #### loadData
-`loadData` 与 `executeData` 的区别在于提供了一个 `DataCallback` 参数, 你可以安排一个异步任务,或在里面实现线程切换。
+`loadData` 与 `executeData` 的区别在于提供了一个 `DataCallback` 参数, 您可以安排一个异步任务,或在里面实现线程切换。
 
 ```java
 @Override
@@ -272,10 +272,10 @@ public class OkhttpLibraryGioModule extends LibraryGioModule {
 ```java
 @GIOAppModule(name = "DemoAutotracker", configName = "DemoTackerConfiguration",config = OkhttpConfig.class)
 public class GrowingIODemoAppModule extends AppGioModule {
-    @GIOTracker(path = Autotracker.class, projectId = "<your projectid>", urlScheme = "<your urlscheme>")
+    @GIOTracker(path = Autotracker.class, projectId = "<your accountId>", urlScheme = "<your urlscheme>")
     public void config(DemoTackerConfiguration config) {
         config.setChannel("demo")
-                .setProject("<your projectid>","<your urlscheme>")//若在注解上声明可以省略
+                .setProject("<your accountId>","<your urlscheme>")//若在注解上声明可以省略
                 .setDataCollectionEnabled(true)
                 .setDebugEnabled(true);
     }

@@ -27,6 +27,16 @@ npm run start //启动开发服务器
 ```
 默认情况下，浏览器将打开 http://localhost:3000/growingio-sdk-docs/ 地址。
 
+## 关于 version 脚本
+使用 `github_version_fetch.py` 脚本可以从 github 仓库自动更新版本记录，省掉人工复制的麻烦。
+使用方法：(只需要 python3 的环境即可，无依赖)
+```shell
+cd <项目地址>
+python github_version_fetch.py
+```
+该脚本会更新各个平台下的 `version.md` 文件。
+配置文件为 `version_config.json`,其中enable字段表示是否启用。
+
 ## 项目结构概要
 
 `/blog/` - 包含博客的 Markdown 文件。如果你不想或不需要博客，则可以将此目录删除。在 博客指南 文档中可以找到更多详细信息

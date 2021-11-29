@@ -6,38 +6,61 @@ title: 如何集成
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Android SDK 提供了 `无埋点` 和 `埋点` 两个SDK版本：
-* 埋点 SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集自定义事件;
-* 无埋点 SDK 具备埋点 SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
-
-## 集成无埋点SDK
+Android SDK 提供了 <font color='red'>无埋点SDK</font> 和 <font color='red'>埋点SDK</font> 两个版本：
+* 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
+* 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
 无埋点SDK（包括埋点 SDK）代码已托管在 [Github](https://github.com/growingio/growingio-sdk-android-autotracker) 上，欢迎 star,fork 一波。
+:::info
+**Gradle插件版本**： 3.2.1及以上  
+**Android系统版本**：Android 4.2及以上<br/>
+**根据需要选择集成**<font color='red'> 无埋点SDK </font>或<font color='red'> 埋点SDK </font>
+:::
 
-> **Gradle插件版本**： 3.2.1及以上  
-> **Android系统版本**：Android 4.2及以上
-
+## 集成无埋点SDK
 ### 添加依赖
-在 project 级别的build.gradle文件中添加autotracker-gradle-plugin依赖和maven仓库。
+在 project 级别的build.gradle文件中添加autotracker-gradle-plugin依赖。
 
 ```groovy
 buildscript {
     repositories {
         // 添加maven仓库
         mavenCentral()
-        
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
         
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.2.0'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.3.2'
     }
 }
+```
 
+如果项目中使用的Android Gradle插件为7.0及以上版本，需要在 project 中的settings.gradle文件中添加Maven仓库
+
+```groovy
+// 当AGP版本为7.0及以上添加
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        // 添加maven仓库，AndroidStudio会自动设置，如果已经存在不需要重复添加
+        mavenCentral()
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+```
+如果项目中使用的Android Gradle插件为4.2及以下版本，则需要在 project 级别的build.gradle文件中添加Maven仓库
+
+```groovy
+// 当AGP版本为4.2及以下添加
 allprojects {
     repositories {
         // 添加maven仓库
         mavenCentral()
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 ```
@@ -53,7 +76,7 @@ apply plugin: 'com.growingio.android.autotracker'
 dependencies {
     ...
     //GrowingIO 无埋点 SDK
-    implementation 'com.growingio.android:autotracker-cdp:3.2.0'
+    implementation 'com.growingio.android:autotracker-cdp:3.3.2'
 }
 
 ```
@@ -64,7 +87,7 @@ dependencies {
 
 ### 添加URL Scheme
 URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用[圈选](/docs/debug),[Mobile Debugger](/docs/debug) 及[深度链接](/docs/debug)等功能时唤醒应用。
-将应用的 URLScheme 和应用权限添加到你的 AndroidManifest.xml 中的 LAUNCHER Activity 下。
+将应用的 URLScheme 和应用权限添加到您的 AndroidManifest.xml 中的 LAUNCHER Activity 下。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -99,8 +122,17 @@ URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把
 </manifest>
 ```
 ### SDK初始化配置
-请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。
 
+#### 获取 `AccountID`、`DataSourceID`、`Host`信息
+:::info
+`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
+`Host`需要服务端部署，如不清楚请联系您的专属项目经理
+:::
+##### 创建
+![新建数据源](./../../../static/img/createapplication.png)
+##### 查看
+![查看数据源](./../../../static/img/showappdatasourceid.png)
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -117,7 +149,13 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+
+        // Config GrowingIO
+        // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg: growing.xxxxxxxxxxx
+        // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+        // YourDatasourceId eg: 11223344aabbcc
+        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG);
@@ -133,7 +171,13 @@ public class MyApplication extends Application {
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        val sConfiguration = CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+
+        // Config GrowingIO
+        // YourAccountId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg:growing.xxxxxxxxxxx 
+        // YourServerHost eg:http://106.75.81.105:8080
+        // YourDatasourceId eg: 11223344aabbcc
+        val sConfiguration = CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
             .setDataCollectionServerHost("Your ServerHost")
             .setDataSourceId("Your DataSourceId")
             .setDebugEnabled(BuildConfig.DEBUG)
@@ -141,7 +185,7 @@ class MyApplication : Application() {
     }
 }
 ```
-    
+
 </TabItem>
 </Tabs>
 
@@ -171,7 +215,13 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+        // Config GrowingIO
+        // 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+        // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg: growing.xxxxxxxxxxx
+        // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+        // YourDatasourceId eg: 11223344aabbcc
+        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 // 初始化时先关闭数据收集
@@ -191,7 +241,13 @@ GrowingAutotracker.get().setDataCollectionEnabled(true);
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        val sConfiguration = CdpAutotrackConfiguration("Your ProjectId", "Your URLScheme")
+        // Config GrowingIO
+        // 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理 
+        // YourAccountId eg:0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg:growing.xxxxxxxxxxx 
+        // YourServerHost eg:http://106.75.81.105:8080
+        // YourDatasourceId eg: 11223344aabbcc
+        val sConfiguration = CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
             .setDataCollectionServerHost("Your ServerHost")
             .setDataSourceId("Your DataSourceId")
             // 初始化时先关闭数据收集
@@ -203,12 +259,12 @@ class MyApplication : Application() {
 // 当用户同意隐私协议后，再打开数据收集
 GrowingAutotracker.get().setDataCollectionEnabled(true)
 ```
-    
+
 </TabItem>
 </Tabs>
 
 ### 代码混淆
-如果你启用了混淆，请在你的 proguard-rules.pro 中加入如下代码：
+如果您启用了混淆，请在您的 proguard-rules.pro 中加入如下代码：
 ```xml
 -keep class * extends com.growingio.android.sdk.GeneratedGioModule
 -keep class * extends com.growingio.android.sdk.LibraryGioModule
@@ -218,7 +274,7 @@ GrowingAutotracker.get().setDataCollectionEnabled(true)
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.2.0 !!!`  
+`!!! GrowingIO Tracker version: 3.3.0 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
@@ -227,7 +283,7 @@ GrowingAutotracker.get().setDataCollectionEnabled(true)
 
 
 ## 集成埋点SDK
-埋点 SDK只自动采集用户访问事件和APP关闭事件，其他事件均需要开发同学调用相应埋点 API 采集自定义事件。
+埋点 SDK只自动采集用户访问事件和APP关闭事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
 埋点相较于无埋点集成步骤会更简单，也不需要添加额外的插件。
 
 ### 添加依赖
@@ -244,7 +300,7 @@ repositories {
 dependencies {
 
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.2.0'
+    implementation 'com.growingio.android:tracker-cdp:3.3.2'
 }
 ```
 
@@ -277,8 +333,16 @@ dependencies {
 </manifest>
 ```
 ### SDK初始化配置
-请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。
-
+#### 获取 `AccountID`、`DataSourceID`、`Host`信息
+:::info
+`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
+`Host`需要服务端部署，如不清楚请联系您的专属项目经理
+:::
+##### 创建
+![新建数据源](./../../../static/img/createapplication.png)
+##### 查看
+![查看数据源](./../../../static/img/showappdatasourceid.png)
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -295,7 +359,12 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("Your ProjectId", "Your URLScheme")
+        // Config GrowingIO
+        // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg: growing.xxxxxxxxxxx
+        // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+        // YourDatasourceId eg: 11223344aabbcc
+        CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG);
@@ -311,8 +380,13 @@ public class MyApplication extends Application {
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        // Config GrowingIO
+        // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+        // Your URLScheme eg: growing.xxxxxxxxxxx
+        // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+        // YourDatasourceId eg: 11223344aabbcc
         val sConfiguration: CdpTrackConfiguration =
-            CdpTrackConfiguration("Your ProjectId", "Your URLScheme")
+            CdpTrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG)
@@ -320,13 +394,23 @@ class MyApplication : Application() {
     }
 }
 ```
-    
+
 </TabItem>
 </Tabs>
 
 ### 混淆
-如果你启用了混淆，请在你的 proguard-rules.pro 中加入如下代码：
+如果您启用了混淆，请在您的 proguard-rules.pro 中加入如下代码：
 ```xml
 -keep class * extends com.growingio.android.sdk.GeneratedGioModule
 -keep class * extends com.growingio.android.sdk.LibraryGioModule
 ```
+
+### 查看集成效果
+运行应用，若 `Logcat` 中输出了  
+`!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
+`!!! GrowingIO Tracker version: 3.3.0 !!!`  
+则说明SDK已经集成成功。
+
+若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
+
+至此，无埋点 SDK 就已经完成集成步骤了。

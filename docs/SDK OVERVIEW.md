@@ -1,9 +1,23 @@
 ---
-sidebar_position: 2
+id: home
+sidebar_position: 1
 title: SDK 简介
+slug: /
 ---
 
-SDk 包括 Web js平台和移动端上Android，iOS两个平台，以及众多的第三方混合开发框架。  
+## 产品概述
+
+GrowingIO （北京易数科技有限公司）是基于用户行为数据的增长平台，国内领先的数据运营解决方案供应商。为产品、运营、市场、数据团队及管理者等，提供客户数据平台、  产品分析、获客分析，智能运营等产品和咨询服务，帮助企业在数据化升级的路上，提升数据驱动能力，实现更好的增长。
+
+GrowingIO 专注于零售、电商、金融、酒旅航司、教育、内容社区、B2B等行业，成立以来，服务上千家企业级客户，获得迪奥、安踏、喜茶、招商仁和人寿、上汽集团、东航、春航、首旅如家、陌陌、滴滴、爱奇艺、新东方等客户的青睐。
+
+GrowingIO 帮助客户提升数据驱动能力，实现更好的增长。
+
+![slogan](https://docs.growingio.com/.gitbook/assets/-LGNxeGABUADKiTWTaEM-LIEN5IgjD_lm1zFG-YX-LIEN8O7RZ9ipiI48vpk45_4_conversion_1_.gif)
+
+## SDK 简介
+
+SDK 包括 Web js平台和移动端上Android，iOS两个平台，以及众多的第三方混合开发框架。  
 
 ### JS SDK
 
@@ -28,7 +42,7 @@ GrowingIO Web JS SDK 会在网站用户加载网页后自动启动，并收集�
 
 #### 移动端框架版本兼容
 
-|  框架   | SDK类别 | App适配的系统版本 | 框架版本|
+|  框架  | SDK类别 | App适配的系统版本 | 框架版本|
 |  :----  | :----:  | : ----: | ----:|
 | 原生Android | 无埋点、埋点 | Android 4.2+ | - |
 | 原生iOS | 无埋点、埋点 | iOS 8+ |  - |
@@ -41,12 +55,21 @@ GrowingIO Web JS SDK 会在网站用户加载网页后自动启动，并收集�
 
 ### 使用流程
 
+
 1. 购买 CDP 产品;
-2. 获取 `ProjectId`,`UrlScheme`,`ServerHost` 和 `DataSourceId`;
+2. 获取 `AccountId`,`UrlScheme`,`ServerHost` 和 `DataSourceId`;
 3. 开始集成;
 
 :::info 关于 CDP 产品
 GrowingIO CDP 产品是集**服务端数据分析和客户端自动埋点一体化**的产品服务。
 :::
 
-
+### 平台支持功能的版本与 SDK版本对应关系
+|    平台版本    | 功能 |  SDK版本  | 备注|
+|:-------:| :----:  |  :-------:  | :----:|
+| OP-13.6 | 无埋点、埋点 | 3.0 | - |
+| OP-14.3.0 | 全量 context 字段传输,服务端通用维度拆解 |  3.2.0 |  - |
+| OP-2.0.0 | 支持 user_key,IDMapping | 3.3.0 | - |
+:::info
+如果使用采集数据加密解密功能产品需要升级到 14.3.0 之后， Android SDK 3.3.0之后， iOS  SDK 3.3.0之后
+:::

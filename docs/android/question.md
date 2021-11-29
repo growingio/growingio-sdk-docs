@@ -35,7 +35,17 @@ com/growingio/android/sdk/track/middleware/EventsSQLiteOpenHelper.class
 `autotracker-gradle-plugin`默认依赖了`com.android.tools.build:gradle:3.3.0`, 如果希望 在 gradle 低版本中使用该依赖插件，请阻断插件中gradle的版本
 ```groovy
 // 在配置插件依赖时, 通过如下方式引入
-classpath("com.growingio.android:autotracker-gradle-plugin:3.2.0") {
+classpath("com.growingio.android:autotracker-gradle-plugin:3.3.2") {
     transitive false
 } 
 ```
+### APP内嵌H5页面需要与APP访问用户数据打通该怎么集成SDK？
+
+详细请参[内嵌h5页面数据采集配置](/docs/android/base/Configuration#1-内嵌h5页面数据采集配置)
+
+
+### SDK如何支持合规和第三方安全检测，以及GDPR（欧盟《一般数据保护条例》）？
+
+首先，用户未同意隐私条款时，可以在 SDK 初始化配置时，调用 setDataCollectionEnabled 设置为 false，禁止数据采集（不获取 AndroidId，不获取任何设备信息，也不上报任何数据）；<br/>
+其次，当用户同意隐私条款时，调用GrowingAutotracker.get().setDataCollectionEnabled(true) 开启数据采集；<br/>
+最后，当用户再次进入app时， 如果已同意隐私条款，在 SDK 初始化配置时，调用 dataCollectionEnabled 设置为 true，开启数据采集。
