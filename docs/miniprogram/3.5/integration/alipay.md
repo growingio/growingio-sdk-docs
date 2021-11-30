@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
 
 ```js
 // app.js
-import gdp from "./utils/gio/sdk.js";
+import gdp from './utils/gio/sdk.js';
 
 ...your codes
 
@@ -136,15 +136,17 @@ export default App;
   </TabItem>
 </Tabs>
 
+```js
+如果您想保留原有 require 的引用方式，请删除`default`，使用 `const gdp = require('./utils/gio/sdk.js');` 即可。
+```
+
 ***更多配置项请在[集成配置](/docs/miniprogram/3.5/initSettings)菜单中查看***
 
 ## 添加白名单
 
 ### 支付宝小程序
 
-由于支付宝小程序对网络请求的限制[参考文档](https://opendocs.alipay.com/mini/008gq6)
-
-您需要在「支付宝小程序管理中心-小程序详情-设置-开发设置-服务器域名白名单」中添加request合法域名。[支付宝小程序管理中心](https://open.alipay.com/mini/dev/list)
+由于支付宝小程序对网络请求的限制[参考文档](https://opendocs.alipay.com/mini/008gq6)，您需要在「支付宝小程序管理中心-小程序详情-设置-开发设置-服务器域名白名单」中添加request合法域名。[支付宝小程序管理中心](https://open.alipay.com/mini/dev/list)
 
 ### 天猫小程序
 
@@ -154,14 +156,16 @@ export default App;
 
 这里我们给出白名单申请完成后在代码中的简单实现：
 ```js
-// server目录中
-创建名为 `httpTunnel` 的云函数。
-// index.js
+// 1、server目录中创建名为 `httpTunnel` 的云函数。
+
+// 2、index.js
 exports.gioTrack = async (context) => {
   ...
   context.cloud.httpApi.invoke({ ... });
   ...
 };
+
+// 3、在SDK初始化配置项中将singleSend设为true
 ```
 
 ## 数据校验

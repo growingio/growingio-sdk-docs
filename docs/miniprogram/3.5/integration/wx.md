@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 
 ```js
 // app.js
-import gdp from "./utils/gio/sdk.js";
+import gdp from './utils/gio/sdk.js';
 
 ...your codes
 
@@ -182,13 +182,15 @@ export default App;
   </TabItem>
 </Tabs>
 
+```js
+如果您想保留原有 require 的引用方式，请删除`default`，使用 `const gdp = require('./utils/gio/sdk.js');` 即可。
+```
+
 ***更多配置项请在[集成配置](/docs/miniprogram/3.5/initSettings)菜单中查看***
 
 ## 添加白名单
 
-由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)
-
-您需要在「小程序后台-开发-开发设置-服务器域名」中添加request合法域名。[小程序后台](https://mp.weixin.qq.com/)
+由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)，您需要在「小程序后台-开发-开发设置-服务器域名」中添加request合法域名。[小程序后台](https://mp.weixin.qq.com/)
 
 ## 数据校验
 

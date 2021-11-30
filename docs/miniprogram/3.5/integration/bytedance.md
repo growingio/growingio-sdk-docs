@@ -35,7 +35,8 @@ import TabItem from '@theme/TabItem';
 
 ```js
 // app.js
-import gdp from "./utils/gio/sdk.js";
+import gdp from './utils/gio/sdk.js';
+//
 
 ...your codes
 
@@ -55,6 +56,7 @@ App({ ... });
 import Vue from 'vue';
 import App from './App.vue';
 import gdp from './utils/gio/sdk.js';
+// 如果您想保留原有 require 的引用方式，请删除`default`， 使用 `const gdp = require('./utils/gio/sdk.js')` 即可。
 
 ...your codes
 
@@ -77,6 +79,7 @@ app.$mount();
 // app.jsx
 import Taro, { Component } from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
+// 如果您想保留原有 require 的引用方式，请删除`default`， 使用 `const gdp = require('./utils/gio/sdk.js')` 即可。
 
 ...your codes
 
@@ -97,6 +100,7 @@ class App extends Component { ... }
 import React, { Component } from 'react';
 import Taro from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
+// 如果您想保留原有 require 的引用方式，请删除`default`， 使用 `const gdp = require('./utils/gio/sdk.js')` 即可。
 
 ...your codes
 
@@ -118,6 +122,7 @@ export default App;
 import Vue from 'vue';
 import Taro from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
+// 如果您想保留原有 require 的引用方式，请删除`default`， 使用 `const gdp = require('./utils/gio/sdk.js')` 即可。
 
 ...your codes
 
@@ -136,13 +141,15 @@ export default App;
   </TabItem>
 </Tabs>
 
+```js
+如果您想保留原有 require 的引用方式，请删除`default`，使用 `const gdp = require('./utils/gio/sdk.js');` 即可。
+```
+
 ***更多配置项请在[集成配置](/docs/miniprogram/3.5/initSettings)菜单中查看***
 
 ## 添加白名单
 
-由于字节(抖音头条)小程序对网络请求的限制[参考文档](https://microapp.bytedance.com/docs/zh-CN/mini-app/develop/api/other/network-request-reference/)
-
-您需要在「字节小程序开发者平台-开发管理-开发设置-服务器域名」中添加request合法域名。[字节小程序开发者平台](https://microapp.bytedance.com/)
+由于字节(抖音头条)小程序对网络请求的限制[参考文档](https://microapp.bytedance.com/docs/zh-CN/mini-app/develop/api/other/network-request-reference/)，您需要在「字节小程序开发者平台-开发管理-开发设置-服务器域名」中添加request合法域名。[字节小程序开发者平台](https://microapp.bytedance.com/)
 
 ## 数据校验
 

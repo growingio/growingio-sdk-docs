@@ -16,6 +16,8 @@ title: 版本升级
 const gdp = require('./utils/gio/sdk.js').default;
 //          修改为 ↓↓↓
 import gdp from "./utils/gio/sdk.js";
+
+如果您想保留原有 require 的引用方式，请删除`default`，使用 `const gdp = require('./utils/gio/sdk.js');` 即可。
 ```
 3、检查初始化方式，如果使用 `setConfig` 方法初始化，请[参考文档](/docs/miniprogram/3.5/integration/wx)修改；如果使用 `init` 方法则跳过。
 

@@ -6,7 +6,7 @@ title: 快应用
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-本文档同时适用快应用SDK和全量SDK。
+本文档**仅适用于快应用SDK**。
 
 变更记录：[查看Changelog](https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js)
 ## 准备工作
@@ -36,6 +36,10 @@ export default GioApp({ ... }); // 入口文件要包裹GioApp()方法
 
 // pages/xx/index.ux
 export default GioPage({ ... }); // 所有的页面文件要包裹GioPage()方法
+```
+
+```js
+如果您想保留原有 require 的引用方式，请删除`default`，使用 `const gdp = require('./utils/gio/sdk.js');` 即可。
 ```
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.5/initSettings)菜单中查看***
