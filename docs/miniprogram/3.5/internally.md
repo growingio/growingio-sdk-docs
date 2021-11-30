@@ -35,21 +35,31 @@ title: 内置插件
 
 1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
 
-2、在节点上添加 `data-gio-imp-eventId`、`data-gio-imp-props`、`data-gio-imp-item` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则[参考文档](/docs/miniprogram/3.5/commonlyApi#4自定义埋点track)。
+2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则[参考文档](/docs/miniprogram/3.5/commonlyApi#4自定义埋点track)。
+
+```js
+Page({
+  data: {
+    impAttr: JSON.stringify({ type: 'hjh' }),
+    impItems: { key: 'order_id', id: '12345' }
+  }
+})
+```
 
 ```html
+<!-- wxml -->
 <view
   class="growing_collect_imp"
-  data-gio-imp-eventId="imp_picture_var"
-  data-gio-imp-props="{ type: 'hjh' }"
-  data-gio-imp-item="{ key: 'order_id', id: '12345' }"
+  data-gio-imp-track="imp_picture_var"
+  data-gio-imp-attrs="{{ impAttr }}"
+  data-gio-imp-items="{{ impItems }}"
 >
   监听的元素
 </view>
 ```
 **请注意：**
 
-**1、不兼容<3.5.0版本的半自动曝光事件，请注意修改。**
+**1、`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者合法的Object字符串，我们会尝试进行格式化。**
 
 **2、<3.5.0版本的半自动曝光事件需要在onShow中手动注册；3.5.0起无需手动注册，同时collectImp事件api废弃。**
 
