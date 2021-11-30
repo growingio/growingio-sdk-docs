@@ -25,7 +25,7 @@ title: 内置插件
 
 **登录用户属性事件：** 对应 `LOGIN_USER_ATTRIBUTES` 事件。[调用方法](/docs/miniprogram/3.5/commonlyApi#5登录用户属性事件)
 
-## 半自动曝光事件
+## 半自动曝光插件
 
 用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogram/3.5/commonlyApi#4自定义埋点)在平台上进行事件类型和变量的预定义。
 
@@ -40,14 +40,12 @@ title: 内置插件
 ```js
 Page({
   data: {
-    impAttr: JSON.stringify({ type: 'hjh', name: 'yue' }),
+    impAttrs: JSON.stringify({ type: 'hjh', name: 'yue' }),
     impItems: { key: 'order_id', id: '12345' }
   }
 })
 ```
-
 ```html
-<!-- wxml -->
 <view
   class="growing_collect_imp"
   data-gio-imp-track="imp_picture_var"

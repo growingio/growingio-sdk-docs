@@ -54,7 +54,7 @@ gdp('setOption', 'debug', true | false);
 // gdp('enableDebug', true | false);
 ```
 
-### 4、开启/关闭调试模式(host)
+### 4、修改上报地址(host)
 **版本信息：>=3.5.0**
 
 请设置准确的host地址，支持 **`IP`** 或 **`域名`** 格式，**无需携带协议头**。
@@ -119,13 +119,13 @@ gdp('clearUserId');
 发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中`事件管理用户界面`配置事件以及事件属性。
 #### 参数说明
 | 参数              | 参数类型 | 说明                                                                                   |
-| ----------------- | -------- | -------------------------------------------------------------------------------------- |
-| `eventId`         | `String` | 必填；事件名，事件标识符。                                                             |
-| `properties`      | `Object` | 选填；事件属性。<br/>`key: string/number` 长度 <=50；<br/>`value: string/number` 长度 <=1000；<br/>长度超限均会被截断                      |
-| `item`            | `Object` | 选填；事件发生关联的物品模型。                                                         |
+| ----------------- | -------- | ----------------------------------------------------------------------------------- |
+| `eventId`         | `String` | 必填；事件名，事件标识符。                                                               |
+| `properties`      | `Object` | 选填；事件属性。[参数限制](/docs/miniprogram/3.5/commonlyApi#object参数限制)              |
+| `item`            | `Object` | 选填；事件发生关联的物品模型。                                                           |
 | `item.id`         | `string` | item 中必填；物品模型 id。                                                             |
-| `item.key`        | `string` | item 中必填；物品模型唯一标识。                                                        |
-| `item.properties` | `Object` | item 中选填；物品模型属性。限制同上`properties`。                                                            |
+| `item.key`        | `string` | item 中必填；物品模型唯一标识。                                                          |
+| `item.properties` | `Object` | item 中选填；物品模型属性。参数限制同`properties`。                                       |
 
 #### 示例：
 ```js
@@ -144,7 +144,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 
 | 参数             | 参数类型 | 说明                                                                              |
 | ---------------- | -------- | --------------------------------------------------------------------------------- |
-| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。<br/>`key: string/number` 长度 <=50；<br/>`value: string/number` 长度 <=1000；<br/>长度超限均会被截断 |
+| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/miniprogram/3.5/commonlyApi#object参数限制) |
 
 #### 示例：
 ```js
@@ -198,7 +198,7 @@ Page({
 gdp('getOption');
 ```
 
-### 9、手动注册半自动埋点(collectImp)
+### 9、手动注册半自动曝光事件(collectImp)
 ***此方法废弃，3.5.0版本起为自动注册无需手动注册***
 
 ## 采集标记

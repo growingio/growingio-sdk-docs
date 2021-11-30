@@ -18,7 +18,7 @@ title: 集成配置
 | `getLocation`         | `object`      | `-`        | 获取位置配置项                                                        |
 | `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                                   |
 | `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系                          |
-| `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**                                          |
+| `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**                            |
 | `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                                          |
 | `mpvue`               | `any`         | `-`        | 使用 mpvue 开发时使用的实例**(>=3.5.0)**                               |
 | `singleSend`          | `boolean`     | `false`    | 是否每次只发送一个事件**(>=3.5.0)**                                     |
