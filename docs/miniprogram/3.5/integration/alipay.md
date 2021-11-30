@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 <Tabs
   groupId="1"
-  defaultValue="原生"
+  defaultValue="Native原生"
   values={[
     {label: 'Native原生', value: 'Native原生'},
     {label: 'uni-app(vue2)', value: 'uni-app(vue2)'},
