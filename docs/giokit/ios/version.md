@@ -4,40 +4,13 @@ sidebar_position: 0
 ---
 -----
 
-## V0.3.1 - 2021/11/11
+## V1.0.0 - 2021/11/26
 
-[v0.3.1](https://github.com/growingio/growingio-sdk-ios-toolskit/compare/0.3.0...0.3.1) 
+[v1.0.0](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.0.0) 
 
-* 增加网络监控（仅埋点事件请求）
-* SDK Info 添加 urlScheme 和数据加密配置展示
-* events list 增加按照事件类型搜索
+* SDK 自检 - SDK 集成检测，包括初始化参数，配置参数等
+* SDK 信息 - 全面的 SDK 集成信息与 App 基本信息，方便截图分享
+* 事件库 - 实时埋点数据浏览，包括数据发送状态，发送数据详情
+* XPath跟踪 - 圈选辅助工具，可以展示元素的XPath路径
+* 网络记录 - 埋点事件请求抓包工具，实时查看埋点数据上传进度
 
-
-
-## V0.3.0 - 2021/10/21
-
-[v0.3.0](https://github.com/growingio/growingio-sdk-ios-toolskit/compare/0.2.0...0.3.0) 
-
-* 全面屏适配
-* 新增 XPath 跟踪（仅支持无埋点 SDK）
-* 修复 bug 和代码优化
-
-
-
-## V0.2.0 - 2021/10/12
-
-[v0.2.0](https://github.com/growingio/growingio-sdk-ios-toolskit/compare/0.1.0...0.2.0) 
-
-* SDK 2.0 适配
-* 横竖屏适配
-* iPhone 13 系列适配
-
-
-
-## V0.1.0 - 2021/10/08
-
-[v0.1.0](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/0.1.0) 
-
-* 0.1.0 发布
-
-  
