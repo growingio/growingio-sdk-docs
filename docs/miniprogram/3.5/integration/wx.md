@@ -6,7 +6,7 @@ title: 微信小程序
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-本文档同时适用微信小程序SDK和合集SDK。
+本文档同时适用微信小程序SDK和全量SDK。
 
 变更记录：[查看Changelog](https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js)
 ## 准备工作
@@ -188,9 +188,7 @@ export default App;
 
 由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)
 
-您需要在「小程序后台-开发-开发设置-服务器域名」中添加request合法域名，如下图：
-
-![request合法域名](/img/miniprogram/wx_white_list.png)
+您需要在「小程序后台-开发-开发设置-服务器域名」中添加request合法域名。[小程序后台](https://mp.weixin.qq.com/)
 
 ## 数据校验
 

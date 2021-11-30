@@ -6,7 +6,7 @@ title: 支付宝(天猫)小程序
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-本文档同时适用支付宝(天猫)小程序SDK和合集SDK。
+本文档同时适用支付宝(天猫)小程序SDK和全量SDK。
 
 变更记录：[查看Changelog](https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js)
 ## 准备工作
@@ -144,15 +144,13 @@ export default App;
 
 由于支付宝小程序对网络请求的限制[参考文档](https://opendocs.alipay.com/mini/008gq6)
 
-您需要在「支付宝小程序管理中心-小程序详情-设置-开发设置-服务器域名白名单」中添加request合法域名，如下图：
-
-![request合法域名](/img/miniprogram/alipay_white_list.png)
+您需要在「支付宝小程序管理中心-小程序详情-设置-开发设置-服务器域名白名单」中添加request合法域名。[支付宝小程序管理中心](https://open.alipay.com/mini/dev/list)
 
 ### 天猫小程序
 
 由于天猫小程序使用云函数代理的形式进行网络请求，要求严格。因此需要具体域名和字段需要与我们沟通确认后由开发主体申请白名单 [参考文档](https://miniapp.open.taobao.com/docV3.htm?docId=118444&docType=1)
 
-***注意不要轻易随意尝试申请！请与我们充分沟通需求后实践。***
+***注意不要轻易尝试申请！请与我们充分沟通需求后实践。***
 
 这里我们给出白名单申请完成后在代码中的简单实现：
 ```js
@@ -168,7 +166,6 @@ exports.gioTrack = async (context) => {
 
 ## 数据校验
 
-### 支付宝(天猫)小程序
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
 
 ![debugLog](/img/miniprogram/wx_debug.png)

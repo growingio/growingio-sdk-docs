@@ -1,13 +1,13 @@
 ---
 sidebar_position: 6
-title: 升级到3.5
+title: 版本升级
 ---
 
-本文将介绍如何从 **`3.0.0<= 当前使用版本 <3.5.0`** 升级到 **`3.5.0`** 版本。
+## 从3.0升级到3.5
 
 首先确认您使用的版本为3.0.0以上，如果您为2.x版本且有升级需要，请先联系您的项目经理。
 
-## 初始化
+### 初始化
 
 1、下载最新版SDK并替换。
 
@@ -30,13 +30,13 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
 ```
 5、如果您是支付宝(天猫)小程序，请参考[集成支付宝(天猫)小程序](/docs/miniprogram/3.5/integration/alipay)进行修改。
 
-## 页面
+### 页面
 
 1、检查onShow事件中是否存在 `gio('collectImp', this)；` 语句，存在则删除，不存在则跳过。
 
 2、检查页面中是否存在 半自动曝光事件(可在代码中全局搜索`growing_collect_imp`)，存在则[参考文档](/docs/miniprogram/3.5/internally#半自动曝光事件)进行修改，不存在则跳过。
 
-## 建议性修改
+### 建议性修改
 
 1、如果您使用了[动态配置接口](/docs/miniprogram/3.5/commonlyApi#动态配置接口)，建议按新版使用方式进行修改。
 
