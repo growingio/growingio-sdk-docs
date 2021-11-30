@@ -40,7 +40,7 @@ title: 内置插件
 ```js
 Page({
   data: {
-    impAttr: JSON.stringify({ type: 'hjh' }),
+    impAttr: JSON.stringify({ type: 'hjh', name: 'yue' }),
     impItems: { key: 'order_id', id: '12345' }
   }
 })
@@ -57,11 +57,31 @@ Page({
   监听的元素
 </view>
 ```
+对应产生的`CUSTOM`事件相当于： ↓↓↓
+```js
+gio('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id', id: '12345' });
+```
+
 **请注意：**
 
-**1、`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者合法的Object字符串，我们会尝试进行格式化。**
+1、如果您使用的是单个字段的数据定义形式，新版SDK依然兼容，但所有定义的参数都会被归入`track`方法的`properties`对象参数中，并不能定义`items`对象中的参数。如果您期望定义`items`中的参数，请修改数据定义形式。例：
+```html
+<view
+  class="growing_collect_imp"
+  data-gio-imp-track="imp_cat_var"
+  data-gio-track-name="my_cat_picture"
+  data-gio-track-time="20210601"
+>
+  监听的元素
+</view>
+```
+对应产生的`CUSTOM`事件相当于： ↓↓↓
+```js
+gio('track', 'imp_cat_var', { name: 'my_cat_picture', time: '20210601' });
+```
+2、`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者合法的Object字符串，我们会尝试进行格式化。
 
-**2、<3.5.0版本的半自动曝光事件需要在onShow中手动注册；3.5.0起无需手动注册，同时collectImp事件api废弃。**
+3、<3.5.0版本的半自动曝光事件需要在onShow中手动注册；3.5.0起无需手动注册，同时collectImp事件api废弃。
 
 ## mpvue适配插件
 
