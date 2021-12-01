@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
-title: 支付宝(天猫)小程序
+title: 支付宝小程序
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-本文档同时适用支付宝(天猫)小程序SDK和全量SDK。
+本文档同时适用支付宝小程序SDK和全量SDK。
 
 变更记录：[查看Changelog](https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js)
 ## 准备工作
@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 
 ## 集成
 
-对于支付宝(天猫)小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
+对于支付宝小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
 
 <Tabs
   groupId="1"
@@ -144,29 +144,7 @@ export default App;
 
 ## 添加白名单
 
-### 支付宝小程序
-
 由于支付宝小程序对网络请求的限制[参考文档](https://opendocs.alipay.com/mini/008gq6)，您需要在「支付宝小程序管理中心-小程序详情-设置-开发设置-服务器域名白名单」中添加request合法域名。[支付宝小程序管理中心](https://open.alipay.com/mini/dev/list)
-
-### 天猫小程序
-
-由于天猫小程序使用云函数代理的形式进行网络请求，要求严格。因此需要具体域名和字段需要与我们沟通确认后由开发主体申请白名单 [参考文档](https://miniapp.open.taobao.com/docV3.htm?docId=118444&docType=1)
-
-***注意不要轻易尝试申请！请与我们充分沟通需求后实践。***
-
-这里我们给出白名单申请完成后在代码中的简单实现：
-```js
-// 1、server目录中创建名为 `httpTunnel` 的云函数。
-
-// 2、index.js
-exports.gioTrack = async (context) => {
-  ...
-  context.cloud.httpApi.invoke({ ... });
-  ...
-};
-
-// 3、在SDK初始化配置项中将singleSend设为true
-```
 
 ## 数据校验
 

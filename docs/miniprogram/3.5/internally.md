@@ -81,6 +81,10 @@ gio('track', 'imp_cat_var', { name: 'my_cat_picture', time: '20210601' });
 
 3、<3.5.0版本的半自动曝光事件需要在onShow中手动注册；3.5.0起无需手动注册，同时collectImp事件api废弃。
 
+## 加密插件
+
+使用插件并在初始化时开启 **`compress`** 配置时，上报请求的数据进行加密。
+
 ## mpvue适配插件
 
 适配mpvue框架专用的插件。
@@ -100,3 +104,7 @@ gio('track', 'imp_cat_var', { name: 'my_cat_picture', time: '20210601' });
 适配Taro框架专用的插件。兼容Taro2.x和Taro3.x。
 
 **仅支持Taro2、Taro3 React、Taro3&nbsp;Vue2开发的小程序，Taro3&nbsp;Vue3开的小程序暂不支持。**
+
+## 天猫小程序插件
+
+因为天猫小程序上报数据仅能单事件上报的特殊性，使用天猫小程序插件会使得小程序上报时每次发送一个事件数据。

@@ -19,12 +19,12 @@ title: 数据采集API
 ### 2、初始化SDK(setConfig)
 ***此方法废弃，请参考 init 初始化***
 
-## 动态配置接口
+## 动态配置接口(setOption)
 
-由于多样的动态修改配置的需求，我们在`3.5.0`版本开始提供了统一的接口，以降低您的使用难度。
+由于多样的动态修改配置的需求，我们在`3.5.0`版本开始提供了统一的接口，以降低您的使用难度。设值成功返回true，设值失败返回false。
 
 ```js
-gdp('setOption', optionKey, optionValue);
+gdp('setOption', optionKey, optionValue);  // return true | false
 ```
 
 ### 1、开启/关闭无埋点数据采集(autotrack)
@@ -97,8 +97,8 @@ gdp('identify', openId);
 #### 参数说明
 | 参数      | 参数类型 | 说明                                                                |
 | --------- | -------- | ------------------------------------------------------------------- |
-| `userId`  | `String` | 必填；字符长度小于等于 1000，长度超限将会被截断。                 |
-| `userKey` | `String` | 可选；适用于 ID-MAPPING,可设置 `userId` 的类型；长度限制同 `userId` |
+| `userId`  | `string / number` | 必填；字符长度小于等于 1000，长度超限将会被截断。                 |
+| `userKey` | `string / number` | 可选；适用于 ID-MAPPING,可设置 `userId` 的类型；长度限制同 `userId` |
 
 #### 示例：
 ```js
@@ -257,7 +257,7 @@ gdp('getOption');
 ### Object参数限制
 **版本信息：>=3.5.0**
 
-SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**(长度超限均会被截断)**
+SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**(非指定类型值均会被替换为空字符串，长度超限均会被截断)**
 
 ** `key:` string | number，length <=50；**
 
