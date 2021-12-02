@@ -30,7 +30,7 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
     ...other settings
 });
 ```
-5、如果您是支付宝(天猫)小程序，请参考[集成支付宝(天猫)小程序](/docs/miniprogram/3.5/integration/alipay)进行修改。
+5、如果您是支付宝小程序，请参考[集成支付宝小程序](/docs/miniprogram/3.5/integration/alipay)进行修改。
 
 ### 页面
 
