@@ -7,35 +7,30 @@ title: 集成配置
 
 下表中列出了所有小程序SDK的配置项，请按需设置。如您不确定是否需要，请咨询我们。
 
-| **字段名**            | **参数类型**  | **默认值** | **说明**                                                                |
-| --------------------- | ------------- | ---------- | ------------------------------------------------------------------- |
-| `autotrack`           | `boolean`     | `true`     | 是否开启无埋点采集（需配合无埋点插件使用）                                 |
-| `comAsPage`           | `boolean`     | `false`    | 是否将 Component 组件 当做 Page 处理                                   |
-| `compress`            | `boolean`     | `false`    | 是否数据加密**(3.5.0起需配合加密插件使用)(天猫小程序不支持)**               |
-| `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                                       |
-| `debug`               | `boolean`     | `false`    | 是否开启调试模式                                                       |
-| `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                                       |
-| `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                                   |
-| `getLocation`         | `object`      | `-`        | 获取位置配置项                                                        |
-| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                                   |
-| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系                          |
-| `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**                            |
-| `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                                          |
-| `mpvue`               | `any`         | `-`        | 使用 mpvue 开发时使用的实例**(>=3.5.0)**                               |
-| `taroVue`             | `any`         | `-`        | 使用 Taro3vue2 开发时使用的实例**(需配合 Taro 插件使用)(>=3.5.0)**        |
-| `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例**(需配合 Taro 插件使用)**                      |
-| `uniVue`              | `any`         | `-`        | 使用 uni-app 开发时使用的实例**(需配合 uni-app 插件使用)(>=3.5.0)**       |
-| `version`             | `string`      | `-`        | 小程序应用版本(建议填写)                                                |
-| `wepy`                | `any`         | `-`        | 使用 WePY 开发时使用的实例**(需配合 wepy 插件使用)(>=3.5.0)**             |
+| **字段名**            | **参数类型**  | **默认值** | **说明**                                             |
+| --------------------- | ------------- | ---------- | ---------------------------------------------------- |
+| `autotrack`           | `boolean`     | `true`     | 是否开启无埋点采集（需配合无埋点插件使用）           |
+| `comAsPage`           | `boolean`     | `false`    | 是否将 Component 组件 当做 Page 处理                 |
+| `compress`            | `boolean`     | `false`    | 是否数据加密                                         |
+| `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                     |
+| `debug`               | `boolean`     | `false`    | 是否开启调试模式                                     |
+| `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报(SDK 版本>= 3.3.0)             |
+| `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
+| `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                 |
+| `getLocation`         | `object`      | `-`        | 获取位置配置项                                       |
+| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                 |
+| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系     |
+| `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**       |
+| `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                         |
+| `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例                           |
+| `version`             | `string`      | `-`        | 小程序应用版本(建议填写)                             |
+| `vue`                 | `any`         | `-`        | 使用 uni-app/mpvue/WePY 开发时使用的实例             |
 
 ## 配置项详解
 
 ### autotrack
 
-默认情况下，SDK开启无埋点采集。如果您不需要无埋点采集，可以通过以下两种方式进行关闭：
-
-**方式一：**使用 ***含*** 无埋点插件的SDK，指定 `autotrack: false` 进行关闭。<br/>
-**方式二：**使用 ***不含*** 无埋点插件的SDK即可。
+默认情况下，SDK开启无埋点采集。如果您不需要无埋点采集，可以通过指定 `autotrack: false` 进行关闭。
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
 
@@ -43,9 +38,7 @@ title: 集成配置
 
 默认情况下，SDK关闭数据加密，如果您认为不足够安全，可以通过指定 `compress: true` 打开数据加密。需配合加密插件使用。
 
-**注意：**<br/>
-**1、开启加密后抓包工具无法抓取上报的明文数据，但debug模式开启时开发者工具中仍能看到未加密的上报数据。**<br/>
-**2、天猫小程序由于需要云函数明文校验请求字段不能加密上报，所以在天猫小程序时，`compress` 会自动失效。**
+**注意：开启加密后抓包工具无法抓取上报的明文数据，但debug模式开启时开发者工具中仍能看到未加密的上报数据。**
 
 ### dataCollect
 
@@ -107,10 +100,3 @@ gdp('getLocation');      // 获取用户的地理位置信息并上报
 您可以指定一项或多项字段，但均需为数组格式进行设置。
 
 **支持的字段：`deviceBrand` , `deviceModel` , `deviceType` , `networkState` , `screenHeight` , `screenWidth`**
-
-### 其他
-
-**`mpvue` , `taroVue` , `taro` , `uniVue` , `wepy`**为小程序开发时使用的框架实例，请对号入座使用。
-
-##### 解惑：为什么以前使用一个`vue`字段即可，现在需要拆分为多个？
-##### 由于我们将不同的框架适配拆分为不同的独立插件，故而变量名不能共用一个。
