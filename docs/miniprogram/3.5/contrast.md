@@ -44,7 +44,7 @@ title: 3.0与3.5对比
 
 **新增项：** `getOption`、`setOption`
 
-> 新增 `getOption` 方法；用于获取当前SDK配置项状态。[参考文档](/3.5/commonlyApi#8获取sdk当前配置getoption)
+> 新增 `getOption` 方法；用于获取当前SDK配置项状态。[参考文档](/docs/miniprogram/3.5/commonlyApi#8获取sdk当前配置getoption)
 >
 > 新增 `setOption` 方法；用于统一动态设置SDK配置项。[参考文档](/docs/miniprogram/3.5/commonlyApi#动态配置接口)
 

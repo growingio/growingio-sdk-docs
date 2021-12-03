@@ -38,7 +38,7 @@ gdp('setAutotrack', true);
 ### 1、设置访问用户id
 :::info
 若使用此接口需要在初始化是将 forceLogin 设置为 true
-参考[设置强制登录模式](/docs/miniprogram/base/configuration#设置强制登录模式forcelogin)
+参考[设置强制登录模式](/docs/miniprogram/3.0/configuration#设置强制登录模式forcelogin)
 :::
 在微信小程序调用[登录开放接口 `wx.login`](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)之后，获取 openId，调用 identify 设置访问用户ID。
 
