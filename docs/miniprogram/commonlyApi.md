@@ -2,74 +2,40 @@
 sidebar_position: 4
 title: 数据采集API
 ---
+通过gioGlobal.gdp这个全局的方法可以调用到SDK中所有开放的接口。
 
+一般您可在页面头部进行解构获取gdp方法。const { gdp } = gioGlobal;
 
-通过 **`global.gdp`** 这个全局的方法可以调用到SDK中所有开放的接口。
-
-您可在页面头部进行解构获取gdp方法。**`const { gdp } = global;`**
-
-## 初始化
-
-在<3.5.0的旧版本中我们提供了两种初始化方式：`init` 和 `setConfig`，这引起了很多用户的误解，现在我们将只保留 `init` 的初始化方式，以此来降低您的理解成本。
-
-### 1、初始化SDK(init)
-
-[参考集成文档](/docs/miniprogram/3.5/integration/wx)
-
-### 2、初始化SDK(setConfig)
-***此方法废弃，请参考 init 初始化***
-
-## 动态配置接口(setOption)
-
-由于多样的动态修改配置的需求，我们在`3.5.0`版本开始提供了统一的接口，以降低您的使用难度。设值成功返回true，设值失败返回false。
-
-```js
-gdp('setOption', optionKey, optionValue);  // return true | false
-```
+## 动态配置接口
 
 ### 1、开启/关闭无埋点数据采集(autotrack)
 默认开启无埋点数据采集。当设置为 **`flase`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。
 ```js
-gdp('setOption', 'autotrack', true | false);
-
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('setAutotrack', true | false);
+gdp('setAutotrack', true | false);
 ```
 
 ### 2、开启/关闭数据采集(dataCollect)
 默认开启数据采集。当设置为 **`false`** 时，SDK将不会采集和上报事件。
 ```js
-gdp('setOption', 'dataCollect', true | false);
-
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('setDataCollect', true | false);
+gdp('setDataCollect', true | false);
 ```
 
 ### 3、开启/关闭调试模式(debug)
 默认不开启。当设置为 **`true`** 时， 开启后会在开发者工具控制台输出日志
 ```js
-gdp('setOption', 'debug', true | false);
-
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('enableDebug', true | false);
+gdp('enableDebug', true | false);
 ```
 
 ### 4、修改上报地址(host)
 请设置准确的host地址，支持 **`IP`** 或 **`域名`** 格式，**无需携带协议头**。
 ```js
-gdp('setOption', 'host', 'wxapi.growingio.com');
-
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('setTrackerHost', 'xxxxxxxx');
+gdp('setTrackerHost', 'xxxxxxxx');
 ```
 
 ### 5、修改请求协议(scheme)
 默认为**`https`**，您可以在开发过程中自定义设置
 ```js
-gdp('setOption', 'scheme', 'http' | 'https');
-
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('setTrackerScheme', 'http' | 'https');
+gdp('setTrackerScheme', 'http' | 'https');
 ```
 
 ## 功能接口
@@ -77,7 +43,7 @@ gdp('setOption', 'scheme', 'http' | 'https');
 ### 1、设置访问用户id(identify)
 :::info
 若使用此接口需要在初始化时将 forceLogin 设置为 true
-参考[设置强制登录模式](/docs/miniprogram/3.5/initSettings#forcelogin)
+参考[设置强制登录模式](/docs/miniprogram/initSettings#forcelogin)
 :::
 在微信小程序调用[登录开放接口](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) `wx.login` 之后，获取 openId，调用 identify 设置访问用户ID。
 
@@ -96,10 +62,10 @@ gdp('identify', openId);
 **需在初始化 SDK 时设置`enableIdMapping`为`true`**
 :::
 #### 参数说明
-| 参数      | 参数类型 | 说明                                                                |
-| --------- | -------- | ------------------------------------------------------------------- |
-| `userId`  | `string / number` | 必填；字符长度小于等于 1000，长度超限将会被截断。                 |
-| `userKey` | `string / number` | 可选；适用于 ID-MAPPING,可设置 `userId` 的类型；长度限制同 `userId` |
+| 参数      | 参数类型          | 说明                                                                |
+| --------- | ----------------- | ------------------------------------------------------------------- |
+| `userId`  | `string / number` | 必填。                                                             |
+| `userKey` | `string / number` | 选填；适用于 ID-MAPPING,可设置 `userId` 的类型。                       |
 
 #### 示例：
 ```js
@@ -118,20 +84,22 @@ gdp('clearUserId');
 
 ### 4、自定义埋点(track)
 发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中`事件管理用户界面`配置事件以及事件属性。
+
+```js
+gdp('track', eventId, properties, item);
+```
 #### 参数说明
-| 参数              | 参数类型 | 说明                                                                                   |
-| ----------------- | -------- | ----------------------------------------------------------------------------------- |
-| `eventId`         | `String` | 必填；事件名，事件标识符。                                                               |
-| `properties`      | `Object` | 选填；事件属性。[参数限制](/docs/miniprogram/3.5/commonlyApi#object参数限制)              |
-| `item`            | `Object` | 选填；事件发生关联的物品模型。                                                           |
-| `item.id`         | `string` | item 中必填；物品模型 id。                                                             |
-| `item.key`        | `string` | item 中必填；物品模型唯一标识。                                                          |
-| `item.properties` | `Object` | item 中选填；物品模型属性。参数限制同`properties`。                                       |
+| 参数              | 参数类型 | 说明                            |
+| ----------------- | -------- | ------------------------------- |
+| `eventId`         | `String` | 必填；事件名，事件标识符。      |
+| `properties`      | `Object` | 选填；事件属性。                |
+| `item`            | `Object` | 选填；事件发生关联的物品模型。  |
+| `item.id`         | `string` | item 中必填；物品模型 id。      |
+| `item.key`        | `string` | item 中必填；物品模型唯一标识。 |
+| `item.properties` | `Object` | item 中选填；物品模型属性。     |
 
 #### 示例：
 ```js
-// gdp('track', eventId, properties[, item]);
-
 gdp('track', 'order'); // 无properties，无item
 gdp('track', 'order', { type: 'hjh' }); // 有properties，无item
 gdp('track', 'order', {}, { key: 'order_id', id: '12345' }); // 无properties，有item
@@ -143,9 +111,9 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 
 #### 参数说明
 
-| 参数             | 参数类型 | 说明                                                                              |
-| ---------------- | -------- | --------------------------------------------------------------------------------- |
-| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/miniprogram/3.5/commonlyApi#object参数限制) |
+| 参数             | 参数类型 | 说明                             |
+| ---------------- | -------- | -------------------------------- |
+| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。 |
 
 #### 示例：
 ```js
@@ -191,16 +159,14 @@ Page({
 </view>
 ```
 
-### 8、获取SDK当前配置(getOption)
-**版本信息：>=3.5.0**
-
-当调试时需要获取SDK当前的完整配置信息时，可调用此接口。
+### 8、手动注册半自动曝光事件(collectImp)
 ```js
-gdp('getOption');
+Page({
+  onShow: {
+    gio('collectImp', this);
+  }
+});
 ```
-
-### 9、手动注册半自动曝光事件(collectImp)
-***此方法废弃，3.5.0版本起为自动注册无需手动注册***
 
 ## 采集标记
 
@@ -251,18 +217,67 @@ gdp('getOption');
 <view data-growing-ignore>要忽略的节点</view>
 ```
 
-***tips：3.5.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件。如果您期望采集它，请添加 `data-growing-track` 标记。***
-
 ## 其他
 
-### Object参数限制
-**版本信息：>=3.5.0**
+### 半自动曝光事件
 
-SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**(非指定类型值均会被替换为空字符串，长度超限均会被截断)**
+用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogram/commonlyApi#4自定义埋点)在平台上进行事件类型和变量的预定义。
 
-** `key:` string | number，length <=50；**
+**支持范围：微信小程序。支付宝小程序不支持。**
 
-** `value:` string | number，length <=1000；**
+使用方法：
+
+1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
+
+2、设置参数
+
+#### 方式一：(整体定义)
+
+在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs` 属性，并分别对应 `track` 方法中的 `eventId` 和 `properties` 参数进行设置，参数规则[参考文档](/docs/miniprogram/commonlyApi#4自定义埋点track)。
+
+```js
+Page({
+  data: {
+    impAttrs: JSON.stringify({ type: 'fruit', name: 'apple', color: 'red' }),
+  }
+})
+```
+```html
+<view
+  class="growing_collect_imp"
+  data-gio-imp-track="imp_goods_var"
+  data-gio-imp-attrs="{{ impAttr }}"
+>
+  监听的元素
+</view>
+```
+对应产生的`CUSTOM`事件相当于： ↓↓↓
+```js
+gio('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
+```
+**请注意：`data-gio-imp-attrs` 允许接受一个Object或者合法的Object字符串，我们会尝试进行对象格式化。**
+
+#### 方式二：(单个字段定义)
+
+在节点上添加 `data-gio-imp-track` 属性，添加 `data-gio-imp-${key} = ${value}` 的自定义参数。
+
+```html
+<view
+  class="growing_collect_imp"
+  data-gio-imp-track="imp_people_var"
+  data-gio-imp-name="lucy"
+  data-gio-imp-age="10"
+  data-gio-imp-sex="girl"
+>
+  监听的元素
+</view>
+```
+对应产生的`CUSTOM`事件相当于： ↓↓↓
+```js
+gio('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
+```
+
+3、设置完参数后，在当前页面的 `onShow` 中，添加 `gio('collectImp', this);` 进行注册。
 
 ### navigator组件
 

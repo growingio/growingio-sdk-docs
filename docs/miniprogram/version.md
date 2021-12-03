@@ -1,13 +1,13 @@
 ---
 title: 版本记录
-sidebar_position: 0
+sidebar_position: 5
 ---
 -----
 
 ## V3.3.1 - 2021/11/24
 
 * 修复小程序切入后台超5分钟visit不发送导致session不会重置的问题
-  
+
 ## V3.3.0 - 2021/09/30
 
 * 新增id mapping 支持

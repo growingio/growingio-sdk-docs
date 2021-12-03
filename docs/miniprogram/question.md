@@ -1,12 +1,7 @@
 ---
-sidebar_position: 3
 title: 常见问题
+sidebar_position: 6
 ---
-
-### 数据上报地址被小程序拦截，认为是不安全的地址？
-
-请在微信小程序开发者平台上添加合法域名（同 init 方法中配置的 host 地址）如下图：
-![logger](/img/minip-q1.png)
 
 ### 集成SDK后，为什么接收不到数据？
 * host 配置错误
@@ -14,7 +9,7 @@ title: 常见问题
 * host是否可以正常访问
 
 ### 用户信息保护，以及 GDPR 该怎么设置？
-GrowingIO 全面支持 欧盟 《一般数据保护条例》； 
+GrowingIO 全面支持 欧盟 《一般数据保护条例》；
 
 使用场景：遵守欧盟法律；控制小程序是否需要采集数据
 
@@ -24,9 +19,9 @@ GrowingIO 全面支持 欧盟 《一般数据保护条例》；
 // 用户未同意隐私协议禁止采集数据
 gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost‘,
-  dataCollect: false  
+  dataCollect: false
 });
 // 用户同意隐私协议后开启采集数据 (默认)
-gdp('setDataCollect', true); 
+gdp('setDataCollect', true);
 
 ```
