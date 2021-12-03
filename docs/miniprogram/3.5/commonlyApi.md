@@ -55,11 +55,12 @@ gdp('setOption', 'debug', true | false);
 ```
 
 ### 4、修改上报地址(host)
-**版本信息：>=3.5.0**
-
 请设置准确的host地址，支持 **`IP`** 或 **`域名`** 格式，**无需携带协议头**。
 ```js
 gdp('setOption', 'host', 'wxapi.growingio.com');
+
+// <3.5.0版本的写法仍兼容，但不建议您再这么使用
+// gdp('setTrackerHost', 'xxxxxxxx');
 ```
 
 ### 5、修改请求协议(scheme)
