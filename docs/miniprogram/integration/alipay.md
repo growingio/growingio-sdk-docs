@@ -38,7 +38,7 @@ App($global.trackApp({ ... }))
 $global.GioPage({ ... })
 ```
 
-***更多配置项请在[集成配置](/docs/miniprogram/3.0/initSettings)菜单中查看***
+***更多配置项请在[集成配置](/docs/miniprogram/initSettings)菜单中查看***
 
 ## 添加白名单
 
