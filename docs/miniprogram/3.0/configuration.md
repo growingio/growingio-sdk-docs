@@ -14,9 +14,6 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ```
 
 ## 初始化可配置项
-:::info
-该表格列出了当前sdk内置的配置项，但也可以根据插件来新增自定义配置
-:::
 
 | **字段名**            | **参数类型**  | **必填** | **默认值**     | **说明**                                                                                                           |
 | --------------------- | ------------- | -------- | -------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -47,7 +44,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
-  autotrack: false  
+  autotrack: false
 });
 ```
 ### 设置数据采集(dataCollect)
@@ -58,17 +55,17 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
 gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
-  dataCollect: false  
+  dataCollect: false
 });
 ```
 ### 开启调试模式(debug)
 
-默认为关闭。在开发时设置 `debug: true`，打开浏览器控制台，即可看到实时采集的数据。
+默认为关闭。在开发时设置 `debug: true`，打开开发者工具控制台，即可看到实时采集的数据。
 ```js
 gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
-  debug: true  
+  debug: true
 });
 ```
 ### 设置跟踪分享数据(followShare)
@@ -78,7 +75,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
 gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
-  followShare: true  
+  followShare: true
 });
 ```
 在分享回调方法中，添加 `contentType` 和 `contentId` 字段。例：
@@ -100,7 +97,7 @@ onShareAppMessage: function() {
 gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
   host: 'your apiServerHost',
   version: '1.0.0',
-  forceLogin: true  
+  forceLogin: true
 });
 ```
 打开小程序后SDK会采集数据，但暂停上报数据，在微信小程序调用[登录开放接口 `wx.login`](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)获取 openId ，调用 `identify` 方法设置 openId 为访问用户ID，之后继续采集上报数据(调用`identify`之前采集的数据也一同上报)。
