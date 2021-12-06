@@ -14,6 +14,7 @@ title: 集成配置
 | `compress`            | `boolean`     | `false`    | 是否数据加密                                         |
 | `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                     |
 | `debug`               | `boolean`     | `false`    | 是否开启调试模式                                     |
+| `enableEventStore`    | `boolean`     | `true`     | 是否开启事件存储(SDK 版本>= 3.3.2)                   |
 | `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报(SDK 版本>= 3.3.0)             |
 | `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
 | `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                 |
@@ -47,6 +48,10 @@ title: 集成配置
 ### debug
 
 在开发时设置 debug: true，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
+
+### enableEventStore
+
+默认情况下，SDK开启事件存储功能，在小程序storage中存储SDK已上报的事件数据，用于运营SDK消费，**隔天清空**。如果您不使用运营SDK且认为您的埋点数据触发频繁且数据量较大，有可能会触发小程序对单次存储的2M上限，可选择关闭此项。
 
 ### followShare
 
