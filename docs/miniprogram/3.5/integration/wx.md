@@ -31,6 +31,7 @@ import TabItem from '@theme/TabItem';
     {label: 'Taro2', value: 'Taro2'},
     {label: 'Taro3(react)', value: 'Taro3(react)'},
     {label: 'Taro3(vue2)', value: 'Taro3(vue2)'},
+    {label: 'Chameleon', value: 'Chameleon'},
   ]
 }>
   <TabItem value="Native原生">
@@ -178,6 +179,26 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
 const App = { ... };
 export default App;
 
+```
+  </TabItem>
+  <TabItem value="Chameleon">
+
+```js
+// app.cml
+import Cml from 'chameleon-runtime';
+import gdp from '../utils/gio-cdp.js';
+
+...your codes
+
+gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+    version: 'miniProgram version',
+    host: 'api.growingio.com',
+    cml: Cml,
+    ...other settings
+});
+
+class App { ... }
+export default new App();
 ```
   </TabItem>
 </Tabs>
