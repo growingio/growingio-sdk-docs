@@ -1,6 +1,6 @@
 ---
 title: 常见问题
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 ### 集成SDK后，为什么接收不到数据？

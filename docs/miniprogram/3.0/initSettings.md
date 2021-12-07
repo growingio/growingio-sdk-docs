@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: 集成配置
+title: 初始化配置
 ---
 
 ## 配置一览表
@@ -14,6 +14,7 @@ title: 集成配置
 | `compress`            | `boolean`     | `false`    | 是否数据加密                                         |
 | `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                     |
 | `debug`               | `boolean`     | `false`    | 是否开启调试模式                                     |
+| `enableEventStore`    | `boolean`     | `false`    | 是否开启事件存储(SDK 版本>= 3.3.2)                   |
 | `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报(SDK 版本>= 3.3.0)             |
 | `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
 | `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                 |
@@ -47,6 +48,11 @@ title: 集成配置
 ### debug
 
 在开发时设置 debug: true，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
+
+### enableEventStore
+
+默认情况下，SDK关闭事件存储功能。此功能在小程序storage中存储SDK已上报的事件数据，用于运营SDK消费，**隔天清空**。<br/>
+**如果您不使用运营SDK可忽略此配置；如果您使用运营SDK，必须开启此配置项，设置为 `true`。**
 
 ### followShare
 

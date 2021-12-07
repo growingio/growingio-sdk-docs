@@ -6,13 +6,21 @@ title: 支付宝小程序
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-变更记录：[查看Changelog](/docs/miniprogram/version)
 ## 准备工作
-1、在平台中新建项目并获取**`projectId`和`dataSourceId`**。
+### 获取 `accountID`、`dataSourceID`、`host`、`appID` 信息
 
-2、在小程序中获取**`appId`**。
+:::info
+- `accountID`、`dataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理。
+- `host`需要服务端部署，如不清楚请联系您的专属项目经理。
+- `appID` 为小程序应用ID。
+:::
+#### 创建
+![新建数据源](/img/createapplication.png)
+#### 查看
+![查看数据源](/img/miniprogram/dataSourceInfo.png)
 
-3、<a href="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js" download="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js">点击下载SDK</a>，存放在项目中，下文中以`utils/gio`目录为例。
+### 下载SDK
+<a href="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js" download="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js">点击下载SDK</a>，存放在项目中，下文中以`utils/gio`目录为例。
 
 ## 集成
 
