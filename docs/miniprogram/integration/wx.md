@@ -1,32 +1,28 @@
 ---
 sidebar_position: 1
-title: 如何集成
+title: 微信小程序
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-小程序 SDK 支持 `微信小程序` 平台，后续会逐步支持其他平台。具备以下功能特性：
-* 埋点能力，开发同学调用API主动采集埋点事件
-* 无埋点能力，自动采集用户行为事件，可通过开关控制
+## 准备工作
+### 获取 `accountID`、`dataSourceID`、`host`、`appID` 信息
 
-## 小程序SDK集成
 :::info
-下载SDK： https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js
->
-放入小程序目录（例：/src/utils/目录下，下文中均以此目录为例）
-:::
-
-### 获取 `AccountID`、`DataSourceID`、`Host`、`AppID`信息
-:::info
-`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
-`Host`需要服务端部署，如不清楚请联系您的专属项目经理<br/>
-`AppID` 为小程序ID
+- `accountID`、`dataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理。
+- `host`需要服务端部署，如不清楚请联系您的专属项目经理。
+- `appID` 为小程序应用ID。
 :::
 #### 创建
-![新建数据源](./../../../static/img/createapplication.png)
+![新建数据源](/img/createapplication.png)
 #### 查看
-![查看数据源](./../../../static/img/showminpdatasourceid.png)
+![查看数据源](/img/miniprogram/dataSourceInfo.png)
+
+### 下载SDK
+<a href="https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js" download="https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js">点击下载SDK</a>，存放在项目中，下文中以`utils/gio`目录为例。
+
+## 集成
 
 对于微信小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
 ### 原生开发
@@ -44,10 +40,7 @@ import TabItem from '@theme/TabItem';
 
 ```js
 var gdp = require("utils/gio-minp.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -60,10 +53,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ```js
 var gdp = require("utils/gio-minp.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -93,10 +83,7 @@ const App = global.GioApp;
 ```js
 import Taro from '@tarojs/taro';
 var gdp = require("utils/gio-minp/index.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -138,10 +125,7 @@ module.exports = {
 ```js
 import Taro from '@tarojs/taro';
 var gdp = require("utils/gio-minp/index.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -161,10 +145,7 @@ import Vue from 'vue';
 import App from './App.vue';
 App.mpType = 'app';
 var gdp = require("utils/gio-minp/index.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -191,10 +172,7 @@ import Vue from 'vue';
 import App from './App.vue';
 App.mpType = 'app';
 var gdp = require("utils/gio-minp/index.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -241,14 +219,11 @@ module.exports = {
 
 ```js
 
-import Vue from 'vue'; // 这里vue应该指向的是 /src/utils/vue.js
+import Vue from 'vue';
 import App from './App.vue';
 App.mpType = 'app';
 var gdp = require("utils/gio-minp/index.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -280,10 +255,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ```js
 import Vue from 'vue';
 var gdp = require("utils/gio-minp/index.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -297,10 +269,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ```js
 import Vue from 'vue';
 var gdp = require("utils/gio-minp/index.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -315,10 +284,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ```js
 import Wepy from '@wepy/core';
 var gdp = require("utils/gio-minp/index.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -332,10 +298,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ```js
 import Wepy from '@wepy/core';
 var gdp = require("utils/gio-minp/index.js").default;
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: api.growingio.com 仅需填写对应host
-// YourDatasourceId eg: 11223344aabbcc
+
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
     host: 'api.growingio.com',
@@ -347,3 +310,14 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 </TabItem>
 </Tabs>
 
+***更多配置项请在[集成配置](/docs/miniprogram/initSettings)菜单中查看***
+
+## 添加白名单
+
+由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)，您需要在「小程序后台-开发-开发设置-服务器域名」中添加request合法域名。[小程序后台](https://mp.weixin.qq.com/)
+
+## 数据校验
+
+请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
+
+![debugLog](/img/miniprogram/3.0_wx_debug.png)
