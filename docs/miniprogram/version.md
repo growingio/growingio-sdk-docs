@@ -1,12 +1,12 @@
 ---
 title: 版本记录
-sidebar_position: 5
+sidebar_position: 0
 ---
 -----
 
 ## V3.3.2 - 2021/12/06
 
-* 新增 enableEventStore 初始化配置，可以再未使用运营SDK时关闭事件的本地存储，以此避免数据量过大导致的超限报错问题。
+* 新增 enableEventStore 初始化配置：在未使用运营SDK时关闭事件本地存储，在使用运营SDK时开启事件本地存储。
 
 ## V3.3.1 - 2021/11/24
 
