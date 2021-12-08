@@ -83,22 +83,11 @@ pod 'GrowingAnalytics/DISABLE_IDFA'
 打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
 
 项目中无需其他额外设置
-### 2. **SDK数据加密传输** 
-:::info
-采集 SDK 版本 >=3.3.0
 
-**使用时注意模块版本需要与采集SDK版本保持一致**
-:::
-启用数据加密，防止采集数据明文传输
 
-在您的Podfile文件中添加
-```c
-pod 'GrowingAnalytics/ENABLE_ENCRYPTION'
-```
-打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
 
-项目中无需其他额外设置
-### 3.**内嵌H5页面数据采集配置**
+### 2.**内嵌H5页面数据采集配置**
+
 APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web JS SDK
 
 若需要 H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通，请参考内置 [Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
