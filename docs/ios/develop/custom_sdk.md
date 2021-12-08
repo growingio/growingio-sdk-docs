@@ -166,7 +166,7 @@ Service必定继承其对应的Protocol，例如 加密Service 对应协议为 G
 1. 注解 (推荐)
 
 ```c
-@GrowingService(GrowingEncryptionService, CustomEncryptionClass)
+GrowingService(GrowingEncryptionService, CustomEncryptionClass)
 ```
 
 2. 代码
@@ -275,14 +275,14 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 ```
 
-同时使用 @GrowingMod 注册Module到SDK中，并实现growingModInit 方法，在方法中将自己添加到GrowingEventManager拦截者中 
+同时使用 GrowingMod 注册Module到SDK中，并实现growingModInit 方法，在方法中将自己添加到GrowingEventManager拦截者中 
 
 ```c
 #import "CustomEventModule.h"
 #import "GrowingEventManager.h"
 
 
-@GrowingMod(CustomEventModule)
+GrowingMod(CustomEventModule)
 
 @implementation CustomEventModule
 

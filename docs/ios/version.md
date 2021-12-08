@@ -4,9 +4,19 @@ sidebar_position: 0
 ---
 -----
 
-## 3.3.1-beta - 2021/10/20
+## V3.3.2 - 2021/12/07
 
-[v3.3.1-beta](https://github.com/growingio/growingio-sdk-ios-autotracker/releases/tag/3.3.1-beta) 
+[v3.3.2](https://github.com/growingio/growingio-sdk-ios-autotracker/releases/tag/3.3.2) 
+
+* 替换 Demo 中的 UIAlertView API 调用，改用 UIAlertController
+* 对dyld部分操作使用纯c实现，避开runtime冲突
+* Configuration 增加 EncryptEnabled 配置项
+
+
+
+## V3.3.1 - 2021/11/03
+
+[v3.3.1](https://github.com/growingio/growingio-sdk-ios-autotracker/releases/tag/3.3.1) 
 
 * 修复 hybrid event domain 设置失效
 * error log 改为 async，避免线程卡顿
