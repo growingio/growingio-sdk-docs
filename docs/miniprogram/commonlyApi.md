@@ -2,9 +2,9 @@
 sidebar_position: 4
 title: 数据采集API
 ---
-通过gioGlobal.gdp这个全局的方法可以调用到SDK中所有开放的接口。
+通过gioGlobal.gio这个全局的方法可以调用到SDK中所有开放的接口。
 
-一般您可在页面头部进行解构获取gdp方法。const { gdp } = gioGlobal;
+一般您可在页面头部进行取值并命名为gdp方法。const gdp = gioGlobal.gio;
 
 ## 动态配置接口
 
@@ -253,7 +253,7 @@ Page({
 ```
 对应产生的`CUSTOM`事件相当于： ↓↓↓
 ```js
-gio('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
+gdp('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
 ```
 **请注意：`data-gio-imp-attrs` 允许接受一个Object或者合法的Object字符串，我们会尝试进行对象格式化。**
 
@@ -274,7 +274,7 @@ gio('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
 ```
 对应产生的`CUSTOM`事件相当于： ↓↓↓
 ```js
-gio('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
+gdp('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
 ```
 
 3、设置完参数后，在当前页面的 `onShow` 中，添加 `gio('collectImp', this);` 进行注册。

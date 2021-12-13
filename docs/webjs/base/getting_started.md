@@ -57,6 +57,7 @@ JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
   gdp('send');
 </script>
 ```
+**请注意：我们不建议您在`init`和`send`方法之间做设置用户信息的操作，可能会漏发用户访问上报导致访问数据不准确。**
 
 ### APP内嵌H5页面使用集成
 
