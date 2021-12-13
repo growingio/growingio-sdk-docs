@@ -95,7 +95,7 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 ```tex
 deviceId: 使用原生App的deviceId
 sessionId: 使用原生App的sessionId
-gioId: 使用原生App的gioId 
+gioId: 使用原生App的gioId
 userId: 使用原生App的userId
 userKey: 使用原生App的userKey
 dataSourceId: 使用原生App的dataSourceId
@@ -126,12 +126,12 @@ domain: 使用H5页面的域名
 
 ```jsx
 // page.js
-const gio = gioGlobal.gio;
+const gdp = gioGlobal.gio;
 Page({
   data: {
     // foo=1 是您 H5 页面链接后的查询参数(如果没有就无需填写)
     // ${gio('getGioInfo')} 是GIO需要拼接获取的参数，打通需必填
-    url: `https://www.growingio.com/?foo=1&${gio('getGioInfo')}`
+    url: `https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
   }
 });
 
@@ -141,15 +141,15 @@ Page({
 </view>
 ```
 
-**`gio('getGioInfo')`返回一个如下形式的字符串：**
+**`gdp('getGioInfo')`返回一个如下形式的字符串：**
 
 ```json
 giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
 ```
-:::info 
+:::info
 以上数据是小程序中传到内嵌页的数据<br/>
 giou 是访问用户ID<br/>
-gios 是 sessionID<br/> 
+gios 是 sessionID<br/>
 giocs1 是登录用户ID<br/>
 giouserkey 是用户KEY<br/>
 gioprojectid 是 accountId<br/>

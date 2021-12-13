@@ -163,7 +163,7 @@ Page({
 ```js
 Page({
   onShow: {
-    gio('collectImp', this);
+    gdp('collectImp', this);
   }
 });
 ```
