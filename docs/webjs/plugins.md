@@ -130,7 +130,7 @@ const gdp = gioGlobal.gio;
 Page({
   data: {
     // foo=1 是您 H5 页面链接后的查询参数(如果没有就无需填写)
-    // ${gio('getGioInfo')} 是GIO需要拼接获取的参数，打通需必填
+    // ${gdp('getGioInfo')} 是GIO需要拼接获取的参数，打通需必填
     url: `https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
   }
 });
