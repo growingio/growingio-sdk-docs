@@ -277,7 +277,7 @@ gdp('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
 gdp('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
 ```
 
-3、设置完参数后，在当前页面的 `onShow` 中，添加 `gio('collectImp', this);` 进行注册。
+3、设置完参数后，在当前页面的 `onShow` 中，添加 `gdp('collectImp', this);` 进行注册。
 
 ### navigator组件
 
