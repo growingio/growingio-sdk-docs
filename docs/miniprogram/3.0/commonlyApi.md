@@ -2,9 +2,9 @@
 sidebar_position: 4
 title: 数据采集API
 ---
-通过gioGlobal.gdp这个全局的方法可以调用到SDK中所有开放的接口。
+通过gioGlobal.gio这个全局的方法可以调用到SDK中所有开放的接口。
 
-一般您可在页面头部进行解构获取gdp方法。const { gdp } = gioGlobal;
+一般您可在页面头部进行取值并命名为gdp方法。const gdp = gioGlobal.gio;
 
 ## 动态配置接口
 
@@ -140,15 +140,19 @@ gdp('getGioInfo');
 ```js
 // js
 Page({
-  data: { url: `https://www.growingIO.com?${gdp('getGioInfo')}` }
+  data: {
+    url: `https://www.growingIO.com?${gdp('getGioInfo')}`
+  }
   onShow() {
-    // 每次onShow时重设一次url的值，保证getGioInfo拿到的是最新值
-    this.setData({ url: this.data.url });
+    // 每次onShow时重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
+    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
+    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
   },
   handleLogin() {
     ...
-    // 登录完成后重设一次url的值，保证getGioInfo拿到的是最新值
-    this.setData({ url: this.data.url });
+    // 登录完成后重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
+    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
+    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
   }
 })
 ```
@@ -159,14 +163,14 @@ Page({
 </view>
 ```
 
-### 8、手动注册半自动曝光事件(collectImp)
+<!-- ### 8、手动注册半自动曝光事件(collectImp)
 ```js
 Page({
   onShow: {
-    gio('collectImp', this);
+    gdp('collectImp', this);
   }
 });
-```
+``` -->
 
 ## 采集标记
 
@@ -218,7 +222,7 @@ Page({
 ```
 
 ## 其他
-
+<!--
 ### 半自动曝光事件
 
 用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogram/3.0/commonlyApi#4自定义埋点)在平台上进行事件类型和变量的预定义。
@@ -253,7 +257,7 @@ Page({
 ```
 对应产生的`CUSTOM`事件相当于： ↓↓↓
 ```js
-gio('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
+gdp('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
 ```
 **请注意：`data-gio-imp-attrs` 允许接受一个Object或者合法的Object字符串，我们会尝试进行对象格式化。**
 
@@ -274,10 +278,10 @@ gio('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
 ```
 对应产生的`CUSTOM`事件相当于： ↓↓↓
 ```js
-gio('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
+gdp('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
 ```
 
-3、设置完参数后，在当前页面的 `onShow` 中，添加 `gio('collectImp', this);` 进行注册。
+3、设置完参数后，在当前页面的 `onShow` 中，添加 `gdp('collectImp', this);` 进行注册。 -->
 
 ### navigator组件
 

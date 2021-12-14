@@ -22,8 +22,9 @@ import TabItem from '@theme/TabItem';
 | `excludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - | <font color='red'>>=3.2.1</font> |
 | `ignoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - | <font color='red'>>=3.2.1</font> |
 | `impressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | <font color='red'>无埋点独有</font> | - |
-| `idMappingEnabled` | `BOOL` | 否 | `NO` | 是否开启多用户身份上报 |  | <font color='red'>>=3.3.0</font> |
-| `urlScheme` | `NSString` | 否 | `nil` | 自定义 URL Scheme | | <font color='red'>>=3.3.0</font> |
+| `idMappingEnabled` | `BOOL` | 否 | `NO` | 是否开启多用户身份上报 | - | <font color='red'>>=3.3.0</font> |
+| `urlScheme` | `NSString` | 否 | `nil` | 自定义 URL Scheme | - | <font color='red'>>=3.3.0</font> |
+| `encryptEnabled` | `BOOL` | 否 | `NO` | 是否开启网络传输加密 | - | <font color='red'>>=3.3.2</font> |
 
 ### 详细说明
 
@@ -60,6 +61,12 @@ urlScheme 是 SDK 3.3.0及其之后必传参数，其他参数为必传参数，
 
 自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该[URL Scheme](https://growingio.github.io/growingio-sdk-docs/docs/ios/base/Getting_Started#2-%E6%B7%BB%E5%8A%A0-url-scheme)
 
+#### 12. **encryptEnabled**
+
+> SDK 版本>=3.3.2，pod ENABLE_ENCRYPTION 已被废弃, 请使用 -[GrowingTrackConfiguration setEncryptEnabled] 进行配置
+
+设置为YES时，网络传输内容将会加密，不会明文显示。
+
 ## 常用可选模块配置
 ### 1. **禁用IDFA**
 :::info
@@ -76,22 +83,11 @@ pod 'GrowingAnalytics/DISABLE_IDFA'
 打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
 
 项目中无需其他额外设置
-### 2. **SDK数据加密传输** 
-:::info
-采集 SDK 版本 >=3.3.0
 
-**使用时注意模块版本需要与采集SDK版本保持一致**
-:::
-启用数据加密，防止采集数据明文传输
 
-在您的Podfile文件中添加
-```c
-pod 'GrowingAnalytics/ENABLE_ENCRYPTION'
-```
-打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
 
-项目中无需其他额外设置
-### 3.**内嵌H5页面数据采集配置**
+### 2.**内嵌H5页面数据采集配置**
+
 APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web JS SDK
 
 若需要 H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通，请参考内置 [Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
