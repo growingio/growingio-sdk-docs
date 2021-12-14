@@ -159,14 +159,14 @@ Page({
 </view>
 ```
 
-### 8、手动注册半自动曝光事件(collectImp)
+<!-- ### 8、手动注册半自动曝光事件(collectImp)
 ```js
 Page({
   onShow: {
     gdp('collectImp', this);
   }
 });
-```
+``` -->
 
 ## 采集标记
 
@@ -218,7 +218,7 @@ Page({
 ```
 
 ## 其他
-
+<!--
 ### 半自动曝光事件
 
 用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogram/commonlyApi#4自定义埋点)在平台上进行事件类型和变量的预定义。
@@ -277,7 +277,7 @@ gdp('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
 gdp('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
 ```
 
-3、设置完参数后，在当前页面的 `onShow` 中，添加 `gdp('collectImp', this);` 进行注册。
+3、设置完参数后，在当前页面的 `onShow` 中，添加 `gdp('collectImp', this);` 进行注册。 -->
 
 ### navigator组件
 
