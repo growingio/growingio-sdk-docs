@@ -140,15 +140,19 @@ gdp('getGioInfo');
 ```js
 // js
 Page({
-  data: { url: `https://www.growingIO.com?${gdp('getGioInfo')}` }
+  data: {
+    url: `https://www.growingIO.com?${gdp('getGioInfo')}`
+  }
   onShow() {
-    // 每次onShow时重设一次url的值，保证getGioInfo拿到的是最新值
-    this.setData({ url: this.data.url });
+    // 每次onShow时重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
+    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
+    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
   },
   handleLogin() {
     ...
-    // 登录完成后重设一次url的值，保证getGioInfo拿到的是最新值
-    this.setData({ url: this.data.url });
+    // 登录完成后重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
+    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
+    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
   }
 })
 ```
