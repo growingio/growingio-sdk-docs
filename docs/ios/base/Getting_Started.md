@@ -20,9 +20,25 @@ iOS 8.0 及以上
 
 **根据需要选择集成**<font color='red'> 无埋点SDK </font>或<font color='red'> 埋点SDK </font>
 :::
-## 无埋点SDK集成
 
-### 1. Cocoapods集成
+### 集成准备
+#### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
+:::info
+AccountID：项目ID，代表一个项目<br/>
+DataSourceID：数据源ID，代表一个数据源<br/>
+URL Scheme： 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识<br/>
+Host：采集数据上报的服务器地址<br/>
+
+Account ID、DataSource ID、URL Scheme 需要在CDP增长平台上新建数据获取源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
+Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
+:::
+##### 创建
+![新建数据源](./../../../static/img/createapplication.png)
+##### 查看
+![查看数据源](./../../../static/img/showappdatasourceid.png)
+
+## 无埋点SDK集成
+### Cocoapods集成
 
 在您的Podfile文件中添加
 
@@ -31,7 +47,7 @@ pod 'GrowingAnalytics-cdp/Autotracker'
 ```
 打开终端，切换到项目目录
 执行 `pod install` 或 `pod update`
-### 2. 添加 URL Scheme
+### 添加 URL Scheme
 
 URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。把 URL Scheme 添加到您的项目，以便使用Mobile Debug等功能时唤醒您的应用。  
 :::info
@@ -41,16 +57,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 ![](./../../../static/img/iOS_Setting_URLScheme.png)
 
 
-### 3. SDK初始化配置
-#### 获取 `AccountID`、`DataSourceID`、`Host`信息
-:::info
-`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
-`Host`需要服务端部署，如不清楚请联系您的专属项目经理
-:::
-##### 创建
-![新建数据源](./../../../static/img/createapplication.png)
-##### 查看
-![查看数据源](./../../../static/img/showappdatasourceid.png)
+### SDK初始化配置
 #### 导入头文件`"GrowingAutotracker.h"`，并将以下代码加在您的`AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中  
    代码示例:
 ```c
@@ -99,12 +106,20 @@ continueUserActivity:(NSUserActivity *)userActivity
 :::info
 上述代理方法空实现即可，SDK会自动加入处理代码
 :::
+### 查看集成效果
+运行应用，若日志中输出了  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.0`  
+则说明SDK已经集成成功。
+
+若在初始化中 `debugEnabled` 设置为YES，打开了Debug，则可以在日志中看到每个事件的log日志输出。
+
+至此，就完成了无埋点 SDK 的集成。
 
 ## 埋点SDK集成
 
 埋点 SDK只自动采集用户访问事件和APP关闭事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
 
-### 1. Cocoapods集成
+### Cocoapods集成
 
 在您的Podfile文件中添加
 
@@ -113,7 +128,7 @@ pod 'GrowingAnalytics-cdp/Tracker'
 ```
 打开终端，切换到项目目录
 执行 `pod install` 或 `pod update`
-### 2. 添加 URL Scheme
+### 添加 URL Scheme
 
 URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。把 URL Scheme 添加到您的项目，以便使用Mobile Debug等功能时唤醒您的应用。  
 :::info
@@ -123,17 +138,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 
 ![](./../../../static/img/iOS_Setting_URLScheme.png)
 
-### 3. SDK初始化配置
-#### 获取 `AccountID`、`DataSourceID`、`Host`信息
-:::info
-`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
-`Host`需要服务端部署，如不清楚请联系您的专属项目经理
-:::
-##### 创建
-![新建数据源](./../../../static/img/createapplication.png)
-##### 查看
-![查看数据源](./../../../static/img/showappdatasourceid.png)
-
+### SDK初始化配置
 #### 导入头文件`"GrowingTracker.h"`，并将以下代码加在您的`AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中  
 代码示例:
 
@@ -184,6 +189,15 @@ continueUserActivity:(NSUserActivity *)userActivity
 :::info
 上述代理方法空实现即可，SDK会自动加入处理代码
 :::
+### 查看集成效果
+运行应用，若日志中输出了  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.0`  
+则说明SDK已经集成成功。
+
+若在初始化中 `debugEnabled` 设置为YES，打开了Debug，则可以在日志中看到每个事件的log日志输出。
+
+至此，就完成了埋点 SDK 的集成。
+
 ## App Store提交应用注意事项
 如果您添加了库`AdSupport.framework`, GrowingIO则会启用 `IDFA`，所以在向 App Store 提交应用时，需要：
 

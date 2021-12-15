@@ -16,6 +16,21 @@ Android SDK 提供了 <font color='red'>无埋点SDK</font> 和 <font color='red
 **Android系统版本**：Android 4.2及以上<br/>
 **根据需要选择集成**<font color='red'> 无埋点SDK </font>或<font color='red'> 埋点SDK </font>
 :::
+### 集成准备
+#### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
+:::info
+AccountID：项目ID，代表一个项目<br/>
+DataSourceID：数据源ID，代表一个数据源<br/>
+URL Scheme： 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识<br/>
+Host：采集数据上报的服务器地址<br/>
+
+Account ID、DataSource ID、URL Scheme 需要在CDP增长平台上新建数据获取源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
+Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
+:::
+##### 创建
+![新建数据源](./../../../static/img/createapplication.png)
+##### 查看
+![查看数据源](./../../../static/img/showappdatasourceid.png)
 
 ## 集成无埋点SDK
 ### 添加依赖
@@ -123,15 +138,6 @@ URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把
 ```
 ### SDK初始化配置
 
-#### 获取 `AccountID`、`DataSourceID`、`Host`信息
-:::info
-`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
-`Host`需要服务端部署，如不清楚请联系您的专属项目经理
-:::
-##### 创建
-![新建数据源](./../../../static/img/createapplication.png)
-##### 查看
-![查看数据源](./../../../static/img/showappdatasourceid.png)
 #### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中
 <Tabs
   groupId="code-language"
@@ -279,7 +285,7 @@ GrowingAutotracker.get().setDataCollectionEnabled(true)
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
 
-至此，无埋点 SDK 就已经完成集成步骤了。
+至此，就完成了无埋点 SDK 的集成。
 
 
 ## 集成埋点SDK
@@ -333,15 +339,6 @@ dependencies {
 </manifest>
 ```
 ### SDK初始化配置
-#### 获取 `AccountID`、`DataSourceID`、`Host`信息
-:::info
-`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
-`Host`需要服务端部署，如不清楚请联系您的专属项目经理
-:::
-##### 创建
-![新建数据源](./../../../static/img/createapplication.png)
-##### 查看
-![查看数据源](./../../../static/img/showappdatasourceid.png)
 #### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中
 <Tabs
   groupId="code-language"
@@ -413,4 +410,4 @@ class MyApplication : Application() {
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
 
-至此，无埋点 SDK 就已经完成集成步骤了。
+至此，就完成了埋点 SDK 的集成。
