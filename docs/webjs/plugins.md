@@ -122,24 +122,7 @@ domain: 使用H5页面的域名
 
 #### 小程序端
 
-针对在webview上的地址，需要补充`gioInfo`相关字段，具体方式可参考如下
-
-```jsx
-// page.js
-const gdp = gioGlobal.gio;
-Page({
-  data: {
-    // foo=1 是您 H5 页面链接后的查询参数(如果没有就无需填写)
-    // ${gdp('getGioInfo')} 是GIO需要拼接获取的参数，打通需必填
-    url: `https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
-  }
-});
-
-// page.wxml
-<view>
-  <web-view src="{{url}}"></web-view>
-</view>
-```
+针对在webview上的地址，需要补充`gioInfo`相关字段，具体方式可参考[getGioInfo](/docs/miniprogram/commonlyApi#与h5打通用户数据getgioinfo)
 
 **`gdp('getGioInfo')`返回一个如下形式的字符串：**
 
