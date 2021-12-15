@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: 自定义 SDK
 ---
+--------------
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -16,12 +17,14 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 | 网络库-urlconnnection | 使用原生`urlconnnection`请求网络 | `EventUrl` | `EventResponse` | `com.growingio.android:urlconnection:3.3.2` |
 | 网络库-volley | 使用volley请求网络 | `EventUrl` | `EventResponse` | `com.growingio.android:volley:3.3.2` |
 | 数据加密-encoder | 使用 snappy 加密上报的事件数据,需要集成生效 | `EventEncoder` | `EventEncoder` | `com.growingio.android:encoder:3.3.2` |
-| 数据传输格式-json | 使用json格式上传事件数据，sdk 默认 | `EventData` | `EventStream` | `com.growingio.android:json:3.3.2` |
 | 设备标识符-oaid | 提供采集 OAID 的能力,需要集成生效 | `OaidHelper` | `String` | `com.growingio.android:oaid:3.3.2` |
 | 数据异常上报工具-crash | sdk 异常崩溃上报纸 sentry，需要集成生效 | 无 | 无 | `com.growingio.android:crash:3.3.2` |
 | 无埋点圈选-circler | 基于无埋点的圈选插件，默认集成在无埋点SDK中 | `Circler` | `WebService` |`com.growingio.android:circler:3.3.2` |
 | 数据调试-debugger | 数据调试Mobile Debugger，默认集成在埋点SDK中 | `Debugger` | `WebService` | `com.growingio.android:debugger:3.3.2` |
 | 混合开发数据收集-hybrid | 混合开发模式，默认集成在埋点SDK中，需要手动注入（无埋点中自动注入） | 1. `HybridBridge` <br /> 2. `HybridDom` | 1. `Boolean` <br /> 2.`HybridJson` | `com.growingio.android:hybird:3.3.2` |
+| 数据库-database | event数据库为sqplite，默认集成在埋点SDK中 | `EventDatabase` | `EventDbResult` | `com.growingio.android:database:3.3.3` |
+| 数据传输格式-json | 使用json格式保存和上传事件数据，sdk 默认 | `EventFormatData` | `EventByteArray` | `com.growingio.android:json:3.3.3` |
+| 数据传输格式-protobuf | 使用protobuf格式保存和上传事件数据，需要集成生效 | `EventFormatData` | `EventByteArray` | `com.growingio.android:protobuf:3.3.3` |
 | 更多开发中... |
 
 

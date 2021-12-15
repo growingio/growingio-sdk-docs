@@ -2,6 +2,7 @@
 sidebar_position: 3
 title: 自定义模块
 ---
+--------------
 
 自定义模块可以让您使用自己的代码实现的功能来替换现有的模块功能，现有的模块功能可以参考 [模块列表](/docs/android/develop/coutom%20sdk)
 
@@ -73,6 +74,7 @@ public class OkHttpDataLoader implements ModelLoader<EventUrl, EventResponse> {
                         sInternalClient = new OkHttpClient.Builder()
                                 .connectTimeout(DEFAULT_CONNECT_TIMEOUT, TimeUnit.SECONDS)
                                 .readTimeout(DEFAULT_READ_TIMEOUT, TimeUnit.SECONDS)
+                                .addInterceptor(new SecurityExceptionInterceptor())
                                 .build();
                     }
                 }
@@ -104,7 +106,7 @@ public class OkHttpDataLoader implements ModelLoader<EventUrl, EventResponse> {
 和 `ModelLoader` 类似, `DataFetcher` 接口是泛型的, 它要求我们指定所期待的返回类型，在网络请求模块里面即为 `EventResponse`
 这样子可以立马得到一个模板:
 ```java
-public class OkHttpDataFetcher implements DataFetcher<EventResponse> {
+public class OkHttpDataFetcher implements HttpDataFetcher<EventResponse> {
     @Override
     public void loadData(DataCallback<? super EventResponse> callback) {}
 
