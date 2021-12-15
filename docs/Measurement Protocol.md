@@ -2,7 +2,7 @@
 title: 测量协议
 sidebar_position: 12
 ---
-
+--------------
 该文章记录了 GrowingIO SDK 上传时所有的字段及其参数意义。
 
 ### 所有事件携带的信息(context)
