@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: React Native SDK
 ---
+--------------
 针对于SDK 3.0 上的 RN 插件，当前仅支持埋点sdk。
 
 源码托管在 [growingio/react-native-growingio-sdk-tracker-plugin](https://github.com/growingio/react-native-growingio-sdk-tracker-plugin)
