@@ -148,6 +148,7 @@ Page({
     this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
     // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
   },
+  // 如果页面中有登录，需要在登录之后重设一次url的值
   handleLogin() {
     ...
     // 登录完成后重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo

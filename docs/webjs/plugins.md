@@ -122,7 +122,7 @@ domain: 使用H5页面的域名
 
 #### 小程序端
 
-针对在webview上的地址，需要补充`gioInfo`相关字段，具体方式可参考[getGioInfo](/docs/miniprogram/commonlyApi#与h5打通用户数据getgioinfo)
+针对在webview上的地址，需要补充`gioInfo`相关字段，具体方式可参考【[getGioInfo](/docs/miniprogram/commonlyApi#与h5打通用户数据getgioinfo)】
 
 **`gdp('getGioInfo')`返回一个如下形式的字符串：**
 
