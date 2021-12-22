@@ -16,6 +16,7 @@ title: 初始化配置
 | `debug`               | `boolean`     | `false`    | 是否开启调试模式                                     |
 | `enableEventStore`    | `boolean`     | `false`    | 是否开启事件存储(SDK 版本>= 3.3.2)                   |
 | `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报(SDK 版本>= 3.3.0)             |
+| `extraParams`         | `string[]`    | `-`        | 额外的打通参数(SDK 版本>= 3.3.3)             |
 | `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
 | `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                 |
 | `getLocation`         | `object`      | `-`        | 获取位置配置项                                       |
@@ -53,6 +54,14 @@ title: 初始化配置
 
 默认情况下，SDK关闭事件存储功能。此功能在小程序storage中存储SDK已上报的事件数据，用于运营SDK消费，**隔天清空**。<br/>
 **如果您不使用运营SDK可忽略此配置；如果您使用运营SDK，必须开启此配置项，设置为 `true`。**
+
+### extraParams
+
+在与H5页面打通数据时，上报除默认情况下调用的[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)以外的小程序字段。
+
+**支持字段：`appChannel`、`deviceBrand`、`deviceModel`、`deviceType`、`networkState`、`platformVersion`、`language`、`screenHeight`、`screenWidth`。**
+
+**注意：需Web SDK >=3.3.3版本一起配合使用！Web SDK升级后无需做额外配置，自动适配上报。**
 
 ### followShare
 
@@ -105,4 +114,4 @@ gdp('getLocation');      // 获取用户的地理位置信息并上报
 默认情况下，SDK会上报网络和设备的相关信息。如果您不需要这些数据，可以通过指定 `ignoreFields: [xxx,xxx]` 来忽略指定字段的上报。
 您可以指定一项或多项字段，但均需为数组格式进行设置。
 
-**支持的字段：`deviceBrand` , `deviceModel` , `deviceType` , `networkState` , `screenHeight` , `screenWidth`**
+**支持的字段：`deviceBrand`、`deviceModel`、`deviceType`、`networkState`、`screenHeight`、`screenWidth`。**

@@ -132,7 +132,8 @@ gdp('getLocation');
 
 ### 7、与h5打通用户数据(getGioInfo)
 
-当存在与H5页面打通用户数据的需求时(将H5视为小程序的页面)，调用此接口用户获取打通数据。
+当存在与H5页面打通用户数据的需求时(将H5视为小程序的页面)，调用此接口用户获取打通数据。默认能获取到的数据有：`giou(AnonymousUserId)`、`giocs1(userId)`、`gios(sessionId)`、`gioid(上一个非空userId)`、`gioprojectid(projectId)`、`gioappid(appId)`、`giodatasourceid(dataSourceId)`、`gioplatform(platform)`、`giouserkey(userKey)`。
+
 ```js
 gdp('getGioInfo');
 ```
@@ -162,6 +163,8 @@ Page({
   <web-view src="{{url}}"></web-view>
 </view>
 ```
+
+如果您需要上报更多的小程序字段，请参考[`extraParams`](./initSettings#extraparams)。
 
 <!-- ### 8、手动注册半自动曝光事件(collectImp)
 ```js
