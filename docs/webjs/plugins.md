@@ -121,42 +121,7 @@ domain: 使用H5页面的域名
 ### 打通设置
 
 #### 小程序端
-
-针对在webview上的地址，需要补充`gioInfo`相关字段，具体方式可参考如下
-
-```jsx
-// page.js
-const gdp = gioGlobal.gio;
-Page({
-  data: {
-    // foo=1 是您 H5 页面链接后的查询参数(如果没有就无需填写)
-    // ${gdp('getGioInfo')} 是GIO需要拼接获取的参数，打通需必填
-    url: `https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
-  }
-});
-
-// page.wxml
-<view>
-  <web-view src="{{url}}"></web-view>
-</view>
-```
-
-**`gdp('getGioInfo')`返回一个如下形式的字符串：**
-
-```json
-giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
-```
-:::info
-以上数据是小程序中传到内嵌页的数据<br/>
-giou 是访问用户ID<br/>
-gios 是 sessionID<br/>
-giocs1 是登录用户ID<br/>
-giouserkey 是用户KEY<br/>
-gioprojectid 是 accountId<br/>
-gioappid 是 小程序appid<br/>
-gioplatform 是应用平台<br/>
-giodatasourceid 是 datasourceId
-:::
+小程序端相关设置参考[与h5打通用户数据](/docs/miniprogram/commonlyApi#7、与h5打通用户数据getgioinfo)
 #### Web端
 
 在集成时使用和小程序相同的 accountId 和 appid 即可，如小程序的 accountId 为 pid11，appid 为 wx33
@@ -170,7 +135,7 @@ gdp('init', 'pid11', 'ds22', 'wx33', {
 
 ### 打通成功效果
 
-当触发了打通规则后，h5内嵌页中发数时以下字段的变化如下：
+当触发了打通规则后，在没有配置[extraParams](/docs/miniprogram/initSettings#extraparams)，h5内嵌页中发送数据时以下字段的变化如下，如果配置了[extraParams](/docs/miniprogram/initSettings#extraparams)，h5内嵌页中发送数据时会增加配置的字段数据：
 
 ```tex
 deviceId: 使用小程序的deviceId

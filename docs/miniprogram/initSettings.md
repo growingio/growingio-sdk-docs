@@ -57,11 +57,21 @@ title: 初始化配置
 
 ### extraParams
 
-在与H5页面打通数据时，上报除默认情况下调用的[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)以外的小程序字段。
+在H5页面与小程序的用户信息保持一致时，上报数据除默认字段以外可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
+:::info**注意：需Web SDK >=3.3.3版本一起配合使用！Web SDK升级后无需做额外配置，自动适配上报。**
+支持字段：<br/>
+appChannel 是小程序的场景值<br/>
+deviceBrand 是设备品牌<br/>
+deviceModel 是设备型号<br/>
+deviceType 是设备类型<br/>
+networkState 是网络类型<br/>
+platformVersion 是操作系统版本<br/>
+language 是语言<br/>
+screenHeight 是屏幕高度<br/>
+screenWidth 是屏幕宽度
+:::
 
-**支持字段：`appChannel`、`deviceBrand`、`deviceModel`、`deviceType`、`networkState`、`platformVersion`、`language`、`screenHeight`、`screenWidth`。**
 
-**注意：需Web SDK >=3.3.3版本一起配合使用！Web SDK升级后无需做额外配置，自动适配上报。**
 
 ### followShare
 
@@ -113,5 +123,13 @@ gdp('getLocation');      // 获取用户的地理位置信息并上报
 
 默认情况下，SDK会上报网络和设备的相关信息。如果您不需要这些数据，可以通过指定 `ignoreFields: [xxx,xxx]` 来忽略指定字段的上报。
 您可以指定一项或多项字段，但均需为数组格式进行设置。
+:::info
+支持字段：<br/>
+deviceBrand 是设备品牌<br/>
+deviceModel 是设备型号<br/>
+deviceType 是设备类型<br/>
+networkState 是网络类型<br/>
+screenHeight 是屏幕高度<br/>
+screenWidth 是屏幕宽度
+:::
 
-**支持的字段：`deviceBrand`、`deviceModel`、`deviceType`、`networkState`、`screenHeight`、`screenWidth`。**

@@ -3,6 +3,12 @@ title: 版本记录
 sidebar_position: 0
 ---
 -----
+## V3.3.3 - 2021/12/21
+
+* 切换 userId 没有更新session
+* 支持采集数据内嵌页userKey与小程序userKey一致
+* 新增初始化配置项[extraParams](/docs/miniprogram/initSettings#extraparams)
+
 
 ## V3.3.2 - 2021/12/06
 

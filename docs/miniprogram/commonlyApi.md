@@ -132,12 +132,23 @@ gdp('getLocation');
 
 ### 7、与h5打通用户数据(getGioInfo)
 
-当存在与H5页面打通用户数据的需求时(将H5视为小程序的页面)，调用此接口用户获取打通数据。默认能获取到的数据有：`giou(AnonymousUserId)`、`giocs1(userId)`、`gios(sessionId)`、`gioid(上一个非空userId)`、`gioprojectid(projectId)`、`gioappid(appId)`、`giodatasourceid(dataSourceId)`、`gioplatform(platform)`、`giouserkey(userKey)`。
-
+当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下数据。
+:::info
+默认能获取到的数据说明：<br/>
+giou 是访问用户ID<br/>
+gios 是 sessionID<br/>
+giocs1 是登录用户ID<br/>
+gioid  是上一个非空的登录用户ID
+giouserkey 是用户KEY<br/>
+gioprojectid 是 accountId<br/>
+gioappid 是 小程序appid<br/>
+gioplatform 是应用平台<br/>
+giodatasourceid 是 datasourceId
+:::
 ```js
 gdp('getGioInfo');
 ```
-** 注意：与H5打通数据时用户信息是一次性的，如果切换用户导致sessionId或userId等用户信息变动时，需要您手动重设H5地址来同步信息。例：**
+** 注意：gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您手动重设H5地址来同步信息。例：**
 ```js
 // js
 Page({
@@ -157,15 +168,21 @@ Page({
   }
 })
 ```
+
 ```html
 <!-- wxml -->
 <view>
   <web-view src="{{url}}"></web-view>
 </view>
 ```
+**`gdp('getGioInfo')`默认获取到的数据示例：**
 
-如果您需要上报更多的小程序字段，请参考[`extraParams`](./initSettings#extraparams)。
+```json
+giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
+```
+**如果您需要获取更多的小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
 
+**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base/getting_started#小程序内嵌页使用集成)**
 <!-- ### 8、手动注册半自动曝光事件(collectImp)
 ```js
 Page({
