@@ -135,7 +135,7 @@ gdp('init', 'pid11', 'ds22', 'wx33', {
 
 ### 打通成功效果
 
-当触发了打通规则后，在没有配置[extraParams](/docs/miniprogram/initSettings#extraparams)，h5内嵌页中发送数据时以下字段的变化如下，如果配置了[extraParams](/docs/miniprogram/initSettings#extraparams)，h5内嵌页中发送数据时会增加配置的字段数据：
+当触发了打通规则后，默认h5内嵌页中发送数据时字段的变化如下，如果配置了[extraParams](/docs/miniprogram/initSettings#extraparams)，h5内嵌页中发送数据时会增加配置的字段数据。
 
 ```tex
 deviceId: 使用小程序的deviceId
