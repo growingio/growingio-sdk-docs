@@ -60,8 +60,8 @@ title: 初始化配置
 
 ### extraParams
 
-在H5页面与小程序的用户信息保持一致时，上报数据除默认字段以外可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
-:::info**注意：需Web SDK >=3.3.3版本一起配合使用！Web SDK升级后无需做额外配置，自动适配上报。**
+在H5页面与小程序的用户信息保持一致时，上报数据除默认字段以外，可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
+:::info**注意：需内嵌页集成的Web JS SDK 版本>=3.3.3，Web JS SDK升级后无需做额外配置，自动适配上报。**
 支持字段：<br/>
 appChannel 是小程序的场景值<br/>
 deviceBrand 是设备品牌<br/>
@@ -73,7 +73,24 @@ language 是语言<br/>
 screenHeight 是屏幕高度<br/>
 screenWidth 是屏幕宽度
 :::
-
+参考示例：
+```js
+gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
+  version: '1.0.1',
+  debug: true,
+  extraParams: [
+  'appChannel',
+  'deviceBrand',
+  'deviceModel',
+  'deviceType',
+  'networkState',
+  'platformVersion',
+  'language',
+  'screenHeight',
+  'screenWidth'
+  ],
+});
+```
 ### followShare
 
 默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
@@ -133,4 +150,18 @@ networkState 是网络类型<br/>
 screenHeight 是屏幕高度<br/>
 screenWidth 是屏幕宽度
 :::
-
+参考示例：
+```js
+gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
+  version: '1.0.1',
+  debug: true,
+  ignoreFields: [
+  'deviceBrand',
+  'deviceModel',
+  'deviceType',
+  'networkState',
+  'screenHeight',
+  'screenWidth'
+  ],
+});
+```
