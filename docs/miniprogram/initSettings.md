@@ -14,10 +14,11 @@ title: 初始化配置
 | `compress`            | `boolean`     | `false`    | 是否数据加密                                         |
 | `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                     |
 | `debug`               | `boolean`     | `false`    | 是否开启调试模式                                     |
-| `enableEventStore`    | `boolean`     | `false`    | 是否开启事件存储(SDK 版本>= 3.3.2)                   |
+| `enableEventStore`    | `boolean`     | `false`    | 是否开启事件存储;若使用有GIO运营SDK需设置为 true(SDK版本>=3.3.2)                   |
 | `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报(SDK 版本>= 3.3.0)             |
+| `extraParams`         | `string[]`    | `-`        | 额外的打通参数(SDK 版本>= 3.3.3)             |
 | `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
-| `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                 |
+| `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式；设置为true时需与接口identify一起使用                                 |
 | `getLocation`         | `object`      | `-`        | 获取位置配置项                                       |
 | `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                 |
 | `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系     |
@@ -53,6 +54,25 @@ title: 初始化配置
 
 默认情况下，SDK关闭事件存储功能。此功能在小程序storage中存储SDK已上报的事件数据，用于运营SDK消费，**隔天清空**。<br/>
 **如果您不使用运营SDK可忽略此配置；如果您使用运营SDK，必须开启此配置项，设置为 `true`。**
+
+### enableIdMapping
+默认情况下，SDK关闭多用户说身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[使用详情](/docs/miniprogram/commonlyApi#2%E3%80%81%E8%AE%BE%E7%BD%AE%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7idsetuserid)
+
+### extraParams
+
+在H5页面与小程序的用户信息保持一致时，上报数据除默认字段以外可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
+:::info**注意：需Web SDK >=3.3.3版本一起配合使用！Web SDK升级后无需做额外配置，自动适配上报。**
+支持字段：<br/>
+appChannel 是小程序的场景值<br/>
+deviceBrand 是设备品牌<br/>
+deviceModel 是设备型号<br/>
+deviceType 是设备类型<br/>
+networkState 是网络类型<br/>
+platformVersion 是操作系统版本<br/>
+language 是语言<br/>
+screenHeight 是屏幕高度<br/>
+screenWidth 是屏幕宽度
+:::
 
 ### followShare
 
@@ -104,5 +124,13 @@ gdp('getLocation');      // 获取用户的地理位置信息并上报
 
 默认情况下，SDK会上报网络和设备的相关信息。如果您不需要这些数据，可以通过指定 `ignoreFields: [xxx,xxx]` 来忽略指定字段的上报。
 您可以指定一项或多项字段，但均需为数组格式进行设置。
+:::info
+支持字段：<br/>
+deviceBrand 是设备品牌<br/>
+deviceModel 是设备型号<br/>
+deviceType 是设备类型<br/>
+networkState 是网络类型<br/>
+screenHeight 是屏幕高度<br/>
+screenWidth 是屏幕宽度
+:::
 
-**支持的字段：`deviceBrand` , `deviceModel` , `deviceType` , `networkState` , `screenHeight` , `screenWidth`**

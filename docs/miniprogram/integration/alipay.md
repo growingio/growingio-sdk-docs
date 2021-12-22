@@ -6,26 +6,29 @@ title: 支付宝小程序
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## 准备工作
-### 获取 `accountID`、`dataSourceID`、`host`、`appID` 信息
-
+### 集成准备
+#### 获取SDK初始化必传参数：AccountID、DataSourceID、 AppId、Host
 :::info
-- `accountID`、`dataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理。
-- `host`需要服务端部署，如不清楚请联系您的专属项目经理。
-- `appID` 为小程序应用ID。
-:::
-#### 创建
-![新建数据源](/img/createapplication.png)
-#### 查看
-![查看数据源](/img/miniprogram/dataSourceInfo.png)
+AccountID：项目ID，代表一个项目<br/>
+DataSourceID：数据源ID，代表一个数据源<br/>
+AppId：小程序应用ID<br/>
+Host：采集数据上报的服务器地址<br/>
 
-### 下载SDK
-<a href="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js" download="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js">点击下载SDK</a>，存放在项目中，下文中以`utils/gio`目录为例。
+Account ID、DataSource ID、AppId 需要在CDP增长平台上新建数据获取源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
+Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
+:::
+##### 创建
+![新建数据源](./../../../static/img/createapplication.png)
+##### 查看
+![查看数据源](./../../../static/img/miniprogram/dataSourceInfo.png)
 
 ## 集成
 
 目前我们仅支持原生开发的支付宝小程序。如您使用了其他开发方式，请咨询我们。
+### 下载SDK
+<a href="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js" download="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js">点击下载SDK</a>，存放在项目中，下文中以`utils/gio`目录为例。
 
+### 引入SDK，添加初始化代码
 ```js
 // app.js
 const gdp = require('./utils/gio/sdk.js').default;

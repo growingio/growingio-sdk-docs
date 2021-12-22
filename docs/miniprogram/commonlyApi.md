@@ -8,31 +8,31 @@ title: 数据采集API
 
 ## 动态配置接口
 
-### 1、开启/关闭无埋点数据采集(autotrack)
+### 开启/关闭无埋点数据采集(autotrack)
 默认开启无埋点数据采集。当设置为 **`flase`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。
 ```js
 gdp('setAutotrack', true | false);
 ```
 
-### 2、开启/关闭数据采集(dataCollect)
+### 开启/关闭数据采集(dataCollect)
 默认开启数据采集。当设置为 **`false`** 时，SDK将不会采集和上报事件。
 ```js
 gdp('setDataCollect', true | false);
 ```
 
-### 3、开启/关闭调试模式(debug)
+### 开启/关闭调试模式(debug)
 默认不开启。当设置为 **`true`** 时， 开启后会在开发者工具控制台输出日志
 ```js
 gdp('enableDebug', true | false);
 ```
 
-### 4、修改上报地址(host)
+### 修改上报地址(host)
 请设置准确的host地址，支持 **`IP`** 或 **`域名`** 格式，**无需携带协议头**。
 ```js
 gdp('setTrackerHost', 'xxxxxxxx');
 ```
 
-### 5、修改请求协议(scheme)
+### 修改请求协议(scheme)
 默认为**`https`**，您可以在开发过程中自定义设置
 ```js
 gdp('setTrackerScheme', 'http' | 'https');
@@ -40,7 +40,7 @@ gdp('setTrackerScheme', 'http' | 'https');
 
 ## 功能接口
 
-### 1、设置访问用户id(identify)
+### 设置访问用户id(identify)
 :::info
 若使用此接口需要在初始化时将 forceLogin 设置为 true
 参考[设置强制登录模式](/docs/miniprogram/initSettings#forcelogin)
@@ -52,7 +52,7 @@ gdp('setTrackerScheme', 'http' | 'https');
 gdp('identify', openId);
 ```
 
-### 2、设置登录用户id(setUserId)
+### 设置登录用户id(setUserId)
 
 当用户登录之后调用`setUserId`，设置登录用户ID
 
@@ -73,7 +73,7 @@ gdp('setUserId', 'userId');
 gdp('setUserId', 'userId', 'userKey');
 ```
 
-### 3、清除登录用户id(clearUserId)
+### 清除登录用户id(clearUserId)
 
 当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID
 
@@ -82,7 +82,7 @@ gdp('setUserId', 'userId', 'userKey');
 gdp('clearUserId');
 ```
 
-### 4、自定义埋点(track)
+### 自定义埋点(track)
 发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中`事件管理用户界面`配置事件以及事件属性。
 
 ```js
@@ -106,7 +106,7 @@ gdp('track', 'order', {}, { key: 'order_id', id: '12345' }); // 无properties，
 gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有properties，有item
 ```
 
-### 5、登录用户属性(setUserAttributes)
+### 登录用户属性(setUserAttributes)
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。
 
 #### 参数说明
@@ -120,7 +120,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 gdp('setUserAttributes', { name: 'hjh' });
 ```
 
-### 6、地理位置(getLocation)
+### 地理位置(getLocation)
 
 通过手动调用地理位置接口来补发地理位置信息，提升用户地域分布的分析准确性。
 
@@ -130,24 +130,37 @@ gdp('getLocation');
 // 调用后会自动补发带位置信息的VISIT事件
 ```
 
-### 7、与h5打通用户数据(getGioInfo)
+### 与h5打通用户数据(getGioInfo)
 
-当存在与H5页面打通用户数据的需求时(将H5视为小程序的页面)，调用此接口用户获取打通数据。
+当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下数据。
+:::info
+默认能获取到的数据说明：<br/>
+giou 是访问用户ID<br/>
+gios 是 sessionID<br/>
+giocs1 是登录用户ID<br/>
+gioid  是上一个非空的登录用户ID
+giouserkey 是用户KEY<br/>
+gioprojectid 是 accountId<br/>
+gioappid 是 小程序appid<br/>
+gioplatform 是应用平台<br/>
+giodatasourceid 是 datasourceId
+:::
 ```js
 gdp('getGioInfo');
 ```
-** 注意：与H5打通数据时用户信息是一次性的，如果切换用户导致sessionId或userId等用户信息变动时，需要您手动重设H5地址来同步信息。例：**
+** 注意：gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您手动重设H5地址来同步信息。例：**
 ```js
 // js
 Page({
   data: {
     url: `https://www.growingIO.com?${gdp('getGioInfo')}`
-  }
+  },
   onShow() {
     // 每次onShow时重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
     this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
     // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
   },
+  // 如果页面中有登录，需要在登录之后重设一次url的值
   handleLogin() {
     ...
     // 登录完成后重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
@@ -156,13 +169,21 @@ Page({
   }
 })
 ```
+
 ```html
 <!-- wxml -->
 <view>
   <web-view src="{{url}}"></web-view>
 </view>
 ```
+**`gdp('getGioInfo')`默认获取到的数据示例：**
 
+```json
+giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
+```
+**如果您需要获取更多的小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
+
+**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base/getting_started#小程序内嵌页使用集成)**
 <!-- ### 8、手动注册半自动曝光事件(collectImp)
 ```js
 Page({
@@ -174,7 +195,7 @@ Page({
 
 ## 采集标记
 
-### 1、额外数据标记
+### 额外数据标记
 
 1、有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-title` 来补充SDK采集的内容。例：
 
@@ -211,7 +232,7 @@ Page({
 请勿尝试在密码框上标记 data-growing-track 采集数据，会明文暴露用户填写的密码信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
 :::
 
-### 2、忽略采集标记
+### 忽略采集标记
 
 有时我们会根据业务中不同的需要开发一些组件或使用一些第三方组件，可能会触发SDK的 VIEW_CHANGE 事件，但我们并不期望它发生。
 
