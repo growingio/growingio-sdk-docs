@@ -15,8 +15,22 @@ Java SDK从1.0.10-cdp版本开始使用v3协议进行事件上报, 使用前确�
 
 支持的平台版本为 OP-13.6、OP-14.x、OP-2.x 版本
 :::
+### 集成准备
+#### 获取SDK初始化必传参数：AccountID、DataSourceID、Host
+:::info
+AccountID：项目ID，代表一个项目<br/>
+DataSourceID：数据源ID，代表一个数据源<br/>
+Host：采集数据上报的服务器地址<br/>
 
-## 依赖
+AccountID、DataSourceID 需要在CDP增长平台上新建数据获取源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
+Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
+:::
+##### 创建
+![新建数据源](./../../static/img/createapplication.png)
+##### 查看
+![查看数据源](./../../static/img/showServerDataSourceID.png)
+
+### 依赖
 
 我们推荐使用 Maven 管理Java 项目，请在 pom.xml 文件中，添加一下依赖信息，Maven将自动获取 Java SDK 并更新项目配置
 
@@ -48,35 +62,7 @@ pom.xml
     </exclusions>
 </dependency>     
 ```
-
-## 示例程序
-
-```java
-// Config GrowingIO
-// 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourDatasourceId eg: 11223344aabbcc
-private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
-
-//事件行为消息体
-GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
-    .eventTime(System.currentTimeMillis())            // 默认为系统当前时间 (选填)
-    .eventKey("3")                                    // 事件标识 (必填)
-    .eventNumValue(1.0)                               // 打点事件数值 (选填), 已废弃
-    .anonymousId("device_id")                         // 访问用户ID (选填)
-    .loginUserKey("account")                          // 登录用户KEY (选填)
-    .loginUserId("417abcabcabcbac")                   // 登陆用户ID (选填)
-    .addEventVariable("product_name", "苹果")          // 事件属性 (选填)
-    .addEventVariable("product_classify", "水果")      // 事件属性 (选填)
-    .addEventVariable("product_price", 14)            // 事件属性 (选填)
-    .addItem("item_id", "item_key")                   // 物品模型ID, KEY (选填)
-    .build();
-
-//上传事件行为消息到服务器
-project.send(eventMessage);
-```
-
-## 配置文件信息
+### 配置文件信息
 
 配置在资源目录
 resources/gio.properties
@@ -117,10 +103,37 @@ run.mode=test
 # msg.store.queue.load_factor=0.5
 ```
 
-## 事件消息
+#### 事件消息
 
 * 默认采用阻塞队列，队列大小为500.
 * 如果队列满了，新的消息会被丢弃（可通过 `msg.store.queue.size` 和 `send.msg.interval` 调节队列大小和消息发送间隔时间，避免丢消息）
+
+### 示例程序
+
+```java
+// Config GrowingIO
+// 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourDatasourceId eg: 11223344aabbcc
+private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
+
+//事件行为消息体
+GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
+    .eventTime(System.currentTimeMillis())            // 默认为系统当前时间 (选填)
+    .eventKey("3")                                    // 事件标识 (必填)
+    .eventNumValue(1.0)                               // 打点事件数值 (选填), 已废弃
+    .anonymousId("device_id")                         // 访问用户ID (选填)
+    .loginUserKey("account")                          // 登录用户KEY (选填)
+    .loginUserId("417abcabcabcbac")                   // 登陆用户ID (选填)
+    .addEventVariable("product_name", "苹果")          // 事件属性 (选填)
+    .addEventVariable("product_classify", "水果")      // 事件属性 (选填)
+    .addEventVariable("product_price", 14)            // 事件属性 (选填)
+    .addItem("item_id", "item_key")                   // 物品模型ID, KEY (选填)
+    .build();
+
+//上传事件行为消息到服务器
+project.send(eventMessage);
+```
 
 ## API
 

@@ -13,18 +13,22 @@ Web JS SDK3.0 将H5内嵌页，Hybrid SDK，Web JS SDK集成与一体，具备�
 
 Web JS SDK 代码尚未开源，后续会开源
 
-## Web JS SDK集成
-
-### 获取 `AccountID`、`DataSourceID`、`Host`信息
+### 集成准备
+#### 获取SDK初始化必传参数：AccountID、DataSourceID、Host
 :::info
-`AccountID`、`DataSourceID`需要在CDP增长平台上新建数据源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理<br/>
-`Host`需要服务端部署，如不清楚请联系您的专属项目经理
+AccountID：项目ID，代表一个项目<br/>
+DataSourceID：数据源ID，代表一个数据源<br/>
+Host：采集数据上报的服务器地址<br/>
+
+AccountID、DataSourceID 需要在CDP增长平台上新建数据获取源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
+Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
 :::
 ##### 创建
 ![新建数据源](./../../../static/img/createapplication.png)
 ##### 查看
 ![查看数据源](./../../../static/img/showwebdatasourceid.png)
 
+## Web JS SDK集成
 ### Web使用集成
 
 请将以下的页面代码放置到需要分析的页面中的`<head> 和 </head>`标签之间，即可完成最新 Web JS SDK 页面代码的添加。
@@ -97,8 +101,23 @@ JS资源地址：https://assets.giocdn.com/sdk/cdp/gio.js
 </script>
 ```
 
+## SDK调试
+输入`vds`,按下回车键，可查看SDK初始化配置信息。
+在SDK初始化时将`debug`配置项设置为`true`，即可在 Console中查看SDK日志，包括采集的数据，示例如下：
 
-### 常见的初始化失败情况
+```js
+gdp('init', 'your accountId', 'your dataSourceId', {
+  host: 'your apiServerHost', 
+  version: '1.0.0',
+  debug: true  // 打开debug调试能力
+});
+```
+
+打开debug模式便可以在控制台中看到所有上报事件的日志输出，类似如图
+
+![logger](/img/web-debug-logger.png)
+
+## 常见的初始化失败情况
 
 #### 1. 初始化时需设置 host、accountId、datasourceId，否则初始化失败。
 #### 2. 初始化 GrowingIO SDK失败。暂不支持 localhost，127.0.0.1
