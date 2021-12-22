@@ -121,7 +121,7 @@ domain: 使用H5页面的域名
 ### 打通设置
 
 #### 小程序端
-小程序端相关设置参考[与h5打通用户数据](/docs/miniprogram/commonlyApi#7、与h5打通用户数据getgioinfo)
+小程序端相关设置参考[与h5打通用户数据](/docs/miniprogram/commonlyApi#与h5打通用户数据getgioinfo)
 #### Web端
 
 在集成时使用和小程序相同的 accountId 和 appid 即可，如小程序的 accountId 为 pid11，appid 为 wx33
