@@ -3,7 +3,20 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## V3.3.3
+
+ >[release-3.3.3](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.3) 日期: 2021-12-23 
+
+
+### Features
+
+* 添加 protobuf 数据格式，用于存储和上传 ([#133](https://github.com/growingio/growingio-sdk-android-autotracker/pull/133))
+* 支持 App 和 H5 userKey 打通 ([#132](https://github.com/growingio/growingio-sdk-android-autotracker/pull/132))
+* autotracker 插件适配 Java11 ([#136](https://github.com/growingio/growingio-sdk-android-autotracker/pull/136))
+
+
 ## V3.3.2
+
  >[release-3.3.2](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.2) 日期: 2021-11-24 
 
 ### Bug Fixes
