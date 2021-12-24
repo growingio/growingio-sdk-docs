@@ -10,12 +10,12 @@ sidebar_position: 0
 
 ### Bug Fixes
 
-* 支持 App 和 H5 userKey 打通 ([f052d74](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/f052d74ad076c0d150b81ce9d570ab5d81973786))
+* 支持 App 和 H5 userKey 打通
 
 
 ### Features
 
-* 数据存储与发送新增 Protobuf 格式 ([9ce583d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/9ce583d669685d9dcfac2f9bbd4b86fe3fcc0429))
+* [数据存储与发送新增 Protobuf 格式](/docs/ios/base/Configuration#3-sdk数据存储与发送使用-protobuf-格式) 
 
 
 
