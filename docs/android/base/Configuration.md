@@ -170,7 +170,7 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 :::
 ```groovy
 ...
-implementation "com.growingio.android:hybrid:3.3.2"
+implementation "com.growingio.android:hybrid:3.3.3"
 ```
 
 SDK初始化时需要注册 hybrid 模块：
@@ -201,7 +201,7 @@ GrowingTracker.get().bridgeWebView(webview)
 项目需要添加[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 OAID模块依赖(和 SDK 依赖同级)：
 ```groovy
 ...
-implementation "com.growingio.android:oaid:3.3.2"
+implementation "com.growingio.android:oaid:3.3.3"
 ```
 SDK初始化时注册Oaid模块：
 
@@ -252,7 +252,7 @@ GrowingTracker.startWithConfiguration(this,
 项目需要添加加密模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:encoder:3.3.2"
+implementation "com.growingio.android:encoder:3.3.3"
 ```
 
 SDK初始化时注册加密模块：
@@ -275,5 +275,41 @@ GrowingTracker.startWithConfiguration(this,
                 new CdpTrackConfiguration("accountId", "urlScheme")
                 ...
                 .setPreloadComponent(new EncoderLibraryGioModule()));
+```
+
+### 4. **SDK数据存储与发送使用 Protobuf 格式**
+:::info
+采集 SDK 版本 >=3.3.3
+
+**使用时注意模块版本需要与采集SDK版本保持一致**
+
+使用 Protobuf 格式保存和上传事件数据，集成即生效；默认为 JSON 格式，2 种格式互不兼容，迁移将导致APP本地数据库内未上传的事件数据丢失，后续产生的新数据不受影响
+:::
+项目需要添加Protobuf模块依赖(和 SDK 依赖同级)
+```groovy
+...
+implementation "com.growingio.android:protobuf:3.3.3"
+```
+
+SDK初始化时注册Protobuf模块：
+
+**无埋点SDK示例代码：**
+  ```java
+// 初始化无埋点SDK时, 调用方法注册Protobuf模块
+// Protobuf模块需要依赖对应 Protobuf模块包protobuf
+GrowingAutotracker.startWithConfiguration(this, 
+                new CdpAutotrackConfiguration("accountId", "urlScheme")
+                ...
+                .setPreloadComponent(new ProtobufLibraryGioModule()));
+```
+
+**埋点SDK示例代码：**
+```java
+// 初始化无埋点SDK时, 调用方法注册Protobuf模块
+// Protobuf模块需要依赖对应 Protobuf模块包protobuf
+GrowingTracker.startWithConfiguration(this, 
+                new CdpTrackConfiguration("accountId", "urlScheme")
+                ...
+                .setPreloadComponent(new ProtobufLibraryGioModule()));
 ```
 

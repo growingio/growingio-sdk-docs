@@ -4,6 +4,21 @@ sidebar_position: 0
 ---
 -----
 
+## V3.3.3 - 2021/12/23
+
+[v3.3.3](https://github.com/growingio/growingio-sdk-ios-autotracker/releases/tag/3.3.3) 
+
+### Bug Fixes
+
+* 支持 App 和 H5 userKey 打通
+
+
+### Features
+
+* [数据存储与发送新增 Protobuf 格式](/docs/ios/base/Configuration#3-sdk数据存储与发送使用-protobuf-格式) 
+
+
+
 ## V3.3.2 - 2021/12/07
 
 [v3.3.2](https://github.com/growingio/growingio-sdk-ios-autotracker/releases/tag/3.3.2) 

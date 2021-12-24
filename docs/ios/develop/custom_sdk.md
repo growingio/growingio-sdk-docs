@@ -20,6 +20,7 @@ SDK 可以通过拆分成 模块、服务实现模块化，在 GrowingIO 的 SDK
 | MobileDebugger | 数据调试Mobile Debugger，默认集成在埋点SDK中 | 是 |
 | WebCircle | 基于无埋点的圈选插件，默认集成在无埋点SDK中 | 是 |
 | Hybrid | 混合开发模式，默认集成在无埋点SDK中（无埋点中自动注入），埋点SDK需要手动导入 | 是 |
+| Protobuf |使用 protocol buffer 格式保存和上传事件数据，集成即生效；默认为 JSON 格式，2 种格式互不兼容，迁移将导致数据库内未上传的事件数据丢失|是|
 | 更多开发中... |||
 
 ### ** 服务 **
@@ -64,7 +65,6 @@ SDK 可以通过拆分成 模块、服务实现模块化，在 GrowingIO 的 SDK
 | 名称        |   说明    | 版本 |
 | :---------- | :-------: | :---------: |
 | DISABLE_IDFA     |  禁用IDFA，且SDK中不会再有相关获取IDFA代码逻辑  | <font color='red'>>=3.2.0</font> |
-| ENABLE_ENCRYPTION | 启用数据加密，防止采集数据明文传输(暂不支持自定义) | <font color='red'>>=3.3.0</font> |
 
 :::info
 使用请参考 [**常用可选模块配置**](/docs/ios/base/Configuration#%E5%B8%B8%E7%94%A8%E5%8F%AF%E9%80%89%E6%A8%A1%E5%9D%97%E9%85%8D%E7%BD%AE)

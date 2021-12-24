@@ -13,15 +13,15 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 
 | 名称     | 说明 | 输入数据 | 输出数据 | 依赖 |
 | :------- | :------:   | ---:|  ---:| :---|
-| 网络库-okhttp | 使用okhttp请求网络，sdk默认网络模块 | `EventUrl` | `EventResponse` | `com.growingio.android:okhttp3:3.3.2` |
-| 网络库-urlconnnection | 使用原生`urlconnnection`请求网络 | `EventUrl` | `EventResponse` | `com.growingio.android:urlconnection:3.3.2` |
-| 网络库-volley | 使用volley请求网络 | `EventUrl` | `EventResponse` | `com.growingio.android:volley:3.3.2` |
-| 数据加密-encoder | 使用 snappy 加密上报的事件数据,需要集成生效 | `EventEncoder` | `EventEncoder` | `com.growingio.android:encoder:3.3.2` |
-| 设备标识符-oaid | 提供采集 OAID 的能力,需要集成生效 | `OaidHelper` | `String` | `com.growingio.android:oaid:3.3.2` |
-| 数据异常上报工具-crash | sdk 异常崩溃上报纸 sentry，需要集成生效 | 无 | 无 | `com.growingio.android:crash:3.3.2` |
-| 无埋点圈选-circler | 基于无埋点的圈选插件，默认集成在无埋点SDK中 | `Circler` | `WebService` |`com.growingio.android:circler:3.3.2` |
-| 数据调试-debugger | 数据调试Mobile Debugger，默认集成在埋点SDK中 | `Debugger` | `WebService` | `com.growingio.android:debugger:3.3.2` |
-| 混合开发数据收集-hybrid | 混合开发模式，默认集成在埋点SDK中，需要手动注入（无埋点中自动注入） | 1. `HybridBridge` <br /> 2. `HybridDom` | 1. `Boolean` <br /> 2.`HybridJson` | `com.growingio.android:hybird:3.3.2` |
+| 网络库-okhttp | 使用okhttp请求网络，sdk默认网络模块 | `EventUrl` | `EventResponse` | `com.growingio.android:okhttp3:3.3.3` |
+| 网络库-urlconnnection | 使用原生`urlconnnection`请求网络 | `EventUrl` | `EventResponse` | `com.growingio.android:urlconnection:3.3.3` |
+| 网络库-volley | 使用volley请求网络 | `EventUrl` | `EventResponse` | `com.growingio.android:volley:3.3.3` |
+| 数据加密-encoder | 使用 snappy 加密上报的事件数据,需要集成生效 | `EventEncoder` | `EventEncoder` | `com.growingio.android:encoder:3.3.3` |
+| 设备标识符-oaid | 提供采集 OAID 的能力,需要集成生效 | `OaidHelper` | `String` | `com.growingio.android:oaid:3.3.3` |
+| 数据异常上报工具-crash | sdk 异常崩溃上报纸 sentry，需要集成生效 | 无 | 无 | `com.growingio.android:crash:3.3.3` |
+| 无埋点圈选-circler | 基于无埋点的圈选插件，默认集成在无埋点SDK中 | `Circler` | `WebService` |`com.growingio.android:circler:3.3.3` |
+| 数据调试-debugger | 数据调试Mobile Debugger，默认集成在埋点SDK中 | `Debugger` | `WebService` | `com.growingio.android:debugger:3.3.3` |
+| 混合开发数据收集-hybrid | 混合开发模式，默认集成在埋点SDK中，需要手动注入（无埋点中自动注入） | 1. `HybridBridge` <br /> 2. `HybridDom` | 1. `Boolean` <br /> 2.`HybridJson` | `com.growingio.android:hybird:3.3.3` |
 | 数据库-database | event数据库为sqplite，默认集成在埋点SDK中 | `EventDatabase` | `EventDbResult` | `com.growingio.android:database:3.3.3` |
 | 数据传输格式-json | 使用json格式保存和上传事件数据，sdk 默认 | `EventFormatData` | `EventByteArray` | `com.growingio.android:json:3.3.3` |
 | 数据传输格式-protobuf | 使用protobuf格式保存和上传事件数据，需要集成生效 | `EventFormatData` | `EventByteArray` | `com.growingio.android:protobuf:3.3.3` |
@@ -32,10 +32,10 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 
 | 名称     | 说明 | 依赖 |
 | :------- | :------:  | :---|
-| 埋点 Library | 埋点核心库，包含最基本的埋点逻辑 |  `com.growingio.android:tracker-core:3.3.2` |
-| 无埋点 Library | 无埋点核心库，依赖于埋点核心库，包含无埋点的注入逻辑 |  `com.growingio.android:autotracker-core:3.3.2` |
-| 模块注解库 | 注解声明，通过注解可以自动生成 SDK 的初始化类来注册所有的模块和聚合模块内的配置类。| `com.growingio.android:annotation:3.3.2` |
-| 注解解析器 | 与上面注解配合使用 | `com.growingio.android:compiler:3.3.2` |
+| 埋点 Library | 埋点核心库，包含最基本的埋点逻辑 |  `com.growingio.android:tracker-core:3.3.3` |
+| 无埋点 Library | 无埋点核心库，依赖于埋点核心库，包含无埋点的注入逻辑 |  `com.growingio.android:autotracker-core:3.3.3` |
+| 模块注解库 | 注解声明，通过注解可以自动生成 SDK 的初始化类来注册所有的模块和聚合模块内的配置类。| `com.growingio.android:annotation:3.3.3` |
+| 注解解析器 | 与上面注解配合使用 | `com.growingio.android:compiler:3.3.3` |
 
 具体版本请到 [新功能介绍](/docs) 查阅
 
@@ -55,7 +55,7 @@ buildscript {
     }
     dependencies {
         //无埋点注入插件
-        classpath "com.growingio.android:autotracker-gradle-plugin:3.3.2"
+        classpath "com.growingio.android:autotracker-gradle-plugin:3.3.3"
     }
 }
 ```
@@ -72,7 +72,7 @@ plugins {
 
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:3.3.2'
+	implementation 'com.growingio.android:autotracker-core:3.3.3'
 }
 
 ```
@@ -84,11 +84,11 @@ dependencies {
 ```groovy
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:3.3.2'
+	implementation 'com.growingio.android:autotracker-core:3.3.3'
 
 	//所需的模块
-	implementation 'com.growingio.android:okhttp3:3.3.2'
-	implementation 'com.growingio.android:json:3.3.2'
+	implementation 'com.growingio.android:okhttp3:3.3.3'
+	implementation 'com.growingio.android:json:3.3.3'
 }
 ```
 
@@ -99,22 +99,22 @@ dependencies {
 ```groovy
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:3.3.2'
+	implementation 'com.growingio.android:autotracker-core:3.3.3'
 
 	//所需的模块
-	implementation 'com.growingio.android:okhttp3:3.3.2'
-	implementation 'com.growingio.android:json:3.3.2'
+	implementation 'com.growingio.android:okhttp3:3.3.3'
+	implementation 'com.growingio.android:json:3.3.3'
 
 	//注解解析
-	implementation 'com.growingio.android:annotation:3.3.2'
-	annotationProcessor 'com.growingio.android:compiler:3.3.2'
+	implementation 'com.growingio.android:annotation:3.3.3'
+	annotationProcessor 'com.growingio.android:compiler:3.3.3'
 }
 ```
 
 :::tip kapt
 若使用kotlin，可以通过 kapt 来依赖注解器
 
-`kapt 'com.growingio.android:compiler:3.3.2'`
+`kapt 'com.growingio.android:compiler:3.3.3'`
 :::
 
 ### 4. 使用注解自定义SDK的属性
