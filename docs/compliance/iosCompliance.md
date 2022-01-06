@@ -25,7 +25,7 @@ title: iOS SDK 合规说明
 
 如果您使用了 `IDFA`，请在隐私政策中增加如下参考条款： “我们使用了GrowingIO SDK，采集您的 `IDFA` 信息，用于统计分析您在 App 内的使用效果。”
 
-如您的 App 需要通过第三方安全检测，建议在隐私政策授权成功之后，再初始化 GrowingIO SDK
+**如您的 App 需要通过第三方安全检测，建议在隐私政策授权成功之后，再初始化 GrowingIO SDK**
 
 ## 合规步骤
 ### GDPR

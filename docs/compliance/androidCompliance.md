@@ -14,7 +14,7 @@ title: Android SDK 合规说明
 ​请参考 [Android SDK](/docs/android/base/Getting%20Started) 
 
 ## 隐私政策
-如您的 App 需要通过第三方安全检测，建议在隐私政策授权成功之后，再初始化 GrowingIO SDK
+**如您的 App 需要通过第三方安全检测，建议在隐私政策授权成功之后，再初始化 GrowingIO SDK**
 
 ## Google Play
 如您的 App 需要在 Google Play 分发，依据 Google Play 相关政策，请使用最新 [GrowingIO Android SDK](/docs)

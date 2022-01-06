@@ -154,12 +154,13 @@ GrowingTracker.get().cleanLocation()
 
 ### 6. 设置埋点事件 
 `trackCustomEvent`<br/>
-发送一个埋点事件。在添加所需要发送的事件代码之前，需要在事件管理用户界面配置事件以及事件属性。
+发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
+如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP平台版本>= 2.1 ）
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|
 | `eventName` | `String` | 事件名，事件标识符 |
-| `attributes` | `Map<String, String>` | 事件发生时所伴随的维度信息（可选） |
+| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息（可选） |
 | `itemKey` | `String` | 事件发生关联的物品模型Key（可选，与itemId参数一起传入）|
 | `itemId` | `String` | 事件发生关联的物品模型ID（可选，与itemKey参数一起传入）|
 #### 示例
