@@ -83,7 +83,8 @@ gdp('clearUserId');
 ```
 
 ### 自定义埋点(track)
-发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中`事件管理用户界面`配置事件以及事件属性。
+发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
+如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP平台版本>= 2.1 ）
 
 ```js
 gdp('track', eventId, properties, item);
@@ -91,12 +92,12 @@ gdp('track', eventId, properties, item);
 #### 参数说明
 | 参数              | 参数类型 | 说明                            |
 | ----------------- | -------- | ------------------------------- |
-| `eventId`         | `String` | 必填；事件名，事件标识符。      |
-| `properties`      | `Object` | 选填；事件属性。                |
-| `item`            | `Object` | 选填；事件发生关联的物品模型。  |
-| `item.id`         | `string` | item 中必填；物品模型 id。      |
-| `item.key`        | `string` | item 中必填；物品模型唯一标识。 |
-| `item.properties` | `Object` | item 中选填；物品模型属性。     |
+| `eventId`         | `String` | 必填；事件名，事件标识符      |
+| `properties`      | `Object` | 事件发生时所伴随的属性信息（可选）                |
+| `item`            | `Object` | 选填；事件发生关联的物品模型  |
+| `item.id`         | `String` | item 中必填；物品模型 id      |
+| `item.key`        | `String` | item 中必填；物品模型唯一标识 |
+| `item.properties` | `Object` | item 中选填；物品模型属性     |
 
 #### 示例：
 ```js

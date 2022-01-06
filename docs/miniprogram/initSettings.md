@@ -110,14 +110,15 @@ onShareAppMessage: function() {
 ### forceLogin
 
 默认情况下，SDK通过自动生成的 uid 上报标识用户。如您需要根据 openId 标识用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
-打开后SDK会暂停上报数据，待用户登录获取 openId，调用 `identify` 方法设置 访问用户id 为 openId 后继续数据采集，以此来关联用户。
+设置为`true`后SDK会暂停上报数据，待调用 `wx.login`后获取 openId，调用 `identify` 方法后开始数据上报。**调用 `identify` 会替换事件数据的 deviceId 为设定值（一般是小程序openId），包括调用`identify`之前触发的事件.**
 
 ```js
 gdp('identify', openId);
 ```
 
 :::caution 注意：
-如果用户在打开您的微信小程后没有使用微信授权登录，但是小程序配置了forceLogin为true，会导致SDK不能采集数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们。
+适用于打开就要求用户微信登录的小程序<br/>
+如果打开小程序后没有使用微信授权登录，但是小程序SDK配置了forceLogin为true，会导致SDK不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们。
 :::
 
 ### getLocation

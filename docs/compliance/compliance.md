@@ -11,17 +11,17 @@ title: APP合规指南
 
 ## 1.隐私政策填写
 
-### 1.1. 收集和获取
+### 1.1 收集和获取
 
 在《隐私政策》中收集和获得您的个人信息栏目中根据实际情况填写以下内容。当您在激活使用时，我们会通过 SDK 收集您的设备信息（例如：`IDFA`、`IDFV`、操作系统、设备型号、系统版本、`AndroidID`、`IMEI` 等）用于统计分析您在 App 内的使用效果。
 
-### 1.2. 与授权合作伙伴共享
+### 1.2 与授权合作伙伴共享
 
 在《隐私政策》中的与授权合作伙伴共享栏目中根据实际情况填写以下内容。GrowingIO SDK：收集您的设备信息（例如：`IDFA`、`IDFV`、操作系统、设备型号、系统版本、`AndroidID`、`IMEI` 等）用于数据分析，从而改进我们的产品和服务。
 
-### 1.3. 设备信息说明
+### 1.3 设备信息说明
 
-#### 1.3.1. IDFA
+#### 1.3.1 IDFA
 
 ##### 使用途径
 
@@ -37,9 +37,20 @@ Q1：App一开始禁止了`IDFA`权限，后续允许了`IDFA` 权限，数据�
 
 A：对于`IDFA`，App生命周期内，`IDFA` 只会获取一次，就算后续 IDFA 权限打开了，也不会再获取，可以在下一次App启动后生效。对于 设备标识，仅且在 App第一次启动时生成，后续不再改变，优先级为 `IDFA`> `IDFV` > `UUID`，如果 `IDFA` 无法获取，则会使用`IDFV` 且不再变动，会存入`Keychain`，卸载也无法修改。如果要设备标识 和 `IDFA` 绑定，则需要在用户同意 `IDFA`权限之后进行第一次SDK初始化操作。
 
-#### 1.3.2. AndroidId、IMEI、OAID、GoogleAdId
+#### 1.3.2 AndroidId、IMEI、OAID、GoogleAdId
 
 GrowingIO SDK在采集 设备标识 时，会默认采集 `AndroidId`，有一定的合规风险，但是考虑采集的准确性，GrowingIO 仍然提供 `AndroidId` 的采集方法。如果您不需要采集 `AndroidId`，请配置 `setDataCollectionEnabled`为 `false` ，此时SDK不获取任何设备信息，也不上报任何数据。
+
+#### 1.4 三方SDK列表中建议示例
+GIO移动端 SDK
+
+用途：分析收集移动应用程序(App)用户的使用情况
+
+收集个人信息类型：设备标识信息（如IMEI、Android ID、OAID、IDFA、IDFV），设备类型，设备版本，系统版本，地理位置信息，网络设备制造商，IP地址，网络模式
+
+提供方：北京易数科技有限公司
+
+第三方SDK隐私政策链接：https://accounts.growingio.com/user-privacy
 
 ## 2. SDK 如何支持合规
 
