@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: 小程序 SDK 合规说明
 ---
 **鉴于您需要使用GIO提供的服务，请您务必于使用GIO服务之前完成合规工作**

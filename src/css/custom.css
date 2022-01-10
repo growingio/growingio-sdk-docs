@@ -97,6 +97,7 @@ a[class~="menu__link"][tabindex]{
     margin-top: calc(var(--ifm-h3-vertical-rhythm-top) * var(--ifm-leading));
 }
 
-
-
+.main-wrapper .container footer  {
+  display: none;
+}
 
