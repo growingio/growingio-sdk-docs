@@ -161,8 +161,8 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 |anonymousId|string|否|匿名用户ID。|
 |loginUserKey|string|否|登录用户KEY。|
 |loginUserId|string|否|登录用户ID。|
-|addEventVariable|(string, string\|double\|int)|否|事件属性。|
-|addEventVariables|map<string,object>|否|事件属性集合。|
+|addEventVariable|(string, string\|double\|int)|否|事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）|
+|addEventVariables|map<string,object>|否|事件属性集合;当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）|
 |addItem|(string, string)|否|物品模型ID, 物品模型KEY。|
 
 **代码示例**
@@ -204,13 +204,13 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
                 .build();
 ```
 
-### 物品模型API
+### 物品模型API(CDP平台版本<2.1)
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|id|string|是|物品模型ID。|
-|key|string|是|物品模型KEY。|
-|addItemVariable|map<string,string>|否|物品模型属性。|
+|id|string|是|物品模型ID|
+|key|string|是|物品模型KEY|
+|addItemVariable|map<string,string>|否|物品模型属性及值；多个属性可调用多次|
 
 **代码示例**
 
@@ -219,6 +219,24 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
                 .id("1001")                        // 物品模型ID (必填)
                 .key("product")                    // 物品模型KEY (必填)
                 .addItemVariable("color", "red")   // 物品模型属性 (选填)
+                .build();
+```
+
+### 维度表API(CDP平台版本>=2.1)
+
+|参数名称|类型|是否必填|说明|
+| --- | --- | --- | --- |
+|id|string|是|维度表模型ID(记录ID)|
+|key|string|是|维度表标识符|
+|addItemVariable|map<string,string>|否|维度表属性及值；多个属性可调用多次|
+
+**代码示例**
+
+```java
+GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
+                .id("1001")                        // 维度表模型ID(记录ID) (必填)
+                .key("product")                    // 维度表标识符 (必填)
+                .addItemVariable("color", "red")   // 维度表属性 (选填)
                 .build();
 ```
 
