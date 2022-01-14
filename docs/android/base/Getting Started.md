@@ -198,77 +198,11 @@ class MyApplication : Application() {
 
 
 :::caution 注意
-1. 请确保将代码添加在 `Application` 的 `onCreate` 方法中，添加到其他方法中或者延迟初始化可能会在某种极端情况下导致 `Application` 重建时出现 `GrowingIO SDK` 未初始化的情况，从而导致页面的采集数据丢失。
+1. 关于《隐私政策》相关，初始化步骤可以参考 [Android SDK 合规说明](/docs/compliance/androidCompliance) 实现。
 
 2. `GrowingAutotracker.startWithConfiguration`第一个参数为 `ApplicationContext` 对象。 
 :::
 
-:::tip 关于隐私政策
-在很多情况下，应用第一次打开时需要用户同意隐私协议后才能进行数据的收集，这里推荐的做法是应用初始化时先关闭数据收集，之后用户同意后再重新打开。
-:::
-<Tabs
-  groupId="code-language"
-  defaultValue="kotlin"
-  values={[
-    {label: 'java', value: 'java'},
-    {label: 'kotlin', value: 'kotlin'},
-  ]
-}>
-
-<TabItem value="java">
-
-```java
-public class MyApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        // Config GrowingIO
-        // 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
-        // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-        // Your URLScheme eg: growing.xxxxxxxxxxx
-        // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
-        // YourDatasourceId eg: 11223344aabbcc
-        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
-                .setDataCollectionServerHost("Your ServerHost")
-                .setDataSourceId("Your DataSourceId")
-                // 初始化时先关闭数据收集
-                .setDataCollectionEnabled(false);
-        GrowingAutotracker.startWithConfiguration(this,sConfiguration);
-    }
-}
-
-// 当用户同意隐私协议后，再打开数据收集
-GrowingAutotracker.get().setDataCollectionEnabled(true);
-```
-
-</TabItem>
-<TabItem value="kotlin">
-
-```kotlin
-class MyApplication : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        // Config GrowingIO
-        // 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理 
-        // YourAccountId eg:0a1b4118dd954ec3bcc69da5138bdb96
-        // Your URLScheme eg:growing.xxxxxxxxxxx 
-        // YourServerHost eg:http://106.75.81.105:8080
-        // YourDatasourceId eg: 11223344aabbcc
-        val sConfiguration = CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
-            .setDataCollectionServerHost("Your ServerHost")
-            .setDataSourceId("Your DataSourceId")
-            // 初始化时先关闭数据收集
-            .setDataCollectionEnabled(false)
-        GrowingAutotracker.startWithConfiguration(this, sConfiguration)
-    }
-}
-
-// 当用户同意隐私协议后，再打开数据收集
-GrowingAutotracker.get().setDataCollectionEnabled(true)
-```
-
-</TabItem>
-</Tabs>
 
 ### 代码混淆
 如果您启用了混淆，请在您的 proguard-rules.pro 中加入如下代码：
@@ -406,7 +340,7 @@ class MyApplication : Application() {
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.3.0 !!!`  
+`!!! GrowingIO Tracker version: 3.3.3 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。

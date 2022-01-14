@@ -73,9 +73,6 @@ button[class^='copyButton'] {
 /* source: https://fonts.googleapis.com/css?family=Montserrat:400,600,700 */
 /* cyrillic-ext */
 
-
-
-
 a[class~="menu__link"][tabindex]{
   font-weight: var(--ifm-font-weight-normal);
 }
@@ -96,8 +93,3 @@ a[class~="menu__link"][tabindex]{
     margin-bottom: calc( var(--ifm-heading-vertical-rhythm-bottom) * var(--ifm-leading) );
     margin-top: calc(var(--ifm-h3-vertical-rhythm-top) * var(--ifm-leading));
 }
-
-.main-wrapper .container footer  {
-  display: none;
-}
-

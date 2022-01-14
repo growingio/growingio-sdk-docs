@@ -4,19 +4,17 @@ sidebar_position: 0
 ---
 ----
 ## V3.3.3
-
  >[release-3.3.3](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.3) 日期: 2021-12-23 
 
+### Bug Fixes
 
+* 修复sonar提示的缺陷 https://github.com/growingio/growingio-sdk-android-autotracker/pull/137
 ### Features
-
-* 添加 protobuf 数据格式，用于存储和上传 ([#133](https://github.com/growingio/growingio-sdk-android-autotracker/pull/133))
-* 支持 App 和 H5 userKey 打通 ([#132](https://github.com/growingio/growingio-sdk-android-autotracker/pull/132))
-* autotracker 插件适配 Java11 ([#136](https://github.com/growingio/growingio-sdk-android-autotracker/pull/136))
-
-
+- 添加protobuf数据格式，用于存储和上传 #133 ；
+- 给Web端增加设置和清除UserKey的接口 #132 ；
+- autotracker 插件适配java11 #136 ;
+------
 ## V3.3.2
-
  >[release-3.3.2](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.2) 日期: 2021-11-24 
 
 ### Bug Fixes
@@ -25,7 +23,7 @@ sidebar_position: 0
 * inject webview异常修复 ([95eb1df](https://github.com/growingio/growingio-sdk-android-autotracker/commit/95eb1dfa9b221b226aedd4dfb80865cd29950258))
 * remove unboxing and check data is not null ([2aebf29](https://github.com/growingio/growingio-sdk-android-autotracker/pull/123/commits/2aebf29d8e7f37efde353686fa87fa2e35af5597))
 * 支持对5G网络类型的判断 https://github.com/growingio/growingio-sdk-android-autotracker/pull/130
-
+------
 ## V3.3.1
  >[release-3.3.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.1) 日期: 2021-10-28 
 
@@ -40,7 +38,7 @@ sidebar_position: 0
 
 * saas demo转为cdp demo ([#117](https://github.com/growingio/growingio-sdk-android-autotracker/issues/117)) ([58330cf](https://github.com/growingio/growingio-sdk-android-autotracker/commit/58330cfaa144b1dcd5e9e6353df81c117357adb7))
 
-
+------
 ## V3.3.0
  >[release-3.3.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.0) 日期: 2021-10-09 
 
@@ -63,7 +61,7 @@ Android 无埋点/埋点 SDK 3.3.0
 * idmapping ([5a4bac8](https://github.com/growingio/growingio-sdk-android-autotracker/commit/5a4bac88fc33f2ec1396b64583d5984224abae9b))
 * 适配oaid1.0.27版本 ([b216efa](https://github.com/growingio/growingio-sdk-android-autotracker/commit/b216efa533c7e2c9e869c47aa652f6725c407cf3))
 
-
+------
 ## V3.2.2
  >[v3.2.2](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.2.2) 日期: 2021-09-09 
 
@@ -74,7 +72,7 @@ Android 无埋点/埋点 SDK 3.3.0
 * 修复多线程导致前后台判断异常 ([f109d3b](https://github.com/growingio/growingio-sdk-android-autotracker/commit/f109d3b255beac5903cc19786ba30aa3266b19c9))
 * 修复子线程初始化问题 ([0b06618](https://github.com/growingio/growingio-sdk-android-autotracker/commit/0b06618740fe64c7d9eb2dd99ac61b0107c6e48c))
 
-
+------
 ## V3.2.1
  >[release-3.2.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.2.1) 日期: 2021-09-01 
 
@@ -97,7 +95,7 @@ Android 无埋点/埋点 SDK 3.2.1
 - 增加字段过滤和事件过滤 ([937caee](https://github.com/growingio/growingio-sdk-android-autotracker/commit/937caee1acf6ed0db603704a07fc92d76bd3b4a0))
 - 适配更多场景 ([579d12f](https://github.com/growingio/growingio-sdk-android-autotracker/commit/579d12f0f429f1405687c4288d8759ef428e8f7f))
 
-
+------
 ## V3.2.0
  >[release-3.2.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.2.0) 日期: 2021-06-03 
 
@@ -107,7 +105,7 @@ Android 无埋点/埋点 SDK 3.2.0
 1. 通过模块配置实现数据加密
 2. 修复多进程访问db, 进程锁的使用导致app崩溃的问题
 3. 更新3.2.0测量协议
-
+------
 ## V3.1.0
  >[release-3.1.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.1.0) 日期: 2021-04-26 
 
@@ -116,5 +114,5 @@ Android   无埋点/埋点 SDK 3.1.0
 1. 支持mobile debugger功能
 2. 仓库从JCenter迁移到MavenCentral
 3. 提高sdk稳定性
-
+------
 ### 更多发布细节请参考 [Github Releases](https://github.com/growingio/growingio-sdk-android-autotracker/releases)
