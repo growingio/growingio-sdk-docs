@@ -27,6 +27,7 @@ import TabItem from '@theme/TabItem';
 | `setIgnoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |  |
 | `setIdMappingEnabled` | `boolean` | 否 | `false` | 是否开启多用户身份上报 | - | <font color='red'>>= 3.3.0</font> |
 | `setImpressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 |  |
+| `setRequireAppProcessesEnabled`         | `boolean`   | 否      | `true`      |  SDK 是否能获取应用多进程ID | - | <font color='red'>>= 3.3.4</font> |
 | setPreloadComponent | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.0,<=3.3.3</font> |
 | addPreloadComponent | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.4</font> |
 | addConfiguration | `Configurable` | 否 | `null` | 注册自定义/预定义模块的配置文件 | - | <font color='red'>>= 3.3.4</font> |
