@@ -141,9 +141,12 @@ CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("AccountId", "U
 ```
 
 :::caution 注意
-若关闭了 SDK 获取应用多进程的操作，则 SDK 不会再将子进程视为一个新的访问，新的访问永远在主进程中生成。进程中的数据统计和发送不会受到影响。
+若关闭了 SDK 获取应用多进程的操作，则 SDK 不会再将子进程视为一个新的访问，新的访问永远在主进程中生成。子进程中的数据统计和发送不会受到影响。
 在 SDK 版本 3.3.4 之后提供该接口。
 :::
+
+### 集成OAID SDK
+具体可以参考 [采集OAID作为设备信息](/docs/android/base/Configuration#2-采集oaid作为设备信息)
 
 
 

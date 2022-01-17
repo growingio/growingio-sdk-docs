@@ -93,3 +93,15 @@ a[class~="menu__link"][tabindex]{
     margin-bottom: calc( var(--ifm-heading-vertical-rhythm-bottom) * var(--ifm-leading) );
     margin-top: calc(var(--ifm-h3-vertical-rhythm-top) * var(--ifm-leading));
 }
+
+.unique-tabs .tabs__item--active {
+    background-color: var(--ifm-tabs-color-active);
+    border: 0px;
+    border-radius: var(--ifm-global-radius);
+    color: #fff;
+}
+
+.unique-tabs .tabs__item {
+    line-height: 16px;
+    margin-right: 8px;
+}
