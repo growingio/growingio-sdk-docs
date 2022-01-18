@@ -18,9 +18,9 @@ Account ID、DataSource ID、AppId 需要在CDP增长平台上新建数据获取
 Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
 :::
 ##### 创建
-![新建数据源](./../../../static/img/createapplication.png)
+![新建数据源](/img/createapplication.png)
 ##### 查看
-![查看数据源](./../../../static/img/miniprogram/dataSourceInfo.png)
+![查看数据源](/img/miniprogram/dataSourceInfo.png)
 
 ## 集成
 
