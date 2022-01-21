@@ -9,8 +9,8 @@ sidebar_position: 0
 ### Features
 
 - 添加初始化开关setRequireAppProcessesEnabled，控制是否获取应用多进程id
+- 适配到OAID SDK 1.1.0，添加[OaidConfig](/docs/android/base/Configuration#2-采集oaid作为设备信息)，方便用户传入Oaid值和设置证书
 - 添加初始化接口 addConfiguration，用于设置模块的配置项
-- 适配到OAID SDK 1.1.0，添加OaidConfig，方便用户传入Oaid值和设置证书
 ------
 ## V3.3.3
  >[release-3.3.3](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.3) 日期: 2021-12-23 
