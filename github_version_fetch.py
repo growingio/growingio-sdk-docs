@@ -23,10 +23,13 @@ def github_release(platform):
                 release_name = release["tag_name"]
             if hotfix_version(release_name):
                 continue
-            readme += readme_item_title.format(title=release["tag_name"].upper(), name=release_name, url=release["html_url"],
-                                               date=release["published_at"].split("T")[0])
+            if release["prerelease"] == True:
+                continue
+            if platform['name'] != "iOS":
+                readme += readme_item_title.format(title=release["tag_name"].upper(), name=release_name, url=release["html_url"],
+                                                date=release["published_at"].split("T")[0])
             readme += release["body"]
-            readme += "\n\n"
+            readme += "\n------\n"
         readme += readme_footer.format(
             url=platform['releaseUrl'].replace("api.github.com", "github.com").replace("repos/growingio", "growingio"))
 

@@ -473,7 +473,7 @@ GrowingTracker.get().bridgeWebView(webview)
 
 ### 16. 注册模块组件 
 `registerComponent`<br/>
-可通过该方法手动注册SDK需要的可配置模块组件
+可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|

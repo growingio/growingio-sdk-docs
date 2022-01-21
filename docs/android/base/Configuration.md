@@ -27,7 +27,10 @@ import TabItem from '@theme/TabItem';
 | `setIgnoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |  |
 | `setIdMappingEnabled` | `boolean` | 否 | `false` | 是否开启多用户身份上报 | - | <font color='red'>>= 3.3.0</font> |
 | `setImpressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 |  |
-| setPreloadComponent | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.0</font> |
+| `setRequireAppProcessesEnabled`         | `boolean`   | 否      | `true`      |  SDK 是否能获取应用多进程ID | - | <font color='red'>>= 3.3.4</font> |
+| `setPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.0,<=3.3.3</font> |
+| `addPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.4</font> |
+| `addConfiguration` | `Configurable` | 否 | `null` | 注册自定义/预定义模块的配置文件 | - | <font color='red'>>= 3.3.4</font> |
 
 
 
@@ -64,29 +67,20 @@ import TabItem from '@theme/TabItem';
 ### 7. **setDataCollectionEnabled** 
 数据收集。当数据收集关闭时，SDK将不会再获取设备信息，也不会产生事件和上报事件。
 
-### 8. <font color='red'>采集 `OAID` 作为设备信息</font> 
-:::danger
-`setOaidEnabled` SDK 3.3.0之后已废弃，请通过 [采集 OAID 作为设备信息](/docs/android/base/Configuration#1-%E9%87%87%E9%9B%86oaid%E4%BD%9C%E4%B8%BA%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF) 进行注册 OAID 模块来实现 OAID 的功能
-:::
-若 `setOaidEnabled(true)`且已经集成了[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的jar包，则会在 Visit 事件中添加 oaid 字段：  
-```c
-╔═══════════════════════════════════════════════════════════════════════════════════════
-║ {
-║   "eventType": "VISIT",
-║   "oaid": "xxxxxxx-xxxxx-xxxxxx",
-║   "deviceId": "c2369951-098c-34ec-831c-858fe348df1d",
-║   ...
-║ }
-╚═══════════════════════════════════════════════════════════════════════════════════════
-```
-:::info
-在 Android 10 版本中，非系统应用无法获取 IMEI。加上以前 Android 版本已经对 MAC 地址， AndroidID 的获取做了限制， 在 Android10 中缺少一种唯一标记设备的标识符。 在海外， Google 推荐使用 Google 的广告 ID 作为广告的唯一识别符，在国内移动安全联盟MSA 联合各大手机制造商推出了 OAID 的概念， 作为唯一广告标识符。 目前腾讯， 头条， 网易广告SDK已经要求使用 OAID， OAID 的准确性和覆盖率均满足广告场景的使用需求，Android SDK 提供采集 OAID 的能力。
-:::
-
-### 9. **setExcludeEvent** 
+### 8. **setExcludeEvent** 
 事件过滤。默认情况下，事件不会进行过滤。但若不想采集某些事件可以在此设置。事件类型可以参考 [FilterEventParams](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/EventExcludeFilter.java)
 
-**无埋点SDK示例代码：**
+<Tabs className="unique-tabs"
+  groupId="sdk-type"
+  defaultValue="autotrack"
+  values={[
+    {label: '无埋点', value: 'autotrack'},
+    {label: '埋点', value: 'track'},
+  ]
+}>
+
+<TabItem value="autotrack">
+
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤事件
 GrowingAutotracker.startWithConfiguration(this,
@@ -96,7 +90,9 @@ GrowingAutotracker.startWithConfiguration(this,
 );
 ```
 
-**埋点SDK示例代码：**
+</TabItem>
+<TabItem value="track">
+
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤事件
 GrowingTracker.startWithConfiguration(this,
@@ -105,6 +101,11 @@ GrowingTracker.startWithConfiguration(this,
        .setExcludeEvent(EventExcludeFilter.EVENT_MASK_TRIGGER))
 );
 ```
+
+</TabItem>
+</Tabs>
+
+
 
 若想取消过滤，可以调用
 ```java
@@ -112,11 +113,21 @@ GrowingTracker.startWithConfiguration(this,
 ConfigurationProvider.core().setExcludeEvent(EventExcludeFilter.NONE)
 ```
 
-### 10. **setIgnoreField** 
+### 9. **setIgnoreField** 
 事件属性过滤。事件属性指上报事件中携带的属性参数。可过滤事件属性可以参考 [FieldIgnoreFilter](https://github.com/growingio/growingio-sdk-android-autotracker/blob/master/growingio-tracker-core/src/main/java/com/growingio/android/sdk/track/events/helper/FieldIgnoreFilter.java)
 初始化时可以设置对应的事件过滤
 
-**无埋点SDK示例代码：**
+<Tabs className="unique-tabs"
+  groupId="sdk-type"
+  defaultValue="autotrack"
+  values={[
+    {label: '无埋点', value: 'autotrack'},
+    {label: '埋点', value: 'track'},
+  ]
+}>
+
+<TabItem value="autotrack">
+
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤字段
 GrowingAutotracker.startWithConfiguration(this,
@@ -126,7 +137,9 @@ GrowingAutotracker.startWithConfiguration(this,
 );
 ```
 
-**埋点SDK示例代码：**
+</TabItem>
+<TabItem value="track">
+
 ```java
 // 初始化无埋点SDK时，调用方法设置过滤字段
 GrowingTracker.startWithConfiguration(this,
@@ -136,18 +149,20 @@ GrowingTracker.startWithConfiguration(this,
 );
 ```
 
+</TabItem>
+</Tabs>
 
 ```java
 // 若想取消过滤，可以调用
 ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.NONE)
 ```
 
-### 11. **setIdMappingEnabled** 
+### 10. **setIdMappingEnabled** 
 是否支持多用户身份上报, 默认不支持。
 是否支持多用户身份上报, 与 API 接口`setLoginUserId(String userId, String userKey)`对应, 开启时, userKey会在每次上报数据时携带, 关闭时, 接口与`setLoginUserId(String userId)`作用相同
 
 
-### 12. **setImpressionScale** 
+### 11. **setImpressionScale** 
 曝光比例。与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
 
 ## 常用可选模块配置
@@ -192,8 +207,12 @@ GrowingTracker.get().bridgeWebView(webview)
 ```
 
 ### 2. **采集`OAID`作为设备信息**
+
 :::info
 采集 SDK 版本 >=3.3.0
+
+> 在 OAID SDK 1.0.26及其后续版本，获得OAID值需要传入从 MSA 机构获得的证书；
+> 3.3.0 ~ 3.3.3版本无法传入客户自己获得的OAID值或OAID证书，若需要这些功能，请使用最新的版本 >=3.3.4。
 
 **使用时注意模块版本需要与采集SDK版本保持一致**
 :::
@@ -201,29 +220,89 @@ GrowingTracker.get().bridgeWebView(webview)
 项目需要添加[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 OAID模块依赖(和 SDK 依赖同级)：
 ```groovy
 ...
-implementation "com.growingio.android:oaid:3.3.3"
+implementation "com.growingio.android:oaid:3.3.4"
 ```
 SDK初始化时注册Oaid模块：
 
-**无埋点SDK示例代码：**
+<Tabs className="unique-tabs"
+  groupId="sdk-type"
+  defaultValue="autotrack"
+  values={[
+    {label: '无埋点', value: 'autotrack'},
+    {label: '埋点', value: 'track'},
+  ]
+}>
+
+<TabItem value="autotrack">
+
 ```java
+// 请选择其中一种方式传入oaid，若多处设置，则按照以下优先级获取
+// provideOaid -> OnProvideOaidCallback
+// 请提供oaid需要的证书，默认将从asset下获取 context.getPackageName() + ".cert.pem" 名称的证书。若多处设置，则按照以下优先级获取
+// provideCert -> provideCertAsset -> OnProvideCertCallback -> 默认
+OaidConfig oaidConfig = new OaidConfig();
+oaidConfig.setProvideOaid("<YOUR OAID>");
+oaidConfig.setProvideOaidCallback(context -> {
+    //require oaid logic,it's will run in sub thread.
+    return "<YOUR OAID>";
+});
+oaidConfig.setProvideCert("<YOUR CERT VALUE>");
+oaidConfig.setProvideCertAsset("<THE PATH OF YOUR CERT IN ASSET>");
+oaidConfig.setProvideCertCallback(new OaidConfig.OnProvideCertCallback() {
+    @Override
+    public String provideCertJob(Context context) {
+        //require cert logic,it's will run in sub thread.
+        return "<YOUR CERT VALUE>";
+    }
+});
+
+
 // 初始化SDK时，可以提前注册 oaid 模块
 GrowingAutotracker.startWithConfiguration(this,
         new CdpAutotrackConfiguration("accountId", "urlScheme")
         ...
-        .setPreloadComponent(new OaidLibraryGioModule()));
+        //.setPreloadComponent(new OaidLibraryGioModule())) //在3.3.4已申明为 @Deprecated
+        .addConfiguration(oaidConfig)
+        .addPreloadComponent(new OaidLibraryGioModule())
+
 );
 ```
 
-**埋点SDK示例代码：**
+</TabItem>
+<TabItem value="track">
+
 ```java
+// 请选择其中一种方式传入oaid，若多处设置，则按照以下优先级获取
+// provideOaid -> OnProvideOaidCallback
+// 请提供oaid需要的证书，默认将从asset下获取 context.getPackageName() + ".cert.pem" 名称的证书。若多处设置，则按照以下优先级获取
+// provideCert -> provideCertAsset -> OnProvideCertCallback -> 默认
+OaidConfig oaidConfig = new OaidConfig();
+oaidConfig.setProvideOaid("<YOUR OAID>");
+oaidConfig.setProvideOaidCallback(context -> {
+    //oaid的请求逻辑，运行在子线程中
+    return "<YOUR OAID>";
+});
+oaidConfig.setProvideCert("<YOUR CERT VALUE>");
+oaidConfig.setProvideCertAsset("<THE PATH OF YOUR CERT IN ASSET>");
+oaidConfig.setProvideCertCallback(new OaidConfig.OnProvideCertCallback() {
+    @Override
+    public String provideCertJob(Context context) {
+        //证书的请求逻辑，运行在子线程中
+        return "<YOUR CERT VALUE>";
+    }
+});
+
 // 初始化SDK时，可以提前注册 oaid 模块
 GrowingTracker.startWithConfiguration(this,
         new CdpTrackConfiguration("accountId", "urlScheme")
         ...
-        .setPreloadComponent(new OaidLibraryGioModule()));
+        .addConfiguration(oaidConfig)
+        .addPreloadComponent(new OaidLibraryGioModule())
 );
 ```
+
+</TabItem>
+</Tabs>
 
 配置完成后之后会在 `Visit` 事件中添加 `oaid` 字段：
 
@@ -238,10 +317,15 @@ GrowingTracker.startWithConfiguration(this,
     ╚═══════════════════════════════════════════════════════════════════════════════════════
 ```
 
+:::danger
+`Configuration.setOaidEnabled` SDK 3.3.0之后已废弃，请通过上述方法进行注册 OAID 模块来实现 OAID 的功能
+:::
+
 :::info
 在 Android 10 版本中，非系统应用无法获取 IMEI。加上以前 Android 版本已经对 MAC 地址， AndroidID 的获取做了限制， 在 Android10 中缺少一种唯一标记设备的标识符。 在海外， Google 推荐使用 Google 的广告 ID 作为广告的唯一识别符，在国内[移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120) 联合各大手机制造商推出了 OAID 的概念， 作为唯一广告标识符。
 目前腾讯， 头条， 网易广告SDK已经要求使用 OAID， OAID 的准确性和覆盖率均满足广告场景的使用需求，Android SDK 提供采集 OAID 的能力。
 :::
+
 
 ### 3. **SDK数据加密传输**
 :::info
@@ -293,8 +377,18 @@ implementation "com.growingio.android:protobuf:3.3.3"
 
 SDK初始化时注册Protobuf模块：
 
-**无埋点SDK示例代码：**
-  ```java
+<Tabs className="unique-tabs"
+  groupId="sdk-type"
+  defaultValue="autotrack"
+  values={[
+    {label: '无埋点', value: 'autotrack'},
+    {label: '埋点', value: 'track'},
+  ]
+}>
+
+<TabItem value="autotrack">
+
+```java
 // 初始化无埋点SDK时, 调用方法注册Protobuf模块
 // Protobuf模块需要依赖对应 Protobuf模块包protobuf
 GrowingAutotracker.startWithConfiguration(this, 
@@ -303,7 +397,9 @@ GrowingAutotracker.startWithConfiguration(this,
                 .setPreloadComponent(new ProtobufLibraryGioModule()));
 ```
 
-**埋点SDK示例代码：**
+</TabItem>
+<TabItem value="track">
+
 ```java
 // 初始化无埋点SDK时, 调用方法注册Protobuf模块
 // Protobuf模块需要依赖对应 Protobuf模块包protobuf
@@ -312,4 +408,7 @@ GrowingTracker.startWithConfiguration(this,
                 ...
                 .setPreloadComponent(new ProtobufLibraryGioModule()));
 ```
+
+</TabItem>
+</Tabs>
 
