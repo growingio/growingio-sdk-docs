@@ -77,8 +77,6 @@ $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 | loginUserId  | true  | string |         | 登录用户id                  |
 | eventKey     | true  | string |         | 事件名, 事件标识符          |
 | properties   | false | array  | array() | 事件发生时,所伴随的维度信息 |
-| id           | false | string | null    | 事件发生时关联的物品模型id  |
-| key          | false | string | null    | 事件发生时关联的物品模型key |
 ###### 示例
 ```php
 $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
