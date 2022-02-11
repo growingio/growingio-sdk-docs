@@ -25,7 +25,7 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 ![查看数据源](./../../static/img/showServerDataSourceID.png)
 
 ### 集成 & 安装
-php sdk已经发布在[Packagist](https://packagist.org/packages/phpmailer/phpmailer), 可以通过[Composer](https://getcomposer.org)进行安装
+php sdk已经发布在[Packagist](https://packagist.org/packages/growingio/php-sdk), 可以通过[Composer](https://getcomposer.org)进行安装
 ```composer
 "growingio/php-sdk": "1.0.1"
 ```
