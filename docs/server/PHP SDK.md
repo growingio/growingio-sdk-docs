@@ -25,9 +25,9 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 ![查看数据源](./../../static/img/showServerDataSourceID.png)
 
 ### 集成 & 安装
-php sdk已经发布在[Packagist](https://packagist.org/packages/phpmailer/phpmailer), 可以通过[Composer](https://getcomposer.org)进行安装
+php sdk已经发布在[Packagist](https://packagist.org/packages/growingio/php-sdk), 可以通过[Composer](https://getcomposer.org)进行安装
 ```composer
-"growingio/php-sdk": "dev-op"
+"growingio/php-sdk": "1.0.1"
 ```
 ```php
 <?php
@@ -45,16 +45,16 @@ include_once 'path/src/GrowingIO.php'; // path为对应路径
 
 ### 初始化配置
 ###### 初始化参数
-|参数|必选|类型|默认值|说明|
-|:----|:----|:----|:----|-----|
-|accountID|true|string| |项目 ID,见数据源配置|
-|host|true|string| |数据收集服务域名,请参考运维手册或联系技术支持获取|
-|dataSourceId|true|string| |数据源 ID,见数据源配置|
-|props|false|array|array()|初始化配置额外参数|
+| 参数         | 必选  | 类型   | 默认值  | 说明                                              |
+| :----------- | :---- | :----- | :------ | ------------------------------------------------- |
+| accountID    | true  | string |         | 项目 ID,见数据源配置                              |
+| host         | true  | string |         | 数据收集服务域名,请参考运维手册或联系技术支持获取 |
+| dataSourceId | true  | string |         | 数据源 ID,见数据源配置                            |
+| props        | false | array  | array() | 初始化配置额外参数                                |
 ###### 初始化配置额外参数
-|参数|必选|类型|默认值|说明|
-|:----|:----|:----|:----|-----|
-|debug|false|boolean|false|debug 模式, 此模式仅打印日志, 不发送数据|
+| 参数  | 必选  | 类型    | 默认值 | 说明                                     |
+| :---- | :---- | :------ | :----- | ---------------------------------------- |
+| debug | false | boolean | false  | debug 模式, 此模式仅打印日志, 不发送数据 |
 ###### 示例
 ```php
 $accountID = '1234567887654321';
@@ -71,49 +71,46 @@ $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 > 发送一个埋点事件。在添加所需要发送的事件代码之前,需要在事件管理用户界面配置事件以及事件属性
 
 ###### 请求参数
-|参数|必选|类型|默认值|说明|
-|:----|:----|:----|:----|-----|
-|loginUserId|true|string| |登录用户id|
-|eventKey|true|string| |事件名, 事件标识符|
-|properties|false|array|array()|事件发生时,所伴随的维度信息|
-|id|false|string|null|事件发生时关联的物品模型id|
-|key|false|string|null|事件发生时关联的物品模型key|
+| 参数         | 必选  | 类型   | 默认值  | 说明                        |
+| :----------- | :---- | :----- | :------ | --------------------------- |
+| loginUserKey | false | string |         | 登录用户类型                |
+| loginUserId  | true  | string |         | 登录用户id                  |
+| eventKey     | true  | string |         | 事件名, 事件标识符          |
+| properties   | false | array  | array() | 事件发生时,所伴随的维度信息 |
 ###### 示例
 ```php
-$gio->track(
-    'loginUserId',
-    'eventName',
-    array('attrKey' => 'attrValue'),
-    'itemId',
-    'itemKey'
-);
+$gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
+    ->setLoginUserKey('loginUserKey')
+    ->setProperties(array('attrKey1' => 'attrValue1', 'attrKey2' => 'attrValue2'))
+    ->create());
 ```
 **2\. 设置登录用户属性**
 ###### 接口功能
 > 以登录用户的身份定义登录用户属性,用于用户信息相关分析
 
 ###### 请求参数
-|参数|必选|类型|默认值|说明|
-|:----|:----|:----|:----|-----|
-|loginUserId|true|string| |登录用户id|
-|properties|true|array| |用户属性信息|
+| 参数         | 必选  | 类型   | 默认值 | 说明         |
+| :----------- | :---- | :----- | :----- | ------------ |
+| loginUserKey | false | string |        | 登录用户类型 |
+| loginUserId  | true  | string |        | 登录用户id   |
+| properties   | true  | array  |        | 用户属性信息 |
 ###### 示例
 ```php
-$gio->setUserAttributes(
-    'loginUserId', 
-    array('gender' => 'male')
-);
+$gio->setUserAttributesEvent($gio->getUserAttributesFactory('loginUserId')
+    ->setLoginUserKey('loginUserKey')
+    ->setProperties(array('gender' => 'male', 'age' => '18'))
+    ->create());
 ```
 **3\. 设置物品模型**
 ###### 接口功能
 > 上传物品模型
 
 ###### 请求参数
-|参数|必选|类型|默认值|说明|
-|:----|:----|:----|:----|-----|
-|itemId|true|string| |物品模型id|
-|itemKey|true|string| |物品模型key|
-|properties|false|array|array()|物品模型属性信息|
+| 参数       | 必选  | 类型   | 默认值  | 说明             |
+| :--------- | :---- | :----- | :------ | ---------------- |
+| itemId     | true  | string |         | 物品模型id       |
+| itemKey    | true  | string |         | 物品模型key      |
+| properties | false | array  | array() | 物品模型属性信息 |
 ###### 示例
 ```php
 $gio->setItemAttributes(
@@ -139,20 +136,18 @@ $dataSourceId = '12345678';
 $props = array('debug' => true);
 $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 
-// 采集埋点事件
-$gio->track(
-    'loginUserId',
-    'eventName',
-    array('attrKey' => 'attrValue'),
-    'itemId',
-    'itemKey'
+// 采集自定义事件
+$gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
+    ->setLoginUserKey('loginUserKey')
+    ->setProperties(array('attrKey1' => 'attrValue1', 'attrKey2' => 'attrValue2'))
+    ->create()
 );
 
-// 设置登录用户属性
-$gio->setUserAttributes(
-    'loginUserId', 
-    array('gender' => 'male')
-);
+// 设置登录用户变量
+$gio->setUserAttributesEvent($gio->getUserAttributesFactory('loginUserId')
+    ->setLoginUserKey('loginUserKey')
+    ->setProperties(array('gender' => 'male', 'age' => '18'))
+    ->create());
 
 // 设置物品模型
 $gio->setItemAttributes(
