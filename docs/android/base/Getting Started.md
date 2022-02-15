@@ -139,7 +139,7 @@ URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把
 ```
 ### SDK初始化配置
 
-#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/compliance/androidCompliance#合规步骤) 
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -198,9 +198,7 @@ class MyApplication : Application() {
 
 
 :::caution 注意
-1. 关于《隐私政策》相关，初始化步骤可以参考 [Android SDK 合规说明](/docs/compliance/androidCompliance) 实现。
-
-2. `GrowingAutotracker.startWithConfiguration`第一个参数为 `ApplicationContext` 对象。 
+`GrowingAutotracker.startWithConfiguration`第一个参数为 `ApplicationContext` 对象。 
 :::
 
 
@@ -274,7 +272,7 @@ dependencies {
 </manifest>
 ```
 ### SDK初始化配置
-#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/compliance/androidCompliance#合规步骤) 
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"

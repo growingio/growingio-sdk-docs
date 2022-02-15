@@ -32,5 +32,5 @@ pod 'GrowingAnalytics/DISABLE_IDFA'
 首先，用户未同意隐私条款时，可以在 SDK 初始化配置时，调用 dataCollectionEnabled 设置为 NO，禁止数据采集;<br/>
 其次，当用户同意隐私条款时，调用 [[GrowingAutotracker sharedInstance] setDataCollectionEnabled:YES] 开启数据采集；<br/>
 最后，当用户再次进入app时， 如果用户已同意隐私条款，在 SDK 初始化配置时，调用 dataCollectionEnabled 设置为 YES，开启数据采集。<br/>
-**若App 需通过第三方安全检测，建议在隐私政策授权成功之后，再初始化 GrowingIO SDK**。
+**若App 需通过第三方安全检测，建议在隐私协议授权成功之后，再初始化 GrowingIO SDK**。
 
