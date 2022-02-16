@@ -160,7 +160,7 @@ GrowingTracker.get().cleanLocation()
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|
 | `eventName` | `String` | 事件名，事件标识符 |
-| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息（可选） |
+| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选） |
 | `itemKey` | `String` | 事件发生关联的物品模型Key（可选，与itemId参数一起传入）|
 | `itemId` | `String` | 事件发生关联的物品模型ID（可选，与itemKey参数一起传入）|
 #### 示例
@@ -473,7 +473,7 @@ GrowingTracker.get().bridgeWebView(webview)
 
 ### 16. 注册模块组件 
 `registerComponent`<br/>
-可通过该方法手动注册SDK需要的可配置模块组件
+可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|
