@@ -6,17 +6,19 @@ title: Android SDK 合规说明
 ## 隐私协议
 
 根据[工业和信息化部关于开展纵深推进APP侵害用户权益专项整治行动](http://www.gov.cn/zhengce/zhengceku/2020-08/02/content_5531975.htm)
-，App 需要通过隐私协议说明应用采集数据。为保证您的在集成 GrowingIO SDK 之后，能够满足工信部相关合规要求，请参考以下说明。
+，App 需要通过隐私协议说明应用采集数据。
+
+为确保您的App在集成 GrowingIO SDK 之后，能够满足工信部相关合规要求，请参考以下说明。
 
 ## 隐私协议填写
 
 ### 收集和获取
 
-在您的APP《隐私协议》中收集和获得的个人信息栏目中根据实际情况填写如下内容：
+在您的APP《隐私协议》中收集和获得的个人信息栏目中根据**实际情况**填写如下内容：
 ```
 我们的产品集成了 GrowingIO SDK，我们会通过 GrowingIO SDK 收集您的设备信息（例如：操作系统、设备型号、系统版本、`AndroidID`、`IMEI` 、IP地址）用于统计分析您在 App 内的使用效果，从而改进我们的产品和服务。 
 ```
-可在第三方SDK列表中增加如下内容(设备信息按照实际情况填写)：
+可在第三方SDK列表中增加如下内容(设备信息按照**实际情况**填写)：
 ```
 GIO移动端 SDK
 用途：分析收集移动应用程序(App)用户的使用情况
@@ -27,7 +29,7 @@ GIO移动端 SDK
 
 ### 与授权合作伙伴共享
 
-在您的APP《隐私协议》中的与授权合作伙伴共享栏目中根据实际情况填写如下内容:
+在您的APP《隐私协议》中的与授权合作伙伴共享栏目中根据**实际情况**填写如下内容:
 ```
 我们的产品集成了 GrowingIO SDK，我们会通过 GrowingIO SDK 收集您的设备信息（例如：操作系统、设备型号、系统版本、`AndroidID`、`IMEI` 、IP地址）用于统计分析您在 App 内的使用效果，从而改进我们的产品和服务。
 ```
@@ -38,7 +40,7 @@ GIO移动端 SDK
    
 2.请务必告知用户您使用了 GrowingIO SDK，请在 《隐私协议》 中添加隐私条款，参考[隐私协议填写](#隐私协议填写)
    
-3.集成 [Android SDK](/docs/android/base/Getting%20Started)，请[在用户同意《隐私协议》之后再初始化GrowingIO SDK](#方式一延迟初始化) 或[打开 GrowingIO SDK 的数据收集开关](#方式二关闭数据收集开关)。
+3.集成 [Android SDK](/docs/android/base/Getting%20Started)，请在用户[同意《隐私协议》之后再初始化GrowingIO SDK](#方式一延迟初始化) 或[设置 GrowingIO SDK 的数据收集开关](#方式二设置数据收集开关)。
 ​
 ## 采集详情
 
@@ -93,7 +95,7 @@ public class MyApplication extends Application {
 }
 ```
 
-### 方式二、关闭数据收集开关
+### 方式二、设置数据收集开关
 GrowingIO SDK 提供 `setDataCollectionEnabled`接口，可在用户不同意数据采集时，调用该接口，设置 `false` 禁止数据采集；在用户同意数据采集时，调用该接口，设置 `true` 开启数据采集
 
 ```java
