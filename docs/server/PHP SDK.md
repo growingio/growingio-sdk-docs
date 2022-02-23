@@ -7,8 +7,8 @@ GrowingIO提供在Server端部署的PHP SDK,从而可以方便的进行事件上
 源码托管在 [growingio/growingio-php-sdk](https://github.com/growingio/growingio-php-sdk)
 
 > php 版本 => 5.5
+---
 
-----
 ### 集成准备
 #### 获取SDK初始化必传参数：AccountID、DataSourceID、Host
 :::info
@@ -55,7 +55,8 @@ include_once 'path/src/GrowingIO.php'; // path为对应路径
 | 参数  | 必选  | 类型    | 默认值 | 说明                                     |
 | :---- | :---- | :------ | :----- | ---------------------------------------- |
 | debug | false | boolean | false  | debug 模式, 此模式仅打印日志, 不发送数据 |
-###### 示例
+
+**代码示例**
 ```php
 $accountID = '1234567887654321';
 $host = 'https://localhost.com';
@@ -65,53 +66,57 @@ $props = array('debug' => true);
 $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 ```
 
-### 数据采集API
-**1\. 采集埋点事件**
-###### 接口功能
-> 发送一个埋点事件。在添加所需要发送的事件代码之前,需要在事件管理用户界面配置事件以及事件属性
+## API说明
+### 自定义埋点事件
+发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性
 
-###### 请求参数
+**参数说明**
+
 | 参数         | 必选  | 类型   | 默认值  | 说明                        |
 | :----------- | :---- | :----- | :------ | --------------------------- |
 | loginUserKey | false | string |         | 登录用户类型                |
 | loginUserId  | true  | string |         | 登录用户id                  |
 | eventKey     | true  | string |         | 事件名, 事件标识符          |
 | properties   | false | array  | array() | 事件发生时,所伴随的维度信息 |
-###### 示例
+
+**代码示例**
 ```php
 $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
     ->setLoginUserKey('loginUserKey')
     ->setProperties(array('attrKey1' => 'attrValue1', 'attrKey2' => 'attrValue2'))
     ->create());
 ```
-**2\. 设置登录用户属性**
-###### 接口功能
-> 以登录用户的身份定义登录用户属性,用于用户信息相关分析
+### 登录用户属性事件
+以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析<br/>
+在添加登录用户属性代码之前，需要在CDP平台用户管理界面中创建用户属性
 
-###### 请求参数
+**参数说明**
+
 | 参数         | 必选  | 类型   | 默认值 | 说明         |
 | :----------- | :---- | :----- | :----- | ------------ |
 | loginUserKey | false | string |        | 登录用户类型 |
 | loginUserId  | true  | string |        | 登录用户id   |
 | properties   | true  | array  |        | 用户属性信息 |
-###### 示例
+
+**代码示例**
 ```php
 $gio->setUserAttributesEvent($gio->getUserAttributesFactory('loginUserId')
     ->setLoginUserKey('loginUserKey')
     ->setProperties(array('gender' => 'male', 'age' => '18'))
     ->create());
 ```
-**3\. 设置物品模型**
-###### 接口功能
-> 上传物品模型
+### 物品模型(CDP平台版本<2.1)
+发送一个物品模型。在添加所需要发送的物品模型代码之前，需要在物品管理界面中创建对应物品及其属性
 
-###### 请求参数
+**参数说明**
+
 | 参数       | 必选  | 类型   | 默认值  | 说明             |
 | :--------- | :---- | :----- | :------ | ---------------- |
 | itemId     | true  | string |         | 物品模型id       |
 | itemKey    | true  | string |         | 物品模型key      |
 | properties | false | array  | array() | 物品模型属性信息 |
-###### 示例
+
+**代码示例**
 ```php
 $gio->setItemAttributes(
     '1001',
@@ -119,8 +124,26 @@ $gio->setItemAttributes(
     array('color' => 'red')
 );
 ```
+### 维度表(CDP平台版本>=2.1)
+上传一个维度表记录。在添加所需要上传维度表记录代码之前，需要在维度表管理界面中创建对应维度表及其属性
 
-### 集成示例
+**参数说明**
+
+| 参数       | 必选  | 类型   | 默认值  | 说明             |
+| :--------- | :---- | :----- | :------ | ---------------- |
+| itemId     | true  | string |         | 物品模型id       |
+| itemKey    | true  | string |         | 物品模型key      |
+| properties | false | array  | array() | 物品模型属性信息 |
+
+**代码示例**
+```php
+$gio->setItemAttributes(
+    '1001',
+    'product',
+    array('color' => 'red')
+);
+```
+## 集成示例
 ```php
 <?php
 use com\growingio\GrowingIO;
@@ -177,3 +200,11 @@ $gio->setItemAttributes(
 ### 完成以上测试步骤后
 1. 修改SDK初始化时 debug 配置为 false 或不设置，并触发埋点事件
 2. 在线查询GrowingIO数据库，确认数据上传成功
+
+## 常见问题
+
+### Q:程序调用后为什么没有在console中打印日志信息？
+**A**:需要在初始化时，配置额外的参数 `$props = array('debug' => true)`。
+
+### Q:程序调用后为什么服务端没有收到数据？
+**A**:初始化时配置了额外参数 debug 为 true，**此模式仅打印日志，不发送数据**；需要设置为 false或不设置，才会向采集服务器发送数据。
