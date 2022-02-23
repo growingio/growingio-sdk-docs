@@ -1,15 +1,15 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 title: 快应用
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-本文档**仅适用于快应用SDK**。
+变更记录：[查看Changelog](/docs/miniprogram/version)
 
-变更记录：[查看Changelog](https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js)
 ## 准备工作
+
 1、在平台中新建项目并获取**`projectId`和`dataSourceId`**。
 
 2、在快应用中获取**`packageName`**(即包名)。
@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 ```js
 // app.ux
-import gdp from "./utils/gio/sdk.js";
+import gdp from './utils/gio/sdk.js';
 
 ...your codes
 
@@ -46,7 +46,7 @@ export default GioPage({ ... }); // 所有的页面文件要包裹GioPage()方�
 
 ## 功能点信息
 
-**暂不支持 `表单提交事件`、`半自动曝光事件`、`分享事件`**
+**暂不支持 `表单提交事件`、`半自动采集浏览事件`、`分享事件`**
 
 ## 数据校验
 

@@ -15,8 +15,8 @@ title: 初始化配置
 | `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                     |
 | `debug`               | `boolean`     | `false`    | 是否开启调试模式                                     |
 | `enableEventStore`    | `boolean`     | `false`    | 是否开启事件存储;若使用有GIO运营SDK需设置为 true(SDK版本>=3.3.2)                   |
-| `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报(SDK 版本>= 3.3.0)             |
-| `extraParams`         | `string[]`    | `-`        | 额外的打通参数(SDK 版本>= 3.3.3)             |
+| `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报(>= 3.3.0)                     |
+| `extraParams`         | `string[]`    | `-`        | 与H5数据打通时额外获取的字段(>= 3.3.0)             |
 | `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
 | `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式；设置为true时需与接口identify一起使用                                 |
 | `getLocation`         | `object`      | `-`        | 获取位置配置项                                       |
@@ -56,23 +56,22 @@ title: 初始化配置
 **如果您不使用运营SDK可忽略此配置；如果您使用运营SDK，必须开启此配置项，设置为 `true`。**
 
 ### enableIdMapping
-默认情况下，SDK关闭多用户说身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[使用详情](/docs/miniprogram/commonlyApi#2%E3%80%81%E8%AE%BE%E7%BD%AE%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7idsetuserid)
+默认情况下，SDK关闭多用户身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[使用详情](/docs/miniprogram/commonlyApi#2%E3%80%81%E8%AE%BE%E7%BD%AE%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7idsetuserid)
 
 ### extraParams
 
-在H5页面与小程序的用户信息保持一致时，上报数据除默认字段以外，可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
-:::info**注意：需内嵌页集成的Web JS SDK 版本>=3.3.3，Web JS SDK升级后无需做额外配置，自动适配上报。**
-支持字段：<br/>
-appChannel 是小程序的场景值<br/>
-deviceBrand 是设备品牌<br/>
-deviceModel 是设备型号<br/>
-deviceType 是设备类型<br/>
-networkState 是网络类型<br/>
-platformVersion 是操作系统版本<br/>
-language 是语言<br/>
-screenHeight 是屏幕高度<br/>
-screenWidth 是屏幕宽度
-:::
+当调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)时，除了默认字段以外，可增加以下小程序SDK字段。
+```text
+appChannel        小程序的场景值
+deviceBrand       设备品牌
+deviceModel       设备型号
+deviceType        设备类型
+networkState      网络类型
+platformVersion   操作系统版本
+language          语言
+screenHeight      屏幕高度
+screenWidth       屏幕宽度
+```
 参考示例：
 ```js
 gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
@@ -91,6 +90,7 @@ gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
   ],
 });
 ```
+**注意：内嵌页集成的Web JS SDK 版本需>=3.3.3，Web JS SDK升级后无需做额外配置，自动适配上报。**
 ### followShare
 
 默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。

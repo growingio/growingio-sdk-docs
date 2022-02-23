@@ -6,29 +6,32 @@ title: 支付宝小程序
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-本文档同时适用支付宝小程序SDK和全量SDK。
+变更记录：[查看Changelog](/docs/miniprogram/version)
 
-变更记录：[查看Changelog](https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js)
 ## 准备工作
+
 1、在平台中新建项目并获取**`projectId`和`dataSourceId`**。
 
 2、在小程序中获取**`appId`**。
 
-3、[点击下载SDK](https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js)，存放在项目中，下文中以`utils/gio`目录为例。
+3、[点击下载SDK]，存放在项目中，下文中以`utils/gio`目录为例。
 
 ## 集成
 
 对于支付宝小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
+
+如果您使用跨平台框架开发且有多端（特指小程序，快应用、App和Web除外）同时需要集成SDK的需求时，只需在框架代码中集成一次即可。例：
+
+>使用uni-app同时开发微信小程序和支付宝小程序，只需集成一次即可。
 
 <Tabs
   groupId="1"
   defaultValue="Native原生"
   values={[
     {label: 'Native原生', value: 'Native原生'},
-    {label: 'uni-app(vue2)', value: 'uni-app(vue2)'},
-    {label: 'Taro2', value: 'Taro2'},
-    {label: 'Taro3(react)', value: 'Taro3(react)'},
-    {label: 'Taro3(vue2)', value: 'Taro3(vue2)'},
+    {label: 'uni-app', value: 'uni-app'},
+    {label: 'Taro', value: 'Taro'},
+    {label: 'Remax', value: 'Remax'},
   ]
 }>
   <TabItem value="Native原生">
@@ -47,8 +50,18 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
 
 App({ ... });
 ```
+
   </TabItem>
-  <TabItem value="uni-app(vue2)">
+  <TabItem value="uni-app">
+  <Tabs
+      groupId="2"
+      defaultValue="uni-app(vue2)"
+      values={[
+        {label: 'uni-app(vue2)', value: 'uni-app(vue2)'},
+        {label: 'uni-app(vue3)', value: 'uni-app(vue3)'},
+      ]
+    }>
+      <TabItem value="uni-app(vue2)">
 
 ```js
 // main.js
@@ -67,11 +80,53 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
     ...other settings
 });
 
+// 注意vue2中app实例在初始化之后
 const app = new Vue(App);
 app.$mount();
+
 ```
+
   </TabItem>
-  <TabItem value="Taro2">
+  <TabItem value="uni-app(vue3)">
+
+```js
+// main.js
+import App from './App.vue';
+import { createApp } from 'vue';
+import gdp from './utils/gio/sdk.js';
+
+export function createApp() {
+  // 注意vue3中app实例在初始化之前
+  const app = createApp(App);
+  ...your codes
+
+  gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+      version: 'miniProgram version',
+      host: 'api.growingio.com',
+      uniVue: app,
+      ...other settings
+  });
+
+  return { app };
+}
+```
+
+  </TabItem>
+  </Tabs>
+
+  </TabItem>
+  <TabItem value="Taro">
+  <Tabs
+    groupId="3"
+    defaultValue="Taro2"
+    values={[
+      {label: 'Taro2', value: 'Taro2'},
+      {label: 'Taro3(react)', value: 'Taro3(react)'},
+      {label: 'Taro3(vue2)', value: 'Taro3(vue2)'},
+      {label: 'Taro3(vue3)', value: 'Taro3(vue3)'},
+    ]
+  }>
+    <TabItem value="Taro2">
 
 ```js
 // app.jsx
@@ -88,7 +143,9 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
 });
 
 class App extends Component { ... }
+Taro.render(<App />, document.getElementById('app'));
 ```
+
   </TabItem>
   <TabItem value="Taro3(react)">
 
@@ -110,6 +167,7 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
 class App extends Component { ... }
 export default App;
 ```
+
   </TabItem>
   <TabItem value="Taro3(vue2)">
 
@@ -124,15 +182,65 @@ import gdp from './utils/gio/sdk.js';
 gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
-    taro: Taro, // 注意Taro3vue2中taro和taroVue都需要传
-    taroVue: Vue, // 注意Taro3vue2中taro和taroVue都需要传
+    taro: Taro, // 注意taro和taroVue都需要传
+    taroVue: Vue, // 注意taro和taroVue都需要传
     ...other settings
 });
 
+// 注意vue2中App实例在初始化之后
 const App = { ... };
 export default App;
-
 ```
+
+  </TabItem>
+  <TabItem value="Taro3(vue3)">
+
+```js
+// app.js
+import { createApp } from 'vue';
+import Taro from '@tarojs/taro';
+import gdp from './utils/gio/sdk.js';
+
+...your codes
+
+// 注意vue3中App实例在初始化之前
+const App = createApp({ ... });
+
+gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+    version: 'miniProgram version',
+    host: 'api.growingio.com',
+    taro: Taro, // 注意taro和taroVue都需要传
+    taroVue: App, // 注意taro和taroVue都需要传
+    ...other settings
+});
+
+export default App;
+```
+
+  </TabItem>
+  </Tabs>
+  </TabItem>
+  <TabItem value="Remax">
+
+```js
+// app.js
+import * as remax from 'remax';
+import gdp from './utils/gio/sdk.js';
+
+...your codes
+
+gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+    version: 'miniProgram version',
+    host: 'api.growingio.com',
+    remax
+    ...other settings
+});
+
+const App = (props) => props.children;
+
+export default App;
+```
+
   </TabItem>
 </Tabs>
 
@@ -148,6 +256,6 @@ export default App;
 
 ## 数据校验
 
-请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
+请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中调试器->控制台标签中即可实时查看SDK上报的log数据。如下图：
 
-![debugLog](/img/miniprogram/wx_debug.png)
+![debugLog](/img/miniprogram/alipay_debug.png)

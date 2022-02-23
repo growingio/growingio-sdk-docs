@@ -105,3 +105,9 @@ a[class~="menu__link"][tabindex]{
     line-height: 16px;
     margin-right: 8px;
 }
+
+/* 嵌套Tab样式，缩小第二层的tab */
+.tabs-container .tabs-container .tabs__item{
+  padding: 6px 16px;
+  font-size: 14px;
+}

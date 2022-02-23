@@ -1,32 +1,35 @@
 ---
 sidebar_position: 3
-title: 集成配置
+title: 初始化配置
 ---
 
 ## 配置一览表
 
 下表中列出了所有小程序SDK的配置项，请按需设置。如您不确定是否需要，请咨询我们。
 
-| **字段名**            | **参数类型**  | **默认值** | **说明**                                                                |
-| --------------------- | ------------- | ---------- | ------------------------------------------------------------------- |
-| `autotrack`           | `boolean`     | `true`     | 是否开启无埋点采集（需配合无埋点插件使用）                                 |
-| `comAsPage`           | `boolean`     | `false`    | 是否将 Component 组件 当做 Page 处理                                   |
-| `compress`            | `boolean`     | `false`    | 是否数据加密**(3.5.0起需配合加密插件使用)(天猫小程序不支持)**               |
-| `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                                       |
-| `debug`               | `boolean`     | `false`    | 是否开启调试模式                                                       |
-| `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                                       |
-| `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                                   |
-| `getLocation`         | `object`      | `-`        | 获取位置配置项                                                        |
-| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                                   |
-| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系                          |
-| `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**                            |
-| `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                                          |
-| `mpvue`               | `any`         | `-`        | 使用 mpvue 开发时使用的实例**(>=3.5.0)**                               |
-| `taroVue`             | `any`         | `-`        | 使用 Taro3vue2 开发时使用的实例**(需配合 Taro 插件使用)(>=3.5.0)**        |
-| `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例**(需配合 Taro 插件使用)**                      |
-| `uniVue`              | `any`         | `-`        | 使用 uni-app 开发时使用的实例**(需配合 uni-app 插件使用)(>=3.5.0)**       |
-| `version`             | `string`      | `-`        | 小程序应用版本(建议填写)                                                |
-| `wepy`                | `any`         | `-`        | 使用 WePY 开发时使用的实例**(需配合 wepy 插件使用)(>=3.5.0)**             |
+| **字段名**            | **参数类型**  | **默认值** | **说明**                                                             |
+|-----------------------|---------------|------------|--------------------------------------------------------------------|
+| `autotrack`           | `boolean`     | `true`     | 是否开启无埋点采集（需配合无埋点插件使用）                             |
+| `cml`                 | `any`         | `-`        | 使用 Chameleon 开发时使用的实例**(需配合 Chameleon 插件使用)**                         |
+| `comAsPage`           | `boolean`     | `false`    | 是否将 Component 组件 当做 Page 处理                                 |
+| `compress`            | `boolean`     | `false`    | 是否数据加密**(需配合加密插件使用)(>=3.5.0)(淘宝小程序不支持)**        |
+| `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                                     |
+| `debug`               | `boolean`     | `false`    | 是否开启调试模式                                                     |
+| `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报**(>= 3.3.0)**                                     |
+| `extraParams`         | `string[]`    | `-`        | 与H5数据打通时额外获取的字段**(>= 3.3.0)**                               |
+| `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                                     |
+| `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                                 |
+| `getLocation`         | `object`      | `-`        | 获取位置配置项(见下两项)                                              |
+| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                                 |
+| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系                         |
+| `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**                       |
+| `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                                         |
+| `remax`               | `any`         | `-`        | 使用 Remax 开发时使用的实例**(>=3.5.0)**                             |
+| `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例**(需配合 Taro 插件使用)**                 |
+| `taroVue`             | `any`         | `-`        | 使用 Taro3vue2/3 开发时使用的实例**(需配合 Taro 插件使用)(>=3.5.0)** |
+| `uniVue`              | `any`         | `-`        | 使用 uni-app 开发时使用的实例**(需配合 uni-app 插件使用)(>=3.5.0)**  |
+| `version`             | `string`      | `-`        | 小程序应用版本(建议填写)                                             |
+| `wepy`                | `any`         | `-`        | 使用 WePY 开发时使用的实例**(需配合 wepy 插件使用)(>=3.5.0)**        |
 
 ## 配置项详解
 
@@ -43,9 +46,9 @@ title: 集成配置
 
 默认情况下，SDK关闭数据加密，如果您认为不足够安全，可以通过指定 `compress: true` 打开数据加密。需配合加密插件使用。
 
-**注意：**<br/>
+**<font color="#FC5F3A">注意：</font>**<br/>
 **1、开启加密后抓包工具无法抓取上报的明文数据，但debug模式开启时开发者工具中仍能看到未加密的上报数据。**<br/>
-**2、天猫小程序由于需要云函数明文校验请求字段不能加密上报，所以在天猫小程序时，`compress` 会自动失效。**
+**2、淘宝小程序由于需要云函数明文校验请求字段不能加密上报，所以在淘宝小程序时，`compress` 会自动失效。**
 
 ### dataCollect
 
@@ -55,11 +58,55 @@ title: 集成配置
 
 在开发时设置 debug: true，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
 
+### enableIdMapping
+
+默认情况下，SDK关闭多用户身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.5/commonlyApi#2设置登录用户idsetuserid)
+
+### extraParams
+
+当调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)时，除了默认字段以外，可增加以下小程序SDK字段。
+
+```text
+appChannel        小程序的场景值
+deviceBrand       设备品牌
+deviceModel       设备型号
+deviceType        设备类型
+networkState      网络类型
+platformVersion   操作系统版本
+language          语言
+screenHeight      屏幕高度
+screenWidth       屏幕宽度
+```
+
+参考示例：
+
+```js
+gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
+  version: '1.0.1',
+  debug: true,
+  extraParams: [
+  'appChannel',
+  'deviceBrand',
+  'deviceModel',
+  'deviceType',
+  'networkState',
+  'platformVersion',
+  'language',
+  'screenHeight',
+  'screenWidth'
+  ],
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**内嵌页集成的Web JS SDK 版本需>=3.3.3，Web JS SDK升级后无需做额外配置，自动适配上报。**
+
 ### followShare
 
 默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
 
 在分享回调方法中，添加 `contentType` 和 `contentId` 字段。例：
+
 ```js
 onShareAppMessage: function() {
     return {
@@ -87,30 +134,58 @@ gdp('identify', openId);
 ### getLocation
 
 默认情况下，SDK不会自动在小程序启动时获取用户的地理位置信息。如您需要在小程序打开时获取用户地理位置信息，可以通过指定 `autoGet: true` 来打开此功能。同时您可能需要配置项目的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)
+
 ```js
 getLocation: {          //是否自动获取用户的地理位置信息, 并设置获取方式
    autoGet: true,       //默认不自动获取
    type: 'wgs84'        //支持 wgs84（标准坐标系） | gcj02（火星坐标系）, 默认wgs84
 },
 ```
+
 如果您默认没有打开此功能，当用户访问至某一功能需要位置信息时，可以手动调用获取地理位置接口，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。
+
 ```js
 gdp('getLocation');      // 获取用户的地理位置信息并上报
 ```
-**注意：**<br/>
+
+**<font color="#FC5F3A">注意：</font>**<br/>
 **1、如果您初始化开启getLocation配置，用户打开小程序即需要授权；手动调用getLocation方法时，需要用户授权。**<br/>
 **2、如果您初始化开启getLocation配置或手动调用getLocation方法，都需要配置项目中的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)**
 
 ### ignoreFields
 
 默认情况下，SDK会上报网络和设备的相关信息。如果您不需要这些数据，可以通过指定 `ignoreFields: [xxx,xxx]` 来忽略指定字段的上报。
-您可以指定一项或多项字段，但均需为数组格式进行设置。
+您可以指定一项或多项字段，但均需为数组格式进行设置。支持字段如下：
 
-**支持的字段：`deviceBrand` , `deviceModel` , `deviceType` , `networkState` , `screenHeight` , `screenWidth`**
+```text
+deviceBrand       设备品牌
+deviceModel       设备型号
+deviceType        设备类型
+networkState      网络类型
+screenHeight      屏幕高度
+screenWidth       屏幕宽度
+```
+
+参考示例：
+
+```js
+gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
+  version: '1.0.1',
+  debug: true,
+  ignoreFields: [
+  'deviceBrand',
+  'deviceModel',
+  'deviceType',
+  'networkState',
+  'screenHeight',
+  'screenWidth'
+  ],
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**如果extraParams和ignoreFields中同时指定了同一字段，getGioInfo将不再获取到指定的字段，即ignoreFields优先级更高。**
 
 ### 其他
 
-**`mpvue` , `taroVue` , `taro` , `uniVue` , `wepy`**为小程序开发时使用的框架实例，请对号入座使用。
-
-##### 解惑：为什么以前使用一个`vue`字段即可，现在需要拆分为多个？
-##### 由于我们将不同的框架适配拆分为不同的独立插件，故而变量名不能共用一个。
+**`cml` , `taroVue` , `taro` , `uniVue` , `wepy` , `remax`**为小程序开发时使用的框架实例，请参考集成使用。
