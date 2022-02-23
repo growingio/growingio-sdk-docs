@@ -90,7 +90,7 @@ sidebar_position: 12
 }
 ```
 
-### 埋点事件(CUSTOM)
+### 自定义埋点事件(CUSTOM)
 
 * 请求发送时机：当用户主动调用track类型的接口时，半自动埋点，自主业务采集
 * 服务器请求地址
@@ -153,7 +153,7 @@ sidebar_position: 12
 }
 ```
 
-### 登录用户属性事件(LOGIN_USER_ATTRIBUTES)
+### 用户属性事件(LOGIN_USER_ATTRIBUTES)
 
 * 请求发送时机：当用户主动调用track类型的接口时
 * 服务器请求地址
@@ -330,7 +330,7 @@ sidebar_position: 12
 }
 ```
 
-### 输入元素改变内容事件(VIEW_CHANGE)
+### 输入框改变内容事件(VIEW_CHANGE)
 
 * 请求发送时机：当用户对App上的输入元素有改变的行为时
 * 服务器请求地址
