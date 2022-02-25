@@ -82,7 +82,7 @@ gdp('setUserId', 'userId', 'userKey');
 gdp('clearUserId');
 ```
 
-### 自定义埋点(track)
+### 埋点事件(track)
 发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
 如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP平台版本>= 2.1 ）
 
@@ -247,7 +247,7 @@ Page({
 <!--
 ### 半自动曝光事件
 
-用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogram/commonlyApi#4自定义埋点)在平台上进行事件类型和变量的预定义。
+用户标记一个元素并提供埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要[参考埋点事件](/docs/miniprogram/commonlyApi#4埋点事件)在平台上进行事件类型和变量的预定义。
 
 **支持范围：微信小程序。支付宝小程序不支持。**
 
@@ -259,7 +259,7 @@ Page({
 
 #### 方式一：(整体定义)
 
-在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs` 属性，并分别对应 `track` 方法中的 `eventId` 和 `properties` 参数进行设置，参数规则[参考文档](/docs/miniprogram/commonlyApi#4自定义埋点track)。
+在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs` 属性，并分别对应 `track` 方法中的 `eventId` 和 `properties` 参数进行设置，参数规则[参考文档](/docs/miniprogram/commonlyApi#4埋点事件track)。
 
 ```js
 Page({
