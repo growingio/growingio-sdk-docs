@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 **3. 代码实施**：调用埋点接口实施代码<br/>
 **4. 数据校验**：数据正确性校验
 
-## 自定义埋点事件示例
+## 埋点事件示例
 ### 需求规划
 在 GrowingIO 上着手进行任何分析之前，首先要确定的问题是：如何设计“指标+属性”的体系？对于部分无埋点事件，我们通过圈选确定“指标”，而“属性”则是由 GrowingIO 提供的数个预定义属性。对于埋点事件，我们可以相对更自由地选择定义“指标+属性”的体系。
 
@@ -88,7 +88,7 @@ import TabItem from '@theme/TabItem';
 
 此步骤中，建议您将设计好的规划方案交给开发同学，并将您设计的每个埋点事件与事件变量的业务含义和触发时机传达给他们，以便开发同学在实施过程中能够从数据业务场景出发，在合适的地方添加埋点代码。
 
-接下来，请开发同学参考以下文档，完成代码的实施。下面将提供各端SDK自定义埋点API的调用示例，实际应用中需要根据规划方案中的埋点具体需要在哪个端实施。
+接下来，请开发同学参考以下文档，完成代码的实施。下面将提供各端SDK埋点事件API的调用示例，实际应用中需要根据规划方案中的埋点具体需要在哪个端实施。
 
 #### 维度表数据上报
 维度表数据上报支持两种方式，服务端代码上报和CSV格式文档上传
@@ -191,7 +191,7 @@ NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
 ```
 
 #### 小程序
-[埋点事件说明文档](/docs/miniprogram/commonlyApi#自定义埋点track)
+[埋点事件说明文档](/docs/miniprogram/commonlyApi#埋点事件track)
 
 ```js
   gdp('track', 'purchaseProduct', { 
@@ -225,7 +225,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 #### 1. 即时验证： 日志验证或工具验证
 即时验证埋点事件主要关注以下四点：<br/>
 1. 触发时机需要和埋点方案规划一致<br/>
-2. "eventType": "CUSTOM" 表示事件类型为自定义埋点事件。<br/>
+2. "eventType": "CUSTOM" 表示事件类型为埋点事件。<br/>
 3. "eventName": "purchaseProduct" 表示埋点事件标识符是 purchaseProduct，确保正确。<br/>
 4. attributes 中的 key 对应事件属性，value 对应事件属性的值，确保 key 和 value 都正确。<br/>
 :::info

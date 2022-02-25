@@ -122,22 +122,40 @@ debug_consumer = DebugConsumer('<product_id>', '<data_source_id>', '<server_host
 # 通过传入发送策略来初始化 SDK
 growing_tracker = GrowingTracker.consumer(debug_consumer)
 ```
+### 数据格式
+python sdk 可以通过配置数据解析器来改变数据上传的格式，默认为JSON格式。除此之外，SDK 中额外提供了 [snappy](https://github.com/google/snappy) 的处理逻辑。
 
+#### 使用 Snappy 压缩数据
 
-### API接口使用
+> 要求安装 python-snappy 依赖库 ： pip install python-snappy
 
-#### 自定义埋点事件
+| 参数       | 必选  | 类型   | 默认值  | 说明             |
+| :--------- | :---- | :----- | :------ | ---------------- |
+| crypt_data     | false  | bool |  False  | 是否对数据进行异或加密（只对python3+有效）      |
+
+```python
+from growingio_tracker import DefaultConsumer
+from growingio_tracker_snappy import SnappyParser
+
+data_parser = SnappyParser()
+default_consumer = DefaultConsumer('<product_id>', '<data_source_id>', '<server_host>', data_parser)
+growing_tracker = GrowingTracker.consumer(default_consumer)
+```
+
+## API接口使用
+
+### 埋点事件
 发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性
 
 **参数说明**
 
 | 参数         | 必选  | 类型   | 默认值  | 说明                        |
 | :----------- | :---- | :----- | :------ | --------------------------- |
-| event_name   | true | string |         | 事件名, 事件标识符                |
+| event_name   | true | string |        | 埋点事件标识符                |
 | event_time  | false | long |         | 当前时间戳            |
 | anonymous_id | false | string |  | 设备信息 |
-| login_user_key | false | string |         | 登录用户类型                |
-| login_user_id  | false  | string |         | 登录用户id                  |
+| login_user_key | false | string |         | 登录用户Key                |
+| login_user_id  | false  | string |         | 登录用户ID                  |
 | attributes   | false | dict  | None | 事件发生时,所伴随的维度信息 |
 
 **代码示例**
@@ -154,8 +172,8 @@ growing_tracker.track_custom_event("test", login_user_id='cpacm', login_user_key
 
 | 参数         | 必选  | 类型   | 默认值  | 说明                        |
 | :----------- | :---- | :----- | :------ | --------------------------- |
-| login_user_id  | true  | string |         | 登录用户id                  |
-| login_user_key | false | string |         | 登录用户类型                |
+| login_user_id  | true  | string |         | 登录用户ID                  |
+| login_user_key | false | string |         | 登录用户Key                |
 | event_time  | false | long |         | 当前时间戳            |
 | anonymous_id | false | string |   |  设备信息 |
 | attributes   | false | dict  | None | 事件发生时,所伴随的维度信息 |
@@ -181,25 +199,6 @@ growing_tracker.track_user(login_user_id='user', login_user_key='email',attribut
 growing_tracker.submit_item('item_key', 'item_name', item_attrs={'attr': 'item'})
 ```
 
-### 数据格式
-python sdk 可以通过配置数据解析器来改变数据上传的格式，默认为JSON格式。除此之外，SDK 中额外提供了 [snappy](https://github.com/google/snappy) 的处理逻辑。
-
-#### 使用 Snappy 压缩数据
-
-> 要求安装 python-snappy 依赖库 ： pip install python-snappy
-
-| 参数       | 必选  | 类型   | 默认值  | 说明             |
-| :--------- | :---- | :----- | :------ | ---------------- |
-| crypt_data     | false  | bool |  False  | 是否对数据进行异或加密（只对python3+有效）      |
-
-```python
-from growingio_tracker import DefaultConsumer
-from growingio_tracker_snappy import SnappyParser
-
-data_parser = SnappyParser()
-default_consumer = DefaultConsumer('<product_id>', '<data_source_id>', '<server_host>', data_parser)
-growing_tracker = GrowingTracker.consumer(default_consumer)
-```
 
 ## 集成代码示例一览
 

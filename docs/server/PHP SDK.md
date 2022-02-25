@@ -67,16 +67,16 @@ $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 ```
 
 ## API说明
-### 自定义埋点事件
+### 埋点事件
 发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性
 
 **参数说明**
 
 | 参数         | 必选  | 类型   | 默认值  | 说明                        |
 | :----------- | :---- | :----- | :------ | --------------------------- |
-| loginUserKey | false | string |         | 登录用户类型                |
-| loginUserId  | true  | string |         | 登录用户id                  |
-| eventKey     | true  | string |         | 事件名, 事件标识符          |
+| loginUserKey | false | string |         | 登录用户Key型                |
+| loginUserId  | true  | string |         | 登录用户ID                  |
+| eventKey     | true  | string |         | 埋点事件标识符          |
 | properties   | false | array  | array() | 事件发生时,所伴随的维度信息 |
 
 **代码示例**
@@ -94,8 +94,8 @@ $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
 
 | 参数         | 必选  | 类型   | 默认值 | 说明         |
 | :----------- | :---- | :----- | :----- | ------------ |
-| loginUserKey | false | string |        | 登录用户类型 |
-| loginUserId  | true  | string |        | 登录用户id   |
+| loginUserKey | false | string |        | 登录用户Key |
+| loginUserId  | true  | string |        | 登录用户ID   |
 | properties   | true  | array  |        | 用户属性信息 |
 
 **代码示例**

@@ -90,7 +90,7 @@ sidebar_position: 12
 }
 ```
 
-### 自定义埋点事件(CUSTOM)
+### 埋点事件(CUSTOM)
 
 * 请求发送时机：当用户主动调用track类型的接口时，半自动埋点，自主业务采集
 * 服务器请求地址
@@ -98,7 +98,7 @@ sidebar_position: 12
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
 | :---- | ---- | ---- | ---- |
-| eventName | string | ✅ | 埋点事件的名称 |
+| eventName | string | ✅ | 埋点事件的标识符 |
 | path | string | ❌ | 埋点事件关联的page |
 | pageShowTimestamp | long | ❌ | 埋点事件关联的page的显示时间戳 |
 | attributes | Map<string, string> | ❌ | 埋点事件属性 |
