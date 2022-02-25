@@ -6,11 +6,6 @@ title: Python SDK
 GrowingIO 提供在Python Server端部署的SDK，方便集成后可以快速的进行事件上报操作。
 > 兼容 Python2.7+ 和 Python3.5+.
 
-:::info
-Python SDK从1.0.10-cdp版本开始使用v3协议进行事件上报, 使用前确认平台版本支持v3协议
-
-支持的平台版本为 OP-13.6、OP-14.x、OP-2.x 版本
-:::
 ## 集成准备
 ### 获取SDK初始化必传参数：AccountID、DataSourceID、ServerHost
 :::info
