@@ -137,7 +137,7 @@ growing_tracker = GrowingTracker.consumer(debug_consumer)
 | event_time  | false | long |         | 当前时间戳            |
 | anonymous_id | false | string |  | 设备信息 |
 | login_user_key | false | string |         | 登录用户类型                |
-| login_user_id  | true  | string |         | 登录用户id                  |
+| login_user_id  | false  | string |         | 登录用户id                  |
 | attributes   | false | dict  | None | 事件发生时,所伴随的维度信息 |
 
 **代码示例**
@@ -154,8 +154,8 @@ growing_tracker.track_custom_event("test", login_user_id='cpacm', login_user_key
 
 | 参数         | 必选  | 类型   | 默认值  | 说明                        |
 | :----------- | :---- | :----- | :------ | --------------------------- |
-| login_user_key | false | string |         | 登录用户类型                |
 | login_user_id  | true  | string |         | 登录用户id                  |
+| login_user_key | false | string |         | 登录用户类型                |
 | event_time  | false | long |         | 当前时间戳            |
 | anonymous_id | false | string |   |  设备信息 |
 | attributes   | false | dict  | None | 事件发生时,所伴随的维度信息 |
@@ -182,7 +182,7 @@ growing_tracker.submit_item('item_key', 'item_name', item_attrs={'attr': 'item'}
 ```
 
 ### 数据格式
-python sdk 可以通过配置数据解析器来改变数据上传的格式，SDK 中默认提供了 [snappy](https://github.com/google/snappy) 的处理逻辑。
+python sdk 可以通过配置数据解析器来改变数据上传的格式，默认为JSON格式。除此之外，SDK 中额外提供了 [snappy](https://github.com/google/snappy) 的处理逻辑。
 
 #### 使用 Snappy 压缩数据
 
