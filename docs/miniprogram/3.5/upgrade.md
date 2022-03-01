@@ -21,35 +21,18 @@ import gdp from './utils/gio/sdk.js';
 
 3、检查初始化方式，如果使用 `setConfig` 方法初始化，请[参考文档](/docs/miniprogram/3.5/integration/wx)修改；如果使用 `init` 方法进行初始化则跳过此步骤。
 
-4、检查配置项，移除`usePlugin`配置，如果没有则跳过此步骤。
-
-```js
-gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
-    version: 'miniProgram version',
-    host: 'api.growingio.com',
-    // usePlugin: true,  移除此配置
-    ...other settings
-});
-```
+4、检查配置项，移除`usePlugin`、`enableEventStore`配置，如果没有则跳过此步骤。
 
 5、检查配置项，如果您是`uni-app vue2`、`taro3 vue2`、`WePY`开发的小程序，请移除 **`vue`** 配置，并[参考文档](/docs/miniprogram/3.5/integration/wx)添加对应的实例参数。如果不是则跳过此步骤。
 
 ```js
+// 例如您使用uni-app vue2开发，则按如下修改：
+
 gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
-    // vue: Vue,  移除此配置，并参考文档添加对应的实例参数
-    ...other settings
-});
-```
-
-6、检查配置项，移除`enableEventStore`配置，如果没有则跳过此步骤。
-
-```js
-gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
-    version: 'miniProgram version',
-    host: 'api.growingio.com',
-    // enableEventStore: false,  移除此配置
+    // vue: Vue,  移除此配置
+    uniVue: Vue, // 新增此配置
     ...other settings
 });
 ```
