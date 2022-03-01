@@ -32,7 +32,7 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
 });
 ```
 
-5、检查配置项，如果您是`uni-app`、`taro3(vue2/3)`开发的小程序，请移除 **`vue`** 配置，并[参考文档](/docs/miniprogram/3.5/integration/wx)添加对应的实例参数。如果不是则跳过此步骤。
+5、检查配置项，如果您是`uni-app vue2`、`taro3 vue2`、`WePY`开发的小程序，请移除 **`vue`** 配置，并[参考文档](/docs/miniprogram/3.5/integration/wx)添加对应的实例参数。如果不是则跳过此步骤。
 
 ```js
 gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
@@ -71,6 +71,10 @@ $global.GioComponent({ ... });
 // 修改回原始写法 ↓↓↓
 Component({ ... });
 ```
+
+### 其他
+
+如果您调用了`gioGlobal`中的内容，请尝试从`global（支付宝和淘宝小程序是 $global）`中重新获取，`gioGlobal`已经被弃用。
 
 ### 建议性修改
 
