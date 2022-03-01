@@ -98,7 +98,7 @@ sidebar_position: 12
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
 | :---- | ---- | ---- | ---- |
-| eventName | string | ✅ | 埋点事件的名称 |
+| eventName | string | ✅ | 埋点事件的标识符 |
 | path | string | ❌ | 埋点事件关联的page |
 | pageShowTimestamp | long | ❌ | 埋点事件关联的page的显示时间戳 |
 | attributes | Map<string, string> | ❌ | 埋点事件属性 |
@@ -153,7 +153,7 @@ sidebar_position: 12
 }
 ```
 
-### 登录用户属性事件(LOGIN_USER_ATTRIBUTES)
+### 用户属性事件(LOGIN_USER_ATTRIBUTES)
 
 * 请求发送时机：当用户主动调用track类型的接口时
 * 服务器请求地址
@@ -330,7 +330,7 @@ sidebar_position: 12
 }
 ```
 
-### 输入元素改变内容事件(VIEW_CHANGE)
+### 输入框改变内容事件(VIEW_CHANGE)
 
 * 请求发送时机：当用户对App上的输入元素有改变的行为时
 * 服务器请求地址

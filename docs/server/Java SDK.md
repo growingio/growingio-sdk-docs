@@ -8,8 +8,6 @@ Java SDK 源码托管在 [growingio/growingio-java-sdk](https://github.com/growi
 GrowingIO提供在Server端部署的SDK，从而可以方便的进行事件上报等操作。
 > 支持 java6,7,8
 
-----
-
 :::info
 Java SDK从1.0.10-cdp版本开始使用v3协议进行事件上报, 使用前确认平台版本支持v3协议
 
@@ -102,13 +100,18 @@ run.mode=test
 # 此值越大，队列越接近满状态，加速线程执行的时间越提前。"加速"可能对接口接收服务造成压力，谨慎使用！
 # msg.store.queue.load_factor=0.5
 ```
+:::info 注意
+请按照您的项目情况修改`api.host` 和 `project.id`。<br/>
+run.mode 表示运行模式。当值为 test 时，仅输出消息体，不发送采集数据；当值为 production 时， 才向发送采集数据。
+
+:::
 
 #### 事件消息
 
 * 默认采用阻塞队列，队列大小为500.
 * 如果队列满了，新的消息会被丢弃（可通过 `msg.store.queue.size` 和 `send.msg.interval` 调节队列大小和消息发送间隔时间，避免丢消息）
 
-### 示例程序
+### 代码示例
 
 ```java
 // Config GrowingIO
@@ -120,7 +123,7 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 //事件行为消息体
 GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
     .eventTime(System.currentTimeMillis())            // 默认为系统当前时间 (选填)
-    .eventKey("3")                                    // 事件标识 (必填)
+    .eventKey("3")                                    // 埋点事件标识 (必填)
     .eventNumValue(1.0)                               // 打点事件数值 (选填), 已废弃
     .anonymousId("device_id")                         // 访问用户ID (选填)
     .loginUserKey("account")                          // 登录用户KEY (选填)
@@ -135,9 +138,10 @@ GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
 project.send(eventMessage);
 ```
 
-## API
+## API说明
 
-### 项目信息
+### 设置项目信息
+**参数说明**
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
@@ -152,18 +156,21 @@ project.send(eventMessage);
 private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
 ```
 
-### 埋点事件API
+### 埋点事件
+发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性
+
+**参数说明**
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|eventTime|long|否|事件发生时间。|
-|eventKey|string|是|埋点事件的KEY。|
-|anonymousId|string|否|匿名用户ID。|
-|loginUserKey|string|否|登录用户KEY。|
-|loginUserId|string|否|登录用户ID。|
+|eventTime|long|否|事件发生时间(毫秒)|
+|eventKey|string|是|埋点事件标识符|
+|anonymousId|string|否|匿名用户ID|
+|loginUserKey|string|否|登录用户KEY|
+|loginUserId|string|否|登录用户ID|
 |addEventVariable|(string, string\|double\|int)|否|事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）|
 |addEventVariables|map<string,object>|否|事件属性集合;当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）|
-|addItem|(string, string)|否|物品模型ID, 物品模型KEY。|
+|addItem|(string, string)|否|物品模型ID, 物品模型KEY|
 
 **代码示例**
 
@@ -180,16 +187,20 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
                     .build();
 ```
 
-### 登录用户属性 API
+### 登录用户属性事件 
+以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析。<br/>
+在添加登录用户属性代码之前，需要在CDP平台用户管理界面中创建用户属性
+
+**参数说明**
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|time|long|否|事件发生时间。|
-|anonymousId|string|否|匿名用户ID。|
-|loginUserKey|string|否|登录用户KEY。|
-|loginUserId|string|是|登录用户ID。|
-|addUserVariable|(string, string\|double\|int)|否|登录用户属性。|
-|addUserVariables|map<string,object>|否|登录用户属性集合。|
+|time|long|否|事件发生时间(毫秒)|
+|anonymousId|string|否|匿名用户ID|
+|loginUserKey|string|否|登录用户KEY|
+|loginUserId|string|是|登录用户ID|
+|addUserVariable|(string, string\|double\|int)|否|登录用户属性|
+|addUserVariables|map<string,object>|否|登录用户属性集合|
 
 **代码示例**
 
@@ -204,7 +215,10 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
                 .build();
 ```
 
-### 物品模型API(CDP平台版本<2.1)
+### 物品模型(CDP平台版本<2.1)
+发送一个物品模型。在添加所需要发送的物品模型代码之前，需要在物品管理界面中创建对应物品及其属性
+
+**参数说明**
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
@@ -222,7 +236,10 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
                 .build();
 ```
 
-### 维度表API(CDP平台版本>=2.1)
+### 维度表(CDP平台版本>=2.1)
+上传一个维度表记录。在添加所需要上传维度表记录代码之前，需要在维度表管理界面中创建对应维度表及其属性
+
+**参数说明**
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
@@ -240,12 +257,15 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
                 .build();
 ```
 
-### 用户融合 API
+### 用户融合
+可将不同类型的登录用户ID识别为一个登录用户
+
+**参数说明**
 
 |参数名称|类型|是否必填|说明|
 | --- | --- | --- | --- |
-|addIdentities|(string, string)|否|用户KEY, 用户ID。|
-|addIdentities|map<string,string>|否|(用户KEY, 用户ID)集合。|
+|addIdentities|(string, string)|否|用户KEY, 用户ID|
+|addIdentities|map<string,string>|否|(用户KEY, 用户ID)集合|
 
 **代码示例**
 
@@ -322,3 +342,21 @@ public class DemoLogger implements GioLoggerInterface {
 
 * 如果需要自定义 Properties 进行配置初始化，则需要在 GrowingAPI 初始化之前调用 `initConfig(Properties properties)`，进行配置初始化。
 * 自定义 properties key 参考 `gio_default.properties` 文件
+
+## 常见问题
+
+### Q:在pom中添加依赖时，为什么找不到 jar包？
+**A**：需要在pom 和 settings.xml 中添加配置
+```java
+<id>oss.sonatype.org-snapshot</id>
+<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+```
+在项目根路径下进行 `mvn-U clean compile -DskipTtests`
+
+### Q:程序调用后为什么没有在console中打印日志信息？
+**A**：需要在gio.properties配置文件将`run.mode`定义为test，才能在输出日志。
+也可通过在gio.properties中配置`logger.implementation=io.growing.sdk.java.logger.GioLoggerImpl`
+实现一个日志打印的类，也可输入日志
+
+### Q:程序调用后为什么服务端没有收到数据？
+**A**:需要在gio.properties配置文件将`run.mode`定义为production，才会向采集服务器发送数据。

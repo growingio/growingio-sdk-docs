@@ -32,7 +32,7 @@ dependencies:
 
 然后执行 `flutter pub get` 指令
 :::info注意
-部分用户无法访问github.com，从而无法下拉插件库的情况，可以修改域名为hub.fastgit.org，即可解决
+部分用户无法访问github.com，从而无法下拉插件库的情况，可以修改域名为hub.fastgit.xyz，即可解决
 :::
 
 ## API说明
