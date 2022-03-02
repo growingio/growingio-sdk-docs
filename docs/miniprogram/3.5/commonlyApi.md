@@ -133,7 +133,7 @@ gdp('setUserId', 'userId', 'userKey');
 gdp('clearUserId');
 ```
 
-### 4、自定义埋点(track)
+### 4、埋点事件(track)
 
 发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。
 

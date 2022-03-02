@@ -12,7 +12,7 @@ title: 初始化配置
 | `autotrack`           | `boolean`     | `true`     | 是否开启无埋点采集（需配合无埋点插件使用）                             |
 | `cml`                 | `any`         | `-`        | 使用 Chameleon 开发时使用的实例**(需配合 Chameleon 插件使用)**                         |
 | `comAsPage`           | `boolean`     | `false`    | 是否将 Component 组件 当做 Page 处理                                 |
-| `compress`            | `boolean`     | `false`    | 是否数据加密**(需配合加密插件使用)(>=3.5.0)(淘宝小程序不支持)**        |
+| `compress`            | `boolean`     | `false`    | 是否数据加密(淘宝小程序不支持)                                        |
 | `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                                     |
 | `debug`               | `boolean`     | `false`    | 是否开启调试模式                                                     |
 | `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报**(>= 3.3.0)**                                     |
@@ -25,6 +25,7 @@ title: 初始化配置
 | `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**                       |
 | `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                                         |
 | `remax`               | `any`         | `-`        | 使用 Remax 开发时使用的实例**(>=3.5.0)**                             |
+| `scheme`              | `http / https`| `https`    | 网络协议                                                         |
 | `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例**(需配合 Taro 插件使用)**                 |
 | `taroVue`             | `any`         | `-`        | 使用 Taro3vue2/3 开发时使用的实例**(需配合 Taro 插件使用)(>=3.5.0)** |
 | `uniVue`              | `any`         | `-`        | 使用 uni-app 开发时使用的实例**(需配合 uni-app 插件使用)(>=3.5.0)**  |
@@ -42,6 +43,8 @@ title: 初始化配置
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
 
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.5/commonlyApi#1开启关闭无埋点数据采集autotrack)
+
 ### compress
 
 默认情况下，SDK关闭数据加密，如果您认为不足够安全，可以通过指定 `compress: true` 打开数据加密。需配合加密插件使用。
@@ -54,9 +57,13 @@ title: 初始化配置
 
 默认情况下，SDK开启数据采集。如果您需要初始化时暂时关闭数据采集，可以通过指定 `dataCollect: false` 关闭。 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
 
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.5/commonlyApi#2开启关闭数据采集datacollect)
+
 ### debug
 
 在开发时设置 debug: true，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
+
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.5/commonlyApi#3开启关闭调试模式debug)
 
 ### enableIdMapping
 
@@ -137,7 +144,7 @@ gdp('identify', openId);
 
 ```js
 getLocation: {          //是否自动获取用户的地理位置信息, 并设置获取方式
-   autoGet: true,       //默认不自动获取
+   autoGet: true,       //默认为false不自动获取
    type: 'wgs84'        //支持 wgs84（标准坐标系） | gcj02（火星坐标系）, 默认wgs84
 },
 ```
@@ -185,6 +192,15 @@ gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **如果extraParams和ignoreFields中同时指定了同一字段，getGioInfo将不再获取到指定的字段，即ignoreFields优先级更高。**
+
+### scheme
+
+默认情况下，网络协议为`https`，但考虑到在开发小程序的过程中可能需要使用`http`协议的测试服务，因此我们提供了临时修改网络协议的配置。
+
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.5/commonlyApi#5修改请求协议scheme)
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**上线时请注意移除此配置项，因为小程序官方是强制使用https协议进行通信的。**
 
 ### 其他
 
