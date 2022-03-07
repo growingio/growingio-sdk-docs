@@ -229,7 +229,7 @@ from growingio_tracker_protobuf import ProtobufParser
 if __name__ == '__main__':
 
     def tracker_consumer():
-        buffer_consumer = BufferedConsumer('bc675c65b3b0290e', '939c0b26233d3ed1', 'http://uat-api.growingio.com')
+        buffer_consumer = BufferedConsumer('<product_id>', '<data_source_id>', '<server_host>')
         growing_tracker = GrowingTracker.consumer(buffer_consumer)
         for num in range(0, 3):
             growing_tracker.track_custom_event("tracker_consumer", attributes={'num': num}, anonymous_id='python')
@@ -243,22 +243,16 @@ if __name__ == '__main__':
 
 
     def tracker_user():
-        growing_tracker = GrowingTracker('bc675c65b3b0290e', '939c0b26233d3ed1', 'http://uat-api.growingio.com')
+        growing_tracker = GrowingTracker('<product_id>', '<data_source_id>', '<server_host>')
 
         growing_tracker.track_user(login_user_id='cpacm', login_user_key='cpacm', anonymous_id='python',
                                    attributes={'cpacm': 'name', 'python': 'tracker_user'})
-
-        growing_tracker.track_user(login_user_id='cpacm', login_user_key='cpacm', anonymous_id='python',
-                                   attributes={'cpacm': 'name', 'python': 'tracker_user2'})
-
-        growing_tracker.track_user(login_user_id='cpacm', login_user_key='cpacm', anonymous_id='python',
-                                   attributes={'cpacm': 'name', 'python': 'tracker_user3'})
-
+                                   
         time.sleep(5)
 
 
     def tracker_test():
-        growing_tracker = GrowingTracker('bc675c65b3b0290e', '939c0b26233d3ed1', 'http://uat-api.growingio.com')
+        growing_tracker = GrowingTracker('<product_id>', '<data_source_id>', '<server_host>')
         growing_tracker.track_custom_event("test", attributes={'name': 'cpacm', 'age': '100'},
                                            login_user_id='user', login_user_key='email', anonymous_id='python')
 
@@ -269,7 +263,7 @@ if __name__ == '__main__':
 
 
     def tracker_async():
-        async_consumer = AsyncBufferedConsumer('bc675c65b3b0290e', '939c0b26233d3ed1', 'http://uat-api.growingio.com')
+        async_consumer = AsyncBufferedConsumer('<product_id>', '<data_source_id>', '<server_host>')
         growing_tracker = GrowingTracker.consumer(async_consumer)
         print("<<TEST 1>>\n")
         for num in range(0, 3):
@@ -292,7 +286,7 @@ if __name__ == '__main__':
 
     def tracker_snappy():
         data_parser = SnappyParser(True)
-        default_consumer = DefaultConsumer('bc675c65b3b0290e', '939c0b26233d3ed1', 'http://uat-api.growingio.com',
+        default_consumer = DefaultConsumer('<product_id>', '<data_source_id>', '<server_host>',
                                            data_parser)
         growing_tracker = GrowingTracker.consumer(default_consumer)
         growing_tracker.track_custom_event("tracker_snappy", attributes={'name': 'cpacm', 'age': '100','xor':'True'},
@@ -303,7 +297,7 @@ if __name__ == '__main__':
 
     def tracker_protobuf():
         data_parser = ProtobufParser()
-        default_consumer = AsyncBufferedConsumer('bc675c65b3b0290e', '939c0b26233d3ed1', 'http://uat-api.growingio.com',
+        default_consumer = AsyncBufferedConsumer('<product_id>', '<data_source_id>', '<server_host>',
                                                  data_parser)
         growing_tracker = GrowingTracker.consumer(default_consumer)
         growing_tracker.track_custom_event("tracker_protobuf", attributes={'name': 'cpacm', 'age': '100'},
