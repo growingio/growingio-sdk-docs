@@ -142,6 +142,19 @@ default_consumer = DefaultConsumer('<product_id>', '<data_source_id>', '<server_
 growing_tracker = GrowingTracker.consumer(default_consumer)
 ```
 
+#### 使用 protobuf 压缩数据
+
+> 要求安装 protobuf 依赖库 ： pip install protobuf
+
+```python
+from growingio_tracker import DefaultConsumer
+from growingio_tracker_protobuf import ProtobufParser
+
+data_parser = ProtobufParser()
+default_consumer = DefaultConsumer('<product_id>', '<data_source_id>', '<server_host>', data_parser)
+growing_tracker = GrowingTracker.consumer(default_consumer)
+```
+
 ## API接口使用
 
 ### 埋点事件
@@ -211,6 +224,7 @@ from growingio_tracker import DefaultConsumer
 from growingio_tracker import BufferedConsumer
 from growingio_tracker import AsyncBufferedConsumer
 from growingio_tracker_snappy import SnappyParser
+from growingio_tracker_protobuf import ProtobufParser
 
 if __name__ == '__main__':
 
@@ -218,22 +232,34 @@ if __name__ == '__main__':
         buffer_consumer = BufferedConsumer('<product_id>', '<data_source_id>', '<server_host>')
         growing_tracker = GrowingTracker.consumer(buffer_consumer)
         for num in range(0, 3):
-            growing_tracker.track_custom_event("tracker_consumer", attributes={'num': num})
+            growing_tracker.track_custom_event("tracker_consumer", attributes={'num': num}, anonymous_id='python')
         growing_tracker.submit_item('tracker_consumer', 'python', item_attrs={'consumer': 'consumer'})
 
         for num in range(3, 5):
-            growing_tracker.track_custom_event("tracker_consumer", attributes={'num': num})
+            growing_tracker.track_custom_event("tracker_consumer", attributes={'num': num}, anonymous_id='python')
 
         buffer_consumer.flush()
+        time.sleep(5)
+
+
+    def tracker_user():
+        growing_tracker = GrowingTracker('<product_id>', '<data_source_id>', '<server_host>')
+
+        growing_tracker.track_user(login_user_id='cpacm', login_user_key='cpacm', anonymous_id='python',
+                                   attributes={'cpacm': 'name', 'python': 'tracker_user'})
+                                   
+        time.sleep(5)
 
 
     def tracker_test():
         growing_tracker = GrowingTracker('<product_id>', '<data_source_id>', '<server_host>')
         growing_tracker.track_custom_event("test", attributes={'name': 'cpacm', 'age': '100'},
-                                           login_user_id='user', login_user_key='email')
+                                           login_user_id='user', login_user_key='email', anonymous_id='python')
 
-        growing_tracker.track_user(login_user_id='user', login_user_key='email',attributes={'name': 'cpacm', 'age': '100'})
+        growing_tracker.track_user(login_user_id='user', login_user_key='email', anonymous_id='python',
+                                   attributes={'name': 'cpacm', 'age': '100'})
         growing_tracker.submit_item('item_key', 'item_name', item_attrs={'attr': 'item'})
+        time.sleep(5)
 
 
     def tracker_async():
@@ -241,17 +267,17 @@ if __name__ == '__main__':
         growing_tracker = GrowingTracker.consumer(async_consumer)
         print("<<TEST 1>>\n")
         for num in range(0, 3):
-            growing_tracker.track_custom_event("tracker_async", attributes={'num': num})
+            growing_tracker.track_custom_event("tracker_async", attributes={'num': num}, anonymous_id='python')
         growing_tracker.submit_item('tracker_async', 'python', item_attrs={'consumer': 'consumer'})
 
         time.sleep(3)
         print("<<TEST 2>>\n")
-        for num in range(3, 6):
-            growing_tracker.track_custom_event("test2", attributes={'num': num})
+        growing_tracker.track_user(login_user_id='user', login_user_key='email', anonymous_id='python',
+                                   attributes={'name': 'tracker_async', 'age': '100'})
 
         time.sleep(10)
         print("<<TEST 3>>")
-        growing_tracker.track_custom_event("test3", attributes={'num': 'last'})
+        growing_tracker.track_custom_event("tracker_async", attributes={'num': 'last'}, anonymous_id='python')
 
         time.sleep(15)
         async_consumer.stop()
@@ -259,16 +285,40 @@ if __name__ == '__main__':
 
 
     def tracker_snappy():
-        data_parser = SnappyParser()
-        default_consumer = DefaultConsumer('<product_id>', '<data_source_id>', '<server_host>', data_parser)
+        data_parser = SnappyParser(True)
+        default_consumer = DefaultConsumer('<product_id>', '<data_source_id>', '<server_host>',
+                                           data_parser)
         growing_tracker = GrowingTracker.consumer(default_consumer)
-        growing_tracker.track_custom_event("tracker_snappy", attributes={'name': 'cpacm', 'age': '100'},
+        growing_tracker.track_custom_event("tracker_snappy", attributes={'name': 'cpacm', 'age': '100','xor':'True'},
+                                           anonymous_id='python',
+                                           login_user_id='user', login_user_key='email')
+        time.sleep(5)
+
+
+    def tracker_protobuf():
+        data_parser = ProtobufParser()
+        default_consumer = AsyncBufferedConsumer('<product_id>', '<data_source_id>', '<server_host>',
+                                                 data_parser)
+        growing_tracker = GrowingTracker.consumer(default_consumer)
+        growing_tracker.track_custom_event("tracker_protobuf", attributes={'name': 'cpacm', 'age': '100'},
+                                           anonymous_id='python',
                                            login_user_id='user', login_user_key='email')
 
+        growing_tracker.submit_item('tracker_protobuf', 'python', item_attrs={'consumer': 'consumer'})
+
+        time.sleep(5)
+        for num in range(1, 3):
+            growing_tracker.track_custom_event("tracker_protobuf", attributes={'num': num}, anonymous_id='python')
+
+        time.sleep(15)
+
+
     tracker_test()
+    tracker_user()
     tracker_consumer()
     tracker_async()
     tracker_snappy()
+    tracker_protobuf()
 
 ```
 
