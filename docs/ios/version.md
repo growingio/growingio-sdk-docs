@@ -10,17 +10,8 @@ sidebar_position: 0
 
 ### Bug Fixes
 
-- -[NSProxy methodSignatureForSelector:] crash ([be1dd63](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/be1dd63e1033dcef4a8abbbf5c79c4edf1f38fcf))
 - 边界情况下，点击退出圈选同时产生事件，可能导致 crash ([0b81173](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/0b81173b3ba2dc7f178cf6184c1bcee5f83de1d4))
-- 扫码圈选并点击状态栏弹窗退出圈选，再次扫码圈选未启动的 Bug ([ed66f2d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/ed66f2d0a272446d8be93f3168c8c346ceaa4bb8))
-- 扫码圈选时，需触摸屏幕才能在 Web 端显示当前画面的 Bug ([79b9668](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/79b9668c908818e45486df8d0e7dc5a2c24c5ac9))
-- 删除无用代码，代码规范调整 ([94cd4a1](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/94cd4a15d1af121534ee9aed809d87d32427e747))
-- 修改 unregisterModule 时数组没有更新问题 ([e6d3be3](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/e6d3be3d8aa9e50ea33c2921c48a959895264c6f))
-- Category 方法、C 函数、头文件中 Block 定义添加前缀，避免符号冲突 ([9108fec](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/9108fec2ef90122499cc494078036b5aab9fc784))
-- EventName Check 先判断 NSString 类型，再调用 NSString 分类方法判断是否为空 ([2052927](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2052927e5171ed665a5bd7aabef2cecaa1970985))
-- protobuf 不支持 Map 中含 NSNull Value ([8f611e0](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/8f611e08ae746a9bcdcd85398bf20e457c12e71d))
-- protobuf eventType 判断应使用 isEqualToString ([d0b74e2](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/d0b74e296f8773ba87f65d80c6d845209e8787f4))
-- setGrowingPageAttributes nil crash ([b152fe4](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/b152fe4c9da603b1ccfd9548b07f874957530ad2))
+- 其他稳定性优化
 
 ---
 
