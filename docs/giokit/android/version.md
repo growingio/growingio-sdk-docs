@@ -14,8 +14,8 @@ sidebar_position: 0
 6. 网络记录 - 埋点事件请求抓包工具，实时查看埋点数据上传进度
 ------
 
-## V1.0.1
- >[V1.0.1](https://github.com/growingio/giokit-android/releases/tag/V1.0.1) 日期: 2021-03-08 
+## V1.1.0
+ >[V1.1.0](https://github.com/growingio/giokit-android/releases/tag/V1.1.0) 日期: 2021-03-08 
 
 1. no-op 版本使用Java实现，避免未依赖kotlin时出现打包错误；
 2. 修复 release 环境下插件未直接返回的问题。
