@@ -7,7 +7,7 @@ title: 如何集成
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-iOS SDK 提供了 <font color='red'> 无埋点SDK </font>或<font color='red'> 埋点SDK </font>  两个版本：
+iOS SDK 提供了 [无埋点SDK](/docs/ios/base/Getting_Started#无埋点sdk集成) 和 [埋点SDK](/docs/ios/base/Getting_Started#埋点sdk集成) 两个版本：
 * 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
 * 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
@@ -19,7 +19,7 @@ iOS SDK 提供了 <font color='red'> 无埋点SDK </font>或<font color='red'> �
 Xcode 9.0 及以上  
 iOS 8.0 及以上
 
-**根据需要选择集成**<font color='red'> 无埋点SDK </font>或<font color='red'> 埋点SDK </font>
+**根据需要选择集成**  [<font color='red'>无埋点SDK</font>](/docs/ios/base/Getting_Started#无埋点sdk集成)  或  [<font color='red'>埋点SDK</font>](/docs/ios/base/Getting_Started#埋点sdk集成)
 :::
 
 ### 集成准备
@@ -109,12 +109,14 @@ continueUserActivity:(NSUserActivity *)userActivity
 :::
 ### 查看集成效果
 运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.0`  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.4`  
 则说明SDK已经集成成功。
 
 若在初始化中 `debugEnabled` 设置为YES，打开了Debug，则可以在日志中看到每个事件的log日志输出。
 
 至此，就完成了无埋点 SDK 的集成。
+
+另外，您可使用 [GioKit 辅助插件](/docs/giokit/ios/feature) 进行集成验证。
 
 ## 埋点SDK集成
 
@@ -192,12 +194,14 @@ continueUserActivity:(NSUserActivity *)userActivity
 :::
 ### 查看集成效果
 运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.0`  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.4`  
 则说明SDK已经集成成功。
 
 若在初始化中 `debugEnabled` 设置为YES，打开了Debug，则可以在日志中看到每个事件的log日志输出。
 
 至此，就完成了埋点 SDK 的集成。
+
+另外，您可使用 [GioKit 辅助插件](/docs/giokit/ios/feature) 进行集成验证。
 
 ## App Store提交应用注意事项
 如果您添加了库`AdSupport.framework`, GrowingIO则会启用 `IDFA`，所以在向 App Store 提交应用时，需要：
