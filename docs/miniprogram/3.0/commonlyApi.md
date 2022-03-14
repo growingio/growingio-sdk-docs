@@ -127,6 +127,12 @@ gdp('track', 'order', {}, { key: 'order_id', id: '12345' }); // 无properties，
 gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有properties，有item
 ```
 
+:::info
+
+详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+
+:::
+
 ### 登录用户属性(setUserAttributes)
 
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。
@@ -142,6 +148,11 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 ```js
 gdp('setUserAttributes', { name: 'hjh' });
 ```
+:::info
+
+详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+
+:::
 
 ### 地理位置(getLocation)
 

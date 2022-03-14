@@ -7,7 +7,7 @@ title: 如何集成
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Android SDK 提供了 <font color='red'>无埋点SDK</font> 和 <font color='red'>埋点SDK</font> 两个版本：
+Android SDK 提供了 [无埋点SDK](/docs/android/base/Getting%20Started#集成无埋点sdk) 和 [埋点SDK](/docs/android/base/Getting%20Started#集成埋点sdk) 两个版本：
 * 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
 * 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
@@ -15,7 +15,7 @@ Android SDK 提供了 <font color='red'>无埋点SDK</font> 和 <font color='red
 :::info
 **Gradle插件版本**： 3.2.1及以上  
 **Android系统版本**：Android 4.2及以上<br/>
-**根据需要选择集成**<font color='red'> 无埋点SDK </font>或<font color='red'> 埋点SDK </font>
+**根据需要选择集成**  [<font color='red'>无埋点SDK</font>](/docs/android/base/Getting%20Started#集成无埋点sdk)  或  [<font color='red'>埋点SDK</font>](/docs/android/base/Getting%20Started#集成埋点sdk)
 :::
 ### 集成准备
 #### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
@@ -213,12 +213,14 @@ class MyApplication : Application() {
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.3.0 !!!`  
+`!!! GrowingIO Tracker version: 3.3.4 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
 
 至此，就完成了无埋点 SDK 的集成。
+
+另外，您可使用 [GioKit 辅助插件](/docs/giokit/android/feature) 进行集成验证。
 
 
 ## 集成埋点SDK
@@ -338,9 +340,11 @@ class MyApplication : Application() {
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.3.3 !!!`  
+`!!! GrowingIO Tracker version: 3.3.4 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
 
 至此，就完成了埋点 SDK 的集成。
+
+另外，您可使用 [GioKit 辅助插件](/docs/giokit/android/feature) 进行集成验证。

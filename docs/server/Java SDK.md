@@ -186,6 +186,11 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
                     .addItem("itemId", "itemKey")                     // 物品模型ID, KEY (选填)
                     .build();
 ```
+:::info
+
+详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+
+:::
 
 ### 登录用户属性事件 
 以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析。<br/>
@@ -214,6 +219,11 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
                 .addUserVariables(map)                 // 登录用户属性集合 (选填)
                 .build();
 ```
+:::info
+
+详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+
+:::
 
 ### 物品模型(CDP平台版本<2.1)
 发送一个物品模型。在添加所需要发送的物品模型代码之前，需要在物品管理界面中创建对应物品及其属性

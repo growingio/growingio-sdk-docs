@@ -13,4 +13,12 @@ sidebar_position: 0
 5. XPath跟踪 - 圈选辅助工具，可以展示元素的XPath路径
 6. 网络记录 - 埋点事件请求抓包工具，实时查看埋点数据上传进度
 ------
+
+## V1.1.0
+ >[V1.1.0](https://github.com/growingio/giokit-android/releases/tag/V1.1.0) 日期: 2021-03-08 
+
+1. no-op 版本使用Java实现，避免未依赖kotlin时出现打包错误；
+2. 修复 release 环境下插件未直接返回的问题。
+------
+
 ### 更多发布细节请参考 [Github Releases](https://github.com/growingio/giokit-android/releases)

@@ -86,6 +86,12 @@ $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
     ->setProperties(array('attrKey1' => 'attrValue1', 'attrKey2' => 'attrValue2'))
     ->create());
 ```
+
+:::info
+
+详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+
+:::
 ### 登录用户属性事件
 以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析<br/>
 在添加登录用户属性代码之前，需要在CDP平台用户管理界面中创建用户属性
@@ -105,6 +111,13 @@ $gio->setUserAttributesEvent($gio->getUserAttributesFactory('loginUserId')
     ->setProperties(array('gender' => 'male', 'age' => '18'))
     ->create());
 ```
+:::info
+
+详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+
+:::
+
+
 ### 物品模型(CDP平台版本<2.1)
 发送一个物品模型。在添加所需要发送的物品模型代码之前，需要在物品管理界面中创建对应物品及其属性
 
