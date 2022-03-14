@@ -61,11 +61,15 @@ title: 3.0与3.5对比
 
 2、新增`uni-app vue3`、`taro3 vue3`、`remax`的支持。
 
-3、带有 `autoplay` 属性且值为 `true` 的原生组件（例如：swiper、video）产生的change事件会被自动忽略，如果您想采集它，请[参考文档](/docs/miniprogram/3.5/commonlyApi#1采集标记)。
+3、新增淘宝小程序云函数和云应用转发方式的适配。
 
-4、在<3.5.0的旧版本中，可能您的 **`gdp`** 方法是需要您通过手动挂载在例如`globalData`、`vue`、`global`此类全局对象后再取出。在3.5.0的版本开始，您可以直接在页面中从 **`global（支付宝和淘宝小程序是 $global）`**对象中取出，从而免去了繁杂的存取值流程。例：
+4、带有 `autoplay` 属性且值为 `true` 的原生组件（例如：swiper、video）产生的change事件会被自动忽略，如果您想采集它，请[参考文档](/docs/miniprogram/3.5/commonlyApi#1采集标记)。
+
+5、在<3.5.0的旧版本中，可能您的 **`gdp`** 方法是需要您通过手动挂载在例如`globalData`、`vue`、`global`此类全局对象后再取出。在3.5.0的版本开始，您可以直接在页面中从 **`global（支付宝和淘宝小程序是 $global）`**对象中取出，从而免去了繁杂的存取值流程。例：
 
 ```js
 const { gdp } = global;
 Page({ ... });
 ```
+
+6、在<3.5.0的旧版本中，打通数据的内嵌页SDK数据采集是不受小程序SDK控制的（即小程序SDK关闭数据采集时，内嵌页仍然会采集数据并发送，但没有VISIT事件关联）。在3.5.0的版本开始，`getGioInfo`接口将额外增加`giodatacollect`字段用于同步给内嵌页SDK是否采集数据。

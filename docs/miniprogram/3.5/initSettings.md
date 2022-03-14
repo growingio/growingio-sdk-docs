@@ -26,8 +26,10 @@ title: 初始化配置
 | `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                                         |
 | `remax`               | `any`         | `-`        | 使用 Remax 开发时使用的实例**(>=3.5.0)**                             |
 | `scheme`              | `http / https`| `https`    | 网络协议                                                         |
+| `subpackage`          | `boolean`     | `false`    | 标记当前当前初始化是否为分包初始化**(需配合 多项目打通 插件使用)(>=3.5.0)**   |
 | `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例**(需配合 Taro 插件使用)**                 |
 | `taroVue`             | `any`         | `-`        | 使用 Taro3vue2/3 开发时使用的实例**(需配合 Taro 插件使用)(>=3.5.0)** |
+| `tbConfig`            | `object`      | `-`        | 淘宝小程序配置项，详见说明**(需配合 淘宝小程序 插件使用)(>=3.5.0)**             |
 | `uniVue`              | `any`         | `-`        | 使用 uni-app 开发时使用的实例**(需配合 uni-app 插件使用)(>=3.5.0)**  |
 | `version`             | `string`      | `-`        | 小程序应用版本(建议填写)                                             |
 | `wepy`                | `any`         | `-`        | 使用 WePY 开发时使用的实例**(需配合 wepy 插件使用)(>=3.5.0)**        |
@@ -201,6 +203,40 @@ gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **上线时请注意移除此配置项，因为小程序官方是强制使用https协议进行通信的。**
+
+### subpackage
+
+当且仅当您开发小程序时使用独立开发的分包（即主包与分包不在同一项目中时），需要在主包项目中与分包项目中分别集成SDK，并在**`分包`**项目中初始化时开启此项，可以使得主包与分包打通用户数据，合并为一个SDK运行逻辑。
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**使用此功能需同时使用分包集成插件功能。**
+
+### tbConfig
+
+淘宝小程序必填项。您需要指定为云函数单发或者为云应用配置服务信息。其中云函数配置与云应用配置方式字段互斥，只能选择其中一种方式进行配置，配置字段均为**必填**，请求类型均为POST。
+
+两种方式的区别为：云函数直接发送数据至Gio平台，且域名及所有字段需要申请淘宝白名单；云应用为发送至客户聚石塔服务端，然后再转发至Gio平台。
+
+云应用调用时，SDK给指定云服务接口地址发送上报数据外，还会在params中额外带上`host`, `projectId`, `stm`字段用于服务端拼接Gio转发地址。
+
+**云函数配置方式：**
+
+```js
+tbConfig: {
+  cloudFuncSend: true,             // 是否使用云函数进行数据单发，默认为 false
+  cloudFuncName: 'httpTunnel'      // 调用的云函数名称，默认为 httpTunnel
+  cloudFuncHandler: 'main'         // 指定云函数的handler默认为 main
+}
+```
+
+**云应用配置方式：**
+
+```js
+tbConfig: {
+  cloudAppId: 'xxxxxx',                 // 云应用Id，无默认值
+  path: 'your cloudApp interface path', // 云应用数据接口，无默认值
+}
+```
 
 ### 其他
 

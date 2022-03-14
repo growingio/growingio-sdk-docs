@@ -204,6 +204,7 @@ gioprojectid      项目Id
 gioappid          小程序appId
 gioplatform       小程序平台
 giodatasourceid   dataSourceId
+giodatacollect    小程序是否采集数据
 ```
 
 #### 示例
@@ -216,7 +217,7 @@ gdp('getGioInfo');
 
 #### <font color="#FC5F3A">注意：</font>
 
-**与H5打通数据时用户信息是一次性的，如果切换用户导致sessionId或userId等用户信息变动时，需要您手动重设H5地址来同步信息。例：**
+**1）与H5打通数据时信息是一次性的，如果切换用户导致sessionId或userId等用户信息变动或者修改了dataCollect时，需要您手动重设H5地址来同步信息。例：**
 
 ```js
 // js
@@ -229,13 +230,16 @@ Page({
     this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
     // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
   },
-  // 如果页面中有登录，需要在登录之后重设一次url的值
-  handleLogin() {
+  reSetURL() {
     ...
-    // 登录完成后重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
+    // handleLogin
+    // 如果页面中有登录，登录完成后重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
+    ...
+    // setDataCollect
+    // 如果页面中修改了dataCollect，需要重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
     this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
     // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
-  }
+  },
 })
 ```
 
@@ -245,6 +249,8 @@ Page({
   <web-view src="{{url}}"></web-view>
 </view>
 ```
+
+**2）3.5.0版本开始，打通数据中会增加`giodatacollect`字段，用于控制内嵌页与小程序是否同步发送数据。（即内嵌页SDK会受小程序SDK控制是否采集数据）**
 
 ### 8、获取SDK当前配置(getOption)
 
@@ -272,7 +278,7 @@ gdp('getOption');
     <checkbox value='GrowingIO' checked='true' /> GrowingIO
   </label>
   <label class='checkbox'>
-    <checkbox value='Google' checked='false' /> Google Analytics
+    <checkbox value='CDP' checked='false' /> GrowingIO CDP
   </label>
 </checkbox-group>
 ```
@@ -283,7 +289,7 @@ gdp('getOption');
 
 #### 提示
 
-**3.5.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件。如果您期望采集它，请添加 `data-growing-track` 标记。**
+**3.5.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
 
 ### 2、补充数据标记
 
@@ -303,13 +309,27 @@ gdp('getOption');
 </view>
 ```
 
-#### 提示
+3）有时页面中有需要跳转的链接（尤其是navigator组件）时，为了上报完整的用户目标去向。此时，我们可以通过链接标记 `data-src` 来上报点击链接的目标去向。例：
 
-**我们建议您多设定额外的数据标记来采集更多的数据，以此获取更全面和更准确的用户行为数据。**
+```html
+<navigator url="/pages/h5/h5?from=navigate" data-src="/pages/h5/h5?from=navigate" bindtap="onNavigatorTap">
+  <view >
+     ...
+  </view>
+</navigator>
+
+<view data-src="/pages/h5/h5?from=navigate" bindtap="onLinkTap">
+  模拟一个链接
+</view>
+```
+
+#### <font color="#FC5F3A">注意：</font>
+
+**在有上述3种额外采集标记的节点上，必须要有一个点击事件，SDK才能实现点击的额外数据采集。如果没有，需要您手动绑定一个空的点击事件。**
 
 ### 3、忽略采集标记
 
-有时我们会根据业务中不同的需要开发一些组件或使用一些第三方组件，可能会触发SDK的 VIEW_CHANGE 事件，但我们并不期望它发生。
+有时我们会根据业务中不同的需要使用一些自己开发的组件或第三方组件，可能会触发SDK的 `VIEW_CHANGE` 事件，但我们并不期望它发生。
 
 此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。例：
 
@@ -380,15 +400,3 @@ SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**
 #### <font color="#FC5F3A">注意：</font>
 
 **SDK版本 >=3.5.0 支持**
-
-### navigator组件
-
-如果您的小程序使用了navigator组件，需要您手动绑定一个空的点击事件，SDK才能实现跳转点击的采集。例：
-
-```html
-<navigator>
-  <view bindtap="nameForThisClick">
-     ...
-  </view>
-</navigator>
-```

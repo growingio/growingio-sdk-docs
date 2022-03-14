@@ -277,7 +277,7 @@ import gdp from './utils/gio/sdk.js';
 gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
-    remax
+    remax: remax,
     ...other settings
 });
 
