@@ -53,20 +53,8 @@ GrowingTracker.setLoginUserId('loginUserId');
 ```javascript
 GrowingTracker.cleanLoginUserId();
 ```
-### 3. 设置登录用户属性
-以登录用户的身份定义登录用户属性，用于用户信息相关分析。
-#### 参数说明
-| 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
-| :----: | :-----: | :--: | :----: | :-----------------------------------: |
-| attributes | Map |  是  |  undefine  | 登录用户属性 |
-#### 代码示例
-```javascript
-GrowingTracker.setLoginUserAttributes({
-    key1: 'value1',
-    key2: 'value2',
-});
-```
-### 4. 埋点事件
+
+### 3. 埋点事件
 发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
 如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP平台版本>= 2.1 ）
 #### 参数说明
@@ -86,3 +74,28 @@ GrowingTracker.trackCustomEventItemKeyId('eventId', 'testKey','testId');
 
 GrowingTracker.trackCustomEventItemKeyId('eventId', 'testKey','testId',variable: {'testkey': 'testValue', 'testNumKey': '2333'});
 ```
+
+:::info
+
+详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+
+:::
+
+### 4. 设置登录用户属性
+以登录用户的身份定义登录用户属性，用于用户信息相关分析。
+#### 参数说明
+| 参数名 |  类型   | 必填 | 默认值 |                 说明                  |
+| :----: | :-----: | :--: | :----: | :-----------------------------------: |
+| attributes | Map |  是  |  undefine  | 登录用户属性 |
+#### 代码示例
+```javascript
+GrowingTracker.setLoginUserAttributes({
+    key1: 'value1',
+    key2: 'value2',
+});
+```
+:::info
+
+详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+
+:::
