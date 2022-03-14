@@ -241,6 +241,12 @@ GrowingTracker.get().trackCustomEvent("registerSuccess", map, "key", "id")
 </TabItem>
 </Tabs>
 
+:::info
+
+详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+
+:::
+
 ### 7. 设置登录用户属性 
 `setLoginUserAttributes`<br/>
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。
@@ -313,6 +319,12 @@ GrowingTracker.get().setLoginUserAttributes(map)
 
 </TabItem>
 </Tabs>
+
+:::info
+
+详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+
+:::
 
 ### 8. 获取设备ID 
 `getDeviceId`<br/>

@@ -163,6 +163,12 @@ import TabItem from '@theme/TabItem';
 [[GrowingTracker sharedInstance] trackCustomEvent:@"resourceItemTest" itemKey:@"testkey" itemId:@"testid" withAttributes:@{@"ok":@"false"}];
 ```
 
+:::info
+
+详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+
+:::
+
 
 
 ### 8. 设置登录用户属性 
@@ -186,6 +192,11 @@ import TabItem from '@theme/TabItem';
 ```c
 [[GrowingTracker sharedInstance] setLoginUserAttributes:@{@"fff":@"xxx"}];
 ```
+:::info
+
+详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+
+:::
 
 
 ### 9. 获取设备ID 

@@ -176,6 +176,11 @@ growing_tracker = GrowingTracker.consumer(default_consumer)
 growing_tracker.track_custom_event("test", login_user_id='cpacm', login_user_key='email',
                                attributes={'name': 'cpacm', 'age': '100'})
 ```
+:::info
+
+详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+
+:::
 
 ### 登录用户属性事件
 以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析<br/>
@@ -195,6 +200,11 @@ growing_tracker.track_custom_event("test", login_user_id='cpacm', login_user_key
 ```python
 growing_tracker.track_user(login_user_id='user', login_user_key='email',attributes={'name': 'cpacm', 'age': '100'})
 ```
+:::info
+
+详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+
+:::
 
 ### 维度表(CDP平台版本>=2.1)
 上传一个维度表记录。在添加所需要上传维度表记录代码之前，需要在维度表管理界面中创建对应维度表及其属性
