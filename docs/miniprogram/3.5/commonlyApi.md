@@ -387,6 +387,8 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 
 `data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的合法字符串，SDK会自动尝试进行格式化。
 
+<!-- 2）快手小程序在同一个页面中只能监听相同大小节点的第一个，即如果在同一个页面中需要监听多个节点时，要保证节点大小不一致，否则曝光事件会全部匹配到第一个相同大小的节点。 -->
+
 ## 其他
 
 ### Object参数限制
