@@ -3,6 +3,19 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## V3.3.5
+ >[release-3.3.5](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.5) 日期: 2022-03-17 
+
+### Bug Fixes
+
+- Android 5以下机型webview注入崩溃修复 ([#145](https://github.com/growingio/growingio-sdk-android-autotracker/pull/145))
+- 其他优化
+
+### Features
+
+- 埋点事件属性支持列表类型 ([#146](https://github.com/growingio/growingio-sdk-android-autotracker/pull/146))
+- 添加sdk模块的混淆规则 ([#148](https://github.com/growingio/growingio-sdk-android-autotracker/pull/148))
+------
 ## V3.3.4
  >[release-3.3.4](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.4) 日期: 2022-01-21 
 

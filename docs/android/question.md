@@ -36,7 +36,7 @@ com/growingio/android/sdk/track/middleware/EventsSQLiteOpenHelper.class
 `autotracker-gradle-plugin`默认依赖了`com.android.tools.build:gradle:3.3.0`, 如果希望 在 gradle 低版本中使用该依赖插件，请阻断插件中gradle的版本
 ```groovy
 // 在配置插件依赖时, 通过如下方式引入
-classpath("com.growingio.android:autotracker-gradle-plugin:3.3.4") {
+classpath("com.growingio.android:autotracker-gradle-plugin:3.3.5") {
     transitive false
 } 
 ```
