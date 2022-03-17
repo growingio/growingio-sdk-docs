@@ -245,7 +245,7 @@ GrowingTracker.get().trackCustomEvent("registerSuccess", map, "key", "id")
 
 `trackCustomEventWithAttrBuilder`<br/>
 
-发送一个埋点事件，事件属性支持List类型，注意：sdk版本>=3.3.5，CDP平台版本>=2.7；
+发送一个埋点事件，事件属性支持List类型，注意：**sdk版本>=3.3.5，CDP平台暂不支持展示**；
 
 在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
 
