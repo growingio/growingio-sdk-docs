@@ -105,3 +105,7 @@ a[class~="menu__link"][tabindex]{
     line-height: 16px;
     margin-right: 8px;
 }
+
+a[class^='cardContainerLink_node_modules']{
+  color: #170703;
+}
