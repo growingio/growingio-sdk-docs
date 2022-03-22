@@ -53,7 +53,7 @@ title: 内置模块(插件)
 
 ## uni-app适配
 
-适配uni-app框架专用的插件。
+适配uni-app框架专用的插件(仅适配小程序，非H5和App)。
 
 ## Taro适配
 

@@ -227,6 +227,27 @@ export default App;
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.5/initSettings)菜单中查看***
 
+## 加载插件
+
+如果您想在原有SDK功能上添加额外的功能，可按需下载对应功能的插件进行扩展，不至于使得SDK功能冗余。
+
+在上面集成的基础之上，加载插件扩展的步骤为：
+
+* 1、在SDK文件所在目录新建**平级目录**`plugins`。
+* 2、下载对应功能插件放入 plugins 目录。
+* 3、在init语句前调用注册。
+
+```js
+gdp('registerPlugins');
+gdp('init', xxxxx);
+```
+
+#### <font color="#FC5F3A">注意：</font>
+
+1）如果目录不存在或目录中没有插件文件，初始化会显示不存在插件警告，请注意目录路径是否正确。
+
+2）请勿对插件进行重命名。
+
 ## 添加白名单
 
 由于QQ小程序对网络请求的限制[参考文档](https://q.qq.com/wiki/develop/miniprogram/frame/basic_ability/basic_network.html#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)，您需要在「小程序后台-设置-开发设置-服务器域名」中添加request合法域名。[QQ小程序开放平台](https://q.qq.com/#/)

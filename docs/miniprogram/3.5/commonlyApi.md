@@ -22,7 +22,7 @@ title: 数据采集API
 
 ## 动态修改配置接口(setOption)
 
-由于多样的动态修改配置的需求，我们在`3.5.0`版本开始提供了统一的接口，以降低您的使用难度。设值成功返回true，设值失败返回false。
+由于多样的动态修改配置的需求，我们在`3.5.0`版本开始提供了统一的接口，以降低您的使用难度。设值成功返回true，设值失败返回false。（<3.5.0的写法并不会有返回值）
 
 ```js
 gdp('setOption', optionKey, optionValue);  // return true | false
