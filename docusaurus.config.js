@@ -28,6 +28,8 @@ module.exports = {
           label: '文档',
         },
         {to: '/blog', label: '博客', position: 'left'},
+        {to: '/question', label: '常见问题', position: 'left'},
+      
         {
           href: 'https://www.growingio.com/',
           label: '官网',
@@ -123,6 +125,17 @@ module.exports = {
       {
         hashed: true,
         language: ["en","zh"],
+      }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'question',
+        path: 'question',
+        routeBasePath: 'question',
+        editUrl: 'https://github.com/growingio/growingio-sdk-docs/edit/master/',
+        sidebarPath: require.resolve('./sidebarsQuestion.js'),
+        showLastUpdateTime: true,
       }
     ],
     [
