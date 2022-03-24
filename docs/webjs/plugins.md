@@ -70,11 +70,9 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 
 监听时机：onLoad
 
-该插件提供H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通能力，打通规则如下：
-
-* 当Web JS SDK 与APP GIO SDK集成使用的 accountId 一致时，H5页面上采集的数据仅由 APP 中 GIO SDK 发送；
-
-* 当Web JS SDK 与APP GIO SDK集成使用的 accountId 不一致时，H5页面上采集的数据同时由 Web JS SDK 和 APP 中 GIO SDK发送；
+该插件提供H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通规则：
+- 两者SDK初始化参数 accountId 一致时，H5与APP打通，此时H5页面上采集的数据仅由 APP 中 GIO SDK 发送；
+- 两者SDK初始化参数 accountId 不一致时，H5页面上采集的数据同时由 Web JS SDK 和 APP 中 GIO SDK发送；
 
 ### APP 中 GIO SDK 打通设置
 #### iOS APP
@@ -89,7 +87,8 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 
 如果集成的是[**埋点SDK**](/docs/android/base/Getting%20Started#集成埋点sdk)，则需要设置，详细请参安卓[内嵌h5页面数据采集配置](/docs/android/base/Configuration#1-内嵌h5页面数据采集配置)
 ### 打通成功效果
-
+![H5ToApp](../../static/img/h5ToApp.png)
+满足打通规则时，H5 页面调用 setUserID，cleanUserID 会调用 APP 的 setLoginUserID，cleanUserID。<br/>
 当触发了打通规则后，h5内嵌页采集的数据经 APP 中 GIO SDK发送的数据以下字段的变化如下：
 
 ```tex
@@ -102,6 +101,7 @@ dataSourceId: 使用原生App的dataSourceId
 platform: 使用原生App的platform
 domain: 使用H5页面的域名
 ```
+
 ## 7. 小程序内嵌页打通插件
 
 插件名：embed-h5-plugin
@@ -134,9 +134,9 @@ gdp('init', 'pid11', 'ds22', 'wx33', {
 ```
 
 ### 打通成功效果
-
+![MinpToH5](../../static/img/MinpToH5.png)
 当触发了打通规则后，默认h5内嵌页中发送数据时字段的变化如下，如果配置了[extraParams](/docs/miniprogram/initSettings#extraparams)，h5内嵌页中发送数据时会增加配置的字段数据。
-
+当触发了打通规则后，h5 页面的 Web JS SDK 调用 setUserID， cleanUserID 接口将无效。
 ```tex
 deviceId: 使用小程序的deviceId
 sessionId: 使用小程序的sessionId
@@ -147,6 +147,7 @@ dataSourceId: 使用小程序的dataSourceId
 platform: 使用小程序的platform
 domain: 使用小程序的appId
 ```
+用户行为与采集数据描述：用户点击小程序内嵌H5页面，由小程序原生页面进入H5页面，会把采集数据中的以上字段信息带入H5页面；这样 Web JS SDK 就知道 H5页面的用户是小程序的用户，后续发送的采集数据就会使用小程序的用户信息
 
 ## 8. web圈选插件
 

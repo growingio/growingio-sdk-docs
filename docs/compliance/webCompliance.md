@@ -40,9 +40,5 @@ gdp('send');
 gdp('setDataCollect', true);
 ```
 
-## 常见问题
 
-### Q：dataCollect 设置 false 之后，发现事件数据不上报
-
-A：SDK关闭数据采集 dataCollect 设置 false 时，所有事件都不采集。只有开启了数据采集 dataCollect 为 ture 时，事件数据才会采集上报
 

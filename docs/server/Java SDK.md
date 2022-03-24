@@ -352,21 +352,3 @@ public class DemoLogger implements GioLoggerInterface {
 
 * 如果需要自定义 Properties 进行配置初始化，则需要在 GrowingAPI 初始化之前调用 `initConfig(Properties properties)`，进行配置初始化。
 * 自定义 properties key 参考 `gio_default.properties` 文件
-
-## 常见问题
-
-### Q:在pom中添加依赖时，为什么找不到 jar包？
-**A**：需要在pom 和 settings.xml 中添加配置
-```java
-<id>oss.sonatype.org-snapshot</id>
-<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-```
-在项目根路径下进行 `mvn-U clean compile -DskipTtests`
-
-### Q:程序调用后为什么没有在console中打印日志信息？
-**A**：需要在gio.properties配置文件将`run.mode`定义为test，才能在输出日志。
-也可通过在gio.properties中配置`logger.implementation=io.growing.sdk.java.logger.GioLoggerImpl`
-实现一个日志打印的类，也可输入日志
-
-### Q:程序调用后为什么服务端没有收到数据？
-**A**:需要在gio.properties配置文件将`run.mode`定义为production，才会向采集服务器发送数据。
