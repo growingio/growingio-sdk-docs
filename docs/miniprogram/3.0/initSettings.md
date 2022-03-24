@@ -56,23 +56,26 @@ title: 初始化配置
 **如果您不使用运营SDK可忽略此配置；如果您使用运营SDK，必须开启此配置项，设置为 `true`。**
 
 ### enableIdMapping
+
 默认情况下，SDK关闭多用户身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[使用详情](/docs/miniprogram/commonlyApi#2%E3%80%81%E8%AE%BE%E7%BD%AE%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7idsetuserid)
 
 ### extraParams
 
-当调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)时，除了默认字段以外，可增加以下小程序SDK字段。
-```text
-appChannel        小程序的场景值
-deviceBrand       设备品牌
-deviceModel       设备型号
-deviceType        设备类型
-networkState      网络类型
-platformVersion   操作系统版本
-language          语言
-screenHeight      屏幕高度
-screenWidth       屏幕宽度
-```
+在H5页面与小程序的用户信息保持一致时，上报数据除[默认字段](/docs/webjs/plugins#打通成功效果-1)以外，可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
+:::info**注意：需内嵌页集成的Web JS SDK 版本>=3.3.3，Web JS SDK升级后无需做额外配置，自动适配上报。**
+支持字段：<br/>
+appChannel 是小程序的场景值<br/>
+deviceBrand 是设备品牌<br/>
+deviceModel 是设备型号<br/>
+deviceType 是设备类型<br/>
+networkState 是网络类型<br/>
+platformVersion 是操作系统版本<br/>
+language 是语言<br/>
+screenHeight 是屏幕高度<br/>
+screenWidth 是屏幕宽度
+:::
 参考示例：
+
 ```js
 gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
   version: '1.0.1',
@@ -90,12 +93,15 @@ gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
   ],
 });
 ```
+
 **注意：内嵌页集成的Web JS SDK 版本需>=3.3.3，Web JS SDK升级后无需做额外配置，自动适配上报。**
+
 ### followShare
 
 默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
 
 在分享回调方法中，添加 `contentType` 和 `contentId` 字段。例：
+
 ```js
 onShareAppMessage: function() {
     return {
@@ -127,16 +133,20 @@ gdp('identify', openId);
 ### getLocation
 
 默认情况下，SDK不会自动在小程序启动时获取用户的地理位置信息。如您需要在小程序打开时获取用户地理位置信息，可以通过指定 `autoGet: true` 来打开此功能。同时您可能需要配置项目的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)
+
 ```js
 getLocation: {          //是否自动获取用户的地理位置信息, 并设置获取方式
    autoGet: true,       //默认不自动获取
    type: 'wgs84'        //支持 wgs84（标准坐标系） | gcj02（火星坐标系）, 默认wgs84
 },
 ```
+
 如果您默认没有打开此功能，当用户访问至某一功能需要位置信息时，可以手动调用获取地理位置接口，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。
+
 ```js
 gdp('getLocation');      // 获取用户的地理位置信息并上报
 ```
+
 **注意：**<br/>
 **1、如果您初始化开启getLocation配置，用户打开小程序即需要授权；手动调用getLocation方法时，需要用户授权。**<br/>
 **2、如果您初始化开启getLocation配置或手动调用getLocation方法，都需要配置项目中的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)**
@@ -155,6 +165,7 @@ screenHeight 是屏幕高度<br/>
 screenWidth 是屏幕宽度
 :::
 参考示例：
+
 ```js
 gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
   version: '1.0.1',

@@ -216,9 +216,18 @@ Page({
 ```
 
 **`gdp('getGioInfo')`默认获取到的数据示例：**
+```html
+// H5 页面原有的 URL为 :
+https://www.growingio.com/?foo=1
+```
+```html
+// 小程序WebView加载H5时的拼接示例为
+https://www.growingio.com/?foo=1&${gdp('getGioInfo')}
+```
 
-```json
-giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
+```html
+// 拼接后的URL实际加载的URL为：
+https://www.growingio.com/?foo=1&giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
 ```
 
 **如果您需要获取更多的小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。

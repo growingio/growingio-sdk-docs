@@ -48,7 +48,7 @@ buildscript {
     dependencies {
         
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.3.4'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.3.5'
     }
 }
 ```
@@ -92,7 +92,7 @@ apply plugin: 'com.growingio.android.autotracker'
 dependencies {
     ...
     //GrowingIO 无埋点 SDK
-    implementation 'com.growingio.android:autotracker-cdp:3.3.4'
+    implementation 'com.growingio.android:autotracker-cdp:3.3.5'
 }
 
 ```
@@ -241,7 +241,7 @@ repositories {
 dependencies {
 
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.3.4'
+    implementation 'com.growingio.android:tracker-cdp:3.3.5'
 }
 ```
 
@@ -331,10 +331,13 @@ class MyApplication : Application() {
 </Tabs>
 
 ### 混淆
-如果您启用了混淆，请在您的 proguard-rules.pro 中加入如下代码：
+SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用其规则。
+如果混淆后还出现问题，可以在您的 proguard-rules.pro 中加入如下代码：
 ```xml
--keep class * extends com.growingio.android.sdk.GeneratedGioModule
--keep class * extends com.growingio.android.sdk.LibraryGioModule
+-keep class com.growingio.** {
+    *;
+}
+-dontwarn com.growingio.**
 ```
 
 ### 查看集成效果

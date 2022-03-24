@@ -1,7 +1,7 @@
 [
   {
     "name": "Android",
-    "version": "3.3.4",
+    "version": "3.3.5",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-autotracker/releases",
     "distPath": "docs/android/",
     "fileName": "version.md",
@@ -9,7 +9,7 @@
   },
   {
     "name": "iOS",
-    "version": "3.3.3",
+    "version": "3.3.4",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-ios-autotracker/releases",
     "distPath": "docs/ios/",
     "fileName": "version.md",
@@ -25,7 +25,7 @@
   },
   {
     "name": "GioKit Android",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "releaseUrl": "https://api.github.com/repos/growingio/giokit-android/releases",
     "distPath": "docs/giokit/android/",
     "fileName": "version.md",

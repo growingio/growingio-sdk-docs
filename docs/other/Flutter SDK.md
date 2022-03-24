@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Flutter SDK
 ---
---------------
+
 针对于SDK 3.0 上的flutter插件，当前仅支持埋点sdk。
 
 源码托管在 [growingio/flutter-growingio-sdk-tracker-plugin](https://github.com/growingio/flutter-growingio-sdk-tracker-plugin)

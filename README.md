@@ -55,3 +55,29 @@ python github_version_fetch.py
 
 `/sidebar.js` - 生成文档时使用此文件来指定侧边栏中的文档顺序
 
+### 文件夹文档
+若是希望点击文件分级目录上也有文档，可以直接在该文件夹新建 `index.md` 文件，slug 设置成文件夹名称，如下所示：
+```txt
+---
+slug: /other
+title: 第三方 SDK
+---
+
+```
+
+下面为创建文件分级下目录的代码。
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+
+### 新建导航模块 
+找到 `docusaurus,config.js`，以添加常见问题为例，进行下列操作
+
+1. 在 `plugins` 节点，添加一个新的doc节点，其名为 `question`，并且新建 `sidebarsQuestion.js` 使其为文章自动生成目录；
+2. 在 `themeConfig->navbar->items`，添加新的导航 **{to: '/question', label: '常见问题', position: 'left'},**
+3. 新建 `question` 文件夹，并新建一个 `slug: /` 的文档，保证点击能链接到正确的文档地址。
+

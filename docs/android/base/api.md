@@ -184,7 +184,7 @@ Map<String, String> map = new HashMap<>();
 map.put("name", "June");
 map.put("age", "12");
 GrowingAutotracker.get().trackCustomEvent("registerSuccess", map);
-GrowingAutotracker.get().trackCustomEvent("registerSuccess", map, "key", "id");
+GrowingAutotracker.get().trackCustomEvent("registerSuccess", map, "key", "id");                                                
 ```
 
 </TabItem>
@@ -236,6 +236,99 @@ map["name"] = "June"
 map["age"] = "12"
 GrowingTracker.get().trackCustomEvent("registerSuccess", map)
 GrowingTracker.get().trackCustomEvent("registerSuccess", map, "key", "id")
+```
+
+</TabItem>
+</Tabs>
+
+<br/>
+
+`trackCustomEventWithAttrBuilder`<br/>
+
+发送一个埋点事件，事件属性支持List类型，注意：**sdk版本>=3.3.5，CDP平台暂不支持展示**；
+
+在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
+
+
+#### 参数说明
+
+| 参数         | 参数类型          | 说明                                                         |
+| :----------- | :---------------- | :----------------------------------------------------------- |
+| `eventName`  | `String`          | 事件名，事件标识符                                           |
+| `attributes` | `AttributesBuilder` | 事件发生时所伴随的属性信息； |
+#### 示例
+
+**无埋点SDK示例代码：**
+<Tabs
+  groupId="code-language"
+  defaultValue="kotlin"
+  values={[
+    {label: 'java', value: 'java'},
+    {label: 'kotlin', value: 'kotlin'},
+  ]
+}>
+
+<TabItem value="java">
+
+```java
+List<String> list1 = new ArrayList<>();
+list1.add("aaaa");
+list1.add("bbbb");
+List<Integer> list2 = new ArrayList<>();
+list2.add(111);
+list2.add(2233);
+GrowingAutotracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.AttributesBuilder.getAttributesBuilder()
+                        .addAttribute("prod_list", list1)
+                        .addAttribute("prod_num", list2));                                                         
+```
+
+</TabItem>
+<TabItem value="kotlin">
+
+```kotlin
+val list1: List<String> = ArrayList()
+list1.add("aaaa")
+list1.add("bbbb")
+GrowingAutotracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.AttributesBuilder.getAttributesBuilder()
+                    .addAttribute("prod_list", list1))
+```
+
+</TabItem>
+</Tabs>
+
+**埋点SDK示例代码：**
+<Tabs
+  groupId="code-language"
+  defaultValue="kotlin"
+  values={[
+    {label: 'java', value: 'java'},
+    {label: 'kotlin', value: 'kotlin'},
+  ]
+}>
+
+<TabItem value="java">
+
+```java
+List<String> list1 = new ArrayList<>();
+list1.add("aaaa");
+list1.add("bbbb");
+List<Integer> list2 = new ArrayList<>();
+list2.add(111);
+list2.add(2233);
+GrowingTracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.AttributesBuilder.getAttributesBuilder()
+                    .addAttribute("prod_list", list1)
+                    .addAttribute("prod_num", list2));
+```
+
+</TabItem>
+<TabItem value="kotlin">
+
+```kotlin
+val list1: List<String> = ArrayList()
+list1.add("aaaa")
+list1.add("bbbb")
+GrowingTracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.AttributesBuilder.getAttributesBuilder()
+                    .addAttribute("prod_list", list1))
 ```
 
 </TabItem>
