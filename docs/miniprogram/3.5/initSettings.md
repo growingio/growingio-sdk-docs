@@ -160,6 +160,7 @@ gdp('getLocation');      // 获取用户的地理位置信息并上报
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1、如果您初始化开启getLocation配置，用户打开小程序即需要授权；手动调用getLocation方法时，需要用户授权。**<br/>
 **2、如果您初始化开启getLocation配置或手动调用getLocation方法，都需要配置项目中的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)**
+**3、由于小程序API对getLocation的调用频率限制，部分事件能可能会丢失位置信息，尤其表现在与VISIT几乎同时发出的PAGE事件。**
 
 ### ignoreFields
 

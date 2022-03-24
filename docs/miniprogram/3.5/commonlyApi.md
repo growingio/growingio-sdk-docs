@@ -10,8 +10,6 @@ title: 数据采集API
 
 ## 初始化
 
-在<3.5.0的旧版本中我们提供了两种初始化方式：`init` 和 `setConfig`，这引起了很多用户的误解，现在我们将只保留 `init` 的初始化方式，以此来降低您的理解成本。
-
 ### 1、初始化SDK(init)
 
 [参考集成文档](/docs/miniprogram/3.5/integration/wx)
@@ -19,6 +17,27 @@ title: 数据采集API
 ### 2、初始化SDK(setConfig)
 
 ***此方法废弃，请参考 init 初始化***
+
+在<3.5.0的旧版本中我们提供了两种初始化方式：`init` 和 `setConfig`，这引起了很多用户的误解，现在我们将只保留 `init` 的初始化方式，以此来降低您的理解成本。
+
+### 3、注册插件(registerPlugins)
+
+如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可按需下载对应功能的插件进行扩展。加载插件扩展的步骤为：
+
+* 1、在SDK文件所在目录新建目录 `plugins`。
+* 2、下载对应功能插件放入 plugins 目录中。
+* 3、在app.js中引入。
+* 4、在init语句前按数组形式传值调用方法。
+
+```js
+import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
+import gioCompress from './utils/plugins/gioCompress';
+
+...
+
+gdp('registerPlugins', [gioImpressionTracking, gioCompress]);
+gdp('init', xxxxx);
+```
 
 ## 动态修改配置接口(setOption)
 
