@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 12
 title: SDK调试
 ---
 在移动端的SDK中，有两个调试工具可以集成在SDK中帮忙更好的使用SDK。
