@@ -53,7 +53,11 @@ title: 插件
 
 因为淘宝小程序上报数据特殊性，可选择使用云函数或云应用的方式上报数据，插件适配了两种不同的上报方式。
 
-使用方法请[参考文档](/docs/miniprogram/3.5/initSettings#tbconfig)。淘宝小程序内置插件，其他小程序不可用。
+使用方法请[参考文档](/docs/miniprogram/3.5/initSettings#tbconfig)。
+
+#### <font color="#FC5F3A">注意：</font>
+
+淘宝小程序内置插件，其他小程序不可用。
 
 ### 多项目打通插件（gioMultiIntegrate）
 
@@ -61,7 +65,9 @@ title: 插件
 
 #### <font color="#FC5F3A">注意：</font>
 
-仅支持用户和页面数据打通与埋点事件，无埋点事件无法支持，使用该插件会自动关闭无埋点功能。
+1）仅支持微信小程序。
+
+2）仅支持用户和页面数据打通与埋点事件，无埋点事件无法支持，使用该插件会自动关闭无埋点功能。
 
 ### Chameleon适配插件（gioChameleonAdapter）
 
