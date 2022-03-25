@@ -148,6 +148,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 ```js
 gdp('setUserAttributes', { name: 'hjh' });
 ```
+
 :::info
 
 详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
@@ -185,25 +186,27 @@ giodatasourceid 是 datasourceId
 gdp('getGioInfo');
 ```
 
-**注意：gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您手动重设H5地址来同步信息。例：**
+**注意：gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您销毁当前webview重设地址。并且使用不保留当前页面的跳转方式跳出承载webview的小程序页面。 例：**
 
 ```js
 // js
 Page({
-  data: {
-    url: `https://www.growingIO.com?${gdp('getGioInfo')}`
-  },
+  data: { url: '' },
   onShow() {
-    // 每次onShow时重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
-    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
-    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
+    // 每次onShow时设url的值，保证getGioInfo拿到的是最新值
+    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` });
+  },
+  onHide() {
+    // 退出webview承载页时要销毁webview，保证下次进入时是一个拿到最新数据的全新页面
+    this.setData({ url: '' });
   },
   // 如果页面中有登录，需要在登录之后重设一次url的值
   handleLogin() {
     ...
-    // 登录完成后重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
-    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
-    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
+    // 登录完成后重设一次url的值，保证先销毁webview，getGioInfo拿到的是最新值
+    this.setData({ url: '' }, () => {
+      this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` });
+    });
   }
 })
 ```
@@ -211,23 +214,20 @@ Page({
 ```html
 <!-- wxml -->
 <view>
-  <web-view src="{{url}}"></web-view>
+  <web-view wx:if="{{url}}" src="{{url}}"></web-view>
 </view>
 ```
 
 **`gdp('getGioInfo')`默认获取到的数据示例：**
-```html
+
+```js
 // H5 页面原有的 URL为 :
-https://www.growingio.com/?foo=1
-```
-```html
-// 小程序WebView加载H5时的拼接示例为
-https://www.growingio.com/?foo=1&${gdp('getGioInfo')}
+'https://www.growingio.com/?foo=1'
 ```
 
-```html
-// 拼接后的URL实际加载的URL为：
-https://www.growingio.com/?foo=1&giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
+```js
+// 小程序WebView加载H5时的拼接示例为
+`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
 ```
 
 **如果您需要获取更多的小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
