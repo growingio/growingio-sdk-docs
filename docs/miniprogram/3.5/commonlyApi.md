@@ -238,38 +238,51 @@ gdp('getGioInfo');
 
 **1）与H5打通数据时信息是一次性的，如果切换用户导致sessionId或userId等用户信息变动或者修改了dataCollect时，需要您手动重设H5地址来同步信息。例：**
 
+**注意：gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您销毁当前webview重设地址。并且使用不保留当前页面的跳转方式跳出承载webview的小程序页面。 例：**
+
 ```js
 // js
 Page({
-  data: {
-    url: `https://www.growingIO.com?${gdp('getGioInfo')}`
-  },
+  data: { url: '' },
   onShow() {
-    // 每次onShow时重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
-    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
-    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
+    // 每次onShow时设url的值，保证getGioInfo拿到的是最新值
+    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` });
   },
-  reSetURL() {
-    ...
-    // handleLogin
-    // 如果页面中有登录，登录完成后重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
-    ...
-    // setDataCollect
-    // 如果页面中修改了dataCollect，需要重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
-    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
-    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
+  onHide() {
+    // 退出webview承载页时要销毁webview，保证下次进入时是一个拿到最新数据的全新页面
+    this.setData({ url: '' });
   },
+  // 如果页面中有登录，需要在登录之后重设一次url的值
+  handleLogin() {
+    ...
+    // 登录完成后重设一次url的值，保证先销毁webview，getGioInfo拿到的是最新值
+    this.setData({ url: '' }, () => {
+      this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` });
+    });
+  }
 })
 ```
 
 ```html
 <!-- wxml -->
 <view>
-  <web-view src="{{url}}"></web-view>
+  <web-view wx:if="{{url}}" src="{{url}}"></web-view>
 </view>
 ```
 
 **2）3.5.0版本开始，打通数据中会增加`giodatacollect`字段，用于控制内嵌页与小程序是否同步发送数据。（即内嵌页SDK会受小程序SDK控制是否采集数据）**
+
+**`gdp('getGioInfo')`默认获取到的数据示例：**
+
+```js
+// H5 页面原有的 URL为 :
+'https://www.growingio.com/?foo=1'
+```
+
+```js
+// 小程序WebView加载H5时的拼接示例为
+`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
+```
 
 ### 8、获取SDK当前配置(getOption)
 
