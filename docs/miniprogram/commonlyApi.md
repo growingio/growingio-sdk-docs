@@ -10,31 +10,41 @@ title: 数据采集API
 ## 动态配置接口
 
 ### 开启/关闭无埋点数据采集(autotrack)
+
 默认开启无埋点数据采集。当设置为 **`flase`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。
+
 ```js
 gdp('setAutotrack', true | false);
 ```
 
 ### 开启/关闭数据采集(dataCollect)
+
 默认开启数据采集。当设置为 **`false`** 时，SDK将不会采集和上报事件。
+
 ```js
 gdp('setDataCollect', true | false);
 ```
 
 ### 开启/关闭调试模式(debug)
+
 默认不开启。当设置为 **`true`** 时， 开启后会在开发者工具控制台输出日志
+
 ```js
 gdp('enableDebug', true | false);
 ```
 
 ### 修改上报地址(host)
+
 请设置准确的host地址，支持 **`IP`** 或 **`域名`** 格式，**无需携带协议头**。
+
 ```js
 gdp('setTrackerHost', 'xxxxxxxx');
 ```
 
 ### 修改请求协议(scheme)
+
 默认为**`https`**，您可以在开发过程中自定义设置
+
 ```js
 gdp('setTrackerScheme', 'http' | 'https');
 ```
@@ -42,13 +52,15 @@ gdp('setTrackerScheme', 'http' | 'https');
 ## 功能接口
 
 ### 设置访问用户id(identify)
+
 :::info
 若使用此接口需要在初始化时将 forceLogin 设置为 true
 参考[设置强制登录模式](/docs/miniprogram/initSettings#forcelogin)
 :::
 在微信小程序调用[登录开放接口](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) `wx.login` 之后，获取 openId，调用 identify 设置访问用户ID。
 
-#### 示例：
+#### 示例
+
 ```js
 gdp('identify', openId);
 ```
@@ -62,13 +74,16 @@ gdp('identify', openId);
 支持 ID-MAPPING SDK版本 >=3.3.0
 **需在初始化 SDK 时设置`enableIdMapping`为`true`**
 :::
+
 #### 参数说明
+
 | 参数      | 参数类型          | 说明                                                                |
 | --------- | ----------------- | ------------------------------------------------------------------- |
 | `userId`  | `string / number` | 必填。                                                             |
 | `userKey` | `string / number` | 选填；适用于 ID-MAPPING,可设置 `userId` 的类型。                       |
 
-#### 示例：
+#### 示例
+
 ```js
 gdp('setUserId', 'userId');
 gdp('setUserId', 'userId', 'userKey');
@@ -78,19 +93,23 @@ gdp('setUserId', 'userId', 'userKey');
 
 当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID
 
-#### 示例：
+#### 示例
+
 ```js
 gdp('clearUserId');
 ```
 
 ### 埋点事件(track)
+
 发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
 如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP平台版本>= 2.1 ）
 
 ```js
 gdp('track', eventId, properties, item);
 ```
+
 #### 参数说明
+
 | 参数              | 参数类型 | 说明                            |
 | ----------------- | -------- | ------------------------------- |
 | `eventId`         | `String` | 必填；事件名，事件标识符      |
@@ -100,7 +119,8 @@ gdp('track', eventId, properties, item);
 | `item.key`        | `String` | item 中必填；物品模型唯一标识 |
 | `item.properties` | `Object` | item 中选填；物品模型属性     |
 
-#### 示例：
+#### 示例
+
 ```js
 gdp('track', 'order'); // 无properties，无item
 gdp('track', 'order', { type: 'hjh' }); // 有properties，无item
@@ -115,6 +135,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 :::
 
 ### 登录用户属性(setUserAttributes)
+
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。
 
 #### 参数说明
@@ -123,10 +144,12 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 | ---------------- | -------- | -------------------------------- |
 | `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。 |
 
-#### 示例：
+#### 示例
+
 ```js
 gdp('setUserAttributes', { name: 'hjh' });
 ```
+
 :::info
 
 详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
@@ -137,7 +160,8 @@ gdp('setUserAttributes', { name: 'hjh' });
 
 通过手动调用地理位置接口来补发地理位置信息，提升用户地域分布的分析准确性。
 
-** 注意：初始化配置项 location.autoGet 打开时，无需调用此接口。**
+**注意：初始化配置项 location.autoGet 打开时，无需调用此接口。**
+
 ```js
 gdp('getLocation');
 // 调用后会自动补发带位置信息的VISIT事件
@@ -158,27 +182,32 @@ gioappid 是 小程序appid<br/>
 gioplatform 是应用平台<br/>
 giodatasourceid 是 datasourceId
 :::
+
 ```js
 gdp('getGioInfo');
 ```
-** 注意：gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您手动重设H5地址来同步信息。例：**
+
+**注意：gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您销毁当前webview重设地址。并且使用不保留当前页面的跳转方式跳出承载webview的小程序页面。 例：**
+
 ```js
 // js
 Page({
-  data: {
-    url: `https://www.growingIO.com?${gdp('getGioInfo')}`
-  },
+  data: { url: '' },
   onShow() {
-    // 每次onShow时重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
-    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
-    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
+    // 每次onShow时设url的值，保证getGioInfo拿到的是最新值
+    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` });
+  },
+  onHide() {
+    // 退出webview承载页时要销毁webview，保证下次进入时是一个拿到最新数据的全新页面
+    this.setData({ url: '' });
   },
   // 如果页面中有登录，需要在登录之后重设一次url的值
   handleLogin() {
     ...
-    // 登录完成后重设一次url的值，保证getGioInfo拿到的是最新值，请注意一定要重新直接调用getGioInfo
-    this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` }); ✅
-    // this.setData({ url: this.data.url }); ❌ // 这么写参数会更新不正确
+    // 登录完成后重设一次url的值，保证先销毁webview，getGioInfo拿到的是最新值
+    this.setData({ url: '' }, () => {
+      this.setData({ url: `https://www.growingIO.com?${gdp('getGioInfo')}` });
+    });
   }
 })
 ```
@@ -186,23 +215,22 @@ Page({
 ```html
 <!-- wxml -->
 <view>
-  <web-view src="{{url}}"></web-view>
+  <web-view wx:if="{{url}}" src="{{url}}"></web-view>
 </view>
 ```
+
 **`gdp('getGioInfo')`默认获取到的数据示例：**
-```html
+
+```js
 // H5 页面原有的 URL为 :
-https://www.growingio.com/?foo=1
-```
-```html
-// 小程序WebView加载H5时的拼接示例为
-https://www.growingio.com/?foo=1&${gdp('getGioInfo')}
+'https://www.growingio.com/?foo=1'
 ```
 
-```html
-// 拼接后的URL实际加载的URL为：
-https://www.growingio.com/?foo=1&giou=e83e8ea2-9604-4c55-882c-172925d0dc1f&gios=ea64c5a5-7163-4a1e-9887-3af9bd467c3b&giocs1=&giouserkey=&gioprojectid=pid11&gioappid=wx33&gioplatform=MinP&giodatasourceid=ds22
+```js
+// 小程序WebView加载H5时的拼接示例为
+`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
 ```
+
 **如果您需要获取更多的小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
 
 **H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base/getting_started#小程序内嵌页使用集成)**
@@ -329,6 +357,7 @@ gdp('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
 ### navigator组件
 
 如果您的小程序使用了navigator组件，需要您手动绑定一个空的点击事件，SDK才能实现跳转点击的采集。例：
+
 ```html
 <navigator>
   <view bindtap="nameForThisClick">
