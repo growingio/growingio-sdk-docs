@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sulg: /develop
 title: 前言
 ---
 

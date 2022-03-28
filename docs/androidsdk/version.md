@@ -2,7 +2,7 @@
 title: 版本记录
 sidebar_position: 0
 ---
-----
+
 ## V3.3.5
  >[release-3.3.5](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.5) 日期: 2022-03-17 
 

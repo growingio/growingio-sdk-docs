@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 title: 自定义模块
 ---
---------------
+
 
 自定义模块可以让您使用自己的代码实现的功能来替换现有的模块功能，现有的模块功能可以参考 [模块列表](/docs/android/develop/coutom%20sdk)
 

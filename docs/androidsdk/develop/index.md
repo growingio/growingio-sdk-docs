@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sulg: /develop
 title: 前言
 ---
 
@@ -9,3 +9,11 @@ title: 前言
 3.  如何在现有代码进行二次开发。
 
 为此，我们通过将 SDK 模块化来解决这些问题。
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```

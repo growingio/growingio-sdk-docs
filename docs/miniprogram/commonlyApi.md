@@ -2,6 +2,7 @@
 sidebar_position: 4
 title: 数据采集API
 ---
+
 通过gioGlobal.gio这个全局的方法可以调用到SDK中所有开放的接口。
 
 一般您可在页面头部进行取值并命名为gdp方法。const gdp = gioGlobal.gio;

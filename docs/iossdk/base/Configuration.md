@@ -2,7 +2,6 @@
 sidebar_position: 2
 title: 初始化配置
 ---
---------------
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

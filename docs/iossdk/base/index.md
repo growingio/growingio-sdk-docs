@@ -1,26 +1,11 @@
 ---
-sidebar_position: 1
+sulg: /base
 title: 如何集成
 ---
---------------
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-iOS SDK 提供了 [无埋点SDK](/docs/ios/base/Getting_Started#无埋点sdk集成) 和 [埋点SDK](/docs/ios/base/Getting_Started#埋点sdk集成) 两个版本：
-* 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
-* 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
-
-无埋点SDK（包括埋点 SDK）代码托管在 [Github](https://github.com/growingio/growingio-sdk-ios-autotracker-cdp)
-
-欢迎 star,fork 一波。
-:::info
-**开发环境:** <br/>
-Xcode 9.0 及以上  
-iOS 8.0 及以上
-
-**根据需要选择集成**  [<font color='red'>无埋点SDK</font>](/docs/ios/base/Getting_Started#无埋点sdk集成)  或  [<font color='red'>埋点SDK</font>](/docs/ios/base/Getting_Started#埋点sdk集成)
-:::
 
 ### 集成准备
 #### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host

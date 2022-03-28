@@ -1,6 +1,6 @@
 ---
-slug: /other
-title: 第三方 SDK
+slug: /server
+title: 服务端 SDK
 ---
 
 
@@ -11,4 +11,3 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
 ```
-

@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
-title: 简介
+slug: /miniprogram
+title: 小程序 SDK
 ---
 
 
@@ -17,3 +17,10 @@ title: 简介
 如果您使用`uni-app`、`Taro`等多平台框架开发同时需要产出多端，也并不清楚如何集成SDK，请联系我们。
 
 请在左侧【如何集成】菜单中选择对应文档进行集成。
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```

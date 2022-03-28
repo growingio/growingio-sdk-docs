@@ -1,17 +1,7 @@
 ---
-sidebar_position: 1
+sulg: /base
 title: 如何集成
 ---
-
-Web JS SDK3.0 将H5内嵌页，Hybrid SDK，Web JS SDK集成与一体，具备以下特性：
-* 埋点能力，开发同学调用API主动采集埋点事件
-* 无埋点能力，自动采集用户行为事件，可通过开关控制
-* 小程序打通，方便于小程序打通访问用户
-* 原生打通，方便于原生App打通访问用户
-* Web可视化圈选支持
-* Hybrid可视化圈选支持
-
-Web JS SDK 代码尚未开源，后续会开源
 
 ### 集成准备
 #### 获取SDK初始化必传参数：AccountID、DataSourceID、Host

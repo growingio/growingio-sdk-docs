@@ -3,9 +3,9 @@ title: 内置插件
 sidebar_position: 5
 ---
 
-GrowingIO Web SDK将各种功能以插件的形式接入，具有更高的扩展性。在内部提供了如埋点，无埋点，hybrid打通，hybrid圈选，小程序打通，web圈选等插件。
+GrowingIO Web SDK将各种功能以插件的形式接入，具有更高的扩展性。
 
-具体插件功能简介如下
+在内部提供了如埋点，无埋点，hybrid打通，hybrid圈选，小程序打通，web圈选等插件。具体插件功能简介如下
 
 ## 1. 通用接口插件
 
