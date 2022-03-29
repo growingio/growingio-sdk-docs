@@ -3,9 +3,9 @@ title: 内置插件
 sidebar_position: 5
 ---
 
-GrowingIO Web SDK将各种功能以插件的形式接入，具有更高的扩展性。在内部提供了如埋点，无埋点，hybrid打通，hybrid圈选，小程序打通，web圈选等插件。
+GrowingIO Web SDK将各种功能以插件的形式接入，具有更高的扩展性。
 
-具体插件功能简介如下
+在内部提供了如埋点，无埋点，hybrid打通，hybrid圈选，小程序打通，web圈选等插件。具体插件功能简介如下
 
 ## 1. 通用接口插件
 
@@ -76,16 +76,16 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 
 ### APP 中 GIO SDK 打通设置
 #### iOS APP
-如果集成的是[**无埋点SDK**](/docs/ios/base/Getting_Started#无埋点sdk集成)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
+如果集成的是[**无埋点SDK**](/docs/ios/base#无埋点sdk集成)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
 
-如果集成的是[**埋点SDK**](/docs/ios/base/Getting_Started#埋点sdk集成)，则需要设置详情参考iOS[内嵌H5页面数据采集配置](/docs/ios/base/Configuration#3内嵌h5页面数据采集配置)
+如果集成的是[**埋点SDK**](/docs/ios/base#埋点sdk集成)，则需要设置详情参考iOS[内嵌H5页面数据采集配置](/docs/ios/base/Configuration#3内嵌h5页面数据采集配置)
 
 项目中无需其他设置
 #### Android APP
-如果集成的是[**无埋点SDK**](/docs/android/base/Getting%20Started#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
+如果集成的是[**无埋点SDK**](/docs/android/base#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
-如果集成的是[**埋点SDK**](/docs/android/base/Getting%20Started#集成埋点sdk)，则需要设置，详细请参安卓[内嵌h5页面数据采集配置](/docs/android/base/Configuration#1-内嵌h5页面数据采集配置)
+如果集成的是[**埋点SDK**](/docs/android/base#集成埋点sdk)，则需要设置，详细请参安卓[内嵌h5页面数据采集配置](/docs/android/base/Configuration#1-内嵌h5页面数据采集配置)
 ### 打通成功效果
 ![H5ToApp](../../static/img/h5ToApp.png)
 满足打通规则时，H5 页面调用 setUserID，cleanUserID 会调用 APP 的 setLoginUserID，cleanUserID。<br/>

@@ -12,7 +12,7 @@ GioKit 代码已托管在 [Github](https://github.com/growingio/giokit-android) 
 :::info
 **Gradle插件版本**： 3.2.1及以上  
 **Android系统版本**：Android 5.0 及以上, **<font color='red'>GioKit仅支持 AndroidX</font>**<br/>
-**请在 [Android SDK](/docs/android/base/Getting%20Started) 基础上使用 GioKit**
+**请在 [Android SDK](/docs/android) 基础上使用 GioKit**
 :::
 ### 添加依赖
 在 project 级别的`build.gradle`文件中添加`giokit-plugin`依赖和 maven 仓库。

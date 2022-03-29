@@ -228,12 +228,14 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 2. "eventType": "CUSTOM" 表示事件类型为埋点事件。<br/>
 3. "eventName": "purchaseProduct" 表示埋点事件标识符是 purchaseProduct，确保正确。<br/>
 4. attributes 中的 key 对应事件属性，value 对应事件属性的值，确保 key 和 value 都正确。<br/>
+数据关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
 :::info
-即时校验只是确保采集SDK发送的数据是正确的<br/>
+即时校验确保采集SDK发送的数据是正确的<br/>
 **服务端SDK在 debug 模式下，会输出事件数据日志，但是事件数据不会上报至服务端数据库**
 :::
    
 **日志验证：** GrowingIO SDK 提供 debug 日志输出模式。开发过程中开启 debug 模式，可在日志中查看采集端采集数据的日志。<br/>
+数据关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
 **示例**：
 ```js
 {
@@ -273,14 +275,13 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 **工具验证：**
 针对 iOS 和 Android APP， GrowingIO 提供了 工具校验
-[Mobile Debugger](/docs/debug) 和 [GioKit](/docs/giokit/intro)
-
+[Mobile Debugger](/docs/debugverify/mobiledebugger) 和 [GioKit](/docs/giokit)。<br/>
+数据关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
 #### 2. 事件实时查询 验证
-需要先在平台找到“平台管理”-->“客户数据平台”-->“数据校验”-->“事件实时查询”功能。
-
-输入访问用户ID/登录用户ID 点击查询；访问用户ID 对应 deviceId 的值，登录用户ID 对应 userId 的值
-
-找到事件标识符：purchaseProduct  事件类型：custom_event 的数据 进行数据核对
+需要先在平台找到“平台管理”-->“客户数据平台”-->“数据校验”-->“事件实时查询”功能。<br/>
+输入访问用户ID/登录用户ID 点击查询；访问用户ID 对应 deviceId 的值，登录用户ID 对应 userId 的值。<br/>
+找到事件标识符：purchaseProduct  事件类型：custom_event 的数据 进行数据核对。<br/>
+数据关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
 :::info
 事件实时查询 验证，可确保采集数据已上报至服务端数据库<br/>
 :::
@@ -448,7 +449,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 
 **工具验证：**
 针对 iOS 和 Android APP， GrowingIO 提供了 工具校验
-[Mobile Debugger](/docs/debug) 和 [GioKit](/docs/giokit/intro)
+[Mobile Debugger](/docs/debugverify/mobiledebugger) 和 [GioKit](/docs/giokit)
 
 #### 2.分析验证
 需要先在平台找到“增长平台”-->“默认项目”-->“用户洞察”-->“用户属性”功能。

@@ -1,9 +1,9 @@
 ---
-sidebar_position: 1
-title: 插件简介
+slug: /giokit
+title: 插件介绍
 ---
 
-## GioKit - GrowingIO SDK 使用辅助工具
+GioKit - GrowingIO SDK 使用辅助工具
 
 GioKit 是一个辅助客户快速稳定接入使用 GrowingIO SDK 的工具。目前支持 iOS 和 Android，它能够快速检测 SDK 是否集成成功，并能够在面板中实时反馈接入的 SDK 信息，具体包括以下功能：
 
@@ -16,3 +16,10 @@ GioKit 是一个辅助客户快速稳定接入使用 GrowingIO SDK 的工具。�
 
 > 目前 GioKit 还处于开发试用阶段，更多功能即将上线，敬请期待。
 
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```

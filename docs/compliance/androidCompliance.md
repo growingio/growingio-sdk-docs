@@ -40,7 +40,7 @@ GIO移动端 SDK
    
 2.请务必告知用户您使用了 GrowingIO SDK，请在 《隐私协议》 中添加隐私条款，参考[隐私协议填写](#隐私协议填写)
    
-3.集成 [Android SDK](/docs/android/base/Getting%20Started)，请在用户[同意《隐私协议》之后再初始化GrowingIO SDK](#方式一延迟初始化) 或[设置 GrowingIO SDK 的数据收集开关](#方式二设置数据收集开关)。
+3.集成 [Android SDK](/docs/android)，请在用户[同意《隐私协议》之后再初始化GrowingIO SDK](#方式一延迟初始化) 或[设置 GrowingIO SDK 的数据收集开关](#方式二设置数据收集开关)。
 ​
 ## 采集详情
 

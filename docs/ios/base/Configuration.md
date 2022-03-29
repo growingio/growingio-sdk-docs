@@ -2,7 +2,6 @@
 sidebar_position: 2
 title: 初始化配置
 ---
---------------
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -44,7 +43,7 @@ urlScheme 是 SDK 3.3.0及其之后必传参数，其他参数为必传参数，
 #### 7. **excludeEvent**
 > SDK 版本>=3.2.1
 
-事件过滤，默认情况下，事件不会进行过滤。但若不想采集某些事件可以在此设置。事件类型可以参考 [GrowingEventFilter](https://github.com/growingio/growingio-sdk-ios-autotracker/blob/master/GrowingTrackerCore/Event/GrowingEventFilter.h)
+事件过滤，默认情况下，事件不会进行过滤。但若不想采集某些事件可以在此设置。事件类型可以参考 [GrowingEventFilter](https://github.com/growingio/growingio-sdk-ios-autotracker/blob/7fe23a9e15cdb5897dadc7f17e6cae78d230bbc1/GrowingAnalytics/GrowingTrackerCore/Event/GrowingEventFilter.h)
 #### 8. **ignoreField**
 > SDK 版本>=3.2.1
 
@@ -60,7 +59,7 @@ urlScheme 是 SDK 3.3.0及其之后必传参数，其他参数为必传参数，
 #### 11. **urlScheme**
 > SDK 版本>=3.3.0
 
-自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该[URL Scheme](https://growingio.github.io/growingio-sdk-docs/docs/ios/base/Getting_Started#2-%E6%B7%BB%E5%8A%A0-url-scheme)
+自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该[URL Scheme](/docs/ios/base#添加-url-scheme)
 
 #### 12. **encryptEnabled**
 
@@ -93,9 +92,9 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 
 若需要 H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通，请参考内置 [Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
 
-如果APP集成的是[**无埋点SDK**](/docs/ios/base/Getting_Started#无埋点sdk集成)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
+如果APP集成的是[**无埋点SDK**](/docs/ios/base#无埋点sdk集成)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
-如果APP集成的是[**埋点SDK**](/docs/ios/base/Getting_Started#埋点sdk集成)，则需要在您的 Podfile 文件中添加 Hybrid 依赖
+如果APP集成的是[**埋点SDK**](/docs/ios/base#埋点sdk集成)，则需要在您的 Podfile 文件中添加 Hybrid 依赖
 :::info
 **使用时注意模块版本需要与采集SDK版本保持一致**
 :::

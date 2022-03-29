@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 title: 二次开发
 ---
 
@@ -7,7 +7,7 @@ title: 二次开发
 
 #### 不熟悉Android开发或只想快速集成
 
-那么直接参考 [如何集成](http://localhost:3000/growingio-sdk-docs/docs/android/base/Getting%20Started)，使用我们提供默认的SDK集成即可。
+那么直接参考 [如何集成](/docs/android)，使用我们提供默认的SDK集成即可。
 
 #### 想要集成一些额外的功能，如数据加密
 可以通过API接口手动注册已有的功能模块或自己根据模块的数据定义来自己实现想要的功能。
