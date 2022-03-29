@@ -150,6 +150,69 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 gdp('setUserAttributes', { name: 'hjh' });
 ```
 
+#### 微信用户属性设置
+
+微信用户属性对分析微信小程序用户行为数据有着非常重要的作用。GrowingIO 平台系统中用户属性默认预定义有微信用户属性如下表：
+
+| 名称 | 标识符 |
+| :---: | :---: |
+| 微信 openid | $wechat_openId |
+| 微信 unionid | $wechat_unionId |
+| 微信昵称 | $wechat_nickName |
+| 微信头像 | $wechat_avatarUrl |
+| 微信用户性别  | $wechat_gender |
+|  微信用户所在国家 | $wechat_country |
+|  微信用户所在省份 | $wechat_province |
+| 微信用户所在城市 | $wechat_city |
+|  微信语言 | $wechat_language |
+|  关注公众号 | $wechat_subscribeList |
+
+当小程序获取到微信用户信息后，**无需**在 GrowingIO 客户数据平台用户属性中添加以上属性标识符，**直接**调用 `setUserAttributes` 上报微信用户信息即可。例如：
+
+```js
+wx.getUserInfo({
+  success: (res) => {
+    const user = res.userInfo;
+    gdp('setUserAttributes', {
+      $wechat_openId: user.openid,
+      $wechat_unionId: user.unionid,
+      $wechat_nickName: user.nickname
+    });
+  }
+})
+```
+
+#### 支付宝用户属性设置
+
+支付宝用户属性对分析支付宝小程序用户行为数据有着非常重要的作用。GrowingIO 平台系统中用户属性默认预定义有支付宝用户属性如下表：
+
+| 名称 | 标识符 |
+| :---: | :---: |
+| 支付宝用户 ID | $alipay_userId |
+| 支付宝头像 | $alipay_avatar |
+| 支付宝用户所在省份 | $alipay_province |
+| 支付宝用户所在城市 | $alipay_city |
+| 支付宝用户昵称 | $alipay_nickName |
+| 支付宝学生认证 | $alipay_isStudentCertified |
+| 支付宝用户类型 | $alipay_userType |
+| 支付宝用户状态 | $alipay_userStatus |
+| 支付宝实名认证 | $alipay_isCertified |
+| 支付宝用户性别 | $alipay_gender |
+
+当小程序获取到支付宝用户信息后，**无需**在 GrowingIO 客户数据平台用户属性中添加以上属性标识符，**直接**调用 `setUserAttributes` 上报支付宝用户信息即可。例如：
+
+```js
+my.getAuthUserInfo({
+  success: (userInfo) => {
+    gdp('setUserAttributes', {
+      $alipay_userId: userInfo.userId,
+      $alipay_avatar: userInfo.avatar,
+      $alipay_province: userInfo.province,
+    });
+  }
+});
+```
+
 :::info
 
 详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
