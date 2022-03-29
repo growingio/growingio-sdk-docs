@@ -1,22 +1,11 @@
 ---
-sidebar_position: 1
+slug: /android/base
 title: 如何集成
 ---
---------------
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Android SDK 提供了 [无埋点SDK](/docs/android/base/Getting%20Started#集成无埋点sdk) 和 [埋点SDK](/docs/android/base/Getting%20Started#集成埋点sdk) 两个版本：
-* 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
-* 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
-
-无埋点SDK（包括埋点 SDK）代码已托管在 [Github](https://github.com/growingio/growingio-sdk-android-autotracker) 上，欢迎 star,fork 一波。
-:::info
-**Gradle插件版本**： 3.2.1及以上  
-**Android系统版本**：Android 4.2及以上<br/>
-**根据需要选择集成**  [<font color='red'>无埋点SDK</font>](/docs/android/base/Getting%20Started#集成无埋点sdk)  或  [<font color='red'>埋点SDK</font>](/docs/android/base/Getting%20Started#集成埋点sdk)
-:::
 ### 集成准备
 #### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
 :::info
@@ -102,7 +91,7 @@ dependencies {
 :::
 
 ### 添加URL Scheme
-URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用[圈选](/docs/debug),[Mobile Debugger](/docs/debug) 及[深度链接](/docs/debug)等功能时唤醒应用。
+URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用圈选,[Mobile Debugger](/docs/debugverify/mobiledebugger) 及深度链接等功能时唤醒应用。
 将应用的 URLScheme 和应用权限添加到您的 AndroidManifest.xml 中的 LAUNCHER Activity 下。
 
 ```xml
@@ -220,7 +209,7 @@ class MyApplication : Application() {
 
 至此，就完成了无埋点 SDK 的集成。
 
-另外，您可使用 [GioKit 辅助插件](/docs/giokit/android/feature) 进行集成验证。
+另外，您可使用 [GioKit 辅助插件](/docs/giokit/android) 进行集成验证。
 
 
 ## 集成埋点SDK
@@ -350,4 +339,4 @@ SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用�
 
 至此，就完成了埋点 SDK 的集成。
 
-另外，您可使用 [GioKit 辅助插件](/docs/giokit/android/feature) 进行集成验证。
+另外，您可使用 [GioKit 辅助插件](/docs/giokit/android) 进行集成验证。

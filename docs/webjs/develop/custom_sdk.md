@@ -72,7 +72,7 @@ export { default } from './entry';
 
 #### 发布使用
 
-运行`yarn build`的打包命令后，会在dist目录下生成`cdp.js`文件，您只需要将该文件部署到cdn上，替换到[集成时的JS 资源地址](/docs/webjs/base/getting_started#web使用集成)即可。
+运行`yarn build`的打包命令后，会在dist目录下生成`cdp.js`文件，您只需要将该文件部署到cdn上，替换到[集成时的JS 资源地址](/docs/webjs/base#web使用集成)即可。
 
 ## 拓展功能
 

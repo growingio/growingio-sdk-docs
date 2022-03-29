@@ -2,6 +2,7 @@
 sidebar_position: 4
 title: 数据采集API
 ---
+
 通过gioGlobal.gio这个全局的方法可以调用到SDK中所有开放的接口。
 
 一般您可在页面头部进行取值并命名为gdp方法。const gdp = gioGlobal.gio;
@@ -232,7 +233,7 @@ Page({
 
 **如果您需要获取更多的小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
 
-**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base/getting_started#小程序内嵌页使用集成)**
+**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
 <!-- ### 8、手动注册半自动曝光事件(collectImp)
 ```js
 Page({
