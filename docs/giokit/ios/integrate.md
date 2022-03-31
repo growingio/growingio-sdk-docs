@@ -13,7 +13,7 @@ GioKit 代码已托管在 [Github](https://github.com/growingio/growingio-sdk-io
 **使用环境**
 **Xcode 9.0 及以上**<br/>
 **iOS 9.0 及以上**<br/>
-**请在 [iOS SDK](/docs/ios/base/Getting_Started) 基础上使用 GioKit**
+**请在 [iOS SDK](/docs/ios/base) 基础上使用 GioKit**
 :::
 
 ### 1. Cocoapods 集成

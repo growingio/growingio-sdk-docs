@@ -40,7 +40,7 @@ GIO移动端 SDK
    
 3.延迟初始化
 
-集成 [iOS SDK](/docs/ios/base/Getting_Started)，请在用户同意《隐私协议》之后再初始化 GrowingIO SDK。 
+集成 [iOS SDK](/docs/ios/base)，请在用户同意《隐私协议》之后再初始化 GrowingIO SDK。 
 示例代码如下：
 ```c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -55,7 +55,7 @@ GIO移动端 SDK
 ```
 
 4.集成了 GrowingIO SDK，默认会尝试获取 `IDFA`、`IDFV` 信息，用于统计分析用户在 App 内的使用效果。
-参考：[App Store 提交应用注意事项​​](/docs/ios/base/Getting_Started#app-store提交应用注意事项)
+参考：[App Store 提交应用注意事项​​](/docs/ios/base#app-store提交应用注意事项)
 
 ## iOS 权限说明
 | 权限 | 用途 | 

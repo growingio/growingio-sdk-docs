@@ -4,8 +4,6 @@ sidebar_position: 0
 
 ---
 
-----
-
 ## [3.3.4](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.3...3.3.4) (2022-03-08)
 
 ### Bug Fixes
