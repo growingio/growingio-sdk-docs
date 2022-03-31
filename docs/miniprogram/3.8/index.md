@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
-title: 介绍
+slug: /minprogram/3.8
+title: 小程序 SDK（3.8） 
 ---
 
 import Tabs from '@theme/Tabs';
@@ -52,6 +52,3 @@ import TabItem from '@theme/TabItem';
 
 详情介绍请见[3.0升级到3.8](/docs/miniprogram/3.8/upgrade)
 
-## 版本记录
-
-详情介绍请见[版本记录](/docs/miniprogram/3.8/changelog)

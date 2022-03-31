@@ -57,7 +57,7 @@ title: 初始化配置
 
 ### enableIdMapping
 
-默认情况下，SDK关闭多用户身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[使用详情](/docs/miniprogram/commonlyApi#2%E3%80%81%E8%AE%BE%E7%BD%AE%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7idsetuserid)
+默认情况下，SDK关闭多用户身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[使用详情](/docs/miniprogram/3.3/commonlyApi#2%E3%80%81%E8%AE%BE%E7%BD%AE%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7idsetuserid)
 
 ### extraParams
 

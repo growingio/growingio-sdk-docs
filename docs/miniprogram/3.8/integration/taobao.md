@@ -41,7 +41,7 @@ App({ ... });
 
 **淘宝小程序中，`tbConfig` 为必填项，详情请[参考文档](/docs/miniprogram/3.8/initSettings#tbconfig)**
 
-***更多配置项请在[集成配置](/docs/miniprogram/3.5/initSettings)菜单中查看***
+***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
 
 ### 插件扩展
 

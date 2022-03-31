@@ -55,7 +55,7 @@ gdp('setTrackerScheme', 'http' | 'https');
 
 :::info
 若使用此接口需要在初始化时将 forceLogin 设置为 true
-参考[设置强制登录模式](/docs/miniprogram/initSettings#forcelogin)
+参考[设置强制登录模式](/docs/miniprogram/3.3/initSettings#forcelogin)
 :::
 在微信小程序调用[登录开放接口](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) `wx.login` 之后，获取 openId，调用 identify 设置访问用户ID。
 
@@ -290,7 +290,7 @@ Page({
 
 **如果您需要获取更多的小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
 
-**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base/getting_started#小程序内嵌页使用集成)**
+**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
 
 ## 采集标记
 
@@ -345,7 +345,7 @@ Page({
 <!--
 ### 半自动埋点浏览事件
 
-用户标记一个元素并提供埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要[参考埋点事件](/docs/miniprogram/commonlyApi#4埋点事件)在平台上进行事件类型和变量的预定义。
+用户标记一个元素并提供埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要[参考埋点事件](/docs/miniprogram/3.3/commonlyApi#4埋点事件)在平台上进行事件类型和变量的预定义。
 
 **支持范围：微信小程序。支付宝小程序不支持。**
 
@@ -357,7 +357,7 @@ Page({
 
 #### 方式一：(整体定义)
 
-在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs` 属性，并分别对应 `track` 方法中的 `eventId` 和 `properties` 参数进行设置，参数规则[参考文档](/docs/miniprogram/commonlyApi#4埋点事件track)。
+在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs` 属性，并分别对应 `track` 方法中的 `eventId` 和 `properties` 参数进行设置，参数规则[参考文档](/docs/miniprogram/3.3/commonlyApi#4埋点事件track)。
 
 ```js
 Page({

@@ -191,7 +191,7 @@ NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
 ```
 
 #### 小程序
-[埋点事件说明文档](/docs/miniprogram/commonlyApi#埋点事件track)
+[埋点事件说明文档](/docs/miniprogram/3.3/commonlyApi#埋点事件track)
 
 ```js
   gdp('track', 'purchaseProduct', { 
@@ -383,7 +383,7 @@ gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
 ```
 
 #### 小程序
-[用户属性说明文档](/docs/miniprogram/commonlyApi#登录用户属性setuserattributes)
+[用户属性说明文档](/docs/miniprogram/3.3/commonlyApi#登录用户属性setuserattributes)
 
 ```js
 gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
