@@ -12,13 +12,13 @@ title: 数据采集API
 
 ### 1、初始化SDK(init)
 
-[参考集成文档](/docs/miniprogram/3.5/integration/wx)
+[参考集成文档](/docs/miniprogram/3.8/integration/wx)
 
 ### 2、初始化SDK(setConfig)
 
 ***此方法废弃，请参考 init 初始化***
 
-在<3.5.0的旧版本中我们提供了两种初始化方式：`init` 和 `setConfig`，这引起了很多用户的误解，现在我们将只保留 `init` 的初始化方式，以此来降低您的理解成本。
+在<3.8.0的旧版本中我们提供了两种初始化方式：`init` 和 `setConfig`，这引起了很多用户的误解，现在我们将只保留 `init` 的初始化方式，以此来降低您的理解成本。
 
 ### 3、注册插件(registerPlugins)
 
@@ -41,7 +41,7 @@ gdp('init', xxxxx);
 
 ## 动态修改配置接口(setOption)
 
-由于多样的动态修改配置的需求，我们在`3.5.0`版本开始提供了统一的接口，以降低您的使用难度。设值成功返回true，设值失败返回false。（<3.5.0的写法并不会有返回值）
+由于多样的动态修改配置的需求，我们在`3.8.0`版本开始提供了统一的接口，以降低您的使用难度。设值成功返回true，设值失败返回false。（<3.8.0的写法并不会有返回值）
 
 ```js
 gdp('setOption', optionKey, optionValue);  // return true | false
@@ -54,7 +54,7 @@ gdp('setOption', optionKey, optionValue);  // return true | false
 ```js
 gdp('setOption', 'autotrack', true | false);
 
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
+// <3.8.0版本的写法仍兼容，但不建议您再这么使用
 // gdp('setAutotrack', true | false);
 ```
 
@@ -65,7 +65,7 @@ gdp('setOption', 'autotrack', true | false);
 ```js
 gdp('setOption', 'dataCollect', true | false);
 
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
+// <3.8.0版本的写法仍兼容，但不建议您再这么使用
 // gdp('setDataCollect', true | false);
 ```
 
@@ -76,7 +76,7 @@ gdp('setOption', 'dataCollect', true | false);
 ```js
 gdp('setOption', 'debug', true | false);
 
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
+// <3.8.0版本的写法仍兼容，但不建议您再这么使用
 // gdp('enableDebug', true | false);
 ```
 
@@ -87,7 +87,7 @@ gdp('setOption', 'debug', true | false);
 ```js
 gdp('setOption', 'host', 'wxapi.growingio.com');
 
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
+// <3.8.0版本的写法仍兼容，但不建议您再这么使用
 // gdp('setTrackerHost', 'xxxxxxxx');
 ```
 
@@ -98,7 +98,7 @@ gdp('setOption', 'host', 'wxapi.growingio.com');
 ```js
 gdp('setOption', 'scheme', 'http' | 'https');
 
-// <3.5.0版本的写法仍兼容，但不建议您再这么使用
+// <3.8.0版本的写法仍兼容，但不建议您再这么使用
 // gdp('setTrackerScheme', 'http' | 'https');
 ```
 
@@ -116,7 +116,7 @@ gdp('identify', openId);
 
 #### <font color="#FC5F3A">注意：</font>
 
-**若使用此接口需要在初始化时将 forceLogin 设置为 true [参考文档](/docs/miniprogram/3.5/initSettings#forcelogin)**
+**若使用此接口需要在初始化时将 forceLogin 设置为 true [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**
 
 ### 2、设置登录用户id(setUserId)
 
@@ -161,7 +161,7 @@ gdp('clearUserId');
 | 参数              | 参数类型 | 说明                                                                                   |
 | ----------------- | -------- | ----------------------------------------------------------------------------------- |
 | `eventId`         | `String` | 必填；事件名，事件标识符。                                                               |
-| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/miniprogram/3.5/commonlyApi#object参数限制)              |
+| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制)              |
 | `item`            | `Object` | 选填；事件发生关联的物品模型。                                                           |
 | `item.id`         | `string` | item 中必填；物品模型 id。                                                             |
 | `item.key`        | `string` | item 中必填；物品模型唯一标识。                                                          |
@@ -186,7 +186,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 
 | 参数             | 参数类型 | 说明                                                                              |
 | ---------------- | -------- | --------------------------------------------------------------------------------- |
-| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/miniprogram/3.5/commonlyApi#object参数限制) |
+| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制) |
 
 #### 示例
 
@@ -232,7 +232,7 @@ giodatacollect    小程序是否采集数据
 gdp('getGioInfo');
 ```
 
-如果以上字段仍不能满足您分析需求，可在初始化时添加 `extraParams` [参考文档](/docs/miniprogram/3.5/initSettings#extraparams)配置字段来额外增加一些信息。
+如果以上字段仍不能满足您分析需求，可在初始化时添加 `extraParams` [参考文档](/docs/miniprogram/3.8/initSettings#extraparams)配置字段来额外增加一些信息。
 
 #### <font color="#FC5F3A">注意：</font>
 
@@ -270,7 +270,7 @@ Page({
 </view>
 ```
 
-**2）3.5.0版本开始，打通数据中会增加`giodatacollect`字段，用于控制内嵌页与小程序是否同步发送数据。（即内嵌页SDK会受小程序SDK控制是否采集数据）**
+**2）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，用于控制内嵌页与小程序是否同步发送数据。（即内嵌页SDK会受小程序SDK控制是否采集数据）**
 
 **`gdp('getGioInfo')`默认获取到的数据示例：**
 
@@ -296,7 +296,7 @@ gdp('getOption');
 
 #### <font color="#FC5F3A">注意：</font>
 
-**SDK版本 >=3.5.0 支持**
+**SDK版本 >=3.8.0 支持**
 
 ## 采集标记
 
@@ -321,7 +321,7 @@ gdp('getOption');
 
 #### 提示
 
-**3.5.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
+**3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
 
 ### 2、补充数据标记
 
@@ -371,7 +371,7 @@ gdp('getOption');
 
 ## 半自动埋点浏览事件
 
-用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogram/3.5/commonlyApi#4自定义埋点track)在平台上进行事件类型和变量的预定义。
+用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogram/3.8/commonlyApi#4自定义埋点track)在平台上进行事件类型和变量的预定义。
 
 #### 曝光逻辑
 
@@ -387,7 +387,7 @@ gdp('getOption');
 
 1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
 
-2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则[参考文档](/docs/miniprogram/3.5/commonlyApi#4自定义埋点track)。
+2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则[参考文档](/docs/miniprogram/3.8/commonlyApi#4自定义埋点track)。
 
 ```js
 Page({
@@ -433,4 +433,4 @@ SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**
 
 #### <font color="#FC5F3A">注意：</font>
 
-**SDK版本 >=3.5.0 支持**
+**SDK版本 >=3.8.0 支持**

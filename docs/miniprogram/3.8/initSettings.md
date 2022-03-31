@@ -24,15 +24,15 @@ title: 初始化配置
 | `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系                         |
 | `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**                       |
 | `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                                         |
-| `remax`               | `any`         | `-`        | 使用 Remax 开发时使用的实例**(>=3.5.0)**                             |
+| `remax`               | `any`         | `-`        | 使用 Remax 开发时使用的实例**(>=3.8.0)**                             |
 | `scheme`              | `http / https`| `https`    | 网络协议                                                         |
-| `subpackage`          | `boolean`     | `false`    | 标记当前当前初始化是否为分包初始化**(需配合 多项目打通 插件使用)(>=3.5.0)**   |
+| `subpackage`          | `boolean`     | `false`    | 标记当前当前初始化是否为分包初始化**(需配合 多项目打通 插件使用)(>=3.8.0)**   |
 | `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例**(需配合 Taro 插件使用)**                 |
-| `taroVue`             | `any`         | `-`        | 使用 Taro3vue2/3 开发时使用的实例**(需配合 Taro 插件使用)(>=3.5.0)** |
-| `tbConfig`            | `object`      | `-`        | 淘宝小程序配置项，详见说明**(需配合 淘宝小程序 插件使用)(>=3.5.0)**             |
-| `uniVue`              | `any`         | `-`        | 使用 uni-app 开发时使用的实例**(需配合 uni-app 插件使用)(>=3.5.0)**  |
+| `taroVue`             | `any`         | `-`        | 使用 Taro3vue2/3 开发时使用的实例**(需配合 Taro 插件使用)(>=3.8.0)** |
+| `tbConfig`            | `object`      | `-`        | 淘宝小程序配置项，详见说明**(需配合 淘宝小程序 插件使用)(>=3.8.0)**             |
+| `uniVue`              | `any`         | `-`        | 使用 uni-app 开发时使用的实例**(需配合 uni-app 插件使用)(>=3.8.0)**  |
 | `version`             | `string`      | `-`        | 小程序应用版本(建议填写)                                             |
-| `wepy`                | `any`         | `-`        | 使用 WePY 开发时使用的实例**(需配合 wepy 插件使用)(>=3.5.0)**        |
+| `wepy`                | `any`         | `-`        | 使用 WePY 开发时使用的实例**(需配合 wepy 插件使用)(>=3.8.0)**        |
 
 ## 配置项详解
 
@@ -45,7 +45,7 @@ title: 初始化配置
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.5/commonlyApi#1开启关闭无埋点数据采集autotrack)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#1开启关闭无埋点数据采集autotrack)
 
 ### compress
 
@@ -59,17 +59,17 @@ title: 初始化配置
 
 默认情况下，SDK开启数据采集。如果您需要初始化时暂时关闭数据采集，可以通过指定 `dataCollect: false` 关闭。 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.5/commonlyApi#2开启关闭数据采集datacollect)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#2开启关闭数据采集datacollect)
 
 ### debug
 
 在开发时设置 debug: true，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.5/commonlyApi#3开启关闭调试模式debug)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#3开启关闭调试模式debug)
 
 ### enableIdMapping
 
-默认情况下，SDK关闭多用户身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.5/commonlyApi#2设置登录用户idsetuserid)
+默认情况下，SDK关闭多用户身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.8/commonlyApi#2设置登录用户idsetuserid)
 
 ### extraParams
 
@@ -200,7 +200,7 @@ gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 
 默认情况下，网络协议为`https`，但考虑到在开发小程序的过程中可能需要使用`http`协议的测试服务，因此我们提供了临时修改网络协议的配置。
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.5/commonlyApi#5修改请求协议scheme)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#5修改请求协议scheme)
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **上线时请注意移除此配置项，因为小程序官方是强制使用https协议进行通信的。**
@@ -210,7 +210,7 @@ gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 当且仅当您开发小程序时使用独立开发的分包（即主包与分包不在同一项目中时），需要在主包项目中与分包项目中分别集成SDK，并在**`分包`**项目中初始化时开启此项，可以使得主包与分包打通用户数据，合并为一个SDK运行逻辑。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**使用此功能需主包分包同时注册分包集成插件。[参考文档](/docs/miniprogram/3.5/plugins#多项目打通插件giomultiintegrate)**
+**使用此功能需主包分包同时注册分包集成插件。[参考文档](/docs/miniprogram/3.8/plugins#多项目打通插件giomultiintegrate)**
 
 ### tbConfig
 

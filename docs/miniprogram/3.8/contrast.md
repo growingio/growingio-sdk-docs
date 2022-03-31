@@ -1,9 +1,9 @@
 ---
 sidebar_position: 6
-title: 3.0与3.5对比
+title: 3.0与3.8对比
 ---
 
-本文将介绍3.0.0版本与3.5.0版本的差异，方便您充分了解差异并放心的升级。文中将仅列出差异之处，共同之处将不再赘述。
+本文将介绍3.0.0版本与3.8.0版本的差异，方便您充分了解差异并放心的升级。文中将仅列出差异之处，共同之处将不再赘述。
 
 ## 架构调整
 
@@ -17,9 +17,9 @@ title: 3.0与3.5对比
 
 ## 关于版本号
 
-由于我们只是在架构层面进行调整，功能上和使用上几乎与3.0版本无异，所以我们并没有直接进入4.0，而是选择了一个3到4的中间值3.5来进行区分。
+由于我们只是在架构层面进行调整，功能上和使用上几乎与3.0版本无异，所以我们并没有直接进入4.0，而是选择了一个3到4的中间值3.8来进行区分。
 
-如果您目前使用的是3.0的测量协议版本，可以完全不用担心兼容问题，具体升级方式请见[3.0升级到3.5](/docs/miniprogram/3.5/upgrade)。
+如果您目前使用的是3.0的测量协议版本，可以完全不用担心兼容问题，具体升级方式请见[3.0升级到3.8](/docs/miniprogram/3.8/upgrade)。
 
 ## 关于3.0旧版本
 
@@ -51,25 +51,27 @@ title: 3.0与3.5对比
 
 **新增项：** `getOption`、`setOption`
 
-> 新增 `getOption` 方法；用于获取当前SDK配置项状态。[参考文档](/docs/miniprogram/3.5/commonlyApi#8获取sdk当前配置getoption)
+> 新增 `getOption` 方法；用于获取当前SDK配置项状态。[参考文档](/docs/miniprogram/3.8/commonlyApi#8获取sdk当前配置getoption)
 >
-> 新增 `setOption` 方法；用于统一动态设置SDK配置项。[参考文档](/docs/miniprogram/3.5/commonlyApi#动态配置接口setoption)
+> 新增 `setOption` 方法；用于统一动态设置SDK配置项。[参考文档](/docs/miniprogram/3.8/commonlyApi#动态配置接口setoption)
 
 ## 功能点新增、优化
 
-1、新增半自动采集浏览功能。详情[参考文档](/docs/miniprogram/3.5/internally#半自动埋点曝光)
+1、新增半自动采集浏览功能。详情[参考文档](/docs/miniprogram/3.8/internally#半自动埋点曝光)
 
 2、新增`uni-app vue3`、`taro3 vue3`、`remax`的支持。
 
 3、新增淘宝小程序云函数和云应用转发方式的适配。
 
-4、带有 `autoplay` 属性且值为 `true` 的原生组件（例如：swiper、video）产生的change事件会被自动忽略，如果您想采集它，请[参考文档](/docs/miniprogram/3.5/commonlyApi#1采集标记)。
+4、调用 `setUserId` 的API时，自动补发 VISIT 事件。
 
-5、在<3.5.0的旧版本中，可能您的 **`gdp`** 方法是需要您通过手动挂载在例如`globalData`、`vue`、`global`此类全局对象后再取出。在3.5.0的版本开始，您可以直接在页面中从 **`global（支付宝和淘宝小程序是 $global）`**对象中取出，从而免去了繁杂的存取值流程。例：
+5、带有 `autoplay` 属性且值为 `true` 的原生组件（例如：swiper、video）产生的change事件会被自动忽略，如果您想采集它，请[参考文档](/docs/miniprogram/3.8/commonlyApi#1采集标记)。
+
+6、在<3.8.0的旧版本中，可能您的 **`gdp`** 方法是需要您通过手动挂载在例如`globalData`、`vue`、`global`此类全局对象后再取出。在3.8.0的版本开始，您可以直接在页面中从 **`global（支付宝和淘宝小程序是 $global）`**对象中取出，从而免去了繁杂的存取值流程。例：
 
 ```js
 const { gdp } = global;
 Page({ ... });
 ```
 
-6、在<3.5.0的旧版本中，打通数据的内嵌页SDK数据采集是不受小程序SDK控制的（即小程序SDK关闭数据采集时，内嵌页仍然会采集数据并发送，但没有VISIT事件关联）。在3.5.0的版本开始，`getGioInfo`接口将额外增加`giodatacollect`字段用于同步给内嵌页SDK是否采集数据。
+6、在<3.8.0的旧版本中，打通数据的内嵌页SDK数据采集是不受小程序SDK控制的（即小程序SDK关闭数据采集时，内嵌页仍然会采集数据并发送，但没有VISIT事件关联）。在3.8.0的版本开始，`getGioInfo`接口将额外增加`giodatacollect`字段用于同步给内嵌页SDK是否采集数据。

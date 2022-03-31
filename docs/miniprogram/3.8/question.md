@@ -9,14 +9,14 @@ sidebar_position: 8
 
 ### 初始化开启forceLogin以后不上报任何事件了？
 
-* 请[参考文档](/docs/miniprogram/3.5/initSettings#forcelogin)正确使用。
+* 请[参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)正确使用。
 
 ### 初始化开启forceLogin以后直至调用 identify 方法之前的数据是怎么处理的？
 
 * 初始化开启forceLogin以后SDK依然会采集数据，但会存在内存中。调用identify方法时会全量替换访问用户Id为指定值后一次性打包进行上报，并不会丢失数据。
 * 但如果用户在您调用identify方法之前退出小程序，此次访问数据会完全丢失。因此建议您在用户进入小程序后尽快通过微信登录获取openId(或unionId)调用identify方法上报数据。
 
-### 3.0版本SDK支持 mpvue 和 WePY1.x，3.5版本不支持了？
+### 3.0版本SDK支持 mpvue 和 WePY1.x，3.8版本不支持了？
 
 * mpvue官方已经不维护两年之久，且依然存在较多的开发问题，故我们认为它已经被放弃，请尝试升级到其他框架。
 * WePY2.x已经出现许久，且依然存在较多的开发问题，故我们已放弃对WePY1.x的支持，请尝试升级到WePY2.0或其他框架。
@@ -41,7 +41,7 @@ sidebar_position: 8
 
 * 不支持。
 
-### 使用了3.5版本的SDK以后运营SDK(弹窗、资源位)组件报错或无法使用了？
+### 使用了3.8版本的SDK以后运营SDK(弹窗、资源位)组件报错或无法使用了？
 
 * 新版SDK架构调整导致存取值逻辑不同导致。请同步升级运营SDK即可，无需做其他修改。
 
@@ -64,3 +64,7 @@ sidebar_position: 8
 
 * 不可以，SDK初始化必须在小程序初始化加载之前，待可以接口调用时，小程序已经初始化完成。
 * 如果您有多个小程序appId用于区分测试和生产环境，可以通过本地判断的方式。
+
+### 如何查看当前SDK的版本号和环境？
+
+* 直接在开发者工具控制台或代码中调用 `global.gioSDKVersion` 和 `global.gioEnvironment` 即可获取到当前SDK的版本号和环境。
