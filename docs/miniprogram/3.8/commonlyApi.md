@@ -94,9 +94,9 @@ gdp('identify', openId);
 
 #### 参数说明
 
-| 参数      | 参数类型 | 说明                                                                |
-| --------- | -------- | ------------------------------------------------------------------- |
-| `userId`  | `string / number` | 必填；字符长度小于等于 1000，长度超限将会被截断。                 |
+| 参数      | 参数类型          | 说明                                                              |
+|-----------|-------------------|-----------------------------------------------------------------|
+| `userId`  | `string / number` | 必填；字符长度小于等于 1000，长度超限将会被截断。                    |
 | `userKey` | `string / number` | 可选；适用于 ID-MAPPING,可设置 `userId` 的类型；长度限制同 `userId` |
 
 #### 示例
@@ -125,14 +125,14 @@ gdp('clearUserId');
 
 #### 参数说明
 
-| 参数              | 参数类型 | 说明                                                                                   |
-| ----------------- | -------- | ----------------------------------------------------------------------------------- |
-| `eventId`         | `String` | 必填；事件名，事件标识符。                                                               |
-| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制)              |
-| `item`            | `Object` | 选填；事件发生关联的物品模型。                                                           |
-| `item.id`         | `string` | item 中必填；物品模型 id。                                                             |
-| `item.key`        | `string` | item 中必填；物品模型唯一标识。                                                          |
-| `item.properties` | `Object` | item 中选填；物品模型属性。参数限制同`properties`。                                       |
+| 参数              | 参数类型 | 说明                                                                                                                                  |
+|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `eventId`         | `String` | 必填；事件名，事件标识符。                                                                                                               |
+| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制) |
+| `item`            | `Object` | 选填；事件发生关联的物品模型。                                                                                                          |
+| `item.id`         | `string` | item 中必填；物品模型 id。                                                                                                              |
+| `item.key`        | `string` | item 中必填；物品模型唯一标识。                                                                                                         |
+| `item.properties` | `Object` | item 中选填；物品模型属性。参数限制同`properties`。                                                                                      |
 
 #### 示例
 
@@ -147,18 +147,81 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 
 ### 5、登录用户属性(setUserAttributes)
 
-以登录用户的身份定义登录用户属性，用于用户信息相关分析。
+以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
 
 #### 参数说明
 
-| 参数             | 参数类型 | 说明                                                                              |
-| ---------------- | -------- | --------------------------------------------------------------------------------- |
+| 参数             | 参数类型 | 说明                                                                                        |
+|------------------|----------|-------------------------------------------------------------------------------------------|
 | `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制) |
 
 #### 示例
 
 ```js
 gdp('setUserAttributes', { name: 'hjh' });
+```
+
+#### 微信用户属性设置
+
+Gio平台系统中用户属性默认预定义的微信用户属性如下表：
+
+|       名称       |        标识符         |
+|:--------------:|:---------------------:|
+|   微信 openid    |    $wechat_openId     |
+|   微信 unionid   |    $wechat_unionId    |
+|     微信昵称     |   $wechat_nickName    |
+|     微信头像     |   $wechat_avatarUrl   |
+|   微信用户性别   |    $wechat_gender     |
+| 微信用户所在国家 |    $wechat_country    |
+| 微信用户所在省份 |   $wechat_province    |
+| 微信用户所在城市 |     $wechat_city      |
+|     微信语言     |   $wechat_language    |
+|    关注公众号    | $wechat_subscribeList |
+
+当小程序获取到微信用户信息后，以上属性标识符**无需**在Gio平台用户属性中添加，调用 `setUserAttributes` 上报微信用户信息即可。注意自行添加 `$wechat_` 的前缀。例：
+
+```js
+wx.getUserInfo({
+  success: (res) => {
+    const user = res.userInfo;
+    gdp('setUserAttributes', {
+      $wechat_openId: user.openid,
+      $wechat_unionId: user.unionid,
+      $wechat_nickName: user.nickname
+    });
+  }
+})
+```
+
+#### 支付宝用户属性设置
+
+Gio平台系统中用户属性默认预定义的支付宝用户属性如下表：
+
+|        名称        |           标识符           |
+|:----------------:|:--------------------------:|
+|   支付宝用户 ID    |       $alipay_userId       |
+|     支付宝头像     |       $alipay_avatar       |
+| 支付宝用户所在省份 |      $alipay_province      |
+| 支付宝用户所在城市 |        $alipay_city        |
+|   支付宝用户昵称   |      $alipay_nickName      |
+|   支付宝学生认证   | $alipay_isStudentCertified |
+|   支付宝用户类型   |      $alipay_userType      |
+|   支付宝用户状态   |     $alipay_userStatus     |
+|   支付宝实名认证   |    $alipay_isCertified     |
+|   支付宝用户性别   |       $alipay_gender       |
+
+当小程序获取到支付宝用户信息后，以上属性标识符**无需**在Gio平台用户属性中添加，调用 `setUserAttributes` 上报微信用户信息即可。注意自行添加 `$alipay_` 的前缀。例：
+
+```js
+my.getAuthUserInfo({
+  success: (userInfo) => {
+    gdp('setUserAttributes', {
+      $alipay_userId: userInfo.userId,
+      $alipay_avatar: userInfo.avatar,
+      $alipay_province: userInfo.province,
+    });
+  }
+});
 ```
 
 ### 6、地理位置(getLocation)

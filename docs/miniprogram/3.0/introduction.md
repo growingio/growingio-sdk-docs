@@ -1,11 +1,6 @@
 ---
-<<<<<<<< HEAD:docs/miniprogram/3.0/introduction.md
 sidebar_position: 1
 title: 介绍
-========
-slug: /miniprogram
-title: 小程序 SDK
->>>>>>>> origin/master:docs/miniprogram/index.md
 ---
 
 
