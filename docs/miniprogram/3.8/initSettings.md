@@ -7,41 +7,43 @@ title: 初始化配置
 
 下表中列出了所有小程序SDK的配置项，请按需设置。如您不确定是否需要，请咨询我们。
 
-| **字段名**            | **参数类型**  | **默认值** | **说明**                                                             |
-|-----------------------|---------------|------------|--------------------------------------------------------------------|
-| `autotrack`           | `boolean`     | `true`     | 是否开启无埋点采集（需配合无埋点插件使用）                             |
-| `cml`                 | `any`         | `-`        | 使用 Chameleon 开发时使用的实例**(需配合 Chameleon 插件使用)**                         |
-| `comAsPage`           | `boolean`     | `false`    | 是否将 Component 组件 当做 Page 处理                                 |
-| `compress`            | `boolean`     | `false`    | 是否数据加密(淘宝小程序不支持)                                        |
-| `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                                     |
-| `debug`               | `boolean`     | `false`    | 是否开启调试模式                                                     |
-| `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报**(>= 3.3.0)**                                     |
-| `extraParams`         | `string[]`    | `-`        | 与H5数据打通时额外获取的字段**(>= 3.3.0)**                               |
-| `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                                     |
-| `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式                                                 |
-| `getLocation`         | `object`      | `-`        | 获取位置配置项(见下两项)                                              |
-| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                                 |
-| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系                         |
-| `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**                       |
-| `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                                         |
-| `remax`               | `any`         | `-`        | 使用 Remax 开发时使用的实例**(>=3.8.0)**                             |
-| `scheme`              | `http / https`| `https`    | 网络协议                                                         |
-| `subpackage`          | `boolean`     | `false`    | 标记当前当前初始化是否为分包初始化**(需配合 多项目打通 插件使用)(>=3.8.0)**   |
-| `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例**(需配合 Taro 插件使用)**                 |
-| `taroVue`             | `any`         | `-`        | 使用 Taro3vue2/3 开发时使用的实例**(需配合 Taro 插件使用)(>=3.8.0)** |
-| `tbConfig`            | `object`      | `-`        | 淘宝小程序配置项，详见说明**(需配合 淘宝小程序 插件使用)(>=3.8.0)**             |
-| `uniVue`              | `any`         | `-`        | 使用 uni-app 开发时使用的实例**(需配合 uni-app 插件使用)(>=3.8.0)**  |
-| `version`             | `string`      | `-`        | 小程序应用版本(建议填写)                                             |
-| `wepy`                | `any`         | `-`        | 使用 WePY 开发时使用的实例**(需配合 wepy 插件使用)(>=3.8.0)**        |
+| **字段名**            | **参数类型**   | **默认值** | **说明**                                       |
+|-----------------------|----------------|------------|----------------------------------------------|
+| `autotrack`           | `boolean`      | `true`     | 是否开启无埋点采集                             |
+| `cml`                 | `any`          | `-`        | 使用 Chameleon 开发时使用的实例                |
+| `comAsPage`           | `boolean`      | `false`    | 是否将 Component 组件 当做 Page 处理           |
+| `compress`            | `boolean`      | `true`     | 是否数据加密                                   |
+| `dataCollect`         | `boolean`      | `true`     | 是否开启数据采集                               |
+| `debug`               | `boolean`      | `false`    | 是否开启调试模式                               |
+| `enableIdMapping`     | `boolean`      | `false`    | 是否开启多用户身份上报                         |
+| `extraParams`         | `string[]`     | `-`        | 与H5数据打通时额外获取的字段                   |
+| `followShare`         | `boolean`      | `true`     | 是否跟踪分享数据                               |
+| `forceLogin`          | `boolean`      | `false`    | 是否开启强制登录模式                           |
+| `getLocation`         | `object`       | `-`        | 获取位置配置项(见下两项)                       |
+| `getLocation.autoGet` | `boolean`      | `false`    | 自动获取用户位置信息                           |
+| `getLocation.type`    | `wgs84/gcj02`  | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系   |
+| `gtouchHost`          | `string`       | `-`        | 运营SDK资源请求地址                            |
+| `host`                | `string`       | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**    |
+| `ignoreFields`        | `string[]`     | `-`        | 上报忽略字段                                   |
+| `remax`               | `any`          | `-`        | 使用 Remax 开发时使用的实例                    |
+| `scheme`              | `http / https` | `https`    | 网络协议                                       |
+| `subpackage`          | `boolean`      | `false`    | 标记当前当前项目是否为分包                     |
+| `taro`                | `any`          | `-`        | 使用 Taro 开发时使用的实例                     |
+| `taroVue`             | `any`          | `-`        | 使用 Taro3vue2/3 开发时使用的实例              |
+| `tbConfig`            | `object`       | `-`        | 淘宝小程序配置项                               |
+| `uniVue`              | `any`          | `-`        | 使用 uni-app 开发时使用的实例                  |
+| `version`             | `string`       | `-`        | 小程序应用版本(建议填写)                       |
+| `wepy`                | `any`          | `-`        | 使用 WePY 开发时使用的实例                     |
 
 ## 配置项详解
 
 ### autotrack
 
-默认情况下，SDK开启无埋点采集。如果您不需要无埋点采集，可以通过以下两种方式进行关闭：
+默认情况下，SDK在加载了无埋点插件时自动开启无埋点采集。如果您不需要无埋点采集，可以通过以下两种方式进行关闭：
 
-**方式一：**使用 ***含*** 无埋点插件的SDK，指定 `autotrack: false` 进行关闭。<br/>
-**方式二：**使用 ***不含*** 无埋点插件的SDK即可。
+**方式一：**使用 **含** 无埋点插件的SDK，初始化指定 `autotrack: false` 进行关闭。
+
+**方式二：**移除无埋点插件即可。
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
 
@@ -49,11 +51,15 @@ title: 初始化配置
 
 ### compress
 
-默认情况下，SDK关闭数据加密，如果您认为不足够安全，可以通过指定 `compress: true` 打开数据加密。需配合加密插件使用。
+默认情况下，SDK在加载了加密插件时自动开启数据加密，如果您不需要数据加密，可以通过以下两种方式进行关闭：
+
+**方式一：**使用 **含** 加密插件的SDK，初始化指定 `compress: false` 进行关闭。
+
+**方式二：**移除加密插件即可。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1、开启加密后抓包工具无法抓取上报的明文数据，但debug模式开启时开发者工具中仍能看到未加密的上报数据。**<br/>
-**2、淘宝小程序由于需要云函数明文校验请求字段不能加密上报，所以在淘宝小程序时，`compress` 会自动失效。**
+**2、淘宝小程序由于需要云函数明文校验请求字段，所以在淘宝小程序中，数据加密会自动关闭，不论您是否开启配置项或加载了加密插件。**
 
 ### dataCollect
 
@@ -63,13 +69,13 @@ title: 初始化配置
 
 ### debug
 
-在开发时设置 debug: true，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
+在开发时设置 `debug: true`，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#3开启关闭调试模式debug)
 
 ### enableIdMapping
 
-默认情况下，SDK关闭多用户身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.8/commonlyApi#2设置登录用户idsetuserid)
+默认情况下，SDK关闭多用户身份上报。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.8/commonlyApi#2设置登录用户idsetuserid)
 
 ### extraParams
 
@@ -87,22 +93,21 @@ screenHeight      屏幕高度
 screenWidth       屏幕宽度
 ```
 
-参考示例：
+#### 示例
 
 ```js
-gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
+gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
   version: '1.0.1',
-  debug: true,
   extraParams: [
-  'appChannel',
-  'deviceBrand',
-  'deviceModel',
-  'deviceType',
-  'networkState',
-  'platformVersion',
-  'language',
-  'screenHeight',
-  'screenWidth'
+    'appChannel',
+    'deviceBrand',
+    'deviceModel',
+    'deviceType',
+    'networkState',
+    'platformVersion',
+    'language',
+    'screenHeight',
+    'screenWidth'
   ],
 });
 ```
@@ -118,19 +123,19 @@ gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 
 ```js
 onShareAppMessage: function() {
-    return {
-        title: '自定义转发标题',
-        path: 'xxxxxx',
-        contentType: '内容类型',
-        contentId: '内容ID'
-    }
+  return {
+    title: '自定义转发标题',
+    path: 'xxxxxx',
+    contentType: '内容类型',
+    contentId: '内容ID'
+  }
 }
 ```
 
 ### forceLogin
 
 默认情况下，SDK通过自动生成的 uid 上报标识用户。如您需要根据 openId 标识用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
-打开后SDK会暂停上报数据，待用户登录获取 openId，调用 `identify` 方法设置 访问用户id 为 openId 后继续数据采集，以此来关联用户。
+打开后SDK初始化时会暂停上报数据，待用户登录获取 openId，调用 `identify` 方法设置 访问用户id 为 openId 后继续数据采集，以此来关联用户。
 
 ```js
 gdp('identify', openId);
@@ -139,6 +144,9 @@ gdp('identify', openId);
 :::caution 注意：
 如果用户在打开您的微信小程后没有使用微信授权登录，但是小程序配置了forceLogin为true，会导致SDK不能采集数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们。
 :::
+
+**<font color="#FC5F3A">提示：</font>**<br/>
+当不使用 `forceLogin` 配置项时，由于一些不可抗力的因素（例如用户清除缓存）可能会导致新用户量一定程度上虚高。
 
 ### getLocation
 
@@ -151,16 +159,10 @@ getLocation: {          //是否自动获取用户的地理位置信息, 并设�
 },
 ```
 
-如果您默认没有打开此功能，当用户访问至某一功能需要位置信息时，可以手动调用获取地理位置接口，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。
-
-```js
-gdp('getLocation');      // 获取用户的地理位置信息并上报
-```
+如果您默认没有打开此功能，当用户访问至某一功能需要位置信息时，可以手动调用获取地理位置接口 [参考文档](/docs/miniprogram/3.8/commonlyApi#6地理位置getlocation)。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1、如果您初始化开启getLocation配置，用户打开小程序即需要授权；手动调用getLocation方法时，需要用户授权。**<br/>
-**2、如果您初始化开启getLocation配置或手动调用getLocation方法，都需要配置项目中的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)**
-**3、由于小程序API对getLocation的调用频率限制，部分事件能可能会丢失位置信息，属于正常情况。**
+**如果您初始化开启getLocation配置，用户打开小程序即需要授权。**
 
 ### ignoreFields
 
@@ -176,19 +178,19 @@ screenHeight      屏幕高度
 screenWidth       屏幕宽度
 ```
 
-参考示例：
+#### 示例
 
 ```js
-gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
+gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
   version: '1.0.1',
   debug: true,
   ignoreFields: [
-  'deviceBrand',
-  'deviceModel',
-  'deviceType',
-  'networkState',
-  'screenHeight',
-  'screenWidth'
+    'deviceBrand',
+    'deviceModel',
+    'deviceType',
+    'networkState',
+    'screenHeight',
+    'screenWidth'
   ],
 });
 ```
@@ -207,7 +209,7 @@ gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 
 ### subpackage
 
-当且仅当您开发小程序时使用独立开发的分包（即主包与分包不在同一项目中时），需要在主包项目中与分包项目中分别集成SDK，并在**`分包`**项目中初始化时开启此项，可以使得主包与分包打通用户数据，合并为一个SDK运行逻辑。
+当且仅当您开发小程序时使用独立开发的分包（即主包与分包不在同一项目中时），需要在主包项目中与分包项目中分别集成SDK，并在**`分包`**项目中初始化时开启此项，可以使得主包与分包打通用户和页面数据，合并为一个SDK运行逻辑。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **使用此功能需主包分包同时注册分包集成插件。[参考文档](/docs/miniprogram/3.8/plugins#多项目打通插件giomultiintegrate)**
@@ -216,7 +218,7 @@ gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 
 淘宝小程序必填项。您需要指定为云函数单发或者为云应用配置服务信息。其中云函数配置与云应用配置方式字段互斥，只能选择其中一种方式进行配置，配置字段均为**必填**，请求类型均为POST。
 
-两种方式的区别为：云函数直接发送数据至Gio平台，且域名及所有字段需要申请淘宝白名单；云应用为发送至客户聚石塔服务端，然后再转发至Gio平台。
+两种方式的区别为：云函数直接发送数据至Gio平台，但域名及所有字段需要申请淘宝白名单；云应用为发送至客户服务端，然后再转发至Gio平台。
 
 云应用调用时，SDK给指定云服务接口地址发送上报数据外，还会在params中额外带上`host`, `projectId`, `stm`字段用于服务端拼接Gio转发地址。
 
@@ -226,7 +228,7 @@ gdp('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 tbConfig: {
   cloudFuncSend: true,             // 是否使用云函数进行数据单发，默认为 false
   cloudFuncName: 'httpTunnel'      // 调用的云函数名称，默认为 httpTunnel
-  cloudFuncHandler: 'main'         // 指定云函数的handler默认为 main
+  cloudFuncHandler: 'main'         // 指定云函数的handler，默认为 main
 }
 ```
 

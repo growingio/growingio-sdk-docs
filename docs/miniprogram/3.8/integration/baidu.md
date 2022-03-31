@@ -6,23 +6,23 @@ title: 百度小程序
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-变更记录：[查看Changelog](/docs/miniprogram/version)
-
-## 准备工作
-
-1、在平台中新建项目并获取**`projectId`和`dataSourceId`**。
-
-2、在小程序中获取**`appId`**。
-
-3、[点击下载SDK](https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js)，存放在项目中，下文中以`utils/gio`目录为例。
-
-## 集成
-
 对于百度小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
 
 如果您使用跨平台框架开发且有多端（特指小程序，快应用、App和Web除外）同时需要集成SDK的需求时，只需在框架代码中集成一次即可。例：
 
 >使用uni-app同时开发微信小程序和支付宝小程序，只需集成一次即可。
+
+### 准备工作
+
+1、在Gio平台中新建项目并获取**`projectId`和`dataSourceId`**。
+
+2、在您的小程序中获取**`appId`**。
+
+3、在下列选项中选择正确的开发框架，并下载对应的SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
+
+### 集成
+
+参考示例在 app.js/main.js 小程序主文件中添加初始化代码。注意不要随意修改初始化代码位置。
 
 <Tabs
   groupId="1"
@@ -31,15 +31,18 @@ import TabItem from '@theme/TabItem';
     {label: 'Native原生', value: 'Native原生'},
     {label: 'uni-app', value: 'uni-app'},
     {label: 'Taro', value: 'Taro'},
+    {label: 'Chameleon', value: 'Chameleon'},
   ]
 }>
   <TabItem value="Native原生">
 
+#### 百度原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-baidu.js>
+
+##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+
 ```js
 // app.js
 import gdp from './utils/gio/sdk.js';
-
-...your codes
 
 gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -52,6 +55,11 @@ App({ ... });
 
   </TabItem>
   <TabItem value="uni-app">
+
+#### uni-app框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-uniapp.js>
+
+##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+
   <Tabs
       groupId="2"
       defaultValue="uni-app(vue2)"
@@ -67,8 +75,6 @@ App({ ... });
 import Vue from 'vue';
 import App from './App.vue';
 import gdp from './utils/gio/sdk.js';
-
-...your codes
 
 App.mpType = 'app';
 
@@ -97,7 +103,6 @@ import gdp from './utils/gio/sdk.js';
 export function createApp() {
   // 注意vue3中app实例在初始化之前
   const app = createApp(App);
-  ...your codes
 
   gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
       version: 'miniProgram version',
@@ -115,6 +120,11 @@ export function createApp() {
 
   </TabItem>
   <TabItem value="Taro">
+
+#### Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-taro.js>
+
+##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+
   <Tabs
     groupId="3"
     defaultValue="Taro2"
@@ -131,8 +141,6 @@ export function createApp() {
 // app.jsx
 import Taro, { Component } from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
-
-...your codes
 
 gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -154,8 +162,6 @@ import React, { Component } from 'react';
 import Taro from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
 
-...your codes
-
 gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
@@ -175,8 +181,6 @@ export default App;
 import Vue from 'vue';
 import Taro from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
-
-...your codes
 
 gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -200,8 +204,6 @@ import { createApp } from 'vue';
 import Taro from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
 
-...your codes
-
 // 注意vue3中App实例在初始化之前
 const App = createApp({ ... });
 
@@ -219,20 +221,76 @@ export default App;
   </TabItem>
   </Tabs>
   </TabItem>
+  <TabItem value="Chameleon">
+
+#### Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-chameleon.js>
+
+##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+
+```js
+// app.cml
+import Cml from 'chameleon-runtime';
+import gdp from './utils/gio/sdk.js';
+
+gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+    version: 'miniProgram version',
+    host: 'api.growingio.com',
+    cml: Cml
+    ...other settings
+});
+
+class App { ... }
+
+export default new App();
+```
+
+  </TabItem>
 </Tabs>
 
 ```js
-如果您想保留原有 require 的引用方式，请删除`default`，使用 `const gdp = require('./utils/gio/sdk.js');` 即可。
+原有 require 的引用方式依然可以使用。 const gdp = require('./utils/gio/sdk.js).default;
 ```
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.5/initSettings)菜单中查看***
 
-## 添加白名单
+### 插件扩展
 
-由于百度小程序对网络请求的限制[参考文档](https://smartprogram.baidu.com/docs/develop/api/net/net_rule/)，您需要在「智能小程序后台-设置-开发设置-服务器域名」中添加request合法域名。[智能小程序后台](https://smartprogram.baidu.com/developer/index.html)
+如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可下载插件包并按需进行扩展。
 
-## 数据校验
+#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/plugins.zip>
+
+##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+
+加载插件扩展的步骤为：
+
+* 1、下载功能插件，解压放入 plugins 目录中。
+* 2、在app.js/main.js中引入。
+* 3、在init语句前调用方法按数组形式传值。
+
+```js
+import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
+import gioCompress from './utils/plugins/gioCompress';
+
+...
+
+gdp('registerPlugins', [gioImpressionTracking, gioCompress]);
+gdp('init', xxxxx);
+```
+
+加载插件后会在初始化之前打印日志。例：
+
+![debugLog](/img/miniprogram/plugin_debug.png)
+
+### 数据校验
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
 
 ![debugLog](/img/miniprogram/swan_debug.png)
+
+### 添加白名单
+
+由于百度小程序对网络请求的限制[参考文档](https://smartprogram.baidu.com/docs/develop/api/net/net_rule/)，您需要在「智能小程序后台-设置-开发设置-服务器域名」中添加request合法域名。[智能小程序后台](https://smartprogram.baidu.com/developer/index.html)
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+
+**请在正式生产环境发布前完成白名单的添加，上线后再添加白名单可能会出现SDK无法上报数据的情况。重新发布小程序即可解决。**

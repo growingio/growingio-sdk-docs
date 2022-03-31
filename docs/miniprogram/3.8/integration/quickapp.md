@@ -6,25 +6,27 @@ title: 快应用
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-变更记录：[查看Changelog](/docs/miniprogram/version)
+目前快应用仅支持原生开发方式。如您使用了其他开发方式，请咨询我们。
 
-## 准备工作
+### 准备工作
 
-1、在平台中新建项目并获取**`projectId`和`dataSourceId`**。
+1、在Gio平台中新建项目并获取**`projectId`和`dataSourceId`**。
 
-2、在快应用中获取**`packageName`**(即包名)。
+2、在您的小程序中获取**`appId`**。
 
-3、[点击下载SDK](https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js)，存放在项目中，下文中以`utils/gio`目录为例。
+3、下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
 
-## 集成
+### 集成
 
-目前我们仅支持原生开发的快应用。如您使用了其他开发方式，请咨询我们。
+参考示例在 app.ux 快应用主文件中添加初始化代码。注意不要随意修改初始化代码位置。
+
+#### 快应用原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-quickapp.js>
+
+##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
 ```js
 // app.ux
 import gdp from './utils/gio/sdk.js';
-
-...your codes
 
 gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your packageName', {
     version: 'quickapp version',
@@ -39,17 +41,45 @@ export default GioPage({ ... }); // 所有的页面文件要包裹GioPage()方�
 ```
 
 ```js
-如果您想保留原有 require 的引用方式，请删除`default`，使用 `const gdp = require('./utils/gio/sdk.js');` 即可。
+原有 require 的引用方式依然可以使用。 const gdp = require('./utils/gio/sdk.js).default;
 ```
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.5/initSettings)菜单中查看***
 
-## 功能点信息
+### 插件扩展
 
-**暂不支持 `表单提交事件`、`半自动采集浏览事件`、`分享事件`**
+如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可下载插件包并按需进行扩展。
+
+#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/plugins.zip>
+
+##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+
+加载插件扩展的步骤为：
+
+* 1、下载功能插件，解压放入 plugins 目录中。
+* 2、在app.js/main.js中引入。
+* 3、在init语句前调用方法按数组形式传值。
+
+```js
+import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
+import gioCompress from './utils/plugins/gioCompress';
+
+...
+
+gdp('registerPlugins', [gioImpressionTracking, gioCompress]);
+gdp('init', xxxxx);
+```
+
+加载插件后会在初始化之前打印日志。例：
+
+![debugLog](/img/miniprogram/plugin_debug.png)
 
 ## 数据校验
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
 
 ![debugLog](/img/miniprogram/quickapp_debug.png)
+
+## 其他信息
+
+**暂不支持 `表单提交事件`、`半自动采集浏览事件`、`分享事件`**

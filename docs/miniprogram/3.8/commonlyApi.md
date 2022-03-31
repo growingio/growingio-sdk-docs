@@ -6,42 +6,11 @@ title: 数据采集API
 
 通过 **`global.gdp`** 这个全局的方法可以调用到SDK中所有开放的接口。
 
-您可在页面头部进行解构获取gdp方法。**`const { gdp } = global;`**
-
-## 初始化
-
-### 1、初始化SDK(init)
-
-[参考集成文档](/docs/miniprogram/3.8/integration/wx)
-
-### 2、初始化SDK(setConfig)
-
-***此方法废弃，请参考 init 初始化***
-
-在<3.8.0的旧版本中我们提供了两种初始化方式：`init` 和 `setConfig`，这引起了很多用户的误解，现在我们将只保留 `init` 的初始化方式，以此来降低您的理解成本。
-
-### 3、注册插件(registerPlugins)
-
-如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可按需下载对应功能的插件进行扩展。加载插件扩展的步骤为：
-
-* 1、在SDK文件所在目录新建目录 `plugins`。
-* 2、下载对应功能插件放入 plugins 目录中。
-* 3、在app.js中引入。
-* 4、在init语句前按数组形式传值调用方法。
-
-```js
-import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
-import gioCompress from './utils/plugins/gioCompress';
-
-...
-
-gdp('registerPlugins', [gioImpressionTracking, gioCompress]);
-gdp('init', xxxxx);
-```
+您可在页面头部进行解构获取gdp方法。**`const { gdp } = global;`**(支付宝和淘宝小程序为 $global)
 
 ## 动态修改配置接口(setOption)
 
-由于多样的动态修改配置的需求，我们在`3.8.0`版本开始提供了统一的接口，以降低您的使用难度。设值成功返回true，设值失败返回false。（<3.8.0的写法并不会有返回值）
+由于多样的动态修改配置的需求，我们在`3.8.0`版本开始提供了统一的接口，以降低您的使用难度。设值成功返回true，设值失败返回false。
 
 ```js
 gdp('setOption', optionKey, optionValue);  // return true | false
@@ -49,7 +18,7 @@ gdp('setOption', optionKey, optionValue);  // return true | false
 
 ### 1、开启/关闭无埋点数据采集(autotrack)
 
-默认开启无埋点数据采集。当设置为 **`flase`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。
+当加载了无埋点插件时，默认开启无埋点数据采集。当设置为 **`flase`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。未加载插件时无论 autotrack 是否开启都不会进行采集。
 
 ```js
 gdp('setOption', 'autotrack', true | false);
@@ -60,7 +29,7 @@ gdp('setOption', 'autotrack', true | false);
 
 ### 2、开启/关闭数据采集(dataCollect)
 
-默认开启数据采集。当设置为 **`false`** 时，SDK将不会采集和上报事件。
+默认开启数据采集。当设置为 **`false`** 时，SDK将不会采集和上报事件。由关闭修改为开启时，自动补发VISIT和PAGE事件。
 
 ```js
 gdp('setOption', 'dataCollect', true | false);
@@ -71,7 +40,7 @@ gdp('setOption', 'dataCollect', true | false);
 
 ### 3、开启/关闭调试模式(debug)
 
-默认不开启。当设置为 **`true`** 时， 开启后会在开发者工具控制台输出日志
+默认不开启。当设置为 **`true`** 时，开启后会在开发者工具控制台输出日志。
 
 ```js
 gdp('setOption', 'debug', true | false);
@@ -93,7 +62,7 @@ gdp('setOption', 'host', 'wxapi.growingio.com');
 
 ### 5、修改请求协议(scheme)
 
-默认为**`https`**，您可以在开发过程中自定义设置
+默认为**`https`**，您可以在开发过程中设置为 `http` 方便与服务端进行调试。注意上生产环境前修改回 `https`。
 
 ```js
 gdp('setOption', 'scheme', 'http' | 'https');
@@ -114,8 +83,7 @@ gdp('setOption', 'scheme', 'http' | 'https');
 gdp('identify', openId);
 ```
 
-#### <font color="#FC5F3A">注意：</font>
-
+**<font color="#FC5F3A">注意：</font>**<br/>
 **若使用此接口需要在初始化时将 forceLogin 设置为 true [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**
 
 ### 2、设置登录用户id(setUserId)
@@ -138,8 +106,7 @@ gdp('setUserId', 'userId');
 gdp('setUserId', 'userId', 'userKey');
 ```
 
-#### <font color="#FC5F3A">注意：</font>
-
+**<font color="#FC5F3A">注意：</font>**<br/>
 **SDK版本 >=3.3.0 支持 ID-MAPPING，且需初始化时设置 `enableIdMapping` 为 `true`**
 
 ### 3、清除登录用户id(clearUserId)
@@ -196,7 +163,7 @@ gdp('setUserAttributes', { name: 'hjh' });
 
 ### 6、地理位置(getLocation)
 
-通过手动调用地理位置接口来补发地理位置信息，提升用户地域分布的分析准确性。
+当用户访问至某一功能需要位置信息时，可以手动调用获取地理位置接口，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。同时您可能需要配置项目的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)
 
 #### 示例
 
@@ -205,9 +172,8 @@ gdp('getLocation');
 // 调用后会自动补发带位置信息的VISIT事件
 ```
 
-#### <font color="#FC5F3A">注意：</font>
-
-**初始化配置项 location.autoGet 打开时，无需调用此接口。**
+**<font color="#FC5F3A">注意：</font>**<br/>
+**手动调用getLocation方法时，需要用户授权。**
 
 ### 7、与h5打通用户数据(getGioInfo)
 
@@ -218,7 +184,7 @@ giou              访问用户Id(deviceId)
 gios              sessionId
 giocs1            登录用户Id
 gioid             上一个非空的登录用户Id
-giouserkey        用户KEY
+giouserkey        用户Key
 gioprojectid      项目Id
 gioappid          小程序appId
 gioplatform       小程序平台
@@ -230,15 +196,19 @@ giodatacollect    小程序是否采集数据
 
 ```js
 gdp('getGioInfo');
+
+// 手动拼接url示例
+`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
 ```
 
 如果以上字段仍不能满足您分析需求，可在初始化时添加 `extraParams` [参考文档](/docs/miniprogram/3.8/initSettings#extraparams)配置字段来额外增加一些信息。
 
-#### <font color="#FC5F3A">注意：</font>
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1）gdp('getGioInfo')返回的是一个query字符串，需要您在字符串前手动拼接 ? 或 & 符号。**
 
-**1）与H5打通数据时信息是一次性的，如果切换用户导致sessionId或userId等用户信息变动或者修改了dataCollect时，需要您手动重设H5地址来同步信息。例：**
+**2）gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您销毁当前webview重设地址。并且使用不保留当前页面的跳转方式跳出承载webview的小程序页面。**
 
-**注意：gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您销毁当前webview重设地址。并且使用不保留当前页面的跳转方式跳出承载webview的小程序页面。 例：**
+#### 示例
 
 ```js
 // js
@@ -270,19 +240,7 @@ Page({
 </view>
 ```
 
-**2）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，用于控制内嵌页与小程序是否同步发送数据。（即内嵌页SDK会受小程序SDK控制是否采集数据）**
-
-**`gdp('getGioInfo')`默认获取到的数据示例：**
-
-```js
-// H5 页面原有的 URL为 :
-'https://www.growingio.com/?foo=1'
-```
-
-```js
-// 小程序WebView加载H5时的拼接示例为
-`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
-```
+**3）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，用于控制内嵌页与小程序是否同步发送数据。（即内嵌页SDK会受小程序SDK控制是否采集数据）**
 
 ### 8、获取SDK当前配置(getOption)
 
@@ -294,9 +252,9 @@ Page({
 gdp('getOption');
 ```
 
-#### <font color="#FC5F3A">注意：</font>
+### 9、获取SDK当前版本
 
-**SDK版本 >=3.8.0 支持**
+在代码或开发者工具中直接调用 `global.gioSDKVersion` 即可获取。
 
 ## 采集标记
 
@@ -328,16 +286,16 @@ gdp('getOption');
 1）有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-title` 来补充SDK采集的内容。例：
 
 ```html
-<view data-title="额外的上报信息">节点</view>
+<button data-title="额外的上报信息">节点</button>
 ```
 
 2）有时我们页面中可能存在类似列表类的Dom结构相似或一致使得SDK上报数据出现无法区分的情况。此时，我们可以通过索引标记 `data-index` 来准确描述节点信息。例：
 
 ```html
 <view>
-  <view data-index="1">节点1</view>
-  <view data-index="2">节点2</view>
-  <view data-index="3">节点3</view>
+  <button data-index="1">节点1</button>
+  <button data-index="2">节点2</button>
+  <button data-index="3">节点3</button>
 </view>
 ```
 
@@ -355,15 +313,14 @@ gdp('getOption');
 </view>
 ```
 
-#### <font color="#FC5F3A">注意：</font>
-
-**在有上述3种额外采集标记的节点上，必须要有一个点击事件，SDK才能实现点击的额外数据采集。如果没有，需要您手动绑定一个空的点击事件。**
+**<font color="#FC5F3A">注意：</font>**<br/>
+**在有上述3种额外采集标记的节点上，必须绑定一个点击事件，SDK才能实现点击的额外数据采集。如果没有，需要您手动绑定一个空的点击事件。**
 
 ### 3、忽略采集标记
 
 有时我们会根据业务中不同的需要使用一些自己开发的组件或第三方组件，可能会触发SDK的 `VIEW_CHANGE` 事件，但我们并不期望它发生。
 
-此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。例：
+此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。**注意标记在事件绑定的节点上。**例：
 
 ```html
 <view data-growing-ignore>要忽略的节点</view>
@@ -415,9 +372,10 @@ Page({
 gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id', id: '12345' });
 ```
 
-#### <font color="#FC5F3A">注意：</font>
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1）此功能需要注册半自动埋点浏览插件使用。**
 
-`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的合法字符串，SDK会自动尝试进行格式化。
+**2）`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object合法字符串，SDK会自动尝试进行格式化**。
 
 <!-- 2）快手小程序在同一个页面中只能监听相同大小节点的第一个，即如果在同一个页面中需要监听多个节点时，要保证节点大小不一致，否则曝光事件会全部匹配到第一个相同大小的节点。 -->
 
@@ -430,7 +388,3 @@ SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**
 **`key:` string | number，length <=50；**
 
 **`value:` string | number，length <=1000；**
-
-#### <font color="#FC5F3A">注意：</font>
-
-**SDK版本 >=3.8.0 支持**
