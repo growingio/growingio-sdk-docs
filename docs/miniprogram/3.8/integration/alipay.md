@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 }>
   <TabItem value="Native原生">
 
-#### 支付宝原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-alipay.js>
+#### 支付宝原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-alipay.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -57,7 +57,7 @@ App({ ... });
   </TabItem>
   <TabItem value="uni-app">
 
-#### uni-app框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-uniapp.js>
+#### uni-app框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-uniapp.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -122,7 +122,7 @@ export function createApp() {
   </TabItem>
   <TabItem value="Taro">
 
-#### Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-taro.js>
+#### Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-taro.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -224,7 +224,7 @@ export default App;
   </TabItem>
   <TabItem value="Chameleon">
 
-#### Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-chameleon.js>
+#### Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-chameleon.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -248,7 +248,7 @@ export default new App();
   </TabItem>
   <TabItem value="Remax">
 
-#### Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-remax.js>
+#### Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-remax.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -282,7 +282,7 @@ export default App;
 
 如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可下载插件包并按需进行扩展。
 
-#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/plugins.zip>
+#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/plugins.zip>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 

@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 
 参考示例在 app.ux 快应用主文件中添加初始化代码。注意不要随意修改初始化代码位置。
 
-#### 快应用原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/gio-quickapp.js>
+#### 快应用原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-quickapp.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -50,7 +50,7 @@ export default GioPage({ ... }); // 所有的页面文件要包裹GioPage()方�
 
 如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可下载插件包并按需进行扩展。
 
-#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-Beta.1/plugins.zip>
+#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/plugins.zip>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 

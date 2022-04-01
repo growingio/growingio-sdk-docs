@@ -57,13 +57,15 @@ Component({ ... });
 
 ### 其他
 
-如果您调用了`gioGlobal`中的内容，请尝试从`global（支付宝和淘宝小程序是 $global）`中重新获取，`gioGlobal`已经被弃用。
+1）如果您调用了`gioGlobal`中的内容，请尝试从`global（支付宝和淘宝小程序是 $global）`中重新获取，`gioGlobal`已经被弃用。
+
+2）如果您在3.3版本就开启并使用了 无埋点 和 加密 功能，请在升级至 3.8 版本时，注册对应插件，请参考[插件扩展](/docs/miniprogram/3.8/integration/wechat#插件扩展)和[插件介绍](/docs/miniprogram/3.8/plugins)。
 
 ### 建议性修改
 
 1、如果您使用了旧版[动态配置接口](/docs/miniprogram/3.8/commonlyApi#动态配置接口)的调用方式，建议按新版使用方式进行修改。
 
-2、在<3.8的旧版本中，可能您的 **`gdp`** 方法是需要您通过手动挂载在例如`globalData`、`vue`、`gioGlobal`此类全局对象后再取出。从3.8.0的版本开始，您可以直接在页面中从 **`global（支付宝和淘宝小程序是 $global）`**对象中取出，从而免去了繁杂的存取值流程。例：
+2、在<3.8的旧版本中，可能您的 **`gdp`** 方法是需要您通过手动挂载在例如`globalData`、`vue`、`gioGlobal`此类全局对象后再取出。从3.8的版本开始，您可以直接在页面中从 **`global（支付宝和淘宝小程序是 $global）`**对象中取出，从而免去了繁杂的存取值流程。例：
 
 ```js
 const { gdp } = global;
