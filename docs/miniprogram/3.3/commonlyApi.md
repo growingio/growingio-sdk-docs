@@ -341,68 +341,6 @@ Page({
 <view data-growing-ignore>要忽略的节点</view>
 ```
 
-## 其他
-<!--
-### 半自动埋点浏览事件
-
-用户标记一个元素并提供埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要[参考埋点事件](/docs/miniprogram/3.3/commonlyApi#4埋点事件)在平台上进行事件类型和变量的预定义。
-
-**支持范围：微信小程序。支付宝小程序不支持。**
-
-使用方法：
-
-1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
-
-2、设置参数
-
-#### 方式一：(整体定义)
-
-在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs` 属性，并分别对应 `track` 方法中的 `eventId` 和 `properties` 参数进行设置，参数规则[参考文档](/docs/miniprogram/3.3/commonlyApi#4埋点事件track)。
-
-```js
-Page({
-  data: {
-    impAttrs: JSON.stringify({ type: 'fruit', name: 'apple', color: 'red' }),
-  }
-})
-```
-```html
-<view
-  class="growing_collect_imp"
-  data-gio-imp-track="imp_goods_var"
-  data-gio-imp-attrs="{{ impAttr }}"
->
-  监听的元素
-</view>
-```
-对应产生的`CUSTOM`事件相当于： ↓↓↓
-```js
-gdp('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
-```
-**请注意：`data-gio-imp-attrs` 允许接受一个Object或者合法的Object字符串，我们会尝试进行对象格式化。**
-
-#### 方式二：(单个字段定义)
-
-在节点上添加 `data-gio-imp-track` 属性，添加 `data-gio-imp-${key} = ${value}` 的自定义参数。
-
-```html
-<view
-  class="growing_collect_imp"
-  data-gio-imp-track="imp_people_var"
-  data-gio-imp-name="lucy"
-  data-gio-imp-age="10"
-  data-gio-imp-sex="girl"
->
-  监听的元素
-</view>
-```
-对应产生的`CUSTOM`事件相当于： ↓↓↓
-```js
-gdp('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
-```
-
-3、设置完参数后，在当前页面的 `onShow` 中，添加 `gdp('collectImp', this);` 进行注册。 -->
-
 ### navigator组件
 
 如果您的小程序使用了navigator组件，需要您手动绑定一个空的点击事件，SDK才能实现跳转点击的采集。例：
