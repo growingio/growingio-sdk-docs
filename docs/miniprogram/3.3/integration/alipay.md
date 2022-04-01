@@ -44,7 +44,7 @@ const gdp = require('./utils/gio/sdk.js').default;
 
 
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     ...other settings

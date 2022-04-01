@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 ### 准备工作
 
-1、在Gio平台中新建项目并获取**`projectId`和`dataSourceId`**。
+1、在Gio平台中新建项目并获取**`accountId`和`dataSourceId`**。
 
 2、在您的小程序中获取**`appId`**。
 
@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 // app.ux
 import gdp from './utils/gio/sdk.js';
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your packageName', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your packageName', {
     version: 'quickapp version',
     host: 'api.growingio.com',
     ...other settings

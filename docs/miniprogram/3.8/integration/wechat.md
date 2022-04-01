@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 ### 准备工作
 
-1、在Gio平台中新建项目并获取**`projectId`和`dataSourceId`**。
+1、在Gio平台中新建项目并获取**`accountId`和`dataSourceId`**。
 
 2、在您的小程序中获取**`appId`**。
 
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
 // app.js
 import gdp from './utils/gio/sdk.js';
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     ...other settings
@@ -80,7 +80,7 @@ import gdp from './utils/gio/sdk.js';
 
 App.mpType = 'app';
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     uniVue: Vue,
@@ -106,7 +106,7 @@ export function createApp() {
   // 注意vue3中app实例在初始化之前
   const app = createApp(App);
 
-  gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+  gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
       version: 'miniProgram version',
       host: 'api.growingio.com',
       uniVue: app,
@@ -144,7 +144,7 @@ export function createApp() {
 import Taro, { Component } from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     taro: Taro,
@@ -164,7 +164,7 @@ import React, { Component } from 'react';
 import Taro from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     taro: Taro,
@@ -184,7 +184,7 @@ import Vue from 'vue';
 import Taro from '@tarojs/taro';
 import gdp from './utils/gio/sdk.js';
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     taro: Taro, // 注意taro和taroVue都需要传
@@ -209,7 +209,7 @@ import gdp from './utils/gio/sdk.js';
 // 注意vue3中App实例在初始化之前
 const App = createApp({ ... });
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     taro: Taro, // 注意taro和taroVue都需要传
@@ -235,7 +235,7 @@ export default App;
 import Cml from 'chameleon-runtime';
 import gdp from './utils/gio/sdk.js';
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     cml: Cml
@@ -259,7 +259,7 @@ export default new App();
 import wepy from 'wepy';
 import gdp from './utils/gio/sdk.js';
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     wepy: wepy,
@@ -281,7 +281,7 @@ wepy.app({ ... });
 import * as remax from 'remax';
 import gdp from './utils/gio/sdk.js';
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     remax: remax,

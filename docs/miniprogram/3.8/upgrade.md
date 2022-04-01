@@ -26,7 +26,7 @@ import gdp from './utils/gio/sdk.js';
 5、检查配置项，如果您是`uni-app vue2`、`taro3 vue2`、`WePY`开发的小程序，请移除 **`vue`** 配置，并参考集成文档添加对应的实例参数。如果不是则跳过此步骤。例：
 
 ```js
-gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
+gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     // vue: Vue,  移除此配置
@@ -34,6 +34,8 @@ gdp('init', 'your GrowingIO projectId', 'your dataSourceID', 'your AppId', {
     ...other settings
 });
 ```
+
+
 
 ### 页面
 

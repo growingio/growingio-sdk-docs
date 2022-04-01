@@ -25,9 +25,9 @@ title: 小程序 SDK
 - 新增uni-app vue3、taro3 vue3、remax的支持。
 - 新增淘宝小程序云函数和云应用转发方式的适配。
 
-
+:::info
 目前小程序SDK3.8还在公测阶段，发布的均为RC版本，版本中适配有一些客户的需求，会在这部分客户中试运行。小程序SDK3.3还是目前的稳定版本，如果3.3版本可以满足需求，建议使用 3.3版本。
-
+:::
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
