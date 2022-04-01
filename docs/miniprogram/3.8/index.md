@@ -1,6 +1,6 @@
 ---
 slug: /minprogram/3.8
-title: 小程序 SDK（3.8） 
+title: 小程序 SDK（3.8）
 ---
 
 import Tabs from '@theme/Tabs';
@@ -52,3 +52,6 @@ import TabItem from '@theme/TabItem';
 
 详情介绍请见[3.0升级到3.8](/docs/miniprogram/3.8/upgrade)
 
+## 其他
+
+由于目前3.8版本还在公测阶段，更新可能会较为频繁，如果您使用了3.8版本，请注意关注更新信息及时升级。
