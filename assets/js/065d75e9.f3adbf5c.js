@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkgrowingio_sdk_doc=self.webpackChunkgrowingio_sdk_doc||[]).push([[9629],{5214:function(o){o.exports=JSON.parse('{"allTagsPath":"/growingio-sdk-docs/blog/tags","slug":"/growingio-sdk-docs/blog/tags/autorelease-pool","name":"AutoreleasePool","count":1,"permalink":"/growingio-sdk-docs/blog/tags/autorelease-pool"}')}}]);
