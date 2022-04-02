@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
 }>
   <TabItem value="Native原生">
 
-#### 微信原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-wechat.js>
+#### QQ原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-qq.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
