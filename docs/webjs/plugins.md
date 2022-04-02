@@ -121,7 +121,7 @@ domain: 使用H5页面的域名
 ### 打通设置
 
 #### 小程序端
-小程序端相关设置参考[与h5打通用户数据](/docs/miniprogram/commonlyApi#与h5打通用户数据getgioinfo)
+小程序端相关设置参考[与h5打通用户数据](/docs/miniprogram/3.3/commonlyApi#与h5打通用户数据getgioinfo)
 #### Web端
 
 在集成时使用和小程序相同的 accountId 和 appid 即可，如小程序的 accountId 为 pid11，appid 为 wx33
@@ -135,7 +135,7 @@ gdp('init', 'pid11', 'ds22', 'wx33', {
 
 ### 打通成功效果
 ![MinpToH5](../../static/img/MinpToH5.png)
-当触发了打通规则后，默认h5内嵌页中发送数据时字段的变化如下，如果配置了[extraParams](/docs/miniprogram/initSettings#extraparams)，h5内嵌页中发送数据时会增加配置的字段数据。
+当触发了打通规则后，默认h5内嵌页中发送数据时字段的变化如下，如果配置了[extraParams](/docs/miniprogram/3.3/initSettings#extraparams)，h5内嵌页中发送数据时会增加配置的字段数据。
 当触发了打通规则后，h5 页面的 Web JS SDK 调用 setUserID， cleanUserID 接口将无效。
 ```tex
 deviceId: 使用小程序的deviceId

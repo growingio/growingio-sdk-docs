@@ -18,9 +18,9 @@ AccountID、DataSourceID、AppId 需要在CDP增长平台上新建数据获取�
 Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
 :::
 ##### 创建
-![新建数据源](./../../../static/img/createapplication.png)
+![新建数据源](/img/createapplication.png)
 ##### 查看
-![查看数据源](./../../../static/img/miniprogram/dataSourceInfo.png)
+![查看数据源](/img/miniprogram/dataSourceInfo.png)
 
 
 ## 集成
@@ -314,7 +314,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 </TabItem>
 </Tabs>
 
-***更多配置项请在[集成配置](/docs/miniprogram/initSettings)菜单中查看***
+***更多配置项请在[集成配置](/docs/miniprogram/3.3/initSettings)菜单中查看***
 
 ## 添加白名单
 

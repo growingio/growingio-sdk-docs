@@ -55,7 +55,7 @@ gdp('setTrackerScheme', 'http' | 'https');
 
 :::info
 若使用此接口需要在初始化时将 forceLogin 设置为 true
-参考[设置强制登录模式](/docs/miniprogram/initSettings#forcelogin)
+参考[设置强制登录模式](/docs/miniprogram/3.3/initSettings#forcelogin)
 :::
 在微信小程序调用[登录开放接口](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) `wx.login` 之后，获取 openId，调用 identify 设置访问用户ID。
 
@@ -136,7 +136,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 
 ### 登录用户属性(setUserAttributes)
 
-以登录用户的身份定义登录用户属性，用于用户信息相关分析。
+以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
 
 #### 参数说明
 
@@ -149,24 +149,25 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 ```js
 gdp('setUserAttributes', { name: 'hjh' });
 ```
+
 #### 微信用户属性设置
 
-微信用户属性对分析微信小程序用户行为数据有着非常重要的作用。GrowingIO 平台系统中用户属性默认预定义有微信用户属性如下表：
+Gio平台系统中用户属性默认预定义的微信用户属性如下表：
 
-| 名称 | 标识符 |
-| :---: | :---: |
-| 微信 openid | $wechat_openId |
-| 微信 unionid | $wechat_unionId |
-| 微信昵称 | $wechat_nickName |
-| 微信头像 | $wechat_avatarUrl |
-| 微信用户性别  | $wechat_gender |
-|  微信用户所在国家 | $wechat_country |
-|  微信用户所在省份 | $wechat_province |
-| 微信用户所在城市 | $wechat_city |
-|  微信语言 | $wechat_language |
-|  关注公众号 | $wechat_subscribeList |
+|       名称       |        标识符         |
+|:--------------:|:---------------------:|
+|   微信 openid    |    $wechat_openId     |
+|   微信 unionid   |    $wechat_unionId    |
+|     微信昵称     |   $wechat_nickName    |
+|     微信头像     |   $wechat_avatarUrl   |
+|   微信用户性别   |    $wechat_gender     |
+| 微信用户所在国家 |    $wechat_country    |
+| 微信用户所在省份 |   $wechat_province    |
+| 微信用户所在城市 |     $wechat_city      |
+|     微信语言     |   $wechat_language    |
+|    关注公众号    | $wechat_subscribeList |
 
-当小程序获取到微信用户信息后，**无需**在 GrowingIO 客户数据平台用户属性中添加以上属性标识符，**直接**调用 `setUserAttributes` 上报微信用户信息即可。例如：
+当小程序获取到微信用户信息后，以上属性标识符**无需**在Gio平台用户属性中添加，调用 `setUserAttributes` 上报微信用户信息即可。注意自行添加 `$wechat_` 的前缀。例：
 
 ```js
 wx.getUserInfo({
@@ -183,22 +184,22 @@ wx.getUserInfo({
 
 #### 支付宝用户属性设置
 
-支付宝用户属性对分析支付宝小程序用户行为数据有着非常重要的作用。GrowingIO 平台系统中用户属性默认预定义有支付宝用户属性如下表：
+Gio平台系统中用户属性默认预定义的支付宝用户属性如下表：
 
-| 名称 | 标识符 |
-| :---: | :---: |
-| 支付宝用户 ID | $alipay_userId |
-| 支付宝头像 | $alipay_avatar |
-| 支付宝用户所在省份 | $alipay_province |
-| 支付宝用户所在城市 | $alipay_city |
-| 支付宝用户昵称 | $alipay_nickName |
-| 支付宝学生认证 | $alipay_isStudentCertified |
-| 支付宝用户类型 | $alipay_userType |
-| 支付宝用户状态 | $alipay_userStatus |
-| 支付宝实名认证 | $alipay_isCertified |
-| 支付宝用户性别 | $alipay_gender |
+|        名称        |           标识符           |
+|:----------------:|:--------------------------:|
+|   支付宝用户 ID    |       $alipay_userId       |
+|     支付宝头像     |       $alipay_avatar       |
+| 支付宝用户所在省份 |      $alipay_province      |
+| 支付宝用户所在城市 |        $alipay_city        |
+|   支付宝用户昵称   |      $alipay_nickName      |
+|   支付宝学生认证   | $alipay_isStudentCertified |
+|   支付宝用户类型   |      $alipay_userType      |
+|   支付宝用户状态   |     $alipay_userStatus     |
+|   支付宝实名认证   |    $alipay_isCertified     |
+|   支付宝用户性别   |       $alipay_gender       |
 
-当小程序获取到支付宝用户信息后，**无需**在 GrowingIO 客户数据平台用户属性中添加以上属性标识符，**直接**调用 `setUserAttributes` 上报支付宝用户信息即可。例如：
+当小程序获取到支付宝用户信息后，以上属性标识符**无需**在Gio平台用户属性中添加，调用 `setUserAttributes` 上报微信用户信息即可。注意自行添加 `$alipay_` 的前缀。例：
 
 ```js
 my.getAuthUserInfo({
@@ -211,11 +212,6 @@ my.getAuthUserInfo({
   }
 });
 ```
-:::info
-
-详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
-
-:::
 
 ### 地理位置(getLocation)
 
@@ -295,14 +291,6 @@ Page({
 **如果您需要获取更多的小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
 
 **H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
-<!-- ### 8、手动注册半自动曝光事件(collectImp)
-```js
-Page({
-  onShow: {
-    gdp('collectImp', this);
-  }
-});
-``` -->
 
 ## 采集标记
 
@@ -352,68 +340,6 @@ Page({
 ```html
 <view data-growing-ignore>要忽略的节点</view>
 ```
-
-## 其他
-<!--
-### 半自动曝光事件
-
-用户标记一个元素并提供埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要[参考埋点事件](/docs/miniprogram/commonlyApi#4埋点事件)在平台上进行事件类型和变量的预定义。
-
-**支持范围：微信小程序。支付宝小程序不支持。**
-
-使用方法：
-
-1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
-
-2、设置参数
-
-#### 方式一：(整体定义)
-
-在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs` 属性，并分别对应 `track` 方法中的 `eventId` 和 `properties` 参数进行设置，参数规则[参考文档](/docs/miniprogram/commonlyApi#4埋点事件track)。
-
-```js
-Page({
-  data: {
-    impAttrs: JSON.stringify({ type: 'fruit', name: 'apple', color: 'red' }),
-  }
-})
-```
-```html
-<view
-  class="growing_collect_imp"
-  data-gio-imp-track="imp_goods_var"
-  data-gio-imp-attrs="{{ impAttr }}"
->
-  监听的元素
-</view>
-```
-对应产生的`CUSTOM`事件相当于： ↓↓↓
-```js
-gdp('track', 'imp_goods_var', { type: 'fruit', name: 'apple', color: 'red' });
-```
-**请注意：`data-gio-imp-attrs` 允许接受一个Object或者合法的Object字符串，我们会尝试进行对象格式化。**
-
-#### 方式二：(单个字段定义)
-
-在节点上添加 `data-gio-imp-track` 属性，添加 `data-gio-imp-${key} = ${value}` 的自定义参数。
-
-```html
-<view
-  class="growing_collect_imp"
-  data-gio-imp-track="imp_people_var"
-  data-gio-imp-name="lucy"
-  data-gio-imp-age="10"
-  data-gio-imp-sex="girl"
->
-  监听的元素
-</view>
-```
-对应产生的`CUSTOM`事件相当于： ↓↓↓
-```js
-gdp('track', 'imp_people_var', { name: 'lucy', age: '10', sex: 'girl' });
-```
-
-3、设置完参数后，在当前页面的 `onShow` 中，添加 `gdp('collectImp', this);` 进行注册。 -->
 
 ### navigator组件
 
