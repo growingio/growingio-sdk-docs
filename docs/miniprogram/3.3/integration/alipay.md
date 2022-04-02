@@ -7,7 +7,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ### 集成准备
+
 #### 获取SDK初始化必传参数：AccountID、DataSourceID、 AppId、Host
+
 :::info
 AccountID：项目ID，代表一个项目<br/>
 DataSourceID：数据源ID，代表一个数据源<br/>
@@ -17,25 +19,32 @@ Host：采集数据上报的服务器地址<br/>
 Account ID、DataSource ID、AppId 需要在CDP增长平台上新建数据获取源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
 Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
 :::
+
 ##### 创建
-![新建数据源](./../../../static/img/createapplication.png)
+
+![新建数据源](/img/createapplication.png)
+
 ##### 查看
-![查看数据源](./../../../static/img/miniprogram/dataSourceInfo.png)
+
+![查看数据源](/img/miniprogram/dataSourceInfo.png)
 
 ## 集成
 
 目前我们仅支持原生开发的支付宝小程序。如您使用了其他开发方式，请咨询我们。
+
 ### 下载SDK
+
 <a href="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js" download="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js">点击下载SDK</a>，存放在项目中，下文中以`utils/gio`目录为例。
 
 ### 引入SDK，添加初始化代码
+
 ```js
 // app.js
 const gdp = require('./utils/gio/sdk.js').default;
 
-...your codes
 
-gdp('init', 'your GrowingIO projectId', 'your dataSourceId', 'your AppId', {
+
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'api.growingio.com',
     ...other settings
@@ -49,7 +58,7 @@ App($global.trackApp({ ... }))
 $global.GioPage({ ... })
 ```
 
-***更多配置项请在[集成配置](/docs/miniprogram/initSettings)菜单中查看***
+***更多配置项请在[集成配置](/docs/miniprogram/3.3/initSettings)菜单中查看***
 
 ## 添加白名单
 
