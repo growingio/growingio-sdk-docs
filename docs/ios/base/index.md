@@ -25,6 +25,13 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 ![查看数据源](./../../../static/img/showappdatasourceid.png)
 
 ## 无埋点 SDK 集成
+:::info
+**3.3.5 版本及以上，Swift 项目建议使用 SwiftPM 集成**
+
+如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/base#include-of-non-modular-header-inside-framework-module-报错解决方案)
+
+:::
+
 <Tabs>
   <TabItem value="cocoapods" label="Cocoapods集成" default>
 
@@ -219,6 +226,13 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 ## 埋点 SDK 集成
 
 埋点 SDK 只自动采集用户访问事件和 APP 关闭事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
+
+:::info
+**3.3.5 版本及以上，Swift 项目建议使用 SwiftPM 集成**
+
+如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/base#include-of-non-modular-header-inside-framework-module-报错解决方案)
+
+:::
 
 <Tabs>
   <TabItem value="cocoapods" label="Cocoapods集成" default>
@@ -501,3 +515,29 @@ GrowingIO SDK 使用 访问用户 ID 标识访问用户 ，其值使用 IDFA 、
 :::warning 注意
 使用 IDFA 作为访问用户 ID，同时为使 App 合规，则第一次 SDK 初始化应该在 用户同意隐私协议和获取 IDFA 权限之后。参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
 :::
+
+## 集成问题
+
+### Include of non-modular header inside framework module 报错解决方案
+
+Swift 项目如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，修改方式有以下 2 种：
+
+- 手动添加 Module 形式导入
+
+  需手动修改 Pods/GrowingAnalytics-cdp/Autotracker/GrowingAutotracker.h，添加 `@import GrowingAnalytics;`，示例如下：
+
+  ```
+  #import <UIKit/UIKit.h>
+  @import GrowingAnalytics; // 添加此module形式导入，避免Include of non-modular header inside framework module报错
+  #import "GrowingAttributesBuilder.h"
+  #import "GrowingAutotrackConfiguration.h"
+  #import "GrowingDynamicProxy.h"
+  #import "GrowingTrackConfiguration+CdpTracker.h"
+  ```
+
+  同理，如集成 `pod 'GrowingAnalytics-cdp/Tracker', '3.3.5-beta'`，也需对 Pods/GrowingAnalytics-cdp/Tracker/GrowingTracker.h 进行如上调整
+
+- 修改 OTHER_SWIFT_FLAGS
+
+  设置 OTHER_SWIFT_FLAGS 为 `-Xcc -Wno-error=non-modular-include-in-framework-module`
+
