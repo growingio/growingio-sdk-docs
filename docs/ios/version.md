@@ -18,7 +18,7 @@ sidebar_position: 0
 ### Bug Fixes
 
 * update sonar configure ([c21c2b7](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/c21c2b7e9465d3b64b4ce18fbbe1b27572cd3428))
-* 给Web端增加设置和清除UserKey的接口 ([f052d74](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/f052d74ad076c0d150b81ce9d570ab5d81973786))
+* 给 Web 端增加设置和清除 UserKey 的接口 ([f052d74](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/f052d74ad076c0d150b81ce9d570ab5d81973786))
 
 ### Features
 
@@ -32,11 +32,11 @@ sidebar_position: 0
 
 * 替换 Demo 中的 UIAlertView API 调用，改用 UIAlertController ([06bc718](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/06bc718f75752322e596b2f4146f7b6e97326a7a))
 * sonar quality optimization ([fb73f06](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/fb73f06f7607244c5b5027a40548cdc8c4b9de4b))
-* 对dyld部分操作使用纯c实现，避开runtime冲突 ([71aef51](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/71aef51781f63d630d96a86858ed7a6200588144))
+* 对 dyld 部分操作使用纯 C 实现，避开 runtime 冲突 ([71aef51](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/71aef51781f63d630d96a86858ed7a6200588144))
 
 ### Features
 
-* 3.3.2正式版发布 ([8c9f3f9](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/8c9f3f925ca304e68d6c7dc157f8fe2d318ab36b))
+* 3.3.2 正式版发布 ([8c9f3f9](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/8c9f3f925ca304e68d6c7dc157f8fe2d318ab36b))
 * Configuration 增加 EncryptEnabled 配置项 ([1f90d5e](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/1f90d5e342978c9e4314c495e1782199b9372df7))
 
 ------
@@ -117,23 +117,23 @@ sidebar_position: 0
 
 ### Bug Fixes
 
-* 和CocoaLumberjack重复定义常量问题处理 ([428e847](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/428e8477203083e04f2bdae148261002abb6de57))
+* 和 CocoaLumberjack 重复定义常量问题处理 ([428e847](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/428e8477203083e04f2bdae148261002abb6de57))
 * 删除无效参数 ([548ba97](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/548ba971946fecab335c0c4f85d9c3936aa127ee))
-* 添加对HTTP请求的数据加密，使用LZ4以及位运算 ([88c0709](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/88c0709ac1d1a805e9c700d102efc89b398c6bd5))
-* 添加对IDFA的配置项，用户可以自行配置是否获取idfa ([a75cd23](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a75cd2374998403cf81570d888db004ecc166e82))
-* 修改idfa逻辑沿用了userIdentifier的问题 ([eb8db84](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/eb8db841c85b1af966197eaa1cd9e90631abe8ab))
-* 修改location获取方式 ([4ecf484](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4ecf4843870581b2b60b2b59334fa21cb3cefa57))
-* 修改LZ4未加载，以及未经过LZ4压缩的问题 ([13651c3](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/13651c3e8bd6e6f6bc24c0933eda5dc58df34634))
-* 修改TrackConfiguration的impressionScale未在CopyWithZone赋值问题 ([cfe22dd](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/cfe22dd4611c114bb46415e30007155840a96ab7)), closes [#98](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/98)
-* pageGroup的初始化问题以及childpages变更为弱引用 ([147b3fc](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/147b3fc5d051101746c31b29beeed8480980d0ca)), closes [#103](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/103) [#104](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/104)
-* pod spec添加对加密的配置项，默认不开启加密 ([6661fc3](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/6661fc33fa9480800a3b61e52d05a0e7dfd26526))
-* 3.1.1-beta版本发布 ([bb65cb4](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/bb65cb4f28231b8fb5825ae2d0c5932d3cb400f4))
-* 修改setDelegate对象为Proxy时，crash以及hook失效问题 ([21ba793](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/21ba793982b2151ebd17c7fa6e33edd6dc69cf56))
+* 添加对 HTTP 请求的数据加密，使用 LZ4 以及位运算 ([88c0709](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/88c0709ac1d1a805e9c700d102efc89b398c6bd5))
+* 添加对 IDFA 的配置项，用户可以自行配置是否获取 IDFA ([a75cd23](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a75cd2374998403cf81570d888db004ecc166e82))
+* 修改 IDFA 逻辑沿用了 userIdentifier 的问题 ([eb8db84](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/eb8db841c85b1af966197eaa1cd9e90631abe8ab))
+* 修改 location 获取方式 ([4ecf484](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4ecf4843870581b2b60b2b59334fa21cb3cefa57))
+* 修改 LZ4 未加载，以及未经过 LZ4 压缩的问题 ([13651c3](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/13651c3e8bd6e6f6bc24c0933eda5dc58df34634))
+* 修改 TrackConfiguration 的 impressionScale 未在 CopyWithZone 赋值问题 ([cfe22dd](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/cfe22dd4611c114bb46415e30007155840a96ab7)), closes [#98](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/98)
+* pageGroup 的初始化问题以及 childpages 变更为弱引用 ([147b3fc](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/147b3fc5d051101746c31b29beeed8480980d0ca)), closes [#103](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/103) [#104](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/104)
+* pod spec 添加对加密的配置项，默认不开启加密 ([6661fc3](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/6661fc33fa9480800a3b61e52d05a0e7dfd26526))
+* 3.1.1-beta 版本发布 ([bb65cb4](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/bb65cb4f28231b8fb5825ae2d0c5932d3cb400f4))
+* 修改 setDelegate 对象为 Proxy 时，crash 以及 hook 失效问题 ([21ba793](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/21ba793982b2151ebd17c7fa6e33edd6dc69cf56))
 
 ### Features
 
-* 增加sonarcloud ([60f905e](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/60f905e831e98479e8f09912107be847379e55cb))
-* iDFA获取模块重整 ([02bab81](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/02bab816d94bf87bd4504639870c1b08d5b9d1ba))
+* 增加 sonarcloud ([60f905e](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/60f905e831e98479e8f09912107be847379e55cb))
+* iDFA 获取模块重整 ([02bab81](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/02bab816d94bf87bd4504639870c1b08d5b9d1ba))
 * release 3.2.0-beta ([115d234](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/115d23402fc8e714dc212fbc3bc2cf3e1c16e0b1))
 
 ------
@@ -143,16 +143,16 @@ sidebar_position: 0
 ### Bug Fixes
 
 * 修改头文件导入 ([2f759f1](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2f759f150916bb99857ecee0affc28818f132c6c))
-* 添加队列出队，防止mobiledebugger无事件时队列数据无法读取 ([f7ddd92](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/f7ddd92f1aec49635fdaf413401d60f11dc20898))
+* 添加队列出队，防止 mobiledebugger 无事件时队列数据无法读取 ([f7ddd92](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/f7ddd92f1aec49635fdaf413401d60f11dc20898))
 * 修改事件缓存机制，适配冷启动情况 ([a42ba83](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a42ba83b8f95d01fec307c389a58e6b0d76e055e))
-* 修改网络配置去除多余代码，url路径使用属性 ([d821b6d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/d821b6d362ce9b364d54bb1acda01428aadfbab2))
+* 修改网络配置去除多余代码，url 路径使用属性 ([d821b6d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/d821b6d362ce9b364d54bb1acda01428aadfbab2))
 * log Level capitalization ([391d87d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/391d87d45ab8502696458a70929b50861e48f0eb))
 * mobiledebugger ([daadd83](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/daadd830e4e68f62008eb8ca964b0dec41470be3))
 * test: updata testcase ([25b586c](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/25b586cf02b6b468c7cdd5ad99714f76da0eb92a))
 
 ### Features
 
-* 防止数组遍历时增删操作，发布3.1.0-beta版本 ([2e7e70b](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2e7e70bf8cc91645abc8bc7014a7ea006572f524))
+* 防止数组遍历时增删操作，发布 3.1.0-beta 版本 ([2e7e70b](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2e7e70bf8cc91645abc8bc7014a7ea006572f524))
 * add mobiledebugger & mobileloggeradd ([6834cd4](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/6834cd458a4c6592298f9f7dc7fe4e2725361117))
 
 ------
