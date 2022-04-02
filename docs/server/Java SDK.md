@@ -39,7 +39,7 @@ pom.xml
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.10-cdp</version>
+        <version>1.0.11-cdp</version>
     </dependency>
 </dependencies>
 ```
@@ -50,7 +50,7 @@ pom.xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.10-cdp</version>
+    <version>1.0.11-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
@@ -60,6 +60,21 @@ pom.xml
     </exclusions>
 </dependency>     
 ```
+
+如果使用gradle依赖，可以使用如下集成方式
+
+```gradle
+implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.11-cdp'
+```
+
+若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone
+
+```gradle
+implementation('io.growing.sdk.java:growingio-java-sdk:1.0.11-cdp:standalone') {
+    exclude module: 'protobuf-java'
+}
+```
+
 ### 配置文件信息
 
 配置在资源目录
@@ -143,10 +158,10 @@ project.send(eventMessage);
 ### 设置项目信息
 **参数说明**
 
-|参数名称|类型|是否必填|说明|
-| --- | --- | --- | --- |
-|setProjectKey|string|是|项目ID|
-|setDataSourceId|string|是|数据源ID|
+| 参数名称        | 类型   | 是否必填 | 说明     |
+| --------------- | ------ | -------- | -------- |
+| setProjectKey   | string | 是       | 项目ID   |
+| setDataSourceId | string | 是       | 数据源ID |
 
 ```java
 // Config GrowingIO
@@ -161,16 +176,16 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 
 **参数说明**
 
-|参数名称|类型|是否必填|说明|
-| --- | --- | --- | --- |
-|eventTime|long|否|事件发生时间(毫秒)|
-|eventKey|string|是|埋点事件标识符|
-|anonymousId|string|否|匿名用户ID|
-|loginUserKey|string|否|登录用户KEY|
-|loginUserId|string|否|登录用户ID|
-|addEventVariable|(string, string\|double\|int)|否|事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）|
-|addEventVariables|map<string,object>|否|事件属性集合;当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）|
-|addItem|(string, string)|否|物品模型ID, 物品模型KEY|
+| 参数名称          | 类型                          | 是否必填 | 说明                                                                                             |
+| ----------------- | ----------------------------- | -------- | ------------------------------------------------------------------------------------------------ |
+| eventTime         | long                          | 否       | 事件发生时间(毫秒)。需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认               |
+| eventKey          | string                        | 是       | 埋点事件标识符                                                                                   |
+| anonymousId       | string                        | 否       | 匿名用户ID                                                                                       |
+| loginUserKey      | string                        | 否       | 登录用户KEY                                                                                      |
+| loginUserId       | string                        | 否       | 登录用户ID                                                                                       |
+| addEventVariable  | (string, string\|double\|int) | 否       | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选） |
+| addEventVariables | map<string,object>            | 否       | 事件属性集合;当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）                |
+| addItem           | (string, string)              | 否       | 物品模型ID, 物品模型KEY                                                                          |
 
 **代码示例**
 
@@ -198,14 +213,14 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 **参数说明**
 
-|参数名称|类型|是否必填|说明|
-| --- | --- | --- | --- |
-|time|long|否|事件发生时间(毫秒)|
-|anonymousId|string|否|匿名用户ID|
-|loginUserKey|string|否|登录用户KEY|
-|loginUserId|string|是|登录用户ID|
-|addUserVariable|(string, string\|double\|int)|否|登录用户属性|
-|addUserVariables|map<string,object>|否|登录用户属性集合|
+| 参数名称         | 类型                          | 是否必填 | 说明               |
+| ---------------- | ----------------------------- | -------- | ------------------ |
+| time             | long                          | 否       | 事件发生时间(毫秒) |
+| anonymousId      | string                        | 否       | 匿名用户ID         |
+| loginUserKey     | string                        | 否       | 登录用户KEY        |
+| loginUserId      | string                        | 是       | 登录用户ID         |
+| addUserVariable  | (string, string\|double\|int) | 否       | 登录用户属性       |
+| addUserVariables | map<string,object>            | 否       | 登录用户属性集合   |
 
 **代码示例**
 
@@ -230,11 +245,11 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 
 **参数说明**
 
-|参数名称|类型|是否必填|说明|
-| --- | --- | --- | --- |
-|id|string|是|物品模型ID|
-|key|string|是|物品模型KEY|
-|addItemVariable|map<string,string>|否|物品模型属性及值；多个属性可调用多次|
+| 参数名称        | 类型               | 是否必填 | 说明                                 |
+| --------------- | ------------------ | -------- | ------------------------------------ |
+| id              | string             | 是       | 物品模型ID                           |
+| key             | string             | 是       | 物品模型KEY                          |
+| addItemVariable | map<string,string> | 否       | 物品模型属性及值；多个属性可调用多次 |
 
 **代码示例**
 
@@ -251,11 +266,11 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 
 **参数说明**
 
-|参数名称|类型|是否必填|说明|
-| --- | --- | --- | --- |
-|id|string|是|维度表模型ID(记录ID)|
-|key|string|是|维度表标识符|
-|addItemVariable|map<string,string>|否|维度表属性及值；多个属性可调用多次|
+| 参数名称        | 类型               | 是否必填 | 说明                               |
+| --------------- | ------------------ | -------- | ---------------------------------- |
+| id              | string             | 是       | 维度表模型ID(记录ID)               |
+| key             | string             | 是       | 维度表标识符                       |
+| addItemVariable | map<string,string> | 否       | 维度表属性及值；多个属性可调用多次 |
 
 **代码示例**
 
@@ -272,10 +287,10 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 
 **参数说明**
 
-|参数名称|类型|是否必填|说明|
-| --- | --- | --- | --- |
-|addIdentities|(string, string)|否|用户KEY, 用户ID|
-|addIdentities|map<string,string>|否|(用户KEY, 用户ID)集合|
+| 参数名称      | 类型               | 是否必填 | 说明                  |
+| ------------- | ------------------ | -------- | --------------------- |
+| addIdentities | (string, string)   | 否       | 用户KEY, 用户ID       |
+| addIdentities | map<string,string> | 否       | (用户KEY, 用户ID)集合 |
 
 **代码示例**
 

@@ -27,7 +27,7 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 ### 集成 & 安装
 php sdk已经发布在[Packagist](https://packagist.org/packages/growingio/php-sdk), 可以通过[Composer](https://getcomposer.org)进行安装
 ```composer
-"growingio/php-sdk": "1.0.1"
+"growingio/php-sdk": "1.0.2"
 ```
 ```php
 <?php
@@ -72,16 +72,18 @@ $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 
 **参数说明**
 
-| 参数         | 必选  | 类型   | 默认值  | 说明                        |
-| :----------- | :---- | :----- | :------ | --------------------------- |
-| loginUserKey | false | string |         | 登录用户Key型                |
-| loginUserId  | true  | string |         | 登录用户ID                  |
-| eventKey     | true  | string |         | 埋点事件标识符          |
-| properties   | false | array  | array() | 事件发生时,所伴随的维度信息 |
+| 参数         | 必选  | 类型   | 默认值           | 说明                                                                     |
+| :----------- | :---- | :----- | :--------------- | ------------------------------------------------------------------------ |
+| evnetTime    | false | int    | 当前时间的时间戳 | 事件发生时间。如需要开启"自定义event_time上报"的功能开关，请联系技术支持 |
+| loginUserKey | false | string |                  | 登录用户Key型                                                            |
+| loginUserId  | true  | string |                  | 登录用户ID                                                               |
+| eventKey     | true  | string |                  | 埋点事件标识符                                                           |
+| properties   | false | array  | array()          | 事件发生时,所伴随的维度信息                                              |
 
 **代码示例**
 ```php
 $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
+    ->setEventTime(1648524854000)
     ->setLoginUserKey('loginUserKey')
     ->setProperties(array('attrKey1' => 'attrValue1', 'attrKey2' => 'attrValue2'))
     ->create());
@@ -100,7 +102,7 @@ $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
 
 | 参数         | 必选  | 类型   | 默认值 | 说明         |
 | :----------- | :---- | :----- | :----- | ------------ |
-| loginUserKey | false | string |        | 登录用户Key |
+| loginUserKey | false | string |        | 登录用户Key  |
 | loginUserId  | true  | string |        | 登录用户ID   |
 | properties   | true  | array  |        | 用户属性信息 |
 
