@@ -19,6 +19,8 @@ module.exports = {
       logo: {
         alt: 'GrowingIO Logo',
         src: 'img/logo.svg',
+        srcDark: 'img/logo_white.svg',
+
       },
       items: [
         {

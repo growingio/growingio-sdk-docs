@@ -227,6 +227,7 @@ gdp('getLocation');
 ### 与h5打通用户数据(getGioInfo)
 
 当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下数据。
+
 :::info
 默认能获取到的数据说明：<br/>
 giou 是访问用户ID<br/>
@@ -244,7 +245,12 @@ giodatasourceid 是 datasourceId
 gdp('getGioInfo');
 ```
 
-**注意：gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您销毁当前webview重设地址。并且使用不保留当前页面的跳转方式跳出承载webview的小程序页面。 例：**
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。调用时机：需在 URL 的 search 中调用。如果 URL 中有 Hashtag（#），不能直接 Hashtag（#）后调用，必须在 URL 的 search 中调用。**
+
+**2）gdp('getGioInfo') 获取的数据是一次性的，非动态获取，如果切换用户导致 sessionId 或 userId 等用户信息变动时，需要您销毁当前 webview 重设地址。并且使用不保留当前页面的跳转方式跳出承载 webview 的小程序页面。**
+
+#### 示例
 
 ```js
 // js
@@ -280,15 +286,15 @@ Page({
 
 ```js
 // H5 页面原有的 URL为 :
-'https://www.growingio.com/?foo=1'
+'https://www.growingio.com/?foo=1#锚点'
 ```
 
 ```js
 // 小程序WebView加载H5时的拼接示例为
-`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
+`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}#锚点`
 ```
 
-**如果您需要获取更多的小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
+**如果您的H5页面需要获取更多小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
 
 **H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
 

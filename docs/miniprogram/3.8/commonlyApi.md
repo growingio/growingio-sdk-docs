@@ -259,17 +259,14 @@ giodatacollect    小程序是否采集数据
 
 ```js
 gdp('getGioInfo');
-
-// 手动拼接url示例
-`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}`
 ```
 
 如果以上字段仍不能满足您分析需求，可在初始化时添加 `extraParams` [参考文档](/docs/miniprogram/3.8/initSettings#extraparams)配置字段来额外增加一些信息。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1）gdp('getGioInfo')返回的是一个query字符串，需要您在字符串前手动拼接 ? 或 & 符号。**
+**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。调用时机：需在 URL 的 search 中调用。如果 URL 中有 Hashtag（#），不能直接 Hashtag（#）后调用，必须在 URL 的 search 中调用。**
 
-**2）gdp('getGioInfo')获取的数据是一次性的，非动态获取，如果切换用户导致sessionId或userId等用户信息变动时，需要您销毁当前webview重设地址。并且使用不保留当前页面的跳转方式跳出承载webview的小程序页面。**
+**2）gdp('getGioInfo') 获取的数据是一次性的，非动态获取，如果切换用户导致 sessionId 或 userId 等用户信息变动时，需要您销毁当前 webview 重设地址。并且使用不保留当前页面的跳转方式跳出承载 webview 的小程序页面。**
 
 #### 示例
 
@@ -303,7 +300,22 @@ Page({
 </view>
 ```
 
+**`gdp('getGioInfo')`默认获取到的数据示例：**
+
+```js
+// H5 页面原有的 URL为 :
+'https://www.growingio.com/?foo=1#锚点'
+```
+
+```js
+// 小程序WebView加载H5时的拼接示例为
+`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}#锚点`
+```
+
+
 **3）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，用于控制内嵌页与小程序是否同步发送数据。（即内嵌页SDK会受小程序SDK控制是否采集数据）**
+
+**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
 
 ### 8、获取SDK当前配置(getOption)
 
