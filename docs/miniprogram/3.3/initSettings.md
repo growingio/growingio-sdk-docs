@@ -9,7 +9,7 @@ title: 初始化配置
 
 | **字段名**            | **参数类型**  | **默认值** | **说明**                                             |
 | --------------------- | ------------- | ---------- | ---------------------------------------------------- |
-| `autotrack`           | `boolean`     | `true`     | 是否开启无埋点采集（需配合无埋点插件使用）           |
+| `autotrack`           | `boolean`     | `true`     | 是否开启无埋点采集           |
 | `comAsPage`           | `boolean`     | `false`    | 是否将 Component 组件 当做 Page 处理                 |
 | `compress`            | `boolean`     | `false`    | 是否数据加密                                         |
 | `dataCollect`         | `boolean`     | `true`     | 是否开启数据采集                                     |
