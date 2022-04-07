@@ -35,6 +35,7 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 ### 下载SDK
 
 <a href="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js" download="https://assets.giocdn.com/sdk/cdp/3.0/gio-alip.js">点击下载SDK</a>，存放在项目中，下文中以`utils/gio`目录为例。
+(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
 ### 引入SDK，添加初始化代码
 

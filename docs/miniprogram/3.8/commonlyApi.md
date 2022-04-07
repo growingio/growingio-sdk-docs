@@ -6,11 +6,12 @@ title: 数据采集API
 
 通过 **`global.gdp`** 这个全局的方法可以调用到SDK中所有开放的接口。
 
-您可在页面头部进行解构获取gdp方法。**`const { gdp } = global;`**(支付宝和淘宝小程序为 $global)
+您可在页面头部进行解构获取gdp方法。<br/>
+**`const { gdp } = global;`**(支付宝和淘宝小程序为 `const { gdp } = $global;`)
 
 ## 动态修改配置接口(setOption)
 
-由于多样的动态修改配置的需求，我们在`3.8.0`版本开始提供了统一的接口，以降低您的使用难度。设值成功返回true，设值失败返回false。
+由于多样的动态修改配置的需求，我们在`3.8.0`版本开始提供了统一的接口，以降低接口使用难度。设值成功返回true，设值失败返回false。
 
 ```js
 gdp('setOption', optionKey, optionValue);  // return true | false
@@ -29,7 +30,7 @@ gdp('setOption', 'autotrack', true | false);
 
 ### 2、开启/关闭数据采集(dataCollect)
 
-默认开启数据采集。当设置为 **`false`** 时，SDK将不会采集和上报事件。由关闭修改为开启时，自动补发VISIT和PAGE事件。
+默认开启数据采集。当设置为 **`false`** 时，SDK将不会采集和上报事件。由关闭修改为开启时，自动补发VISIT和当前页面的PAGE事件。
 
 ```js
 gdp('setOption', 'dataCollect', true | false);
@@ -121,7 +122,7 @@ gdp('clearUserId');
 
 ### 4、埋点事件(track)
 
-发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。
+发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
 
 #### 参数说明
 
@@ -130,8 +131,8 @@ gdp('clearUserId');
 | `eventId`         | `String` | 必填；事件名，事件标识符。                                                                                                               |
 | `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制) |
 | `item`            | `Object` | 选填；事件发生关联的物品模型。                                                                                                          |
-| `item.id`         | `string` | item 中必填；物品模型 id。                                                                                                              |
-| `item.key`        | `string` | item 中必填；物品模型唯一标识。                                                                                                         |
+| `item.id`         | `String` | item 中必填；物品模型 id。                                                                                                              |
+| `item.key`        | `String` | item 中必填；物品模型唯一标识。                                                                                                         |
 | `item.properties` | `Object` | item 中选填；物品模型属性。参数限制同`properties`。                                                                                      |
 
 #### 示例
@@ -178,7 +179,7 @@ Gio平台系统中用户属性默认预定义的微信用户属性如下表：
 |     微信语言     |   $wechat_language    |
 |    关注公众号    | $wechat_subscribeList |
 
-当小程序获取到微信用户信息后，以上属性标识符**无需**在Gio平台用户属性中添加，调用 `setUserAttributes` 上报微信用户信息即可。注意自行添加 `$wechat_` 的前缀。例：
+当小程序获取到微信用户信息后，以上属性标识符**无需**在 GrowingIO 平台用户属性中添加，调用 `setUserAttributes` 上报微信用户信息即可。注意自行添加 `$wechat_` 的前缀。例：
 
 ```js
 wx.getUserInfo({
@@ -264,7 +265,7 @@ gdp('getGioInfo');
 如果以上字段仍不能满足您分析需求，可在初始化时添加 `extraParams` [参考文档](/docs/miniprogram/3.8/initSettings#extraparams)配置字段来额外增加一些信息。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。调用时机：需在 URL 的 search 中调用。如果 URL 中有 Hashtag（#），不能直接 Hashtag（#）后调用，必须在 URL 的 search 中调用。**
+**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。必须在 URL 的 search 中使用；如果 URL 中有 Hashtag（#），不能直接 Hashtag（#）后使用，必须在 URL 的 search 中使用。**
 
 **2）gdp('getGioInfo') 获取的数据是一次性的，非动态获取，如果切换用户导致 sessionId 或 userId 等用户信息变动时，需要您销毁当前 webview 重设地址。并且使用不保留当前页面的跳转方式跳出承载 webview 的小程序页面。**
 
@@ -312,10 +313,10 @@ Page({
 `https://www.growingio.com/?foo=1&${gdp('getGioInfo')}#锚点`
 ```
 
-
-**3）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，用于控制内嵌页与小程序是否同步发送数据。（即内嵌页SDK会受小程序SDK控制是否采集数据）**
+**3）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，数据打通后，打通H5页面的 dataCollect 数据采集开关由小程序SDK初始化配置项 dataCollect 控制。此项功能使用需H5 页面集成的 Web JS SDK 版本>=3.3.9。**
 
 **H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
+
 
 ### 8、获取SDK当前配置(getOption)
 
@@ -391,19 +392,31 @@ gdp('getOption');
 **<font color="#FC5F3A">注意：</font>**<br/>
 **在有上述3种额外采集标记的节点上，必须绑定一个点击事件，SDK才能实现点击的额外数据采集。如果没有，需要您手动绑定一个空的点击事件。**
 
-### 3、忽略采集标记
+### 3、navigator组件
+
+如果您的小程序使用了navigator组件，需要您手动绑定一个空的点击事件，SDK才能实现跳转点击的采集。例：
+
+```html
+<navigator>
+  <view bindtap="nameForThisClick">
+     ...
+  </view>
+</navigator>
+```
+
+### 4、忽略采集标记
 
 有时我们会根据业务中不同的需要使用一些自己开发的组件或第三方组件，可能会触发SDK的 `VIEW_CHANGE` 事件，但我们并不期望它发生。
 
-此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。**注意标记在事件绑定的节点上。**例：
+此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。**注意标记在事件绑定的节点上，没事件绑定的节点默认就不采集。**例：
 
 ```html
-<view data-growing-ignore>要忽略的节点</view>
+<view data-growing-ignore bindtap="onLinkTap">要忽略的节点</view>
 ```
 
 ## 半自动埋点浏览事件
 
-用户标记一个元素并提供自定义埋点事件，SDK负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的自定义埋点事件。因此您同样需要[参考自定义埋点](/docs/miniprogram/3.8/commonlyApi#4埋点事件track)在平台上进行事件类型和变量的预定义。
+用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#4埋点事件track)在平台上进行事件类型和变量的预定义。
 
 #### 曝光逻辑
 
@@ -419,7 +432,7 @@ gdp('getOption');
 
 1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
 
-2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则[参考文档](/docs/miniprogram/3.8/commonlyApi#4埋点事件track)。
+2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#4埋点事件track)。
 
 ```js
 Page({
@@ -448,7 +461,7 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1）此功能需要注册半自动埋点浏览插件使用。**
+**1）此功能需要注册半自动埋点浏览插件使用。参考[半自动埋点浏览插件](plugins#半自动埋点浏览插件gioimpressiontracking)**
 
 **2）`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object合法字符串，SDK会自动尝试进行格式化**。
 
@@ -460,6 +473,6 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 
 SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**(非指定类型值均会被替换为空字符串，长度超限均会被截断)**
 
-**`key:` string | number，length <=50；**
+**`key:` String，length <=50；**
 
 **`value:` string | number，length <=1000；**
