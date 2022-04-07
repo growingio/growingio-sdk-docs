@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 3、下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
 
-### 集成
+### 小程序中集成
 
 参考示例在 app.js 小程序主文件中添加初始化代码。注意不要随意修改初始化代码位置。
 
@@ -42,6 +42,24 @@ App({ ... });
 **淘宝小程序中，`tbConfig` 为必填项，详情请[参考文档](/docs/miniprogram/3.8/initSettings#tbconfig)**
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
+
+### 小部件中集成
+
+参考小程序集成在指定的小部件Component组件的js中集成即可。SDK初始化时会自动切换为插件模式，将当前Component视为一个独立应用发送VISIT事件。
+
+```js
+// myComponent.js
+import gdp from './utils/gio/sdk.js';
+
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
+    version: 'miniProgram version',
+    host: 'api.growingio.com',
+    tbConfig: { ... },
+    ...other settings
+});
+
+Component({ ... });
+```
 
 ### 插件扩展
 
