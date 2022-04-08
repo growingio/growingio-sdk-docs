@@ -134,7 +134,6 @@ onShareAppMessage: function() {
 
 ### forceLogin
 
-
 默认情况下，SDK会自动生成访问用户ID来标识访问用户。如您需要使用 openId 或 unionId 标识访问用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
 
 强制登录模式适用于打开小程序就调用 `wx.login` ([参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)) 获取 openId 或 unionId 的小程序。 开启此模式并调用 `identity` 上报 openid 或 unionId，会将上报的 Id 作为访问用户ID，有助于访问用户数据关联性分析。
@@ -212,6 +211,8 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
 ### subpackage
 
 当且仅当您开发小程序时使用独立开发的分包（即主包与分包不在同一项目中时），需要在主包项目中与分包项目中分别集成SDK，并在**分包项目**中初始化时开启此项，可以使得主包与分包打通用户和页面数据，合并为一个SDK运行逻辑。
+
+开启此项后分包独立运行时可能会不发送PAGE事件，属于正常现象。放入主包后会正常发送PAGE事件，建议在主包中调试校验Gio事件是否正确。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **使用此功能需主包分包同时注册分包集成插件。[参考文档](/docs/miniprogram/3.8/plugins#多项目打通插件giomultiintegrate)**
