@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 ### 小程序中集成
 
-参考示例在 app.js/main.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。
+参考示例在 app.js/main.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在小程序中任意生命周期中进行初始化。**
 
 <Tabs
   groupId="1"
@@ -56,9 +56,10 @@ App({ ... });
 ```
 
 ```js
-原有 require 的引用方式依然可以使用。 
+原有 require 的引用方式依然可以使用。
 const gdp = require('./utils/gio/gio-wechat.js).default;
 ```
+
   </TabItem>
   <TabItem value="uni-app">
 
@@ -125,7 +126,7 @@ export function createApp() {
   </Tabs>
 
 ```js
-原有 require 的引用方式依然可以使用。 
+原有 require 的引用方式依然可以使用。
 const gdp = require('./utils/gio/gio-uniapp.js).default;
 ```
 
@@ -233,7 +234,7 @@ export default App;
   </Tabs>
 
 ```js
-原有 require 的引用方式依然可以使用。 
+原有 require 的引用方式依然可以使用。
 const gdp = require('./utils/gio/gio-taro.js).default;
 ```
 
@@ -263,7 +264,7 @@ export default new App();
 ```
 
 ```js
-原有 require 的引用方式依然可以使用。 
+原有 require 的引用方式依然可以使用。
 const gdp = require('./utils/gio/gio-chameleon.js).default;
 ```
 
@@ -290,7 +291,7 @@ wepy.app({ ... });
 ```
 
 ```js
-原有 require 的引用方式依然可以使用。 
+原有 require 的引用方式依然可以使用。
 const gdp = require('./utils/gio/gio-wepy.js).default;
 ```
 
@@ -319,13 +320,12 @@ export default App;
 ```
 
 ```js
-原有 require 的引用方式依然可以使用。 
+原有 require 的引用方式依然可以使用。
 const gdp = require('./utils/gio/gio-remax.js).default;
 ```
+
   </TabItem>
 </Tabs>
-
-
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
 
