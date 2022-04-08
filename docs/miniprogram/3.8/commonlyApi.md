@@ -392,19 +392,7 @@ gdp('getOption');
 **<font color="#FC5F3A">注意：</font>**<br/>
 **在有上述3种额外采集标记的节点上，必须绑定一个点击事件，SDK才能实现点击的额外数据采集。如果没有，需要您手动绑定一个空的点击事件。**
 
-### 3、navigator组件
-
-如果您的小程序使用了navigator组件，需要您手动绑定一个空的点击事件，SDK才能实现跳转点击的采集。例：
-
-```html
-<navigator>
-  <view bindtap="nameForThisClick">
-     ...
-  </view>
-</navigator>
-```
-
-### 4、忽略采集标记
+### 3、忽略采集标记
 
 有时我们会根据业务中不同的需要使用一些自己开发的组件或第三方组件，可能会触发SDK的 `VIEW_CHANGE` 事件，但我们并不期望它发生。
 
