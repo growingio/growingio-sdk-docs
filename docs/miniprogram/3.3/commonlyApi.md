@@ -167,7 +167,7 @@ Gio平台系统中用户属性默认预定义的微信用户属性如下表：
 |     微信语言     |   $wechat_language    |
 |    关注公众号    | $wechat_subscribeList |
 
-当小程序获取到微信用户信息后，以上属性标识符**无需**在Gio平台用户属性中添加，调用 `setUserAttributes` 上报微信用户信息即可。注意自行添加 `$wechat_` 的前缀。例：
+当小程序获取到微信用户信息后，以上属性标识符**无需**在 GrowingIO 平台用户属性中添加，调用 `setUserAttributes` 上报微信用户信息即可。注意自行添加 `$wechat_` 的前缀。例：
 
 ```js
 wx.getUserInfo({
@@ -246,7 +246,7 @@ gdp('getGioInfo');
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。调用时机：需在 URL 的 search 中调用。如果 URL 中有 Hashtag（#），不能直接 Hashtag（#）后调用，必须在 URL 的 search 中调用。**
+**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。请拼接在 URL 的查询参数中；如果 URL 中有 Hashtag（#），不能拼接在 Hashtag（#）后的查询参数中。**
 
 **2）gdp('getGioInfo') 获取的数据是一次性的，非动态获取，如果切换用户导致 sessionId 或 userId 等用户信息变动时，需要您销毁当前 webview 重设地址。并且使用不保留当前页面的跳转方式跳出承载 webview 的小程序页面。**
 
@@ -300,27 +300,9 @@ Page({
 
 ## 采集标记
 
-### 额外数据标记
+### 1、采集标记
 
-1、有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-title` 来补充SDK采集的内容。例：
-
-```html
-<view data-title="额外的上报信息">节点</view>
-```
-
-2、有时我们页面中可能存在类似列表类的Dom结构相似或一致使得SDK上报数据出现无法区分的情况。此时，我们可以通过索引标记 `data-index` 来准确描述节点信息。例：
-
-```html
-<view>
-  <view data-index="1">节点1</view>
-  <view data-index="2">节点2</view>
-  <view data-index="3">节点3</view>
-</view>
-```
-
-***Tips：我们建议您多设定额外的数据标记来采集更多的数据，以此获取更全面和更准确的用户行为数据。***
-
-3、有时我们表单页面中可能需要获取用户选择框、单/多选框的值进行上报以准确分析用户行为。此时，我们可以通过数值采集标记 `data-growing-track` 来获取值。例：
+有时我们表单页面中可能需要获取用户选择框、单/多选框的值进行上报以准确分析用户行为。此时，我们可以通过数值采集标记 `data-growing-track` 来获取值。例：
 
 ```html
 <checkbox-group bindchange='checkboxChange' data-growing-track>
@@ -328,7 +310,7 @@ Page({
     <checkbox value='GrowingIO' checked='true' /> GrowingIO
   </label>
   <label class='checkbox'>
-    <checkbox value='Google' checked='false' /> Google Analytics
+    <checkbox value='CDP' checked='false' /> GrowingIO CDP
   </label>
 </checkbox-group>
 ```
@@ -337,24 +319,47 @@ Page({
 请勿尝试在密码框上标记 data-growing-track 采集数据，会明文暴露用户填写的密码信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
 :::
 
-### 忽略采集标记
+### 2、补充数据标记
 
-有时我们会根据业务中不同的需要开发一些组件或使用一些第三方组件，可能会触发SDK的 VIEW_CHANGE 事件，但我们并不期望它发生。
-
-此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。例：
+1）有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-title` 来补充SDK采集的内容。例：
 
 ```html
-<view data-growing-ignore>要忽略的节点</view>
+<button data-title="额外的上报信息">节点</button>
 ```
 
-### navigator组件
-
-如果您的小程序使用了navigator组件，需要您手动绑定一个空的点击事件，SDK才能实现跳转点击的采集。例：
+2）有时我们页面中可能存在类似列表类的Dom结构相似或一致使得SDK上报数据出现无法区分的情况。此时，我们可以通过索引标记 `data-index` 来准确描述节点信息。例：
 
 ```html
-<navigator>
-  <view bindtap="nameForThisClick">
+<view>
+  <button data-index="1">节点1</button>
+  <button data-index="2">节点2</button>
+  <button data-index="3">节点3</button>
+</view>
+```
+
+3）有时页面中有需要跳转的链接（尤其是navigator组件）时，为了上报完整的用户目标去向。此时，我们可以通过链接标记 `data-src` 来上报点击链接的目标去向。例：
+
+```html
+<navigator url="/pages/h5/h5?from=navigate" data-src="/pages/h5/h5?from=navigate" bindtap="onNavigatorTap">
+  <view >
      ...
   </view>
 </navigator>
+
+<view data-src="/pages/h5/h5?from=navigate" bindtap="onLinkTap">
+  模拟一个链接
+</view>
+```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**在有上述3种额外采集标记的节点上，必须绑定一个点击事件，SDK才能实现点击的额外数据采集。如果没有，需要您手动绑定一个空的点击事件。**
+
+### 3、忽略采集标记
+
+有时我们会根据业务中不同的需要使用一些自己开发的组件或第三方组件，可能会触发SDK的 `VIEW_CHANGE` 事件，但我们并不期望它发生。
+
+此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。**注意标记在事件绑定的节点上，没事件绑定的节点默认不会采集。**例：
+
+```html
+<view data-growing-ignore bindtap="onLinkTap">要忽略的节点</view>
 ```

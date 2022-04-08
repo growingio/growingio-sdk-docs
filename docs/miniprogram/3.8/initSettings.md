@@ -9,10 +9,10 @@ title: 初始化配置
 
 | **字段名**            | **参数类型**   | **默认值** | **说明**                                       |
 |-----------------------|----------------|------------|----------------------------------------------|
-| `autotrack`           | `boolean`      | `true`     | 是否开启无埋点采集                             |
-| `cml`                 | `any`          | `-`        | 使用 Chameleon 开发时使用的实例                |
+| `autotrack`           | `boolean`      | `true`     | 是否开启无埋点采集，集成无埋点插件后默认开启无埋点采集|
+| `cml`                 | `any`          | `-`        | 使用 Chameleon 开发时使用的实例，参考集成示例代码 |
 | `comAsPage`           | `boolean`      | `false`    | 是否将 Component 组件 当做 Page 处理           |
-| `compress`            | `boolean`      | `true`     | 是否数据加密                                   |
+| `compress`            | `boolean`      | `true`     | 是否数据加密，集成加密插件后默认开启加密          |
 | `dataCollect`         | `boolean`      | `true`     | 是否开启数据采集                               |
 | `debug`               | `boolean`      | `false`    | 是否开启调试模式                               |
 | `enableIdMapping`     | `boolean`      | `false`    | 是否开启多用户身份上报                         |
@@ -22,24 +22,24 @@ title: 初始化配置
 | `getLocation`         | `object`       | `-`        | 获取位置配置项(见下两项)                       |
 | `getLocation.autoGet` | `boolean`      | `false`    | 自动获取用户位置信息                           |
 | `getLocation.type`    | `wgs84/gcj02`  | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系   |
-| `gtouchHost`          | `string`       | `-`        | 运营SDK资源请求地址                            |
+| `gtouchHost`          | `string`       | `-`        | 运营SDK获取图片资源请求地址                     |
 | `host`                | `string`       | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**    |
 | `ignoreFields`        | `string[]`     | `-`        | 上报忽略字段                                   |
-| `remax`               | `any`          | `-`        | 使用 Remax 开发时使用的实例                    |
+| `remax`               | `any`          | `-`        | 使用 Remax 开发时使用的实例，参考集成示例代码     |
 | `scheme`              | `http / https` | `https`    | 网络协议                                       |
 | `subpackage`          | `boolean`      | `false`    | 标记当前当前项目是否为分包                     |
-| `taro`                | `any`          | `-`        | 使用 Taro 开发时使用的实例                     |
-| `taroVue`             | `any`          | `-`        | 使用 Taro3vue2/3 开发时使用的实例              |
+| `taro`                | `any`          | `-`        | 使用 Taro 开发时使用的实例，参考集成示例代码     |
+| `taroVue`             | `any`          | `-`        | 使用 Taro3vue2/3 开发时使用的实例，参考集成示例代码|
 | `tbConfig`            | `object`       | `-`        | 淘宝小程序配置项                               |
-| `uniVue`              | `any`          | `-`        | 使用 uni-app 开发时使用的实例                  |
-| `version`             | `string`       | `-`        | 小程序应用版本(建议填写)                       |
-| `wepy`                | `any`          | `-`        | 使用 WePY 开发时使用的实例                     |
+| `uniVue`              | `any`          | `-`        | 使用 uni-app 开发时使用的实例，参考集成示例代码  |
+| `version`             | `string`       | `-`        | 小程序发版版本号(建议填写)                    |
+| `wepy`                | `any`          | `-`        | 使用 WePY 开发时使用的实例，参考集成示例代码      |
 
 ## 配置项详解
 
 ### autotrack
 
-默认情况下，SDK在加载了无埋点插件时自动开启无埋点采集。如果您不需要无埋点采集，可以通过以下两种方式进行关闭：
+默认情况下，SDK不加载无埋点插件。当在 SDK 中加载了无埋点插件时会自动开启无埋点采集。如果您不需要无埋点采集，可以通过以下两种方式进行关闭：
 
 **方式一：**使用 **含** 无埋点插件的SDK，初始化指定 `autotrack: false` 进行关闭。
 
@@ -51,7 +51,7 @@ title: 初始化配置
 
 ### compress
 
-默认情况下，SDK在加载了加密插件时自动开启数据加密，如果您不需要数据加密，可以通过以下两种方式进行关闭：
+默认情况下，SDK不加载加密插件。当在 SDK 中加载了加密插件时自动开启数据加密。如果您不需要数据加密，可以通过以下两种方式进行关闭：
 
 **方式一：**使用 **含** 加密插件的SDK，初始化指定 `compress: false` 进行关闭。
 
@@ -134,19 +134,19 @@ onShareAppMessage: function() {
 
 ### forceLogin
 
-默认情况下，SDK通过自动生成的 uid 上报标识用户。如您需要根据 openId 标识用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
-打开后SDK初始化时会暂停上报数据，待用户登录获取 openId，调用 `identify` 方法设置 访问用户id 为 openId 后继续数据采集，以此来关联用户。
+默认情况下，SDK会自动生成访问用户ID来标识访问用户。如您需要使用 openId 或 unionId 标识访问用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
+
+强制登录模式适用于打开小程序就调用 `wx.login` ([参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)) 获取 openId 或 unionId 的小程序。 开启此模式并调用 `identity` 上报 openid 或 unionId，会将上报的 Id 作为访问用户ID，有助于访问用户数据关联性分析。
+
+设置`forceLogin`为`true`后，SDK会暂停上报数据，待调用 `wx.login`后获取 openId 或 unionId，调用 `identify` 方法后开始数据上报。**调用 `identify` 会替换事件数据的 deviceId 为设定值（一般是小程序openId 或 unionId），包括调用`identify`之前触发的事件。**
 
 ```js
 gdp('identify', openId);
 ```
 
 :::caution 注意：
-如果用户在打开您的微信小程后没有使用微信授权登录，但是小程序配置了forceLogin为true，会导致SDK不能采集数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们。
+如果打开小程序后没有调用 `wx.login` 获取 openId 或 unionId，没有调用 `identify` 方法，但是小程序SDK配置了 `forceLogin` 为 `true`，会导致SDK不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们技术支持。
 :::
-
-**<font color="#FC5F3A">提示：</font>**<br/>
-当不使用 `forceLogin` 配置项时，由于一些不可抗力的因素（例如用户清除缓存）可能会导致新用户量一定程度上虚高。
 
 ### getLocation
 
@@ -209,7 +209,9 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
 
 ### subpackage
 
-当且仅当您开发小程序时使用独立开发的分包（即主包与分包不在同一项目中时），需要在主包项目中与分包项目中分别集成SDK，并在**`分包`**项目中初始化时开启此项，可以使得主包与分包打通用户和页面数据，合并为一个SDK运行逻辑。
+当且仅当您开发小程序时使用独立开发的分包（即主包与分包不在同一项目中时），需要在主包项目中与分包项目中分别集成SDK，并在**分包项目**中初始化时开启此项，可以使得主包与分包打通用户和页面数据，合并为一个SDK运行逻辑。
+
+开启此项后分包独立运行时可能会不发送PAGE事件，属于正常现象。放入主包后会正常发送PAGE事件，建议在主包中调试校验Gio事件是否正确。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **使用此功能需主包分包同时注册分包集成插件。[参考文档](/docs/miniprogram/3.8/plugins#多项目打通插件giomultiintegrate)**

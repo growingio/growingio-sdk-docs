@@ -7,7 +7,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ### 集成准备
+
 #### 获取SDK初始化必传参数：AccountID、DataSourceID、AppId、Host
+
 :::info
 AccountID：项目ID，代表一个项目<br/>
 DataSourceID：数据源ID，代表一个数据源<br/>
@@ -17,19 +19,29 @@ Host：采集数据上报的服务器地址<br/>
 AccountID、DataSourceID、AppId 需要在CDP增长平台上新建数据获取源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
 Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
 :::
-##### 创建
-![新建数据源](/img/createapplication.png)
-##### 查看
-![查看数据源](/img/miniprogram/dataSourceInfo.png)
 
+##### 创建
+
+![新建数据源](/img/createapplication.png)
+
+##### 查看
+
+![查看数据源](/img/miniprogram/dataSourceInfo.png)
 
 ## 集成
 
 对于微信小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
+
+集成方式参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在小程序中任意生命周期中进行初始化。**
+
 ### 下载SDK
+
 <a href="https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js" download="https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js">点击下载SDK</a>，存放在项目中，下文中以`utils/gio`目录为例。
 
+##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+
 ### 原生开发
+
 在根目录app.js文件的顶部添加跟踪代码：
 
 <Tabs
@@ -71,6 +83,7 @@ const App = global.GioApp;
 </Tabs>
 
 ### Taro
+
 在根目录app.jsx文件的顶部添加跟踪代码
 
 <Tabs
@@ -137,6 +150,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     ...其他配置项
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -184,6 +198,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     ...其他配置项
 });
 ```
+
 </TabItem>
 <TabItem value="mpvue+第三方插件">
 
@@ -267,6 +282,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     ...其他配置项
 });
 ```
+
 </TabItem>
 <TabItem value="1.x+插件">
 
@@ -282,6 +298,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     ...其他配置项
 });
 ```
+
 </TabItem>
 <TabItem value="2.x">
 
@@ -296,6 +313,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     ...其他配置项
 });
 ```
+
 </TabItem>
 <TabItem value="2.x+插件">
 
@@ -311,6 +329,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     ...其他配置项
 });
 ```
+
 </TabItem>
 </Tabs>
 

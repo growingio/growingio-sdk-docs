@@ -14,15 +14,15 @@ import TabItem from '@theme/TabItem';
 
 ### 准备工作
 
-1、在Gio平台中新建项目并获取**`accountId`和`dataSourceId`**。
+1. 在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
 
-2、在您的小程序中获取**`appId`**。
+2. 在您的小程序中获取**`appId`**。
 
-3、在下列选项中选择正确的开发框架，并下载对应的SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
+3. 在下列选项中选择对应的开发框架，并下载对应的SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
 
-### 集成
+### 小程序中集成
 
-参考示例在 app.js/main.js 小程序主文件中添加初始化代码。注意不要随意修改初始化代码位置。
+参考示例在 app.js/main.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在小程序中任意生命周期中进行初始化。**
 
 <Tabs
   groupId="1"
@@ -44,7 +44,7 @@ import TabItem from '@theme/TabItem';
 
 ```js
 // app.js
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-wechat.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -53,6 +53,11 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
 });
 
 App({ ... });
+```
+
+```js
+原有 require 的引用方式依然可以使用。
+const gdp = require('./utils/gio/gio-wechat.js).default;
 ```
 
   </TabItem>
@@ -76,7 +81,7 @@ App({ ... });
 // main.js
 import Vue from 'vue';
 import App from './App.vue';
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-uniapp.js';
 
 App.mpType = 'app';
 
@@ -100,7 +105,7 @@ app.$mount();
 // main.js
 import App from './App.vue';
 import { createApp } from 'vue';
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-uniapp.js';
 
 export function createApp() {
   // 注意vue3中app实例在初始化之前
@@ -119,6 +124,11 @@ export function createApp() {
 
   </TabItem>
   </Tabs>
+
+```js
+原有 require 的引用方式依然可以使用。
+const gdp = require('./utils/gio/gio-uniapp.js).default;
+```
 
   </TabItem>
   <TabItem value="Taro">
@@ -142,7 +152,7 @@ export function createApp() {
 ```js
 // app.jsx
 import Taro, { Component } from '@tarojs/taro';
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-taro.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -162,7 +172,7 @@ Taro.render(<App />, document.getElementById('app'));
 // app.js
 import React, { Component } from 'react';
 import Taro from '@tarojs/taro';
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-taro.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -182,7 +192,7 @@ export default App;
 // app.js
 import Vue from 'vue';
 import Taro from '@tarojs/taro';
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-taro.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -204,7 +214,7 @@ export default App;
 // app.js
 import { createApp } from 'vue';
 import Taro from '@tarojs/taro';
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-taro.js';
 
 // 注意vue3中App实例在初始化之前
 const App = createApp({ ... });
@@ -222,6 +232,12 @@ export default App;
 
   </TabItem>
   </Tabs>
+
+```js
+原有 require 的引用方式依然可以使用。
+const gdp = require('./utils/gio/gio-taro.js).default;
+```
+
   </TabItem>
 
   <TabItem value="Chameleon">
@@ -233,7 +249,7 @@ export default App;
 ```js
 // app.cml
 import Cml from 'chameleon-runtime';
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-chameleon.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -247,6 +263,11 @@ class App { ... }
 export default new App();
 ```
 
+```js
+原有 require 的引用方式依然可以使用。
+const gdp = require('./utils/gio/gio-chameleon.js).default;
+```
+
   </TabItem>
   <TabItem value="WePY2">
 
@@ -257,7 +278,7 @@ export default new App();
 ```js
 // app.wpy
 import wepy from 'wepy';
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-wepy.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -267,6 +288,11 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
 });
 
 wepy.app({ ... });
+```
+
+```js
+原有 require 的引用方式依然可以使用。
+const gdp = require('./utils/gio/gio-wepy.js).default;
 ```
 
   </TabItem>
@@ -279,7 +305,7 @@ wepy.app({ ... });
 ```js
 // app.js
 import * as remax from 'remax';
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-remax.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -293,12 +319,13 @@ const App = (props) => props.children;
 export default App;
 ```
 
+```js
+原有 require 的引用方式依然可以使用。
+const gdp = require('./utils/gio/gio-remax.js).default;
+```
+
   </TabItem>
 </Tabs>
-
-```js
-原有 require 的引用方式依然可以使用。 const gdp = require('./utils/gio/sdk.js).default;
-```
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
 
@@ -314,9 +341,9 @@ export default App;
 
 加载插件扩展的步骤为：
 
-* 1、下载功能插件，解压放入 plugins 目录中。
-* 2、在app.js/main.js中引入。
-* 3、在init语句前调用方法按数组形式传值。
+1. 下载功能插件，解压放入 plugins 目录中。
+2. 在app.js/main.js中引入。
+3. 在init语句前调用`registerPlugins`方法按数组形式传值。
 
 ```js
 import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
@@ -331,6 +358,23 @@ gdp('init', xxxxx);
 加载插件后会在初始化之前打印日志。例：
 
 ![debugLog](/img/miniprogram/plugin_debug.png)
+
+### 小程序插件中集成
+
+参考小程序集成在指定的插件Component组件的js中集成即可。SDK初始化时会自动切换为插件模式，将当前Component视为一个独立应用发送VISIT事件。
+
+```js
+// myComponent.js
+import gdp from './utils/gio/sdk.js';
+
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
+    version: 'miniProgram version',
+    host: 'api.growingio.com',
+    ...other settings
+});
+
+Component({ ... });
+```
 
 ### 数据校验
 

@@ -10,15 +10,15 @@ import TabItem from '@theme/TabItem';
 
 ### 准备工作
 
-1、在Gio平台中新建项目并获取**`accountId`和`dataSourceId`**。
+1. 在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
 
-2、在您的小程序中获取**`appId`**。
+2. 在您的小程序中获取**`appId`**。
 
-3、下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
+3. 下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
 
 ### 集成
 
-参考示例在 app.ux 快应用主文件中添加初始化代码。注意不要随意修改初始化代码位置。
+参考示例在 app.ux 快应用主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在小程序中任意生命周期中进行初始化。**
 
 #### 快应用原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-quickapp.js>
 
@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 
 ```js
 // app.ux
-import gdp from './utils/gio/sdk.js';
+import gdp from './utils/gio/gio-quickapp.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your packageName', {
     version: 'quickapp version',
@@ -41,7 +41,8 @@ export default GioPage({ ... }); // 所有的页面文件要包裹GioPage()方�
 ```
 
 ```js
-原有 require 的引用方式依然可以使用。 const gdp = require('./utils/gio/sdk.js).default;
+原有 require 的引用方式依然可以使用。
+const gdp = require('./utils/gio/gio-quickapp.js).default;
 ```
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
@@ -58,9 +59,9 @@ export default GioPage({ ... }); // 所有的页面文件要包裹GioPage()方�
 
 加载插件扩展的步骤为：
 
-* 1、下载功能插件，解压放入 plugins 目录中。
-* 2、在app.js/main.js中引入。
-* 3、在init语句前调用方法按数组形式传值。
+1. 下载功能插件，解压放入 plugins 目录中。
+2. 在app.js/main.js中引入。
+3. 在init语句前调用`registerPlugins`方法按数组形式传值。
 
 ```js
 import gioImpressionTracking from './utils/plugins/gioImpressionTracking';

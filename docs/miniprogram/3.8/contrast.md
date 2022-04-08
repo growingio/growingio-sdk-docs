@@ -63,7 +63,7 @@ title: 3.3与3.8对比
 
 3、新增淘宝小程序云函数和云应用转发方式的适配。
 
-4、调用 `setUserId` 的API时，自动补发 VISIT 事件。
+4、调用 `setUserId` 的API，设置或切换有效的登录用户ID时，自动补发 VISIT 事件。
 
 5、带有 `autoplay` 属性且值为 `true` 的原生组件（例如：swiper、video）产生的change事件会被自动忽略，如果您想采集它，请[参考文档](/docs/miniprogram/3.8/commonlyApi#1采集标记)。
 
@@ -74,6 +74,6 @@ const { gdp } = global;
 Page({ ... });
 ```
 
-7、在<3.8的旧版本中，打通数据的内嵌页SDK数据采集是不受小程序SDK控制的（即小程序SDK关闭数据采集时，内嵌页仍然会采集数据并发送，但没有VISIT事件关联）。在3.8.0的版本开始，`getGioInfo`接口将额外增加`giodatacollect`字段用于同步给内嵌页SDK是否采集数据。
+7、在<3.8的旧版本中，打通数据的内嵌页SDK数据采集开关是不受小程序SDK控制的（即小程序SDK关闭数据采集时，内嵌页仍然会采集数据并发送，但没有VISIT事件关联）。在3.8.0的版本开始，`getGioInfo`接口将额外增加`giodatacollect`字段用于同步给内嵌页SDK是否采集数据。
 
 8、在<3.8的旧版本中，使用taro或者uni-app框架开发的小程序在某些特定场景下可能会丢失自定义采集标记，我们在3.8版本中我们修复了它。

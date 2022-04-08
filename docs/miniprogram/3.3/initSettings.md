@@ -62,18 +62,19 @@ title: 初始化配置
 ### extraParams
 
 在H5页面与小程序的用户信息保持一致时，上报数据除[默认字段](/docs/webjs/plugins#打通成功效果-1)以外，可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
-:::info**注意：需内嵌页集成的Web JS SDK 版本>=3.3.3，Web JS SDK升级后无需做额外配置，自动适配上报。**
-支持字段：<br/>
-appChannel 是小程序的场景值<br/>
-deviceBrand 是设备品牌<br/>
-deviceModel 是设备型号<br/>
-deviceType 是设备类型<br/>
-networkState 是网络类型<br/>
-platformVersion 是操作系统版本<br/>
-language 是语言<br/>
-screenHeight 是屏幕高度<br/>
-screenWidth 是屏幕宽度
-:::
+
+```text
+appChannel        小程序的场景值
+deviceBrand       设备品牌
+deviceModel       设备型号
+deviceType        设备类型
+networkState      网络类型
+platformVersion   操作系统版本
+language          语言
+screenHeight      屏幕高度
+screenWidth       屏幕宽度
+```
+
 参考示例：
 
 ```js
@@ -126,7 +127,6 @@ gdp('identify', openId);
 ```
 
 :::caution 注意：
-适用于打开小程序就调用 `wx.login` 获取 openId 或 unionId 的小程序<br/>
 如果打开小程序后没有调用 `wx.login` 获取 openId 或 unionId，没有调用 `identify` 方法，但是小程序SDK配置了 `forceLogin` 为 `true`，会导致SDK不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们技术支持。
 :::
 
@@ -155,15 +155,16 @@ gdp('getLocation');      // 获取用户的地理位置信息并上报
 
 默认情况下，SDK会上报网络和设备的相关信息。如果您不需要这些数据，可以通过指定 `ignoreFields: [xxx,xxx]` 来忽略指定字段的上报。
 您可以指定一项或多项字段，但均需为数组格式进行设置。
-:::info
-支持字段：<br/>
-deviceBrand 是设备品牌<br/>
-deviceModel 是设备型号<br/>
-deviceType 是设备类型<br/>
-networkState 是网络类型<br/>
-screenHeight 是屏幕高度<br/>
-screenWidth 是屏幕宽度
-:::
+
+```text
+deviceBrand       设备品牌
+deviceModel       设备型号
+deviceType        设备类型
+networkState      网络类型
+screenHeight      屏幕高度
+screenWidth       屏幕宽度
+```
+
 参考示例：
 
 ```js
