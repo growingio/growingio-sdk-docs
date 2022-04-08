@@ -145,7 +145,6 @@ gdp('identify', openId);
 ```
 
 :::caution 注意：
-适用于打开小程序就调用 `wx.login` 获取 openId 或 unionId 的小程序<br/>
 如果打开小程序后没有调用 `wx.login` 获取 openId 或 unionId，没有调用 `identify` 方法，但是小程序SDK配置了 `forceLogin` 为 `true`，会导致SDK不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们技术支持。
 :::
 
