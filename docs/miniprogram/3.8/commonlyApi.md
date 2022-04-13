@@ -133,7 +133,6 @@ gdp('clearUserId');
 | `item`            | `Object` | 选填；事件发生关联的物品模型。                                                                                                          |
 | `item.id`         | `String` | item 中必填；物品模型 id。                                                                                                              |
 | `item.key`        | `String` | item 中必填；物品模型唯一标识。                                                                                                         |
-| `item.properties` | `Object` | item 中选填；物品模型属性。参数限制同`properties`。                                                                                      |
 
 #### 示例
 
