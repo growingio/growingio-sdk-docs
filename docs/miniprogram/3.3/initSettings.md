@@ -36,6 +36,12 @@ title: 初始化配置
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
 
+### comAsPage
+
+有时您可能会使用 Component 来代替 Page 进行代码编写。此时你需要设置 `comAsPage: true` 来将 Component 当做 Page 处理发送 PAGE 事件。
+
+**注意：一旦开启此配置，小程序中所有Component组件都会被视为一个页面，组件生命周期 attached 一旦触发即发送PAGE事件。**
+
 ### compress
 
 默认情况下，SDK关闭数据加密，如果您认为不足够安全，可以通过指定 `compress: true` 打开数据加密。
