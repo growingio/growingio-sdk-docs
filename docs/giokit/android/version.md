@@ -2,7 +2,7 @@
 title: 版本记录
 sidebar_position: 0
 ---
-
+----
 ## V1.1.0
  >[V1.1.0](https://github.com/growingio/giokit-android/releases/tag/V1.1.0) 日期: 2022-03-08 
 

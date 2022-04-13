@@ -67,20 +67,42 @@ iOS 和Android失败后数据还在数据库中会再次发送请求；web 和�
 
 ### 10. 客户端SDK DeviceID 生成机制简要逻辑是什么？
 **A:**
-- iOS： IDFA->IDFV-> 随机访问用户ID
-- Android：androidId -> imei -> 随机访问用户ID 
-- 小程序：OpenID -> 随机访问用户ID
+- iOS： IDFA > IDFV > 随机访问用户ID
+- Android：androidId  > imei > 随机访问用户ID 
+- 小程序：OpenID > 随机访问用户ID
 - Web: 随机访问用户ID
   
 访问用户ID 的生成时机是在SDK初始化时。<br/>
-iOS设备如果想要使用IDFA作为访问用户ID，需要在用户授权获取到之后初始化SDK；如果拒绝授权，iOS 按照优先级 IDFV ---> 随机访问用户ID, 生成访问用户ID  DeviceID；Keychain存储，删掉应用后再次安装还是同一个DeviceID。
+iOS设备如果想要使用IDFA作为访问用户ID，需要在用户授权获取到之后初始化SDK；如果拒绝授权，iOS 按照优先级 IDFV > 随机访问用户ID, 生成访问用户ID  DeviceID；Keychain存储，删掉应用后再次安装还是同一个DeviceID。
+```c
+NSString *deviceId;
+NSUUID *uuid = ((NSUUID * (*)(id, SEL))[sharedManager methodForSelector:advertisingIdentifierSelector])(
+        sharedManager, advertisingIdentifierSelector);
+deviceId = [uuid UUIDString];
+
+deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+
+deviceId = [[NSUUID UUID] UUIDString];
+```
 
 Android 设备首先会获取AndroidID，如果AndroidID 为空或为“9774d56d682e549c”(山寨机或其他设备)，会通过用户授权获取IMEI，如果IMEI获取不到，会随机访问用户ID  作为DeviceID。本地文件存储，删掉应用后再次按照逻辑生成可能会不一样。
+
+```Java
+String deviceId = null;
+
+String adId = getAndroidId();
+deviceId = UUID.nameUUIDFromBytes(adId.getBytes(Charset.forName("UTF-8"))).toString();
+        
+String imi = getImei();
+deviceId = UUID.nameUUIDFromBytes(imi.getBytes(Charset.forName("UTF-8"))).toString();
+
+deviceId = UUID.randomUUID().toString();
+```
 
 小程序：如果SDK设置了强制登录模式，小程序打开时调用 wx.login 获取openid或unionId，且调用 identify 上报openid，会使用 openid 作为 DeviceID ，否则会自动生成 随机访问用户ID 作为 DeviceID。存储在 storage 里面，删除小程序再次进入 DeviceID 会改变（DeviceID不是 openid的情况下）。参考[强制登录模式](/docs/miniprogram/3.3/initSettings#forcelogin)
 
 Web: 随机访问用户ID  存储在 localStorage 中，永久有效。<br/>
-这样复杂逻辑的目的是尽量使用 DeviceID 表示唯一一台设备，将同一台设备上的访问用户标识为同一个用户。
+这样复杂逻辑的目的是尽量使用 DeviceID 标识唯一一台设备，将同一台设备上的访问用户标识为同一个用户。
 
 ### 11. 移动端 SDK 2.0升3.0版本SDK 与 2.0SDK、3.0SDK的关系是什么？ 
 **A:**

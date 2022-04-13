@@ -18,22 +18,22 @@ title: 用户模型
 对于不同平台类型的应用，GrowingIO SDK 提供了不同的访问用户ID生成方案，从而尽可能的实现对用户的唯一标识。同一个项目中相同的访问用户ID会识别为一个用户。
 
 ### iOS
-IDFA > IDFV > 随机访问用户ID
-
+IDFA > IDFV > 随机访问用户ID<br/>
 iOS设备如果想要使用IDFA作为访问用户ID，需要请求用户授权获取IDFA之后初始化SDK；如果拒绝授权，iOS 按照优先级 IDFV > 随机访问用户ID, 生成访问用户ID ；使用Keychain存储，删掉应用后再次安装还是同一访问用户ID。
+
 ### Android
-androidId > imei > 随机访问用户ID
-
+androidId > imei > 随机访问用户ID<br/>
 Android 设备首先会获取AndroidID，如果AndroidID 为空或为“9774d56d682e549c”(山寨机或其他设备)，会请求用户授权获取IMEI，如果IMEI获取不到，会随机访问用户ID ；使用本地文件存储，删掉应用后再次按照逻辑生成可能会不一样。
+
 ### 小程序
-OpenID  > 随机访问用户ID
-
+OpenID  > 随机访问用户ID<br/>
 如果SDK设置了强制登录模式，用户授权微信登录获取到openid且调用 identify 上报，会使用 openid 作为访问用户ID ，否则会使用自动生成随机访问用户ID作为访问用户ID。使用 storage 存储，删除小程序再次进入访问用户ID 会改变（访问用户ID是 openid的情况不会）。
-### Web
-随机访问用户ID
 
+### Web
+随机访问用户ID<br/>
 Web使用随机访问用户ID作为访问用户ID，  使用 localStorage 存储，永久有效，删除后再次生成会改变。
 
+详情说明参考[DeviceID 生成机制](/question/common#10-客户端sdk-deviceid-生成机制简要逻辑是什么)
 
 ## 登录用户
 登录用户是 GrowingIO SDK 提供给您将当前用户绑定到您业务系统账号的一个机制。
