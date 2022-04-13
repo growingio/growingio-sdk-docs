@@ -8,13 +8,13 @@ sidebar_position: 0
 
 ### Bug Fixes
 
-- Android 5以下机型webview注入崩溃修复 ([#145](https://github.com/growingio/growingio-sdk-android-autotracker/pull/145))
+- Android 5以下机型webview注入崩溃修复([#145](https://github.com/growingio/growingio-sdk-android-autotracker/pull/145)) 
 - 其他优化
 
 ### Features
 
-- 埋点事件属性支持列表类型 ([#146](https://github.com/growingio/growingio-sdk-android-autotracker/pull/146))
-- 添加sdk模块的混淆规则 ([#148](https://github.com/growingio/growingio-sdk-android-autotracker/pull/148))
+- 埋点事件属性支持列表类型([#146](https://github.com/growingio/growingio-sdk-android-autotracker/pull/146)) 
+- 添加sdk模块的混淆规则([#148](https://github.com/growingio/growingio-sdk-android-autotracker/pull/148)) 
 ------
 ## V3.3.4
  >[release-3.3.4](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.4) 日期: 2022-01-21 
@@ -22,19 +22,20 @@ sidebar_position: 0
 ### Features
 
 - 添加初始化开关setRequireAppProcessesEnabled，控制是否获取应用多进程id
-- 适配到OAID SDK 1.1.0，添加[OaidConfig](/docs/android/base/Configuration#2-采集oaid作为设备信息)，方便用户传入Oaid值和设置证书
 - 添加初始化接口 addConfiguration，用于设置模块的配置项
+- 适配到OAID SDK 1.1.0，添加OaidConfig，方便用户传入Oaid值和设置证书
+
 ------
 ## V3.3.3
  >[release-3.3.3](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.3) 日期: 2021-12-23 
 
 ### Bug Fixes
 
-* 修复sonar提示的缺陷 https://github.com/growingio/growingio-sdk-android-autotracker/pull/137
+* 修复sonar提示的缺陷([#137](https://github.com/growingio/growingio-sdk-android-autotracker/pull/137)) 
 ### Features
-- 添加protobuf数据格式，用于存储和上传 #133 ；
-- 给Web端增加设置和清除UserKey的接口 #132 ；
-- autotracker 插件适配java11 #136 ;
+- 添加protobuf数据格式，用于存储和上传；
+- 给Web端增加设置和清除UserKey的接口；
+- autotracker 插件适配java11;
 ------
 ## V3.3.2
  >[release-3.3.2](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.2) 日期: 2021-11-24 
@@ -44,7 +45,7 @@ sidebar_position: 0
 * databse or disk is full ([c83e64f](https://github.com/growingio/growingio-sdk-android-autotracker/commit/c83e64f712b94cce2942ac77dcfa756f5dc78ad6))
 * inject webview异常修复 ([95eb1df](https://github.com/growingio/growingio-sdk-android-autotracker/commit/95eb1dfa9b221b226aedd4dfb80865cd29950258))
 * remove unboxing and check data is not null ([2aebf29](https://github.com/growingio/growingio-sdk-android-autotracker/pull/123/commits/2aebf29d8e7f37efde353686fa87fa2e35af5597))
-* 支持对5G网络类型的判断 https://github.com/growingio/growingio-sdk-android-autotracker/pull/130
+* 支持对5G网络类型的判断([#130](https://github.com/growingio/growingio-sdk-android-autotracker/pull/130)) 
 ------
 ## V3.3.1
  >[release-3.3.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.1) 日期: 2021-10-28 
