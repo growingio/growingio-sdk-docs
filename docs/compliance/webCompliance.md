@@ -12,6 +12,11 @@ title: Web JS SDK 合规说明
 ### 关于Cookie
 
 GrowingIO Web JS SDK主要使用 Cookie 来存储SDK 自动生成的访问用户ID（用于标记访问用户）；不获取客户网站Cookie中内容。用户可以停用 Cookie 或删除任何单个 Cookie 记录。
+:::info
+自 SDK版本 3.3.10起， SDK 支持了 Cookie 加密功能，对 Cookie 进行深层加密，保证数据安全性。
+
+使用 SDK 3.3.10及之后版本时，必须保证所有页面的 SDK 必须是最新版本；否则如果某些页面使用 Cookie 加密功能，那么 Cookie 就是加密的，一旦个别页面使用是低版本 SDK ，没有对应的解密功能，都会导致无法解析 Cookie ，从而造成产生新用户，出现数据异常问题。
+:::
 
 ### 关于 IP 地址
 

@@ -137,9 +137,11 @@ gdp('getVisitorId');
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|
 | `eventId` | `String` | 事件名，事件标识符 |
-| `variables` | `Object` |事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）；<br/>限制：Object 类型，value 仅支持字符串、整数、小数；key 长度 <=50，value 长度 <=1000|
+| `variables` | `Object` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）；<br/>限制：Object 类型，value 仅支持字符串、整数、小数；key 长度 <=50，value 长度 <=1000|
 | `item` | `Object` | 事件发生关联的物品模型item(可选);若需要传item，则key(必填)：物品模型唯一标识,id(必填)：物品模型id|
 | `callback` | 回调函数 | 可选；上报请求响应后的回调，参数为response;可以传入匿名函数，也可以传入自定义函数|
+
+**注意：SDK版本3.3.10起， `variables` 中属性值的类型新增支持数组，数组中元素支持数字或字符串类型。数组的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 #### 示例
 
 ```js
@@ -153,6 +155,9 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' });
 gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }, function(response){
      console.log(response);
 });
+
+// SDK版本3.3.10起，增加支持属性值为数组类型
+gdp('track', 'order', { types: ['hjh1', 'hjh2'] }, { key: 'order_id', id: '12345' });
 ```
 
 :::info
@@ -167,15 +172,18 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }, functio
 
 | 参数         | 参数类型                           | 说明         |
 | :----------- | :--------------------------------- | :----------- |
-| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象；限制：Object 类型，value 仅支持字符串、整数、小数
- |
-| `callback` | 回调函数 | 可选；上报请求响应后的回调，参数为response;可以使用匿名函数，也可以传入自定义函数
- |
+| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象；限制：Object 类型，value 支持字符串、整数、小数类型|
+| `callback` | 回调函数 | 可选；上报请求响应后的回调，参数为response;可以使用匿名函数，也可以传入自定义函数|
 
+**注意：SDK版本3.3.10起， `userAttributes` 中属性值的类型新增支持数组，数组中元素支持数字或字符串类型。数组的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 #### 示例
 
 ```js
 gdp('setUserAttributes', { name: 'hjh' });
+
+// SDK版本3.3.10起，增加支持属性值为数组类型
+gdp('setUserAttributes', { names: ['tony', 'mike', 'lily'] });
+
 gdp('setUserAttributes', { name: 'hjh' }, function(response){
      console.log(response);
 });
