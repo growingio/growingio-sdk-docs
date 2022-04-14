@@ -2,7 +2,15 @@
 title: 版本记录
 sidebar_position: 0
 ---
------
+
+## V3.3.10 - 2022/04/14
+* 支持 cookie 中用户信息加密存储，详细参考[关于Cookie](/docs/compliance/webCompliance#关于cookie)
+* 支持开启 hashtag 时，将 hashtag 后的参数拼接到query字段上报
+* 支持埋点事件属性和用户属性值可设置为数组类型
+* 修复与小程序打通时，当 extraParams 获取不到值，H5页面采集数据对应字段值上报undefined问题
+* 修复与小程序打通时，刷新H5页面打通失败问题
+
+
 ## V3.3.9 - 2022/03/25
 * 修复hook history可能报错的问题
 * 适配小程序重构版本，打通数据采集开关
