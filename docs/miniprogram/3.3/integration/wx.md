@@ -55,7 +55,7 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 <TabItem value="原生">
 
 ```js
-var gdp = require("utils/gio-minp.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -68,7 +68,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 <TabItem value="原生+第三方插件">
 
 ```js
-var gdp = require("utils/gio-minp.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -99,7 +99,7 @@ const App = global.GioApp;
 
 ```js
 import Taro from '@tarojs/taro';
-var gdp = require("utils/gio-minp/index.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -141,7 +141,7 @@ module.exports = {
 
 ```js
 import Taro from '@tarojs/taro';
-var gdp = require("utils/gio-minp/index.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -162,7 +162,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 import Vue from 'vue';
 import App from './App.vue';
 App.mpType = 'app';
-var gdp = require("utils/gio-minp/index.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -189,7 +189,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 import Vue from 'vue';
 import App from './App.vue';
 App.mpType = 'app';
-var gdp = require("utils/gio-minp/index.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -226,9 +226,9 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            GioPage: [resolve('src/utils/gio-minp/index.js'), 'GioPage'],
-            GioApp: [resolve('src/utils/gio-minp/index.js'), 'GioApp'],
-            GioComponent: [resolve('src/utils/gio-minp/index.js'), 'GioComponent']
+            GioPage: [resolve('src/utils/gio/gio-minp.js'), 'GioPage'],
+            GioApp: [resolve('src/utils/gio/gio-minp.js'), 'GioApp'],
+            GioComponent: [resolve('src/utils/gio/gio-minp.js'), 'GioComponent']
         }),
     ]
 };
@@ -241,7 +241,7 @@ module.exports = {
 import Vue from 'vue';
 import App from './App.vue';
 App.mpType = 'app';
-var gdp = require("utils/gio-minp/index.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -273,7 +273,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ```js
 import Vue from 'vue';
-var gdp = require("utils/gio-minp/index.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -288,7 +288,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ```js
 import Vue from 'vue';
-var gdp = require("utils/gio-minp/index.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -304,7 +304,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ```js
 import Wepy from '@wepy/core';
-var gdp = require("utils/gio-minp/index.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
@@ -319,7 +319,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ```js
 import Wepy from '@wepy/core';
-var gdp = require("utils/gio-minp/index.js").default;
+var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',

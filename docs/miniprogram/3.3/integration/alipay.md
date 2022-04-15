@@ -44,9 +44,7 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 
 ```js
 // app.js
-const gdp = require('./utils/gio/sdk.js').default;
-
-
+const gdp = require('./utils/gio/gio-alip.js').default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
