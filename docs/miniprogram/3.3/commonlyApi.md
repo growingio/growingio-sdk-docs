@@ -127,11 +127,11 @@ gdp('track', 'order', { type: 'hjh' }); // 有properties，无item
 gdp('track', 'order', {}, { key: 'order_id', id: '12345' }); // 无properties，有item
 gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有properties，有item
 ```
-
+<!--
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）SDK版本 <3.3.5的版本中，`properties`和`item.attributes`中的属性值仅允许为数字和字符串格式，其他格式数据会被自动过滤。**
 
-**2）SDK版本3.3.5起， `properties`和`item.attributes`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
+**2）SDK版本3.3.5起， `properties`和`item.attributes`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）** -->
 
 :::info
 
@@ -251,7 +251,7 @@ gdp('getGioInfo');
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。请拼接在 URL 的查询参数中；如果 URL 中有 Hashtag（#），不能拼接在 Hashtag（#）后的查询参数中。**
+**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。**
 
 **2）gdp('getGioInfo') 获取的数据是一次性的，非动态获取，如果切换用户导致 sessionId 或 userId 等用户信息变动时，需要您销毁当前 webview 重设地址。并且使用不保留当前页面的跳转方式跳出承载 webview 的小程序页面。**
 
