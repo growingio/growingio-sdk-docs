@@ -446,7 +446,7 @@ Page({
 </view>
 ```
 
-2）传值方式二：直接手动编写Object合法字符串
+2）传值方式二：直接手动编写Object字符串
 
 ```html
 <view
@@ -468,7 +468,7 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）此功能需要注册半自动埋点浏览插件使用。参考[半自动埋点浏览插件](plugins#半自动埋点浏览插件gioimpressiontracking)。**
 
-**2）`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object合法字符串，SDK会自动尝试进行格式化**。
+**2）`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object字符串，SDK会自动尝试进行格式化**。
 
 **3）被标记的节点必须有实际的大小，一个没有内容和样式的节点标记可能不会触发事件。**
 
