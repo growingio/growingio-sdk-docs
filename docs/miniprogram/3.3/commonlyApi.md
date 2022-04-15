@@ -127,6 +127,11 @@ gdp('track', 'order', { type: 'hjh' }); // 有properties，无item
 gdp('track', 'order', {}, { key: 'order_id', id: '12345' }); // 无properties，有item
 gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有properties，有item
 ```
+<!--
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1）SDK版本 <3.3.5的版本中，`properties`和`item.attributes`中的属性值仅允许为数字和字符串格式，其他格式数据会被自动过滤。**
+
+**2）SDK版本3.3.5起， `properties`和`item.attributes`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）** -->
 
 :::info
 
@@ -228,25 +233,25 @@ gdp('getLocation');
 
 当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下数据。
 
-:::info
-默认能获取到的数据说明：<br/>
-giou 是访问用户ID<br/>
-gios 是 sessionID<br/>
-giocs1 是登录用户ID<br/>
-gioid  是上一个非空的登录用户ID
-giouserkey 是用户KEY<br/>
-gioprojectid 是 accountId<br/>
-gioappid 是 小程序appid<br/>
-gioplatform 是应用平台<br/>
-giodatasourceid 是 datasourceId
-:::
+```text
+giou              访问用户Id(deviceId)
+gios              sessionId
+giocs1            登录用户Id
+gioid             最近的非空登录用户Id
+giouserkey        用户Key
+gioprojectid      项目Id
+gioappid          小程序appId
+gioplatform       小程序平台
+giodatasourceid   dataSourceId
+giodatacollect    小程序是否采集数据
+```
 
 ```js
 gdp('getGioInfo');
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。请拼接在 URL 的查询参数中；如果 URL 中有 Hashtag（#），不能拼接在 Hashtag（#）后的查询参数中。**
+**1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。如果您将该字符串拼接在了hash参数中，请在web sdk（>=3.3.10支持）中开启hashtag解析。**
 
 **2）gdp('getGioInfo') 获取的数据是一次性的，非动态获取，如果切换用户导致 sessionId 或 userId 等用户信息变动时，需要您销毁当前 webview 重设地址。并且使用不保留当前页面的跳转方式跳出承载 webview 的小程序页面。**
 

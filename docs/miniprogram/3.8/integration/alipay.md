@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 }>
   <TabItem value="Native原生">
 
-#### 支付宝原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-alipay.js>
+#### 支付宝原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.2/gio-alipay.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -56,13 +56,13 @@ App({ ... });
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-alipay.js).default;
+const gdp = require('./utils/gio/gio-alipay.js').default;
 ```
 
   </TabItem>
   <TabItem value="uni-app">
 
-#### uni-app框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-uniapp.js>
+#### uni-app框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.2/gio-uniapp.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -126,13 +126,13 @@ export function createApp() {
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-uniapp.js).default;
+const gdp = require('./utils/gio/gio-uniapp.js').default;
 ```
 
   </TabItem>
   <TabItem value="Taro">
 
-#### Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-taro.js>
+#### Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.2/gio-taro.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -234,13 +234,13 @@ export default App;
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-taro.js).default;
+const gdp = require('./utils/gio/gio-taro.js').default;
 ```
 
   </TabItem>
   <TabItem value="Chameleon">
 
-#### Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-chameleon.js>
+#### Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.2/gio-chameleon.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -263,13 +263,13 @@ export default new App();
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-chameleon.js).default;
+const gdp = require('./utils/gio/gio-chameleon.js').default;
 ```
 
   </TabItem>
   <TabItem value="Remax">
 
-#### Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/gio-remax.js>
+#### Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.2/gio-remax.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -292,7 +292,7 @@ export default App;
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-remax.js).default;
+const gdp = require('./utils/gio/gio-remax.js').default;
 ```
 
   </TabItem>
@@ -304,7 +304,7 @@ const gdp = require('./utils/gio/gio-remax.js).default;
 
 如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可下载插件包并按需进行扩展。
 
-#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.1/plugins.zip>
+#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.2/plugins.zip>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
