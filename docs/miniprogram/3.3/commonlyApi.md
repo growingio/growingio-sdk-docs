@@ -233,7 +233,7 @@ gdp('getLocation');
 
 当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下数据。
 
-:::info
+```text
 giou              访问用户Id(deviceId)
 gios              sessionId
 giocs1            登录用户Id
@@ -244,7 +244,7 @@ gioappid          小程序appId
 gioplatform       小程序平台
 giodatasourceid   dataSourceId
 giodatacollect    小程序是否采集数据
-:::
+```
 
 ```js
 gdp('getGioInfo');
