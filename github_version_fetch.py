@@ -48,18 +48,6 @@ def github_release(platform):
         pass
     return newest_tag
 
-
-android_replace_pattern = r'(com\.growingio\.android:[\w-]+:)([\d\.]+)'
-giokit_android_replace_pattern = r'(com\.growingio\.giokit:[\w-]+:)([\d\.]+)'
-
-
-class GithubVersionSub(object):
-    def __init__(self, version):
-        self.version = version
-
-    def sub_replace(self, matched):
-        return matched.group(1) + self.version
-
 def hotfix_version(tag):
     if tag is not None \
             and tag != "" \
@@ -68,40 +56,6 @@ def hotfix_version(tag):
             and "HOTFIX" not in tag.upper():
         return False
     return True
-
-def replace_android_version(dir, version):
-    for root, dirs, files in os.walk(dir, followlinks=False):
-        for file in files:
-            md = os.path.join(root, file)
-            if md.lower().endswith(".md"):
-                with(open(md, "r")) as f:
-                    text = f.read()
-                    result = re.sub(android_replace_pattern, GithubVersionSub(version).sub_replace, text)
-                    f.close()
-                with(open(md, "w")) as f:
-                    f.write(result)
-                    f.close()
-                    print("update file:<" + md + "> to newest version:" + version)
-                    pass
-    pass
-
-
-def replace_giokit_android_version(dir, version):
-    for root, dirs, files in os.walk(dir, followlinks=False):
-        for file in files:
-            md = os.path.join(root, file)
-            if md.lower().endswith(".md"):
-                with(open(md, "r")) as f:
-                    text = f.read()
-                    result = re.sub(giokit_android_replace_pattern, GithubVersionSub(version).sub_replace, text)
-                    f.close()
-                with(open(md, "w")) as f:
-                    f.write(result)
-                    f.close()
-                    print("update file:<" + md + "> to newest version:" + version)
-                    pass
-    pass
-
 
 version_pattern = r'\d+\.(?:\d+\.)*\d+'
 
@@ -115,17 +69,7 @@ if __name__ == '__main__':
             continue
         platform_newest_tag = github_release(platform)
         if not hotfix_version(platform_newest_tag):
-            version = re.findall(version_pattern, platform_newest_tag)[0]
-            name = platform['name']
-
-            # update android version
-            if "android" == name.lower():
-                replace_android_version(platform["distPath"], version)
-            # update giokit android version
-            if "giokit android" == name.lower():
-                replace_giokit_android_version(platform["distPath"], version)
-
-            platform['version'] = version
+            platform['version'] = re.findall(version_pattern, platform_newest_tag)[0]
 
     with(open(config_file, 'w')) as f:
         json.dump(config, f, ensure_ascii=False, indent=2)

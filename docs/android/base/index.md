@@ -37,7 +37,7 @@ buildscript {
     dependencies {
         
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.3.5'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:<AndroidSDKVersion />'
     }
 }
 ```
@@ -81,7 +81,7 @@ apply plugin: 'com.growingio.android.autotracker'
 dependencies {
     ...
     //GrowingIO 无埋点 SDK
-    implementation 'com.growingio.android:autotracker-cdp:3.3.5'
+    implementation 'com.growingio.android:autotracker-cdp:<AndroidSDKVersion />'
 }
 
 ```
@@ -202,7 +202,7 @@ class MyApplication : Application() {
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.3.4 !!!`  
+`!!! GrowingIO Tracker version: <AndroidSDKVersion /> !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
@@ -230,7 +230,7 @@ repositories {
 dependencies {
 
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.3.5'
+    implementation 'com.growingio.android:tracker-cdp:<AndroidSDKVersion />'
 }
 ```
 
@@ -332,7 +332,7 @@ SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用�
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.3.4 !!!`  
+`!!! GrowingIO Tracker version: <AndroidSDKVersion /> !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。

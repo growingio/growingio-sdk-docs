@@ -5,7 +5,8 @@
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-autotracker/releases",
     "distPath": "docs/android/",
     "fileName": "version.md",
-    "enable": true
+    "enable": true,
+    "replace": "<AndroidSDKVersion />"
   },
   {
     "name": "iOS",
@@ -13,7 +14,8 @@
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-ios-autotracker/releases",
     "distPath": "docs/ios/",
     "fileName": "version.md",
-    "enable": true
+    "enable": true,
+    "replace": "<iOSSDKVersion />"
   },
   {
     "name": "webjs",
@@ -21,7 +23,8 @@
     "releaseUrl": "",
     "distPath": "docs/webjs/",
     "fileName": "version.md",
-    "enable": false
+    "enable": false,
+    "replace": ""
   },
   {
     "name": "GioKit Android",
@@ -29,7 +32,8 @@
     "releaseUrl": "https://api.github.com/repos/growingio/giokit-android/releases",
     "distPath": "docs/giokit/android/",
     "fileName": "version.md",
-    "enable": true
+    "enable": true,
+    "replace": "<GioKitAndroidSDKVersion />"
   },
   {
     "name": "GioKit iOS",
@@ -37,6 +41,7 @@
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-ios-toolskit/releases",
     "distPath": "docs/giokit/ios/",
     "fileName": "version.md",
-    "enable": false
+    "enable": true,
+    "replace": "<GioKitiOSSDKVersion />"
   }
 ]

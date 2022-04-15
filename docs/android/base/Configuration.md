@@ -185,7 +185,7 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 :::
 ```groovy
 ...
-implementation "com.growingio.android:hybrid:3.3.5"
+implementation "com.growingio.android:hybrid:<AndroidSDKVersion />"
 ```
 
 SDK初始化时需要注册 hybrid 模块：
@@ -212,7 +212,7 @@ GrowingTracker.get().bridgeWebView(webview)
 采集 SDK 版本 >=3.3.0
 
 > 在 OAID SDK 1.0.26及其后续版本，获得OAID值需要传入从 MSA 机构获得的证书；
-> 3.3.0 ~ 3.3.3版本无法传入客户自己获得的OAID值或OAID证书，若需要这些功能，请使用最新的版本 >=3.3.4。
+> 3.3.0 ~ 3.3.3版本无法传入客户自己获得的OAID值或OAID证书，若需要这些功能，请使用版本 >=3.3.4。
 
 **使用时注意模块版本需要与采集SDK版本保持一致**
 :::
@@ -220,7 +220,7 @@ GrowingTracker.get().bridgeWebView(webview)
 项目需要添加[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 OAID模块依赖(和 SDK 依赖同级)：
 ```groovy
 ...
-implementation "com.growingio.android:oaid:3.3.5"
+implementation "com.growingio.android:oaid:<AndroidSDKVersion />"
 ```
 SDK初始化时注册Oaid模块：
 
@@ -336,7 +336,7 @@ GrowingTracker.startWithConfiguration(this,
 项目需要添加加密模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:encoder:3.3.5"
+implementation "com.growingio.android:encoder:<AndroidSDKVersion />"
 ```
 
 SDK初始化时注册加密模块：
@@ -372,7 +372,7 @@ GrowingTracker.startWithConfiguration(this,
 项目需要添加Protobuf模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:protobuf:3.3.5"
+implementation "com.growingio.android:protobuf:<AndroidSDKVersion />"
 ```
 
 SDK初始化时注册Protobuf模块：
