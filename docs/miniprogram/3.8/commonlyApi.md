@@ -147,7 +147,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**`properties`和`item.attributes`中的属性值允许为数字、字符串和数组格式，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
+**`properties`中的属性值允许为数字、字符串和数组格式（`item.attributes`仅允许为数字或字符串），其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
 ### 5、登录用户属性(setUserAttributes)
 
