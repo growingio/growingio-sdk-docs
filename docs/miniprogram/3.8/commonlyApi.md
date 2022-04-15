@@ -146,6 +146,9 @@ gdp('track', 'order', {}, { key: 'order_id', id: '12345' }); // 无properties，
 gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有properties，有item
 ```
 
+**<font color="#FC5F3A">注意：</font>**<br/>
+**`properties`和`item.attributes`中的属性值允许为数字、字符串和数组格式，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
+
 ### 5、登录用户属性(setUserAttributes)
 
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
@@ -421,6 +424,8 @@ gdp('getOption');
 
 2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#4埋点事件track)。
 
+1）传值方式一：使用变量传值
+
 ```js
 Page({
   data: {
@@ -437,7 +442,20 @@ Page({
   data-gio-imp-attrs="{{ impAttrs }}"
   data-gio-imp-items="{{ impItems }}"
 >
-  监听的元素
+  监听的元素，必须有内容或额外样式来让节点有实际大小
+</view>
+```
+
+2）传值方式二：直接手动编写Object合法字符串
+
+```html
+<view
+  class="growing_collect_imp"
+  data-gio-imp-track="imp_picture_var"
+  data-gio-imp-attrs='{ "type": "hjh", "name": "yue" }'
+  data-gio-imp-items='{ "key": "order_id", "id": "12345" }'
+>
+  监听的元素，必须有内容或额外样式来让节点有实际大小
 </view>
 ```
 
@@ -448,11 +466,13 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1）此功能需要注册半自动埋点浏览插件使用。参考[半自动埋点浏览插件](plugins#半自动埋点浏览插件gioimpressiontracking)**
+**1）此功能需要注册半自动埋点浏览插件使用。参考[半自动埋点浏览插件](plugins#半自动埋点浏览插件gioimpressiontracking)。**
 
 **2）`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object合法字符串，SDK会自动尝试进行格式化**。
 
-<!-- 2）快手小程序在同一个页面中只能监听相同大小节点的第一个，即如果在同一个页面中需要监听多个节点时，要保证节点大小不一致，否则曝光事件会全部匹配到第一个相同大小的节点。 -->
+**3）被标记的节点必须有实际的大小，一个没有内容和样式的节点标记可能不会触发事件。**
+
+<!-- 4）快手小程序在同一个页面中只能监听相同大小节点的第一个，即如果在同一个页面中需要监听多个节点时，要保证节点大小不一致，否则曝光事件会全部匹配到第一个相同大小的节点。 -->
 
 ## 其他
 
