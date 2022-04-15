@@ -250,7 +250,7 @@ gdp('getLocation');
 giou              访问用户Id(deviceId)
 gios              sessionId
 giocs1            登录用户Id
-gioid             上一个非空的登录用户Id
+gioid             最近的非空登录用户Id
 giouserkey        用户Key
 gioprojectid      项目Id
 gioappid          小程序appId
