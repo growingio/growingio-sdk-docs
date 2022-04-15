@@ -42,7 +42,7 @@ export default GioPage({ ... }); // 所有的页面文件要包裹GioPage()方�
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-quickapp.js).default;
+const gdp = require('./utils/gio/gio-quickapp.js').default;
 ```
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***

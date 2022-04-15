@@ -54,7 +54,7 @@ App({ ... });
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-qq.js).default;
+const gdp = require('./utils/gio/gio-qq.js').default;
 ```
 
   </TabItem>
@@ -124,7 +124,7 @@ export function createApp() {
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-uniapp.js).default;
+const gdp = require('./utils/gio/gio-uniapp.js').default;
 ```
 
   </TabItem>
@@ -232,7 +232,7 @@ export default App;
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-taro.js).default;
+const gdp = require('./utils/gio/gio-taro.js').default;
 ```
 
   </TabItem>
