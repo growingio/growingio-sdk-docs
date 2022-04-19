@@ -55,6 +55,7 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 <TabItem value="原生">
 
 ```js
+// app.js
 var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
@@ -68,6 +69,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 <TabItem value="原生+第三方插件">
 
 ```js
+// app.js
 var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
@@ -95,9 +97,9 @@ const App = global.GioApp;
   ]
 }>
 <TabItem value="2.x">
-在根目录main.js文件的顶部添加跟踪代码
 
 ```js
+// main.js
 import Taro from '@tarojs/taro';
 var gdp = require("utils/gio/gio-minp.js").default;
 
@@ -112,34 +114,27 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 </TabItem>
 <TabItem value="3.x">
 
-1、添加npm包 `babel-plugin-setname`
-
-```js
+```bash
 npm install babel-plugin-setname --save-dev
 ```
 
-2、修改babel配置，如 `babel.config.js`
-
 ```js
+// babel.config.js
 module.exports = {
   plugins: [
     [
       "babel-plugin-setname",
       {
         includes: ["src"],
-        callee: '__setname__',
-        package: '@gio/setname',
         lower: false,
-        test: /^on[A-Z][a-zA-Z]+/
       }
     ]
   ]
 }
 ```
 
-3、在根目录main.js文件的顶部添加跟踪代码
-
 ```js
+// main.js
 import Taro from '@tarojs/taro';
 var gdp = require("utils/gio/gio-minp.js").default;
 
@@ -156,9 +151,8 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ### uni-app
 
-在根目录main.js文件的顶部添加跟踪代码
-
 ```js
+// main.js
 import Vue from 'vue';
 import App from './App.vue';
 App.mpType = 'app';
@@ -171,93 +165,8 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     ...其他配置项
 });
 ```
-
-### mpvue
-
-<Tabs
-  groupId="3"
-  defaultValue="mpvue"
-  values={[
-    {label: 'mpvue', value: 'mpvue'},
-    {label: 'mpvue+第三方插件', value: 'mpvue+第三方插件'},
-  ]
-}>
-<TabItem value="mpvue">
-在根目录main.js文件的顶部添加跟踪代码
-
-```js
-import Vue from 'vue';
-import App from './App.vue';
-App.mpType = 'app';
-var gdp = require("utils/gio/gio-minp.js").default;
-
-gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
-    version: '小程序版本',
-    host: 'api.growingio.com',
-    vue: Vue,
-    ...其他配置项
-});
-```
-
-</TabItem>
-<TabItem value="mpvue+第三方插件">
-
-1、添加npm包 `imports-loader`
-
-```js
-npm install  imports-loader --save-dev
-```
-
-2、创建一个新文件 **/src/utils/vue.js** 文件
-
-```js
-import Vue from 'imports-loader?global=>undefined,Page=>GioPage,App=>GioApp,Component=>GioComponent!mpvue'
-export default Vue
-```
-
-3、修改 **/build/webpack.base.conf.js** 配置，添加以下内容
-
-```js
-module.exports = {
-    resolve: {
-        alias: {
-            'vue': resolve('src/utils/vue'),
-        },
-    },
-    plugins: [
-        new webpack.ProvidePlugin({
-            GioPage: [resolve('src/utils/gio/gio-minp.js'), 'GioPage'],
-            GioApp: [resolve('src/utils/gio/gio-minp.js'), 'GioApp'],
-            GioComponent: [resolve('src/utils/gio/gio-minp.js'), 'GioComponent']
-        }),
-    ]
-};
-```
-
-4、添加初始化代码
-
-```js
-
-import Vue from 'vue';
-import App from './App.vue';
-App.mpType = 'app';
-var gdp = require("utils/gio/gio-minp.js").default;
-
-gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
-    version: '小程序版本',
-    host: 'api.growingio.com',
-    usePlugin: true,
-    vue: Vue,
-    ...其他配置项
-});
-```
-
-</TabItem>
-</Tabs>
 
 ### WePY
-
-在根目录app.wpy文件的顶部添加跟踪代码
 
 <Tabs
   groupId="4"
@@ -272,6 +181,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 <TabItem value="1.x">
 
 ```js
+// app.wpy
 import Vue from 'vue';
 var gdp = require("utils/gio/gio-minp.js").default;
 
@@ -287,6 +197,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 <TabItem value="1.x+插件">
 
 ```js
+// app.wpy
 import Vue from 'vue';
 var gdp = require("utils/gio/gio-minp.js").default;
 
@@ -303,6 +214,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 <TabItem value="2.x">
 
 ```js
+// app.wpy
 import Wepy from '@wepy/core';
 var gdp = require("utils/gio/gio-minp.js").default;
 
@@ -318,6 +230,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 <TabItem value="2.x+插件">
 
 ```js
+// app.wpy
 import Wepy from '@wepy/core';
 var gdp = require("utils/gio/gio-minp.js").default;
 
