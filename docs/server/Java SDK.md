@@ -57,7 +57,7 @@ pom.xml
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.11-cdp</version>
+        <version>1.0.12-cdp</version>
     </dependency>
 </dependencies>
 ```
@@ -68,7 +68,7 @@ pom.xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.11-cdp</version>
+    <version>1.0.12-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
@@ -82,13 +82,13 @@ pom.xml
 如果使用gradle依赖，可以使用如下集成方式
 
 ```gradle
-implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.11-cdp'
+implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.12-cdp'
 ```
 
 若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone
 
 ```gradle
-implementation('io.growing.sdk.java:growingio-java-sdk:1.0.11-cdp:standalone') {
+implementation('io.growing.sdk.java:growingio-java-sdk:1.0.12-cdp:standalone') {
     exclude module: 'protobuf-java'
 }
 ```

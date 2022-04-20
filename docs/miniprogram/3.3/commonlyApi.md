@@ -126,12 +126,15 @@ gdp('track', 'order'); // 无properties，无item
 gdp('track', 'order', { type: 'hjh' }); // 有properties，无item
 gdp('track', 'order', {}, { key: 'order_id', id: '12345' }); // 无properties，有item
 gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有properties，有item
-```
-<!--
-**<font color="#FC5F3A">注意：</font>**<br/>
-**1）SDK版本 <3.3.5的版本中，`properties`和`item.attributes`中的属性值仅允许为数字和字符串格式，其他格式数据会被自动过滤。**
 
-**2）SDK版本3.3.5起， `properties`和`item.attributes`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）** -->
+// SDK版本3.3.5起，增加支持属性值为数组类型
+gdp('track', 'order', { types: ['hjh1', 'hjh2'] }, { key: 'order_id', id: '12345' });
+```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1）SDK版本 <3.3.5的版本中，`properties`中的属性值仅允许为数字和字符串格式，其他格式数据会被自动过滤。**
+
+**2）SDK版本3.3.5起， `properties`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）** 
 
 :::info
 
@@ -153,7 +156,15 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 
 ```js
 gdp('setUserAttributes', { name: 'hjh' });
+
+// SDK版本3.3.5起，增加支持属性值为数组类型
+gdp('setUserAttributes',{user_list: ['hjh1','hjh2']});
 ```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1）SDK版本 <3.3.5的版本中，`properties`中的属性值仅允许为数字和字符串格式，其他格式数据会被自动过滤。**
+
+**2）SDK版本3.3.5起， `properties`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）** 
 
 #### 微信用户属性设置
 
