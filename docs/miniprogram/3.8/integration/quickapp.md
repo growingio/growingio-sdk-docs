@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 1. 在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
 
-2. 在您的小程序中获取**`appId`**。
+2. 在您的快应用中获取**`packageName`**。
 
 3. 下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
 
 ### 集成
 
-参考示例在 app.ux 快应用主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在小程序中任意生命周期中进行初始化。**
+参考示例在 app.ux 快应用主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在快应用中任意生命周期中进行初始化。**
 
 #### 快应用原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.3/gio-quickapp.js>
 
