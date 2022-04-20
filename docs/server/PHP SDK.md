@@ -2,6 +2,15 @@
 sidebar_position: 2
 title: PHP SDK
 ---
+
+### 版本记录
+|    版本    | 说明 |  日期  |
+|:-------:| :----:  |  :-------:  |
+| v1.0.3 | 支持埋点事件事件变量、用户变量可传列表类型 |  2022-04-20 |
+| v1.0.2 | 支持埋点事件可传eventTime参数 |  2022-04-02 |
+| v1.0.1 | 支持userKey字段设置 | 2022-02-11 |
+
+### 简介
 GrowingIO提供在Server端部署的PHP SDK,从而可以方便的进行事件上报等操作。
 
 源码托管在 [growingio/growingio-php-sdk](https://github.com/growingio/growingio-php-sdk)
@@ -72,20 +81,20 @@ $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 
 **参数说明**
 
-| 参数         | 必选  | 类型   | 默认值           | 说明                                                                     |
-| :----------- | :---- | :----- | :--------------- | ------------------------------------------------------------------------ |
-| evnetTime    | false | int    | 当前时间的时间戳 | 事件发生时间。如需要开启"自定义event_time上报"的功能开关，请联系技术支持 |
-| loginUserKey | false | string |                  | 登录用户Key型                                                            |
-| loginUserId  | true  | string |                  | 登录用户ID                                                               |
-| eventKey     | true  | string |                  | 埋点事件标识符                                                           |
-| properties   | false | array  | array()          | 事件发生时,所伴随的维度信息                                              |
-
+| 参数         | 是否必填  | 类型   | 默认值           | 说明                                                                     |
+| :----------- | :----: | :-----: | :---------------: | ---------- |
+| eventTime    | false | int    | 当前时间的时间戳 | 事件发生时间(毫秒)；<br/>需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认 |
+| loginUserKey | false | string |                  | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| anonymousId  |   false  | string           |      | 访问用户ID，与登录用户ID，不能同时为空 |
+| loginUserId  | false  | string |                  | 登录用户ID，与访问用户ID，不能同时为空 |
+| eventKey     | true  | string |                  | 埋点事件标识符 |
+| properties   | false | array  | array()          | 事件发生时,所伴随的维度信息；<br/>value支持 string\|double\|int\|数组,数组中元素支持string\|double\|int    |
 **代码示例**
 ```php
 $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
     ->setEventTime(1648524854000)
     ->setLoginUserKey('loginUserKey')
-    ->setProperties(array('attrKey1' => 'attrValue1', 'attrKey2' => 'attrValue2'))
+    ->setProperties(array('attrKey1' => 'attrValue1', 'attrKey2' => 'attrValue2', 'attrKey3' => array("Volvo","BMW","Toyota")))
     ->create());
 ```
 
@@ -100,17 +109,18 @@ $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
 
 **参数说明**
 
-| 参数         | 必选  | 类型   | 默认值 | 说明         |
-| :----------- | :---- | :----- | :----- | ------------ |
-| loginUserKey | false | string |        | 登录用户Key  |
-| loginUserId  | true  | string |        | 登录用户ID   |
-| properties   | true  | array  |        | 用户属性信息 |
+| 参数         | 是否必填  | 类型   | 默认值 | 说明         |
+| :----------- | :----: | :-----: | :----- | ------------ |
+| loginUserKey | false | string |        | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| loginUserId  | false  | string |        | 登录用户ID，与访问用户ID，不能同时为空 |
+| anonymousId  | false | string  |        | 访问用户ID，与登录用户ID，不能同时为空  |
+| properties   | true  | array  |        | 用户属性信息；<br/>value支持 string\|double\|int\|数组,数组中元素支持string\|double\|int |
 
 **代码示例**
 ```php
 $gio->setUserAttributesEvent($gio->getUserAttributesFactory('loginUserId')
     ->setLoginUserKey('loginUserKey')
-    ->setProperties(array('gender' => 'male', 'age' => '18'))
+    ->setProperties(array('gender' => 'male', 'age' => '18','education' => array('本科','硕士')))
     ->create());
 ```
 :::info
