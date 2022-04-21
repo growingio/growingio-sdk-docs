@@ -3,6 +3,10 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V3.3.11 - 2022/04/21
+* 修复页面title取值错误的问题
+
+
 ## V3.3.10 - 2022/04/14
 * 支持 cookie 中用户信息加密存储，详细参考[关于Cookie](/docs/compliance/webCompliance#关于cookie)
 * 支持开启 hashtag 时，将 hashtag 后的参数拼接到query字段上报
