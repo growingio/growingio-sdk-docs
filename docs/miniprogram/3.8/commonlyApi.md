@@ -19,7 +19,7 @@ gdp('setOption', optionKey, optionValue);  // return true | false
 
 ### 1、开启/关闭无埋点数据采集(autotrack)
 
-当加载了无埋点插件时，默认开启无埋点数据采集。当设置为 **`flase`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。未加载插件时无论 autotrack 是否开启都不会进行采集。
+当加载了无埋点插件时，默认开启无埋点数据采集。当设置为 **`false`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。未加载插件时无论 autotrack 是否开启都不会进行采集。
 
 ```js
 gdp('setOption', 'autotrack', true | false);

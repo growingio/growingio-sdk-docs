@@ -11,7 +11,7 @@ title: 数据采集API
 
 ### 开启/关闭无埋点数据采集(autotrack)
 
-默认开启无埋点数据采集。当设置为 **`flase`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。
+默认开启无埋点数据采集。当设置为 **`false`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。
 
 ```js
 gdp('setAutotrack', true | false);
