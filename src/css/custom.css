@@ -115,3 +115,7 @@ a[class~="menu__link"][tabindex]{
 a[class^='cardContainerLink_node_modules']{
   color: #170703;
 }
+
+a[class^='theme-edit-this-page']{
+  display: none;
+}
