@@ -214,7 +214,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ### 查看集成效果
 运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.4`  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.5`  
 则说明 SDK 已经集成成功。
 
 若在初始化中 `debugEnabled` 设置为 YES，打开了 Debug，则可以在日志中看到每个事件的 log 日志输出。
@@ -416,7 +416,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ### 查看集成效果
 运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.4`  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.5`  
 则说明 SDK 已经集成成功。
 
 若在初始化中 `debugEnabled` 设置为 YES，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
@@ -535,7 +535,7 @@ Swift 项目如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 
   #import "GrowingTrackConfiguration+CdpTracker.h"
   ```
 
-  同理，如集成 `pod 'GrowingAnalytics-cdp/Tracker', '3.3.5-beta'`，也需对 Pods/GrowingAnalytics-cdp/Tracker/GrowingTracker.h 进行如上调整
+  同理，如集成 `pod 'GrowingAnalytics-cdp/Tracker'`，也需对 Pods/GrowingAnalytics-cdp/Tracker/GrowingTracker.h 进行如上调整
 
 - 修改 OTHER_SWIFT_FLAGS
 

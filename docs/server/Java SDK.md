@@ -3,6 +3,17 @@ sidebar_position: 1
 title: JAVA SDK
 ---
 
+### 版本记录
+
+|    版本    | 说明 |  日期  |
+|:-------:| :----  |  :-------:  |
+| 1.0.12-cdp | 支持埋点事件事件变量、用户变量可传列表类型 |  2022-04-20 |
+| 1.0.11-cdp | 支持埋点事件可传eventTime参数 |  2022-04-02 |
+| 1.0.10-cdp | 支持最近测量协议 | 2021-11-08 |
+| 1.0.9-cdp | 1. 支持userKey字段设置<br/>  2. 支持设置访问用户ID<br/> | 2022-02-11 |
+
+### 简介
+
 Java SDK 源码托管在 [growingio/growingio-java-sdk](https://github.com/growingio/growingio-java-sdk/tree/gdp)
 
 GrowingIO提供在Server端部署的SDK，从而可以方便的进行事件上报等操作。
@@ -13,8 +24,11 @@ Java SDK从1.0.10-cdp版本开始使用v3协议进行事件上报, 使用前确�
 
 支持的平台版本为 OP-13.6、OP-14.x、OP-2.x 版本
 :::
+
 ### 集成准备
+
 #### 获取SDK初始化必传参数：AccountID、DataSourceID、Host
+
 :::info
 AccountID：项目ID，代表一个项目<br/>
 DataSourceID：数据源ID，代表一个数据源<br/>
@@ -23,9 +37,13 @@ Host：采集数据上报的服务器地址<br/>
 AccountID、DataSourceID 需要在CDP增长平台上新建数据获取源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
 Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
 :::
+
 ##### 创建
+
 ![新建数据源](./../../static/img/createapplication.png)
+
 ##### 查看
+
 ![查看数据源](./../../static/img/showServerDataSourceID.png)
 
 ### 依赖
@@ -39,18 +57,18 @@ pom.xml
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.11-cdp</version>
+        <version>1.0.12-cdp</version>
     </dependency>
 </dependencies>
 ```
 
-若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone     
+若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone
 
 ```xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.11-cdp</version>
+    <version>1.0.12-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
@@ -64,13 +82,13 @@ pom.xml
 如果使用gradle依赖，可以使用如下集成方式
 
 ```gradle
-implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.11-cdp'
+implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.12-cdp'
 ```
 
 若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone
 
 ```gradle
-implementation('io.growing.sdk.java:growingio-java-sdk:1.0.11-cdp:standalone') {
+implementation('io.growing.sdk.java:growingio-java-sdk:1.0.12-cdp:standalone') {
     exclude module: 'protobuf-java'
 }
 ```
@@ -115,6 +133,7 @@ run.mode=test
 # 此值越大，队列越接近满状态，加速线程执行的时间越提前。"加速"可能对接口接收服务造成压力，谨慎使用！
 # msg.store.queue.load_factor=0.5
 ```
+
 :::info 注意
 请按照您的项目情况修改`api.host` 和 `project.id`。<br/>
 run.mode 表示运行模式。当值为 test 时，仅输出消息体，不发送采集数据；当值为 production 时， 才向发送采集数据。
@@ -135,7 +154,7 @@ run.mode 表示运行模式。当值为 test 时，仅输出消息体，不发�
 // YourDatasourceId eg: 11223344aabbcc
 private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
 
-//事件行为消息体
+//事件行为消息体，anonymousId 和 loginUserId 参数，不能同时为空
 GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
     .eventTime(System.currentTimeMillis())            // 默认为系统当前时间 (选填)
     .eventKey("3")                                    // 埋点事件标识 (必填)
@@ -156,10 +175,11 @@ project.send(eventMessage);
 ## API说明
 
 ### 设置项目信息
+
 **参数说明**
 
 | 参数名称        | 类型   | 是否必填 | 说明     |
-| --------------- | ------ | -------- | -------- |
+| :--------------- | :------: | :--------: | -------- |
 | setProjectKey   | string | 是       | 项目ID   |
 | setDataSourceId | string | 是       | 数据源ID |
 
@@ -172,24 +192,26 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 ```
 
 ### 埋点事件
+
 发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性
 
 **参数说明**
 
-| 参数名称          | 类型                          | 是否必填 | 说明                                                                                             |
-| ----------------- | ----------------------------- | -------- | ------------------------------------------------------------------------------------------------ |
-| eventTime         | long                          | 否       | 事件发生时间(毫秒)。需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认               |
-| eventKey          | string                        | 是       | 埋点事件标识符                                                                                   |
-| anonymousId       | string                        | 否       | 匿名用户ID                                                                                       |
-| loginUserKey      | string                        | 否       | 登录用户KEY                                                                                      |
-| loginUserId       | string                        | 否       | 登录用户ID                                                                                       |
-| addEventVariable  | (string, string\|double\|int) | 否       | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选） |
-| addEventVariables | map<string,object>            | 否       | 事件属性集合;当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选）                |
-| addItem           | (string, string)              | 否       | 物品模型ID, 物品模型KEY                                                                          |
+| 参数名称         | 类型                          | 是否必填 | 说明               |
+| :-------------- | :---------------------------: | :--------------: | ------------------ |
+| eventTime         | long                          | 否       | 事件发生时间(毫秒)；<br/>需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认 |
+| eventKey          | string                        | 是       | 埋点事件标识 |
+| anonymousId       | string                        | 否       | 访问用户ID，与登录用户ID，不能同时为空 |
+| loginUserKey      | string                        | 否       | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| loginUserId       | string                        | 否       | 登录用户ID，与访问用户ID，不能同时为空|
+| addEventVariable  | (string, object)              | 否       | 事件发生时所伴随的属性信息；<br/>object支持 string\|double\|int\|List,List 中元素支持string\|double\|int；<br/>当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID) |
+| addEventVariables | map<string,object>            | 否       | 事件属性集合；<br/>object支持 string\|double\|int\|List,List 中元素支持string\|double\|int；<br/>当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)                |
+| addItem           | (string, string)              | 否       | 物品模型ID, 物品模型Key |
 
 **代码示例**
 
 ```java
+// anonymousId 和 loginUserId 参数，不能同时为空
 GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
                     .eventTime(System.currentTimeMillis())            // 默认为系统当前时间 (选填)
                     .eventKey("eventKey")                             // 事件标识 (必填)
@@ -197,43 +219,49 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
                     .loginUserKey("account")                          // 登录用户KEY (选填)
                     .loginUserId("417abcabcabcbac")                   // 登录用户ID (选填)
                     .addEventVariable("product_name", "cdp苹果")       // 事件属性 (选填)
+                    .addEventVariable("product_classify", Arrays.asList("苹果", "香蕉"))       // 事件属性 (选填)
                     .addEventVariables(map)                           // 事件属性集合 (选填)
                     .addItem("itemId", "itemKey")                     // 物品模型ID, KEY (选填)
                     .build();
 ```
+
 :::info
 
 详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
 
 :::
 
-### 登录用户属性事件 
+### 登录用户属性事件
+
 以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析。<br/>
 在添加登录用户属性代码之前，需要在CDP平台用户管理界面中创建用户属性
 
 **参数说明**
 
 | 参数名称         | 类型                          | 是否必填 | 说明               |
-| ---------------- | ----------------------------- | -------- | ------------------ |
+| :-------------- | :---------------------------: | :--------: | ------------------ |
 | time             | long                          | 否       | 事件发生时间(毫秒) |
-| anonymousId      | string                        | 否       | 匿名用户ID         |
-| loginUserKey     | string                        | 否       | 登录用户KEY        |
-| loginUserId      | string                        | 是       | 登录用户ID         |
-| addUserVariable  | (string, string\|double\|int) | 否       | 登录用户属性       |
-| addUserVariables | map<string,object>            | 否       | 登录用户属性集合   |
+| anonymousId      | string                        | 否       | 访问用户ID，与登录用户ID，不能同时为空  |
+| loginUserKey     | string                        | 否       | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| loginUserId      | string                        | 是       | 登录用户ID，与访问用户ID，不能同时为空 |
+| addUserVariable  | (string, object)              | 否       | 登录用户属性；<br/>object支持 string\|double\|int\|List,List中元素支持string\|double\|int      |
+| addUserVariables | map<string,object>            | 否       | 登录用户属性集合；<br/>object支持 string\|double\|int\|List,List 中元素支持string\|double\|int   |
 
 **代码示例**
 
 ```java
+// anonymousId 和 loginUserId 参数，不能同时为空
 GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
                 .time(System.currentTimeMillis())      // 默认为系统当前时间 (选填)
                 .anonymousId("device_id")              // 访问用户ID (选填)
                 .loginUserKey("account")               // 登录用户KEY (选填)
-                .loginUserId("loginUserId")            // 登录用户ID的 (必填)
+                .loginUserId("loginUserId")            // 登录用户ID的 (选填)
                 .addUserVariable("gender", "man")      // 登录用户属性 (选填)
+                .addUserVariable("education", Arrays.asList("本科", "硕士"))      // 登录用户属性 (选填)
                 .addUserVariables(map)                 // 登录用户属性集合 (选填)
                 .build();
 ```
+
 :::info
 
 详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
@@ -241,6 +269,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 :::
 
 ### 物品模型(CDP平台版本<2.1)
+
 发送一个物品模型。在添加所需要发送的物品模型代码之前，需要在物品管理界面中创建对应物品及其属性
 
 **参数说明**
@@ -262,6 +291,7 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 ```
 
 ### 维度表(CDP平台版本>=2.1)
+
 上传一个维度表记录。在添加所需要上传维度表记录代码之前，需要在维度表管理界面中创建对应维度表及其属性
 
 **参数说明**
@@ -283,6 +313,7 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 ```
 
 ### 用户融合
+
 可将不同类型的登录用户ID识别为一个登录用户
 
 **参数说明**
@@ -317,17 +348,20 @@ GioCdpUserMappingMessage msg = new GioCdpUserMappingMessage.Builder()
 2. 在gio.properties配置文件将run.mode定义为test
 3. 在您的Java项目中找到合适的埋点位置，调用埋点事件API/登录用户属性API上传数据
 4. 在输出的日志中查找是否包含期望事件内容，如下：
+
 > gio message is [{"cs1":"10324","t":"cstm","var":{"product_name":"苹果"},"tm":1575895053509,"n":"order"}]
 
 ![code](https://gblobscdn.gitbook.com/assets%2F-M2qbZInaXgdm8kkNosp%2F-M3jX91jAu6IT2O2PJVo%2F-M3jZ7JgLc5nEzRbIQQh%2Fimage.png?alt=media&token=02d9d860-892b-43f5-b90c-4c8a9155401a)
 
 完成以上测试步骤后：
+
 1. 修改gio.properties文件并将run.mode定义为production，并触发埋点事件 。
 2. 在线查询GrowingIO数据库，确认数据上传成功。
 
 ## Debugger选项
 
 ### SDK log 输出级别
+
 通过以下配置可以控制 sdk 的日志输出级别
 
 ```xml
@@ -343,6 +377,7 @@ logger.level=debug
 ```xml
 logger.implementation=io.growing.sdk.java.demo.DemoLogger
 ```
+
 自定义日志输出实现类示例，DemoLogger 类需要客户自己实现，客户可根据自己的系统内部的日志工具将 sdk 的日志输出，并制定适合自己业务的日志保存策略
 
 ```java
@@ -358,9 +393,11 @@ public class DemoLogger implements GioLoggerInterface {
     }
 }
 ```
+
 比如以上 demo 中，采用的就是 SLF4J 和 Log4j2 的组合, 客户可通过自己的日志工具定制 日志保留时间，及日志存储大小。
 
 ### 自定义配置文件路径
+
 * 需要在 GrowingAPI 初始化之前调用 initConfig(String configFilePath)，进行配置初始化
 
 ### 自定义配置

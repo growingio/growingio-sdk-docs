@@ -2,7 +2,14 @@
 sidebar_position: 3
 title: Python SDK
 ---
+### 版本记录
+|    版本    | 说明 |  日期  |
+|:-------:| :----:  |  :-------:  |
+| V1.0.2 | 支持埋点事件事件变量、用户变量可传列表类型 |  2022-04-20 |
+| V1.0.1 | 支持埋点事件可传eventTime参数 |  2022-04-02 |
+| V1.0.0 | 支持自定义事件，用户属性事件 | 2022-03-28 |
 
+### 简介
 GrowingIO 提供在Python Server端部署的SDK，方便集成后可以快速的进行事件上报操作。
 > 兼容 Python2.7+ 和 Python3.5+.
 
@@ -162,19 +169,19 @@ growing_tracker = GrowingTracker.consumer(default_consumer)
 
 **参数说明**
 
-| 参数           | 必选  | 类型   | 默认值 | 说明                                                                         |
-| :------------- | :---- | :----- | :----- | ---------------------------------------------------------------------------- |
+| 参数           | 是否必选  | 类型   | 默认值 | 说明                                                                         |
+| :------------- | :----: | :-----: | :----- | ------ |
 | event_name     | true  | string |        | 埋点事件标识符                                                               |
-| event_time     | false | long   |        | 时间发生时间, 需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认 |
-| anonymous_id   | false | string |        | 设备信息                                                                     |
-| login_user_key | false | string |        | 登录用户Key                                                                  |
-| login_user_id  | false | string |        | 登录用户ID                                                                   |
-| attributes     | false | dict   | None   | 事件发生时,所伴随的维度信息                                                  |
+| event_time     | false | long   |        | 事件发生时间(毫秒)；<br/>需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认 |
+| anonymous_id   | false | string |        | 访问用户ID，与登录用户ID，不能同时为空 |
+| login_user_key | false | string |        | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| login_user_id  | false | string |        | 登录用户ID，与访问用户ID，不能同时为空 |
+| attributes     | false | dict   | None   | 事件发生时,所伴随的维度信息；<br/> value支持 string\|double\|int\|array,array中元素支持string\|double\|int |
 
 **代码示例**
-```php
+```python
 growing_tracker.track_custom_event("test", login_user_id='cpacm', login_user_key='email',
-                               attributes={'name': 'cpacm', 'age': '100'})
+                               attributes={'name': 'cpacm', 'age': '100', 'education': ['本科','硕士']})
 ```
 :::info
 
@@ -190,15 +197,15 @@ growing_tracker.track_custom_event("test", login_user_id='cpacm', login_user_key
 
 | 参数           | 必选  | 类型   | 默认值 | 说明                        |
 | :------------- | :---- | :----- | :----- | --------------------------- |
-| login_user_id  | true  | string |        | 登录用户ID                  |
-| login_user_key | false | string |        | 登录用户Key                 |
-| event_time     | false | long   |        | 当前时间戳                  |
-| anonymous_id   | false | string |        | 设备信息                    |
-| attributes     | false | dict   | None   | 事件发生时,所伴随的维度信息 |
-
+| login_user_id  | true  | string |        | 登录用户ID，与访问用户ID，不能同时为空 |
+| login_user_key | false | string |        | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| event_time     | false | long   |        | 当前时间戳(毫秒)  |
+| anonymous_id   | false | string |        | 访问用户ID，与登录用户ID，不能同时为空 |
+| attributes     | false | dict   | None   | 用户属性维度信息；<br/>value支持 string\|double\|int\|array,array中元素支持string\|double\|int |
 **代码示例**
 ```python
-growing_tracker.track_user(login_user_id='user', login_user_key='email',attributes={'name': 'cpacm', 'age': '100'})
+growing_tracker.track_user(login_user_id='user', login_user_key='email',
+                           attributes={'name': 'cpacm', 'age': '100', 'education': ['本科','硕士']})
 ```
 :::info
 

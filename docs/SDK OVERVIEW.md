@@ -17,16 +17,19 @@ GrowingIO 帮助客户提升数据驱动能力，实现更好的增长。
 
 ## SDK 简介
 ### SDK支持范围
-SDK 包括客户端SDK和服务端SDK。目前客户端SDK支持Android和iOS原生，Web JS，小程序，以及众多第三方混合开发框架。服务端SDK支持Java 和 PHP。
+SDK 包括客户端SDK和服务端SDK。目前客户端SDK支持Android和iOS原生，Web JS，小程序，以及众多第三方混合开发框架。服务端SDK支持Java、PHP、Python。
 
-小程序支持微信小程序和支付宝小程序。
+小程序支持微信小程序、支付宝小程序、百度小程序、字节(抖音头条)小程序、QQ小程序、淘宝小程序、快应用。
 
 微信小程序支持的开发框架如下：
 - 原生 、 原生+第三方插件
-- Taro 2.x 、Taro 3.x(vue2)
-- uni-app(vue2)
+- Taro 2.x 、Taro 3.x(vue2)、Taro 3.x(vue3)
+- uni-app(vue2)、uni-app(vue3)
 - mpvue、mpvue+第三方插件
 - WePY 1.x、WePY 2.x 以及第三方插件
+- Chameleon
+- Remax
+  
 
 各SDK支持的事件类型如下表：
 
@@ -76,6 +79,10 @@ GrowingIO CDP 产品是集**服务端数据分析和客户端自动埋点一体�
 | OP-13.6 | 无埋点、埋点 | 3.0 | - |
 | OP-14.3.0 | 全量 context 字段传输,服务端通用维度拆解 |  3.2.0 |  - |
 | OP-2.0.0 | 支持 user_key,IDMapping | 3.3.0 | - |
+| OP-2.6.0 | 支持埋点事件属性值、用户变量属性值可传数组类型 | Web JS SDK 3.3.10<br/>小程序 SDK 3.3.5<br/> | - |
+| OP-2.7.0 | 支持服务端SDK埋点事件可传eventTime参数 |  Java SDK v1.0.11-cdp<br/> PHP SDK v1.0.2<br/> Python SDK v1.0.1 | - |
+
+
 :::info
 如果使用采集数据加密解密功能产品需要升级到 14.3.0 之后， Android SDK 3.3.0之后， iOS  SDK 3.3.0之后
 :::
