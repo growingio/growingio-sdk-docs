@@ -482,4 +482,4 @@ SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**
 
 **`key:` String，length <=50；**
 
-**`value:` string | number，length <=1000；**
+**`value:` String | number 时 length <=1000； Array 时 length <=100**
