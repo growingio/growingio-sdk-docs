@@ -167,6 +167,25 @@ Taro.render(<App />, document.getElementById('app'));
   </TabItem>
   <TabItem value="Taro3(react)">
 
+```text
+npm i babel-plugin-setname --save
+```
+
+```js
+// babel.config.js
+module.exports = {
+  presets: [['taro', { framework: 'react' }]],
+  plugins: [
+    [
+      'babel-plugin-setname', {
+        includes: ['src'],
+        lower: false, // 从taro2升级至3时请修改为true
+      }
+    ]
+  ]
+};
+```
+
 ```js
 // app.js
 import React, { Component } from 'react';
