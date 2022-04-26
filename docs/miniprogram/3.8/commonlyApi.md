@@ -147,7 +147,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**`properties`中的属性值允许为数字、字符串和数组格式（`item.attributes`仅允许为数字或字符串），其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
+**`properties`中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
 ### 5、登录用户属性(setUserAttributes)
 
@@ -227,6 +227,9 @@ my.getAuthUserInfo({
   }
 });
 ```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**用户属性中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
 ### 6、地理位置(getLocation)
 
@@ -482,4 +485,4 @@ SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**
 
 **`key:` String，length <=50；**
 
-**`value:` string | number，length <=1000；**
+**`value:` String | number 时 length <=1000； Array 时 length <=100**

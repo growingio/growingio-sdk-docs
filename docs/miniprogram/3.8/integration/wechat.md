@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
 }>
   <TabItem value="Native原生">
 
-#### 微信原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.3/gio-wechat.js>
+#### 微信原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.4/gio-wechat.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -63,7 +63,7 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
   </TabItem>
   <TabItem value="uni-app">
 
-#### uni-app框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.3/gio-uniapp.js>
+#### uni-app框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.4/gio-uniapp.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -133,7 +133,7 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
   </TabItem>
   <TabItem value="Taro">
 
-#### Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.3/gio-taro.js>
+#### Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.4/gio-taro.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -261,7 +261,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
   <TabItem value="Chameleon">
 
-#### Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.3/gio-chameleon.js>
+#### Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.4/gio-chameleon.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -290,7 +290,7 @@ const gdp = require('./utils/gio/gio-chameleon.js').default;
   </TabItem>
   <TabItem value="WePY2">
 
-#### WePY2框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.3/gio-wepy.js>
+#### WePY2框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.4/gio-wepy.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -317,7 +317,7 @@ const gdp = require('./utils/gio/gio-wepy.js').default;
   </TabItem>
   <TabItem value="Remax">
 
-#### Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.3/gio-remax.js>
+#### Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.4/gio-remax.js>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 
@@ -352,7 +352,7 @@ const gdp = require('./utils/gio/gio-remax.js').default;
 
 如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可下载插件包并按需进行扩展。
 
-#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.3/plugins.zip>
+#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.4/plugins.zip>
 
 ##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
 

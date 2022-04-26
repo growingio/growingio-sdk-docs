@@ -3,6 +3,12 @@ sidebar_position: 0
 title: 版本记录
 ---
 
+### V3.8.0-rc.4 - 2022/4/25
+
+* 修复百度、字节、QQ小程序上报页面title无取值的问题。
+* 修复uni-app vue3中监听`@click="$emit(xxx)"`形式的方法调用不会触发无埋点点击事件的问题。
+* 修复微信小程序getGioInfo获取到的platform错误导致H5打通失败的问题。
+
 ### V3.8.0-rc.3 - 2022/4/20
 
 * 修复支付宝/淘宝小程序`platform`字段取值错误的问题。
