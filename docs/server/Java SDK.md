@@ -34,7 +34,7 @@ AccountID：项目ID，代表一个项目<br/>
 DataSourceID：数据源ID，代表一个数据源<br/>
 Host：采集数据上报的服务器地址<br/>
 
-AccountID、DataSourceID 需要在CDP增长平台上新建数据获取源，或从已知应用中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
+AccountID、DataSourceID 需要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
 Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
 :::
 
@@ -149,7 +149,7 @@ run.mode 表示运行模式。当值为 test 时，仅输出消息体，不发�
 
 ```java
 // Config GrowingIO
-// 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+// 参数需要从CDP增长平台上，创建新应用，或从已创建的数据源中获取, 如不清楚请联系您的专属项目经理
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourDatasourceId eg: 11223344aabbcc
 private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
@@ -185,7 +185,7 @@ project.send(eventMessage);
 
 ```java
 // Config GrowingIO
-// 参数需要从CDP增长平台上，创建新应用，或从已知应用中获取, 如不清楚请联系您的专属项目经理
+// 参数需要从CDP增长平台上，创建新应用，或从已创建的数据源中获取, 如不清楚请联系您的专属项目经理
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourDatasourceId eg: 11223344aabbcc
 private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your accountId").setDataSourceId("your dataSourceId").build();
