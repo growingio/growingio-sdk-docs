@@ -244,11 +244,8 @@ GrowingTracker.get().trackCustomEvent("registerSuccess", map, "key", "id")
 <br/>
 
 `trackCustomEventWithAttrBuilder`<br/>
-
 发送一个埋点事件，事件属性支持List类型，注意：**sdk版本>=3.3.5，CDP平台暂不支持展示**；
-
 在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
-
 
 #### 参数说明
 
@@ -342,7 +339,9 @@ GrowingTracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.Attrib
 
 ### 7. 设置登录用户属性 
 `setLoginUserAttributes`<br/>
-以登录用户的身份定义登录用户属性，用于用户信息相关分析。
+发送登录用户属性事件，用于用户信息相关分析；
+在添加发送用户属性事件代码之前，需在CDP平台用户管理界面创建用户属性。
+
 #### 参数说明
 | 参数     | 参数类型 | 说明 |
 | :-------  | :------   | :---|
@@ -412,6 +411,85 @@ GrowingTracker.get().setLoginUserAttributes(map)
 
 </TabItem>
 </Tabs>
+
+`setLoginUserAttributesWithAttrBuilder`<br/>
+发送登录用户属性事件，属性支持列表类型。
+
+#### 参数说明
+
+| 参数         | 参数类型            | 说明         |
+| :----------- | :------------------ | :----------- |
+| `attributes` | `AttributesBuilder` | 用户属性信息 |
+#### 示例
+
+**无埋点SDK示例代码：**
+<Tabs
+groupId="code-language"
+defaultValue="kotlin"
+values={[
+{label: 'java', value: 'java'},
+{label: 'kotlin', value: 'kotlin'},
+]
+}>
+
+<TabItem value="java">
+
+```java
+List<String> list1 = new ArrayList<>();
+list1.add("tony");
+list1.add("lily");
+GrowingAutotracker.get().setLoginUserAttributesWithAttrBuilder(LoginUserAttributesEvent.AttributesBuilder.getAttributesBuilder()
+                     .addAttribute("user_list", list1)); 
+```
+
+</TabItem>
+<TabItem value="kotlin">
+
+```kotlin
+val list1: List<String> = ArrayList()
+list1.add("tony")
+list1.add("lily")
+GrowingAutotracker.get().setLoginUserAttributesWithAttrBuilder(LoginUserAttributesEvent.AttributesBuilder.getAttributesBuilder()
+                    .addAttribute("user_list", list1));
+```
+
+</TabItem>
+</Tabs>
+
+**埋点SDK示例代码：**
+<Tabs
+groupId="code-language"
+defaultValue="kotlin"
+values={[
+{label: 'java', value: 'java'},
+{label: 'kotlin', value: 'kotlin'},
+]
+}>
+
+<TabItem value="java">
+
+```java
+List<String> list1 = new ArrayList<>();
+list1.add("tony");
+list1.add("lily");
+GrowingTracker.get().setLoginUserAttributesWithAttrBuilder(LoginUserAttributesEvent.AttributesBuilder.getAttributesBuilder()
+                     .addAttribute("user_list", list1)); 
+```
+
+</TabItem>
+<TabItem value="kotlin">
+
+```kotlin
+val list1: List<String> = ArrayList()
+list1.add("tony")
+list1.add("lily")
+GrowingTracker.get().setLoginUserAttributesWithAttrBuilder(LoginUserAttributesEvent.AttributesBuilder.getAttributesBuilder()
+                    .addAttribute("user_list", list1));
+```
+
+</TabItem>
+</Tabs>
+
 
 :::info
 

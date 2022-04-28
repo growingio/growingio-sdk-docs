@@ -2,7 +2,21 @@
 title: 版本记录
 sidebar_position: 0
 ---
+----
+## V3.3.6
+ >[release-3.3.6](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.6) 日期: 2022-04-28 
 
+### Bug Fixes
+
+- 修复原生页面有webview 或 dialog不能圈选的问题 ([#152](https://github.com/growingio/growingio-sdk-android-autotracker/pull/152))
+- 其他优化 ([#149](https://github.com/growingio/growingio-sdk-android-autotracker/pull/149))
+
+### Features
+
+- 用户属性支持列表类型 ([#151](https://github.com/growingio/growingio-sdk-android-autotracker/issues/151))
+
+
+------
 ## V3.3.5
  >[release-3.3.5](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.5) 日期: 2022-03-17 
 
