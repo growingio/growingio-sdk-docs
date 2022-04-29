@@ -29,7 +29,7 @@ title: 3.3与3.8对比
 
 ### 初始化
 
-**移除项：** `enableEventStore`、`usePlugin`、`vue` 配置项，`setConfig` 方法。
+**移除项：** `enableEventStore`、`usePlugin`、`vue`、`getLocation(含autoGet和type)` 配置项，`setConfig` 方法。
 
 > 初始化配置项 `enableEventStore` 字段废弃；3.3.2版本起为解决没有使用运营SDK却导致存储超限问题而提供的配置项，重构后已改造此模块，因此废弃。未使用无影响，已使用直接移除即可。
 >
@@ -45,15 +45,19 @@ title: 3.3与3.8对比
 
 ### 数据采集API
 
-**移除项：** `setPlatformProfile` 方法。
+**移除项：** `setPlatformProfile`, `getLocation` 方法。
 
 > `setPlatformProfile`为老旧方法，已被`setUserAttributes`代替，按文档正确使用`setUserAttributes`即可。
+>
+> 自2022年4月18日起，微信官方修改了相关权限，获取位置信息将需要开通对应功能权限，为避免没有使用位置信息的小程序上线审核被驳回，我们废弃了`getLocation`方法。
 
-**新增项：** `getOption`、`setOption`
+**新增项：** `getOption`、`setOption`、`setLocation` 方法。
 
 > 新增 `getOption` 方法；用于获取当前SDK配置项状态。[参考文档](/docs/miniprogram/3.8/commonlyApi#8获取sdk当前配置getoption)
 >
 > 新增 `setOption` 方法；用于统一动态设置SDK配置项。[参考文档](/docs/miniprogram/3.8/commonlyApi#动态配置接口setoption)
+>
+> 新增 `setLocation` 方法；用于弥补移除了自动获取位置的功能。[参考文档](/docs/miniprogram/3.8/commonlyApi#6地理位置setlocation)
 
 ## 功能点新增、优化、问题修复
 

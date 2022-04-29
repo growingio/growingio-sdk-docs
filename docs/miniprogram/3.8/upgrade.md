@@ -21,7 +21,7 @@ import gdp from './utils/gio/sdk.js';
 
 3、检查初始化方式，如果使用 `setConfig` 方法初始化，请参考集成文档重新集成；如果使用 `init` 方法进行初始化则跳过此步骤。
 
-4、检查配置项，移除`usePlugin`、`enableEventStore`配置，如果没有则跳过此步骤。
+4、检查配置项，移除`usePlugin`、`enableEventStore`、`getLocation`（含autoGet和type）配置，如果没有则跳过此步骤。
 
 5、检查配置项，如果您是`uni-app vue2`、`taro3 vue2`、`WePY`开发的小程序，请移除 **`vue`** 配置，并参考集成文档添加对应的实例参数。如果不是则跳过此步骤。例：
 
@@ -37,7 +37,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ### 页面
 
-如果您是支付宝小程序或淘宝小程序，请恢复对`App({})`、`Page({})`和`Component({})`的原生写法。如果不是则跳过此步骤。
+1）如果您是支付宝小程序或淘宝小程序，请恢复对`App({})`、`Page({})`和`Component({})`的原生写法。如果不是则跳过此步骤。
 
 ```js
 $global.GioApp({ ... });
@@ -52,6 +52,8 @@ $global.GioComponent({ ... });
 // 修改回原始写法 ↓↓↓
 Component({ ... });
 ```
+
+2）检查页面中是否调用`getLocation`方法，存在则[参考文档](/docs/miniprogram/3.8/commonlyApi#6地理位置setlocation)修改为`setLocation`。如果没有则跳过此步骤。
 
 ### 其他
 

@@ -11,6 +11,10 @@ sidebar_position: 0
 
 * 埋点事件事件变量值和登录用户属性值支持数组类型
 
+附含getLocation相关逻辑SDK的下载地址：<br/>
+wechat: <https://assets.giocdn.com/sdk/cdp/3.0/3.3.5/gio-minp-3.3.5.zip><br/>
+alipay: <https://assets.giocdn.com/sdk/cdp/3.0/3.3.5/gio-alip-3.3.5.zip>
+
 ### V3.3.4 - 2022/03/15
 
 * 修复埋点事件path取值错误的问题

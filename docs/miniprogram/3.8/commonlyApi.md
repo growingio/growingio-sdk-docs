@@ -231,19 +231,30 @@ my.getAuthUserInfo({
 **<font color="#FC5F3A">注意：</font>**<br/>
 **用户属性中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
-### 6、地理位置(getLocation)
+### 6、地理位置(setLocation)
 
-当用户访问至某一功能需要位置信息时，可以手动调用获取地理位置接口，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。同时您可能需要配置项目的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)
+当用户访问至某一功能需要位置信息时，可以手动调用小程序Api获取地理位置接口，赋值给SDK，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。同时您需要配置项目的`permission`字段[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)和对应的权限申请[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.getLocation.html)。
+
+***2022年4月18日起，微信官方对`getLocation`进行了权限限制，因此SDK废弃了与getLocation有关的逻辑，并新增`setLocation`来代替此功能。***
+
+#### 参数说明
+
+| 参数        | 参数类型 | 说明                                   |
+|-------------|----------|--------------------------------------|
+| `latitude`  | `number` | 必填；纬度，范围为 -90~90，负数表示南纬   |
+| `longitude` | `number` | 必填；经度，范围为 -180~180，负数表示西经 |
 
 #### 示例
 
 ```js
-gdp('getLocation');
-// 调用后会自动补发带位置信息的VISIT事件
+wx.getLocation({
+  type: 'wgs84',
+  success: ({ latitude, longitude }) => {
+    gdp('setLocation', latitude, longitude);
+    // 调用后会自动补发带位置信息的VISIT事件
+  }
+});
 ```
-
-**<font color="#FC5F3A">注意：</font>**<br/>
-**手动调用getLocation方法时，需要用户授权。**
 
 ### 7、与h5打通用户数据(getGioInfo)
 
