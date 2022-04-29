@@ -19,7 +19,7 @@ title: 初始化配置
 | `extraParams`         | `string[]`    | `-`        | 与H5数据打通时额外获取的字段(>= 3.3.0)             |
 | `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
 | `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式；设置为true时需与接口identify一起使用                                 |
-| `getLocation`         | `object`      | `-`        | 获取位置配置项                                       |
+| `getLocation`         | `object`      | `-`        | 获取位置配置项(3.3.6版本中移除)                       |
 | `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                 |
 | `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系     |
 | `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**       |
@@ -138,7 +138,7 @@ gdp('identify', openId);
 
 ### getLocation
 
-默认情况下，SDK不会自动在小程序启动时获取用户的地理位置信息。如您需要在小程序打开时获取用户地理位置信息，可以通过指定 `autoGet: true` 来打开此功能。同时您可能需要配置项目的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)
+默认情况下，SDK不会自动在小程序启动时获取用户的地理位置信息。如您需要在小程序打开时获取用户地理位置信息，可以通过指定 `autoGet: true` 来打开此功能。同时您需要配置项目的`permission`字段[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)和对应的权限申请[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.getLocation.html)。
 
 ```js
 getLocation: {          //是否自动获取用户的地理位置信息, 并设置获取方式
@@ -154,8 +154,9 @@ gdp('getLocation');      // 获取用户的地理位置信息并上报
 ```
 
 **注意：**<br/>
-**1、如果您初始化开启getLocation配置，用户打开小程序即需要授权；手动调用getLocation方法时，需要用户授权。**<br/>
-**2、如果您初始化开启getLocation配置或手动调用getLocation方法，都需要配置项目中的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)**
+**1、使用此功能必须保证您的小程序项目有对应的权限，如果您的小程序项目没有获取位置信息的权限导致上线审批被驳回，请使用3.3最新版不带`getLocation`相关内容的SDK`3.3.6`。**<br/>
+**2、我们在`3.3.6`版本中移除了getLocation相关的逻辑，如果您需要此功能，请使用`3.3.5`版本(在版本记录中下载)。**<br/>
+**3、如果您初始化开启getLocation配置，用户打开小程序即需要授权；手动调用getLocation方法时，需要用户授权。**
 
 ### ignoreFields
 

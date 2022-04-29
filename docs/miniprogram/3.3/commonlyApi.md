@@ -134,7 +134,7 @@ gdp('track', 'order', { types: ['hjh1', 'hjh2'] }, { key: 'order_id', id: '12345
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）SDK版本 <3.3.5的版本中，`properties`中的属性值仅允许为数字和字符串格式，其他格式数据会被自动过滤。**
 
-**2）SDK版本3.3.5起， `properties`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）** 
+**2）SDK版本3.3.5起， `properties`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
 :::info
 
@@ -164,7 +164,7 @@ gdp('setUserAttributes',{user_list: ['hjh1','hjh2']});
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）SDK版本 <3.3.5的版本中，`properties`中的属性值仅允许为数字和字符串格式，其他格式数据会被自动过滤。**
 
-**2）SDK版本3.3.5起， `properties`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）** 
+**2）SDK版本3.3.5起， `properties`中的属性值新增允许数组格式(即数字、字符串和数组格式)，其他格式数据会被自动过滤；其中数组格式的数据在上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
 #### 微信用户属性设置
 
@@ -239,6 +239,11 @@ my.getAuthUserInfo({
 gdp('getLocation');
 // 调用后会自动补发带位置信息的VISIT事件
 ```
+
+**注意：**<br/>
+**1、使用此功能必须保证您的小程序项目有对应的权限，如果您的小程序项目没有获取位置信息的权限导致上线审批被驳回，请使用3.3最新版不带`getLocation`相关内容的SDK`3.3.6`。**<br/>
+**2、我们在`3.3.6`版本中移除了getLocation相关的逻辑，如果您需要此功能，请使用`3.3.5`版本(在版本记录中下载)。**<br/>
+**3、初始化配置项 location.autoGet 打开时，无需调用此接口。**
 
 ### 与h5打通用户数据(getGioInfo)
 

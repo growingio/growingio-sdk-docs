@@ -19,9 +19,6 @@ title: 初始化配置
 | `extraParams`         | `string[]`     | `-`        | 与H5数据打通时额外获取的字段                   |
 | `followShare`         | `boolean`      | `true`     | 是否跟踪分享数据                               |
 | `forceLogin`          | `boolean`      | `false`    | 是否开启强制登录模式                           |
-| `getLocation`         | `object`       | `-`        | 获取位置配置项(见下两项)                       |
-| `getLocation.autoGet` | `boolean`      | `false`    | 自动获取用户位置信息                           |
-| `getLocation.type`    | `wgs84/gcj02`  | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系   |
 | `gtouchHost`          | `string`       | `-`        | 运营SDK获取图片资源请求地址                     |
 | `host`                | `string`       | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**    |
 | `ignoreFields`        | `string[]`     | `-`        | 上报忽略字段                                   |
@@ -154,22 +151,6 @@ gdp('identify', openId);
 :::caution 注意：
 如果打开小程序后没有调用 `wx.login` 获取 openId 或 unionId，没有调用 `identify` 方法，但是小程序SDK配置了 `forceLogin` 为 `true`，会导致SDK不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们技术支持。
 :::
-
-### getLocation
-
-默认情况下，SDK不会自动在小程序启动时获取用户的地理位置信息。如您需要在小程序打开时获取用户地理位置信息，可以通过指定 `autoGet: true` 来打开此功能。同时您可能需要配置项目的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)
-
-```js
-getLocation: {          //是否自动获取用户的地理位置信息, 并设置获取方式
-   autoGet: true,       //默认为false不自动获取
-   type: 'wgs84'        //支持 wgs84（标准坐标系） | gcj02（火星坐标系）, 默认wgs84
-},
-```
-
-如果您默认没有打开此功能，当用户访问至某一功能需要位置信息时，可以手动调用获取地理位置接口 [参考文档](/docs/miniprogram/3.8/commonlyApi#6地理位置getlocation)。
-
-**<font color="#FC5F3A">注意：</font>**<br/>
-**如果您初始化开启getLocation配置，用户打开小程序即需要授权。**
 
 ### ignoreFields
 

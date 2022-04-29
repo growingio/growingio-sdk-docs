@@ -3,6 +3,11 @@ sidebar_position: 0
 title: 版本记录
 ---
 
+### V3.8.0-rc.5 - 2022/4/29
+
+* 移除getLocation相关逻辑，同时废弃getLocation的初始化配置项和api调用。
+* 新增setLocation api，以替代getLocation的功能。
+
 ### V3.8.0-rc.4 - 2022/4/25
 
 * 修复百度、字节、QQ小程序上报页面title无取值的问题。
