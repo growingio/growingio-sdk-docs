@@ -7,7 +7,7 @@ title: 版本记录
 
 * 移除getLocation相关逻辑，同时废弃getLocation的初始化配置项和api调用。
 * 新增setLocation api，以替代getLocation的功能。
-* 修复上报字段在平台中无法区分os的问题(deviceType->operationSystem)
+* 修复上报字段在平台中无法区分os的问题(deviceType->operatingSystem)
 
 ### V3.8.0-rc.4 - 2022/4/25
 
