@@ -79,7 +79,7 @@ GrowingIO CDP 产品是集**服务端数据分析和客户端自动埋点一体�
 | OP-13.6 | 无埋点、埋点 | 3.0 | - |
 | OP-14.3.0 | 全量 context 字段传输,服务端通用维度拆解 |  3.2.0 |  - |
 | OP-2.0.0 | 支持 user_key,IDMapping | 3.3.0 | - |
-| OP-2.6.0 | 支持埋点事件属性值、用户变量属性值可传数组类型 | Web JS SDK 3.3.10<br/>小程序 SDK 3.3.5<br/> | - |
+| OP-2.6.0 | 支持埋点事件属性值、用户变量属性值可传数组类型 | Android SDK 3.3.6<br/>iOS SDK 3.3.6<br/>Web JS SDK 3.3.10<br/>小程序 SDK 3.3.5<br/> | - |
 | OP-2.7.0 | 支持服务端SDK埋点事件可传eventTime参数 |  Java SDK v1.0.11-cdp<br/> PHP SDK v1.0.2<br/> Python SDK v1.0.1 | - |
 
 
