@@ -22,7 +22,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 | **字段**          | **参数类型**   | **是否必填** | **默认值**          | **说明**                                                     |
 | ----------------- | -------------- | ------------ | ------------------- | ------------------------------------------------------------ |
-| `prejectId`       | `string`       | 是           | 无                  | 项目id                                                       |
+| `projectId`       | `string`       | 是           | 无                  | 项目id                                                       |
 | `dataSourceId`    | `string`       | 是           | 无                  | 数据源id                                                     |
 | `host`            | `string`       | 是           | 无                  | 发数请求host                                                 |
 | `scheme`          | `string`        |否 | `location.protocol`获取      | 发数请求协议

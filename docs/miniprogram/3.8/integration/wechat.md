@@ -380,7 +380,7 @@ gdp('init', xxxxx);
 
 ### 小程序插件中集成
 
-参考小程序集成在指定的插件Component组件的js中集成即可。SDK初始化时会自动切换为插件模式，将当前Component视为一个独立应用发送VISIT事件。
+[小程序插件](https://developers.weixin.qq.com/miniprogram/introduction/plugin.html)中集成SDK参考小程序集成，在指定的插件 Component 组件的 js 中集成即可。SDK 初始化时会自动切换为插件模式，将当前 Component 视为一个独立应用发送VISIT事件。
 
 ```js
 // myComponent.js

@@ -20,8 +20,8 @@ title: 初始化配置
 | `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
 | `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式；设置为true时需与接口identify一起使用                                 |
 | `getLocation`         | `object`      | `-`        | 获取位置配置项(3.3.6版本中移除)                       |
-| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                 |
-| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系     |
+| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息(3.3.6版本中移除)                   |
+| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系(3.3.6版本中移除) |
 | `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**       |
 | `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                         |
 | `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例                           |
