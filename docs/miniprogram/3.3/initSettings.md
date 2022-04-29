@@ -19,9 +19,9 @@ title: 初始化配置
 | `extraParams`         | `string[]`    | `-`        | 与H5数据打通时额外获取的字段(>= 3.3.0)             |
 | `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
 | `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式；设置为true时需与接口identify一起使用                                 |
-| `getLocation`         | `object`      | `-`        | 获取位置配置项                                       |
-| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息                                 |
-| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系     |
+| `getLocation`         | `object`      | `-`        | 获取位置配置项(3.3.6版本不支持)                    |
+| `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息(3.3.6版本不支持)         |
+| `getLocation.type`    | `wgs84/gcj02` | `wgs84`    | 坐标系类型。wgs84：标准坐标系；gcj02：火星坐标系(3.3.6版本不支持)|
 | `host`                | `string`      | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**       |
 | `ignoreFields`        | `string[]`    | `-`        | 上报忽略字段                                         |
 | `taro`                | `any`         | `-`        | 使用 Taro 开发时使用的实例                           |
@@ -137,7 +137,9 @@ gdp('identify', openId);
 :::
 
 ### getLocation
-
+:::info 
+3.3.6版本不支持
+:::
 默认情况下，SDK不会自动在小程序启动时获取用户的地理位置信息。如您需要在小程序打开时获取用户地理位置信息，可以通过指定 `autoGet: true` 来打开此功能。同时您可能需要配置项目的`permission`字段：[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)
 
 ```js
