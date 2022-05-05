@@ -89,10 +89,10 @@ title: 初始化配置
 appChannel        小程序的场景值
 deviceBrand       设备品牌
 deviceModel       设备型号
-deviceType        设备类型
-networkState      网络类型
-platformVersion   操作系统版本
 language          语言
+networkState      网络类型
+operatingSystem   系统类型
+platformVersion   操作系统版本
 screenHeight      屏幕高度
 screenWidth       屏幕宽度
 ```
@@ -106,10 +106,10 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
     'appChannel',
     'deviceBrand',
     'deviceModel',
-    'deviceType',
-    'networkState',
-    'platformVersion',
     'language',
+    'networkState',
+    'operatingSystem',
+    'platformVersion',
     'screenHeight',
     'screenWidth'
   ],
@@ -160,8 +160,8 @@ gdp('identify', openId);
 ```text
 deviceBrand       设备品牌
 deviceModel       设备型号
-deviceType        设备类型
 networkState      网络类型
+operatingSystem   系统类型
 screenHeight      屏幕高度
 screenWidth       屏幕宽度
 ```
@@ -175,7 +175,7 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
   ignoreFields: [
     'deviceBrand',
     'deviceModel',
-    'deviceType',
+    'operatingSystem',
     'networkState',
     'screenHeight',
     'screenWidth'
