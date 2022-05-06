@@ -336,12 +336,15 @@ Page({
 
 ### 8、获取SDK当前配置(getOption)
 
-当调试时需要获取SDK当前的完整配置信息时，可调用此接口。
+当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
 #### 示例
 
 ```js
-gdp('getOption');
+gdp('getOption', 配置项名称);
+
+gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
+gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
 ```
 
 ### 9、获取SDK当前版本
@@ -460,7 +463,7 @@ Page({
 </view>
 ```
 
-2）传值方式二：直接手动编写Object字符串
+2）传值方式二：直接手动编写Object字符串（部分框架如uniapp编译时可能会将单引号编译成双引号导致编译失败）
 
 ```html
 <view

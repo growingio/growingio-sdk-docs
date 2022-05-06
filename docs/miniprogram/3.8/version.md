@@ -3,6 +3,11 @@ sidebar_position: 0
 title: 版本记录
 ---
 
+### V3.8.0-rc.6 - 2022/5/6
+
+* 修复taro3 vue3中部分无埋点事件xpath取值错误的问题。
+* 修复补发visit时丢失path字段的问题。
+
 ### V3.8.0-rc.5 - 2022/4/29
 
 * 移除getLocation相关逻辑，同时废弃getLocation的初始化配置项和api调用。
