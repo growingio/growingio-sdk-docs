@@ -166,5 +166,5 @@ CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("AccountId", "U
 
 ### 关于 GDPR
 ​为符合 [General Data Protection Regulation 欧盟通用数据保护条例​](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)，
-请参考 [方式二关闭数据收集开关](#方式二关闭数据收集开关)
+请参考 [方式二关闭数据收集开关](#方式二设置数据收集开关)
 
