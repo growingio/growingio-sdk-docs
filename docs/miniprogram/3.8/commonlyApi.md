@@ -85,7 +85,8 @@ gdp('identify', openId);
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**若使用此接口需要在初始化时将 forceLogin 设置为 true [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**
+**1）若使用此接口需要在初始化时将 forceLogin 设置为 true。 [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**<br/>
+**2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**
 
 ### 2、获取设备id(getDeviceId)
 
