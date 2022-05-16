@@ -348,7 +348,7 @@ SDK初始化时注册加密模块：
 GrowingAutotracker.startWithConfiguration(this, 
                 new CdpAutotrackConfiguration("accountId", "urlScheme")
                 ...
-                .setPreloadComponent(new EncoderLibraryGioModule()));
+                .addPreloadComponent(new EncoderLibraryGioModule()));
 ```
 
 **埋点SDK示例代码：**
@@ -358,7 +358,7 @@ GrowingAutotracker.startWithConfiguration(this,
 GrowingTracker.startWithConfiguration(this, 
                 new CdpTrackConfiguration("accountId", "urlScheme")
                 ...
-                .setPreloadComponent(new EncoderLibraryGioModule()));
+                .addPreloadComponent(new EncoderLibraryGioModule()));
 ```
 
 ### 4. **SDK数据存储与发送使用 Protobuf 格式**
@@ -394,7 +394,7 @@ SDK初始化时注册Protobuf模块：
 GrowingAutotracker.startWithConfiguration(this, 
                 new CdpAutotrackConfiguration("accountId", "urlScheme")
                 ...
-                .setPreloadComponent(new ProtobufLibraryGioModule()));
+                .addPreloadComponent(new ProtobufLibraryGioModule()));
 ```
 
 </TabItem>
@@ -406,7 +406,7 @@ GrowingAutotracker.startWithConfiguration(this,
 GrowingTracker.startWithConfiguration(this, 
                 new CdpTrackConfiguration("accountId", "urlScheme")
                 ...
-                .setPreloadComponent(new ProtobufLibraryGioModule()));
+                .addPreloadComponent(new ProtobufLibraryGioModule()));
 ```
 
 </TabItem>
