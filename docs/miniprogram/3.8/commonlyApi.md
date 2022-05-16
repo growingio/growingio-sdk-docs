@@ -90,7 +90,7 @@ gdp('identify', openId);
 
 ### 2、获取设备id(getDeviceId)
 
-设备Id，又称为匿名用户Id，SDK 自动生成用来定义唯一设备。如果没有初始化SDK 或者关闭采集开关可能返回值为空。
+设备Id，又称为匿名用户Id/访问用户Id，SDK 自动生成用来定义唯一设备。如果没有初始化SDK 或者关闭采集开关可能返回值为空。
 
 #### 示例
 
@@ -99,7 +99,8 @@ gdp('getDeviceId');
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**SDK版本 >=3.8.0-rc.7 支持。**
+**1）SDK版本 >=3.8.0-rc.7 支持。**<br/>
+**2）开启forceLogin的小程序无需调用此方法，因为您在identify的时候已经获取了openId做为访问用户Id。如果您一定要使用它，请在identify之后调用。**
 
 ### 3、设置登录用户id(setUserId)
 
