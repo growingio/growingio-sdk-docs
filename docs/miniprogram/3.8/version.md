@@ -3,6 +3,12 @@ sidebar_position: 0
 title: 版本记录
 ---
 
+### V3.8.0-rc.7- 2022/5/16
+
+* 修复`setUserId`和`setUserAttributes`异步调用且先于`identify`调用时，可能出现deviceId取值错误的问题。
+* 修复集成多框架集成插件且首次进入小程序为分包页面时，可能出现deviceId取值错误的问题。
+* 新增获取deviceId(匿名用户Id)的接口。
+
 ### V3.8.0-rc.6 - 2022/5/6
 
 * 修复taro3 vue3中部分无埋点事件xpath取值错误的问题。
@@ -10,9 +16,9 @@ title: 版本记录
 
 ### V3.8.0-rc.5 - 2022/4/29
 
+* 修复上报字段在平台中无法区分os的问题(deviceType->operatingSystem)
 * 移除getLocation相关逻辑，同时废弃getLocation的初始化配置项和api调用。
 * 新增setLocation api，以替代getLocation的功能。
-* 修复上报字段在平台中无法区分os的问题(deviceType->operatingSystem)
 
 ### V3.8.0-rc.4 - 2022/4/25
 

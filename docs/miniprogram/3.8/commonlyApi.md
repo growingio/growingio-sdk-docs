@@ -85,9 +85,24 @@ gdp('identify', openId);
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**若使用此接口需要在初始化时将 forceLogin 设置为 true [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**
+**1）若使用此接口需要在初始化时将 forceLogin 设置为 true。 [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**<br/>
+**2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**
 
-### 2、设置登录用户id(setUserId)
+### 2、获取设备id(getDeviceId)
+
+设备Id，又称为匿名用户Id/访问用户Id，SDK 自动生成用来定义唯一设备。如果没有初始化SDK 或者关闭采集开关可能返回值为空。
+
+#### 示例
+
+```js
+gdp('getDeviceId');
+```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1）SDK版本 >=3.8.0-rc.7 支持。**<br/>
+**2）开启forceLogin的小程序无需调用此方法，因为您在identify的时候已经获取了openId做为访问用户Id。如果您一定要使用它，请在identify之后调用。**
+
+### 3、设置登录用户id(setUserId)
 
 当用户登录之后调用`setUserId`，设置登录用户ID
 
@@ -110,7 +125,7 @@ gdp('setUserId', 'userId', 'userKey');
 **<font color="#FC5F3A">注意：</font>**<br/>
 **SDK版本 >=3.3.0 支持 ID-MAPPING，且需初始化时设置 `enableIdMapping` 为 `true`**
 
-### 3、清除登录用户id(clearUserId)
+### 4、清除登录用户id(clearUserId)
 
 当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID
 
@@ -120,7 +135,7 @@ gdp('setUserId', 'userId', 'userKey');
 gdp('clearUserId');
 ```
 
-### 4、埋点事件(track)
+### 5、埋点事件(track)
 
 发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
 
@@ -149,7 +164,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 **<font color="#FC5F3A">注意：</font>**<br/>
 **`properties`中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
-### 5、登录用户属性(setUserAttributes)
+### 6、登录用户属性(setUserAttributes)
 
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
 
@@ -231,7 +246,7 @@ my.getAuthUserInfo({
 **<font color="#FC5F3A">注意：</font>**<br/>
 **用户属性中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
-### 6、地理位置(setLocation)
+### 7、地理位置(setLocation)
 
 当用户访问至某一功能需要位置信息时，可以手动调用小程序Api获取地理位置接口，赋值给SDK，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。同时您需要配置项目的`permission`字段[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)和对应的权限申请[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.getLocation.html)。
 
@@ -256,7 +271,7 @@ wx.getLocation({
 });
 ```
 
-### 7、与h5打通用户数据(getGioInfo)
+### 8、与h5打通用户数据(getGioInfo)
 
 当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下数据。
 
@@ -334,7 +349,7 @@ Page({
 
 **H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
 
-### 8、获取SDK当前配置(getOption)
+### 9、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
@@ -347,7 +362,7 @@ gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
 gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
 ```
 
-### 9、获取SDK当前版本
+### 10、获取SDK当前版本
 
 在代码或开发者工具中直接调用 `global.gioSDKVersion` 即可获取。
 
