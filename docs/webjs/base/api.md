@@ -127,8 +127,8 @@ gdp('setAutoTrack', true);
 #### 示例
 
 ```js
-gdp('setUserId', 'userId');
-gdp('setUserId', 'userId', 'userKey');
+gdp('setUserId', '112333445');
+gdp('setUserId', '112333445', 'phone');
 ```
 
 #### 2、清除登录用户id

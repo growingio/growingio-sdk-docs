@@ -88,14 +88,14 @@ GrowingTracker.get().setDataCollectionEnabled(true)
 
 **无埋点SDK示例代码：**
 ```java
-GrowingAutotracker.get().setLoginUserId("张三")
-GrowingAutotracker.get().setLoginUserId("111011101101","phone")
+GrowingAutotracker.get().setLoginUserId("112333445")
+GrowingAutotracker.get().setLoginUserId("112333445","phone")
 ```
 
 **埋点SDK示例代码：**
 ```java
-GrowingTracker.get().setLoginUserId("张三")
-GrowingTracker.get().setLoginUserId("111011101101","phone")
+GrowingTracker.get().setLoginUserId("112333445")
+GrowingTracker.get().setLoginUserId("112333445","phone")
 ```
 
 

@@ -118,8 +118,8 @@ gdp('getDeviceId');
 #### 示例
 
 ```js
-gdp('setUserId', 'userId');
-gdp('setUserId', 'userId', 'userKey');
+gdp('setUserId', '112333445');
+gdp('setUserId', '112333445', 'phone');
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>

@@ -85,8 +85,8 @@ gdp('identify', openId);
 #### 示例
 
 ```js
-gdp('setUserId', 'userId');
-gdp('setUserId', 'userId', 'userKey');
+gdp('setUserId', '112333445');
+gdp('setUserId', '112333445', 'phone');
 ```
 
 ### 清除登录用户id(clearUserId)

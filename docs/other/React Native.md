@@ -100,7 +100,7 @@ GrowingTracker;
 | userId | string |  是  |  undefine  | 设置登录用户标识 |
 #### 代码示例
 ```javascript
-GrowingTracker.setLoginUserId('loginUserId');
+GrowingTracker.setLoginUserId('112333445');
 ```
 ### 2. 清除登录用户ID
 当用户登出之后调用 `cleanLoginUserId`，清除已经设置的登录用户ID
