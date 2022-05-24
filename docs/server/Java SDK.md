@@ -100,7 +100,7 @@ resources/gio.properties
 
 ```properties
 #项目采集端地址, https://api.growingio.com 需要填写完整的url地址, 如不清楚请联系您的专属项目经理
-api.host=https://api.growingio.com
+api.host=Your ServerHost
 #项目的AccountID
 project.id=填写您项目的AccountID
 #消息发送间隔时间,单位ms（默认 100）

@@ -48,7 +48,7 @@ const gdp = require('./utils/gio/gio-alip.js').default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     ...other settings
 });
 

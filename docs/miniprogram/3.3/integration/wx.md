@@ -60,7 +60,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     ...其他配置项
 });
 ```
@@ -74,7 +74,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     usePlugin: true,
     ...其他配置项
 });
@@ -106,7 +106,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     taro: Taro,
     ...其他配置项
 });
@@ -145,7 +145,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     taro: Taro,
     ...其他配置项
 });
@@ -166,7 +166,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     taro: Taro,
     ...其他配置项
 });
@@ -190,7 +190,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     vue: Vue,
     ...其他配置项
 });
@@ -217,7 +217,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     vue: Vue,
     ...其他配置项
 });
@@ -233,7 +233,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     usePlugin: true,
     vue: Vue,
     ...其他配置项
@@ -250,7 +250,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     wepy: Wepy,
     ...其他配置项
 });
@@ -266,7 +266,7 @@ var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: '小程序版本',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     usePlugin: true,
     wepy: Wepy,
     ...其他配置项
@@ -280,7 +280,10 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ## 添加白名单
 
-由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)，您需要在「小程序后台-开发-开发设置-服务器域名」中添加request合法域名。[小程序后台](https://mp.weixin.qq.com/)
+由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)，您需要将 `https://your serverHost` 在「小程序后台-开发-开发设置-服务器域名」中添加为request合法域名。[小程序后台](https://mp.weixin.qq.com/)
+:::caution
+如果小程序通过第三方平台发布代码，在发布代码之前，需要调用接口在requestdomain中添加`https://your serverHost`，参考[小程序官方第三方说明](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/Server_Address_Configuration.html)。
+:::
 
 ## 数据校验
 

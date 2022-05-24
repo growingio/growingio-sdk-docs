@@ -55,7 +55,7 @@ gdp('setOption', 'debug', true | false);
 请设置准确的host地址，支持 **`IP`** 或 **`域名`** 格式，**无需携带协议头**。
 
 ```js
-gdp('setOption', 'host', 'wxapi.growingio.com');
+gdp('setOption', 'host', 'your serverHost');
 
 // <3.8.0版本的写法仍兼容，但不建议您再这么使用
 // gdp('setTrackerHost', 'xxxxxxxx');
