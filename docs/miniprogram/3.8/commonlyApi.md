@@ -74,9 +74,9 @@ gdp('setOption', 'scheme', 'http' | 'https');
 
 ## 功能接口
 
-### 1、设置访问用户id(identify)
+### 1、设置访问用户Id(identify)
 
-在微信小程序调用[登录开放接口](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) `wx.login` 之后，获取 openId，调用 identify 设置访问用户ID。
+访问用户Id，又称为匿名用户Id/设备Id，在微信小程序调用[登录开放接口](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) `wx.login` 之后，获取 openId，调用 identify 设置访问用户Id。
 
 #### 示例
 
@@ -88,9 +88,9 @@ gdp('identify', openId);
 **1）若使用此接口需要在初始化时将 forceLogin 设置为 true。 [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**<br/>
 **2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**
 
-### 2、获取设备id(getDeviceId)
+### 2、获取访问用户Id(getDeviceId)
 
-设备Id，又称为匿名用户Id/访问用户Id，SDK 自动生成用来定义唯一设备。如果没有初始化SDK 或者关闭采集开关可能返回值为空。
+访问用户Id，又称为匿名用户Id/设备Id，SDK 自动生成用来定义唯一设备。如果没有初始化SDK 或者关闭采集开关可能返回值为空。
 
 #### 示例
 
