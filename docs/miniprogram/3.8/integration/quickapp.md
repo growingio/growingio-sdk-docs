@@ -30,7 +30,7 @@ import gdp from './utils/gio/gio-quickapp.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your packageName', {
     version: 'quickapp version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     ...other settings
 });
 

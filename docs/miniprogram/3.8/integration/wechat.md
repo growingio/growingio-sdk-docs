@@ -48,7 +48,7 @@ import gdp from './utils/gio/gio-wechat.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     ...other settings
 });
 
@@ -87,7 +87,7 @@ App.mpType = 'app';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     uniVue: Vue,
     ...other settings
 });
@@ -113,7 +113,7 @@ export function createApp() {
 
   gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
       version: 'miniProgram version',
-      host: 'api.growingio.com',
+      host: 'Your ServerHost',
       uniVue: app,
       ...other settings
   });
@@ -156,7 +156,7 @@ import gdp from './utils/gio/gio-taro.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     taro: Taro,
     ...other settings
 });
@@ -195,7 +195,7 @@ import gdp from './utils/gio/gio-taro.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     taro: Taro,
     ...other settings
 });
@@ -215,7 +215,7 @@ import gdp from './utils/gio/gio-taro.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     taro: Taro, // 注意taro和taroVue都需要传
     taroVue: Vue, // 注意taro和taroVue都需要传
     ...other settings
@@ -240,7 +240,7 @@ const App = createApp({ ... });
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     taro: Taro, // 注意taro和taroVue都需要传
     taroVue: App, // 注意taro和taroVue都需要传
     ...other settings
@@ -272,7 +272,7 @@ import gdp from './utils/gio/gio-chameleon.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     cml: Cml
     ...other settings
 });
@@ -301,7 +301,7 @@ import gdp from './utils/gio/gio-wepy.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     wepy: wepy,
     ...other settings
 });
@@ -328,7 +328,7 @@ import gdp from './utils/gio/gio-remax.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     remax: remax,
     ...other settings
 });
@@ -388,7 +388,7 @@ import gdp from './utils/gio/sdk.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     ...other settings
 });
 
@@ -403,7 +403,10 @@ Component({ ... });
 
 ### 添加白名单
 
-由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)，您需要在「小程序后台-开发-开发设置-服务器域名」中添加request合法域名。[小程序后台](https://mp.weixin.qq.com/)
+由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)，您需要将 `https://your serverHost` 在「小程序后台-开发-开发设置-服务器域名」中添加为request合法域名。[小程序后台](https://mp.weixin.qq.com/)
+:::caution
+如果小程序通过第三方平台发布代码，在发布代码之前，需要调用接口在requestdomain中添加`https://your serverHost`，参考[小程序官方第三方说明](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/Server_Address_Configuration.html)。
+:::
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 

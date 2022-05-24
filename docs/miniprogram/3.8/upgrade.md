@@ -28,7 +28,7 @@ import gdp from './utils/gio/sdk.js';
 ```js
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     // vue: Vue,  移除此配置
     uniVue: Vue, // 新增此配置
     ...other settings

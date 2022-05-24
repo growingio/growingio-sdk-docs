@@ -16,7 +16,7 @@ gdp('send');
 
 // 动态配置接口
 gdp('setTrackerScheme', 'http');
-gdp('setTrackHost', 'api.growingio.com');
+gdp('setTrackHost', 'Your ServerHost');
 gdp('enableDebug', true);
 gdp('setDataCollect', true);
 gdp('setAutoTrack', true);
@@ -79,7 +79,7 @@ gdp('setTrackerScheme', 'http');
 #### 2、修改数据上报地址(host)
 
 ```js
-gdp('setTrackHost', 'api.growingio.com');
+gdp('setTrackHost', 'Your ServerHost');
 ```
 
 #### 3、开启/关闭调试模式(debug)
