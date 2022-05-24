@@ -31,7 +31,7 @@ import gdp from './utils/gio/gio-taobao.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     tbConfig: { ... },
     ...other settings
 });
@@ -53,7 +53,7 @@ import gdp from './utils/gio/sdk.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'Your ServerHost',
     tbConfig: { ... },
     ...other settings
 });

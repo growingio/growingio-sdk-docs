@@ -47,7 +47,7 @@ import gdp from './utils/gio/gio-alipay.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     ...other settings
 });
 
@@ -86,7 +86,7 @@ App.mpType = 'app';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     uniVue: Vue,
     ...other settings
 });
@@ -112,7 +112,7 @@ export function createApp() {
 
   gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
       version: 'miniProgram version',
-      host: 'api.growingio.com',
+      host: 'your serverHost',
       uniVue: app,
       ...other settings
   });
@@ -155,7 +155,7 @@ import gdp from './utils/gio/gio-taro.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     taro: Taro,
     ...other settings
 });
@@ -194,7 +194,7 @@ import gdp from './utils/gio/gio-taro.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     taro: Taro,
     ...other settings
 });
@@ -214,7 +214,7 @@ import gdp from './utils/gio/gio-taro.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     taro: Taro, // 注意taro和taroVue都需要传
     taroVue: Vue, // 注意taro和taroVue都需要传
     ...other settings
@@ -239,7 +239,7 @@ const App = createApp({ ... });
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     taro: Taro, // 注意taro和taroVue都需要传
     taroVue: App, // 注意taro和taroVue都需要传
     ...other settings
@@ -270,7 +270,7 @@ import gdp from './utils/gio/gio-chameleon.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     cml: Cml
     ...other settings
 });
@@ -299,7 +299,7 @@ import gdp from './utils/gio/gio-remax.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'api.growingio.com',
+    host: 'your serverHost',
     remax: remax,
     ...other settings
 });

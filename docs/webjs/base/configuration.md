@@ -52,7 +52,7 @@ gdp('init', accountId, datasourceId, { scheme: 'https' });
 设置上传当前应用埋点数据的接受服务器的域名。默认不配置发数的API，需要在初始化时设置host，否则会初始化失败。
 
 ```js
-gdp('init', accountId, datasourceId, { host: 'api.growingio.com' });
+gdp('init', accountId, datasourceId, { host: 'Your ServerHost' });
 ```
 
 ### 开启debug模式
