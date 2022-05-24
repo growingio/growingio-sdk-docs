@@ -141,8 +141,8 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
     groupId="3"
     defaultValue="Taro2"
     values={[
-      {label: 'Taro2', value: 'Taro2'},
-      {label: 'Taro3(react)', value: 'Taro3(react)'},
+      {label: 'Taro2(React)', value: 'Taro2'},
+      {label: 'Taro3(React)', value: 'Taro3(react)'},
       {label: 'Taro3(vue2)', value: 'Taro3(vue2)'},
       {label: 'Taro3(vue3)', value: 'Taro3(vue3)'},
     ]

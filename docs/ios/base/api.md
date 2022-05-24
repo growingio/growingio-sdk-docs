@@ -70,13 +70,13 @@ import TabItem from '@theme/TabItem';
 **无埋点 SDK 示例代码：**
 
 ```c
-[[GrowingAutotracker sharedInstance] setLoginUserId:@"123" userKey:@"number"];
+[[GrowingAutotracker sharedInstance] setLoginUserId:@"112333445" userKey:@"phone"];
 ```
 
 **埋点 SDK 示例代码：**
 
 ```c
-[[GrowingTracker sharedInstance] setLoginUserId:@"123" userKey:@"number"];
+[[GrowingTracker sharedInstance] setLoginUserId:@"112333445" userKey:@"phone"];
 ```
 
 

@@ -92,15 +92,16 @@ const App = global.GioApp;
   groupId="2"
   defaultValue="2.x"
   values={[
-    {label: 'Taro 2.x', value: '2.x'},
-    {label: 'Taro 3.x', value: '3.x'},
+    {label: 'Taro2(React)', value: '2.x'},
+    {label: 'Taro3(React)', value: '3.x'},
+    {label: 'Taro3(vue2)',  value: '3.x(vue2)'},
   ]
 }>
 <TabItem value="2.x">
 
 ```js
-// main.js
-import Taro from '@tarojs/taro';
+// app.jsx
+import Taro, { Component } from '@tarojs/taro';
 var gdp = require("utils/gio/gio-minp.js").default;
 
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
@@ -109,13 +110,16 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     taro: Taro,
     ...其他配置项
 });
+
+class App extends Component { ... }
+Taro.render(<App />, document.getElementById('app'));
 ```
 
 </TabItem>
 <TabItem value="3.x">
 
 ```bash
-npm install babel-plugin-setname --save-dev
+npm install babel-plugin-setname --save
 ```
 
 ```js
@@ -135,6 +139,7 @@ module.exports = {
 
 ```js
 // main.js
+import React, { Component } from 'react';
 import Taro from '@tarojs/taro';
 var gdp = require("utils/gio/gio-minp.js").default;
 
@@ -144,6 +149,31 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     taro: Taro,
     ...其他配置项
 });
+
+class App extends Component { ... }
+export default App;
+```
+
+</TabItem>
+
+<TabItem value="3.x(vue2)">
+
+```js
+// main.js
+import Vue from 'vue';
+import Taro from '@tarojs/taro';
+var gdp = require("utils/gio/gio-minp.js").default;
+
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    version: '小程序版本',
+    host: 'api.growingio.com',
+    taro: Taro,
+    ...其他配置项
+});
+
+// 注意vue2中App实例在初始化之后
+const App = { ... };
+export default App;
 ```
 
 </TabItem>
