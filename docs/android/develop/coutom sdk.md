@@ -24,6 +24,7 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 | 数据库-database | event数据库为sqplite，默认集成在埋点SDK中 | `EventDatabase` | `EventDbResult` | `com.growingio.android:database:3.3.6` |
 | 数据传输格式-json | 使用json格式保存和上传事件数据，sdk 默认 | `EventFormatData` | `EventByteArray` | `com.growingio.android:json:3.3.6` |
 | 数据传输格式-protobuf | 使用protobuf格式保存和上传事件数据，需要集成生效 | `EventFormatData` | `EventByteArray` | `com.growingio.android:protobuf:3.3.6` |
+| 第三方数据SDK适配-Firebase | 适配Firebase Sdk 数据并转发至 SDK | 无 | 无 | `com.growingio.android:analytics:3.4.0` |
 | 更多开发中... |
 
 
