@@ -229,13 +229,11 @@ my.getAuthUserInfo({
 });
 ```
 
-### 地理位置(getLocation)
-:::info 
-3.3.6版本不支持
-:::
+### 获取地理位置(getLocation)
+
 通过手动调用地理位置接口来补发地理位置信息，提升用户地域分布的分析准确性。
 
-**注意：初始化配置项 location.autoGet 打开时，无需调用此接口。**
+**注意：此方法在`3.3.6`起的版本中废弃，如需使用位置相关功能，请使用`setLocation`。**
 
 ```js
 gdp('getLocation');
@@ -243,9 +241,36 @@ gdp('getLocation');
 ```
 
 **注意：**<br/>
-**1、使用此功能必须保证您的小程序项目有对应的权限，如果您的小程序项目没有获取位置信息的权限导致上线审批被驳回，请使用3.3最新版不带`getLocation`相关内容的SDK`3.3.6`。**<br/>
-**2、我们在`3.3.6`版本中移除了getLocation相关的逻辑，如果您需要此功能，请使用`3.3.5`版本(在版本记录中下载)。**<br/>
-**3、初始化配置项 location.autoGet 打开时，无需调用此接口。**
+**1、使用此功能必须保证您的小程序项目有对应的权限，如果您的小程序项目没有获取位置信息的权限导致上线审批被驳回，请使用3.3最新版不带`getLocation`相关内容的SDK`>=3.3.6`。**<br/>
+**2、初始化配置项 location.autoGet 打开时，无需调用此接口。**
+
+### 设置地理位置(setLocation)
+
+当用户访问至某一功能需要位置信息时，可以手动调用小程序Api获取地理位置接口，赋值给SDK，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。同时您需要配置项目的`permission`字段[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)和对应的权限申请[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.getLocation.html)。
+
+***2022年4月18日起，微信官方对`getLocation`进行了权限限制，因此SDK废弃了与getLocation有关的逻辑，并新增`setLocation`来代替此功能。***
+
+#### 参数说明
+
+| 参数        | 参数类型 | 说明                                   |
+|-------------|----------|--------------------------------------|
+| `latitude`  | `number` | 必填；纬度，范围为 -90~90，负数表示南纬   |
+| `longitude` | `number` | 必填；经度，范围为 -180~180，负数表示西经 |
+
+#### 示例
+
+```js
+wx.getLocation({
+  type: 'wgs84',
+  success: ({ latitude, longitude }) => {
+    gdp('setLocation', latitude, longitude);
+    // 调用后会自动补发带位置信息的VISIT事件
+  }
+});
+```
+
+**注意：**<br/>
+**此功能需使用`>=3.3.7`版本的SDK。**<br/>
 
 ### 与h5打通用户数据(getGioInfo)
 
