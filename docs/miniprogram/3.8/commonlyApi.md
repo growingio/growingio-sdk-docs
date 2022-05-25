@@ -102,7 +102,7 @@ gdp('getDeviceId');
 **1）SDK版本 >=3.8.0-rc.7 支持。**<br/>
 **2）开启forceLogin的小程序无需调用此方法，因为您在identify的时候已经获取了openId做为访问用户Id。如果您一定要使用它，请在identify之后调用。**
 
-### 3、设置登录用户id(setUserId)
+### 3、设置登录用户Id(setUserId)
 
 当用户登录之后调用`setUserId`，设置登录用户ID
 
@@ -125,7 +125,7 @@ gdp('setUserId', '112333445', 'phone');
 **<font color="#FC5F3A">注意：</font>**<br/>
 **SDK版本 >=3.3.0 支持 ID-MAPPING，且需初始化时设置 `enableIdMapping` 为 `true`**
 
-### 4、清除登录用户id(clearUserId)
+### 4、清除登录用户Id(clearUserId)
 
 当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID
 
