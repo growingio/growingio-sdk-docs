@@ -1,29 +1,22 @@
 ---
-slug: /android/base
+sidebar_position: 1
 title: 如何集成
 ---
+请参考下方文档来集成 GrowingIO 无埋点或埋点 SDK.
 
+--------
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-### 集成准备
-#### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
-:::info
-AccountID：项目ID，代表一个项目<br/>
-DataSourceID：数据源ID，代表一个数据源<br/>
-URL Scheme： 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识<br/>
-Host：采集数据上报的服务器地址，非平台地址<br/>
-
-Account ID、DataSource ID、URL Scheme 需要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持
-:::
-##### 创建
-![新建数据源](./../../../static/img/createapplication.png)
-##### 查看
-![查看数据源](./../../../static/img/showappdatasourceid.png)
-
 ## 集成无埋点SDK
-### 添加依赖
-在 project 级别的build.gradle文件中添加autotracker-gradle-plugin依赖。
+
+无埋点SDK能够在不修改代码的情况下，自动帮助应用获取页面浏览，页面点击等埋点事件。
+
+### 如何依赖
+
+#### 添加maven仓库
+
+在 project 级别的build.gradle文件中添加Maven仓库
 
 ```groovy
 buildscript {
@@ -33,32 +26,8 @@ buildscript {
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
-    dependencies {
-        
-        //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.3.6'
-    }
 }
-```
 
-如果项目中使用的Android Gradle插件为7.0及以上版本，需要在 project 中的settings.gradle文件中添加Maven仓库
-
-```groovy
-// 当AGP版本为7.0及以上添加
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        // 添加maven仓库，AndroidStudio会自动设置，如果已经存在不需要重复添加
-        mavenCentral()
-        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
-    }
-}
-```
-如果项目中使用的Android Gradle插件为4.2及以下版本，则需要在 project 级别的build.gradle文件中添加Maven仓库
-
-```groovy
-// 当AGP版本为4.2及以下添加
 allprojects {
     repositories {
         // 添加maven仓库
@@ -69,7 +38,27 @@ allprojects {
 }
 ```
 
-在 app及module 级别的 `build.gradle` 文件中添加 `com.growingio.android.autotracker` 插件、`autotracker`依赖。
+#### 添加插件
+在 project 级别的build.gradle文件中添加插件路径
+
+```groovy
+
+buildscript {
+    repositories {
+        // 添加maven仓库
+        mavenCentral()
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        //GrowingIO 无埋点 SDK plugin
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.0'
+    }
+}
+
+```
+
+在 app 级别的 `build.gradle` 文件中添加 `com.growingio.android.autotracker` 插件
 ```groovy
 apply plugin: 'com.android.application'
 //添加 GrowingIO 插件
@@ -77,13 +66,26 @@ apply plugin: 'com.growingio.android.autotracker'
 
 ...
 
+```
+:::tip 关于高版本插件
+关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/base/AGP7)
+:::
+
+#### 添加代码依赖
+在需要用到的项目模块下的 `build.gradle` 文件中添加代码依赖
+```groovy
+apply plugin: 'com.android.application'
+
+...
+
 dependencies {
     ...
     //GrowingIO 无埋点 SDK
-    implementation 'com.growingio.android:autotracker-cdp:3.3.6'
+    implementation 'com.growingio.android:autotracker-cdp:3.4.0'
 }
 
 ```
+
 
 :::tip 关于版本
 最新版本请参考 [Github Release](https://github.com/growingio/growingio-sdk-android-autotracker/releases)
@@ -190,18 +192,10 @@ class MyApplication : Application() {
 :::
 
 
-### 代码混淆
-如果您启用了混淆，请在您的 proguard-rules.pro 中加入如下代码：
-```xml
--keep class * extends com.growingio.android.sdk.GeneratedGioModule
--keep class * extends com.growingio.android.sdk.LibraryGioModule
-```
-
-
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.3.5 !!!`  
+`!!! GrowingIO Tracker version: 3.4.0 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
@@ -216,20 +210,14 @@ class MyApplication : Application() {
 埋点相较于无埋点集成步骤会更简单，也不需要添加额外的插件。
 
 ### 添加依赖
-在 project 级别下的 `build.gradle` 文件中添加仓库
-```groovy
-repositories {
-    mavenCentral()
-}
-```
 
-在 module 级别的 `build.gradle` 文件中添加tracker依赖。
+只需要在 module 级别的 `build.gradle` 文件中添加tracker依赖即可。
 
 ```groovy
 dependencies {
 
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.3.6'
+    implementation 'com.growingio.android:tracker-cdp:3.4.0'
 }
 ```
 
@@ -320,6 +308,7 @@ class MyApplication : Application() {
 
 ### 混淆
 SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用其规则。
+
 如果混淆后还出现问题，可以在您的 proguard-rules.pro 中加入如下代码：
 ```xml
 -keep class com.growingio.** {
@@ -331,7 +320,7 @@ SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用�
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.3.5 !!!`  
+`!!! GrowingIO Tracker version: 3.4.0 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。

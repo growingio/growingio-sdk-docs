@@ -40,6 +40,15 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   --ifm-color-primary-lighter: #fd8468;
   --ifm-color-primary-lightest: #fda996;
   --ifm-code-font-size: 90%;
+
+  /* --ifm-color-info-dark: #fc461b;
+  --ifm-color-info-darker: #fb3a0c;
+  --ifm-color-info-darkest: #d62b03;
+  --ifm-color-info-light: #fc7859;
+  --ifm-color-info-lighter: #fd8468;
+  --ifm-color-info-lightest: #fda996;
+  --ifm-color-info-contrast-background: #fcf3f1;
+  --ifm-color-info-contrast-foreground: rgb(25, 60, 71); */
 }
 
 .admonition-shell {

@@ -83,9 +83,9 @@ setUserAttributes(properties: Properties, callback: ValueFunction<Response>): vo
 
 项目中无需其他设置
 #### Android APP
-如果集成的是[**无埋点SDK**](/docs/android/base#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
+如果集成的是[**无埋点SDK**](/docs/android/base/Introduce#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
-如果集成的是[**埋点SDK**](/docs/android/base#集成埋点sdk)，则需要设置，详细请参安卓[内嵌h5页面数据采集配置](/docs/android/base/Configuration#1-内嵌h5页面数据采集配置)
+如果集成的是[**埋点SDK**](/docs/android/base/Introduce#集成埋点sdk)，则需要设置，详细请参安卓[内嵌h5页面数据采集配置](/docs/android/base/Configuration#1-内嵌h5页面数据采集配置)
 ### 打通成功效果
 ![H5ToApp](../../static/img/h5ToApp.png)
 满足打通规则时，H5 页面调用 setUserID，cleanUserID 会调用 APP 的 setLoginUserID，cleanUserID。<br/>

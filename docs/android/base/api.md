@@ -222,6 +222,8 @@ Map<String, String> map = new HashMap<>();
 map.put("name", "June");
 map.put("age", "12");
 GrowingTracker.get().trackCustomEvent("registerSuccess", map);
+
+//不再推荐使用，请使用 ResourceItemCustomEvent.setResourceItem 代替
 GrowingTracker.get().trackCustomEvent("registerSuccess", map, "key", "id");
 ```
 
@@ -235,6 +237,8 @@ val map: MutableMap<String, String> = HashMap()
 map["name"] = "June"
 map["age"] = "12"
 GrowingTracker.get().trackCustomEvent("registerSuccess", map)
+
+//不再推荐使用，请使用 ResourceItemCustomEvent.setResourceItem 代替
 GrowingTracker.get().trackCustomEvent("registerSuccess", map, "key", "id")
 ```
 

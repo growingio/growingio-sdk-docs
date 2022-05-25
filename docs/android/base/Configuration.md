@@ -177,15 +177,13 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 
 若需要 H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通，请参考内置 [Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
 
-如果集成的是[**无埋点SDK**](/docs/android/base#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
+如果集成的是[**无埋点SDK**](/docs/android/base/Introduce#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
 
-如果集成的是[**埋点SDK**](/docs/android/base#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
-:::info
-**使用时注意模块版本需要与采集SDK版本保持一致**
-:::
+如果集成的是[**埋点SDK**](/docs/android/base/Introduce#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
+
 ```groovy
 ...
-implementation "com.growingio.android:hybrid:3.3.6"
+implementation "com.growingio.android:hybrid:3.4.0"
 ```
 
 SDK初始化时需要注册 hybrid 模块：
@@ -197,7 +195,7 @@ SDK初始化时需要注册 hybrid 模块：
 GrowingTracker.startWithConfiguration(this, 
                 new CdpTrackConfiguration("accountId", "urlScheme")
                 ...
-                .setPreloadComponent(new HybridLibraryGioModule()));  
+                .addPreloadComponent(new HybridLibraryGioModule()));  
 ```
 需要在 WebView 初始化之后调用桥接代码，实现访问用户数据打通:
 
@@ -214,13 +212,12 @@ GrowingTracker.get().bridgeWebView(webview)
 > 在 OAID SDK 1.0.26及其后续版本，获得OAID值需要传入从 MSA 机构获得的证书；
 > 3.3.0 ~ 3.3.3版本无法传入客户自己获得的OAID值或OAID证书，若需要这些功能，请使用版本>=3.3.4 SDK。
 
-**使用时注意模块版本需要与采集SDK版本保持一致**
 :::
 
 项目需要添加[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 OAID模块依赖(和 SDK 依赖同级)：
 ```groovy
 ...
-implementation "com.growingio.android:oaid:3.3.6"
+implementation "com.growingio.android:oaid:3.4.0"
 ```
 SDK初始化时注册Oaid模块：
 
@@ -330,13 +327,11 @@ GrowingTracker.startWithConfiguration(this,
 ### 3. **SDK数据加密传输**
 :::info
 采集 SDK 版本 >=3.3.0
-
-**使用时注意模块版本需要与采集SDK版本保持一致**
 :::
 项目需要添加加密模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:encoder:3.3.6"
+implementation "com.growingio.android:encoder:3.4.0"
 ```
 
 SDK初始化时注册加密模块：
@@ -365,14 +360,12 @@ GrowingTracker.startWithConfiguration(this,
 :::info
 采集 SDK 版本 >=3.3.3
 
-**使用时注意模块版本需要与采集SDK版本保持一致**
-
 使用 Protobuf 格式保存和上传事件数据，集成即生效；默认为 JSON 格式，2 种格式互不兼容，迁移将导致APP本地数据库内未上传的事件数据丢失，后续产生的新数据不受影响
 :::
 项目需要添加Protobuf模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:protobuf:3.3.6"
+implementation "com.growingio.android:protobuf:3.4.0"
 ```
 
 SDK初始化时注册Protobuf模块：
@@ -412,3 +405,42 @@ GrowingTracker.startWithConfiguration(this,
 </TabItem>
 </Tabs>
 
+### 5. **第三方厂商数据转发**
+:::info
+为了方便给已经集成了其他第三方厂商数据采集SDK的客户快速转入我们的采集SDK,我们提供了针对各个第三方的数据转发服务来作为一个过度的方案。
+
+目前已支持 Google Analytics 3 和 Firebase Analytics 两家数据转发，后续会继续支持。
+
+采集 SDK 版本 >=3.4.0 且只适用于无埋点SDK
+:::
+
+项目需要添加 analytics-ga 或 analytics-fa 模块依赖
+
+```groovy
+...
+implementation "com.growingio.android:analytics-ga:3.4.0" //Google Analytics 3
+implementation "com.growingio.android:analytics-fa:3.4.0" //Firebase Analytics
+```
+
+SDK初始化时需要添加对应的 analytics 模块。
+
+```java
+// 初始化SDK时, 调用方法注册数据分析转发模块
+GrowingAutotracker.startWithConfiguration(this, 
+                new CdpAutotrackConfiguration("accountId", "urlScheme")
+                ...
+                .addPreloadComponent(new GoogleAnalyticsLibraryModule())) //Google Analytics 3
+                // 或者
+                .addPreloadComponent(new FirebaseAnalyticsLibraryModule())) //Firebase Analytics
+```
+
+同时需要在无埋点插件配置里启用对应的转发服务
+
+```groovy
+growingAutotracker {
+    analyticsAdapter {
+        firebaseAnalytics true //Firebase Analytics
+        googleAnalytics true //Google Analytics 3
+    }
+}
+```
