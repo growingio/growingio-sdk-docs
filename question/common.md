@@ -6,7 +6,7 @@ title: SDK 共性问题
 **A：**release 版本是正式版本；例如：release-3.3.1；hotfix版本是非正式版本，是所在版本的 Bug 紧急修复版本；Android 的 hotfix 版本对应带有日期的SNAPSHOT版本，例如：release-3.2.3-09141-SNAPSHOT； 下一个release 版本会包含上个版本的所有 hotfix 版本的内容。
 
 ### 2.  SDK 初始化参数 AccountID、DataSourceID、Host 获取方式
-**A：**AccountID、DataSourceID需要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系项目经理；操作步骤参考[帮助文档](/docs/android/base)。
+**A：**AccountID、DataSourceID需要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系项目经理；操作步骤参考[帮助文档](/docs/android/)。
 Host需要服务端部署，如不清楚请联系该项目的运维或项目经理。
 
 ### 3. SDK 集成成功，但是数据库中没有查到SDK上报的数据？
