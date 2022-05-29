@@ -7,7 +7,7 @@ title: 版本记录
 
 * 修复丢失utm参数的问题
 * 修复部分事件不能获取`path`，`query`的问题
-* 修改补发visit事件逻辑，补发visit时`path`，`query`使用启动小程序时的数据
+* 修改补发visit事件时的取值逻辑，补发visit时`path`，`query`使用启动小程序时的数据
 
 ### V3.8.0-rc.8 - 2022/5/24
 
