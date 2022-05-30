@@ -445,7 +445,7 @@ Page({
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>** **指定title仅支持 String 格式。**
+**<font color="#FC5F3A">注意：</font>** **指定title仅支持 String 格式。SDK版本>=3.8.0-rc.9支持。**
 
 ### 3、忽略采集标记
 
