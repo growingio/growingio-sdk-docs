@@ -3,10 +3,12 @@ sidebar_position: 0
 title: 版本记录
 ---
 
-### V3.8.0-rc.9 - 2022/5/26
+### V3.8.0-rc.9 - 2022/5/29
 
 * 修复taro2 page 事件丢失问题。
 * 修复 visit 事件丢失进入小程序时的utm参数问题。
+* 修复`setUserAttributes`在AppOnShow中异步调用时path和query可能取值错误的问题。
+* 新增数据采集补充标记，允许自定义设置SDK上报时的页面title。
 
 ### V3.8.0-rc.9 - 2022/5/24
 
