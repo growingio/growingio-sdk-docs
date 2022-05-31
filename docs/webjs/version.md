@@ -3,6 +3,10 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V3.3.13 - 2022/05/31
+
+* 修复与小程序打通时可能多发page的问题
+
 ## V3.3.12 - 2022/04/30
 
 * 修复operatingSystem字段的数据打通
