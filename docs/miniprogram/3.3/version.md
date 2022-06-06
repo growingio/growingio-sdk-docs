@@ -3,6 +3,13 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+### V3.3.8 - 2022/06/06
+
+* 增加getDeviceId接口
+* 修复APP_CLOSED事件丢失sessionId的问题
+* 修复 CUSTOM 事件path、query获取逻辑错误问题
+* 修复触发补发 VISIT 事件可能丢失 query 问题 
+
 ### V3.3.7 - 2022/05/25
 
 * 修复开启forceLogin时，偶现某个事件的访问用户id取值错误导致用户统计虚高的问题。
