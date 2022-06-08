@@ -3,7 +3,7 @@ title: 版本记录
 sidebar_position: 0
 ---
 
-### V3.3.8 - 2022/06/06
+### V3.3.8 - 2022/06/08
 
 * 增加getDeviceId接口
 * 修复APP_CLOSED事件丢失sessionId的问题
