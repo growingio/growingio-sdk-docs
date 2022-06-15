@@ -107,7 +107,7 @@ gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 
 默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
 
-在分享回调方法中，添加 `contentType` 和 `contentId` 字段。例：
+SDK采集时会优先获取分享回调方法中的`path`, `title`, `contentType`, `contentId`，若没有配置则会获取页面信息。例：
 
 ```js
 onShareAppMessage: function() {
