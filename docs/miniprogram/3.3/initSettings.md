@@ -107,7 +107,7 @@ gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 
 默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
 
-在分享回调方法中，添加 `contentType` 和 `contentId` 字段。例：
+SDK采集时会优先获取分享回调方法中的`path`, `title`, `contentType`, `contentId`，若没有配置则会获取页面信息。例：
 
 ```js
 onShareAppMessage: function() {
@@ -133,7 +133,8 @@ gdp('identify', openId);
 ```
 
 :::caution 注意：
-如果打开小程序后没有调用 `wx.login` 获取 openId 或 unionId，没有调用 `identify` 方法，但是小程序SDK配置了 `forceLogin` 为 `true`，会导致SDK不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们技术支持。
+如果打开小程序后没有调用 `wx.login` 获取 openId 或 unionId，没有调用 `identify` 方法，但是小程序SDK配置了 `forceLogin` 为 `true`，会导致SDK不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们技术支持。<br/>
+如果小程序首页中使用的是内嵌H5页面，需要使用[内嵌H5用户数据打通](/docs/miniprogram/3.3/commonlyApi#与h5打通用户数据getgioinfo)功能。该场景下，需要在小程序冷启动时，使用开屏页(在小程序首页 page 前增加一个 page 开屏页)。
 :::
 
 ### getLocation

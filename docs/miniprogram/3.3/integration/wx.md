@@ -14,10 +14,9 @@ import TabItem from '@theme/TabItem';
 AccountID：项目ID，代表一个项目<br/>
 DataSourceID：数据源ID，代表一个数据源<br/>
 AppId：小程序应用ID<br/>
-Host：采集数据上报的服务器地址<br/>
+Host：采集数据上报的服务器地址，非平台地址<br/>
 
-AccountID、DataSourceID、AppId 需要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
-Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
+AccountID、DataSourceID、AppId 需要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持
 :::
 
 ##### 创建
