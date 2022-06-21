@@ -3,6 +3,11 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V3.3.14 - 2022/06/21
+
+* 修复session过期补发page事件，timestamp取值错误的问题；
+* 修复setUserId时有@符号加解密失败的问题；
+
 ## V3.3.13 - 2022/05/31
 
 * 修复与小程序打通时可能多发page的问题
