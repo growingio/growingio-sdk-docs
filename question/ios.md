@@ -37,7 +37,7 @@ pod repo update
 
 ### 6.集成SDK后，为什么接收不到数据？
 **A：**
-* dataCollectionServerHost、accountId 、dataSoueceId 配置错误
+* dataCollectionServerHost、accountId 、dataSourceId 配置错误
 * 服务端网络环境是否可访问
 
 ### 7. SDK如何支持合规，以及GDPR（欧盟《一般数据保护条例》）？
