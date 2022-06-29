@@ -1,16 +1,16 @@
 ---
 sidebar_position: 2
-title: 阿里小程序
+title: 阿里(支付宝)小程序
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-对于阿里小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
+对于阿里(支付宝)小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
 
 如果您使用跨平台框架开发且有多端（特指小程序，快应用、App和Web除外）同时需要集成SDK的需求时，只需在框架代码中集成一次即可。例：
 
->使用uni-app同时开发微信小程序和阿里小程序，只需集成一次即可。
+>使用uni-app同时开发微信小程序和阿里(支付宝)小程序，只需集成一次即可。
 
 ### 准备工作
 
@@ -39,7 +39,7 @@ import TabItem from '@theme/TabItem';
 
 #### 1、加载SDK
 
-支付宝原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0/gio-alipay.js><br/>
+阿里(支付宝)原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0/gio-alipay.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -461,7 +461,7 @@ gdp('init', xxxxx);
 
 ### 添加白名单
 
-由于阿里小程序对网络请求的限制[参考文档](https://opendocs.alipay.com/mini/008gq6)，您需要在「阿里小程序管理中心-小程序详情-设置-开发设置-服务器域名白名单」中添加request合法域名。[支付宝小程序管理中心](https://open.alipay.com/mini/dev/list)
+由于阿里(支付宝)小程序对网络请求的限制[参考文档](https://opendocs.alipay.com/mini/008gq6)，您需要在「支付宝小程序管理中心-小程序详情-设置-开发设置-服务器域名白名单」中添加request合法域名。[支付宝小程序管理中心](https://open.alipay.com/mini/dev/list)
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 
