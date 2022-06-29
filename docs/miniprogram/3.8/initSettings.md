@@ -23,7 +23,7 @@ title: 初始化配置
 | `host`                | `string`       | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**    |
 | `ignoreFields`        | `string[]`     | `-`        | 上报忽略字段                                   |
 | `remax`               | `any`          | `-`        | 使用 Remax 开发时使用的实例，参考集成示例代码     |
-| `scheme`              | `http / https` | `https`    | 网络协议                                       |
+| `scheme`              | `http/https` | `https`    | 网络协议                                       |
 | `subpackage`          | `boolean`      | `false`    | 标记当前当前项目是否为分包                     |
 | `taro`                | `any`          | `-`        | 使用 Taro 开发时使用的实例，参考集成示例代码     |
 | `taroVue`             | `any`          | `-`        | 使用 Taro3vue2/3 开发时使用的实例，参考集成示例代码|
