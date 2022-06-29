@@ -39,8 +39,10 @@ title: 3.3与3.8对比
 >
 > 初始化方法 `setConfig` 废弃，仅支持通过 `init` 方法进行初始化；因为它容易歧义误导使用。
 
-**新增项：** `wepy`、`uniVue`、`taroVue`、`remax` 配置项。
+**新增项：** `uploadInterval`、`wepy`、`uniVue`、`taroVue`、`remax` 配置项。
 
+> 新增 `uploadInterval` 配置项字段；用于自定义发数间隔。
+>
 > 新增 `wepy`、`uniVue`、`taroVue`、`remax` 配置项字段；用于准确传入不同框架的实例。
 
 ### 数据采集API
@@ -61,23 +63,27 @@ title: 3.3与3.8对比
 
 ## 功能点新增、优化、问题修复
 
-1、新增半自动采集浏览功能。详情[参考文档](/docs/miniprogram/3.8/commonlyApi#半自动埋点浏览事件)
+1、新增快手小程序的适配。
 
-2、新增`uni-app vue3`、`taro3 vue3`、`remax`的支持。
+2、新增半自动采集浏览功能。详情[参考文档](/docs/miniprogram/3.8/commonlyApi#半自动埋点浏览事件)
 
-3、新增淘宝小程序云函数和云应用转发方式的适配。
+3、新增`uni-app vue3`、`taro3 vue3`、`remax`的支持。
 
-4、调用 `setUserId` 的API，设置或切换有效的登录用户ID时，自动补发 VISIT 事件。
+4、新增淘宝小程序云函数和云应用转发方式的适配。
 
-5、带有 `autoplay` 属性且值为 `true` 的原生组件（例如：swiper、video）产生的change事件会被自动忽略，如果您想采集它，请[参考文档](/docs/miniprogram/3.8/commonlyApi#1采集标记)。
+5、调用 `setUserId` 的API，设置或切换有效的登录用户ID时，自动补发 VISIT 事件。
 
-6、在<3.8的旧版本中，可能您的 **`gdp`** 方法是需要您通过手动挂载在例如`globalData`、`vue`、`global`此类全局对象后再取出。在3.8.0的版本开始，您可以直接在页面中从 **`global（支付宝和淘宝小程序是 $global）`**对象中取出，从而免去了繁杂的存取值流程。例：
+6、带有 `autoplay` 属性且值为 `true` 的原生组件（例如：swiper、video）产生的change事件会被自动忽略，如果您想采集它，请[参考文档](/docs/miniprogram/3.8/commonlyApi#1采集标记)。
+
+7、在<3.8的旧版本中，可能您的 **`gdp`** 方法是需要您通过手动挂载在例如`globalData`、`vue`、`global`此类全局对象后再取出。在3.8.0的版本开始，您可以直接在页面中从 **`global（支付宝和淘宝小程序是 $global）`**对象中取出，从而免去了繁杂的存取值流程。例：
 
 ```js
 const { gdp } = global;
 Page({ ... });
 ```
 
-7、在<3.8的旧版本中，打通数据的内嵌页SDK数据采集开关是不受小程序SDK控制的（即小程序SDK关闭数据采集时，内嵌页仍然会采集数据并发送，但没有VISIT事件关联）。在3.8.0的版本开始，`getGioInfo`接口将额外增加`giodatacollect`字段用于同步给内嵌页SDK是否采集数据。
+8、在<3.8的旧版本中，打通数据的内嵌页SDK数据采集开关是不受小程序SDK控制的（即小程序SDK关闭数据采集时，内嵌页仍然会采集数据并发送，但没有VISIT事件关联）。从3.8.0的版本开始，`getGioInfo`接口将额外增加`giodatacollect`字段用于同步给内嵌页SDK是否采集数据。
 
-8、在<3.8的旧版本中，使用taro或者uni-app框架开发的小程序在某些特定场景下可能会丢失自定义采集标记，我们在3.8版本中我们修复了它。
+9、在<3.8的旧版本中，使用taro或者uni-app框架开发的小程序在某些特定场景下可能会丢失自定义采集标记，我们在3.8版本中我们修复了它。
+
+10、在<3.8的旧版本中，您只能通过下载SDK文件至本地项目的方式来集成SDK。从3.8.0的版本开始，您还可以通过npm的方式来集成SDK。

@@ -11,19 +11,26 @@ import TabItem from '@theme/TabItem';
 
 ### 准备工作
 
-1. 在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
+1、在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
 
-2. 在您的小程序中获取**`appId`**。
+2、在您的小程序中获取**`appId`**。
 
-3. 下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
+3、下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
 
 ### 小程序中集成
 
 参考示例在 app.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在小程序中任意生命周期中进行初始化。**
 
-#### 快手原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.10/gio-kuaishou.js>
+#### 1、加载SDK
 
-##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+快手原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0/gio-kuaishou.js><br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+
+#### 2、使用`init`方法进行初始化
+
+注意`init`方法所处位置在App实例之前。
+
+##### 示例代码
 
 ```js
 // app.js
@@ -42,26 +49,29 @@ App({ ... });
 
 ### 插件扩展
 
-如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可下载插件包并按需进行扩展。
+如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可使用插件并按需进行扩展。
 
-#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.10/plugins.zip>
+插件文件说明参考文档[插件](/docs/miniprogram/3.8/plugins)。
 
-##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+#### 1、引入插件文件
 
-插件文件说明参考文档[插件](/docs/miniprogram/3.8/plugins)
+插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0/plugins.zip><br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
-加载插件扩展的步骤为：
+下载功能插件，解压放入 plugins 目录中，并在app.js/main.js中引入。
 
-1. 下载功能插件，解压放入 plugins 目录中。
-2. 在app.js/main.js中引入。
-3. 在init语句前调用`registerPlugins`方法按数组形式传值。
+#### 2、调用`registerPlugins`方法注册插件
+
+在init语句前调用`registerPlugins`方法按数组形式传值。
+
+##### 示例代码
 
 ```js
 import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
 import gioCompress from './utils/plugins/gioCompress';
 
 ...
-
+// 在init语句前调用`registerPlugins`方法按数组形式传值。
 gdp('registerPlugins', [gioImpressionTracking, gioCompress]);
 gdp('init', xxxxx);
 ```

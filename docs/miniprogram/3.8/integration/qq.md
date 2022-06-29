@@ -14,11 +14,11 @@ import TabItem from '@theme/TabItem';
 
 ### 准备工作
 
-1. 在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
+1、在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
 
-2. 在您的小程序中获取**`appId`**。
+2、在您的小程序中获取**`appId`**。
 
-3. 在下列选项中选择正确的开发框架，并下载对应的SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
+3、在下列选项中选择对应的开发框架，并下载对应的SDK文件存放在项目中或使用npm的方式集成。下文中以`utils/gio`目录作为下载集成的示例目录(目录和SDK文件可自定义重命名)。
 
 ### 集成
 
@@ -35,9 +35,16 @@ import TabItem from '@theme/TabItem';
 }>
   <TabItem value="Native原生">
 
-#### QQ原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.10/gio-qq.js>
+#### 1、加载SDK
 
-##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+QQ原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0/gio-qq.js><br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+
+#### 2、使用`init`方法进行初始化
+
+注意`init`方法所处位置在App实例之前。
+
+##### 示例代码
 
 ```js
 // app.js
@@ -60,9 +67,24 @@ const gdp = require('./utils/gio/gio-qq.js').default;
   </TabItem>
   <TabItem value="uni-app">
 
-#### uni-app框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.10/gio-uniapp.js>
+#### 1、加载SDK
 
-##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+##### 方式一：下载本地集成
+
+uniapp框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0/gio-uniapp.js><br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+
+##### 方式二：npm集成
+
+```bash
+npm i gio-miniprogram-sdk-cdp --save
+```
+
+#### 2、使用`init`方法进行初始化
+
+注意`init`方法所处位置（vue2和vue3中分别与app实例的相对位置不同）
+
+##### 示例代码
 
   <Tabs
       groupId="2"
@@ -78,7 +100,10 @@ const gdp = require('./utils/gio/gio-qq.js').default;
 // main.js
 import Vue from 'vue';
 import App from './App.vue';
+// 下载集成方式
 import gdp from './utils/gio/gio-uniapp.js';
+// npm集成方式
+import gdp from 'gio-miniprogram-sdk-cdp/gio-uniapp';
 
 App.mpType = 'app';
 
@@ -102,7 +127,10 @@ app.$mount();
 // main.js
 import App from './App.vue';
 import { createApp } from 'vue';
+// 下载集成方式
 import gdp from './utils/gio/gio-uniapp.js';
+// npm集成方式
+import gdp from 'gio-miniprogram-sdk-cdp/gio-uniapp';
 
 export function createApp() {
   // 注意vue3中app实例在初始化之前
@@ -130,9 +158,24 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
   </TabItem>
   <TabItem value="Taro">
 
-#### Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.10/gio-taro.js>
+#### 1、加载SDK
 
-##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+##### 方式一：下载本地集成
+
+Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0/gio-taro.js><br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+
+##### 方式二：npm集成
+
+```bash
+npm i gio-miniprogram-sdk-cdp --save
+```
+
+#### 2、使用`init`方法进行初始化
+
+注意`init`方法所处位置（vue2和vue3中分别与app实例的相对位置不同）。使用vue开发时`taro`和`taroVue`都要传。
+
+##### 示例代码
 
   <Tabs
     groupId="3"
@@ -149,7 +192,10 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
 ```js
 // app.jsx
 import Taro, { Component } from '@tarojs/taro';
+// 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
+// npm集成方式
+import gdp from 'gio-miniprogram-sdk-cdp/gio-taro';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -188,7 +234,10 @@ module.exports = {
 // app.js
 import React, { Component } from 'react';
 import Taro from '@tarojs/taro';
+// 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
+// npm集成方式
+import gdp from 'gio-miniprogram-sdk-cdp/gio-taro';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -208,7 +257,10 @@ export default App;
 // app.js
 import Vue from 'vue';
 import Taro from '@tarojs/taro';
+// 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
+// npm集成方式
+import gdp from 'gio-miniprogram-sdk-cdp/gio-taro';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -230,7 +282,10 @@ export default App;
 // app.js
 import { createApp } from 'vue';
 import Taro from '@tarojs/taro';
+// 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
+// npm集成方式
+import gdp from 'gio-miniprogram-sdk-cdp/gio-taro';
 
 // 注意vue3中App实例在初始化之前
 const App = createApp({ ... });
@@ -261,26 +316,39 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 ### 插件扩展
 
-如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可下载插件包并按需进行扩展。
+如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可使用插件并按需进行扩展。
 
-#### 插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0-rc.10/plugins.zip>
+插件文件说明参考文档[插件](/docs/miniprogram/3.8/plugins)。
 
-##### (如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)
+#### 1、引入插件文件
 
-插件文件说明参考文档[插件](/docs/miniprogram/3.8/plugins)
+##### 方式一：下载本地集成
 
-加载插件扩展的步骤为：
+插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0/plugins.zip><br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
-1. 下载功能插件，解压放入 plugins 目录中。
-2. 在app.js/main.js中引入。
-3. 在init语句前调用`registerPlugins`方法按数组形式传值。
+下载功能插件，解压放入 plugins 目录中，并在app.js/main.js中引入。
+
+##### 方式二：npm集成
+
+直接从SDK主体npm包中`plugins`目录引入即可。
+
+#### 2、调用`registerPlugins`方法注册插件
+
+在init语句前调用`registerPlugins`方法按数组形式传值。
+
+##### 示例代码
 
 ```js
+// 下载集成方式
 import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
 import gioCompress from './utils/plugins/gioCompress';
+// npm集成方式
+import gioImpressionTracking from 'gio-miniprogram-sdk-cdp/plugins/gioImpressionTracking';
+import gioCompress from 'gio-miniprogram-sdk-cdp/plugins/gioCompress';
 
 ...
-
+// 在init语句前调用`registerPlugins`方法按数组形式传值。
 gdp('registerPlugins', [gioImpressionTracking, gioCompress]);
 gdp('init', xxxxx);
 ```
