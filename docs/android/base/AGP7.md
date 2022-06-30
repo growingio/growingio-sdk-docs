@@ -83,12 +83,20 @@ plugins {
 | `includePackages`            | `Array<String>` | 否      | `null`   | 需要额外包含编译的包名          |  |
 | `excludePackages`            | `Array<String>` | 否      | `null`   | 需要跳过编译的包名             |  |
 | `analyticsAdapter`           | `Extension`     | 否      | -        | 用于配置是否适配第三方分析数据   |  |
+<<<<<<< HEAD
 |     ↳ `firebaseAnalytics`    | `Boolean`       | 否      | `false`  | 用于配置是否适配 Firebase分析SDK |  |
 |     ↳ `googleAnalytics`      | `Boolean`       | 否      | `false`  | 用于配置是否适配 Google v3分析SDK |  |
 
 
 配置代码示例
 ```groovy
+=======
+|     ↳ `firebaseAnalytics`    | `Boolean`       | 否      | `false`  | 用于配置是否适配Firebase分析SDK |  |
+
+
+配置代码示例
+```groony
+>>>>>>> a09fb75a79bf5081ec7cb65072e8a8187158ff5b
 plugins {
     ···
     // 使用 GrowingIO 无埋点 SDK 插件
@@ -100,8 +108,12 @@ growingAutotracker {
     includePackages "com.growingio.xxx1","com.growingio.xxx2"
     excludePackages "com.cpacm.xxx1"
     analyticsAdapter {
+<<<<<<< HEAD
         firebaseAnalytics false
         googleAnalytics false
+=======
+        firebaseAnalytics = false
+>>>>>>> a09fb75a79bf5081ec7cb65072e8a8187158ff5b
     }
 }
 
