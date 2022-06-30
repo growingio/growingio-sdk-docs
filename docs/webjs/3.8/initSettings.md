@@ -7,20 +7,21 @@ title: 初始化配置
 
 下表中列出了所有WebJS SDK的配置项，请按需设置。如您不确定是否需要，请咨询我们。
 
-| **字段名**            | **参数类型**   | **默认值** | **说明**                                       |
-|-----------------------|----------------|------------|----------------------------------------------|
-| `autotrack`           | `boolean`      | `true`     | 是否开启无埋点采集，集成无埋点插件后默认开启无埋点采集|
-| `compress`            | `boolean`      | `true`     | 是否数据加密，集成加密插件后默认开启加密          |
-| `dataCollect`         | `boolean`      | `true`     | 是否开启数据采集                               |
-| `debug`               | `boolean`      | `false`    | 是否开启调试模式                               |
-| `enableIdMapping`     | `boolean`      | `false`    | 是否开启多用户身份上报                         |
-| `hashtag`             | `boolean`      | `false`    | 是否开启hash解析                               |
-| `host`                | `string`       | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**    |
-| `ignoreFields`        | `string[]`     | `-`        | 上报忽略字段                                   |
-| `scheme`              | `http/https`   | `https`    | 网络协议                                      |
-| `sessionExpires`      | `number`       | `30`       | session有效期（单位：分钟）                    |
-| `touch`               | `boolean`      | `false`    | 是否开启touch解析                             |
-| `version`             | `string`       | `-`        | Web应用发版版本号(建议填写)                      |
+| **字段名**        | **参数类型** | **默认值**          | **说明**                                              |
+|-------------------|--------------|---------------------|-----------------------------------------------------|
+| `autotrack`       | `boolean`    | `true`              | 是否开启无埋点采集，集成无埋点插件后默认开启无埋点采集 |
+| `compress`        | `boolean`    | `true`              | 是否数据加密，集成加密插件后默认开启加密               |
+| `dataCollect`     | `boolean`    | `true`              | 是否开启数据采集                                      |
+| `debug`           | `boolean`    | `false`             | 是否开启调试模式                                      |
+| `enableIdMapping` | `boolean`    | `false`             | 是否开启多用户身份上报                                |
+| `hashtag`         | `boolean`    | `false`             | 是否开启hash解析                                      |
+| `host`            | `string`     | `-`                 | 数据上报的服务端地址(无需携带协议头)**(必填)**          |
+| `ignoreFields`    | `string[]`   | `-`                 | 上报忽略字段                                          |
+| `platform`        | `boolean`    | `web`               | 平台类型                                            |
+| `scheme`          | `string`     | `location.protocol` | 网络协议                                              |
+| `sessionExpires`  | `number`     | `30`                | session有效期（单位：分钟）                              |
+| `touch`           | `boolean`    | `false`             | 是否开启touch解析                                     |
+| `version`         | `string`     | `-`                 | Web应用发版版本号(建议填写)                           |
 
 ## 配置项详解
 
@@ -92,6 +93,12 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
   ],
 });
 ```
+
+### platform
+
+默认情况下，platform取值为web，当您使用为小程序或公众号内嵌页时，可指定platform为指定平台。
+
+**<font color="#FC5F3A">注意：</font>当与小程序打通信息时，无需指定平台，SDK会自动为您赋值。**
 
 ### scheme
 

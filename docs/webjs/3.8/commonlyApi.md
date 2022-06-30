@@ -38,7 +38,7 @@ gdp('setOption', 'dataCollect', true | false);
 
 ### 3、开启/关闭调试模式(debug)
 
-默认不开启。当设置为 **`true`** 时，开启后会在开发者工具控制台输出日志。
+默认不开启。当设置为 **`true`** 时，开启后会在浏览器控制台输出日志。
 
 ```js
 gdp('setOption', 'debug', true | false);
@@ -49,7 +49,7 @@ gdp('setOption', 'debug', true | false);
 
 ### 4、修改请求协议(scheme)
 
-默认为**`https`**，您可以在开发过程中设置为 `http` 方便与服务端进行调试。注意上生产环境前修改回 `https`。
+默认为**`https`**，您可以在开发过程中设置为 `http` 方便与服务端进行调试。
 
 ```js
 gdp('setOption', 'scheme', 'http' | 'https');
@@ -72,9 +72,7 @@ gdp('getDeviceId');
 
 ### 2、设置登录用户Id(setUserId)
 
-当用户登录之后调用`setUserId`，设置登录用户ID
-
-若您的小程序每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在监测到用户为登录用户后即调用此方法。
+当用户登录之后调用`setUserId`，设置登录用户ID。
 
 #### 参数说明
 
@@ -95,7 +93,7 @@ gdp('setUserId', '112333445', 'phone');
 
 ### 3、清除登录用户Id(clearUserId)
 
-当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID
+当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID。
 
 #### 示例
 
@@ -166,32 +164,33 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 
 ### 7、获取SDK当前版本
 
-在代码或开发者工具中直接调用 `window.gioSDKVersion` 即可获取。
+在代码或浏览器控制台中直接调用 `window.gioSDKVersion` 即可获取。
 
 ## 采集标记
 
 ### 1、采集标记
 
-有时我们表单页面中可能需要获取用户选择框、单/多选框的值进行上报以准确分析用户行为。此时，我们可以通过数值采集标记 `data-growing-track` 来获取值。例：
+有时我们表单页面中可能需要获取用户填写或选择的值进行上报以准确分析用户行为。此时，我们可以通过数值采集标记 `data-growing-track` 来获取值。例：
 
 ```html
-<checkbox-group bindchange='checkboxChange' data-growing-track>
-  <label class='checkbox'>
-    <checkbox value='GrowingIO' checked='true' /> GrowingIO
-  </label>
-  <label class='checkbox'>
-    <checkbox value='CDP' checked='false' /> GrowingIO CDP
-  </label>
-</checkbox-group>
+<div class="flex mb-4">
+  <label>文本框：</label>
+  <input
+    id="name"
+    name="name"
+    placeholder="输入内容，发送带文本内容的change事件"
+    type="text"
+    data-growing-track
+  />
+</div>
 ```
 
 :::caution 免责声明警告：
-请勿尝试在密码框上标记 data-growing-track 采集数据，会明文暴露用户填写的密码信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
+SDK会自动忽略 `type="password"` 类型的input框的内容采集，但如果input中包含敏感信息，请不要添加该标记，可能会明文暴露这些信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
 :::
 
-#### 提示
-
-**3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
+**<font color="#FC5F3A">注意：</font>**<br/>
+**3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
 
 ### 2、补充数据标记
 
@@ -200,7 +199,7 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-title` 来补充SDK采集的内容。例：
 
 ```html
-<button data-title="额外的上报信息">节点</button>
+<div data-title="额外的上报信息">节点</div>
 ```
 
 如果`data-titile`与您业务字段冲突，请使用`data-growing-title`。
@@ -210,11 +209,11 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 有时我们页面中可能存在类似列表类的Dom结构相似或一致使得SDK上报数据出现无法区分的情况。此时，我们可以通过索引标记 `data-index` 来准确描述节点信息。例：
 
 ```html
-<view>
-  <button data-index="1">节点1</button>
-  <button data-index="2">节点2</button>
-  <button data-index="3">节点3</button>
-</view>
+<ul>
+  <li data-index="1">节点1</li>
+  <li data-index="2">节点2</li>
+  <li data-index="3">节点3</li>
+</ul>
 ```
 
 如果`data-index`与您业务字段冲突，请使用`data-growing-index`。

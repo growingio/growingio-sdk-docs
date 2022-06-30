@@ -3,7 +3,7 @@ sidebar_position: 5
 title: 插件
 ---
 
-以下我们列出了所有小程序SDK支持的插件，请按需加载使用。
+以下我们列出了所有WebJS SDK支持的插件，请按需加载使用。
 
 一般只要您加载了插件功能会自动加载并启用，如果您不想使用其中的功能，移除对应插件即可。
 
@@ -14,42 +14,92 @@ title: 插件
 **<font color="#FC5F3A">注意：</font>**<br/>
 默认情况下，加载该插件后自动开启加密压缩功能。初始化配置项 `compress` 依然有效并能控制该功能是否启用，请留意`compress`是否在开启状态。
 
-### 无埋点插件（gioEventAutoTracking）
-
-自动采集 `tap`、`longtap`、`change`、`submit` 事件的插件。
-
-**点击事件(tap)：** 对应 `VIEW_CLICK` 事件。自动上报，当小程序中**绑定的点击事件**触发时上报。
-
-**长按事件(longtap)：** 对应 `VIEW_CLICK` 事件。自动上报，当小程序中**绑定的长按事件**触发时上报。（支付宝/淘宝小程序不支持）
-
-**变更事件(change)：** 对应 `VIEW_CHANGE` 事件。自动上报，当小程序中**绑定的变更事件**触发时上报。
-
-**表单提交事件(submit)：** 对应 `FORM_SUBMIT` 事件。自动上报，当小程序中**绑定的表单提交事件**触发时上报。(快应用不支持)
-
-**<font color="#FC5F3A">注意：</font>**<br/>
-1、默认情况下，加载该插件后自动开启无埋点功能。初始化配置项 `autotrack` 依然有效并能控制该功能是否启用，请留意`autotrack`是否在开启状态。
-
-2、使用vue2/3语言模式开发时，点击事件需要传参时，可能会无法触发CLICK事件，此时您需要再额外在最后一个参数中传入`$event`，以保证原生事件能传入方法中，才能触发点击事件（函数定义时可忽略$event的参数接受定义，只定义自身业务所需参数即可）。例：
+CDN地址：
 
 ```html
-<button @click="myClick(param1, param2, ..., $event)"></button>
+<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioCompress.js"></script>
+```
+
+### 无埋点插件（gioEventAutoTracking）
+
+自动采集 `click`、`change`、`submit` 事件的插件。
+
+**点击事件(click)：** 对应 `VIEW_CLICK` 事件。自动上报，当页面中有原生点击事件触发时上报。
+
+**变更事件(change)：** 对应 `VIEW_CHANGE` 事件。自动上报，当页面中有原生变更事件触发时上报。
+
+**表单提交事件(submit)：** 对应 `FORM_SUBMIT` 事件。自动上报，当页面中有原生表单提交事件触发时上报。
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+1）默认情况下，加载该插件后自动开启无埋点功能。初始化配置项 `autotrack` 依然有效并能控制该功能是否启用，请留意`autotrack`是否在开启状态。
+
+2）一般情况下，此插件应与Web圈选辅助插件（GioWebCircle）同时集成使用。
+
+CDN地址：
+
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioEventAutoTracking.js"></script>
+```
+
+### Web圈选辅助插件（gioWebCircle）
+
+当您的web页面使用无埋点时，可以对页面节点进行无埋点圈选以获取分析数据。此时，您需要在SDK中集成此插件，以支持圈选工具的通信连接。
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+1）此插件并非圈选工具，只是一个圈选工具和WebJS SDK通信的套件。如果您需要进行圈选，需要在SDK中集成此插件，并下载圈选工具进行配合使用。
+
+2）一般情况下，此插件应与无埋点插件（gioEventAutoTracking）同时集成使用。
+
+CDN地址：
+
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioWebCircle.js"></script>
+```
+
+### 小程序内嵌页打通插件（gioEmbeddedAdapter）
+
+当您的web页面作为小程序内嵌页使用且有需要打通用户信息，将采集信息合并至小程序项目分析时使用的插件。
+
+集成该插件后，SDK会自动处理来自小程序SDK `getGioInfo`的参数。
+
+CDN地址：
+
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioEmbeddedAdapter.js"></script>
+```
+
+### Hybrid内嵌页打通插件（gioHybridAdapter）
+
+当您的web页面作为Hybrid内嵌页使用将采集信息合并至Native项目分析时使用的插件。
+
+集成该插件后，SDK会自动将web页面采集的数据转发给Native端进行处理。
+
+CDN地址：
+
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioHybridAdapter.js"></script>
+```
+
+### Hybrid内嵌页圈选辅助插件（gioHybridCircle）
+
+当您的web页面作为Hybrid内嵌页使用且有圈选需求时，自动处理圈选逻辑的插件。
+
+集成该插件后，SDK会自动将web页面中的Dom结构转发给Native端进行处理。
+
+CDN地址：
+
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioHybridCircle.js"></script>
 ```
 
 ### 半自动埋点浏览插件（gioImpressionTracking）
 
 支持半自动埋点浏览事件功能的插件，加载插件后自动开启。
 
-使用方法请[参考文档](/docs/miniprogram/3.8/commonlyApi#半自动埋点浏览事件)。
+使用方法请[参考文档](/docs/webjs/3.8/commonlyApi#半自动埋点浏览事件)。
 
-### 多项目打通插件（gioMultiIntegrate）
+CDN地址：
 
-当且仅当开发小程序时使用独立开发的分包 **（即主包与分包不在同一项目中且不同框架时）** 时，插件用于打通用户数据和页面数据，合并为一个SDK运行逻辑。
-
-在分包中除框架实例（例如：uniVue）外，其他通用维度的配置项会被主包的初始化配置覆盖。
-
-**<font color="#FC5F3A">注意：</font>**<br/>
-1）仅支持用户和页面数据打通与埋点事件，无埋点事件无法支持，使用该插件会**自动强制关闭无埋点功能**（不论是否加载无埋点插件和开启autotrack）。
-
-2）需要在主包项目中与分包项目中都集成SDK和注册插件，并在分包初始化配置项中设置`subpackage: true`。
-
-3）建议分包项目尽量不要过多（3个以内为宜），过多可能会影响SDK合并运行时的性能从而影响小程序整体运行性能。
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioImpressionTracking.js"></script>
+```
