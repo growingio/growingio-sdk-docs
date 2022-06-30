@@ -17,7 +17,7 @@ title: 插件
 CDN地址：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioCompress.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioCompress.js"></script>
 ```
 
 ### 无埋点插件（gioEventAutoTracking）
@@ -38,7 +38,7 @@ CDN地址：
 CDN地址：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioEventAutoTracking.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioEventAutoTracking.js"></script>
 ```
 
 ### Web圈选辅助插件（gioWebCircle）
@@ -53,7 +53,7 @@ CDN地址：
 CDN地址：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioWebCircle.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioWebCircle.js"></script>
 ```
 
 ### 小程序内嵌页打通插件（gioEmbeddedAdapter）
@@ -65,7 +65,7 @@ CDN地址：
 CDN地址：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioEmbeddedAdapter.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioEmbeddedAdapter.js"></script>
 ```
 
 ### Hybrid内嵌页打通插件（gioHybridAdapter）
@@ -77,7 +77,7 @@ CDN地址：
 CDN地址：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioHybridAdapter.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridAdapter.js"></script>
 ```
 
 ### Hybrid内嵌页圈选辅助插件（gioHybridCircle）
@@ -89,7 +89,7 @@ CDN地址：
 CDN地址：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioHybridCircle.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridCircle.js"></script>
 ```
 
 ### 半自动埋点浏览插件（gioImpressionTracking）
@@ -101,5 +101,5 @@ CDN地址：
 CDN地址：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioImpressionTracking.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioImpressionTracking.js"></script>
 ```

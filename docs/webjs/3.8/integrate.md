@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
       (t = n.createElement('script'));
     let s = n.getElementsByTagName('script')[0];
     (t.async = 1), (t.src = c), s.parentNode.insertBefore(t, s);
-  })(window, document, 'script', 'https://assets.giocdn.com/sdk/web/cdp/latest/gio-cdp.js', 'gdp');
+  })(window, document, 'script', 'https://assets.giocdn.com/sdk/web/cdp/gdp.js', 'gdp');
 
   gdp('init', 'your accountId', 'your dataSourceId', {
     host: 'your apiServerHost',
@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
 
 如果您希望不受CDN（内容分发网络）影响或期望使用指定版本SDK，请下载SDK至本地，并修改上述代码中的SDK CDN地址为您本地的相对地址。
 
-WebJS SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.0/plugins.zip><br/>
+WebJS SDK下载：<https://assets.giocdn.com/sdk/web/cdp/gdp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
   </TabItem>
@@ -99,7 +99,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 <script type='text/javascript'>
   !(function (e, n, t, c, i) {
     ...... // 此处省略部分集成代码，注意补全
-  })(window, document, 'script', 'https://assets.giocdn.com/sdk/web/cdp/latest/gio-cdp.js', 'gdp');
+  })(window, document, 'script', 'https://assets.giocdn.com/sdk/web/cdp/gdp.js', 'gdp');
 
   gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
     host: 'your apiServerHost',
@@ -142,13 +142,13 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 ```html
 <!--  GrowingIO Analytics WebJS SDK 3.8 Plugins -->
-<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioEventAutoTracking.js"></script>
-<script src="https://assets.giocdn.com/sdk/web/cdp/latest/plugins/gioImpressionTracking.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioEventAutoTracking.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioImpressionTracking.js"></script>
 <!-- GrowingIO Analytics WebJS SDK version 3.8 -->
 <script type='text/javascript'>
   !(function (e, n, t, c, i) {
     ...... // 此处省略部分集成代码，注意补全
-  })(window, document, 'script', 'https://assets.giocdn.com/sdk/web/cdp/latest/gio-cdp.js', 'gdp');
+  })(window, document, 'script', 'https://assets.giocdn.com/sdk/web/cdp/gdp.js', 'gdp');
 
   // 在init语句前调用`registerPlugins`方法按数组形式传值。
   gdp('registerPlugins', [gioEventAutoTracking, gioImpressionTracking]);

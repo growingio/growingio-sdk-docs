@@ -2,6 +2,9 @@
 sidebar_position: 0
 title: 版本记录
 ---
+
+SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
+
 ### V3.8.0 - 2022/06/29
 
 * 优化数据上报逻辑，减少丢数概率。
