@@ -69,10 +69,7 @@ title: 初始化配置
 您可以指定一项或多项字段，但均需为数组格式进行设置。支持字段如下：
 
 ```text
-deviceBrand       设备品牌
-deviceModel       设备型号
-networkState      网络类型
-operatingSystem   系统类型
+language          语言
 screenHeight      屏幕高度
 screenWidth       屏幕宽度
 ```
@@ -84,10 +81,7 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
   version: '1.0.1',
   debug: true,
   ignoreFields: [
-    'deviceBrand',
-    'deviceModel',
-    'operatingSystem',
-    'networkState',
+    'language',
     'screenHeight',
     'screenWidth'
   ],
@@ -104,7 +98,7 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
 
 默认情况下，网络协议为`https`，但考虑到在开发的过程中可能需要使用`http`协议的测试服务，因此我们提供了临时修改网络协议的配置。
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#5修改请求协议scheme)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#4修改请求协议scheme)
 
 ### sessionExpires
 

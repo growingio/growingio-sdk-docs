@@ -14,10 +14,16 @@ title: 插件
 **<font color="#FC5F3A">注意：</font>**<br/>
 默认情况下，加载该插件后自动开启加密压缩功能。初始化配置项 `compress` 依然有效并能控制该功能是否启用，请留意`compress`是否在开启状态。
 
-CDN地址：
+CDN集成引入：
 
-```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioCompress.js"></script>
+```js
+import gioCompress from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioCompress.js"
+```
+
+npm集成引入：
+
+```js
+import gioCompress from "gio-webjs-sdk-cdp/plugins/gioCompress.js"
 ```
 
 ### 无埋点插件（gioEventAutoTracking）
@@ -35,10 +41,16 @@ CDN地址：
 
 2）一般情况下，此插件应与Web圈选辅助插件（GioWebCircle）同时集成使用。
 
-CDN地址：
+CDN集成引入：
 
-```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioEventAutoTracking.js"></script>
+```js
+import gioEventAutoTracking from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioEventAutoTracking.js"
+```
+
+npm集成引入：
+
+```js
+import gioEventAutoTracking from "gio-webjs-sdk-cdp/plugins/gioEventAutoTracking.js"
 ```
 
 ### Web圈选辅助插件（gioWebCircle）
@@ -50,10 +62,16 @@ CDN地址：
 
 2）一般情况下，此插件应与无埋点插件（gioEventAutoTracking）同时集成使用。
 
-CDN地址：
+CDN集成引入：
 
-```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioWebCircle.js"></script>
+```js
+import gioWebCircle from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioWebCircle.js"
+```
+
+npm集成引入：
+
+```js
+import gioWebCircle from "gio-webjs-sdk-cdp/plugins/gioWebCircle.js"
 ```
 
 ### 小程序内嵌页打通插件（gioEmbeddedAdapter）
@@ -62,10 +80,16 @@ CDN地址：
 
 集成该插件后，SDK会自动处理来自小程序SDK `getGioInfo`的参数。
 
-CDN地址：
+CDN集成引入：
 
-```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioEmbeddedAdapter.js"></script>
+```js
+import gioEmbeddedAdapter from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioEmbeddedAdapter.js"
+```
+
+npm集成引入：
+
+```js
+import gioEmbeddedAdapter from "gio-webjs-sdk-cdp/plugins/gioEmbeddedAdapter.js"
 ```
 
 ### Hybrid内嵌页打通插件（gioHybridAdapter）
@@ -74,10 +98,16 @@ CDN地址：
 
 集成该插件后，SDK会自动将web页面采集的数据转发给Native端进行处理。
 
-CDN地址：
+CDN集成引入：
 
-```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridAdapter.js"></script>
+```js
+import gioHybridAdapter from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridAdapter.js"
+```
+
+npm集成引入：
+
+```js
+import gioHybridAdapter from "gio-webjs-sdk-cdp/plugins/gioHybridAdapter.js"
 ```
 
 ### Hybrid内嵌页圈选辅助插件（gioHybridCircle）
@@ -86,10 +116,16 @@ CDN地址：
 
 集成该插件后，SDK会自动将web页面中的Dom结构转发给Native端进行处理。
 
-CDN地址：
+CDN集成引入：
 
-```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridCircle.js"></script>
+```js
+import gioHybridCircle from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridCircle.js"
+```
+
+npm集成引入：
+
+```js
+import gioHybridCircle from "gio-webjs-sdk-cdp/plugins/gioHybridCircle.js"
 ```
 
 ### 半自动埋点浏览插件（gioImpressionTracking）
@@ -98,8 +134,14 @@ CDN地址：
 
 使用方法请[参考文档](/docs/webjs/3.8/commonlyApi#半自动埋点浏览事件)。
 
-CDN地址：
+CDN集成引入：
 
-```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioImpressionTracking.js"></script>
+```js
+import gioImpressionTracking from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioImpressionTracking.js"
+```
+
+npm集成引入：
+
+```js
+import gioImpressionTracking from "gio-webjs-sdk-cdp/plugins/gioImpressionTracking.js"
 ```

@@ -110,7 +110,7 @@ gdp('clearUserId');
 | 参数              | 参数类型 | 说明                                                                                                                                  |
 |-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
 | `eventId`         | `String` | 必填；事件名，事件标识符。                                                                                                               |
-| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制) |
+| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/webjs/3.8/commonlyApi#object参数限制) |
 | `item`            | `Object` | 选填；事件发生关联的物品模型。                                                                                                          |
 | `item.id`         | `String` | item 中必填；物品模型 id。                                                                                                              |
 | `item.key`        | `String` | item 中必填；物品模型唯一标识。                                                                                                         |
@@ -138,7 +138,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 
 | 参数             | 参数类型 | 说明                                                                                        |
 |------------------|----------|-------------------------------------------------------------------------------------------|
-| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制) |
+| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/webjs/3.8/commonlyApi#object参数限制) |
 
 #### 示例
 
@@ -230,7 +230,7 @@ SDK会自动忽略 `type="password"` 类型的input框的内容采集，但如�
 
 ### 4、容器标记
 
-有时我们会将一个拥有复杂子节点的节点视为一个整体（例如包裹了图标和文字的按钮组件），由于子节点自身会产生原生事件，但是我们期望其事件的出发是一个整体（例如点击了包裹了图标和文字的按钮组件中的图标，期望是整个按钮的点击事件触发）。又或者我们期望在一个容器范围内统计所有节点的点击事件，这时候就需要使用`data-growing-container`进行标记，我们会同时为触发节点和打了标记的节点上报数据。例：
+有时我们会将一个拥有复杂子节点的节点视为一个整体（例如包裹了图标和文字的按钮组件），由于子节点自身会产生原生事件，但是我们期望其事件的触发是一个整体（例如点击了包裹了图标和文字的按钮组件中的图标，期望是整个按钮的点击事件触发）。又或者我们期望在一个容器范围内统计所有节点的点击事件，这时候就需要使用`data-growing-container`进行标记，我们会同时为触发节点和打了标记的节点上报数据。例：
 
 ```html
 <div data-growing-container class="btn" onclick="onBtnClick()">
@@ -245,7 +245,7 @@ SDK会自动忽略 `type="password"` 类型的input框的内容采集，但如�
 
 ## 半自动埋点浏览事件
 
-用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#4埋点事件track)在平台上进行事件类型和变量的预定义。
+用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/webjs/3.8/commonlyApi#4埋点事件track)在平台上进行事件类型和变量的预定义。
 
 #### 曝光逻辑
 
@@ -255,7 +255,7 @@ SDK会自动忽略 `type="password"` 类型的input框的内容采集，但如�
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera |
 | --------- | --------- | --------- | --------- | --------- |
-| Edge| last 10 versions| last 10 versions| last 4 versions| last 10 versions
+| Edge > 16 major| > 55 major | > 58 major | > 12.1 | > 45 major |
 
 #### 使用方法
 
@@ -283,7 +283,7 @@ gdp('track', 'imp_cat_var', { name: 'cat_picture', time: '20210601' });
 
 **2）传值方式二：**
 
-在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#4埋点事件track)。
+在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/webjs/3.8/commonlyApi#4埋点事件track)。
 
 ```html
 <div

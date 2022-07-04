@@ -25,9 +25,11 @@ title: 3.3与3.8对比
 
 ### 初始化
 
-**移除项：** `setConfig` 方法。
+**移除项：** `setConfig`、`send` 方法。
 
 > 初始化方法 `setConfig` 废弃，仅支持通过 `init` 方法进行初始化；因为它容易歧义误导使用。
+>
+> 重构版本 `init` 初始化成功即发送 VISIT 和 PAGE 事件，`send` 方法已被废弃。
 
 **新增项：** `sessionExpires` 配置项。
 
