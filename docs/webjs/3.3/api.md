@@ -1,6 +1,6 @@
 ---
 title: 数据采集API
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 通过`window.gdp`这个全局的方法可以调用到SDK中所有开放的接口，默认包括以下启动接口，动态配合接口和功能接口。您也可以通过插件来扩展更多的接口。
@@ -35,10 +35,8 @@ gdp('setUserAttributes', properties, callback);
 
 用户初始化SDK，初始化配置等，执行以下工作：
 
-- 从配置中注册插件
 - 初始化SDK配置
 - 初始化用户数据（u，s，cs1等）
-- 加载插件，触发所有插件的onLoad方法
 
 接口原型如下
 
@@ -52,19 +50,12 @@ gdp('init', accountId, datasourceId[, options]);
 
 - 判断是否已初始化和是否运行中
 - 触发pageShow，发送pv事件
-- 触发所有插件的onStart方法
 
 接口原型如下
 
 ```
 gdp('send');
 ```
-
-:::info
-
-动态配置接口和功能接口均由内部插件提供
-
-:::
 
 ### 动态配置接口
 
@@ -100,7 +91,7 @@ gdp('setDataCollect', true);
 
 #### 5、开启/关闭无埋点数据采集(autotrack)
 
-默认开启无埋点数据采集。当设置为 `false`时，将不再采集view_click,view_change,form_submit无埋点事件。
+默认开启无埋点数据采集。当设置为 `false`时，将不再采集`VIEW_CLICK、VIEW_CHANGE、FORM_SUBMIT`无埋点事件。
 
 ```js
 gdp('setAutoTrack', true);
@@ -139,15 +130,7 @@ gdp('setUserId', '112333445', 'phone');
 gdp('clearUserId');
 ```
 
-#### 3、获取访问用户Id
-
-获取设备ID，又称为匿名用户ID，SDK 自动生成用来定义唯一设备。 如果没有初始化SDK 或者关闭采集开关可能返回值为null
-
-```js
-gdp('getVisitorId');
-```
-
-#### 4、埋点事件接口
+#### 3、埋点事件接口
 
 发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
 如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP平台版本>= 2.1 ）

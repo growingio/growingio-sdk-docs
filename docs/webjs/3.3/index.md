@@ -13,8 +13,6 @@ Web JS SDK3.0 将H5内嵌页，Hybrid SDK，Web JS SDK集成与一体，具备�
 * Web可视化圈选支持
 * Hybrid可视化圈选支持
 
-Web JS SDK 代码尚未开源，后续会开源
-
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
