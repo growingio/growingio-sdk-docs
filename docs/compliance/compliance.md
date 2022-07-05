@@ -9,7 +9,7 @@ GrowingIO 私有化部署产品部署在客户服务器，数据存储在客户�
 
 ## 使用产品和服务必须合法合规
 
-随着欧盟的 [《​General Data Protection Regulation 欧盟通用数据保护条例》](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)​，以及国内的[《中华人民共和国数据安全法》](http://www.npc.gov.cn/npc/c30834/202106/7c9af12f51334a73b56d7938f99a788a.shtml)（简称《数据安全法》）、 [《中华人民共和国个人信息保护法》](http://www.npc.gov.cn/npc/c30834/202108/a8c4e3672c74491a80b53a172bb753fe.shtml)（简称《个保法》）的相继实施，法律层面越来越注重数据安全保护和个人信息保护。
+随着欧盟的 [《​General Data Protection Regulation 欧盟通用数据保护条例》(GDPR)](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)​，以及国内的[《中华人民共和国数据安全法》](http://www.npc.gov.cn/npc/c30834/202106/7c9af12f51334a73b56d7938f99a788a.shtml)（简称《数据安全法》）、 [《中华人民共和国个人信息保护法》](http://www.npc.gov.cn/npc/c30834/202108/a8c4e3672c74491a80b53a172bb753fe.shtml)（简称《个保法》、PIPL）的相继实施，法律层面越来越注重数据安全保护和个人信息保护。
 
 GrowingIO 提供相应的合规说明，客户需按照合规说明来正确合规使用SDK，完成应用中的数据采集。
 
