@@ -11,6 +11,13 @@ title: 小程序 SDK 合规说明
 ### 隐私保护指引
 请参考[微信小程序用户隐私保护](https://developers.weixin.qq.com/miniprogram/dev/framework/user-privacy/)
 
+## 数据加密传输说明
+默认情况下，SDK关闭数据加密，可以通过初始化时设置 compress: true 打开数据加密。
+使用请参考[SDK数据加密传输 compress](/docs/miniprogram/3.3/initSettings#compress)。
+
+## 数据存储发送策略说明
+小程序 SDK 采集的用户行为数据采用节流1秒钟(即如果有数据则1秒钟发一次)发送的策略，当节流队列里大于50条行为数据后立即打包发一次，行为数据缓存采用内存缓存。当用户开启强制登录模式(forceLogin 设置为 true)，在调用 identify 接口之前，行为数据采用内存缓存，调用 identify 后立即上报缓存的行为数据。
+
 ### GDPR 
 [​General Data Protection Regulation 欧盟通用数据保护条例](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)​
 
