@@ -58,6 +58,17 @@ gdp('setOption', 'scheme', 'http' | 'https');
 // gdp('setTrackerScheme', 'http' | 'https');
 ```
 
+### 5、修改请求地址(host)
+
+默认为初始化配置项中填写的`host`字段值，方便您动态修改。(支持域名和IP地址，无需协议头)
+
+```js
+gdp('setOption', 'host', 'api.growingio.com');
+
+// <3.8.0版本的写法仍兼容，但不建议您再这么使用
+// gdp('setTrackerHost', 'api.growingio.com');
+```
+
 ## 功能接口
 
 ### 1、获取访问用户Id(getDeviceId)
