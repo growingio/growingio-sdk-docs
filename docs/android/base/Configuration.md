@@ -10,27 +10,27 @@ import TabItem from '@theme/TabItem';
 在初始化过程中，SDK会接收一个由用户传入的默认配置`Configuration`,配置相关说明如下表：
 ## 配置表格
 
-| Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 | 版本 |
-| :-------------------------   | :------   | :----:  |:------  |:------| ----- | --------------------------   |
-| `accountId`                  | `String`  | 是      | `null`   | 项目ID，每个应用对应唯一值 | - |  |
-| `urlScheme`                  | `String`  | 是      | `null`   | 应用的URLScheme，唯一值 | - |  |
-| `setDataSourceId`            | `String`  | 是      | `null`   | 应用的DataSourceId，唯一值 | - |  |
-| `setDataCollectionServerHost`| `String`  | 是      | `null`   | 服务端部署后的 ServerHost | - |  |
-| `setChannel`                 | `String`  | 否      | `null`   | 应用的分发渠道 | - |  |
-| `setDebugEnabled`            | `boolean` | 否      | `false`  | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |  |
-| `setCellularDataLimit`       | `int`     | 否      | `10`     | 每天发送数据的流量限制，单位MB | - |  |
-| `setDataUploadInterval`      | `int`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |  |
-| `setSessionInterval`         | `int`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |  |
-| `setDataCollectionEnabled`   | `boolean` | 否      | `true`   | 是否采集数据 | - |  |
-| <font color='red'>~~setOaidEnabled~~</font> | `boolean` | 否      | `false`  | 是否采集Android OAID | - | <font color='red'>< 3.3.0</font> |
-| `setExcludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - |  |
-| `setIgnoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |  |
-| `setIdMappingEnabled` | `boolean` | 否 | `false` | 是否开启多用户身份上报 | - | <font color='red'>>= 3.3.0</font> |
-| `setImpressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 |  |
-| `setRequireAppProcessesEnabled`         | `boolean`   | 否      | `true`      |  SDK 是否能获取应用多进程ID | - | <font color='red'>>= 3.3.4</font> |
-| `setPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.0,<=3.3.3</font> |
-| `addPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.4</font> |
-| `addConfiguration` | `Configurable` | 否 | `null` | 注册自定义/预定义模块的配置文件 | - | <font color='red'>>= 3.3.4</font> |
+| Config                                      | 参数类型           | 是否必填 | 默认值  | 说明                                                    | 其它       | 版本                                      |
+| :------------------------------------------ | :----------------- | :------: | :------ | :------------------------------------------------------ | ---------- | ----------------------------------------- |
+| `accountId`                                 | `String`           |    是    | `null`  | 项目ID，每个应用对应唯一值                              | -          |                                           |
+| `urlScheme`                                 | `String`           |    是    | `null`  | 应用的URLScheme，唯一值                                 | -          |                                           |
+| `setDataSourceId`                           | `String`           |    是    | `null`  | 应用的DataSourceId，唯一值                              | -          |                                           |
+| `setDataCollectionServerHost`               | `String`           |    是    | `null`  | 服务端部署后的 ServerHost                               | -          |                                           |
+| `setChannel`                                | `String`           |    否    | `null`  | 应用的分发渠道                                          | -          |                                           |
+| `setDebugEnabled`                           | `boolean`          |    否    | `false` | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | -          |                                           |
+| `setCellularDataLimit`                      | `int`              |    否    | `10`    | 每天发送数据的流量限制，单位MB                          | -          |                                           |
+| `setDataUploadInterval`                     | `int`              |    否    | `15`    | 数据发送的间隔，单位秒                                  | -          |                                           |
+| `setSessionInterval`                        | `int`              |    否    | `30`    | 会话后台留存时长，单位秒                                | -          |                                           |
+| `setDataCollectionEnabled`                  | `boolean`          |    否    | `true`  | 是否采集数据                                            | -          |                                           |
+| <font color='red'>~~setOaidEnabled~~</font> | `boolean`          |    否    | `false` | 是否采集Android OAID                                    | -          | <font color='red'>< 3.3.0</font>          |
+| `setExcludeEvent`                           | `int`              |    否    | `0`     | 设置事件过滤                                            | -          |                                           |
+| `setIgnoreField`                            | `int`              |    否    | `0`     | 设置事件属性过滤                                        | -          |                                           |
+| `setIdMappingEnabled`                       | `boolean`          |    否    | `false` | 是否开启多用户身份上报                                  | -          | <font color='red'>>= 3.3.0</font>         |
+| `setImpressionScale`                        | `float`            |    否    | `0`     | 元素曝光事件中的比例因子,范围 [0-1]                     | 无埋点独有 |                                           |
+| `setRequireAppProcessesEnabled`             | `boolean`          |    否    | `true`  | SDK 是否能获取应用多进程ID                              | -          | <font color='red'>>= 3.3.4</font>         |
+| `setPreloadComponent`                       | `LibraryGioModule` |    否    | `null`  | 注册自定义/预定义模块(如加密模块、OAID模块)             | -          | <font color='red'>>= 3.3.0,<=3.3.3</font> |
+| `addPreloadComponent`                       | `LibraryGioModule` |    否    | `null`  | 注册自定义/预定义模块(如加密模块、OAID模块)             | -          | <font color='red'>>= 3.3.4</font>         |
+| `addConfiguration`                          | `Configurable`     |    否    | `null`  | 注册自定义/预定义模块的配置文件                         | -          | <font color='red'>>= 3.3.4</font>         |
 
 
 
@@ -179,12 +179,19 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 
 如果集成的是[**无埋点SDK**](/docs/android/base/Introduce#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
 
+<<<<<<< HEAD
 如果集成的是[**埋点SDK**](/docs/android/base/Introduce#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
 
 :::info
 **使用时注意模块版本需要与采集SDK版本保持一致**
 :::
 
+=======
+如果集成的是[**埋点SDK**](/docs/android/base/Introduce#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)。
+:::info
+**使用时注意模块版本需要与采集SDK版本保持一致**
+:::
+>>>>>>> d6e7db8b (fix: conflict)
 ```groovy
 ...
 implementation "com.growingio.android:hybrid:3.4.0"
