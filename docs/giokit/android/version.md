@@ -3,6 +3,16 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## V1.2.0
+ >[V1.2.0](https://github.com/growingio/giokit-android/releases/tag/V1.2.0) 日期: 2022-06-23 
+
+Giokit V1.2.0 版本正式发布，包含以下功能：
+1. 以插件库growingio-plugin-library基础，重写整个插件适配AGP低高版本；
+2. 移除 buildSrc 文件，方便代码修改和发布；
+3. 更新 track code寻找方式:先记录到build文件夹中再生成新的类；
+4. 避免与saas插件配合时，AGP7.1至7.2中 Instrumentation API和Transform API无法共用的问题；
+5. 更新版本至v1.2.0
+------
 ## V1.1.0
  >[V1.1.0](https://github.com/growingio/giokit-android/releases/tag/V1.1.0) 日期: 2022-03-08 
 

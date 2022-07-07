@@ -26,7 +26,7 @@ buildscript {
     }
     dependencies {
         // GioKit plugin
-        classpath "com.growingio.giokit:giokit-plugin:1.1.0"
+        classpath "com.growingio.giokit:giokit-plugin:1.2.0"
     }
 }
 
@@ -62,8 +62,8 @@ apply plugin: 'com.growingio.giokit.saas'
 dependencies {
     ...
     // GioKit
-    debugImplementation "com.growingio.giokit:giokit:1.1.0"
-    releaseImplementation "com.growingio.giokit:giokit-no-op:1.1.0"
+    debugImplementation "com.growingio.giokit:giokit:1.2.0"
+    releaseImplementation "com.growingio.giokit:giokit-no-op:1.2.0"
 }
 ```
 
