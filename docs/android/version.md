@@ -2,15 +2,6 @@
 title: 版本记录
 sidebar_position: 0
 ---
-----
-## V3.4.0
- >[release-3.4.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.0) 日期: 2022-07-07 
-
-### Features
-- 移除injector和gradle-plugin，已迁移到 [sdk plugin](https://github.com/growingio/growingio-sdk-android-plugin) ([#154](https://github.com/growingio/growingio-sdk-android-autotracker/pull/154))
-
-### Bug Fixes
-- 修复SessionInterval 设置过短，当app启动耗时过长，会导致刷新session重发vst([#154](https://github.com/growingio/growingio-sdk-android-autotracker/pull/154))
 ------
 ## V3.3.6
  >[release-3.3.6](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.6) 日期: 2022-04-28 
