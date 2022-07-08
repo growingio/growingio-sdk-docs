@@ -3,6 +3,22 @@ title: 版本记录
 sidebar_position: 0
 ---
 ------
+
+## V3.4.0
+ >[release-3.4.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.0) 日期: 2022-07-07 
+
+### Features
+- 移除injector和gradle-plugin，已迁移到 [sdk plugin](https://github.com/growingio/growingio-sdk-android-plugin) ([#154](https://github.com/growingio/growingio-sdk-android-autotracker/pull/154))
+- gradle-plugin 适配 AGP 8.0 Instrumentation API，兼容 AGP4.2及其更早版本的 Transform API；
+- gradle-plugin 兼容 AGP 7.0 及其以上 pluginManagement 的依赖方式；
+- gradle-plugin 优化插件对脱糖的处理，并提供了完整的单元测试；
+- injector 使用描述文件和 KSP kotlin 注解处理器生成 kotlin 注入代码，快速安全。
+
+### Bug Fixes
+- 修复SessionInterval 设置过短，当app启动耗时过长，会导致刷新session重发vst([#154](https://github.com/growingio/growingio-sdk-android-autotracker/pull/154))
+
+------
+
 ## V3.3.6
  >[release-3.3.6](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.3.6) 日期: 2022-04-28 
 
