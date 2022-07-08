@@ -179,19 +179,12 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 
 如果集成的是[**无埋点SDK**](/docs/android/base/Introduce#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
 
-<<<<<<< HEAD
 如果集成的是[**埋点SDK**](/docs/android/base/Introduce#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
 
 :::info
 **使用时注意模块版本需要与采集SDK版本保持一致**
 :::
 
-=======
-如果集成的是[**埋点SDK**](/docs/android/base/Introduce#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)。
-:::info
-**使用时注意模块版本需要与采集SDK版本保持一致**
-:::
->>>>>>> d6e7db8b (fix: conflict)
 ```groovy
 ...
 implementation "com.growingio.android:hybrid:3.4.0"
