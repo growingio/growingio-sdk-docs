@@ -57,7 +57,7 @@ dependencies {
 </details>
 
 <details>
-  <summary>为什么推荐使用 BoM 来管理 Firebase 库版本？</summary>
+  <summary>为什么推荐使用 BoM 来管理 SDK 版本？</summary>
 
 虽然每个 GrowingIO 库都单独进行版本控制，但这些库是一起构建的，以确保每个库的最新版本与其他库兼容。
 
