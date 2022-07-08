@@ -69,8 +69,8 @@ plugins {
   groupId="agp-version"
   defaultValue="v3"
   values={[
-    {label: 'SAAS SDK', value: 'v3'},
-    {label: 'CDP SDK', value: 'saas'},
+    {label: 'CDP SDK', value: 'v3'},
+    {label: 'SAAS SDK', value: 'saas'},
   ]
 }>
 
