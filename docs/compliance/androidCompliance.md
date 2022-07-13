@@ -60,7 +60,7 @@ GIO移动端 SDK
 ## 初始化
 
 ### 方式一、延迟初始化
-在同意《隐私协议》后调用 `GrowingTracker.startWithConfiguration` 进行SDK的初始化，此后在 Application 的 onCreate() 方法主线程中初始化 SDK。
+在同意《隐私协议》后调用 `GrowingTracker.startWithConfiguration` 进行SDK的初始化，此后在 Application 的 onCreate() 方法主线程中初始化 SDK。(若同意隐私协议前禁止获取 AndroidID，请使用该方式)
 ```java
 // 在 Activity 中同意隐私条款后初始化 SDK
 public class MyActivity extends Activity {
