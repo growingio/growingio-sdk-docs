@@ -10,27 +10,27 @@ import TabItem from '@theme/TabItem';
 在初始化过程中，SDK会接收一个由用户传入的默认配置`Configuration`,配置相关说明如下表：
 ## 配置表格
 
-| Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 | 版本 |
-| :-------------------------   | :------   | :----:  |:------  |:------| ----- | --------------------------   |
-| `accountId`                  | `String`  | 是      | `null`   | 项目ID，每个应用对应唯一值 | - |  |
-| `urlScheme`                  | `String`  | 是      | `null`   | 应用的URLScheme，唯一值 | - |  |
-| `setDataSourceId`            | `String`  | 是      | `null`   | 应用的DataSourceId，唯一值 | - |  |
-| `setDataCollectionServerHost`| `String`  | 是      | `null`   | 服务端部署后的 ServerHost | - |  |
-| `setChannel`                 | `String`  | 否      | `null`   | 应用的分发渠道 | - |  |
-| `setDebugEnabled`            | `boolean` | 否      | `false`  | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |  |
-| `setCellularDataLimit`       | `int`     | 否      | `10`     | 每天发送数据的流量限制，单位MB | - |  |
-| `setDataUploadInterval`      | `int`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |  |
-| `setSessionInterval`         | `int`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |  |
-| `setDataCollectionEnabled`   | `boolean` | 否      | `true`   | 是否采集数据 | - |  |
-| <font color='red'>~~setOaidEnabled~~</font> | `boolean` | 否      | `false`  | 是否采集Android OAID | - | <font color='red'>< 3.3.0</font> |
-| `setExcludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - |  |
-| `setIgnoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |  |
-| `setIdMappingEnabled` | `boolean` | 否 | `false` | 是否开启多用户身份上报 | - | <font color='red'>>= 3.3.0</font> |
-| `setImpressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | 无埋点独有 |  |
-| `setRequireAppProcessesEnabled`         | `boolean`   | 否      | `true`      |  SDK 是否能获取应用多进程ID | - | <font color='red'>>= 3.3.4</font> |
-| `setPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.0,<=3.3.3</font> |
-| `addPreloadComponent` | `LibraryGioModule` | 否 | `null` | 注册自定义/预定义模块(如加密模块、OAID模块) | - | <font color='red'>>= 3.3.4</font> |
-| `addConfiguration` | `Configurable` | 否 | `null` | 注册自定义/预定义模块的配置文件 | - | <font color='red'>>= 3.3.4</font> |
+| Config                                      | 参数类型           | 是否必填 | 默认值  | 说明                                                    | 其它       | 版本                                      |
+| :------------------------------------------ | :----------------- | :------: | :------ | :------------------------------------------------------ | ---------- | ----------------------------------------- |
+| `accountId`                                 | `String`           |    是    | `null`  | 项目ID，每个应用对应唯一值                              | -          |                                           |
+| `urlScheme`                                 | `String`           |    是    | `null`  | 应用的URLScheme，唯一值                                 | -          |                                           |
+| `setDataSourceId`                           | `String`           |    是    | `null`  | 应用的DataSourceId，唯一值                              | -          |                                           |
+| `setDataCollectionServerHost`               | `String`           |    是    | `null`  | 服务端部署后的 ServerHost                               | -          |                                           |
+| `setChannel`                                | `String`           |    否    | `null`  | 应用的分发渠道                                          | -          |                                           |
+| `setDebugEnabled`                           | `boolean`          |    否    | `false` | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | -          |                                           |
+| `setCellularDataLimit`                      | `int`              |    否    | `10`    | 每天发送数据的流量限制，单位MB                          | -          |                                           |
+| `setDataUploadInterval`                     | `int`              |    否    | `15`    | 数据发送的间隔，单位秒                                  | -          |                                           |
+| `setSessionInterval`                        | `int`              |    否    | `30`    | 会话后台留存时长，单位秒                                | -          |                                           |
+| `setDataCollectionEnabled`                  | `boolean`          |    否    | `true`  | 是否采集数据                                            | -          |                                           |
+| <font color='red'>~~setOaidEnabled~~</font> | `boolean`          |    否    | `false` | 是否采集Android OAID                                    | -          | <font color='red'>< 3.3.0</font>          |
+| `setExcludeEvent`                           | `int`              |    否    | `0`     | 设置事件过滤                                            | -          |                                           |
+| `setIgnoreField`                            | `int`              |    否    | `0`     | 设置事件属性过滤                                        | -          |                                           |
+| `setIdMappingEnabled`                       | `boolean`          |    否    | `false` | 是否开启多用户身份上报                                  | -          | <font color='red'>>= 3.3.0</font>         |
+| `setImpressionScale`                        | `float`            |    否    | `0`     | 元素曝光事件中的比例因子,范围 [0-1]                     | 无埋点独有 |                                           |
+| `setRequireAppProcessesEnabled`             | `boolean`          |    否    | `true`  | SDK 是否能获取应用多进程ID                              | -          | <font color='red'>>= 3.3.4</font>         |
+| `setPreloadComponent`                       | `LibraryGioModule` |    否    | `null`  | 注册自定义/预定义模块(如加密模块、OAID模块)             | -          | <font color='red'>>= 3.3.0,<=3.3.3</font> |
+| `addPreloadComponent`                       | `LibraryGioModule` |    否    | `null`  | 注册自定义/预定义模块(如加密模块、OAID模块)             | -          | <font color='red'>>= 3.3.4</font>         |
+| `addConfiguration`                          | `Configurable`     |    否    | `null`  | 注册自定义/预定义模块的配置文件                         | -          | <font color='red'>>= 3.3.4</font>         |
 
 
 
@@ -177,15 +177,17 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 
 若需要 H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通，请参考内置 [Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
 
-如果集成的是[**无埋点SDK**](/docs/android/base#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
+如果集成的是[**无埋点SDK**](/docs/android/base/Introduce#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
 
-如果集成的是[**埋点SDK**](/docs/android/base#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
+如果集成的是[**埋点SDK**](/docs/android/base/Introduce#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
+
 :::info
 **使用时注意模块版本需要与采集SDK版本保持一致**
 :::
+
 ```groovy
 ...
-implementation "com.growingio.android:hybrid:3.3.6"
+implementation "com.growingio.android:hybrid:3.4.0"
 ```
 
 SDK初始化时需要注册 hybrid 模块：
@@ -197,7 +199,7 @@ SDK初始化时需要注册 hybrid 模块：
 GrowingTracker.startWithConfiguration(this, 
                 new CdpTrackConfiguration("accountId", "urlScheme")
                 ...
-                .setPreloadComponent(new HybridLibraryGioModule()));  
+                .addPreloadComponent(new HybridLibraryGioModule()));  
 ```
 需要在 WebView 初始化之后调用桥接代码，实现访问用户数据打通:
 
@@ -214,13 +216,12 @@ GrowingTracker.get().bridgeWebView(webview)
 > 在 OAID SDK 1.0.26及其后续版本，获得OAID值需要传入从 MSA 机构获得的证书；
 > 3.3.0 ~ 3.3.3版本无法传入客户自己获得的OAID值或OAID证书，若需要这些功能，请使用版本>=3.3.4 SDK。
 
-**使用时注意模块版本需要与采集SDK版本保持一致**
 :::
 
 项目需要添加[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 OAID模块依赖(和 SDK 依赖同级)：
 ```groovy
 ...
-implementation "com.growingio.android:oaid:3.3.6"
+implementation "com.growingio.android:oaid:3.4.0"
 ```
 SDK初始化时注册Oaid模块：
 
@@ -330,13 +331,11 @@ GrowingTracker.startWithConfiguration(this,
 ### 3. **SDK数据加密传输**
 :::info
 采集 SDK 版本 >=3.3.0
-
-**使用时注意模块版本需要与采集SDK版本保持一致**
 :::
 项目需要添加加密模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:encoder:3.3.6"
+implementation "com.growingio.android:encoder:3.4.0"
 ```
 
 SDK初始化时注册加密模块：
@@ -365,14 +364,12 @@ GrowingTracker.startWithConfiguration(this,
 :::info
 采集 SDK 版本 >=3.3.3
 
-**使用时注意模块版本需要与采集SDK版本保持一致**
-
 使用 Protobuf 格式保存和上传事件数据，集成即生效；默认为 JSON 格式，2 种格式互不兼容，迁移将导致APP本地数据库内未上传的事件数据丢失，后续产生的新数据不受影响
 :::
 项目需要添加Protobuf模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:protobuf:3.3.6"
+implementation "com.growingio.android:protobuf:3.4.0"
 ```
 
 SDK初始化时注册Protobuf模块：
@@ -412,3 +409,42 @@ GrowingTracker.startWithConfiguration(this,
 </TabItem>
 </Tabs>
 
+### 5. **第三方厂商数据转发**
+:::info
+为了方便给已经集成了其他第三方厂商数据采集SDK的客户快速转入我们的采集SDK,我们提供了针对各个第三方的数据转发服务来作为一个过度的方案。
+
+目前已支持 Google Analytics 3 和 Firebase Analytics 两家数据转发，后续会继续支持。
+
+采集 SDK 版本 >=3.4.0 且只适用于无埋点SDK
+:::
+
+项目需要添加 analytics-ga 或 analytics-fa 模块依赖
+
+```groovy
+...
+implementation "com.growingio.android:analytics-ga:3.4.0" //Google Analytics 3
+implementation "com.growingio.android:analytics-fa:3.4.0" //Firebase Analytics
+```
+
+SDK初始化时需要添加对应的 analytics 模块。
+
+```java
+// 初始化SDK时, 调用方法注册数据分析转发模块
+GrowingAutotracker.startWithConfiguration(this, 
+                new CdpAutotrackConfiguration("accountId", "urlScheme")
+                ...
+                .addPreloadComponent(new GoogleAnalyticsLibraryModule())) //Google Analytics 3
+                // 或者
+                .addPreloadComponent(new FirebaseAnalyticsLibraryModule())) //Firebase Analytics
+```
+
+同时需要在无埋点插件配置里启用对应的转发服务
+
+```groovy
+growingAutotracker {
+    analyticsAdapter {
+        firebaseAnalytics true //Firebase Analytics
+        googleAnalytics true //Google Analytics 3
+    }
+}
+```

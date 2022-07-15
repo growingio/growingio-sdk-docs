@@ -17,6 +17,17 @@ GioKit 代码已托管在 [Github](https://github.com/growingio/giokit-android) 
 ### 添加依赖
 在 project 级别的`build.gradle`文件中添加`giokit-plugin`依赖和 maven 仓库。
 
+<Tabs
+  groupId="agp-version"
+  defaultValue="AGP"
+  values={[
+    {label: '依赖', value: 'AGP'},
+    {label: 'AGP7上依赖', value: 'AGP7'},
+  ]
+}>
+
+<TabItem value="AGP">
+
 ```groovy
 buildscript {
     repositories {
@@ -26,7 +37,7 @@ buildscript {
     }
     dependencies {
         // GioKit plugin
-        classpath "com.growingio.giokit:giokit-plugin:1.1.0"
+        classpath "com.growingio.giokit:giokit-plugin:1.2.0"
     }
 }
 
@@ -37,38 +48,74 @@ allprojects {
     }
 }
 ```
+</TabItem>
+
+<TabItem value="AGP7">
+
+```groovy
+plugins {
+    //...
+    id 'com.growingio.gitkit' version "1.2.0" apply false //针对Cdp Sdk
+    id 'com.growingio.gitkit.saas' version "1.2.0" apply false  //针对SaaS Sdk
+    //以上二者根据相应的 GrowingIO Android SDK 选择对应的插件，请不要一起使用！！
+}
+```
+</TabItem>
+</Tabs>
 
 在 app 级别的`build.gradle`文件中添加`com.growingio.giokit`插件、`giokit`依赖。
 
-:::info
+<Tabs
+  groupId="agp-version"
+  defaultValue="v3"
+  values={[
+    {label: 'CDP SDK', value: 'v3'},
+    {label: 'SAAS SDK', value: 'saas'},
+  ]
+}>
+
+<TabItem value="v3">
+
 **GrowingIO Android SDK 3.0及以上版本，请添加**
 ```groovy
 apply plugin: 'com.growingio.giokit'
-```
-:::
 
-:::info
+// 或者通过id依赖
+plugins {
+    //...
+    id 'com.growingio.gitkit'
+}
+```
+
+</TabItem>
+
+<TabItem value="saas">
+
 **GrowingIO Android SDK 2.x 版本，请添加**
 ```groovy
 apply plugin: 'com.growingio.giokit.saas'
-```
-:::
 
-:::caution 注意
-以上二者根据相应的 GrowingIO Android SDK 选择对应的插件，请不要一起使用！！
-:::
+// 或者通过id依赖
+plugins {
+    //...
+    id 'com.growingio.gitkit.saas'
+}
+```
+
+</TabItem>
+</Tabs>
+
 ```groovy
-...
+
 dependencies {
     ...
     // GioKit
-    debugImplementation "com.growingio.giokit:giokit:1.1.0"
-    releaseImplementation "com.growingio.giokit:giokit-no-op:1.1.0"
+    debugImplementation "com.growingio.giokit:giokit:1.2.0"
+    releaseImplementation "com.growingio.giokit:giokit-no-op:1.2.0"
 }
 ```
 
 :::caution 注意
-
 为了避免在正式环境下出现不必要的错误，请务必只在 Debug 环境下使用 GioKit 工具。
 :::
 
@@ -116,7 +163,6 @@ class MyApplication : Application() {
 ```groovy
 giokitExt {
     debugMode false
-    enableIncremental false
     enableRelease false
     // 统计该域值下所有埋点信息，如 com.growingio 表示统计 com.growingio 包名下的埋点代码
     trackFinder {
@@ -128,7 +174,5 @@ giokitExt {
 }
 ```
 1. debugMode 为true时，项目编译的时候会输出相应的 Debug 信息；
-2. enableIncremental 是否打开增量编译，默认为true。由于 Giokit 会查找代码中的所有埋点信息，所以在增量编译时有时候会出现无法找到埋点代码的情况，这时候可以将其设置false，来保证每次查找的准确性；
-3. enableRelease 是否支持release打包。giokit 是只推荐在 debug 环境下使用，若一定要在release环境下使用，则需要打开此开关来使插件生效；
-4. 为了方便统一查看用户的手动埋点信息，我们通过 trackFinder 配置来查找在应用中手动埋点调用的位置。默认查找域名为项目的`ApplicationId`
-```
+2. enableRelease 是否支持release打包。giokit 是只推荐在 debug 环境下使用，若一定要在release环境下使用，则需要打开此开关来使插件生效；
+3. 为了方便统一查看用户的手动埋点信息，我们通过 trackFinder 配置来查找在应用中手动埋点调用的位置。默认查找域名为项目的`ApplicationId`

@@ -60,7 +60,7 @@ GIO移动端 SDK
 ## 初始化
 
 ### 方式一、延迟初始化
-在同意《隐私协议》后调用 `GrowingTracker.startWithConfiguration` 进行SDK的初始化，此后在 Application 的 onCreate() 方法主线程中初始化 SDK。
+在同意《隐私协议》后调用 `GrowingTracker.startWithConfiguration` 进行SDK的初始化，此后在 Application 的 onCreate() 方法主线程中初始化 SDK。(若同意隐私协议前禁止获取 AndroidID，请使用该方式)
 ```java
 // 在 Activity 中同意隐私条款后初始化 SDK
 public class MyActivity extends Activity {
@@ -140,7 +140,7 @@ public class MyActivity extends Activity {
 使用请参考[SDK数据加密传输](/docs/android/base/Configuration#3-sdk数据加密传输)。
 
 ## 数据存储发送策略说明
-Android SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 50 条行为数据），首次请求之后，如果剩余行为数据量大于100条，则继续发送至全部发送完，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
+Android SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 50 条行为数据），如果待发送行为数据量大于100条，则发送至所有数据发送完成，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
 
 ## 其他说明
 
