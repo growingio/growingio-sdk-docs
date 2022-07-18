@@ -32,7 +32,9 @@ AccountID、DataSourceID、AppId 需要在CDP增长平台上新建数据源，�
 对于微信小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
 
 集成方式参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在小程序中任意生命周期中进行初始化。**
-
+:::caution
+如果您使用有GrowingIO 小程序运营SDK， 且集成本文档中的SDK版本 >=3.3.2，请在初始化SDK时，增加配置项 `enableEventStore: true`
+:::
 ### 下载SDK
 
 <a href="https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js" download="https://assets.giocdn.com/sdk/cdp/3.0/gio-minp.js">点击下载SDK</a>，存放在项目中，下文中以`utils/gio`目录为例。
