@@ -23,7 +23,18 @@ import TabItem from '@theme/TabItem';
 
 #### 1、加载SDK
 
-淘宝原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.1/gio-taobao.js><br/>
+##### 方式一：下载本地集成
+
+uniapp框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.2/gio-taobao.js><br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+
+##### 方式二：npm集成
+
+```bash
+npm i gio-miniprogram-sdk-cdp --save
+```
+
+淘宝原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.2/gio-taobao.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -34,7 +45,11 @@ import TabItem from '@theme/TabItem';
 
 ```js
 // app.js
+// 下载集成方式
 import gdp from './utils/gio/gio-taobao.js';
+// npm集成方式
+import gdp from 'gio-miniprogram-sdk-cdp/gio-taobao';
+
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -76,10 +91,16 @@ Component({ ... });
 
 #### 1、引入插件文件
 
-插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.1/plugins.zip><br/>
+##### 方式一：下载本地集成
+
+插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.2/plugins.zip><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 下载功能插件，解压放入 plugins 目录中，并在app.js/main.js中引入。
+
+##### 方式二：npm集成
+
+直接从SDK主体npm包中`plugins`目录引入即可。
 
 #### 2、调用`registerPlugins`方法注册插件
 
@@ -88,8 +109,13 @@ Component({ ... });
 ##### 示例代码
 
 ```js
+// 下载集成方式
 import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
 import gioCompress from './utils/plugins/gioCompress';
+// npm集成方式
+import gioImpressionTracking from 'gio-miniprogram-sdk-cdp/plugins/gioImpressionTracking';
+import gioCompress from 'gio-miniprogram-sdk-cdp/plugins/gioCompress';
+
 
 ...
 // 在init语句前调用`registerPlugins`方法按数组形式传值。
