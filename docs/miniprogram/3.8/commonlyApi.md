@@ -125,7 +125,7 @@ gdp('setUserId', '112333445', 'phone');
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）SDK版本 >=3.3.0 支持 ID-MAPPING，且需初始化时设置 `enableIdMapping` 为 `true`**<br/>
-**2）该方法可调用多次，设同一值时无效。**
+**2）该方法可多次调用，设同一值时无效。**
 
 ### 4、清除登录用户Id(clearUserId)
 
