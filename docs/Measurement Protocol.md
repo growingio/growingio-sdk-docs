@@ -83,7 +83,7 @@ sidebar_position: 13
   "latitude": 39.988518,
   "longitude": 116.478797,
   "oaid": "eeefbf75-3df7-15e0-ffb5-ff1ff09f1ec3",
-  "sdkVersion": "3.0.1",
+  "sdkVersion": "3.3.6",
   "extraSdk": {
     "GrowingTouch": "1.2.3"
   }
@@ -141,7 +141,7 @@ sidebar_position: 13
   "language": "zh_CN",
   "latitude": 39.988518,
   "longitude": 116.478797,
-  "sdkVersion": "3.0.1",
+  "sdkVersion": "3.3.6",
   "attributes": {
     "goods": "shoe",
     "brand": "Nick"
@@ -177,11 +177,25 @@ sidebar_position: 13
   "appState": "FOREGROUND",
   "globalSequenceId": 99,
   "eventSequenceId": 3,
+  "networkState": "4G",
+  "appChannel": "应用宝",
+  "screenHeight": 1920,
+  "screenWidth": 1080,
+  "deviceBrand": "google",
+  "deviceModel": "Nexus 5",
+  "deviceType": "PHONE",
+  "platform": "Android",
+  "platformVersion": "7.1.2",
+  "appName": "看数小助手",
+  "appVersion": "1.2.4",
+  "language": "zh_CN",
+  "sdkVersion": "3.3.6",
   "attributes": {
     "vipLevel": "10",
     "email": "xxx@growingio.com"
   }
 }
+
 ```
 
 ### APP、小程序关闭事件(APP_CLOSED)
@@ -224,7 +238,7 @@ sidebar_position: 13
   "language": "zh_CN",
   "latitude": 39.988518,
   "longitude": 116.478797,
-  "sdkVersion": "3.0.1",
+  "sdkVersion": "3.3.6",
 }
 ```
 
@@ -274,7 +288,7 @@ sidebar_position: 13
   "language": "zh_CN",
   "latitude": 39.988518,
   "longitude": 116.478797,
-  "sdkVersion": "3.0.1",
+  "sdkVersion": "3.3.6",
 }
 ```
 
@@ -326,7 +340,7 @@ sidebar_position: 13
   "language": "zh_CN",
   "latitude": 39.988518,
   "longitude": 116.478797,
-  "sdkVersion": "3.0.1",
+  "sdkVersion": "3.3.6",
 }
 ```
 
@@ -378,7 +392,7 @@ sidebar_position: 13
   "language": "zh_CN",
   "latitude": 39.988518,
   "longitude": 116.478797,
-  "sdkVersion": "3.0.1",
+  "sdkVersion": "3.3.6",
 }
 ```
 
@@ -426,6 +440,6 @@ sidebar_position: 13
   "language": "zh_CN",
   "latitude": 39.988518,
   "longitude": 116.478797,
-  "sdkVersion": "3.0.1",
+  "sdkVersion": "3.3.6",
 }
 ```
