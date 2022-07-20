@@ -87,6 +87,7 @@ gdp('identify', openId);
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）若使用此接口需要在初始化时将 forceLogin 设置为 true。 [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**<br/>
 **2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**
+**3）该方法仅可合法地调用一次，多次调用无效。**
 
 ### 2、获取访问用户Id(getDeviceId)
 
@@ -123,7 +124,8 @@ gdp('setUserId', '112333445', 'phone');
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**SDK版本 >=3.3.0 支持 ID-MAPPING，且需初始化时设置 `enableIdMapping` 为 `true`**
+**1）SDK版本 >=3.3.0 支持 ID-MAPPING，且需初始化时设置 `enableIdMapping` 为 `true`**<br/>
+**2）该方法可多次调用，设同一值时无效。**
 
 ### 4、清除登录用户Id(clearUserId)
 
@@ -244,7 +246,8 @@ my.getAuthUserInfo({
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**用户属性中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
+**1）用户属性中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**<br/>
+**2）该方法可多次调用，已有相同属性名的值会被覆盖，多次结果在服务端进行合并。**
 
 ### 7、地理位置(setLocation)
 
@@ -349,7 +352,45 @@ Page({
 
 **H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
 
-### 9、获取SDK当前配置(getOption)
+### 9、设置埋点通用属性(setGeneralProps)
+
+有时我们埋点需要大量业务属性，但需要每次调用时都进行传值，这给埋点工作带来了一定程度上的无用重复劳动。现在我们可以通过`setGeneralProps`来给后续产生的所有的埋点事件加上通用属性，从而免去一些不必要的重复劳动。也可以利用该方法为所有的埋点事件进行动态设置通用属性。
+
+设置的通用属性可以是静态固定值，也可以是一个**简单的方法执行结果**的动态值。当属性值为方法时，SDK会自动执行尝试获取返回值，支持返回的数据类型：`String`、`Number`、一元`Array`、`Boolean`。不合法的数据类型会被强制转换为字符串。并且**请勿执行复杂度过高的运算逻辑或异步运算，可能会导致报错或无法获取准确值。**
+
+#### 示例
+
+```js
+gdp('setGeneralProps', { 'currency': 'RMB' });
+
+let index = 0;
+gdp('setGeneralProps', {
+  'nick_name_var': 'Mike'
+  'index_var': () => index++,
+});
+```
+
+**<font color="#FC5F3A">注意：</font><br/>**
+**1）SDK版本>=3.8.2支持。**<br/>
+**2）定义的通用属性名依然需要在平台上进行事件属性的创建并与埋点事件完成关联。**<br/>
+**3）该方法可多次调用，已有相同属性名的值会被覆盖。**<br/>
+**4）埋点通用属性仅限小程序中共享使用，内嵌页无法共享通用属性。**
+
+### 10、清除埋点通用属性(clearGeneralProps)
+
+SDK提供了清除通用属性的方法，调用该方法移除指定字段或所有通用埋点属性。
+
+#### 示例
+
+```js
+gdp('clearGeneralProps', ['nick_name_var', 'index_var']);
+// 或不传值清空所有通用埋点属性
+gdp('clearGeneralProps');
+```
+
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.8.2支持。**
+
+### 11、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
@@ -362,7 +403,7 @@ gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
 gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
 ```
 
-### 10、获取SDK当前版本
+### 12、获取SDK当前版本
 
 在代码或开发者工具中直接调用 `global.gioSDKVersion` 即可获取。
 
