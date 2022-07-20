@@ -3,7 +3,9 @@ sidebar_position: 0
 title: 版本记录
 ---
 
-### V3.8.2 - 2022/07/19
+SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
+
+### V3.8.2 - 2022/07/20
 
 * 新增设置埋点通用属性`setGeneralProps`和清除`clearGeneralProps`接口。
 
