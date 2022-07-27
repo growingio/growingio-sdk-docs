@@ -7,6 +7,8 @@ title: 插件
 
 一般只要您加载了插件功能会自动加载并启用，如果您不想使用其中的功能，移除对应插件即可。
 
+所有的插件默认打包为 es5 ，因此您不用担心浏览器兼容问题。
+
 ### 数据加密压缩插件（gioCompress）
 
 上报请求的数据进行加密压缩。
@@ -16,8 +18,8 @@ title: 插件
 
 CDN集成引入：
 
-```js
-import gioCompress from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioCompress.js"
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioCompress.js"></script>
 ```
 
 npm集成引入：
@@ -43,8 +45,8 @@ import gioCompress from "gio-webjs-sdk-cdp/plugins/gioCompress.js"
 
 CDN集成引入：
 
-```js
-import gioEventAutoTracking from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioEventAutoTracking.js"
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioEventAutoTracking.js"></script>
 ```
 
 npm集成引入：
@@ -64,8 +66,8 @@ import gioEventAutoTracking from "gio-webjs-sdk-cdp/plugins/gioEventAutoTracking
 
 CDN集成引入：
 
-```js
-import gioWebCircle from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioWebCircle.js"
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioWebCircle.js"></script>
 ```
 
 npm集成引入：
@@ -82,8 +84,8 @@ import gioWebCircle from "gio-webjs-sdk-cdp/plugins/gioWebCircle.js"
 
 CDN集成引入：
 
-```js
-import gioEmbeddedAdapter from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioEmbeddedAdapter.js"
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioEmbeddedAdapter.js"></script>
 ```
 
 npm集成引入：
@@ -100,8 +102,8 @@ import gioEmbeddedAdapter from "gio-webjs-sdk-cdp/plugins/gioEmbeddedAdapter.js"
 
 CDN集成引入：
 
-```js
-import gioHybridAdapter from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridAdapter.js"
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioHybridAdapter.js"></script>
 ```
 
 npm集成引入：
@@ -118,8 +120,8 @@ import gioHybridAdapter from "gio-webjs-sdk-cdp/plugins/gioHybridAdapter.js"
 
 CDN集成引入：
 
-```js
-import gioHybridCircle from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridCircle.js"
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioHybridCircle.js"></script>
 ```
 
 npm集成引入：
@@ -130,14 +132,14 @@ import gioHybridCircle from "gio-webjs-sdk-cdp/plugins/gioHybridCircle.js"
 
 ### 半自动埋点浏览插件（gioImpressionTracking）
 
-支持半自动埋点浏览事件功能的插件，加载插件后自动开启。
+支持半自动埋点浏览事件功能的插件，加载插件后自动开启。(IE11不支持)
 
 使用方法请[参考文档](/docs/webjs/3.8/commonlyApi#半自动埋点浏览事件)。
 
 CDN集成引入：
 
-```js
-import gioImpressionTracking from "https://assets.giocdn.com/sdk/web/cdp/plugins/gioImpressionTracking.js"
+```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioImpressionTracking.js"></script>
 ```
 
 npm集成引入：

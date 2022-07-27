@@ -39,8 +39,8 @@ import TabItem from '@theme/TabItem';
 
 全量引入集成，SDK将包含所有插件，功能全覆盖，简单快速集成。
 
-- 优点：复杂度低，理解成本低，快速集成，可兼容IE11。
-- 缺点：SDK较大，约 64KB ，可能会拖慢加载速度。
+- 优点：复杂度低，理解成本低，快速集成。
+- 缺点：冗余内容多，SDK较大，约 64KB ，可能会拖慢加载速度。
 
 #### 开始集成
 
@@ -68,15 +68,16 @@ import TabItem from '@theme/TabItem';
 </script>
 ```
 
-SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等不兼容es6的浏览器，请在文件名后添加`-es5`即可引用es5版本的SDK。例：`gdp-full-es5.js`。
+**<font color="##20d5ef">提示：</font>**<br/>
+SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等不兼容es6的浏览器，请修改为`gdp-full-es5.js`即可引用es5版本的SDK。
 
   </TabItem>
   <TabItem value="按需引入">
 
 按需引入集成，基础SDK只包含埋点功能，其他功能需要注册插件。如需其他功能，请参考[插件文档](/docs/webjs/3.8/plugins)。
 
-- 优点：SDK较小，约 32KB ，加载速度快。
-- 缺点：复杂度略高，理解成本略高，集成稍复杂，不兼容IE。
+- 优点：无冗余内容，SDK较小，约 32KB ，加载速度快。
+- 缺点：复杂度略高，理解成本略高，集成稍复杂。
 
 #### 开始集成
 
@@ -121,16 +122,15 @@ SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等�
 ##### 示例代码
 
 ```html
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioEventAutoTracking.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioWebCircle.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioImpressionTracking.js"></script>
 <!-- GrowingIO Analytics WebJS SDK version 3.8 -->
-<script type='module'>
+<script type='text/javascript'>
   // 注意script type为 module 类型
   !(function (e, n, t, c, i) {
     ...... // 此处省略部分集成代码，注意按步骤1补全
   })(window, document, 'script', 'https://assets.giocdn.com/sdk/web/cdp/gdp.js', 'gdp');
-
-  import gioEventAutoTracking from 'https://assets.giocdn.com/sdk/web/cdp/plugins/gioEventAutoTracking.js';
-  import gioWebCircle from 'https://assets.giocdn.com/sdk/web/cdp/plugins/gioWebCircle.js';
-  import gioImpressionTracking from 'https://assets.giocdn.com/sdk/web/cdp/plugins/gioImpressionTracking.js';
 
   // 在init语句前调用`registerPlugins`方法按数组形式传值。
   gdp('registerPlugins', [gioEventAutoTracking, gioWebCircle, gioImpressionTracking]);
@@ -141,12 +141,16 @@ SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等�
   </TabItem>
 </Tabs>
 
-**其他**
+#### 其他
 
-如果您希望不受CDN（内容分发网络）影响或期望使用指定版本SDK，请下载SDK至本地，并修改上述集成代码中的SDK CDN地址为您本地的相对地址。
+如果您希望不受CDN（内容分发网络）影响，请下载SDK至本地集成，并修改上述集成代码中的SDK CDN地址为您本地的相对地址。
 
-WebJS SDK (仅含埋点)下载：<https://assets.giocdn.com/sdk/web/cdp/gdp.js><br/>
-WebJS SDK (含全量插件)下载：<https://assets.giocdn.com/sdk/web/cdp/gdp-full.js><br/>
+WebJS SDK (仅含埋点)下载：<https://assets.giocdn.com/sdk/web/cdp/gdp.js>
+
+WebJS SDK 插件下载：[插件列表](/docs/webjs/3.8/plugins)
+
+WebJS SDK (含全量插件)下载：<https://assets.giocdn.com/sdk/web/cdp/gdp-full.js>
+
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
   </TabItem>
