@@ -88,7 +88,7 @@ SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等�
 ```html
 <!-- GrowingIO Analytics WebJS SDK version 3.8 -->
 <!-- Copyright 2015-2022 GrowingIO, Inc. More info available at http://www.growingio.com -->
-<script type="module">
+<script type="text/javascript">
   !(function (e, n, t, c, i) {
     (e[i] =
       e[i] ||

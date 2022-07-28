@@ -160,7 +160,41 @@ gdp('setUserAttributes', { name: 'hjh' });
 **<font color="#FC5F3A">注意：</font>**<br/>
 **用户属性中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
-### 6、获取SDK当前配置(getOption)
+### 6、设置埋点通用属性(setGeneralProps)
+
+有时我们埋点需要大量业务属性，但需要每次调用时都进行传值，这给埋点工作带来了一定程度上的无用重复劳动。现在我们可以通过`setGeneralProps`来给后续产生的所有的埋点事件加上通用属性，从而免去一些不必要的重复劳动。也可以利用该方法为所有的埋点事件进行动态设置通用属性。
+
+设置的通用属性可以是静态固定值，也可以是一个**简单的方法执行结果**的动态值。当属性值为方法时，SDK会自动执行尝试获取返回值，支持返回的数据类型：`String`、`Number`、一元`Array`、`Boolean`。不合法的数据类型会被强制转换为字符串。并且**请勿执行复杂度过高的运算逻辑或异步运算，可能会导致报错或无法获取准确值。**
+
+#### 示例
+
+```js
+gdp('setGeneralProps', { 'currency': 'RMB' });
+
+let index = 0;
+gdp('setGeneralProps', {
+  'nick_name_var': 'Mike'
+  'index_var': () => index++,
+});
+```
+
+**<font color="#FC5F3A">注意：</font><br/>**
+**1）定义的通用属性名依然需要在平台上进行事件属性的创建并与埋点事件完成关联。**<br/>
+**2）该方法可多次调用，已有相同属性名的值会被覆盖。**
+
+### 7、清除埋点通用属性(clearGeneralProps)
+
+SDK提供了清除通用属性的方法，调用该方法移除指定字段或所有通用埋点属性。
+
+#### 示例
+
+```js
+gdp('clearGeneralProps', ['nick_name_var', 'index_var']);
+// 或不传值清空所有通用埋点属性
+gdp('clearGeneralProps');
+```
+
+### 8、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
@@ -173,7 +207,7 @@ gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
 gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
 ```
 
-### 7、获取SDK当前版本
+### 9、获取SDK当前版本
 
 在代码或浏览器控制台中直接调用 `window.gioSDKVersion` 即可获取。
 

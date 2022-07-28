@@ -20,7 +20,6 @@ title: 初始化配置
 | `platform`        | `boolean`    | `web`               | 平台类型                                            |
 | `scheme`          | `string`     | `location.protocol` | 网络协议                                              |
 | `sessionExpires`  | `number`     | `30`                | session有效期（单位：分钟）                              |
-<!-- | `touch`           | `boolean`    | `false`             | 是否开启touch解析                                     | -->
 | `version`         | `string`     | `-`                 | Web应用发版版本号(建议填写)                           |
 
 ## 配置项详解
@@ -107,7 +106,3 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
 **单位：分钟；允许设值范围 0 ~ 6 * 60(即6小时)；默认30分钟。**
 
 **<font color="#FC5F3A">注意：</font>一般情况下，您都不需要修改此配置项，修改后会导致访问量和用户量出现明显变化。**
-
-<!-- ### touch
-
-默认情况下SDK采集点击时按鼠标点击事件为准，如果您在移动端上使用touch作为点击，请开启此项。 -->
