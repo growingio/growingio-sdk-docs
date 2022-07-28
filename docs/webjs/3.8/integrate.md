@@ -148,8 +148,6 @@ SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等�
 
 WebJS SDK (仅含埋点)下载：<https://assets.giocdn.com/sdk/webjs/cdp/gdp.js>
 
-WebJS SDK 插件下载：[插件列表](/docs/webjs/3.8/plugins)
-
 WebJS SDK (含全量插件)下载：<https://assets.giocdn.com/sdk/webjs/cdp/gdp-full.js>
 
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
