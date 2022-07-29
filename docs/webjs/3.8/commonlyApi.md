@@ -239,29 +239,25 @@ SDK会自动忽略 `type="password"` 类型的input框的内容采集，但如�
 
 ### 2、补充数据标记
 
-#### 1）data-title
+#### 1）data-growing-title
 
-有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-title` 来补充SDK采集的内容。例：
+有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-growing-title` 来补充SDK采集的内容。例：
 
 ```html
-<div data-title="额外的上报信息">节点</div>
+<div data-growing-title="额外的上报信息">节点</div>
 ```
 
-如果`data-titile`与您业务字段冲突，请使用`data-growing-title`。
+#### 2）data-growing-index
 
-#### 2）data-index
-
-有时我们页面中可能存在类似列表类的Dom结构相似或一致使得SDK上报数据出现无法区分的情况。此时，我们可以通过索引标记 `data-index` 来准确描述节点信息。例：
+有时我们页面中可能存在类似列表类的Dom结构相似或一致使得SDK上报数据出现无法区分的情况。此时，我们可以通过索引标记 `data-growing-index` 来准确描述节点信息。例：
 
 ```html
 <ul>
-  <li data-index="1">节点1</li>
-  <li data-index="2">节点2</li>
-  <li data-index="3">节点3</li>
+  <li data-growing-index="1">节点1</li>
+  <li data-growing-index="2">节点2</li>
+  <li data-growing-index="3">节点3</li>
 </ul>
 ```
-
-如果`data-index`与您业务字段冲突，请使用`data-growing-index`。
 
 ### 3、忽略采集标记
 
