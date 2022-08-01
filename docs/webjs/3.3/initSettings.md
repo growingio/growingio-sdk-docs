@@ -19,9 +19,7 @@ title: 初始化配置
 | `hashtag`         | `boolean`      |  `false`             | 是否开启hash模式|
 | `autotrack`       | `boolean`      |  `true`              | 是否开启无埋点采集 |
 | `ignoreFields`    | `string[]`     |  无                  | 要忽略的字段仅支持以下字段<br />`screenWidth,screenHeight`   |
-| `platform`        | `string`       |  `web`               | 应用的平台支持字段<br />`web`<br />`wxwv`<br />`minp`<br />`alip`<br />`baidup`<br />`qq`<br />`bytedance`|
 | `version`         | `string`       |  无                  | 应用版本（建议填写）对appVer保持兼容                         |
-| `plugins`         | `GioPlugin[]`  |  无                  | 自定义要启用的插件详细可见插件篇                             |
 | `enableIdMapping` | `boolean` |  `false` | 是否开启多用户身份上报(SDK版本<font color='red'>>= 3.3.0</font>)<br />设置userKey  |
 
 ## 配置项详解
@@ -80,14 +78,4 @@ GrowingIO Web SDK 默认发送数据是明文，可以通过这个开关将数�
 
 ```js
 gdp('init', accountId, datasourceId, { compress: true });
-```
-
-### platform
-
-不建议主动设置除了web和wxwv之外的值。GrowingIO会对设置的值进行限制，如果合规，将下降为web。合规的选项可见上表格。
-
-该设置会体现在测量协议的platform字段上，如果在与小程序打通的情况下，不论初始时设置的为什么值，其都会被设置为对应的小程序平台。
-
-```js
-gdp('init', accountId, datasourceId, { platform: 'web' });
 ```

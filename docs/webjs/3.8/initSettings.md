@@ -19,7 +19,6 @@ title: 初始化配置
 | `ignoreFields`    | `string[]`   | `-`                 | 上报忽略字段                                          |
 | `platform`        | `boolean`    | `web`               | 平台类型                                            |
 | `scheme`          | `string`     | `location.protocol` | 网络协议                                              |
-| `sessionExpires`  | `number`     | `30`                | session有效期（单位：分钟）                              |
 | `version`         | `string`     | `-`                 | Web应用发版版本号(建议填写)                           |
 
 ## 配置项详解
@@ -95,14 +94,6 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
 
 ### scheme
 
-默认情况下，网络协议为`https`，但考虑到在开发的过程中可能需要使用`http`协议的测试服务，因此我们提供了临时修改网络协议的配置。
+默认情况下，网络协议为自动获取`location.protocol`，但考虑到在开发的过程中可能需要使用`http`等指定协议的测试服务，因此我们提供了临时修改网络协议的配置。
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#4修改请求协议scheme)
-
-### sessionExpires
-
-默认情况下，SDK对单个用户访问的session有效期为30分钟，如果您需要特殊处理，可以修改此配置。session超时SDK即记为一次新访问，会生成新的访问用户Id和seesionId。
-
-**单位：分钟；允许设值范围 0 ~ 6 * 60(即6小时)；默认30分钟。**
-
-**<font color="#FC5F3A">注意：</font>一般情况下，您都不需要修改此配置项，修改后会导致访问量和用户量出现明显变化。**
