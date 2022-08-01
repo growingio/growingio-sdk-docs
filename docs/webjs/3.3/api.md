@@ -33,12 +33,7 @@ gdp('setUserAttributes', properties, callback);
 
 #### 1、初始化接口
 
-用户初始化SDK，初始化配置等，执行以下工作：
-
-- 初始化SDK配置
-- 初始化用户数据（u，s，cs1等）
-
-接口原型如下
+用户初始化SDK，初始化配置等，接口原型如下
 
 ```
 gdp('init', accountId, datasourceId[, options]);
@@ -46,12 +41,7 @@ gdp('init', accountId, datasourceId[, options]);
 
 #### 2、启动接口
 
-正式运行SDK，可以开始发送数据。
-
-- 判断是否已初始化和是否运行中
-- 触发pageShow，发送pv事件
-
-接口原型如下
+正式运行SDK，可以开始发送数据，接口原型如下
 
 ```
 gdp('send');

@@ -350,7 +350,7 @@ Page({
 
 **3）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，数据打通后，打通H5页面的 dataCollect 数据采集开关由小程序SDK初始化配置项 dataCollect 控制。此项功能使用需H5 页面集成的 Web JS SDK 版本>=3.3.9。**
 
-**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
+**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/3.8/integrate#在微信公众号h5小程序内嵌页中集成)**
 
 ### 9、设置埋点通用属性(setGeneralProps)
 

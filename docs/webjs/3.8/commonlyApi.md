@@ -71,7 +71,17 @@ gdp('setOption', 'host', 'api.growingio.com');
 
 ## 功能接口
 
-### 1、获取访问用户Id(getDeviceId)
+### 1、注册插件(registerPlugins)
+
+默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/webjs/3.8/integrate)和[插件列表](/docs/webjs/3.8/plugins)进行插件的注册。
+
+#### 示例
+
+```js
+gdp('registerPlugins', [xxxx, xxxxx]);
+```
+
+### 2、获取访问用户Id(getDeviceId)
 
 访问用户Id，又称为匿名用户Id/设备Id，SDK 自动生成用来定义唯一设备。如果没有初始化SDK 或者关闭采集开关可能返回值为空。
 
@@ -81,7 +91,7 @@ gdp('setOption', 'host', 'api.growingio.com');
 gdp('getDeviceId');
 ```
 
-### 2、设置登录用户Id(setUserId)
+### 3、设置登录用户Id(setUserId)
 
 当用户登录之后调用`setUserId`，设置登录用户ID。
 
@@ -102,7 +112,7 @@ gdp('setUserId', '112333445', 'phone');
 **<font color="#FC5F3A">注意：</font>**<br/>
 **需SDK初始化时设置 `enableIdMapping` 为 `true`**
 
-### 3、清除登录用户Id(clearUserId)
+### 4、清除登录用户Id(clearUserId)
 
 当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID。
 
@@ -112,7 +122,7 @@ gdp('setUserId', '112333445', 'phone');
 gdp('clearUserId');
 ```
 
-### 4、埋点事件(track)
+### 5、埋点事件(track)
 
 发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
 
@@ -141,7 +151,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 **<font color="#FC5F3A">注意：</font>**<br/>
 **`properties`中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
-### 5、登录用户属性(setUserAttributes)
+### 6、登录用户属性(setUserAttributes)
 
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
 
@@ -160,7 +170,7 @@ gdp('setUserAttributes', { name: 'hjh' });
 **<font color="#FC5F3A">注意：</font>**<br/>
 **用户属性中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
-### 6、设置埋点通用属性(setGeneralProps)
+### 7、设置埋点通用属性(setGeneralProps)
 
 有时我们埋点需要大量业务属性，但需要每次调用时都进行传值，这给埋点工作带来了一定程度上的无用重复劳动。现在我们可以通过`setGeneralProps`来给后续产生的所有的埋点事件加上通用属性，从而免去一些不必要的重复劳动。也可以利用该方法为所有的埋点事件进行动态设置通用属性。
 
@@ -182,7 +192,7 @@ gdp('setGeneralProps', {
 **1）定义的通用属性名依然需要在平台上进行事件属性的创建并与埋点事件完成关联。**<br/>
 **2）该方法可多次调用，已有相同属性名的值会被覆盖。**
 
-### 7、清除埋点通用属性(clearGeneralProps)
+### 8、清除埋点通用属性(clearGeneralProps)
 
 SDK提供了清除通用属性的方法，调用该方法移除指定字段或所有通用埋点属性。
 
@@ -194,7 +204,7 @@ gdp('clearGeneralProps', ['nick_name_var', 'index_var']);
 gdp('clearGeneralProps');
 ```
 
-### 8、获取SDK当前配置(getOption)
+### 9、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
@@ -207,7 +217,7 @@ gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
 gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
 ```
 
-### 9、获取SDK当前版本
+### 10、获取SDK当前版本
 
 在代码或浏览器控制台中直接调用 `window.gioSDKVersion` 即可获取。
 

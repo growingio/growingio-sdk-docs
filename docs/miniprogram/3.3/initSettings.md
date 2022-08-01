@@ -67,7 +67,7 @@ title: 初始化配置
 
 ### extraParams
 
-在H5页面与小程序的用户信息保持一致时，上报数据除[默认字段](/docs/webjs/plugins#打通成功效果-1)以外，可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
+在H5页面与小程序的用户信息保持一致时，上报数据除默认字段以外，可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
 
 ```text
 appChannel        小程序的场景值

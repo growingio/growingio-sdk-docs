@@ -17,7 +17,6 @@ title: 初始化配置
 | `hashtag`         | `boolean`    | `false`             | 是否开启hash解析                                      |
 | `host`            | `string`     | `-`                 | 数据上报的服务端地址(无需携带协议头)**(必填)**          |
 | `ignoreFields`    | `string[]`   | `-`                 | 上报忽略字段                                          |
-| `platform`        | `boolean`    | `web`               | 平台类型                                            |
 | `scheme`          | `string`     | `location.protocol` | 网络协议                                              |
 | `version`         | `string`     | `-`                 | Web应用发版版本号(建议填写)                           |
 
@@ -85,12 +84,6 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
   ],
 });
 ```
-
-### platform
-
-默认情况下，platform取值为web，当您使用为小程序或公众号内嵌页时，可指定platform为指定平台。
-
-**<font color="#FC5F3A">注意：</font>当与小程序打通信息时，无需指定平台，SDK会自动为您赋值。**
 
 ### scheme
 

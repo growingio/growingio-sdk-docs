@@ -52,32 +52,19 @@ AccountID、DataSourceID 需要在CDP增长平台上新建数据源，或从已�
 
 ### APP内嵌H5页面使用集成
 
-集成方式和web使用集成一致；Web JS SDK会自动判断桥的情况进行数据的转发，详见[Hybrid打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
+集成方式和web使用集成一致；Web JS SDK会自动判断桥的情况进行数据的转发。
 
 ### 小程序内嵌页使用集成
 
 小程序内嵌页集成方式和 Web 页面使用集成添加的跟踪代码一致；
-如果有和小程序数据进行用户打通的需求，这时就需要在SDK初始化时填写您小程序的 accountId，AppId 来作为打通的判断，详见[小程序内嵌页打通插件](/docs/webjs/plugins#7-小程序内嵌页打通插件)。
+若需要与小程序数据进行用户打通时，需要在SDK初始化时在`init`方法中传入主体小程序的 `accountId`，`AppId` ，SDK会自动处理小程序数据。
 
-```html
-<script type='text/javascript'>
-  (function(window, document, script, src, namespace) {
-    window[namespace] = window[namespace] || function() {
-      (window[namespace].q = window[namespace].q || []).push(arguments)
-    };
-    script = document.createElement('script');
-    let tag = document.getElementsByTagName('script')[0];
-    script.async = true;
-    script.src = src;
-    tag.parentNode.insertBefore(script, tag);
-  })(window, document, 'script', 'https://assets.giocdn.com/sdk/cdp/gio.js', 'gdp');
-
+```js
   gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
     host: 'your apiServerHost',
     version: '1.0.0'
   });
   gdp('send');
-</script>
 ```
 
 ### 其他

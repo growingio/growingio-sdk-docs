@@ -260,9 +260,15 @@ gdp('init', 'your accountId', 'your dataSourceId', {
   </TabItem>
 </Tabs>
 
+### 在APP内嵌H5页面中集成
+
+在APP内嵌H5页面中集成与Web站点集成基本一致，Web JS SDK会自动判断桥的情况进行数据的转发。
+
 ### 在微信公众号H5/小程序内嵌页中集成
 
-在微信公众号H5/小程序内嵌页中集成与Web站点集成基本一致，参考CDN/npm的集成方式进行集成，然后在`init`方法中传入主体小程序的`appId`字段即可：
+在微信公众号H5/小程序内嵌页中集成与Web站点集成基本一致，参考CDN/npm的集成方式进行集成。
+
+若需要与小程序数据进行用户打通时，在`init`方法中传入主体小程序的`accountId`和`appId`字段，SDK会自动处理小程序数据。
 
 ```js
 gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
@@ -272,9 +278,8 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1）**若填写的`accountId`和`appId`与主体小程序的一致，则视为与小程序打通信息，SDK会自动处理。<br/>
-**2）**如需与小程序打通用户信息，**请确保您的SDK为全量集成或已按需注册了`小程序内嵌页打通插件（gioEmbeddedAdapter）`**。<br/>
-**3）**打通时，WebJS SDK会自动继承由主体小程序`getGioInfo`中的用户信息字段。可支持的字段详情见[小程序与h5打通数据](/docs/miniprogram/3.8/commonlyApi#8与h5打通用户数据getgioinfo)。
+**1）**如需与小程序打通用户信息，**请确保您的SDK为全量集成或已按需注册了`小程序内嵌页打通插件（gioEmbeddedAdapter）`**。<br/>
+**2）**打通时，WebJS SDK会自动继承由主体小程序`getGioInfo`中的用户信息字段。可支持的字段详情见[小程序与h5打通数据](/docs/miniprogram/3.8/commonlyApi#8与h5打通用户数据getgioinfo)。
 
 ### 其他
 
