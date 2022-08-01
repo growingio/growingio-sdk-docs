@@ -66,7 +66,7 @@ gdp('init', accountId, datasourceId, { autotrack: false });
 
 ### enableIdMapping
 
-GrowingIO提供id mapping的功能，默认情况是关闭的，如需开启可如下配置。（若不了解请勿配置）
+多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/webjs/3.3/api#1设置登录用户id)
 
 ```js
 gdp('init', accountId, datasourceId, { enableIdMapping: true });

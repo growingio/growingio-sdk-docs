@@ -74,7 +74,17 @@ gdp('setOption', 'scheme', 'http' | 'https');
 
 ## 功能接口
 
-### 1、设置访问用户Id(identify)
+### 1、注册插件(registerPlugins)
+
+默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/webjs/3.8/integrate)和[插件列表](/docs/webjs/3.8/plugins)进行插件的注册。
+
+#### 示例
+
+```js
+gdp('registerPlugins', [xxxx, xxxxx]);
+```
+
+### 2、设置访问用户Id(identify)
 
 访问用户Id，又称为匿名用户Id/设备Id，在微信小程序调用[登录开放接口](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) `wx.login` 之后，获取 openId，调用 identify 设置访问用户Id。
 
@@ -89,7 +99,7 @@ gdp('identify', openId);
 **2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**
 **3）该方法仅可合法地调用一次，多次调用无效。**
 
-### 2、获取访问用户Id(getDeviceId)
+### 3、获取访问用户Id(getDeviceId)
 
 访问用户Id，又称为匿名用户Id/设备Id，SDK 自动生成用来定义唯一设备。如果没有初始化SDK 或者关闭采集开关可能返回值为空。
 
@@ -103,7 +113,7 @@ gdp('getDeviceId');
 **1）SDK版本 >=3.8.0-rc.7 支持。**<br/>
 **2）开启forceLogin的小程序无需调用此方法，因为您在identify的时候已经获取了openId做为访问用户Id。如果您一定要使用它，请在identify之后调用。**
 
-### 3、设置登录用户Id(setUserId)
+### 4、设置登录用户Id(setUserId)
 
 当用户登录之后调用`setUserId`，设置登录用户ID
 
@@ -127,7 +137,7 @@ gdp('setUserId', '112333445', 'phone');
 **1）SDK版本 >=3.3.0 支持 ID-MAPPING，且需初始化时设置 `enableIdMapping` 为 `true`**<br/>
 **2）该方法可多次调用，设同一值时无效。**
 
-### 4、清除登录用户Id(clearUserId)
+### 5、清除登录用户Id(clearUserId)
 
 当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID
 
@@ -137,7 +147,7 @@ gdp('setUserId', '112333445', 'phone');
 gdp('clearUserId');
 ```
 
-### 5、埋点事件(track)
+### 6、埋点事件(track)
 
 发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
 
@@ -166,7 +176,7 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 **<font color="#FC5F3A">注意：</font>**<br/>
 **`properties`中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
-### 6、登录用户属性(setUserAttributes)
+### 7、登录用户属性(setUserAttributes)
 
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
 
@@ -249,7 +259,7 @@ my.getAuthUserInfo({
 **1）用户属性中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**<br/>
 **2）该方法可多次调用，已有相同属性名的值会被覆盖，多次结果在服务端进行合并。**
 
-### 7、地理位置(setLocation)
+### 8、地理位置(setLocation)
 
 当用户访问至某一功能需要位置信息时，可以手动调用小程序Api获取地理位置接口，赋值给SDK，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。同时您需要配置项目的`permission`字段[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)和对应的权限申请[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.getLocation.html)。
 
@@ -274,7 +284,7 @@ wx.getLocation({
 });
 ```
 
-### 8、与h5打通用户数据(getGioInfo)
+### 9、与h5打通用户数据(getGioInfo)
 
 当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下数据。
 
@@ -352,7 +362,7 @@ Page({
 
 **H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/3.8/integrate#在微信公众号h5小程序内嵌页中集成)**
 
-### 9、设置埋点通用属性(setGeneralProps)
+### 10、设置埋点通用属性(setGeneralProps)
 
 有时我们埋点需要大量业务属性，但需要每次调用时都进行传值，这给埋点工作带来了一定程度上的无用重复劳动。现在我们可以通过`setGeneralProps`来给后续产生的所有的埋点事件加上通用属性，从而免去一些不必要的重复劳动。也可以利用该方法为所有的埋点事件进行动态设置通用属性。
 
@@ -376,7 +386,7 @@ gdp('setGeneralProps', {
 **3）该方法可多次调用，已有相同属性名的值会被覆盖。**<br/>
 **4）埋点通用属性仅限小程序中共享使用，内嵌页无法共享通用属性。**
 
-### 10、清除埋点通用属性(clearGeneralProps)
+### 11、清除埋点通用属性(clearGeneralProps)
 
 SDK提供了清除通用属性的方法，调用该方法移除指定字段或所有通用埋点属性。
 
@@ -390,7 +400,7 @@ gdp('clearGeneralProps');
 
 **<font color="#FC5F3A">注意：</font>SDK版本>=3.8.2支持。**
 
-### 11、获取SDK当前配置(getOption)
+### 12、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
@@ -403,7 +413,7 @@ gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
 gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
 ```
 
-### 12、获取SDK当前版本
+### 13、获取SDK当前版本
 
 在代码或开发者工具中直接调用 `global.gioSDKVersion` 即可获取。
 
@@ -500,7 +510,7 @@ Page({
 
 ## 半自动埋点浏览事件
 
-用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#4埋点事件track)在平台上进行事件类型和变量的预定义。
+用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)在平台上进行事件类型和变量的预定义。
 
 #### 曝光逻辑
 
@@ -516,7 +526,7 @@ Page({
 
 1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
 
-2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#4埋点事件track)。
+2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)。
 
 1）传值方式一：使用变量传值
 

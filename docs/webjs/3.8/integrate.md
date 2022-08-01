@@ -279,7 +279,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）**如需与小程序打通用户信息，**请确保您的SDK为全量集成或已按需注册了`小程序内嵌页打通插件（gioEmbeddedAdapter）`**。<br/>
-**2）**打通时，WebJS SDK会自动继承由主体小程序`getGioInfo`中的用户信息字段。可支持的字段详情见[小程序与h5打通数据](/docs/miniprogram/3.8/commonlyApi#8与h5打通用户数据getgioinfo)。
+**2）**打通时，WebJS SDK会自动继承由主体小程序`getGioInfo`中的用户信息字段。可支持的字段详情见[小程序与h5打通数据](/docs/miniprogram/3.8/commonlyApi#9与h5打通用户数据getgioinfo)。
 
 ### 其他
 

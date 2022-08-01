@@ -58,7 +58,7 @@ title: 初始化配置
 
 ### enableIdMapping
 
-默认情况下，SDK关闭多用户身份上报。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[参考文档](/docs/webjs/3.8/commonlyApi#2设置登录用户idsetuserid)
+多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/webjs/3.8/commonlyApi#2设置登录用户idsetuserid)
 
 ### ignoreFields
 
@@ -66,7 +66,6 @@ title: 初始化配置
 您可以指定一项或多项字段，但均需为数组格式进行设置。支持字段如下：
 
 ```text
-language          语言
 screenHeight      屏幕高度
 screenWidth       屏幕宽度
 ```
@@ -78,7 +77,6 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
   version: '1.0.1',
   debug: true,
   ignoreFields: [
-    'language',
     'screenHeight',
     'screenWidth'
   ],
