@@ -19,7 +19,7 @@ title: 插件
 CDN集成引入：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioCompress.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioCompress.js"></script>
 ```
 
 npm集成引入：
@@ -46,7 +46,7 @@ import gioCompress from "gio-webjs-sdk-cdp/plugins/gioCompress.js"
 CDN集成引入：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioEventAutoTracking.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioEventAutoTracking.js"></script>
 ```
 
 npm集成引入：
@@ -67,7 +67,7 @@ import gioEventAutoTracking from "gio-webjs-sdk-cdp/plugins/gioEventAutoTracking
 CDN集成引入：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioWebCircle.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioWebCircle.js"></script>
 ```
 
 npm集成引入：
@@ -85,7 +85,7 @@ import gioWebCircle from "gio-webjs-sdk-cdp/plugins/gioWebCircle.js"
 CDN集成引入：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioEmbeddedAdapter.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioEmbeddedAdapter.js"></script>
 ```
 
 npm集成引入：
@@ -103,7 +103,7 @@ import gioEmbeddedAdapter from "gio-webjs-sdk-cdp/plugins/gioEmbeddedAdapter.js"
 CDN集成引入：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioHybridAdapter.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridAdapter.js"></script>
 ```
 
 npm集成引入：
@@ -121,7 +121,7 @@ import gioHybridAdapter from "gio-webjs-sdk-cdp/plugins/gioHybridAdapter.js"
 CDN集成引入：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioHybridCircle.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioHybridCircle.js"></script>
 ```
 
 npm集成引入：
@@ -139,7 +139,7 @@ import gioHybridCircle from "gio-webjs-sdk-cdp/plugins/gioHybridCircle.js"
 CDN集成引入：
 
 ```html
-<script src="https://assets.giocdn.com/sdk/web/cdp/iifeplugins/gioImpressionTracking.js"></script>
+<script src="https://assets.giocdn.com/sdk/web/cdp/plugins/gioImpressionTracking.js"></script>
 ```
 
 npm集成引入：

@@ -123,9 +123,9 @@ SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等�
 
 ```html
 <!-- GrowingIO Analytics WebJS SDK Plugins -->
-<script src="https://assets.giocdn.com/sdk/webjs/cdp/iifeplugins/gioEventAutoTracking.js"></script>
-<script src="https://assets.giocdn.com/sdk/webjs/cdp/iifeplugins/gioWebCircle.js"></script>
-<script src="https://assets.giocdn.com/sdk/webjs/cdp/iifeplugins/gioImpressionTracking.js"></script>
+<script src="https://assets.giocdn.com/sdk/webjs/cdp/plugins/gioEventAutoTracking.js"></script>
+<script src="https://assets.giocdn.com/sdk/webjs/cdp/plugins/gioWebCircle.js"></script>
+<script src="https://assets.giocdn.com/sdk/webjs/cdp/plugins/gioImpressionTracking.js"></script>
 <!-- GrowingIO Analytics WebJS SDK version 3.8 -->
 <!-- Copyright 2015-2022 GrowingIO, Inc. More info available at http://www.growingio.com -->
 <script type='text/javascript'>
@@ -146,9 +146,7 @@ SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等�
 
 如果您希望不受CDN（内容分发网络）影响，请下载SDK至本地集成，并修改上述集成代码中的SDK CDN地址为您本地的相对地址。
 
-WebJS SDK (仅含埋点)下载：<https://assets.giocdn.com/sdk/webjs/cdp/gdp.js>
-
-WebJS SDK (含全量插件)下载：<https://assets.giocdn.com/sdk/webjs/cdp/gdp-full.js>
+WebJS SDK 下载：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
@@ -258,13 +256,13 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）**使用 npm 集成的初始化代码应尽可能书写在所有js代码执行的最前面。<br/>
-**2）**使用 npm 集成的SDK默认使用 **es6** 语法，如果您有兼容IE11等只支持es5语法浏览器的需求，请选择es5版本的SDK集成（'gio-webjs-sdk-cdp/gdp-full-es5'）或者在打包工具中进行相应的语法转换配置。
+**2）**使用 npm 集成的SDK默认使用 **es6** 语法，如果您有兼容IE11等只支持es5语法浏览器的需求，请选择es5版本的SDK集成（'gdp-es5 或 gdp-full-es5'）或者在您的打包工具中直接进行相应的语法转换配置。
   </TabItem>
 </Tabs>
 
 ### 在微信公众号H5/小程序内嵌页中集成
 
-在微信公众号H5/小程序内嵌页中集成与Web站点集成基本一致，参考CDN/npm的集成方式进行集成，然后在`init`方法中传入`appId`字段即可：
+在微信公众号H5/小程序内嵌页中集成与Web站点集成基本一致，参考CDN/npm的集成方式进行集成，然后在`init`方法中传入主体小程序的`appId`字段即可：
 
 ```js
 gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
