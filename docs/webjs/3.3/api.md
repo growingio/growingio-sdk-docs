@@ -112,6 +112,9 @@ gdp('setUserId', '112333445');
 gdp('setUserId', '112333445', 'phone');
 ```
 
+**<font color="#FC5F3A">注意：</font>**<br/>
+**设置`userKey`时需SDK初始化时设置 `enableIdMapping` 为 `true`，否则不生效。**
+
 #### 2、清除登录用户id
 
 当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID。
