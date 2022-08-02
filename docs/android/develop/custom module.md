@@ -28,11 +28,11 @@ title: 自定义模块
 ```groovy
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:3.4.0'
+	implementation 'com.growingio.android:autotracker-core:3.4.1'
 
 	//注解解析
-	implementation 'com.growingio.android:annotation:3.4.0'
-	annotationProcessor 'com.growingio.android:compiler:3.4.0'
+	implementation 'com.growingio.android:annotation:3.4.1'
+	annotationProcessor 'com.growingio.android:compiler:3.4.1'
 }
 ```
 

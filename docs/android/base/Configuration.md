@@ -187,7 +187,7 @@ APP 内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web J
 
 ```groovy
 ...
-implementation "com.growingio.android:hybrid:3.4.0"
+implementation "com.growingio.android:hybrid:3.4.1"
 ```
 
 SDK初始化时需要注册 hybrid 模块：
@@ -221,7 +221,7 @@ GrowingTracker.get().bridgeWebView(webview)
 项目需要添加[国内移动安全联盟MSA](http://www.msa-alliance.cn/col.jsp?id=120)下的sdk包，和 OAID模块依赖(和 SDK 依赖同级)：
 ```groovy
 ...
-implementation "com.growingio.android:oaid:3.4.0"
+implementation "com.growingio.android:oaid:3.4.1"
 ```
 SDK初始化时注册Oaid模块：
 
@@ -335,7 +335,7 @@ GrowingTracker.startWithConfiguration(this,
 项目需要添加加密模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:encoder:3.4.0"
+implementation "com.growingio.android:encoder:3.4.1"
 ```
 
 SDK初始化时注册加密模块：
@@ -369,7 +369,7 @@ GrowingTracker.startWithConfiguration(this,
 项目需要添加Protobuf模块依赖(和 SDK 依赖同级)
 ```groovy
 ...
-implementation "com.growingio.android:protobuf:3.4.0"
+implementation "com.growingio.android:protobuf:3.4.1"
 ```
 
 SDK初始化时注册Protobuf模块：
@@ -422,8 +422,8 @@ GrowingTracker.startWithConfiguration(this,
 
 ```groovy
 ...
-implementation "com.growingio.android:analytics-ga:3.4.0" //Google Analytics 3
-implementation "com.growingio.android:analytics-fa:3.4.0" //Firebase Analytics
+implementation "com.growingio.android:analytics-ga:3.4.1" //Google Analytics 3
+implementation "com.growingio.android:analytics-fa:3.4.1" //Firebase Analytics
 ```
 
 SDK初始化时需要添加对应的 analytics 模块。
