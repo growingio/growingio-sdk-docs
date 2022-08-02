@@ -241,7 +241,7 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 ```
 
 :::caution 免责声明警告：
-SDK会自动忽略 `type="password"` 类型的input框的内容采集，但如果input中包含敏感信息，请不要添加该标记，可能会明文暴露这些信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
+SDK会自动忽略 `type="password"` 类型的input框的内容采集；如果类型为`text`的input中包含敏感信息，请不要添加该标记，可能会明文暴露这些信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
 :::
 
 **<font color="#FC5F3A">注意：</font>**<br/>
