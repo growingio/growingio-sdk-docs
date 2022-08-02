@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 #### 1、加载SDK
 
-快应用原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.2/gio-quickapp.js><br/>
+快应用原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.3/gio-quickapp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -64,7 +64,7 @@ const gdp = require('./utils/gio/gio-quickapp.js').default;
 
 #### 1、引入插件文件
 
-插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.2/plugins.zip><br/>
+插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.3/plugins.zip><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 下载功能插件，解压放入 plugins 目录中，并在app.js/main.js中引入。
