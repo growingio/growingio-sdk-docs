@@ -52,7 +52,7 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.0'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.1'
     }
 }
 
@@ -81,7 +81,7 @@ apply plugin: 'com.android.application'
 dependencies {
     ...
     //GrowingIO 无埋点 SDK
-    implementation 'com.growingio.android:autotracker-cdp:3.4.0'
+    implementation 'com.growingio.android:autotracker-cdp:3.4.1'
 }
 
 ```
@@ -217,7 +217,7 @@ class MyApplication : Application() {
 dependencies {
 
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.4.0'
+    implementation 'com.growingio.android:tracker-cdp:3.4.1'
 }
 ```
 
