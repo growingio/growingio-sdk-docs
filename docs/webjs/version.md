@@ -2,7 +2,10 @@
 title: 版本记录
 sidebar_position: 0
 ---
+## V3.3.15 - 2022/07/26
 
+* 修复在Safari浏览器上报数据时概率出现乱码字符的问题
+  
 ## V3.3.14 - 2022/06/21
 
 * 修复session过期补发page事件，timestamp取值错误的问题；
