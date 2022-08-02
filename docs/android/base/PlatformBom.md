@@ -74,7 +74,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation 'com.growingio.android:autotracker-bom:3.4.1'
+  implementation 'com.growingio.android:autotracker-bom:1.0.0.0'
 
   implementation 'com.growingio.android:autotracker-cdp'
 }
@@ -90,8 +90,8 @@ dependencies {
 
 | 产品服务     | 依赖库 | 最新版本 | 
 | :------- | :------:   | ---:|
-| [GrowingIO Android BoM](https://github.com/growingio/growingio-sdk-android-autotracker) | com.growingio.android:autotracker-bom | 3.4.0 |
-| [无埋点代码库](https://github.com/growingio/growingio-sdk-android-autotracker) | com.growingio.android:autotracker-cdp | 3.4.0 |
-| [埋点代码库](https://github.com/growingio/growingio-sdk-android-autotracker) | com.growingio.android:tracker-cdp | 3.4.0 |
+| [GrowingIO Android BoM](https://github.com/growingio/growingio-sdk-android-autotracker) | com.growingio.android:autotracker-bom | 1.0.0.0 |
+| [无埋点代码库](https://github.com/growingio/growingio-sdk-android-autotracker) | com.growingio.android:autotracker-cdp | 3.4.1 |
+| [埋点代码库](https://github.com/growingio/growingio-sdk-android-autotracker) | com.growingio.android:tracker-cdp | 3.4.1 |
 | [Giokit 辅助工具](https://github.com/growingio/giokit-android) | com.growingio.giokit:giokit <br/> com.growingio.giokit:giokit-no-op | 1.2.0 |
 | [2to3升级工具](https://github.com/growingio/growingio-sdk-android-autotracker-upgrade) | com.growingio.android:autotracker-upgrade-2to3-cdp | 1.2.0 |
