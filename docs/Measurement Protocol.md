@@ -33,7 +33,7 @@ sidebar_position: 13
 | appVersion | string | ✅ | APP版本，用户配置 |
 | appName | string | ✅ | APP名称 |
 | language | string | ✅ | 语言, ISO 639标准 <br />Android：ISO 639 alpha-2 or alpha-3<br />iOS：ISO 639-1 code if available, or the ISO 639-2 code if not<br /> > ISO 639 不是一个稳定的标准 |
-| latitude | double | ❌ | 维度 |
+| latitude | double | ❌ | 纬度 |
 | longitude | double | ❌ | 经度 |
 | sdkVersion | string | ✅ | SDK 版本号 |
 | userKey | string | ❌ | 登录用户ID的类型(用户自定义) |
@@ -105,7 +105,7 @@ sidebar_position: 13
 | query | string | ❌ | Hybrid页面url 中的query |
 | resourceItem | 对象 ResourceItem | ❌ | 物品模型（CDP 特有）|
 
-** ResourceItem **
+**ResourceItem**
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
 | :---- | ---- | ---- | ---- |
@@ -114,6 +114,7 @@ sidebar_position: 13
 | attributes | Map<string, string> | ❌ | 物品模型属性 |
 
 示例
+
 ```json
 {
   "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
@@ -251,7 +252,7 @@ sidebar_position: 13
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
 | :---- | ---- | ---- | ---- |
 | path | string | ✅ | 页面名 |
-| orientation | string | ✅ | 屏幕显示方向:<br/> **PORTRAIT 竖向 ** <br/>** LANDSCAPE 横向 ** |
+| orientation | string | ✅ | 屏幕显示方向:<br/> **PORTRAIT 竖向** <br/>**LANDSCAPE 横向** |
 | title | string | ❌ | 页面标题 |
 | referralPage | string | ❌ | 来源页面 |
 | query | string | ❌ | Hybrid页面url 中的query |
@@ -350,7 +351,6 @@ sidebar_position: 13
 * 服务器请求地址
 * 请求Body
 
-
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
 | :---- | ---- | ---- | ---- |
 | path | string | ✅ | 元素所属页面名 |
@@ -362,6 +362,7 @@ sidebar_position: 13
 | query | string | ❌ | Hybrid页面url 中的query |
 
 示例
+
 ```json
 {
   "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
@@ -411,6 +412,7 @@ sidebar_position: 13
 | query | string | ❌ | Hybrid页面url 中的query |
 
 示例
+
 ```json
 {
   "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
