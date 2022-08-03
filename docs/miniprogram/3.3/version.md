@@ -2,8 +2,12 @@
 title: 版本记录
 sidebar_position: 0
 ---
+### V3.3.10 - 2022/08/03
+
+* 修复`onShareAppMessage、onShareTimeline`异步返回自定义参数时SDK取值错误导致分享链接错误的问题。
 
 ### V3.3.9 - 2022/06/14
+
 * 修复页面参数分享时丢失的问题
 
 ### V3.3.8 - 2022/06/08
@@ -11,7 +15,7 @@ sidebar_position: 0
 * 增加getDeviceId接口
 * 修复APP_CLOSED事件丢失sessionId的问题
 * 修复 CUSTOM 事件path、query获取逻辑错误问题
-* 修复触发补发 VISIT 事件可能丢失 query 问题 
+* 修复触发补发 VISIT 事件可能丢失 query 问题
 
 ### V3.3.7 - 2022/05/25
 
