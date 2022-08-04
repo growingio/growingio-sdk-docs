@@ -183,8 +183,8 @@ gdp('setGeneralProps', { 'currency': 'RMB' });
 
 let index = 0;
 gdp('setGeneralProps', {
-  'nick_name_var': 'Mike'
-  'index_var': () => index++,
+  'nick_name_var': 'Mike',
+  'index_var': () => index++
 });
 ```
 
