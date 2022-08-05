@@ -53,7 +53,7 @@ $global.GioComponent({ ... });
 Component({ ... });
 ```
 
-2）检查页面中是否调用`getLocation`方法，存在则[参考文档](/docs/miniprogram/3.8/commonlyApi#6地理位置setlocation)修改为`setLocation`。如果没有则跳过此步骤。
+2）检查页面中是否调用`getLocation`方法，存在则[参考文档](/docs/miniprogram/3.8/commonlyApi#8地理位置setlocation)修改为`setLocation`。如果没有则跳过此步骤。
 
 ### 其他
 

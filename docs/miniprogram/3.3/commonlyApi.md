@@ -358,7 +358,7 @@ Page({
 
 **如果您的H5页面需要获取更多小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
 
-**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/base#小程序内嵌页使用集成)**
+**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/3.3/integrate#小程序内嵌页使用集成)**
 
 ## 采集标记
 

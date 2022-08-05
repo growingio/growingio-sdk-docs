@@ -7,6 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 在初始化过程中，SDK 会接收一个由用户传入的默认配置 `Configuration`，配置相关说明如下表：
+
 ### 配置表格
 
 | Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 | 版本 |
@@ -29,34 +30,55 @@ import TabItem from '@theme/TabItem';
 ### 详细说明
 
 #### 1. **projectId**， **urlScheme**， **setDataSourceId**， **setDataCollectionServerHost**
+
 urlScheme 是 SDK 3.3.0 及其之后必传参数，其他参数为必传参数，若不清楚具体数值请询问相关服务端对接的开发同事。
+
 #### 2. **debugEnabled**
-默认不开启，开启后会输出 SDK Log 日志。  
+
+默认不开启，开启后会输出 SDK Log 日志。
+
 #### 3. **cellularDataLimit**
+
 为每日在 4G/5G 环境下的流量限制，默认为 10M。WIFI 环境下则不计流量。
+
 #### 4. **dataUploadInterval**
+
 上报间隔，GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间 15 秒的情况下向服务器发送事件包（最大 500 条事件）。
+
 #### 5. **sessionInterval**
+
 设置会话后台留存时长，指当前会话在应用进入后台后的最大留存时间，默认为 30 秒。另外，其他情况下也会重新生成一个新的会话，如设置用户 ID 等核心信息，重新打开数据收集等。
+
 #### 6. **dataCollectionEnabled**
+
 数据收集，当数据收集关闭时，SDK 将不会再获取设备信息，也不会产生事件和上报事件。
+
 #### 7. **excludeEvent**
+
 > SDK 版本>=3.2.1
 
 事件过滤，默认情况下，事件不会进行过滤。但若不想采集某些事件可以在此设置。事件类型可以参考 [GrowingEventFilter](https://github.com/growingio/growingio-sdk-ios-autotracker/blob/master/GrowingTrackerCore/Public/GrowingEventFilter.h)
+
 #### 8. **ignoreField**
+
 > SDK 版本>=3.2.1
 
 事件属性过滤，事件属性指上报事件中携带的属性参数。可过滤事件属性可以参考 [GrowingFieldsIgnore](https://github.com/growingio/growingio-sdk-ios-autotracker/blob/master/GrowingTrackerCore/Public/GrowingFieldsIgnore.h)
+
 #### 9. **impressionScale**
+
 > 无埋点 SDK 独有
 
 曝光比例，与曝光事件结合使用。曝光比例是指当一个曝光的 View 出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为 1 则表示要整个 View 都出现在屏幕中。
+
 #### 10. **idMappingEnabled**
+
 > SDK 版本>=3.3.0
 
 多用户身份上报，是否支持多用户身份上报，默认不支持。与 API 接口`setLoginUserId:userKey:`对应，开启时，userKey 会在每次上报数据时携带；关闭时，接口与`setLoginUserId`作用相同
+
 #### 11. **urlScheme**
+
 > SDK 版本>=3.3.0
 
 自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该 [URL Scheme](/docs/ios/base#添加-url-scheme)
@@ -68,7 +90,9 @@ urlScheme 是 SDK 3.3.0 及其之后必传参数，其他参数为必传参数�
 设置为 YES 时，网络传输内容将会加密，不会明文显示。
 
 ## 常用可选模块配置
+
 ### 1. **禁用IDFA**
+
 :::info
 采集 SDK 版本 >=3.2.0
 
@@ -102,13 +126,13 @@ pod 'GrowingAnalytics/DISABLE_IDFA'
 
 项目中无需其他额外设置
 
-
-
 ### 2.**内嵌H5页面数据采集配置**
 
 APP 内嵌 H5 页面如果也需要进行数据采集，H5 页面需要集成 Web JS SDK
 
-若需要 H5 页面 Web JS SDK 采集的数据与 APP 中 GIO SDK 采集的用户等数据打通，请参考内置 [Hybrid 打通插件](/docs/webjs/plugins#6-hybrid打通插件)。
+若需要 H5 页面 Web JS SDK 采集的数据与 APP 中 GIO SDK 采集的用户等数据打通，请参考：<br/>
+WebJS 3.3：[APP内嵌H5页面使用集成](/docs/webjs/3.3/integrate#app内嵌h5页面使用集成)<br/>
+WebJS 3.8：[Hybrid内嵌页打通插件](/docs/webjs/3.8/plugins#hybrid内嵌页打通插件giohybridadapter)
 
 如果 APP 集成的是[**无埋点 SDK**](/docs/ios/base#无埋点sdk集成)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
 
@@ -124,6 +148,7 @@ APP 内嵌 H5 页面如果也需要进行数据采集，H5 页面需要集成 We
 ```c
 pod 'GrowingAnalytics/Hybrid'
 ```
+
 打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
 
   </TabItem>
@@ -139,6 +164,7 @@ pod 'GrowingAnalytics/Hybrid'
 项目中无需其他额外设置
 
 ### 3. **SDK 数据存储与发送使用 Protobuf 格式**
+
 :::info
 采集 SDK 版本 >=3.3.3
 
@@ -149,11 +175,12 @@ pod 'GrowingAnalytics/Hybrid'
 使用 Protobuf 格式保存和上传事件数据，集成即生效；默认为 JSON 格式，2 种格式互不兼容，迁移将导致 APP 本地数据库内未上传的事件数据丢失，后续产生的新数据不受影响
 :::
 
-
 在您的 Podfile 文件中添加
+
 ```c
 pod 'GrowingAnalytics/Protobuf'
 ```
+
 打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
 
 项目中无需其他额外设置
