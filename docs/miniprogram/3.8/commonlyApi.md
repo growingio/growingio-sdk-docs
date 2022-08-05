@@ -504,7 +504,9 @@ Page({
 
 #### 曝光逻辑
 
-只要从**屏幕不可见区域到可见区域**即计为一次曝光并上报。
+**always：**只要从**屏幕不可见区域到可见区域**即可计为一次曝光并上报。(默认值)
+
+**once：**从**屏幕不可见区域到可见区域**曝光只上报一次。
 
 #### 支持范围
 
@@ -559,6 +561,19 @@ Page({
 gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id', id: '12345' });
 ```
 
+3、如果您的曝光事件只需要统计一次或触发过于频繁导致曝光事件量过大，可以在节点上添加`data-gio-imp-type="once"`并设置唯一的`节点id`，来使得曝光逻辑变为单次上报。
+
+```html
+<view
+  class="growing_collect_imp"
+  id="imp_1"
+  data-gio-imp-type="once"
+  data-gio-imp-track="imp_picture_var"
+>
+  监听的元素，必须有内容或额外样式来让节点有实际大小
+</view>
+```
+
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）此功能需要注册半自动埋点浏览插件使用。参考[半自动埋点浏览插件](plugins#半自动埋点浏览插件gioimpressiontracking)。**
 
@@ -569,6 +584,8 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 **4）请勿在同一页面中大量标记半自动埋点浏览事件（如商品列表），可能会严重影响页面性能导致卡顿。**
 
 **5）快手小程序在同一个页面中只能监听相同大小节点的第一个，即如果在同一个页面中需要监听多个节点时，要保证节点大小不一致，否则曝光事件会全部匹配到第一个相同大小的节点。**
+
+**6）`data-gio-imp-type`配置项SDK版本>=3.8.5支持。
 
 ## 其他
 
