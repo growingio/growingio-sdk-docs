@@ -1,5 +1,5 @@
 ---
-slug: /minprogram/3.8
+slug: /miniprogram/3.8
 title: 小程序 SDK（3.8）
 ---
 
