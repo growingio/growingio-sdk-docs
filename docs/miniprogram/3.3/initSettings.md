@@ -63,11 +63,11 @@ title: 初始化配置
 
 ### enableIdMapping
 
-默认情况下，SDK关闭多用户身份上报开关。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[使用详情](/docs/miniprogram/3.3/commonlyApi#2%E3%80%81%E8%AE%BE%E7%BD%AE%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7idsetuserid)
+多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.8/commonlyApi#4设置登录用户idsetuserid)
 
 ### extraParams
 
-在H5页面与小程序的用户信息保持一致时，上报数据除[默认字段](/docs/webjs/plugins#打通成功效果-1)以外，可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
+在H5页面与小程序的用户信息保持一致时，上报数据除默认字段以外，可增加以下小程序SDK字段。使用时可通过调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)。
 
 ```text
 appChannel        小程序的场景值

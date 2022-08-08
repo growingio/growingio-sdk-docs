@@ -23,7 +23,7 @@ title: 初始化配置
 | `host`                | `string`       | `-`        | 数据上报的服务端地址(无需携带协议头)**(必填)**    |
 | `ignoreFields`        | `string[]`     | `-`        | 上报忽略字段                                   |
 | `remax`               | `any`          | `-`        | 使用 Remax 开发时使用的实例，参考集成示例代码     |
-| `scheme`              | `http / https` | `https`    | 网络协议                                       |
+| `scheme`              | `http/https` | `https`    | 网络协议                                       |
 | `subpackage`          | `boolean`      | `false`    | 标记当前当前项目是否为分包                     |
 | `taro`                | `any`          | `-`        | 使用 Taro 开发时使用的实例，参考集成示例代码     |
 | `taroVue`             | `any`          | `-`        | 使用 Taro3vue2/3 开发时使用的实例，参考集成示例代码|
@@ -80,7 +80,7 @@ title: 初始化配置
 
 ### enableIdMapping
 
-默认情况下，SDK关闭多用户身份上报。开启多用户身份上报后，同一访问用户对应不同身份的登录用户ID会被识别为一个用户，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.8/commonlyApi#2设置登录用户idsetuserid)
+多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.3/commonlyApi#设置登录用户idsetuserid)
 
 ### extraParams
 
@@ -151,7 +151,7 @@ gdp('identify', openId);
 
 :::caution 注意：
 如果打开小程序后没有调用 `wx.login` 获取 openId 或 unionId，没有调用 `identify` 方法，但是小程序SDK配置了 `forceLogin` 为 `true`，会导致SDK不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们技术支持。<br/>
-如果小程序首页中使用的是内嵌H5页面，需要使用[内嵌H5用户数据打通](/docs/miniprogram/3.8/commonlyApi#8与h5打通用户数据getgioinfo)功能。该场景下，需要在小程序冷启动时，使用开屏页(在小程序首页 page 前增加一个 page 开屏页)。
+如果小程序首页中使用的是内嵌H5页面，需要使用[内嵌H5用户数据打通](/docs/miniprogram/3.8/commonlyApi#9与h5打通用户数据getgioinfo)功能。该场景下，需要在小程序冷启动时，使用开屏页(在小程序首页 page 前增加一个 page 开屏页)。
 :::
 
 ### ignoreFields
