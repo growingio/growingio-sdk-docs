@@ -5,8 +5,9 @@ title: 版本记录
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
-### V3.8.5 - 2022/08/07
+### V3.8.5 - 2022/08/09
 
+* 🐞 修复运营弹窗埋点存储过多导致存储可能超限和校验次数过多的问题。
 * 🎉 新增半自动浏览事件单次发送逻辑。
 
 ### V3.8.4 - 2022/08/05

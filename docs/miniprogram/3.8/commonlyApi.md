@@ -569,6 +569,7 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
   id="imp_1"
   data-gio-imp-type="once"
   data-gio-imp-track="imp_picture_var"
+  ...
 >
   监听的元素，必须有内容或额外样式来让节点有实际大小
 </view>
@@ -585,7 +586,7 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 
 **5）快手小程序在同一个页面中只能监听相同大小节点的第一个，即如果在同一个页面中需要监听多个节点时，要保证节点大小不一致，否则曝光事件会全部匹配到第一个相同大小的节点。**
 
-**6）`data-gio-imp-type`配置项SDK版本>=3.8.5支持。
+**6）`data-gio-imp-type`配置项SDK版本>=3.8.5支持。**
 
 ## 其他
 
