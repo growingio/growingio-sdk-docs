@@ -9,8 +9,7 @@ sidebar_position: 0
 ### Bug Fixes
 
 * findPage getTitle() 增加非空判断 ([#164](https://github.com/growingio/growingio-sdk-android-autotracker/issues/164))
-* 确保获取 AndroidId 方法只被调用一次  ([#165](https://github.com/growingio/growingio-sdk-android-autotracker/issues/165))
-* 修复注入 lambda 方法时参数未对齐的问题 ([#9](https://github.com/growingio/growingio-sdk-android-plugin/pull/9))
+* 确保获取AndroidId方法只被调用一次  ([#165](https://github.com/growingio/growingio-sdk-android-autotracker/issues/165))
 ------
 ## V3.4.0
  >[release-3.4.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.0) 日期: 2022-07-07 
