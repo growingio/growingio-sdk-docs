@@ -9,14 +9,14 @@ sidebar_position: 4
 
 ### 接口列表
 
-```javascript
+```js
 // 启动接口
 gdp('init', accountId, datasourceId[, options]);
 gdp('send');
 
 // 动态配置接口
 gdp('setTrackerScheme', 'http');
-gdp('setTrackHost', 'Your ServerHost');
+gdp('setTrackerHost', 'Your ServerHost');
 gdp('enableDebug', true);
 gdp('setDataCollect', true);
 gdp('setAutoTrack', true);
@@ -35,7 +35,7 @@ gdp('setUserAttributes', properties, callback);
 
 用户初始化SDK，初始化配置等，接口原型如下
 
-```
+```js
 gdp('init', accountId, datasourceId[, options]);
 ```
 
@@ -43,7 +43,7 @@ gdp('init', accountId, datasourceId[, options]);
 
 正式运行SDK，可以开始发送数据，接口原型如下
 
-```
+```js
 gdp('send');
 ```
 
@@ -60,7 +60,7 @@ gdp('setTrackerScheme', 'http');
 #### 2、修改数据上报地址(host)
 
 ```js
-gdp('setTrackHost', 'Your ServerHost');
+gdp('setTrackerHost', 'Your ServerHost');
 ```
 
 #### 3、开启/关闭调试模式(debug)
