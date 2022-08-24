@@ -417,7 +417,7 @@ SDK初始化时注册Protobuf模块：
 GrowingAutotracker.startWithConfiguration(this,
                 new CdpAutotrackConfiguration("accountId", "urlScheme")
                 ...
-                .addPreloadComponent(new ProtobufLibraryGioModule()));
+                .addPreloadComponent(new ProtobufLibraryModule()));
 ```
 
 </TabItem>
@@ -429,7 +429,7 @@ GrowingAutotracker.startWithConfiguration(this,
 GrowingTracker.startWithConfiguration(this,
                 new CdpTrackConfiguration("accountId", "urlScheme")
                 ...
-                .addPreloadComponent(new ProtobufLibraryGioModule()));
+                .addPreloadComponent(new ProtobufLibraryModule()));
 ```
 
 </TabItem>
