@@ -163,6 +163,26 @@ pod 'GrowingAnalytics/Hybrid'
 
 项目中无需其他额外设置
 
+:::tip
+**1. H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通规则：**
+- 两者 accountId 一致时，H5与APP打通，此时H5页面上采集的数据仅由 APP 中 GIO SDK 发送
+- 两者 accountId 不一致时，H5页面上采集的数据同时由 Web JS SDK 和 APP 中 GIO SDK发送
+满足打通设置时，H5 页面调用 setUserID，cleanUserID 会调用 APP 的 setLoginUserID，cleanUserID。
+**2. 打通成功效果**
+
+当触发了打通规则，实现打通设置后，h5内嵌页采集的数据经 APP 中 GIO SDK发送数据。以下字段变化如下：<br/>
+deviceId: 使用原生App的deviceId<br/>
+sessionId: 使用原生App的sessionId<br/>
+gioId: 使用原生App的gioId <br/>
+userId: 使用原生App的userId<br/>
+userKey: 使用原生App的userKey<br/>
+dataSourceId: 使用原生App的dataSourceId<br/>
+platform: 使用原生App的platform<br/>
+domain: 使用H5页面的域名<br/>
+
+用户行为与采集数据描述：用户点击APP内嵌H5页面，由APP原生页面进入H5页面，H5页面集成的采集SDK会把采集的数据转发给APP集成的SDK，再进行上报；H5页面的行为数据中的以上用户信息字段会用APP SDK 采集的用户信息，实现H5页面用户与APP用户信息关联。
+:::
+
 ### 3. **SDK 数据存储与发送使用 Protobuf 格式**
 
 :::info

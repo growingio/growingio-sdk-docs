@@ -360,6 +360,28 @@ Page({
 
 **H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/3.3/integrate#小程序内嵌页使用集成)**
 
+:::tip
+1. 内嵌页Web JS SDK采集的数据与小程序SDK采集数据打通，从url的query中获取来自小程序的gioInfo, 打通规则如下：
+- 两者 accountId 和 appId 一致且h5地址中含 gioInfo 时，可实现两边的数据打通，
+- 两者 accountId 或 appId 不一致或h5地址中不含 gioInfo时，无法实现两边数据打通
+在打通后内嵌页中的setUserId，cleanUserID 将无效，只能使用从小程序继承来的登录用户ID。若小程序中改变了userId，但内嵌页并没有更新，则内嵌页的数据将无最新userId。
+
+2. 打通成功效果
+
+当触发了打通规则后，h5内嵌页中发数时以下字段的变化如下：<br/>
+deviceId: 使用小程序的deviceId<br/>
+sessionId: 使用小程序的sessionId<br/>
+gioId: 使用小程序的gioId （web版本>=3.3.11，小程序版本>=3.2.5）<br/>
+userId: 使用小程序的userId<br/>
+userKey: 使用小程序的userKey<br/>
+dataSourceId: 使用小程序的dataSourceId<br/>
+platform: 使用小程序的platform<br/>
+domain: 使用小程序的appId<br/>
+除了以上字段，如果小程序SDK初始化时设置 extraParams ，其中的参数也会在内嵌H5页面数据中进行上报<br/>
+
+用户行为与采集数据描述：用户点击小程序内嵌H5页面，由小程序原生页面进入H5页面，会把采集数据中的以上字段信息带入H5页面；这样 Web JS SDK 就知道 H5页面的用户是小程序的用户，后续发送的采集数据就会使用小程序的用户信息
+:::
+
 ## 采集标记
 
 ### 1、采集标记
