@@ -5,6 +5,10 @@ sidebar_position: 0
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
+## V3.8.0-rc.4 - 2022/09/06
+
+* 🐞 修复未加载加密插件且初始化设置compress为true时数据无法上报的问题。
+
 ## V3.8.0-rc.3 - 2022/09/05
 
 * 🐞 修复esid字段取值不会累加的问题。
