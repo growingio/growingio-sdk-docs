@@ -5,6 +5,12 @@ sidebar_position: 0
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
+## V3.8.0-rc.3 - 2022/09/05
+
+* 🐞 修复esid字段取值不会累加的问题。
+* 🐞 修复hybrid集成时userId传值类型错误会导致崩溃的问题。
+* 🐞 修复file协议下scheme取值错误导致上报失败的问题。
+
 ## V3.8.0-rc.2 - 2022/08/16
 
 * 🐞 修复部分工具类方法在极端取值时运行错误的问题。
