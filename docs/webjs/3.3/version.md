@@ -3,6 +3,11 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V3.3.17 - 2022/09/08
+
+* 🐞 修复hybrid设置userId和userKey为数字时崩溃的问题。
+* 🐞 修复userId和userKey可能取值错误的问题。
+
 ## V3.3.16 - 2022/08/16
 
 * 🐞 修复部分动态修改配置接口失效的问题。
