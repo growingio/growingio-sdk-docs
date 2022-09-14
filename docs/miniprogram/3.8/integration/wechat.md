@@ -40,7 +40,7 @@ import TabItem from '@theme/TabItem';
 
 #### 1、加载SDK
 
-微信原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.6/gio-wechat.js><br/>
+微信原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.7/gio-wechat.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -74,7 +74,7 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
 
 ##### 方式一：下载本地集成
 
-uniapp框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.6/gio-uniapp.js><br/>
+uniapp框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.7/gio-uniapp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -165,7 +165,7 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
 
 ##### 方式一：下载本地集成
 
-Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.6/gio-taro.js><br/>
+Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.7/gio-taro.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -320,7 +320,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 ##### 方式一：下载本地集成
 
-Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.6/gio-chameleon.js><br/>
+Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.7/gio-chameleon.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -367,7 +367,7 @@ const gdp = require('./utils/gio/gio-chameleon.js').default;
 
 ##### 方式一：下载本地集成
 
-WePY2框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.6/gio-wepy.js><br/>
+WePY2框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.7/gio-wepy.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -412,7 +412,7 @@ const gdp = require('./utils/gio/gio-wepy.js').default;
 
 ##### 方式一：下载本地集成
 
-Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.6/gio-remax.js><br/>
+Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.7/gio-remax.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -467,7 +467,7 @@ const gdp = require('./utils/gio/gio-remax.js').default;
 
 ##### 方式一：下载本地集成
 
-插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.6/plugins.zip><br/>
+插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.7/plugins.zip><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 下载功能插件，解压放入 plugins 目录中，并在app.js/main.js中引入。

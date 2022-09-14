@@ -5,6 +5,11 @@ title: 版本记录
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
+### V3.8.7 - 2022/09/14
+
+* 🐞 修复`onShareTimeline`返回取值错误的问题。
+* 🎉 新增`onAddToFavorites`预置埋点事件支持。
+
 ### V3.8.6 - 2022/09/06
 
 * 🐞 修复esid总是为1不累加的问题。
