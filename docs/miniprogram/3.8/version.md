@@ -8,7 +8,7 @@ SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-minipr
 ### V3.8.7 - 2022/09/14
 
 * 🐞 修复`onShareTimeline`返回取值错误的问题。
-* 🎉 新增`onAddToFavorites`预置埋点事件支持。
+* 🎉 新增微信小程序、QQ小程序`onAddToFavorites`预置埋点事件支持。
 
 ### V3.8.6 - 2022/09/06
 
