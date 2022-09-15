@@ -5,6 +5,10 @@ sidebar_position: 0
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
+## V3.8.0-rc.5 - 2022/09/15
+
+* 🎉 新增事件时长统计功能。[参考文档](/docs/webjs/3.8/commonlyApi#事件时长统计)
+
 ## V3.8.0-rc.4 - 2022/09/06
 
 * 🐞 修复未加载加密插件且初始化设置compress为true时数据无法上报的问题。
