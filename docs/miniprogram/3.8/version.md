@@ -28,7 +28,7 @@ SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-minipr
 
 ### V3.8.3 - 2022/08/01
 
-* 🐞 修复`onShareAppMessage、onShareTimeline`异步返回自定义参数时SDK取值错误导致分享链接错误的问题。
+* 🐞 修复`onShareAppMessage`异步返回自定义参数时SDK取值错误导致分享链接错误的问题。
 
 ### V3.8.2 - 2022/07/20
 
