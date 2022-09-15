@@ -122,20 +122,33 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
 
 ### followShare
 
-默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
+默认情况下，SDK开启跟踪分享数据功能，自动上报分享事件，详细的进行转发分享的统计，来帮助您更好的分析。
 
 在分享回调方法中，添加 `contentType` 和 `contentId` 字段。例：
 
 ```js
-onShareAppMessage: function() {
+onShareAppMessage: function(result) {
   return {
-    title: '自定义转发标题',
+    ...result,
+    title: '自定义分享标题',
     path: 'xxxxxx',
+    contentType: '内容类型',
+    contentId: '内容ID'
+  }
+},
+
+onShareTimeline: function(result) {
+  return {
+    ...result,
+    title: '自定义朋友圈标题',
+    query: 'xxxxxx',
     contentType: '内容类型',
     contentId: '内容ID'
   }
 }
 ```
+
+如您不需要此功能，可以通过指定 followShare: false 来关闭跟踪分享，分享事件将不再上报。
 
 ### forceLogin
 
