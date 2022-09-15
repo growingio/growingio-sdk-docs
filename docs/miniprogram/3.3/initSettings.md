@@ -35,35 +35,75 @@ title: 初始化配置
 默认情况下，SDK开启无埋点采集。如果您不需要无埋点采集，可以通过指定 `autotrack: false` 进行关闭。
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
+```js
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    autotrack: false,
+    ...其他配置项
+});
+```
 
 ### comAsPage
 
 有时您可能会使用 Component 来代替 Page 进行代码编写。此时你需要设置 `comAsPage: true` 来将 Component 当做 Page 处理发送 PAGE 事件。
-
+```js
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    comAsPage: true,
+    ...其他配置项
+});
+```
 **注意：一旦开启此配置，小程序中所有Component组件都会被视为一个页面，组件生命周期 attached 一旦触发即发送PAGE事件。**
 
 ### compress
 
 默认情况下，SDK关闭数据加密，如果您认为不足够安全，可以通过指定 `compress: true` 打开数据加密。
-
+```js
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    compress: true,
+    ...其他配置项
+});
+```
 **注意：开启加密后抓包工具无法抓取上报的明文数据，但debug模式开启时开发者工具中仍能看到未加密的上报数据。**
 
 ### dataCollect
 
 默认情况下，SDK开启数据采集。如果您需要初始化时暂时关闭数据采集，可以通过指定 `dataCollect: false` 关闭。 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
+```js
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    dataCollect: false,
+    ...其他配置项
+});
+```
 
 ### debug
 
-在开发时设置 debug: true，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
+在开发时设置 `debug: true`，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
+```js
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    debug: true,
+    ...其他配置项
+});
+```
 
 ### enableEventStore
 
 默认情况下，SDK关闭事件存储功能。此功能在小程序storage中存储SDK已上报的事件数据，用于运营SDK消费，**隔天清空**。<br/>
+```js
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    enableEventStore: true,
+    ...其他配置项
+});
+```
 **如果您不使用运营SDK可忽略此配置；如果您使用运营SDK，必须开启此配置项，设置为 `true`。**
 
 ### enableIdMapping
 
 多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.8/commonlyApi#4设置登录用户idsetuserid)
+```js
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    enableIdMapping: true,
+    ...其他配置项
+});
+```
 
 ### extraParams
 
@@ -84,7 +124,7 @@ screenWidth       屏幕宽度
 参考示例：
 
 ```js
-gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
   version: '1.0.1',
   debug: true,
   extraParams: [
@@ -107,6 +147,13 @@ gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
 
 默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
 
+```js
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    followShare: false,
+    ...其他配置项
+});
+```
+
 SDK采集时会优先获取分享回调方法中的`path`, `title`, `contentType`, `contentId`，若没有配置则会获取页面信息。例：
 
 ```js
@@ -123,6 +170,13 @@ onShareAppMessage: function() {
 ### forceLogin
 
 默认情况下，SDK会自动生成访问用户ID来标识访问用户。如您需要使用 openId 或 unionId 标识访问用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
+
+```js
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    forceLogin: true,
+    ...其他配置项
+});
+```
 
 强制登录模式适用于打开小程序就调用 `wx.login` ([参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)) 获取 openId 或 unionId 的小程序。 开启此模式并调用 `identity` 上报 openid 或 unionId，会将上报的 Id 作为访问用户ID，有助于访问用户数据关联性分析。
 
@@ -142,10 +196,13 @@ gdp('identify', openId);
 默认情况下，SDK不会自动在小程序启动时获取用户的地理位置信息。如您需要在小程序打开时获取用户地理位置信息，可以通过指定 `autoGet: true` 来打开此功能。同时您需要配置项目的`permission`字段[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)和对应的权限申请[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.getLocation.html)。
 
 ```js
-getLocation: {          //是否自动获取用户的地理位置信息, 并设置获取方式
-   autoGet: true,       //默认不自动获取
-   type: 'wgs84'        //支持 wgs84（标准坐标系） | gcj02（火星坐标系）, 默认wgs84
-},
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
+    getLocation: {          //是否自动获取用户的地理位置信息, 并设置获取方式
+      autoGet: true,       //默认不自动获取
+      type: 'wgs84'        //支持 wgs84（标准坐标系） | gcj02（火星坐标系）, 默认wgs84
+    },
+    ...其他配置项
+});
 ```
 
 如果您默认没有打开此功能，当用户访问至某一功能需要位置信息时，可以手动调用获取地理位置接口，自动补发VISIT，采集位置信息，提升用户地域分布的分析准确性。
