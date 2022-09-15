@@ -27,7 +27,9 @@ title: 初始化配置
 默认情况下，SDK不加载无埋点插件。当在 SDK 中加载了无埋点插件时会自动开启无埋点采集。如果您不需要无埋点采集，可以通过以下两种方式进行关闭：
 
 **方式一：**使用 **含** 无埋点插件的SDK，初始化设置 `autotrack: false` 进行关闭。
-
+```js
+gdp('init', accountId, datasourceId, { autotrack: false });
+```
 **方式二：**移除无埋点插件即可。
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
@@ -39,6 +41,9 @@ title: 初始化配置
 默认情况下，SDK不加载加密插件。当在 SDK 中加载了加密插件时自动开启数据加密。如果您不需要数据加密，可以通过以下两种方式进行关闭：
 
 **方式一：**使用 **含** 加密插件的SDK，初始化设置 `compress: false` 进行关闭。
+```js
+gdp('init', accountId, datasourceId, { compress: false });
+```
 
 **方式二：**移除加密插件即可。
 
@@ -47,18 +52,25 @@ title: 初始化配置
 ### dataCollect
 
 默认情况下，SDK开启数据采集。如果您需要初始化时暂时关闭数据采集，可以通过指定 `dataCollect: false` 关闭。 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
-
+```js
+gdp('init', accountId, datasourceId, { dataCollect: false });
+```
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#2开启关闭数据采集datacollect)
 
 ### debug
 
 在开发时设置 `debug: true`，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
-
+```js
+gdp('init', accountId, datasourceId, { debug: true });
+```
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#3开启关闭调试模式debug)
 
 ### enableIdMapping
 
 多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/webjs/3.8/commonlyApi#2设置登录用户idsetuserid)
+```js
+gdp('init', accountId, datasourceId, { enableIdMapping: true });
+```
 
 ### ignoreFields
 
@@ -86,5 +98,7 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
 ### scheme
 
 默认情况下，网络协议为自动获取`location.protocol`，但考虑到在开发的过程中可能需要使用`http`等指定协议的测试服务，因此我们提供了临时修改网络协议的配置。
-
+```js
+gdp('init', accountId, datasourceId, { scheme: 'http' });
+```
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#4修改请求协议scheme)
