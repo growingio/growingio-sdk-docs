@@ -3,6 +3,20 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V1.0.8 - 2022/09/07
+
+[v1.0.8](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.0.8)
+
+* feat: 实时埋点展示新 UI
+* feat: 新增通用设置页面，用于管理本地数据
+
+## V1.0.7 - 2022/08/12
+
+[v1.0.7](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.0.7)
+
+* feat: 添加事件库、网络请求列表删除全部功能
+* feat: 新增埋点事件实时展示功能
+
 ## V1.0.6 - 2022/06/09
 
 [v1.0.6](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.0.6)

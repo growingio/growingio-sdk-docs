@@ -48,6 +48,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
  <img alt="网络请求" src={useBaseUrl('/img/giokit/ios/sdkhttp.gif')}/>
 
+### 实时事件
+
+点击后打开实时事件监控，App 中触发的所有埋点事件实时展示，点击界面弹出的事件页签可进入事件库列表查看对应事件数据。再次点击关闭监控。
+
+ <img alt="实时事件" src={useBaseUrl('/img/giokit/ios/sdkrealtime.gif')}/>
+
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
