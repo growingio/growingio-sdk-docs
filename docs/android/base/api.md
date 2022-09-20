@@ -27,6 +27,12 @@ GrowingAutotracker.get().trackViewImpression(view,"buttonShowed")
 GrowingAutotracker.get().stopTrackViewImpression(view)
 GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
 GrowingAutotracker.get().bridgeWebView(webview)
+GrowingAutotracker.get().trackTimerStart("timer")
+GrowingAutotracker.get().trackTimerPause("timerId")
+GrowingAutotracker.get().trackTimerResume("timerId")
+GrowingAutotracker.get().trackTimerEnd("timerId")
+GrowingAutotracker.get().removeTimer("timerId")
+GrowingAutotracker.get().clearTrackTimer()
 
 GrowingAutotracker.get().registerComponent(module)
 ```
@@ -44,6 +50,12 @@ GrowingTracker.get().setLoginUserAttributes(new HashMap<>())
 GrowingTracker.get().setVisitorAttributes(new HashMap<>())
 GrowingTracker.get().getDeviceId()
 GrowingTracker.get().bridgeWebView(webview)
+GrowingTracker.get().trackTimerStart("timer")
+GrowingTracker.get().trackTimerPause("timerId")
+GrowingTracker.get().trackTimerResume("timerId")
+GrowingTracker.get().trackTimerEnd("timerId")
+GrowingTracker.get().removeTimer("timerId")
+GrowingTracker.get().clearTrackTimer()
 
 GrowingTracker.get().registerComponent(module)
 ```
@@ -488,7 +500,129 @@ GrowingAutotracker.get().bridgeWebView(webview)
 GrowingTracker.get().bridgeWebView(webview)
 ```
 
-### 16. 注册模块组件 
+### 15. 初始事件化计时器
+`trackTimerStart`<br/>
+初始化一个事件计时器，参数为计时事件的事件名称，返回值为该事件计时器唯一标识
+#### 参数说明
+| 参数        | 参数类型 | 说明                 |
+| :---------- | :------- | :------------------- |
+| `eventName` | `String` | 事件名称，事件标识符 |
+
+#### 返回值说明
+| 参数      | 参数类型 | 说明           |
+| :-------- | :------- | :------------- |
+| `timerId` | `String` | 计时器唯一标识 |
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+String timerId = GrowingAutotracker.get().trackTimerStart('eventName')
+```
+
+**埋点SDK示例代码：**
+```java
+String timerId = GrowingTracker.get().trackTimerStart('eventName')
+```
+
+### 16. 暂停事件计时器
+`trackTimerPause`<br/>
+暂停事件计时器，参数为trackTimerStart返回的唯一标识
+#### 参数说明
+| 参数      | 参数类型 | 说明           |
+| :-------- | :------- | :------------- |
+| `timerId` | `String` | 计时器唯一标识 |
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().trackTimerPause('timerId')
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().trackTimerPause('timerId')
+```
+
+### 17. 恢复事件计时器
+`trackTimerResume`<br/>
+恢复事件计时器，参数为trackTimerStart返回的唯一标识
+#### 参数说明
+| 参数      | 参数类型 | 说明           |
+| :-------- | :------- | :------------- |
+| `timerId` | `String` | 计时器唯一标识 |
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().trackTimerResume('timerId')
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().trackTimerResume('timerId')
+```
+
+### 18. 停止事件计时器
+`trackTimerEnd`<br/>
+停止事件计时器，参数为trackTimerStart返回的唯一标识
+#### 参数说明
+| 参数         | 参数类型              | 说明                       |
+| :----------- | :-------------------- | :------------------------- |
+| `timerId`    | `String`              | 计时器唯一标识             |
+| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息 |
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().trackTimerEnd('timerId')
+GrowingAutotracker.get().trackTimerEnd('timerId', new HashMap<>())
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().trackTimerEnd('timerId')
+GrowingTracker.get().trackTimerEnd('timerId', new HashMap<>())
+```
+
+### 19. 删除事件计时器
+`removeTimer`<br/>
+删除事件计时器，参数为trackTimerStart返回的唯一标识
+#### 参数说明
+| 参数      | 参数类型 | 说明           |
+| :-------- | :------- | :------------- |
+| `timerId` | `String` | 计时器唯一标识 |
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().removeTimer('timerId')
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().removeTimer('timerId')
+```
+
+### 20. 清除事件计时器
+`clearTrackTimer`<br/>
+清除所有已经注册的事件计时器
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().clearTrackTimer()
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().clearTrackTimer()
+```
+
+### 21. 注册模块组件 
 `registerComponent`<br/>
 可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
 #### 参数说明
