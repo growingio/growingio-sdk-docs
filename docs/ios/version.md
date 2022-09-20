@@ -3,6 +3,14 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## [3.4.3](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.2-hotfix.1...3.4.3) (2022-09-20)
+
+
+### Features
+
+* track timer ([be62b64](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/be62b64c8117374abb8129963cfc9a246a72d34c))
+* 废弃 WithAttributesBuilder 相关接口 ([17c1caa](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/17c1caa3f6a4f574c45ed77a46efcee59614ba52))
+------
 ## [3.4.2](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.1...3.4.2) (2022-08-09)
 
 
