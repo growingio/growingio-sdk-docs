@@ -79,8 +79,6 @@ import TabItem from '@theme/TabItem';
 [[GrowingTracker sharedInstance] setLoginUserId:@"112333445" userKey:@"phone"];
 ```
 
-
-
 ### 4. 清除登录用户 ID 
 `cleanLoginUserId`<br/>
 当用户登出之后调用，清除已经设置的登录用户 ID。
@@ -154,8 +152,6 @@ import TabItem from '@theme/TabItem';
 | :----------- | :--------------------------------- | :------------------------- |
 | `eventName`  | `NSString`                         | 事件名，事件标识符         |
 | `attributes` | `NSDictionary<NSString, NSString>` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
-| `itemKey`    | `NSString`                         | 事件发生关联的物品模型 Key（可选，与 itemId 参数一起传入） |
-| `itemId`     | `NSString`                         | 事件发生关联的物品模型 ID （可选，与 itemKey 参数一起传入） |
 
 #### 示例
 
@@ -164,8 +160,12 @@ import TabItem from '@theme/TabItem';
 ```c
 [[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest"];
 [[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" withAttributes:@{@"property": @"value"}];
-[[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" itemKey:@"testKey" itemId:@"testid"];
-[[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" itemKey:@"testkey" itemId:@"testid" withAttributes:@{@"ok":@"false"}];
+
+// 事件属性支持List类型，注意：SDK版本>=3.3.5，CDP平台暂不支持展示
+GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
+[builder setString:@"value" forKey:@"key"];
+[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
+[[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" withAttributes:builder.build];
 ```
 
 **埋点 SDK 示例代码：**
@@ -173,40 +173,12 @@ import TabItem from '@theme/TabItem';
 ```c
 [[GrowingTracker sharedInstance] trackCustomEvent:@"resourceItemTest"];
 [[GrowingTracker sharedInstance] trackCustomEvent:@"resourceItemTest" withAttributes:@{@"property": @"value"}];
-[[GrowingTracker sharedInstance] trackCustomEvent:@"resourceItemTest" itemKey:@"testKey" itemId:@"testid"];
-[[GrowingTracker sharedInstance] trackCustomEvent:@"resourceItemTest" itemKey:@"testkey" itemId:@"testid" withAttributes:@{@"ok":@"false"}];
-```
 
-
-
-`trackCustomEvent:withAttributesBuilder:`<br/>发送一个埋点事件，事件属性支持List类型，注意：**sdk版本>=3.3.5，CDP平台暂不支持展示**；<br/>在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
-
-
-#### 参数说明
-
-| 参数                | 参数类型                   | 说明                       |
-| :------------------ | :------------------------- | :------------------------- |
-| `eventName`         | `NSString`                 | 事件名，事件标识符         |
-| `attributesBuilder` | `GrowingAttributesBuilder` | 事件发生时所伴随的属性信息 |
-
-#### 示例
-
-**无埋点 SDK 示例代码：**
-
-```c
+// 事件属性支持List类型，注意：SDK版本>=3.3.5，CDP平台暂不支持展示
 GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 [builder setString:@"value" forKey:@"key"];
 [builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
-[[GrowingAutotracker sharedInstance] trackCustomEvent:eventName withAttributesBuilder:builder];
-```
-
-**埋点 SDK 示例代码：**
-
-```c
-GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"key"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
-[[GrowingTracker sharedInstance] trackCustomEvent:eventName withAttributesBuilder:builder];
+[[GrowingTracker sharedInstance] trackCustomEvent:@"resourceItemTest" withAttributes:builder.build];
 ```
 
 :::info
@@ -214,8 +186,6 @@ GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
 
 :::
-
-
 
 ### 8. 设置登录用户属性 
 `setLoginUserAttributes`<br/>
@@ -233,42 +203,24 @@ GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 
 ```c
 [[GrowingAutotracker sharedInstance] setLoginUserAttributes:@{@"fff":@"xxx"}];
+
+// 事件属性支持List类型，注意：SDK版本>=3.3.6，CDP平台暂不支持展示
+GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
+[builder setString:@"value" forKey:@"key"];
+[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
+[[GrowingAutotracker sharedInstance] setLoginUserAttributes:builder.build];
 ```
 
 **埋点 SDK 示例代码：**
 
 ```c
 [[GrowingTracker sharedInstance] setLoginUserAttributes:@{@"fff":@"xxx"}];
-```
 
-
-`setLoginUserAttributesWithAttributesBuilder`<br/>以登录用户的身份定义登录用户属性，用于用户信息相关分析，事件属性支持List类型；注意：**sdk版本>=3.3.6，CDP平台暂不支持展示**；<br/>
-
-
-#### 参数说明
-
-| 参数                | 参数类型                   | 说明         |
-| :------------------ | :------------------------- | :----------- |
-| `attributesBuilder` | `GrowingAttributesBuilder` | 用户属性信息 |
-
-#### 示例
-
-**无埋点 SDK 示例代码：**
-
-```c
+// 事件属性支持List类型，注意：SDK版本>=3.3.6，CDP平台暂不支持展示
 GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 [builder setString:@"value" forKey:@"key"];
 [builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
-[[GrowingAutotracker sharedInstance] setLoginUserAttributesWithAttributesBuilder:builder];
-```
-
-**埋点 SDK 示例代码：**
-
-```c
-GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"key"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
-[[GrowingTracker sharedInstance] setLoginUserAttributesWithAttributesBuilder:builder];
+[[GrowingTracker sharedInstance] setLoginUserAttributes:builder.build];
 ```
 
 :::info
