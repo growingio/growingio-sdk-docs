@@ -187,18 +187,16 @@ GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 
 :::
 
-### 8. 事件时长统计
+### 8. 初始化事件计时器
+`trackTimerStart`<br/>初始化事件计时器，调用将返回计时器唯一标识符 `timerId`
 
-#### 初始化事件计时器
-`trackTimerStart`<br/>调用将返回计时器唯一标识符 `timerId`
-
-##### 参数说明
+#### 参数说明
 
 | 参数        | 参数类型   | 说明               |
 | :---------- | :--------- | :----------------- |
 | `eventName` | `NSString` | 事件名，事件标识符 |
 
-##### 示例
+#### 示例
 
 **无埋点 SDK 示例代码：**
 
@@ -212,16 +210,16 @@ NSString *timerId = [[GrowingAutotracker sharedInstance] trackTimerStart:@"event
 NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName"];
 ```
 
-#### 暂停事件计时器
-`trackTimerPause`<br/>
+### 9. 暂停事件计时器
+`trackTimerPause`<br/>暂停当前`timerId`对应事件计时器
 
-##### 参数说明
+#### 参数说明
 
 | 参数      | 参数类型   | 说明                                      |
 | :-------- | :--------- | :---------------------------------------- |
 | `timerId` | `NSString` | 计时器唯一标识符，由`trackTimerStart`返回 |
 
-##### 示例
+#### 示例
 
 **无埋点 SDK 示例代码：**
 
@@ -234,16 +232,16 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 ```c
 [[GrowingTracker sharedInstance] trackTimerPause:timerId];
 ```
-#### 恢复事件计时器
-`trackTimerResume`<br/>
+### 10. 恢复事件计时器
+`trackTimerResume`<br/>恢复当前`timerId`对应事件计时器
 
-##### 参数说明
+#### 参数说明
 
 | 参数      | 参数类型   | 说明                                      |
 | :-------- | :--------- | :---------------------------------------- |
 | `timerId` | `NSString` | 计时器唯一标识符，由`trackTimerStart`返回 |
 
-##### 示例
+#### 示例
 
 **无埋点 SDK 示例代码：**
 
@@ -256,19 +254,19 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 ```c
 [[GrowingTracker sharedInstance] trackTimerResume:timerId];
 ```
-#### 停止事件计时器
+### 11. 停止事件计时器
 `trackTimerEnd`<br/>
 停止事件计时器，并发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在 CDP 平台事件管理界面创建埋点事件以及关联事件属性；<br/>
 如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP 平台版本>= 2.1 ）
 
-##### 参数说明
+#### 参数说明
 
 | 参数      | 参数类型   | 说明                                      |
 | :-------- | :--------- | :---------------------------------------- |
 | `timerId` | `NSString` | 计时器唯一标识符，由`trackTimerStart`返回 |
 | `attributes` | `NSDictionary<NSString, NSString>` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
 
-##### 示例
+#### 示例
 
 **无埋点 SDK 示例代码：**
 
@@ -283,8 +281,46 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 [[GrowingTracker sharedInstance] trackTimerEnd:timerId];
 [[GrowingTracker sharedInstance] trackTimerEnd:timerId withAttributes:@{@"property" : @"value"}];
 ```
+### 12. 删除事件计时器
+`removeTimer`<br/>删除当前`timerId`对应事件计时器
 
-### 9. 设置登录用户属性 
+#### 参数说明
+
+| 参数      | 参数类型   | 说明                                      |
+| :-------- | :--------- | :---------------------------------------- |
+| `timerId` | `NSString` | 计时器唯一标识符，由`trackTimerStart`返回 |
+
+#### 示例
+
+**无埋点 SDK 示例代码：**
+
+```c
+[[GrowingAutotracker sharedInstance] removeTimer:timerId];
+```
+
+**埋点 SDK 示例代码：**
+
+```c
+[[GrowingTracker sharedInstance] removeTimer:timerId];
+```
+### 13. 清除所有事件计时器
+`clearTrackTimer`<br/>
+清除所有事件计时器
+
+#### 示例
+
+**无埋点 SDK 示例代码：**
+
+```c
+[[GrowingAutotracker sharedInstance] clearTrackTimer];
+```
+
+**埋点 SDK 示例代码：**
+
+```c
+[[GrowingTracker sharedInstance] clearTrackTimer];
+```
+### 14. 设置登录用户属性 
 `setLoginUserAttributes`<br/>
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。
 
@@ -327,7 +363,7 @@ GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 :::
 
 
-### 10. 获取设备 ID 
+### 15. 获取设备 ID 
 `getDeviceId`<br/>
 获取设备 id，又称为匿名用户 id，SDK 自动生成用来定义唯一设备。
 如果没有初始化 SDK 或者关闭采集开关可能返回值为 nil，且可能有 IO 操作。
@@ -348,7 +384,7 @@ GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 
 
 
-### 11. 设置页面别名 
+### 16. 设置页面别名 
 `growingPageAlias`<br/>
 给页面设置一个别名。
 
@@ -373,7 +409,7 @@ UIViewController 分类声明的属性，设置需要在 viewDidAppear 执行之
 }
 ```
 
-### 12. 设置忽略的页面 
+### 17. 设置忽略的页面 
 `growingPageIgnorePolicy`<br/>
 被设置忽略的页面，不再触发无埋点的 page 事件。
 
@@ -398,7 +434,7 @@ UIViewController 分类声明的属性，设置需要在 viewDidAppear 执行之
 }
 ```
 
-### 13. 设置忽略的 View 
+### 18. 设置忽略的 View 
 `growingViewIgnorePolicy`<br/>
 被设置忽略的 VIew，不再触发点击、曝光等任何事件，被忽略的 WebView 也不会采集 Hybrid 的事件。
 
@@ -418,7 +454,7 @@ UIView 分类声明的属性，设置需要在 viewDidAppear 执行之前
 view.growingViewIgnorePolicy = GrowingIgnoreSelf;
 ```
 
-### 14.设置采集 View 的曝光事件
+### 19.设置采集 View 的曝光事件
 `growingTrackImpression`<br/>
 当被设置的 View 出现在屏幕内时将触发曝光事件
 
@@ -439,7 +475,7 @@ UIView 分类方法
 [self.view growingTrackImpression:@"eventName" attributes:@{@"property" : @"value"}];
 ```
 
-### 15.停止采集 View 的曝光事件
+### 20.停止采集 View 的曝光事件
 `growingStopTrackImpression`<br/>
 停止采集 View 的曝光事件
 
@@ -455,7 +491,7 @@ UIView 分类方法
 [self.view growingStopTrackImpression];
 ```
 
-### 16.设置 View 唯一 Tag 
+### 21.设置 View 唯一 Tag 
 `growingUniqueTag`<br/>
 给 View 设置唯一的 Tag，方便点击等事件确定唯一的 View，一般用于动态布局的场景
 
