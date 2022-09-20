@@ -203,7 +203,7 @@ WebJS 3.8：[Hybrid内嵌页打通插件](/docs/webjs/3.8/plugins#hybrid内嵌�
 
 ```groovy
 ...
-implementation "com.growingio.android:hybrid:3.4.1"
+implementation "com.growingio.android:hybrid:3.4.2"
 ```
 
 SDK初始化时需要注册 hybrid 模块：
@@ -261,7 +261,7 @@ domain: 使用H5页面的域名<br/>
 
 ```groovy
 ...
-implementation "com.growingio.android:oaid:3.4.1"
+implementation "com.growingio.android:oaid:3.4.2"
 ```
 
 SDK初始化时注册Oaid模块：
@@ -377,7 +377,7 @@ GrowingTracker.startWithConfiguration(this,
 
 ```groovy
 ...
-implementation "com.growingio.android:encoder:3.4.1"
+implementation "com.growingio.android:encoder:3.4.2"
 ```
 
 SDK初始化时注册加密模块：
@@ -415,7 +415,7 @@ GrowingTracker.startWithConfiguration(this,
 
 ```groovy
 ...
-implementation "com.growingio.android:protobuf:3.4.1"
+implementation "com.growingio.android:protobuf:3.4.2"
 ```
 
 SDK初始化时注册Protobuf模块：
@@ -469,8 +469,8 @@ GrowingTracker.startWithConfiguration(this,
 
 ```groovy
 ...
-implementation "com.growingio.android:analytics-ga:3.4.1" //Google Analytics 3
-implementation "com.growingio.android:analytics-fa:3.4.1" //Firebase Analytics
+implementation "com.growingio.android:analytics-ga:3.4.2" //Google Analytics 3
+implementation "com.growingio.android:analytics-fa:3.4.2" //Firebase Analytics
 ```
 
 SDK初始化时需要添加对应的 analytics 模块。
