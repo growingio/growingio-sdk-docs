@@ -15,11 +15,11 @@ sidebar_position: 0
 
 ### Features
 
-- 新增埋点事件计功能相关接口
+- 新增埋点事件计时功能相关接口([#172](https://github.com/growingio/growingio-sdk-android-autotracker/pull/172))
 
 ### Bug Fixes
 
-- 修复sessionId设置时机，避免可能出现空值
+- 修复sessionId设置时机，避免可能出现空值([#171](https://github.com/growingio/growingio-sdk-android-autotracker/pull/171))
 ------
 ## V3.4.1
  >[release-3.4.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.1) 日期: 2022-08-02 
