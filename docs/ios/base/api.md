@@ -47,13 +47,13 @@ import TabItem from '@theme/TabItem';
 **无埋点 SDK 示例代码：**
 
 ```c
-[[GrowingAutotracker sharedInstance] setLoginUserId:@"112333445"];
+[[GrowingAutotracker sharedInstance] setLoginUserId:@"123456"];
 ```
 
 **埋点 SDK 示例代码：**
 
 ```c
-[[GrowingTracker sharedInstance] setLoginUserId:@"112333445"];
+[[GrowingTracker sharedInstance] setLoginUserId:@"123456"];
 ```
 
 
@@ -70,13 +70,13 @@ import TabItem from '@theme/TabItem';
 **无埋点 SDK 示例代码：**
 
 ```c
-[[GrowingAutotracker sharedInstance] setLoginUserId:@"112333445" userKey:@"phone"];
+[[GrowingAutotracker sharedInstance] setLoginUserId:@"13111111111" userKey:@"phone"];
 ```
 
 **埋点 SDK 示例代码：**
 
 ```c
-[[GrowingTracker sharedInstance] setLoginUserId:@"112333445" userKey:@"phone"];
+[[GrowingTracker sharedInstance] setLoginUserId:@"13111111111" userKey:@"phone"];
 ```
 
 ### 4. 清除登录用户 ID 
@@ -158,27 +158,27 @@ import TabItem from '@theme/TabItem';
 **无埋点 SDK 示例代码：**
 
 ```c
-[[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest"];
-[[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" withAttributes:@{@"property": @"value"}];
+[[GrowingAutotracker sharedInstance] trackCustomEvent:@"eventName"];
+[[GrowingAutotracker sharedInstance] trackCustomEvent:@"eventName" withAttributes:@{@"property": @"value"}];
 
 // 事件属性支持List类型，注意：SDK版本>=3.3.5，CDP平台暂不支持展示
 GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"key"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
-[[GrowingAutotracker sharedInstance] trackCustomEvent:@"resourceItemTest" withAttributes:builder.build];
+[builder setString:@"value" forKey:@"property"];
+[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
+[[GrowingAutotracker sharedInstance] trackCustomEvent:@"eventName" withAttributes:builder.build];
 ```
 
 **埋点 SDK 示例代码：**
 
 ```c
-[[GrowingTracker sharedInstance] trackCustomEvent:@"resourceItemTest"];
-[[GrowingTracker sharedInstance] trackCustomEvent:@"resourceItemTest" withAttributes:@{@"property": @"value"}];
+[[GrowingTracker sharedInstance] trackCustomEvent:@"eventName"];
+[[GrowingTracker sharedInstance] trackCustomEvent:@"eventName" withAttributes:@{@"property": @"value"}];
 
 // 事件属性支持List类型，注意：SDK版本>=3.3.5，CDP平台暂不支持展示
 GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"key"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
-[[GrowingTracker sharedInstance] trackCustomEvent:@"resourceItemTest" withAttributes:builder.build];
+[builder setString:@"value" forKey:@"property"];
+[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
+[[GrowingTracker sharedInstance] trackCustomEvent:@"eventName" withAttributes:builder.build];
 ```
 
 :::info
@@ -274,14 +274,14 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 
 ```c
 [[GrowingAutotracker sharedInstance] trackTimerEnd:timerId];
-[[GrowingAutotracker sharedInstance] trackTimerEnd:timerId withAttributes:@{@"key" : @"value"}];
+[[GrowingAutotracker sharedInstance] trackTimerEnd:timerId withAttributes:@{@"property" : @"value"}];
 ```
 
 **埋点 SDK 示例代码：**
 
 ```c
 [[GrowingTracker sharedInstance] trackTimerEnd:timerId];
-[[GrowingTracker sharedInstance] trackTimerEnd:timerId withAttributes:@{@"key" : @"value"}];
+[[GrowingTracker sharedInstance] trackTimerEnd:timerId withAttributes:@{@"property" : @"value"}];
 ```
 
 ### 9. 设置登录用户属性 
@@ -299,24 +299,24 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 **无埋点 SDK 示例代码：**
 
 ```c
-[[GrowingAutotracker sharedInstance] setLoginUserAttributes:@{@"fff":@"xxx"}];
+[[GrowingAutotracker sharedInstance] setLoginUserAttributes:@{@"property" : @"value"}];
 
 // 事件属性支持List类型，注意：SDK版本>=3.3.6，CDP平台暂不支持展示
 GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"key"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
+[builder setString:@"value" forKey:@"property"];
+[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
 [[GrowingAutotracker sharedInstance] setLoginUserAttributes:builder.build];
 ```
 
 **埋点 SDK 示例代码：**
 
 ```c
-[[GrowingTracker sharedInstance] setLoginUserAttributes:@{@"fff":@"xxx"}];
+[[GrowingTracker sharedInstance] setLoginUserAttributes:@{@"property" : @"value"}];
 
 // 事件属性支持List类型，注意：SDK版本>=3.3.6，CDP平台暂不支持展示
 GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"key"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"key2"];
+[builder setString:@"value" forKey:@"property"];
+[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
 [[GrowingTracker sharedInstance] setLoginUserAttributes:builder.build];
 ```
 
@@ -368,7 +368,7 @@ UIViewController 分类声明的属性，设置需要在 viewDidAppear 执行之
 - (void)viewDidLoad {
   [super viewDidLoad];
   ...
-  self.growingPageAlias = @"xxxx";
+  self.growingPageAlias = @"我是一个页面别名";
   ...
 }
 ```
@@ -436,7 +436,7 @@ UIView 分类方法
 **无埋点 SDK 示例代码：**
 
 ```c
-[self.view growingTrackImpression:@"xxxx" attributes:@{@"111":@"222"}];
+[self.view growingTrackImpression:@"eventName" attributes:@{@"property" : @"value"}];
 ```
 
 ### 15.停止采集 View 的曝光事件
