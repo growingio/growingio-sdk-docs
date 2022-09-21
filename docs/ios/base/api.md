@@ -256,9 +256,7 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 ```
 ### 11. 停止事件计时器
 `trackTimerEnd`<br/>
-停止事件计时器，并发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在 CDP 平台事件管理界面创建埋点事件以及关联事件属性；<br/>
-如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP 平台版本>= 2.1 ）
-
+停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
 #### 参数说明
 
 | 参数      | 参数类型   | 说明                                      |
@@ -281,9 +279,21 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 [[GrowingTracker sharedInstance] trackTimerEnd:timerId];
 [[GrowingTracker sharedInstance] trackTimerEnd:timerId withAttributes:@{@"property" : @"value"}];
 ```
-### 12. 删除事件计时器
-`removeTimer`<br/>删除当前`timerId`对应事件计时器
 
+:::caution 注意
+trackTimerEnd时发送CUSTOM事件上报数据：
+* eventName  埋点事件标识符（trackTimerStart传入）
+* attributes 用户自定义事件属性（trackTimerEnd传入）
+* eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
+eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
+eventDuration 变量及其值会自动添加在 attributes 中<br/>
+* eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
+:::
+
+### 12. 删除事件计时器
+`removeTimer`<br/>
+删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
+该接口会将标识为 timerId 的计时器置为空，通常情况下 调用 trackTimerStart 后，需在合适的时机调用 removeTimer，删除对应的计时器。注意移除时不论计时器处于什么状态，都不会发送事件。
 #### 参数说明
 
 | 参数      | 参数类型   | 说明                                      |
@@ -305,8 +315,8 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 ```
 ### 13. 清除所有事件计时器
 `clearTrackTimer`<br/>
-清除所有事件计时器
-
+清除所有已经注册的事件计时器。<br/>
+存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
 #### 示例
 
 **无埋点 SDK 示例代码：**
