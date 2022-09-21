@@ -19,7 +19,7 @@ title: 依赖清单
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.1')
+  implementation platform('com.growingio.android:autotracker-bom:3.4.2')
 
   implementation 'com.growingio.android:tracker-cdp'
   implementation 'com.growingio.android:autotracker-cdp'
@@ -36,9 +36,9 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.1')
+  implementation platform('com.growingio.android:autotracker-bom:3.4.2')
 
-  implementation 'com.growingio.android:autotracker-cdp:3.4.1'
+  implementation 'com.growingio.android:autotracker-cdp:3.4.2'
 }
 ```
 </details>
@@ -74,7 +74,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation 'com.growingio.android:autotracker-bom:1.0.0.0'
+  implementation 'com.growingio.android:autotracker-bom:3.4.2'
 
   implementation 'com.growingio.android:autotracker-cdp'
 }

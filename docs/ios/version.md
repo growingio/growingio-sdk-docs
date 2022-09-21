@@ -2,6 +2,9 @@
 title: 版本记录
 sidebar_position: 0
 ---
+:::warning
+当前版本标识废弃接口/功能，将在下一个大版本中移除（如3.4.x中标识DEPRECATED，在升级到3.5.0时相关接口/功能将被彻底移除）
+:::
 ----
 ## [3.4.3](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.2-hotfix.1...3.4.3) (2022-09-20)
 

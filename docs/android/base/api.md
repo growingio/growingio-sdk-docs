@@ -27,6 +27,12 @@ GrowingAutotracker.get().trackViewImpression(view,"buttonShowed")
 GrowingAutotracker.get().stopTrackViewImpression(view)
 GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
 GrowingAutotracker.get().bridgeWebView(webview)
+GrowingAutotracker.get().trackTimerStart("timer")
+GrowingAutotracker.get().trackTimerPause("timerId")
+GrowingAutotracker.get().trackTimerResume("timerId")
+GrowingAutotracker.get().trackTimerEnd("timerId")
+GrowingAutotracker.get().removeTimer("timerId")
+GrowingAutotracker.get().clearTrackTimer()
 
 GrowingAutotracker.get().registerComponent(module)
 ```
@@ -44,6 +50,12 @@ GrowingTracker.get().setLoginUserAttributes(new HashMap<>())
 GrowingTracker.get().setVisitorAttributes(new HashMap<>())
 GrowingTracker.get().getDeviceId()
 GrowingTracker.get().bridgeWebView(webview)
+GrowingTracker.get().trackTimerStart("timer")
+GrowingTracker.get().trackTimerPause("timerId")
+GrowingTracker.get().trackTimerResume("timerId")
+GrowingTracker.get().trackTimerEnd("timerId")
+GrowingTracker.get().removeTimer("timerId")
+GrowingTracker.get().clearTrackTimer()
 
 GrowingTracker.get().registerComponent(module)
 ```
@@ -52,8 +64,8 @@ GrowingTracker.get().registerComponent(module)
 `setDataCollectionEnabled`<br/>
 打开或关闭数据采集 
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
+| 参数      | 参数类型  | 说明                                                 |
+| :-------- | :-------- | :--------------------------------------------------- |
 | `enabled` | `boolean` | `true`打开数据采集，`false`关闭数据采集，默认 `true` |
 #### 示例
 
@@ -79,10 +91,10 @@ GrowingTracker.get().setDataCollectionEnabled(true)
 如果您的App每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在用户每次升级App版本后初次访问时重新调用setLoginUserId方法
 :::
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
+| 参数      | 参数类型 | 说明                                                            |
+| :-------- | :------- | :-------------------------------------------------------------- |
 | `userId`  | `String` | 长度限制大于0且小于等于1000，如果大于长度1000将只截取前1000长度 |
-| `userKey` | `String` | 适用于ID-MAPPING,可设置 `userId` 的类型,可选填|
+| `userKey` | `String` | 适用于ID-MAPPING,可设置 `userId` 的类型,可选填                  |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -118,9 +130,9 @@ GrowingTracker.get().cleanLoginUserId()
 `setLocation`<br/>
 设置用户当前的地理位置，基于WGS-84坐标
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
-| `latitude` | `double` | 地理坐标点纬度 |
+| 参数        | 参数类型 | 说明           |
+| :---------- | :------- | :------------- |
+| `latitude`  | `double` | 地理坐标点纬度 |
 | `longitude` | `double` | 地理坐标点经度 |
 #### 示例
 
@@ -156,12 +168,12 @@ GrowingTracker.get().cleanLocation()
 发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
 如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP平台版本>= 2.1 ）
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
-| `eventName` | `String` | 事件名，事件标识符 |
+| 参数         | 参数类型              | 说明                                                                                             |
+| :----------- | :-------------------- | :----------------------------------------------------------------------------------------------- |
+| `eventName`  | `String`              | 事件名，事件标识符                                                                               |
 | `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选） |
-| `itemKey` | `String` | 事件发生关联的物品模型Key（可选，与itemId参数一起传入）|
-| `itemId` | `String` | 事件发生关联的物品模型ID（可选，与itemKey参数一起传入）|
+| `itemKey`    | `String`              | 事件发生关联的物品模型Key（可选，与itemId参数一起传入）                                          |
+| `itemId`     | `String`              | 事件发生关联的物品模型ID（可选，与itemKey参数一起传入）                                          |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -244,96 +256,6 @@ GrowingTracker.get().trackCustomEvent("registerSuccess", map, "key", "id")
 </TabItem>
 </Tabs>
 
-<br/>
-
-`trackCustomEventWithAttrBuilder`<br/>
-发送一个埋点事件，事件属性支持List类型，注意：**sdk版本>=3.3.5，CDP平台暂不支持展示**；<br/>
-在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性；<br/>
-
-#### 参数说明
-
-| 参数         | 参数类型          | 说明                                                         |
-| :----------- | :---------------- | :----------------------------------------------------------- |
-| `eventName`  | `String`          | 事件名，事件标识符                                           |
-| `attributes` | `AttributesBuilder` | 事件发生时所伴随的属性信息； |
-#### 示例
-
-**无埋点SDK示例代码：**
-<Tabs
-  groupId="code-language"
-  defaultValue="kotlin"
-  values={[
-    {label: 'java', value: 'java'},
-    {label: 'kotlin', value: 'kotlin'},
-  ]
-}>
-
-<TabItem value="java">
-
-```java
-List<String> list1 = new ArrayList<>();
-list1.add("aaaa");
-list1.add("bbbb");
-List<Integer> list2 = new ArrayList<>();
-list2.add(111);
-list2.add(2233);
-GrowingAutotracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.AttributesBuilder.getAttributesBuilder()
-                        .addAttribute("prod_list", list1)
-                        .addAttribute("prod_num", list2));                                                         
-```
-
-</TabItem>
-<TabItem value="kotlin">
-
-```kotlin
-val list1: List<String> = ArrayList()
-list1.add("aaaa")
-list1.add("bbbb")
-GrowingAutotracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.AttributesBuilder.getAttributesBuilder()
-                    .addAttribute("prod_list", list1))
-```
-
-</TabItem>
-</Tabs>
-
-**埋点SDK示例代码：**
-<Tabs
-  groupId="code-language"
-  defaultValue="kotlin"
-  values={[
-    {label: 'java', value: 'java'},
-    {label: 'kotlin', value: 'kotlin'},
-  ]
-}>
-
-<TabItem value="java">
-
-```java
-List<String> list1 = new ArrayList<>();
-list1.add("aaaa");
-list1.add("bbbb");
-List<Integer> list2 = new ArrayList<>();
-list2.add(111);
-list2.add(2233);
-GrowingTracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.AttributesBuilder.getAttributesBuilder()
-                    .addAttribute("prod_list", list1)
-                    .addAttribute("prod_num", list2));
-```
-
-</TabItem>
-<TabItem value="kotlin">
-
-```kotlin
-val list1: List<String> = ArrayList()
-list1.add("aaaa")
-list1.add("bbbb")
-GrowingTracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.AttributesBuilder.getAttributesBuilder()
-                    .addAttribute("prod_list", list1))
-```
-
-</TabItem>
-</Tabs>
-
 :::info
 
 详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
@@ -346,8 +268,8 @@ GrowingTracker.get().trackCustomEventWithAttrBuilder("order", CustomEvent.Attrib
 在添加发送用户属性事件代码之前，需在CDP平台用户管理界面创建用户属性。
 
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
+| 参数         | 参数类型              | 说明         |
+| :----------- | :-------------------- | :----------- |
 | `attributes` | `Map<String, String>` | 用户属性信息 |
 #### 示例
 
@@ -415,85 +337,6 @@ GrowingTracker.get().setLoginUserAttributes(map)
 </TabItem>
 </Tabs>
 
-`setLoginUserAttributesWithAttrBuilder`<br/>
-发送登录用户属性事件，属性支持List类型，注意：**sdk版本>=3.3.6，CDP平台暂不支持展示**；<br/>
-
-#### 参数说明
-
-| 参数         | 参数类型            | 说明         |
-| :----------- | :------------------ | :----------- |
-| `attributes` | `AttributesBuilder` | 用户属性信息 |
-#### 示例
-
-**无埋点SDK示例代码：**
-<Tabs
-groupId="code-language"
-defaultValue="kotlin"
-values={[
-{label: 'java', value: 'java'},
-{label: 'kotlin', value: 'kotlin'},
-]
-}>
-
-<TabItem value="java">
-
-```java
-List<String> list1 = new ArrayList<>();
-list1.add("tony");
-list1.add("lily");
-GrowingAutotracker.get().setLoginUserAttributesWithAttrBuilder(LoginUserAttributesEvent.AttributesBuilder.getAttributesBuilder()
-                     .addAttribute("user_list", list1)); 
-```
-
-</TabItem>
-<TabItem value="kotlin">
-
-```kotlin
-val list1: List<String> = ArrayList()
-list1.add("tony")
-list1.add("lily")
-GrowingAutotracker.get().setLoginUserAttributesWithAttrBuilder(LoginUserAttributesEvent.AttributesBuilder.getAttributesBuilder()
-                    .addAttribute("user_list", list1));
-```
-
-</TabItem>
-</Tabs>
-
-**埋点SDK示例代码：**
-<Tabs
-groupId="code-language"
-defaultValue="kotlin"
-values={[
-{label: 'java', value: 'java'},
-{label: 'kotlin', value: 'kotlin'},
-]
-}>
-
-<TabItem value="java">
-
-```java
-List<String> list1 = new ArrayList<>();
-list1.add("tony");
-list1.add("lily");
-GrowingTracker.get().setLoginUserAttributesWithAttrBuilder(LoginUserAttributesEvent.AttributesBuilder.getAttributesBuilder()
-                     .addAttribute("user_list", list1)); 
-```
-
-</TabItem>
-<TabItem value="kotlin">
-
-```kotlin
-val list1: List<String> = ArrayList()
-list1.add("tony")
-list1.add("lily")
-GrowingTracker.get().setLoginUserAttributesWithAttrBuilder(LoginUserAttributesEvent.AttributesBuilder.getAttributesBuilder()
-                    .addAttribute("user_list", list1));
-```
-
-</TabItem>
-</Tabs>
-
-
 :::info
 
 详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
@@ -520,10 +363,10 @@ GrowingTracker.get().getDeviceId()
 `setPageAlias`, `setPageAliasX`<br/>
 给页面设置一个别名，建议设置为汉字、字母、数字和下划线的组合。为查看数据方便，请尽量对 iOS 和安卓的同功能页面取不同的名称。
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
-| `page` | `Activity / Fragment` | 需要设置别名的页面对象，必须在`onCreate`生命周期中调用 |
-| `alias` | `String` | 页面别名 |
+| 参数    | 参数类型              | 说明                                                   |
+| :------ | :-------------------- | :----------------------------------------------------- |
+| `page`  | `Activity / Fragment` | 需要设置别名的页面对象，必须在`onCreate`生命周期中调用 |
+| `alias` | `String`              | 页面别名                                               |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -535,10 +378,10 @@ GrowingAutotracker.get().setPageAlias(mActivity, "home")
 `ignorePage`,`ignorePageX`<br/>
 被设置忽略的页面，不再触发无埋点的page事件。
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
-| `page` | `Activity / Fragment` | 需要忽略的页面对象，建议在`onCreate`生命周期中调用 |
-| `policy` | `IgnorePolicy` | 1. `IGNORE_SELF` 只忽略自己 <br />2. `IGNORE_CHILD` 只忽略该页面的子页面 <br />3. `IGNORE_ALL` 忽略所有，包括自己和该页面的子页面 |
+| 参数     | 参数类型              | 说明                                                                                                                              |
+| :------- | :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `page`   | `Activity / Fragment` | 需要忽略的页面对象，建议在`onCreate`生命周期中调用                                                                                |
+| `policy` | `IgnorePolicy`        | 1. `IGNORE_SELF` 只忽略自己 <br />2. `IGNORE_CHILD` 只忽略该页面的子页面 <br />3. `IGNORE_ALL` 忽略所有，包括自己和该页面的子页面 |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -550,9 +393,9 @@ GrowingAutotracker.get().ignorePage(mActivity, IgnorePolicy.IGNORE_ALL)
 `ignoreView`<br/>
 被设置忽略的VIew，不再触发点击、曝光等任何事件，被忽略的WebView也不会采集Hybrid的事件。
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
-| `view` | `View` | 需要忽略的View对象 |
+| 参数     | 参数类型       | 说明                                                                                                                              |
+| :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `view`   | `View`         | 需要忽略的View对象                                                                                                                |
 | `policy` | `IgnorePolicy` | 1. `IGNORE_SELF` 只忽略自己 <br />2. `IGNORE_CHILD` 只忽略该View的子View <br />3. `IGNORE_ALL` 忽略所有，包括自己和该View的子View |
 #### 示例
 
@@ -565,11 +408,11 @@ GrowingAutotracker.get().ignoreView(view, IgnorePolicy.IGNORE_SELF)
 `trackViewImpression`<br/>
 当被设置的View出现在屏幕内时将触发曝光事件
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
-| `view` | `View` | 需要采集曝光事件的View对象 |
-| `impressionEventName` | `String` | 曝光的事件名 |
-| `attributes` | `Map<String, String>` | 曝光的事件属性 |
+| 参数                  | 参数类型              | 说明                       |
+| :-------------------- | :-------------------- | :------------------------- |
+| `view`                | `View`                | 需要采集曝光事件的View对象 |
+| `impressionEventName` | `String`              | 曝光的事件名               |
+| `attributes`          | `Map<String, String>` | 曝光的事件属性             |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -610,9 +453,9 @@ GrowingAutotracker.get().trackViewImpression(view, "buttonShowed", map)
 `stopTrackViewImpression`<br/>
 停止采集View的曝光事件
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
-| `trackedView` | `View` | 需要停止采集曝光事件的View对象 |
+| 参数          | 参数类型 | 说明                           |
+| :------------ | :------- | :----------------------------- |
+| `trackedView` | `View`   | 需要停止采集曝光事件的View对象 |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -624,10 +467,10 @@ GrowingAutotracker.get().stopTrackViewImpression(trackedView)
 `setUniqueTag`<br/>
 给View设置唯一的Tag，方便点击等事件确定唯一的View，一般用于动态布局的场景
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
-| `view` | `View` | 需要设置唯一Tag的View对象 |
-| `tag` | `String` | 需要设置的Tag |
+| 参数   | 参数类型 | 说明                      |
+| :----- | :------- | :------------------------ |
+| `view` | `View`   | 需要设置唯一Tag的View对象 |
+| `tag`  | `String` | 需要设置的Tag             |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -642,9 +485,9 @@ GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
 如果使用无埋点SDK，会自动注入相关代码，不需要调用该方法
 :::
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
-| `view` | `View` | 可选为 `webview`、`ucwebview`和`x5webview` |
+| 参数   | 参数类型 | 说明                                       |
+| :----- | :------- | :----------------------------------------- |
+| `view` | `View`   | 可选为 `webview`、`ucwebview`和`x5webview` |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -657,12 +500,134 @@ GrowingAutotracker.get().bridgeWebView(webview)
 GrowingTracker.get().bridgeWebView(webview)
 ```
 
-### 16. 注册模块组件 
+### 15. 初始事件化计时器
+`trackTimerStart`<br/>
+初始化一个事件计时器，参数为计时事件的事件名称，返回值为该事件计时器唯一标识
+#### 参数说明
+| 参数        | 参数类型 | 说明                 |
+| :---------- | :------- | :------------------- |
+| `eventName` | `String` | 事件名称，事件标识符 |
+
+#### 返回值说明
+| 参数      | 参数类型 | 说明           |
+| :-------- | :------- | :------------- |
+| `timerId` | `String` | 计时器唯一标识 |
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+String timerId = GrowingAutotracker.get().trackTimerStart('eventName')
+```
+
+**埋点SDK示例代码：**
+```java
+String timerId = GrowingTracker.get().trackTimerStart('eventName')
+```
+
+### 16. 暂停事件计时器
+`trackTimerPause`<br/>
+暂停事件计时器，参数为trackTimerStart返回的唯一标识
+#### 参数说明
+| 参数      | 参数类型 | 说明           |
+| :-------- | :------- | :------------- |
+| `timerId` | `String` | 计时器唯一标识 |
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().trackTimerPause('timerId')
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().trackTimerPause('timerId')
+```
+
+### 17. 恢复事件计时器
+`trackTimerResume`<br/>
+恢复事件计时器，参数为trackTimerStart返回的唯一标识
+#### 参数说明
+| 参数      | 参数类型 | 说明           |
+| :-------- | :------- | :------------- |
+| `timerId` | `String` | 计时器唯一标识 |
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().trackTimerResume('timerId')
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().trackTimerResume('timerId')
+```
+
+### 18. 停止事件计时器
+`trackTimerEnd`<br/>
+停止事件计时器，参数为trackTimerStart返回的唯一标识
+#### 参数说明
+| 参数         | 参数类型              | 说明                       |
+| :----------- | :-------------------- | :------------------------- |
+| `timerId`    | `String`              | 计时器唯一标识             |
+| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息 |
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().trackTimerEnd('timerId')
+GrowingAutotracker.get().trackTimerEnd('timerId', new HashMap<>())
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().trackTimerEnd('timerId')
+GrowingTracker.get().trackTimerEnd('timerId', new HashMap<>())
+```
+
+### 19. 删除事件计时器
+`removeTimer`<br/>
+删除事件计时器，参数为trackTimerStart返回的唯一标识
+#### 参数说明
+| 参数      | 参数类型 | 说明           |
+| :-------- | :------- | :------------- |
+| `timerId` | `String` | 计时器唯一标识 |
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().removeTimer('timerId')
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().removeTimer('timerId')
+```
+
+### 20. 清除事件计时器
+`clearTrackTimer`<br/>
+清除所有已经注册的事件计时器
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().clearTrackTimer()
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().clearTrackTimer()
+```
+
+### 21. 注册模块组件 
 `registerComponent`<br/>
 可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
 #### 参数说明
-| 参数     | 参数类型 | 说明 |
-| :-------  | :------   | :---|
+| 参数     | 参数类型           | 说明 |
+| :------- | :----------------- | :--- |
 | `module` | `LibraryGioModule` | 模块 |
 #### 示例
 
