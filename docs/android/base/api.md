@@ -566,7 +566,7 @@ GrowingTracker.get().trackTimerResume('timerId')
 
 ### 18. 停止事件计时器
 `trackTimerEnd`<br/>
-停止事件计时器，参数为trackTimerStart返回的唯一标识
+停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
 #### 参数说明
 | 参数         | 参数类型              | 说明                       |
 | :----------- | :-------------------- | :------------------------- |
@@ -586,10 +586,20 @@ GrowingAutotracker.get().trackTimerEnd('timerId', new HashMap<>())
 GrowingTracker.get().trackTimerEnd('timerId')
 GrowingTracker.get().trackTimerEnd('timerId', new HashMap<>())
 ```
+:::caution 注意
+trackTimerEnd时发送CUSTOM事件上报数据：
+* eventName  埋点事件标识符（trackTimerStart传入）
+* attributes 用户自定义事件属性（trackTimerEnd传入）
+* eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
+eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
+eventDuration 变量及其值会自动添加在 attributes 中<br/>
+* eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
+:::
 
 ### 19. 删除事件计时器
 `removeTimer`<br/>
-删除事件计时器，参数为trackTimerStart返回的唯一标识
+删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
+该接口会将标识为 timerId 的计时器置为空，通常情况下 调用 trackTimerStart 后，需在合适的时机调用 removeTimer，删除对应的计时器。注意移除时不论计时器处于什么状态，都不会发送事件。
 #### 参数说明
 | 参数      | 参数类型 | 说明           |
 | :-------- | :------- | :------------- |
@@ -609,7 +619,8 @@ GrowingTracker.get().removeTimer('timerId')
 
 ### 20. 清除事件计时器
 `clearTrackTimer`<br/>
-清除所有已经注册的事件计时器
+清除所有已经注册的事件计时器。<br/>
+存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
 #### 示例
 
 **无埋点SDK示例代码：**
