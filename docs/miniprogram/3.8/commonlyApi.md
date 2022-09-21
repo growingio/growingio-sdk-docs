@@ -712,13 +712,25 @@ const result = gdp('trackTimerResume', 'timerId123');
 #### 示例
 
 ```js
+const result = gdp('trackTimerEnd', 'timerId123');
+
 const result = gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2: 2 });
 ```
+:::caution 注意
+trackTimerEnd时发送CUSTOM事件上报数据：
+* eventName  埋点事件标识符（trackTimerStart传入）
+* attributes 用户自定义事件属性（trackTimerEnd传入）
+* eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
+eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
+eventDuration 变量及其值会自动添加在 attributes 中<br/>
+* eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
+:::
+
 
 ### 5、删除事件计时器(removeTimer)
 
-删除事件计时器。注意移除时不论计时器处于什么状态，都不会发送事件。
-
+删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
+该接口会将标识为 timerId 的计时器置为空，通常情况下 调用 trackTimerStart 后，需在合适的时机调用 removeTimer，删除对应的计时器。注意移除时不论计时器处于什么状态，都不会发送事件。
 #### 参数说明
 
 | 参数      | 参数类型 | 说明           |
@@ -739,8 +751,8 @@ const result = gdp('removeTimer', 'timerId123');
 
 ### 6、移除所有事件计时器(clearTrackTimer)
 
-移除所有事件计时器。注意移除时不论计时器处于什么状态，都不会发送事件；无返回值。
-
+清除所有已经注册的事件计时器。<br/>
+存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
 #### 示例
 
 ```js

@@ -503,6 +503,8 @@ GrowingTracker.get().bridgeWebView(webview)
 ### 15. 初始事件化计时器
 `trackTimerStart`<br/>
 初始化一个事件计时器，参数为计时事件的事件名称，返回值为该事件计时器唯一标识
+
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
 #### 参数说明
 | 参数        | 参数类型 | 说明                 |
 | :---------- | :------- | :------------------- |
@@ -527,6 +529,8 @@ String timerId = GrowingTracker.get().trackTimerStart('eventName')
 ### 16. 暂停事件计时器
 `trackTimerPause`<br/>
 暂停事件计时器，参数为trackTimerStart返回的唯一标识
+
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
 #### 参数说明
 | 参数      | 参数类型 | 说明           |
 | :-------- | :------- | :------------- |
@@ -547,6 +551,8 @@ GrowingTracker.get().trackTimerPause('timerId')
 ### 17. 恢复事件计时器
 `trackTimerResume`<br/>
 恢复事件计时器，参数为trackTimerStart返回的唯一标识
+
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
 #### 参数说明
 | 参数      | 参数类型 | 说明           |
 | :-------- | :------- | :------------- |
@@ -567,6 +573,8 @@ GrowingTracker.get().trackTimerResume('timerId')
 ### 18. 停止事件计时器
 `trackTimerEnd`<br/>
 停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
+
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
 #### 参数说明
 | 参数         | 参数类型              | 说明                       |
 | :----------- | :-------------------- | :------------------------- |
@@ -600,6 +608,8 @@ eventDuration 变量及其值会自动添加在 attributes 中<br/>
 `removeTimer`<br/>
 删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
 该接口会将标识为 timerId 的计时器置为空，通常情况下 调用 trackTimerStart 后，需在合适的时机调用 removeTimer，删除对应的计时器。注意移除时不论计时器处于什么状态，都不会发送事件。
+
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
 #### 参数说明
 | 参数      | 参数类型 | 说明           |
 | :-------- | :------- | :------------- |
@@ -621,6 +631,8 @@ GrowingTracker.get().removeTimer('timerId')
 `clearTrackTimer`<br/>
 清除所有已经注册的事件计时器。<br/>
 存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
+
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
 #### 示例
 
 **无埋点SDK示例代码：**
