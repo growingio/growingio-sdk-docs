@@ -233,7 +233,7 @@ screenWidth       屏幕宽度
 参考示例：
 
 ```js
-gio('init', '91eaf9b283361032','ae45f95742195faa','wx123456', {
+gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
   version: '1.0.1',
   debug: true,
   ignoreFields: [

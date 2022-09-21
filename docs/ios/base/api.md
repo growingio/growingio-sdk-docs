@@ -296,13 +296,14 @@ trackTimerEnd时发送CUSTOM事件上报数据：
 * eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
 eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
 eventDuration 变量及其值会自动添加在 attributes 中<br/>
+eventDuration 时间统计不会计算后台时间
 * eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
 :::
 
 ### 12. 删除事件计时器
 `removeTimer`<br/>
 删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
-该接口会将标识为 timerId 的计时器置为空，通常情况下 调用 trackTimerStart 后，需在合适的时机调用 removeTimer，删除对应的计时器。注意移除时不论计时器处于什么状态，都不会发送事件。
+该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
 
 **<font color="#FC5F3A">注意：</font>SDK版本>=3.4.3支持。**
 
