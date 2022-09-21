@@ -2,6 +2,10 @@
 title: 版本记录
 sidebar_position: 0
 ---
+### V3.3.11 - 2022/09/21
+
+* 🐞 修复无埋点事件执行返回值错误的问题。
+
 ### V3.3.10 - 2022/08/03
 
 * 🐞 修复`onShareAppMessage、onShareTimeline`异步返回自定义参数时SDK取值错误导致分享链接错误的问题。
