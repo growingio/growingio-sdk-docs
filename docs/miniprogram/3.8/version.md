@@ -7,9 +7,10 @@ SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-minipr
 
 ### V3.8.8 - 2022/09/21
 
+* 🐞 修复加密上报失败重试时事件乱码的问题。
 * 🌟 优化曝光监听逻辑，减少性能影响。
 * 🌟 优化无埋点处理逻辑，减少性能影响。
-* 🎉 新增事件时长统计功能。[参考文档](/docs/webjs/3.8/commonlyApi#事件时长统计)
+* 🎉 新增事件时长统计功能。[参考文档](/docs/miniprogram/3.8/commonlyApi#事件时长统计)
 
 ### V3.8.7 - 2022/09/14
 
