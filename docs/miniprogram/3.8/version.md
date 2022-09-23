@@ -5,8 +5,9 @@ title: 版本记录
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
-### V3.8.8 - 2022/09/21
+### V3.8.8 - 2022/09/22
 
+* 🐞 修复Taro框架中阻止冒泡失效的问题。
 * 🐞 修复加密上报失败重试时事件乱码的问题。
 * 🌟 优化曝光监听逻辑，减少性能影响。
 * 🌟 优化无埋点处理逻辑，减少性能影响。
