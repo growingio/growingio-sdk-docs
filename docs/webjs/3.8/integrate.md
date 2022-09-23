@@ -57,7 +57,7 @@ import TabItem from '@theme/TabItem';
         (e[i].q = e[i].q || []).push(arguments);
       }),
       (t = n.createElement('script'));
-    let s = n.getElementsByTagName('script')[0];
+    s = n.getElementsByTagName('script')[0];
     (t.async = 1), (t.src = c), s.parentNode.insertBefore(t, s);
   })(window, document, 'script', 'https://assets.giocdn.com/sdk/webjs/cdp/gdp-full.js', 'gdp');
 
@@ -96,7 +96,7 @@ SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等�
         (e[i].q = e[i].q || []).push(arguments);
       }),
       (t = n.createElement('script'));
-    let s = n.getElementsByTagName('script')[0];
+    s = n.getElementsByTagName('script')[0];
     (t.async = 1), (t.src = c), s.parentNode.insertBefore(t, s);
   })(window, document, 'script', 'https://assets.giocdn.com/sdk/webjs/cdp/gdp.js', 'gdp');
 
