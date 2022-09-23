@@ -34,7 +34,7 @@ AccountID、DataSourceID 需要在CDP增长平台上新建数据源，或从已�
       (window[namespace].q = window[namespace].q || []).push(arguments)
     };
     script = document.createElement('script');
-    let tag = document.getElementsByTagName('script')[0];
+    tag = document.getElementsByTagName('script')[0];
     script.async = true;
     script.src = src;
     tag.parentNode.insertBefore(script, tag);
