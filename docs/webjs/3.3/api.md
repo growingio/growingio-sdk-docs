@@ -184,3 +184,114 @@ gdp('setUserAttributes', { names: ['tony', 'mike', 'lily'] });
 详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
 
 :::
+
+## 事件时长统计
+
+可以统计上报某一事件的持续时长（例如页面浏览时长）。我们提供了事件计时开始、事件计时暂停、事件计时恢复、事件计时停止、事件计时销毁几个方法提供调用。
+
+**<font color="#FC5F3A">注意：</font>**
+
+**1）页面刷新或SDK重新加载时计时器会自动销毁并不做任何处理，因此您可能会因为用户的刷新和关闭网页等操作丢失此事件的上报。**
+**2）SDK版本>=3.3.18支持。**
+
+### 1、初始化计时器(trackTimerStart)
+
+#### 参数说明
+
+| 参数        | 参数类型   | 说明                           |
+|-------------|------------|:------------------------------|
+| `eventName` | `string`   | 必填；计时结束时上报的事件名称。 |
+| `callback`  | `function` | 必填；用于获取生成计时器Id的回调函数。   |
+
+#### 示例
+
+```js
+gdp('trackTimerStart', 'myEventName', (timerId) => {
+  console.log(timerId);
+});
+```
+
+### 2、暂停事件计时器(trackTimerPause)
+
+#### 参数说明
+
+| 参数      | 参数类型 | 说明           |
+|-----------|----------|:--------------|
+| `timerId` | `string` | 必填；计时器Id。 |
+
+#### 示例
+
+```js
+gdp('trackTimerPause', 'timerId123');
+```
+
+### 3、恢复事件计时器(trackTimerResume)
+
+#### 参数说明
+
+| 参数      | 参数类型 | 说明           |
+|-----------|----------|:--------------|
+| `timerId` | `string` | 必填；计时器Id。 |
+
+#### 示例
+
+```js
+gdp('trackTimerResume', 'timerId123');
+```
+
+### 4、停止事件计时器(trackTimerEnd)
+
+停止事件计时器。注意停止事件计时器时会自动发送事件并删除当前计时器。
+
+#### 参数说明
+
+| 参数         | 参数类型 | 说明                               |
+|--------------|----------|:----------------------------------|
+| `timerId`    | `string` | 必填；计时器Id。                     |
+| `attributes` | `object` | 选填；计时事件结束时上报的事件属性。 |
+
+#### 示例
+
+```js
+gdp('trackTimerEnd', 'timerId123');
+gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2:2 });
+```
+
+:::caution 注意
+trackTimerEnd时发送CUSTOM事件上报数据：
+
+* eventName  埋点事件标识符（trackTimerStart传入）
+* attributes 用户自定义事件属性（trackTimerEnd传入）
+* eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
+eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
+eventDuration 变量及其值会自动添加在 attributes 中<br/>
+* eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
+:::
+
+### 5、删除事件计时器(removeTimer)
+
+删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
+该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
+
+#### 参数说明
+
+| 参数      | 参数类型 | 说明           |
+|-----------|----------|:--------------|
+| `timerId` | `string` | 必填；计时器Id。 |
+
+#### 示例
+
+```js
+gdp('removeTimer', 'timerId123');
+```
+
+### 6、清除所有事件计时器(clearTrackTimer)
+
+清除所有已经注册的事件计时器。<br/>
+存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
+
+#### 示例
+
+```js
+gdp('clearTrackTimer');
+```

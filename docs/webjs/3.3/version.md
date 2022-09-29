@@ -3,6 +3,10 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V3.3.18 - 2022/09/29
+
+* 🎉 新增事件时长统计功能。[参考文档](/docs/webjs/3.3/api#事件时长统计)
+
 ## V3.3.17 - 2022/09/08
 
 * 🐞 修复hybrid设置userId和userKey为数字时崩溃的问题。

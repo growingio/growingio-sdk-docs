@@ -5,7 +5,11 @@ sidebar_position: 0
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
-## V3.8.0-rc.6 - 2022/09/28
+## V3.8.0-rc.7 - 2022/09/29
+
+* 🐞 修复polyfill加载错误导致某些第三方组件库运行异常的问题。
+
+## V3.8.0-rc.6 - 2022/09/27
 
 * 🐞 修复host字符截取错误的问题。
 * 🐞 修复使用es5版本的sdk内置插件加载失败导致功能失效的问题。
