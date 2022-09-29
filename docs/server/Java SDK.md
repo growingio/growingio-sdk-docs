@@ -17,7 +17,7 @@ title: JAVA SDK
 Java SDK 源码托管在 [growingio/growingio-java-sdk](https://github.com/growingio/growingio-java-sdk/tree/gdp)
 
 GrowingIO提供在Server端部署的SDK，从而可以方便的进行事件上报等操作。
-> 支持 java6,7,8
+> 支持 java 7+, 如需支持java 6参见 [支持 Java 6 版本环境](#支持-java-6-版本环境)
 
 :::info
 Java SDK从1.0.10-cdp版本开始使用v3协议进行事件上报, 使用前确认平台版本支持v3协议
@@ -403,3 +403,28 @@ public class DemoLogger implements GioLoggerInterface {
 
 * 如果需要自定义 Properties 进行配置初始化，则需要在 GrowingAPI 初始化之前调用 `initConfig(Properties properties)`，进行配置初始化。
 * 自定义 properties key 参考 `gio_default.properties` 文件
+
+
+### 支持 Java 6 版本环境
+Protobuf 从 3.6.0 版本开始不再支持 java 6，相关信息参见[Drop java 6 support](https://github.com/protocolbuffers/protobuf/pull/4224)
+
+使用如下依赖方式，依赖java 6的pb版本
+```xml
+<dependency>
+    <groupId>io.growing.sdk.java</groupId>
+    <artifactId>growingio-java-sdk</artifactId>
+    <version>1.0.12-cdp</version>
+    <exclusions>
+        <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+<dependency>
+    <groupId>com.google.protobuf</groupId>
+    <artifactId>protobuf-java</artifactId>
+    <version>3.5.1</version>
+</dependency>
+```
