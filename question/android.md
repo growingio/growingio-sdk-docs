@@ -5,6 +5,10 @@ title: Android 常见问题
 ### 1. 集成SDK后本地运行打包没问题，线上自动化打包发现SDK报错，该怎么处理？
 **A:** 需要排查线上打包环境与本地环境哪里不一致，并非SDK 的问题
 
+### 2. 升级SDK后发现有一部分接口无法使用，该怎么处理？
+**A:** 可以在 [SDK Releases](https://github.com/growingio/growingio-sdk-android-autotracker/releases) 中查看接口变更记录。
+一般接口会先在当前版本标识废弃接口/功能，然后将在下一个大版本中移除（如3.4.x中标识@Deprecated，在升级到3.5.x时相关接口/功能将被移除）
+
 ### 4. Android 运行报错NoClassDefFoundError，该怎么处理？
 **A:**确认手动安装debug包后依然崩溃的话，麻烦您注释所有混淆代码再试一次，看是否会崩溃。
 让客户试试把混淆代码都注释试试。类找不到一般都是未正常混淆代码<br/>
@@ -80,7 +84,7 @@ classpath("com.growingio.android:autotracker-gradle-plugin:3.3.5") {
 } 
 ```
 ### 12. APP内嵌H5页面需要与APP访问用户数据打通该怎么集成SDK？
-**A：**详细请参[内嵌h5页面数据采集配置](/docs/android/base/Configuration#1-内嵌h5页面数据采集配置)
+**A：**详细请参[内嵌h5页面数据采集配置](/docs/android/Configuration#1-内嵌h5页面数据采集配置)
 
 
 ### 13. SDK如何支持合规和第三方安全检测，以及GDPR（欧盟《一般数据保护条例》）？

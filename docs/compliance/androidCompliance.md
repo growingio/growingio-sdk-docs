@@ -40,7 +40,7 @@ GIO移动端 SDK
    
 2.请务必告知用户您使用了 GrowingIO SDK，请在 《隐私协议》 中添加隐私条款，参考[隐私协议填写](#隐私协议填写)
    
-3.集成 [Android SDK](/docs/android)，请在用户[同意《隐私协议》之后再初始化GrowingIO SDK](#方式一延迟初始化) 或[设置 GrowingIO SDK 的数据收集开关](#方式二设置数据收集开关)。
+3.集成 [Android SDK](/docs/android)，请在用户同意《隐私协议》后 [打开 SDK 的数据收集开关（推荐）](#方式一设置数据收集开关) 或 [延迟初始化 SDK](#方式二延迟初始化)。
 ​
 ## 采集详情
 
@@ -59,43 +59,7 @@ GIO移动端 SDK
 
 ## 初始化
 
-### 方式一、延迟初始化
-在同意《隐私协议》后调用 `GrowingTracker.startWithConfiguration` 进行SDK的初始化，此后在 Application 的 onCreate() 方法主线程中初始化 SDK。(若同意隐私协议前禁止获取 AndroidID，请使用该方式)
-```java
-// 在 Activity 中同意隐私条款后初始化 SDK
-public class MyActivity extends Activity {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (<未同意隐私协议>){
-        	// 展示隐私协议弹窗，等待用户同意
-        	if (<用户已经同意隐私协议>){
-        		//GrowingIO SDK 初始化代码
-		        
-        	}
-        }
-    }
-}
-```
-
-```java
-// Application 的 onCreate() 方法中主线程初始化 SDK
-public class MyApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        if (<用户已经同意隐私协议>){
-            //GrowingIO SDK 初始化代码
-
-        }
-
-    }
-}
-```
-
-### 方式二、设置数据收集开关
+### 方式一、设置数据收集开关
 GrowingIO SDK 提供 `setDataCollectionEnabled`接口，可在用户不同意数据采集时，调用该接口，设置 `false` 禁止数据采集；在用户同意数据采集时，调用该接口，设置 `true` 开启数据采集
 
 ```java
@@ -131,13 +95,50 @@ public class MyActivity extends Activity {
     }
 }
 ```
+
+### 方式二、延迟初始化
+在同意《隐私协议》后调用 `GrowingTracker.startWithConfiguration` 进行SDK的初始化，此后在 Application 的 onCreate() 方法主线程中初始化 SDK。
+```java
+// 在 Activity 中同意隐私条款后初始化 SDK
+public class MyActivity extends Activity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (<未同意隐私协议>){
+        	// 展示隐私协议弹窗，等待用户同意
+        	if (<用户已经同意隐私协议>){
+        		//GrowingIO SDK 初始化代码
+		        
+        	}
+        }
+    }
+}
+```
+
+```java
+// Application 的 onCreate() 方法中主线程初始化 SDK
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        if (<用户已经同意隐私协议>){
+            //GrowingIO SDK 初始化代码
+
+        }
+
+    }
+}
+```
+
 :::warning注意
 需要根据您集成是无埋点SDK还是埋点SDK，调整调用类名
 :::
 
 ## 数据加密传输说明
 采集 SDK 版本 >=3.3.0 使用时注意模块版本需要与采集SDK版本保持一致。
-使用请参考[SDK数据加密传输](/docs/android/base/Configuration#3-sdk数据加密传输)。
+使用请参考[SDK数据加密传输](/docs/android/Configuration#3-sdk数据加密传输)。
 
 ## 数据存储发送策略说明
 Android SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 50 条行为数据），如果待发送行为数据量大于100条，则发送至所有数据发送完成，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
@@ -151,22 +152,21 @@ GrowingIO SDK 默认允许 App 能在多进程环境下进行数据的统计和�
 若是不希望 GrowingIO SDK 调用该接口，可以在 SDK 初始化时设置 `setRequireAppProcessesEnabled(false)` 来关闭 SDK 获取应用进程的操作。
 
 ```java
+// 需要根据您集成是无埋点SDK还是埋点SDK，调整调用类名
 CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("AccountId", "URLScheme")
     .setDataCollectionServerHost("ServerHost")
     .setDataSourceId("DataSourceId")
     // 关闭 SDK 获取应用进程的操作
     .setRequireAppProcessesEnabled(false);
 ```
-:::warning 注意
-需要根据您集成是无埋点SDK还是埋点SDK，调整调用类名
-:::
+
 :::caution 注意
 若关闭了 SDK 获取应用多进程的操作，则 SDK 不会再将子进程视为一个新的访问，新的访问永远在主进程中生成。子进程中的数据统计和发送不会受到影响。
 在 SDK 版本 3.3.4 之后提供该接口。
 :::
 
 ### 集成OAID SDK
-具体可以参考 [采集OAID作为设备信息](/docs/android/base/Configuration#2-采集oaid作为设备信息)
+具体可以参考 [采集OAID作为设备信息](/docs/android/Configuration#2-采集oaid作为设备信息)
 
 ### 关于 Google Play
 如您的 App 需要在 Google Play 分发，请参照 Google Play 相关政策 - [Google Play 政策中心-用户数据帮助说明](https://support.google.com/googleplay/android-developer/answer/10144311)。
@@ -174,5 +174,5 @@ CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("AccountId", "U
 
 ### 关于 GDPR
 ​为符合 [General Data Protection Regulation 欧盟通用数据保护条例​](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)，
-请参考 [方式二关闭数据收集开关](#方式二设置数据收集开关)
+请参考 [方式一设置数据收集开关](#方式一设置数据收集开关)
 

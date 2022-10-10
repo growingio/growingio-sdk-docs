@@ -68,7 +68,7 @@ apply plugin: 'com.growingio.android.autotracker'
 
 ```
 :::tip 关于高版本插件
-关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/base/AGP7)
+关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/AGP7)
 :::
 
 #### 添加代码依赖
@@ -195,7 +195,7 @@ class MyApplication : Application() {
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.4.0 !!!`  
+`!!! GrowingIO Tracker version: 3.4.2 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
@@ -320,7 +320,7 @@ SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用�
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.4.0 !!!`  
+`!!! GrowingIO Tracker version: 3.4.2 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
