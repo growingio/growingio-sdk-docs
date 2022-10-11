@@ -72,20 +72,44 @@ apply plugin: 'com.growingio.android.autotracker'
 :::
 
 #### 添加代码依赖
-在需要用到的项目模块下的 `build.gradle` 文件中添加代码依赖
+在需要用到的应用级别下的 `build.gradle` 文件中添加代码依赖
+
+<Tabs
+  groupId="code-language"
+  defaultValue="common"
+  values={[
+    {label: '依赖', value: 'common'},
+    {label: 'BoM', value: 'bom'},
+  ]
+}>
+
+<TabItem value="common">
+
 ```groovy
 apply plugin: 'com.android.application'
 
-...
-
 dependencies {
-    ...
-    //GrowingIO 无埋点 SDK
     implementation 'com.growingio.android:autotracker-cdp:3.4.2'
 }
+```
+</TabItem>
 
+<TabItem value="bom">
+
+```groovy
+apply plugin: 'com.android.application'
+
+dependencies {
+  // Import the BoM for the GrowingIO platform
+  implementation platform('com.growingio.android:autotracker-bom:3.4.2')
+
+  //GrowingIO 无埋点 SDK
+  implementation 'com.growingio.android:autotracker-cdp'
+}
 ```
 
+</TabItem>
+</Tabs>
 
 :::tip 关于版本
 最新版本请参考 [Github Release](https://github.com/growingio/growingio-sdk-android-autotracker/releases)
@@ -211,15 +235,46 @@ class MyApplication : Application() {
 
 ### 添加依赖
 
-只需要在 module 级别的 `build.gradle` 文件中添加tracker依赖即可。
+只需要在应用级别下的 `build.gradle` 文件中添加tracker依赖即可。
+
+
+<Tabs
+  groupId="code-language"
+  defaultValue="common"
+  values={[
+    {label: '依赖', value: 'common'},
+    {label: 'BoM', value: 'bom'},
+  ]
+}>
+
+<TabItem value="common">
 
 ```groovy
-dependencies {
+apply plugin: 'com.android.application'
 
+dependencies {
     //GrowingIO 埋点 SDK
     implementation 'com.growingio.android:tracker-cdp:3.4.2'
 }
 ```
+</TabItem>
+
+<TabItem value="bom">
+
+```groovy
+apply plugin: 'com.android.application'
+
+dependencies {
+  // Import the BoM for the GrowingIO platform
+  implementation platform('com.growingio.android:autotracker-bom:3.4.2')
+
+  //GrowingIO 埋点 SDK
+  implementation 'com.growingio.android:tracker-cdp'
+}
+```
+
+</TabItem>
+</Tabs>
 
 ### 添加URLScheme
 以便唤醒App

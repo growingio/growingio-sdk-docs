@@ -23,15 +23,14 @@ import TabItem from '@theme/TabItem';
 | `setDataUploadInterval`                     | `int`              |    否    | `15`    | 数据发送的间隔，单位秒                                  | -          |                                           |
 | `setSessionInterval`                        | `int`              |    否    | `30`    | 会话后台留存时长，单位秒                                | -          |                                           |
 | `setDataCollectionEnabled`                  | `boolean`          |    否    | `true`  | 是否采集数据                                            | -          |                                           |
-| <font color='red'>~~setOaidEnabled~~</font> | `boolean`          |    否    | `false` | 是否采集Android OAID                                    | -          | <font color='red'>< 3.3.0</font>          |
-| `setExcludeEvent`                           | `int`              |    否    | `0`     | 设置事件过滤                                            | -          |                                           |
-| `setIgnoreField`                            | `int`              |    否    | `0`     | 设置事件属性过滤                                        | -          |                                           |
+| `setEventFilterInterceptor`                 | `EventFilterInterceptor` |  否  | `DefaultEventFilterInterceptor` | 替代 `setExcludeEvent` 和 `setIgnoreField`，用于事件过滤 | -          |   <font color='red'>>= 3.4.3</font>       |
+|  <font color='gray'>@Deprecated</font> <br />  `setExcludeEvent`                       | `int`              |    否    | `0`     | 设置事件过滤                                            | -          |   <font color='red'><= 3.4.2</font>       |
+|  <font color='gray'>@Deprecated</font> <br />     `setIgnoreField`                   | `int`              |    否    | `0`     | 设置事件属性过滤                                        | -          |  <font color='red'><= 3.4.2</font>        |
 | `setIdMappingEnabled`                       | `boolean`          |    否    | `false` | 是否开启多用户身份上报                                  | -          | <font color='red'>>= 3.3.0</font>         |
 | `setImpressionScale`                        | `float`            |    否    | `0`     | 元素曝光事件中的比例因子,范围 [0-1]                     | 无埋点独有 |                                           |
 | `setRequireAppProcessesEnabled`             | `boolean`          |    否    | `true`  | SDK 是否能获取应用多进程ID                              | -          | <font color='red'>>= 3.3.4</font>         |
-| `setPreloadComponent`                       | `LibraryGioModule` |    否    | `null`  | 注册自定义/预定义模块(如加密模块、OAID模块)             | -          | <font color='red'>>= 3.3.0,<=3.3.3</font> |
 | `addPreloadComponent`                       | `LibraryGioModule` |    否    | `null`  | 注册自定义/预定义模块(如加密模块、OAID模块)             | -          | <font color='red'>>= 3.3.4</font>         |
-| `addConfiguration`                          | `Configurable`     |    否    | `null`  | 注册自定义/预定义模块的配置文件                         | -          | <font color='red'>>= 3.3.4</font>         |
+| `addPreloadComponent`                          | `LibraryGioModule`,`Configurable`     |    否    | `null`  | 注册自定义/预定义模块及其配置文件                         | -          | <font color='red'>>= 3.4.3</font>         |
 
 ### 1. SDK必需参数
 
@@ -166,18 +165,88 @@ GrowingTracker.startWithConfiguration(this,
 // 若想取消过滤，可以调用
 ConfigurationProvider.core().setIgnoreField(FieldIgnoreFilter.NONE)
 ```
+### 10. **setEventFilterInterceptor**
 
-### 10. **setIdMappingEnabled**
+事件过滤，用于取代 `setExcludeEvent` 和 `setIgnoreField` 方法。
+该接口需要用户提供一个拦截器用于事件拦截的自定义化。
+
+```java
+// 声明一个事件过滤器，继承 `DefaultEventFilterInterceptor` 或 `EventFilterInterceptor`
+class CustomEventFilterInterceptor implements EventFilterInterceptor {
+
+    // 根据事件类型来过滤事件，返回 false 表示拦截，返回 true 表示不过滤
+    // 如下例表示拦截事件类型为 “PAGE” 的事件
+    @Override
+    public boolean filterEventType(String eventType) {
+        if ("PAGE".equals(eventType)) return false;
+        return true;
+    }
+
+    // 过滤事件基础属性，属性设置 false 表示拦截，设置 true 表示不过滤
+    // 如下例表示事件中不再包含屏幕宽高的属性。
+    @Override
+    public Map<String, Boolean> filterEventField(String type, Map<String, Boolean> fieldArea) {
+        fieldArea.put(BaseField.SCREEN_HEIGHT, false);
+        fieldArea.put(BaseField.SCREEN_WIDTH, false);
+        return fieldArea;
+    }
+
+    // 针对无埋点的页面事件的路径进行过滤。
+    // 如下例表示若页面事件中的路径包含 “TestActivity” 则过滤。
+    @Override
+    public boolean filterEventPath(String path) {
+        return !path.contains("TestActivity");
+    }
+
+    // 针对自定义事件的事件名称进行过滤。
+    // 如下例表示若自定义事件中名称为 "test" 则过滤。
+    @Override
+    public boolean filterEventName(String eventName) {
+        return !"test".equals(eventName);
+    }
+
+    // 事件分组功能过滤（尚未上线）
+    @Override
+    public boolean filterEventGroup(String group){
+      return true;
+    }
+}
+```
+之后再调用该接口设置拦截器
+
+```java
+GrowingTracker.startWithConfiguration(this,
+    new CdpTrackConfiguration("accountId", "urlScheme")
+        ...
+       .setEventFilterInterceptor(new CustomEventFilterInterceptor())
+);
+```
+
+
+
+### 11. **setIdMappingEnabled**
 
 是否支持多用户身份上报, 默认不支持。
 是否支持多用户身份上报, 与 API 接口`setLoginUserId(String userId, String userKey)`对应, 开启时, userKey会在每次上报数据时携带, 关闭时, 接口与`setLoginUserId(String userId)`作用相同
 
-### 11. **setImpressionScale**
+### 12. **setImpressionScale**
 
 曝光比例。与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
 
-### 12 **addPreloadComponent**
+### 13 **addPreloadComponent**
 注册功能模块，为 Growingio SDK 添加更多的额外功能。
+
+```java
+// 初始化SDK时，可以注册对应模块
+GrowingAutotracker.startWithConfiguration(this,
+        new CdpAutotrackConfiguration("accountId", "urlScheme")
+        //...
+        .addPreloadComponent(<模块对象>, <模块配置>)
+        // 或者
+        .addPreloadComponent(<模块对象>)
+
+);
+```
 模块列表请参考 [功能模块一览](/docs/android/modules)
 
 

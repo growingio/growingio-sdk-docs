@@ -76,7 +76,7 @@ com/growingio/android/sdk/track/middleware/EventsSQLiteOpenHelper.class
 
 ### 11. `autotracker-gradle-plugin`默认依赖版本是多少？如何在低版本中使用？
 **A：**
-`autotracker-gradle-plugin`默认依赖了`com.android.tools.build:gradle:3.3.0`, 如果希望 在 gradle 低版本中使用该依赖插件，请阻断插件中gradle的版本
+`autotracker-gradle-plugin`默认支持低版本AGP，如 `com.android.tools.build:gradle:3.3.0`, 如果希望 在 gradle 低版本中使用该依赖插件，请阻断插件中gradle的版本
 ```groovy
 // 在配置插件依赖时, 通过如下方式引入
 classpath("com.growingio.android:autotracker-gradle-plugin:3.3.5") {
@@ -84,7 +84,7 @@ classpath("com.growingio.android:autotracker-gradle-plugin:3.3.5") {
 } 
 ```
 ### 12. APP内嵌H5页面需要与APP访问用户数据打通该怎么集成SDK？
-**A：**详细请参[内嵌h5页面数据采集配置](/docs/android/Configuration#1-内嵌h5页面数据采集配置)
+**A：**详细请参[内嵌h5页面数据采集配置](/docs/android/modules/hybrid%20module)
 
 
 ### 13. SDK如何支持合规和第三方安全检测，以及GDPR（欧盟《一般数据保护条例》）？

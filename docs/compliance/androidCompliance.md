@@ -138,7 +138,7 @@ public class MyApplication extends Application {
 
 ## 数据加密传输说明
 采集 SDK 版本 >=3.3.0 使用时注意模块版本需要与采集SDK版本保持一致。
-使用请参考[SDK数据加密传输](/docs/android/Configuration#3-sdk数据加密传输)。
+使用请参考[SDK数据加密传输](/docs/android/modules/encoder%20module)。
 
 ## 数据存储发送策略说明
 Android SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 50 条行为数据），如果待发送行为数据量大于100条，则发送至所有数据发送完成，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
@@ -166,7 +166,7 @@ CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("AccountId", "U
 :::
 
 ### 集成OAID SDK
-具体可以参考 [采集OAID作为设备信息](/docs/android/Configuration#2-采集oaid作为设备信息)
+具体可以参考 [采集OAID作为设备信息](/docs/android/modules/oaid%20module)
 
 ### 关于 Google Play
 如您的 App 需要在 Google Play 分发，请参照 Google Play 相关政策 - [Google Play 政策中心-用户数据帮助说明](https://support.google.com/googleplay/android-developer/answer/10144311)。

@@ -33,7 +33,8 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 GrowingAutotracker.startWithConfiguration(this,
         new CdpAutotrackConfiguration("accountId", "urlScheme")
         //...
-        //.addPreloadComponent(<模块对象>, <模块配置>)
+        .addPreloadComponent(<模块对象>, <模块配置>)
+        // 或者
         .addPreloadComponent(<模块对象>)
 
 );
@@ -42,6 +43,8 @@ GrowingAutotracker.startWithConfiguration(this,
 ** 运行时注册模块 **
 
 ```java
+GrowingAutotracker.get().registerComponent(<模块对象>, <模块配置>)
+// 或者
 GrowingAutotracker.get().registerComponent(<模块对象>)
 ```
 
