@@ -5,6 +5,10 @@ title: 版本记录
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
+### V3.8.9 - 2022/10/11
+
+* 🐞 修复uniapp框架中偶现点击事件丢失的问题。
+
 ### V3.8.8 - 2022/09/22
 
 * 🐞 修复Taro框架中阻止冒泡失效的问题。
