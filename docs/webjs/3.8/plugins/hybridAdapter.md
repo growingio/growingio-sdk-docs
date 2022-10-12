@@ -24,7 +24,7 @@ CDN集成引入：
 npm集成引入：
 
 ```js
-import gioHybridAdapter from "gio-webjs-sdk-cdp/plugins/gioHybridAdapter.js"
+import gioHybridAdapter from "gio-webjs-sdk-cdp/plugins/gioHybridAdapter"
 ```
 
 #### 2、注册

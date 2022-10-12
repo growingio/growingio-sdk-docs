@@ -22,7 +22,7 @@ CDN集成引入：
 npm集成引入：
 
 ```js
-import gioWebCircle from "gio-webjs-sdk-cdp/plugins/gioWebCircle.js"
+import gioWebCircle from "gio-webjs-sdk-cdp/plugins/gioWebCircle"
 ```
 
 #### 2、注册

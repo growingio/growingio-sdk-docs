@@ -32,7 +32,7 @@ CDN集成引入：
 npm集成引入：
 
 ```js
-import gioImpressionTracking from "gio-webjs-sdk-cdp/plugins/gioImpressionTracking.js"
+import gioImpressionTracking from "gio-webjs-sdk-cdp/plugins/gioImpressionTracking"
 ```
 
 #### 2、注册

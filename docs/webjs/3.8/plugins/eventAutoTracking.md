@@ -28,7 +28,7 @@ CDN集成引入：
 npm集成引入：
 
 ```js
-import gioEventAutoTracking from "gio-webjs-sdk-cdp/plugins/gioEventAutoTracking.js"
+import gioEventAutoTracking from "gio-webjs-sdk-cdp/plugins/gioEventAutoTracking"
 ```
 
 #### 2、注册

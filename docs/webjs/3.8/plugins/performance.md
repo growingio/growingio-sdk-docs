@@ -61,14 +61,126 @@ CDN集成引入：
 npm集成引入：
 
 ```js
-import gioPerformance from "gio-webjs-sdk-cdp/plugins/gioPerformance.js"
+import gioPerformance from "gio-webjs-sdk-cdp/plugins/gioPerformance"
 ```
 
 #### 2、注册
 
+**普通Web站点：**
+
 ```js
 gdp('registerPlugins', [gioPerformance]);
 gdp('init', xxxx);
+```
+
+**Vue2：**
+
+```js
+// main.js
+import Vue from 'vue';
+import gdp from 'gio-webjs-sdk-cdp';
+import gioPerformance from 'gio-webjs-sdk-cdp/plugins/gioPerformance';
+
+import App from './App.vue';
+
+// 注册Gio插件并初始化SDK
+gdp('registerPlugins', [gioPerformance]);
+gdp('init', 'your accountId', 'your dataSourceId', {
+  host: 'your apiServerHost',
+  version: 'your website version'
+});
+// 注册vue插件
+Vue.use(gioPerformance.GioVue);
+
+new Vue({
+  render: (h) => h(App)
+}).$mount('#app');
+```
+
+**Vue3：**
+
+```js
+// main.js
+import { createApp } from 'vue';
+import gdp from 'gio-webjs-sdk-cdp';
+import gioPerformance from 'gio-webjs-sdk-cdp/plugins/gioPerformance';
+
+import App from './App.vue';
+
+// 注册Gio插件并初始化SDK
+gdp('registerPlugins', [gioPerformance]);
+gdp('init', 'your accountId', 'your dataSourceId', {
+  host: 'your apiServerHost',
+  version: 'your website version'
+});
+
+const app = createApp(App);
+// 注册vue插件
+app.use(gioPerformance.GioVue);
+
+app.mount('#app');
+```
+
+**React(>=16)：**
+
+React Error Boundaries [官方参考文档](https://zh-hans.reactjs.org/docs/error-boundaries.html)
+
+```js
+// ErrorBoundary.js
+import React from 'react';
+import gioPerformance from 'gio-webjs-sdk-cdp/plugins/gioPerformance';
+
+export default class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // 更新 state 使下一次渲染能够显示报错后的 UI
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // 在componentDidCatch中调用gioPerformance提供的gioReactErrorReport方法上报错误
+    gioPerformance.gioReactErrorReport(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // 你可以自定义报错后的 UI 并渲染
+      return <h1>Something went wrong.</h1>;
+    }
+    return this.props.children;
+  }
+}
+```
+
+```js
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import gdp from 'gio-webjs-sdk-cdp';
+import gioPerformance from 'gio-webjs-sdk-cdp/plugins/gioPerformance';
+
+import App from './App';
+import ErrorBoundary from './ErrorBoundary';
+
+// 注册Gio插件并初始化SDK
+gdp('registerPlugins', [gioPerformance]);
+gdp('init', 'your accountId', 'your dataSourceId', {
+  host: 'your apiServerHost',
+  version: 'your website version'
+});
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  </React.StrictMode>
+);
 ```
 
 ### 配置

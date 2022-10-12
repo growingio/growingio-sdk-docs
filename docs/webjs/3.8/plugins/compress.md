@@ -21,7 +21,7 @@ CDN集成引入：
 npm集成引入：
 
 ```js
-import gioCompress from "gio-webjs-sdk-cdp/plugins/gioCompress.js"
+import gioCompress from "gio-webjs-sdk-cdp/plugins/gioCompress"
 ```
 
 #### 2、注册
