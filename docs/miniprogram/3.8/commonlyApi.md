@@ -532,96 +532,6 @@ Page({
 <view data-growing-ignore bindtap="onLinkTap">要忽略的节点</view>
 ```
 
-## 半自动埋点浏览事件
-
-用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)在平台上进行事件类型和变量的预定义。
-
-#### 曝光逻辑
-
-**always：**只要从**屏幕不可见区域到可见区域**即可计为一次曝光并上报。(默认值)
-
-**once：**从**屏幕不可见区域到可见区域**曝光只上报一次。
-
-#### 支持范围
-
-微信小程序、阿里(支付宝)小程序(基础库>=2.7.0)、百度小程序、字节跳动小程序、QQ小程序、淘宝小程序。
-
-快应用不支持。
-
-#### 使用方法
-
-1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
-
-2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)。
-
-1）传值方式一：使用变量传值
-
-```js
-Page({
-  data: {
-    impAttrs: JSON.stringify({ type: 'hjh', name: 'yue' }),
-    impItems: { key: 'order_id', id: '12345' }
-  }
-})
-```
-
-```html
-<view
-  class="growing_collect_imp"
-  data-gio-imp-track="imp_picture_var"
-  data-gio-imp-attrs="{{ impAttrs }}"
-  data-gio-imp-items="{{ impItems }}"
->
-  监听的元素，必须有内容或额外样式来让节点有实际大小
-</view>
-```
-
-2）传值方式二：直接手动编写Object字符串（部分框架如uniapp编译时可能会将单引号编译成双引号导致编译失败）
-
-```html
-<view
-  class="growing_collect_imp"
-  data-gio-imp-track="imp_picture_var"
-  data-gio-imp-attrs='{ "type": "hjh", "name": "yue" }'
-  data-gio-imp-items='{ "key": "order_id", "id": "12345" }'
->
-  监听的元素，必须有内容或额外样式来让节点有实际大小
-</view>
-```
-
-对应产生的`CUSTOM`事件相当于： ↓↓↓
-
-```js
-gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id', id: '12345' });
-```
-
-3、如果您的曝光事件只需要统计一次或触发过于频繁导致曝光事件量过大，可以在节点上添加`data-gio-imp-type="once"`并设置唯一的`节点id`，来使得曝光逻辑变为单次上报。
-
-```html
-<view
-  class="growing_collect_imp"
-  id="imp_1"
-  data-gio-imp-type="once"
-  data-gio-imp-track="imp_picture_var"
-  ...
->
-  监听的元素，必须有内容或额外样式来让节点有实际大小
-</view>
-```
-
-**<font color="#FC5F3A">注意：</font>**<br/>
-**1）此功能需要注册半自动埋点浏览插件使用。参考[半自动埋点浏览插件](plugins#半自动埋点浏览插件gioimpressiontracking)。**
-
-**2）`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object字符串，SDK会自动尝试进行格式化**。
-
-**3）被标记的节点必须有实际的大小，一个没有内容和样式的节点标记可能不会触发事件。**
-
-**4）请勿在同一页面中大量标记半自动埋点浏览事件（如商品列表），可能会严重影响页面性能导致卡顿。**
-
-**5）快手小程序在同一个页面中只能监听相同大小节点的第一个，即如果在同一个页面中需要监听多个节点时，要保证节点大小不一致，否则曝光事件会全部匹配到第一个相同大小的节点。**
-
-**6）`data-gio-imp-type`配置项SDK版本>=3.8.5支持。**
-
 ## 事件时长统计
 
 可以统计上报某一事件的持续时长（例如页面浏览时长）。我们提供了事件计时开始、事件计时暂停、事件计时恢复、事件计时停止、事件计时销毁几个方法提供调用。
@@ -716,22 +626,23 @@ const result = gdp('trackTimerEnd', 'timerId123');
 
 const result = gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2: 2 });
 ```
+
 :::caution 注意
 trackTimerEnd时发送CUSTOM事件上报数据：
-* eventName  埋点事件标识符（trackTimerStart传入）
-* attributes 用户自定义事件属性（trackTimerEnd传入）
-* eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
+- eventName  埋点事件标识符（trackTimerStart传入）
+- attributes 用户自定义事件属性（trackTimerEnd传入）
+- eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
 eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
 eventDuration 变量及其值会自动添加在 attributes 中<br/>
 eventDuration 时间统计不会计算后台时间
-* eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
+- eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
 :::
-
 
 ### 5、删除事件计时器(removeTimer)
 
 删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
 该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
+
 #### 参数说明
 
 | 参数      | 参数类型 | 说明           |
@@ -754,6 +665,7 @@ const result = gdp('removeTimer', 'timerId123');
 
 清除所有已经注册的事件计时器。<br/>
 存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
+
 #### 示例
 
 ```js
