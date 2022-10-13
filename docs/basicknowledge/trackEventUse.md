@@ -164,7 +164,7 @@ GrowingTracker.get().trackCustomEvent("purchaseProduct", map);
 
 #### iOS
 
-[埋点事件说明文档](/docs/ios/base/api#7-设置埋点事件)
+[埋点事件说明文档](/docs/ios/api#7-设置埋点事件)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"
@@ -383,7 +383,7 @@ GrowingTracker.get().setLoginUserAttributes(map);
 
 #### iOS
 
-[用户属性说明文档](/docs/ios/base/api#8-设置登录用户属性)
+[用户属性说明文档](/docs/ios/api#8-设置登录用户属性)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"

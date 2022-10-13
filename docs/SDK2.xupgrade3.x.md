@@ -23,7 +23,7 @@ implementation 'com.growingio.android.sdk.upgrade:autotracker-upgrade-2to3-cdp:1
 ### 2. 直接使用3.x 版本SDK
 优势：可以使用3.x 版本的所有功能<br/>
 劣势：需要修改项目中调用GIO的代码<br/>
-参考该文档中的 [Android SDK](/docs/android) 和 [iOS SDK](/docs/ios/base)
+参考该文档中的 [Android SDK](/docs/android) 和 [iOS SDK](/docs/ios)
 
 ## 小程序和Web 
 小程序、Web 端 SDK的 2.x 和 3.x 接口没有发生变化，可以直接升级 3.x

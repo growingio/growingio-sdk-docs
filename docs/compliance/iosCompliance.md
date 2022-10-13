@@ -35,12 +35,12 @@ GIO移动端 SDK
 
 ## 合规步骤
 1.您需要确保 App 有《隐私协议》，并且在用户第一次启动 App 时就能向用户展示并取得用户同意；
-   
+
 2.请务必告知用户您使用了 GrowingIO SDK，请在 《隐私协议》 中添加隐私条款，参考[隐私协议填写](#隐私协议填写)
-   
+
 3.延迟初始化
 
-集成 [iOS SDK](/docs/ios/base)，请在用户同意《隐私协议》之后再初始化 GrowingIO SDK。 
+集成 [iOS SDK](/docs/ios/Introduce)，请在用户同意《隐私协议》之后再初始化 GrowingIO SDK。 
 示例代码如下：
 ```c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -55,7 +55,7 @@ GIO移动端 SDK
 ```
 
 4.集成了 GrowingIO SDK，默认会尝试获取 `IDFA`、`IDFV` 信息，用于统计分析用户在 App 内的使用效果。
-参考：[App Store 提交应用注意事项​​](/docs/ios/base#app-store提交应用注意事项)
+参考：[App Store 提交应用注意事项​​](/docs/ios/Introduce#app-store提交应用注意事项)
 
 ## iOS 权限说明
 | 权限 | 用途 | 
@@ -65,7 +65,7 @@ GIO移动端 SDK
 
 ## 数据加密传输说明
 采集 SDK 版本>=3.3.2，初始化配置时 encryptEnabled设置为YES，网络传输内容将会加密，不会明文显示。
-使用请参考[SDK数据加密传输 encryptEnabled](/docs/ios/base/Configuration#12-encryptenabled)。
+使用请参考[SDK数据加密传输 encryptEnabled](/docs/ios/Configuration#12-encryptenabled)。
 
 ## 数据存储发送策略说明
 iOS SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 500 条行为数据），首次请求之后，如果剩余行为数据量大于500条，则继续发送；否则等待下一次定时器轮询，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
@@ -108,7 +108,7 @@ GrowingIO SDK 会采集 `IDFA` 和 `IDFV` 字段上传，如果您的项目中�
 
 当使用 `IDFA` 时有一定的合规风险，但是考虑到采集的准确性，GrowingIO SDK 仍然提供`IDFA`的采集方法，如果不需要采集`IDFA`，请在项目工程中去除 `AdSupport.framework` 的引用，并且不要在项目中导入 `AdSupport` 相关头文件。
 
-如果需要发布儿童级应用，完全不需要相关 `IDFA` 的获取逻辑，参考[禁用IDFA](/docs/ios/base/Configuration#1-禁用idfa)。
+如果需要发布儿童级应用，完全不需要相关 `IDFA` 的获取逻辑，参考[禁用IDFA](/docs/ios/Configuration#1-禁用idfa)。
 
 ## App Store 隐私问题
 
@@ -148,14 +148,14 @@ GrowingIO SDK 会采集 `IDFA` 和 `IDFV` 字段上传，如果您的项目中�
 
 #### 2. 然后下一步，勾选「是，从此 App 中收集的精确位置数据与用户身份关联」
 
-​​![](./../../static/img/compliance/datacollect_location_identifier.png)
+​![](./../../static/img/compliance/datacollect_location_identifier.png)
 
 #### 3. 根据您App实际情况选择是否用于追踪目的
 
 ### 4.2 用户 ID
 
 #### 1. GrowingIO SDK 会在调用 设置登录用户ID 接口时收集用户 ID 用于分析功能，因此这里选择「分析」，如图
-​​![](./../../static/img/compliance/datacollect_identifier_analyze.png)
+​![](./../../static/img/compliance/datacollect_identifier_analyze.png)
 
 #### 2. 勾选后点击下一步，选择「是，从此 App 中收集的用户 ID 与用户身份关联」，这里根据具体的业务进行勾选，如图
 
@@ -163,31 +163,31 @@ GrowingIO SDK 会采集 `IDFA` 和 `IDFV` 字段上传，如果您的项目中�
 ​​
 
 #### 3. 点击下一步，需要选择「是，我们会将用户 ID 用于追踪目的」​
-​​![](./../../static/img/compliance/datacollect_track_id.png)
+​![](./../../static/img/compliance/datacollect_track_id.png)
 
 ### 4.3 设备
 
 #### 1. GrowingIO SDK 收集设备 ID 用于收集用户登录前的数据，因此这里继续选择「分析」，如图
 
-​​![](./../../static/img/compliance/datacollect_id_analyze.png)
+​![](./../../static/img/compliance/datacollect_id_analyze.png)
 
 #### 2. 点击下一步，因为收集到的数据会与设备 id 绑定，所以此处继续选择「是」
 
-​​![](./../../static/img/compliance/datacollect_id_associate.png)
+​![](./../../static/img/compliance/datacollect_id_associate.png)
 
 #### 3. 继续下一步，同用户 ID ， 会使用 IDFA 与第三方数据相关联以用于定向广告或广告评估目的，如图
 
-​​![](./../../static/img/compliance/datacollect_track_deviceID.png)
+​![](./../../static/img/compliance/datacollect_track_deviceID.png)
 
 ### 4.4 产品交互
 
 #### 1. 使用 GrowingIO 无埋点SDK后，会收集 APP启动，APP退出，用户点击，页面浏览等相关行为用于分析产品，因此这里继续选择「分析」，如图
 
-​​![](./../../static/img/compliance/datacollect_interface_analyze.png)
+​![](./../../static/img/compliance/datacollect_interface_analyze.png)
 
 #### 2. 点击下一步，继续选择是，如图
 
-​​![](./../../static/img/compliance/datacollect_interface_id.png)
+​![](./../../static/img/compliance/datacollect_interface_id.png)
 
 #### 3. 最后追踪目的，请根据您实际情况选择，是否要用于追踪目的
 
@@ -204,5 +204,4 @@ GrowingIO SDK 默认收集的数据类型只有「设备 ID」和「用户 ID」
 * 开启经纬度采集：需选择「精确位置」
 
 另，该隐私协议的填写是可以更改的。**请根据自己 App 业务的调整及时更新隐私协议**。
-
 

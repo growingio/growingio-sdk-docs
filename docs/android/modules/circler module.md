@@ -10,7 +10,7 @@ title: 圈选模块
 :::info
 当你集成无埋点SDK时，圈选模块会默认集成到SDK中，且只在无埋点SDK中有效，不支持埋点SDK。
 
-若不想要在生成环境中集成圈选模块，可参考 [基于 GrowingIO 现有 SDK 基础上的二次开发](/blog/custom%20android%20sdk)，自定义SDK模块。
+若不想要在生产环境中集成圈选模块，可参考 [基于 GrowingIO 现有 SDK 基础上的二次开发](/blog/custom%20android%20sdk)，自定义SDK模块。
 :::
 
 --------
