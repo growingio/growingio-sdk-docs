@@ -17,9 +17,67 @@ GrowingIO 性能监控模块目前提供了 App 崩溃分析，应用启动时�
 **使用时注意模块版本需要与采集 SDK 版本保持一致**
 :::
 
+#### 集成 APM
+
+1. 集成 APM 模块
+
 ```shell
 pod 'GrowingAnalytics/APM'
 ```
 
+2. 集成 GrowingAPM
+
+```shell
+pod 'GrowingAPM'
+```
+
 打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
+
+#### 初始化 GrowingAPM
+
+1. 在 main.m 中导入 `#import "GrowingAPMModule.h"`，并在 main 函数中添加代码：
+
+```objectivec
+int main(int argc, char * argv[]) {
+    // GrowingAPM Swizzling
+    [GrowingAPM swizzle:GrowingAPMMonitorsCrash | GrowingAPMMonitorsLaunch | GrowingAPMMonitorsUserInterface];
+    NSString * appDelegateClassName;
+    @autoreleasepool {
+        // Setup code that might create autoreleased objects goes here.
+        appDelegateClassName = NSStringFromClass([AppDelegate class]);
+    }
+    return UIApplicationMain(argc, argv, nil, appDelegateClassName);
+}
+```
+
+2. 在 AppDelegate.m 中导入 `#import "GrowingAPMModule.h"`，并在 `application:didFinishLaunchingWithOptions:` 中初始化 GrowingAnalytics SDK 的同时，导入 GrowingAPMConfig 配置:
+
+```objectivec
+GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithProjectId:@"YourAccountId"];
+configuration.dataCollectionServerHost = @"YourServerHost";
+configuration.dataSourceId = @"YourDatasourceId";
+
+// 添加 GrowingAPM 初始化配置
+GrowingAPMConfig *config = GrowingAPMConfig.config;
+// 根据您需要的监控类型
+config.monitors = GrowingAPMMonitorsCrash | GrowingAPMMonitorsLaunch | GrowingAPMMonitorsUserInterface;
+configuration.APMConfig = config;
+
+[GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
+```
+
+#### 其他
+
+另外，如果您仅需要部分 APM 监控功能，可按需集成对应的 GrowingAPM 子模块：
+
+```shell
+# GrowingAnalytics/APM 模块
+pod 'GrowingAnalytics/APM'
+
+# 按照所需 GrowingAPM 子模块自由组合
+pod 'GrowingAPM/UIMonitor'
+pod 'GrowingAPM/LaunchMonitor'
+pod 'GrowingAPM/CrashMonitor'
+# ...
+```
 
