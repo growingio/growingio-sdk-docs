@@ -46,7 +46,51 @@ gdp('init', xxxx);
 
 ### 使用方法
 
-#### 传值方式一：单个字段定义
+#### 传值方式一：使用Object对象或JSON字符串赋值（建议）
+
+在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/webjs/3.8/commonlyApi#4埋点事件track)。传值时赋值一个Object对象或一个JSON字符串。
+
+```js
+var impAttrs = JSON.stringify({ type: 'hjh', name: 'yue' });
+var impItems = { key: 'order_id', id: '12345' };
+```
+
+```jsx
+<div
+  data-gio-imp-track="imp_picture_var"
+  data-gio-imp-attrs={impAttrs}
+  data-gio-imp-items={impItems}
+>
+  监听的元素，必须有内容或额外样式来让节点有实际大小
+</div>
+```
+
+#### 传值方式二：直接手动编写Object字符串
+
+在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/webjs/3.8/commonlyApi#4埋点事件track)。传值时赋值一个合法拼接的JSON字符串。
+
+```js
+var key = 'order_id';
+var id = '12345';
+```
+
+```jsx
+<view
+  data-gio-imp-track="imp_picture_var"
+  data-gio-imp-attrs={`{ "type": "hjh", "name": "yue" }`}
+  data-gio-imp-items={`{ "key": "` + ${key} + `", "id": "` + ${id} + `" }`}
+>
+  监听的元素，必须有内容或额外样式来让节点有实际大小
+</view>
+```
+
+以上两种方式对应产生的`CUSTOM`事件相当于： ↓↓↓
+
+```js
+gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id', id: '12345' });
+```
+
+#### 传值方式三：单个字段定义
 
 在节点上添加 `data-gio-imp-track`、`data-gio-track-xxxxx` 属性。分别对`properties`属性进行单个定义传值。
 
@@ -68,54 +112,9 @@ gdp('track', 'imp_cat_var', { name: 'cat_picture', time: '20210601' });
 
 **<font color="#FC5F3A">注意：</font>该传值方式所有单个字段都会归入`properties`对象中，不支持`items`属性上报。**
 
-#### 传值方式二：使用Object对象或JSON字符串赋值
-
-在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/webjs/3.8/commonlyApi#4埋点事件track)。传值时赋值一个Object对象或一个JSON字符串。
-
-```js
-var impAttrs = JSON.stringify({ type: 'hjh', name: 'yue' });
-var impItems = { key: 'order_id', id: '12345' };
-```
-
-```jsx
-<div
-  data-gio-imp-track="imp_picture_var"
-  data-gio-imp-attrs={impAttrs}
-  data-gio-imp-items={impItems}
->
-  监听的元素，必须有内容或额外样式来让节点有实际大小
-</div>
-```
-
-#### 传值方式三：直接手动编写Object字符串
-
-在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/webjs/3.8/commonlyApi#4埋点事件track)。传值时赋值一个合法拼接的JSON字符串。
-
-```js
-var key = 'order_id';
-var id = '12345';
-```
-
-```jsx
-<view
-  class="growing_collect_imp"
-  data-gio-imp-track="imp_picture_var"
-  data-gio-imp-attrs={`{ "type": "hjh", "name": "yue" }`}
-  data-gio-imp-items={`{ "key": "` + ${key} + `", "id": "` + ${id} + `" }`}
->
-  监听的元素，必须有内容或额外样式来让节点有实际大小
-</view>
-```
-
-以上两种方式对应产生的`CUSTOM`事件相当于： ↓↓↓
-
-```js
-gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id', id: '12345' });
-```
-
 #### 修改曝光类型
 
-如果您的曝光事件只需要统计一次或触发过于频繁导致曝光事件量过大，可以在节点上添加`data-gio-imp-type="once"`并设置唯一的`节点id`，来使得曝光逻辑变为单次上报。
+如果您的曝光事件只需要统计一次或触发过于频繁导致曝光事件量过大，可以在节点上添加**`data-gio-imp-type="once"`**s并设置唯一的`节点id`，来使得曝光逻辑变为单次上报。
 
 ```html
 <div
@@ -130,7 +129,7 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 
 ### 注意
 
-1、`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object字符串，SDK会自动尝试进行格式化。
+1、`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object字符串，SDK会自动尝试进行格式化，格式化失败时默认返回空对象。
 
 2、被标记的节点必须有实际的大小，一个没有内容和样式的节点标记可能不会触发事件。
 

@@ -115,7 +115,7 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 
 ### 注意
 
-1、`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object字符串，SDK会自动尝试进行格式化。
+1、`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object字符串，SDK会自动尝试进行格式化，格式化失败时默认返回空对象。
 
 2、被标记的节点必须有实际的大小，一个没有内容和样式的节点标记可能不会触发事件。
 
