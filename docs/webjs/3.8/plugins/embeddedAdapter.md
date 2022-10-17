@@ -50,9 +50,9 @@ gdp('init', 'your miniprogram accountId', 'your dataSourceId', 'your miniprogram
 
 ### 打通影响
 
-1、H5内嵌页中的 `setUserId、cleanUserId` 方法调用将无效，只能使用从小程序继承来的登录用户ID。
+1、H5内嵌页中的 `setUserId、clearUserId` 方法调用将无效，只能使用从小程序继承来的登录用户ID。
 
-2、H5内嵌页上报事件字段的变化如下：
+2、H5内嵌页上报事件字段值的变化如下：
 
 ```text
 deviceId     ->   小程序的 deviceId
