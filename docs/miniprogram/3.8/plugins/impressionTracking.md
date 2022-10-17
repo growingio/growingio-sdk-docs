@@ -56,7 +56,7 @@ gdp('init', xxxx);
 
 **2、**在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)。
 
-#### 传值方式一：使用变量传值
+#### 传值方式一：使用Object对象或JSON字符串赋值
 
 ```js
 Page({
