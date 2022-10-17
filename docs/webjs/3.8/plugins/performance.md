@@ -5,7 +5,7 @@ title: 性能监控
 
 ### 简介
 
-提供页面首屏加载监控、错误监控和网络请求监控的全方位性能监控采集插件。
+提供页面 首屏加载监控 和 错误监控 的性能监控采集插件。
 
 ### 采集范围
 
@@ -18,7 +18,7 @@ title: 性能监控
 - 可交互加载时长（DomReady）；执行完所有同步脚本的耗时
 - 页面完整加载时长（PageLoad）；从浏览器开始页面请求到页面渲染完成的耗时
 
-其他指标（TTFB、FCP、LCP、CLS等）正在努力开发中，敬请期待。
+其他指标（TTFB、FCP、LCP等）正在努力开发中，敬请期待。
 
 #### 2、错误监控
 
@@ -29,19 +29,17 @@ title: 性能监控
 - Promise执行错误
 - 网络请求错误
 
-#### 3、网络请求监控
+<!-- #### 3、网络请求监控
 
 含以下内容监控：
 
 - 请求地址
 - 请求时长
-- 请求错误码
+- 请求错误码 -->
 
 ### 浏览器兼容性
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src//archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png" alt="IE" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>InternetExplorer | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera |
-| --------- | --------- | --------- | --------- | --------- | --------- |
-| 11 | All | >= 35 | >= 25 | >= 11 | >= 15 |
+同采集SDK。[参考文档](/docs/webjs/3.8)
 
 ### 集成
 
@@ -182,7 +180,7 @@ root.render(
 
 ### 配置
 
-集成性能采集插件时，默认开启 `首屏加载监控`、`错误监控` 和 `请求监控` 。如您不需要其中某项监控内容，在注册插件时可添加配置项选择指定内容关闭。
+集成性能采集插件时，默认开启 `首屏加载监控` 和 `错误监控` 。如您不需要其中某项监控内容，在注册插件时可添加配置项选择指定内容关闭。
 
 #### 关闭首屏加载监控
 
@@ -206,7 +204,7 @@ gdp('registerPlugins', [
 ]);
 ```
 
-#### 关闭请求监控
+<!-- #### 关闭请求监控
 
 ```js
 gdp('registerPlugins', [
@@ -242,4 +240,4 @@ gdp('registerPlugins', [
 
 1、如果您对请求监控设置了排除名单，使用纯字符串校验时应尽可能使用长且准确的字符，过短的字符串可能会使得其他请求被误过滤。
 
-2、请求监控强制过滤了Gio上报的请求。
+2、请求监控强制过滤了Gio上报的请求。 -->
