@@ -273,9 +273,9 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 ## 在小程序内嵌页面中集成
 
-全量集成时，参考Web站点集成即可，无需做额外操作，已内置小程序内嵌页打通功能。
+全量集成时，需在Web站点集成的基础之上，修改初始化配置即可，无需再次集成插件，已内置小程序内嵌页打通功能。[参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
 
-按需集成时，需在Web站点集成的基础之上，注册添加小程序内嵌页打通插件。[参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
+按需集成时，需在Web站点集成的基础之上，注册添加小程序内嵌页打通插件并修改初始化配置。[参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
 
 ## 在微信公众号H5中集成
 
