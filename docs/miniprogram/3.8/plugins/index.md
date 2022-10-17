@@ -7,6 +7,12 @@ title: 插件
 
 一般只要您加载了插件功能会自动加载并启用，如果您不想使用其中的功能，移除对应插件即可。
 
+插件在未明确标明有互斥的情况下可同时多个以数组的形式进行一次性注册。例：
+
+```js
+gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking]);
+```
+
 ### 无埋点插件（gioEventAutoTracking）
 
 自动采集 `tap`、`longtap`、`change`、`submit` 事件的插件。<br />

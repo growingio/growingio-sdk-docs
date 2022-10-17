@@ -12,11 +12,9 @@ import TabItem from '@theme/TabItem';
 
 2、在下列选项中选择对应的集成方式，并根据示例进行集成。
 
-## 开始集成
+## 开始集成（Web站点/H5）
 
 我们为您提供了 CDN 和 npm 两种不同的集成方式，请根据实际业务场景和需要选择集成方式。<br/>
-
-### 选择集成方式
 
 <Tabs
   groupId="1"
@@ -40,10 +38,10 @@ import TabItem from '@theme/TabItem';
 }>
   <TabItem value="按需引入">
 
-按需引入集成，基础SDK只包含埋点功能，其他功能需要注册插件。如需其他功能，请参考[插件文档](/docs/webjs/3.8/plugins)。
+按需引入集成，基础SDK只包含埋点功能，其他功能需要集成插件，小巧功能简单。
 
-- 优点：无冗余内容，SDK较小，约 34KB ，加载速度快。
-- 缺点：复杂度略高，理解成本略高，集成稍复杂。
+- 优点：无冗余内容，SDK较小，约 38-40KB ，加载速度快。
+- 缺点：理解成本略高，集成稍复杂。
 
 复制以下脚本，并将其粘贴到 `<head></head>` 标签的底部，并修改`init`方法中对应字段：
 
@@ -69,16 +67,13 @@ import TabItem from '@theme/TabItem';
 </script>
 ```
 
-**<font color="#FC5F3A">注意：</font>**
-
-基础SDK仅包含埋点功能，如果已满足您的需求，则集成步骤结束；如需扩展其他功能，请继续以下集成插件的步骤。
   </TabItem>
   <TabItem value="全量引入">
 
-全量引入集成，SDK将包含 **除性能采集之外** 的其他所有插件，功能全覆盖，简单快速集成。
+全量引入集成，SDK将包含 **除性能监控之外** 的其他所有插件，功能全覆盖，简单快速集成。
 
 - 优点：复杂度低，理解成本低，快速集成。
-- 缺点：冗余内容多，SDK较大，约 68KB ，可能会拖慢加载速度。
+- 缺点：SDK较大，约 75-80KB ，可能会拖慢加载速度。
 
 复制以下脚本，并将其粘贴到 `<head></head>` 标签的底部，并修改`init`方法中对应字段：
 
@@ -104,47 +99,16 @@ import TabItem from '@theme/TabItem';
 </script>
 ```
 
-**<font color="#FC5F3A">注意：</font>**
-
-**1）**SDK默认使用`es6`版本进行打包，若您的站点需要支持**IE11**等不兼容es6的浏览器，请修改为`gdp-full-es5.js`即可引用es5版本的SDK。
-
-**2）**该集成方式已包含 **除性能采集之外** 的其他所有插件，如果已满足您的需求，则集成步骤结束；如需扩展其他功能（例如性能采集），请继续以下集成插件的步骤。
-
   </TabItem>
 </Tabs>
 
-### CDN集成插件
-
-1）引入插件
-
-在[插件列表](/docs/webjs/3.8/plugins)中选择插件并在跟踪代码前粘贴引用代码。
-
-2）调用`registerPlugins`方法注册插件
-
-在init语句前调用`registerPlugins`方法按数组形式传值。
-
-#### 示例代码
-
-```html
-<!-- GrowingIO Analytics WebJS SDK Plugins -->
-<script src="https://assets.giocdn.com/sdk/webjs/cdp/plugins/gioEventAutoTracking.js"></script>
-<script src="https://assets.giocdn.com/sdk/webjs/cdp/plugins/gioImpressionTracking.js"></script>
-<!-- GrowingIO Analytics WebJS SDK version 3.8 -->
-<!-- Copyright 2015-2022 GrowingIO, Inc. More info available at http://www.growingio.com -->
-<script type='text/javascript'>
-  !(function (e, n, t, c, i) {
-    ...... // 此处省略部分集成代码，注意按前序集成步骤补全
-  })(window, document, 'script', 'https://assets.giocdn.com/sdk/webjs/cdp/gdp.js', 'gdp');
-
-  // 在init语句前调用`registerPlugins`方法按数组形式传值。
-  gdp('registerPlugins', [gioEventAutoTracking, gioImpressionTracking]);
-  gdp('init', xxxxx);
-</script>
-```
-
 #### 其他
 
-如果您希望不受CDN（内容分发网络）影响，请下载SDK至本地集成，并修改上述集成代码中的SDK CDN地址为您本地的相对地址。
+**1）**SDK默认使用`es6`版本进行打包，若您的站点需要支持 **IE11** 等不兼容es6的旧版浏览器，请修改为`gdp-es5.js`或`gdp-full-es5.js`即可引用es5版本的SDK。
+
+**2）**SDK默认使用`es`格式进行打包，若您的站点需要使用`umd`格式的SDK，请修改为`gdp.umd.js`或`gdp-full.umd.js`即可引用umd格式的SDK。
+
+**3）**如果您希望不受CDN（内容分发网络）影响，请下载SDK至本地集成，并修改上述集成代码中的SDK CDN地址为您本地的相对地址。
 
 WebJS SDK 下载：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
@@ -165,10 +129,10 @@ WebJS SDK 下载：<https://github.com/growingio/growingio-sdk-webjs-autotracker
 }>
   <TabItem value="按需引入">
 
-按需引入集成，基础SDK只包含埋点功能，其他功能需要注册插件。如需其他功能，请参考插件说明文档[插件](/docs/webjs/3.8/plugins)。
+按需引入集成，基础SDK只包含埋点功能，其他功能需要注册插件，小巧功能简单。
 
-- 优点：SDK较小，约 34KB ，加载速度快，有效控制打包产物大小。
-- 缺点：复杂度略高，理解成本略高，集成稍复杂。
+- 优点：SDK较小，约 38-40KB ，加载速度快，有效控制打包产物大小。
+- 缺点：理解成本略高，集成稍复杂。
 
 **1、运行命令安装最新的SDK**
 
@@ -191,17 +155,13 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**
-
-基础SDK仅包含埋点功能，如果已满足您的需求，则集成步骤结束；如需扩展其他功能，请继续以下集成插件的步骤。
-
   </TabItem>
   <TabItem value="全量引入">
 
-全量引入集成，SDK将包含 **除性能采集之外** 的其他所有插件，功能全覆盖，简单快速集成。
+全量引入集成，SDK将包含 **除性能监控之外** 的其他所有插件，功能全覆盖，简单快速集成。
 
 - 优点：复杂度低，理解成本低，快速集成。
-- 缺点：SDK较大，约 68KB ，会增加打包产物的大小。
+- 缺点：SDK较大，约 75-80KB ，会增加打包产物的大小，可能会拖慢加载速度。。
 
 **1、运行命令安装最新的SDK**
 
@@ -224,58 +184,38 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**
-
-**1）**使用 npm 集成的初始化代码应尽可能书写在所有js代码执行的最前面。
-
-**2）**使用 npm 集成的SDK默认使用 **es6** 语法，如果您有兼容IE11等只支持es5语法浏览器的需求，请选择es5版本的SDK集成（'gdp-es5 或 gdp-full-es5'）或者在您的打包工具中直接进行相应的语法转换配置。
-
-**3）**该集成方式已包含 **除性能采集之外** 的其他所有插件，如果已满足您的需求，则集成步骤结束；如需扩展其他功能（例如性能采集），请继续以下集成插件的步骤。
   </TabItem>
 </Tabs>
 
-### npm集成插件
+#### 其他
 
-1、引入插件
+**1）**初始化代码应尽可能书写在入口文件的所有js代码执行的最前面（例如：app.js、index.js）。
 
-在[插件列表](/docs/webjs/3.8/plugins)中选择插件并在文件头部前粘贴引用代码。
+**2）**SDK默认使用 **es6** 语法，如果您有兼容IE11等只支持es5语法浏览器的需求，请选择es5版本的SDK集成（'gdp-es5 或 gdp-full-es5'）或者在您的打包工具中直接进行相应的语法转换配置。
 
-2、调用`registerPlugins`方法注册插件
-
-在init语句前调用`registerPlugins`方法按数组形式传值。
-
-##### 示例代码
-
-```js
-import gdp from 'gio-webjs-sdk-cdp';
-import gioEventAutoTracking from 'gio-webjs-sdk-cdp/plugins/gioEventAutoTracking';
-import gioImpressionTracking from 'gio-webjs-sdk-cdp/plugins/gioImpressionTracking';
-
-/**
- * GrowingIO Analytics WebJS SDK version 3.8
- * Copyright 2015-2022 GrowingIO, Inc. More info available at http://www.growingio.com
- */
-gdp('registerPlugins', [gioEventAutoTracking, gioImpressionTracking]);
-gdp('init', 'your accountId', 'your dataSourceId', {
-  host: 'your apiServerHost',
-  version: 'your website version'
-});
-```
-
+**3）**SDK默认使用`es`格式进行打包，若您的站点需要使用`umd`格式的SDK，请修改为`gdp.umd.js`或`gdp-full.umd.js`即可引用umd格式的SDK。
   </TabItem>
 </Tabs>
+
+## 插件扩展
+
+全量集成SDK时，我们已经将 **除性能监控之外** 的其他所有插件内置打包，所以无需再进行插件的集成注册。
+
+按需集成SDK时，SDK仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
+
+各个插件的介绍和集成方式请见[插件](/docs/webjs/3.8/plugins)。
 
 ## 在APP内嵌页面中集成
 
-全量集成时，参考Web站点集成即可，无需做额外操作，已内置App内嵌页打通功能。
+全量集成SDK时，参考Web站点集成即可，无需做额外操作，已内置App内嵌页打通功能。
 
-按需集成时，需在Web站点集成的基础之上，注册添加App内嵌页打通插件。[参考文档](/docs/webjs/3.8/plugins/hybridAdapter)
+按需集成SDK时，需在Web站点集成的基础之上，注册添加App内嵌页打通插件。[参考文档](/docs/webjs/3.8/plugins/hybridAdapter)
 
 ## 在小程序内嵌页面中集成
 
-全量集成时，需在Web站点集成的基础之上，修改初始化配置即可，无需再次集成插件，已内置小程序内嵌页打通功能。[参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
+全量集成SDK时，需在Web站点集成的基础之上，修改初始化配置即可，无需再次集成插件，已内置小程序内嵌页打通功能。[参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
 
-按需集成时，需在Web站点集成的基础之上，注册添加小程序内嵌页打通插件并修改初始化配置。[参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
+按需集成SDK时，需在Web站点集成的基础之上，注册添加小程序内嵌页打通插件并修改初始化配置。[参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
 
 ## 在微信公众号H5中集成
 

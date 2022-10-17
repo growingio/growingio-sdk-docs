@@ -9,7 +9,13 @@ title: 插件
 
 所有的插件默认打包为 es5 ，因此您不用担心基本的浏览器兼容问题。
 
-但由于某些插件（例如半自动埋点浏览）依赖于一些现代浏览器的api，因此存在部分浏览器兼容问题，请注意查看浏览器兼容性说明。
+但由于某些插件（例如半自动埋点浏览）依赖于一些现代浏览器的api，因此存在部分浏览器兼容问题，请注意查看该插件的浏览器兼容性说明。
+
+插件在未明确标明有互斥的情况下可同时多个以数组的形式进行一次性注册。例：
+
+```js
+gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking]);
+```
 
 ### 无埋点插件（gioEventAutoTracking）
 
