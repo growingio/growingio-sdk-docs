@@ -46,7 +46,7 @@ gdp('init', xxxx);
 
 ### 使用方法
 
-#### 传值方式一：使用Object对象或JSON字符串赋值（建议）
+#### 传值方式一：使用Object对象或JSON字符串赋值（推荐）
 
 在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/webjs/3.8/commonlyApi#4埋点事件track)。传值时赋值一个Object对象或一个JSON字符串。
 
@@ -75,13 +75,13 @@ var id = '12345';
 ```
 
 ```jsx
-<view
+<div
   data-gio-imp-track="imp_picture_var"
   data-gio-imp-attrs={`{ "type": "hjh", "name": "yue" }`}
   data-gio-imp-items={`{ "key": "` + ${key} + `", "id": "` + ${id} + `" }`}
 >
   监听的元素，必须有内容或额外样式来让节点有实际大小
-</view>
+</div>
 ```
 
 以上两种方式对应产生的`CUSTOM`事件相当于： ↓↓↓
