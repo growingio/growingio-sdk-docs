@@ -104,11 +104,13 @@ import TabItem from '@theme/TabItem';
 
 #### 其他
 
-**1）**SDK默认使用`es6`版本进行打包，若您的站点需要支持 **IE11** 等不兼容es6的旧版浏览器，请修改为`gdp-es5.js`或`gdp-full-es5.js`即可引用es5版本的SDK。
+**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/3.8/initSettings)。
 
-**2）**SDK默认使用`es`格式进行打包，若您的站点需要使用`umd`格式的SDK，请修改为`gdp.umd.js`或`gdp-full.umd.js`即可引用umd格式的SDK。
+**2）**SDK默认使用`es6`版本进行打包，若您的站点需要支持 **IE11** 等不兼容es6的旧版浏览器，请修改为`gdp-es5.js`或`gdp-full-es5.js`即可引用es5版本的SDK。
 
-**3）**如果您希望不受CDN（内容分发网络）影响，请下载SDK至本地集成，并修改上述集成代码中的SDK CDN地址为您本地的相对地址。
+**3）**SDK默认使用`es`格式进行打包，若您的站点需要使用`umd`格式的SDK，请修改为`gdp.umd.js`或`gdp-full.umd.js`即可引用umd格式的SDK。
+
+**4）**如果您希望不受CDN（内容分发网络）影响，请下载SDK至本地集成，并修改上述集成代码中的SDK CDN地址为您本地的相对地址。
 
 WebJS SDK 下载：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
@@ -189,11 +191,13 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 #### 其他
 
-**1）**初始化代码应尽可能书写在入口文件的所有js代码执行的最前面（例如：app.js、index.js）。
+**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/3.8/initSettings)。
 
-**2）**SDK默认使用 **es6** 语法，如果您有兼容IE11等只支持es5语法浏览器的需求，请选择es5版本的SDK集成（'gdp-es5 或 gdp-full-es5'）或者在您的打包工具中直接进行相应的语法转换配置。
+**2）**初始化代码应尽可能书写在入口文件的所有js代码执行的最前面（例如：app.js、index.js）。
 
-**3）**SDK默认使用`es`格式进行打包，若您的站点需要使用`umd`格式的SDK，请修改为`gdp.umd.js`或`gdp-full.umd.js`即可引用umd格式的SDK。
+**3）**SDK默认使用 **es6** 语法，如果您有兼容IE11等只支持es5语法浏览器的需求，请选择es5版本的SDK集成（'gdp-es5 或 gdp-full-es5'）或者在您的打包工具中直接进行相应的语法转换配置。
+
+**4）**SDK默认使用`es`格式进行打包，若您的站点需要使用`umd`格式的SDK，请修改为`gdp.umd.js`或`gdp-full.umd.js`即可引用umd格式的SDK。
   </TabItem>
 </Tabs>
 
