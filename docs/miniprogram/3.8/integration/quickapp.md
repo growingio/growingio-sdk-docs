@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 目前快应用仅支持原生开发方式。如您使用了其他开发方式，请咨询我们。
 
-### 准备工作
+## 准备工作
 
 1、在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
 
@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 3、下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
 
-### 集成
+## 集成
 
 参考示例在 app.ux 快应用主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在快应用中任意生命周期中进行初始化。**
 
@@ -56,34 +56,11 @@ const gdp = require('./utils/gio/gio-quickapp.js').default;
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
 
-### 插件扩展
+## 插件扩展
 
-如果您想在原有SDK功能（默认仅有埋点功能）上添加额外的功能，可使用插件并按需进行扩展。
+集成SDK时，SDK仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
 
-插件文件说明参考文档[插件](/docs/miniprogram/3.8/plugins)。
-
-#### 1、引入插件文件
-
-插件下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.9/plugins.zip><br/>
-**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
-
-下载功能插件，解压放入 plugins 目录中，并在app.js/main.js中引入。
-
-#### 2、调用`registerPlugins`方法注册插件
-
-在init语句前调用`registerPlugins`方法按数组形式传值。
-
-##### 示例代码
-
-```js
-import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
-import gioCompress from './utils/plugins/gioCompress';
-
-...
-// 在init语句前调用`registerPlugins`方法按数组形式传值。
-gdp('registerPlugins', [gioImpressionTracking, gioCompress]);
-gdp('init', xxxxx);
-```
+各个插件的介绍和集成方式请见[插件](/docs/miniprogram/3.8/plugins)。
 
 加载插件后会在初始化之前打印日志。例：
 

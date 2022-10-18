@@ -57,7 +57,7 @@ title: 3.3与3.8对比
 
 > 新增 `getOption` 方法；用于获取当前SDK配置项状态。[参考文档](/docs/miniprogram/3.8/commonlyApi#12获取sdk当前配置getoption)
 >
-> 新增 `setOption` 方法；用于统一动态设置SDK配置项。[参考文档](/docs/miniprogram/3.8/commonlyApi#动态配置接口setoption)
+> 新增 `setOption` 方法；用于统一动态设置SDK配置项。[参考文档](/docs/miniprogram/3.8/commonlyApi#动态修改配置接口setoption)
 >
 > 新增 `setLocation` 方法；用于弥补移除了自动获取位置的功能。[参考文档](/docs/miniprogram/3.8/commonlyApi#8地理位置setlocation)
 
@@ -65,7 +65,7 @@ title: 3.3与3.8对比
 
 1、新增快手小程序的适配。
 
-2、新增半自动采集浏览功能。详情[参考文档](/docs/miniprogram/3.8/commonlyApi#半自动埋点浏览事件)
+2、新增半自动采集浏览功能。详情[参考文档](/docs/miniprogram/3.8/plugins/impressionTracking)
 
 3、新增`uni-app vue3`、`taro3 vue3`、`remax`的支持。
 

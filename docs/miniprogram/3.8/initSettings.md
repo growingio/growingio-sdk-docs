@@ -37,9 +37,9 @@ title: 初始化配置
 
 ### autotrack
 
-默认情况下，SDK不加载无埋点插件。当在 SDK 中加载了无埋点插件时会自动开启无埋点采集。如果您不需要无埋点采集，可以通过以下两种方式进行关闭：
+默认情况下，无埋点开关默认开启。当在 SDK 中加载了无埋点插件时会自动启用无埋点采集功能。如果您不需要无埋点采集，可以通过以下两种方式进行关闭：
 
-**方式一：**使用 **含** 无埋点插件的SDK，初始化设置 `autotrack: false` 进行关闭。
+**方式一：**全量集成时 或 按需集成已注册插件，初始化设置 `autotrack: false` 进行关闭。
 
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
@@ -48,7 +48,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 });
 ```
 
-**方式二：**移除无埋点插件即可。
+**方式二：**按需集成时移除无埋点插件即可。
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
 
@@ -70,9 +70,9 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ### compress
 
-默认情况下，SDK不加载加密插件。当在 SDK 中加载了加密插件时自动开启数据加密。如果您不需要数据加密，可以通过以下两种方式进行关闭：
+默认情况下，加密开关默认开启。当在 SDK 中加载了加密插件时自动启用数据加密功能。如果您不需要数据加密，可以通过以下两种方式进行关闭：
 
-**方式一：**使用 **含** 加密插件的SDK，初始化设置 `compress: false` 进行关闭。
+**方式一：**全量集成时 或 按需集成已注册插件，初始化设置 `compress: false` 进行关闭。
 
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
@@ -81,15 +81,18 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 });
 ```
 
-**方式二：**移除加密插件即可。
+**方式二：**按需集成时移除加密插件即可。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1、开启加密后抓包工具无法抓取上报的明文数据，但debug模式开启时开发者工具中仍能看到未加密的上报数据。**<br/>
+**1、开启加密后抓包工具无法抓取上报的明文数据，但debug模式开启时开发者工具控制台中仍能看到未加密的上报数据。**<br/>
 **2、淘宝小程序由于需要云函数明文校验请求字段，所以在淘宝小程序中，数据加密会自动关闭，不论您是否开启配置项或加载了加密插件。**
 
 ### dataCollect
 
-默认情况下，SDK开启数据采集。如果您需要初始化时暂时关闭数据采集，可以通过指定 `dataCollect: false` 关闭。 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
+默认情况下，数据采集开关默认开启。如果您需要初始化时暂时关闭数据采集（例如隐私协议的场景），可以通过指定 `dataCollect: false` 关闭。
+需要开启数据采集时再通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#2开启关闭数据采集datacollect)
+
+初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
 
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
@@ -97,8 +100,6 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     ...其他配置项
 });
 ```
-
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#2开启关闭数据采集datacollect)
 
 ### debug
 
