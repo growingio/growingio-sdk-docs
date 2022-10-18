@@ -51,3 +51,8 @@ gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking
 
 当您的web页面作为Hybrid内嵌页使用且有圈选需求时，自动处理圈选逻辑的插件。<br/>
 [参考文档](/docs/webjs/3.8/plugins/hybridCircle)
+
+### 性能监控插件（gioPerformance）
+
+提供页面首屏加载监控、错误监控和网络请求监控的全方位性能监控采集插件。<br/>
+[参考文档](/docs/webjs/3.8/plugins/performance)

@@ -32,3 +32,8 @@ gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking
 
 当且仅当开发小程序时使用独立开发的分包 **（即主包与分包不在同一项目中且不同框架时）** 时，插件用于打通不同框架间用户数据和页面数据，合并为一个SDK运行逻辑。<br />
 [参考文档](/docs/miniprogram/3.8/plugins/multiIntegrate)
+
+## 性能监控（gioPerformance）
+
+提供小程序首屏加载监控、错误监控和网络请求监控的全方位性能监控采集插件。<br/>
+[参考文档](/docs/miniprogram/3.8/plugins/performance)
