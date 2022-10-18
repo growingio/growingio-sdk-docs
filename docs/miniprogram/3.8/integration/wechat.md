@@ -484,6 +484,8 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
 Component({ ... });
 ```
 
+**<font color="#FC5F3A">注意：</font>**由于小程序插件中无法获取到页面信息（即没有path），因此在小程序插件中集成时，会自动关闭无埋点功能（不论是否加载无埋点插件和开启autotrack）。
+
 ## 数据校验
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：

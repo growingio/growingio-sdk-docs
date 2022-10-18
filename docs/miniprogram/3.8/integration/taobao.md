@@ -80,6 +80,8 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
 Component({ ... });
 ```
 
+**<font color="#FC5F3A">注意：</font>**由于小部件中无法获取到页面信息（即没有path），因此在小部件中集成时，会自动关闭无埋点功能（不论是否加载无埋点插件和开启autotrack）。
+
 ## 插件扩展
 
 集成SDK时，SDK仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
