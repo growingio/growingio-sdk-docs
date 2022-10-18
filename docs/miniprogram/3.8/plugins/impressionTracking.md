@@ -3,29 +3,29 @@ sidebar_position: 2
 title: 半自动埋点浏览
 ---
 
-### 简介
+## 简介（gioImpressionTracking）
 
 用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)在平台上进行事件类型和变量的预定义。
 
-#### 曝光逻辑
+### 曝光逻辑
 
 **always：**只要从**屏幕不可见区域到可见区域**即可计为一次曝光并上报。(默认值)
 
 **once：**从**屏幕不可见区域到可见区域**曝光只上报一次。
 
-### 兼容性
+## 兼容性
 
 微信小程序、阿里(支付宝)小程序(基础库>=2.7.0)、百度小程序、字节跳动小程序、QQ小程序、淘宝小程序、快手小程序。
 
 快应用不支持。
 
-### 集成
+## 集成
 
 全量集成SDK时无需再次集成插件。
 
-#### 1、引入
+### 1、引入
 
-**下载集成引入**
+#### 下载集成引入
 
 - 下载插件包并复制至项目中：
 **<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.9/plugins.zip></font>**<br/>
@@ -37,26 +37,26 @@ title: 半自动埋点浏览
 import gioImpressionTracking from "./utils/plugins/gioImpressionTracking"
 ```
 
-**npm集成引入**
+#### npm集成引入
 
 ```js
 import gioImpressionTracking from "gio-webjs-sdk-cdp/plugins/gioImpressionTracking"
 ```
 
-#### 2、注册
+### 2、注册
 
 ```js
 gdp('registerPlugins', [gioImpressionTracking]);
 gdp('init', xxxx);
 ```
 
-### 使用方法
+## 使用方法
 
 **1、**在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
 
 **2、**在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)。
 
-#### 传值方式一：使用Object对象或JSON字符串赋值
+### 传值方式一：使用Object对象或JSON字符串赋值
 
 ```js
 Page({
@@ -78,7 +78,7 @@ Page({
 </view>
 ```
 
-#### 传值方式二：直接手动编写Object字符串
+### 传值方式二：直接手动编写Object字符串
 
 提示：部分框架如uniapp编译时可能会将单引号编译成双引号导致编译失败
 
@@ -113,7 +113,7 @@ gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id',
 </view>
 ```
 
-### 注意
+## 注意
 
 1、`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object字符串，SDK会自动尝试进行格式化，格式化失败时默认返回空对象。
 

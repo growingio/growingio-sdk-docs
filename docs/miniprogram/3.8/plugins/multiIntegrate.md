@@ -3,17 +3,17 @@ sidebar_position: 4
 title: 多项目分包打通
 ---
 
-### 简介
+## 简介（gioMultiIntegrate）
 
 当且仅当开发小程序时使用独立开发的分包 **（即主包与分包不在同一项目中且不同框架时）** 时，插件用于打通用户数据和页面数据，合并为一个SDK运行逻辑。
 
-### 集成
+## 集成
 
 此插件为独立插件，即使您集成了全量版本SDK，需要此功能时，依然需要注册此插件。
 
-#### 1、引入
+### 1、引入
 
-**下载集成引入**
+#### 下载集成引入
 
 - 下载插件包并复制至项目中：
 **<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.9/plugins.zip></font>**<br/>
@@ -25,7 +25,7 @@ title: 多项目分包打通
 import gioMultiIntegrate from "./utils/plugins/gioMultiIntegrate"
 ```
 
-**npm集成引入**
+#### npm集成引入
 
 ```js
 import gioMultiIntegrate from "gio-webjs-sdk-cdp/plugins/gioMultiIntegrate"
@@ -33,7 +33,7 @@ import gioMultiIntegrate from "gio-webjs-sdk-cdp/plugins/gioMultiIntegrate"
 
 <font color="#FC5F3A">提示：主包分包均需引入SDK和插件。</font>
 
-#### 2、注册
+### 2、注册
 
 ```js
 gdp('registerPlugins', [gioMultiIntegrate]);
@@ -42,13 +42,13 @@ gdp('init', xxxx);
 
 <font color="#FC5F3A">提示：主包分包均需注册插件并初始化。</font>
 
-#### 3、分包修改初始化配置项
+### 3、分包修改初始化配置项
 
 ```js
 gdp('init', xxxx, { subpackage: true });
 ```
 
-### 注意
+## 注意
 
 1、**<font color="red">本插件与无埋点插件互斥。</font>**仅支持用户和页面数据打通与埋点事件，无埋点事件无法支持，使用该插件会**自动强制关闭无埋点功能**（不论是否加载无埋点插件和开启autotrack）。
 

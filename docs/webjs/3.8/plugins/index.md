@@ -32,15 +32,15 @@ gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking
 当您的web页面作为小程序内嵌页使用且有需要打通用户信息，将采集信息合并至小程序项目分析时使用的插件。<br/>
 [参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
 
-### 数据加密压缩插件（gioCompress）
-
-上报请求的数据进行加密压缩。<br/>
-[参考文档](/docs/webjs/3.8/plugins/compress)
-
 ### App内嵌页打通插件（gioHybridAdapter）
 
 当您的web页面作为Hybrid内嵌页使用将采集信息合并至Native项目分析时使用的插件。<br/>
 [参考文档](/docs/webjs/3.8/plugins/hybridAdapter)
+
+### 数据加密压缩插件（gioCompress）
+
+上报请求的数据进行加密压缩。<br/>
+[参考文档](/docs/webjs/3.8/plugins/compress)
 
 ### Web圈选辅助插件（gioWebCircle）
 

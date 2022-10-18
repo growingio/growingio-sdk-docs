@@ -3,7 +3,7 @@ sidebar_position: 1
 title: 无埋点
 ---
 
-### 简介
+## 简介（gioEventAutoTracking）
 
 自动采集 `tap`、`longtap`、`change`、`submit` 事件的插件。
 
@@ -15,13 +15,13 @@ title: 无埋点
 
 **表单提交事件(submit)：** 对应 `FORM_SUBMIT` 事件。自动上报，当小程序中**绑定的表单提交事件**触发时上报。(快应用不支持)
 
-### 集成
+## 集成
 
 全量集成SDK时无需再次集成插件。
 
-#### 1、引入
+### 1、引入
 
-**下载集成引入**
+#### 下载集成引入
 
 - 下载插件包并复制至项目中：
 **<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.9/plugins.zip></font>**<br/>
@@ -33,20 +33,20 @@ title: 无埋点
 import gioEventAutoTracking from "./utils/plugins/gioEventAutoTracking"
 ```
 
-**npm集成引入**
+#### npm集成引入
 
 ```js
 import gioEventAutoTracking from "gio-webjs-sdk-cdp/plugins/gioEventAutoTracking"
 ```
 
-#### 2、注册
+### 2、注册
 
 ```js
 gdp('registerPlugins', [gioEventAutoTracking]);
 gdp('init', xxxx);
 ```
 
-### 注意
+## 注意
 
 1、默认情况下，加载该插件后自动开启无埋点功能。
 
