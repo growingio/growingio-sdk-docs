@@ -38,7 +38,7 @@ gdp('setOption', 'dataCollect', true | false);
 
 ### 3、开启/关闭调试模式(debug)
 
-默认不开启。当设置为 **`true`** 时，开启后会在浏览器控制台输出日志。
+默认不开启调试模式。当设置为 **`true`** 时，开启后会在浏览器控制台输出日志。
 
 ```js
 gdp('setOption', 'debug', true | false);
@@ -244,8 +244,7 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 SDK会自动忽略 `type="password"` 类型的input框的内容采集；如果类型为`text`的input中包含敏感信息，请不要添加该标记，可能会明文暴露这些信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
 :::
 
-**<font color="#FC5F3A">注意：</font>**<br/>
-**3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
+**提示：3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
 
 ### 2、补充数据标记
 

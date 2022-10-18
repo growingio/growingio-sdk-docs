@@ -41,7 +41,7 @@ gdp('setOption', 'dataCollect', true | false);
 
 ### 3、开启/关闭调试模式(debug)
 
-默认不开启。当设置为 **`true`** 时，开启后会在开发者工具控制台输出日志。
+默认不开启调试模式。当设置为 **`true`** 时，开启后会在开发者工具控制台输出日志。
 
 ```js
 gdp('setOption', 'debug', true | false);
@@ -96,7 +96,7 @@ gdp('identify', openId);
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）若使用此接口需要在初始化时将 forceLogin 设置为 true。 [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**<br/>
-**2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**
+**2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**<br/>
 **3）该方法仅可合法地调用一次，多次调用无效。**
 
 ### 3、获取访问用户Id(getDeviceId)
@@ -360,7 +360,7 @@ Page({
 
 **3）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，数据打通后，打通H5页面的 dataCollect 数据采集开关由小程序SDK初始化配置项 dataCollect 控制。此项功能使用需H5 页面集成的 Web JS SDK 版本>=3.3.9。**
 
-**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/3.8/integrate#在小程序内嵌页面中集成)**
+**H5页面集成SDK参考[在小程序内嵌页面中集成](/docs/webjs/3.8/integrate#在小程序内嵌页面中集成)**
 
 ### 10、设置埋点通用属性(setGeneralProps)
 
@@ -438,9 +438,7 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 请勿尝试在密码框上标记 data-growing-track 采集数据，会明文暴露用户填写的密码信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
 :::
 
-#### 提示
-
-**3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
+**提示：3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
 
 ### 2、补充数据标记
 
@@ -485,7 +483,7 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 
 #### 4）gioPageTitle
 
-默认情况下SDK会自动采集页面title，但当SDK可能无法识别时或您需要自定义时，可以通过在页面的`data`对象中设置`gioPageTitle`字段来指定SDK上报事件时的title值。例：
+默认情况下SDK会自动采集页面title，但当SDK可能无法识别或您需要自定义时，可以通过在页面的`data`对象中设置`gioPageTitle`字段来指定SDK上报事件时的title值。例：
 
 ```js
 Page({
@@ -609,9 +607,9 @@ trackTimerEnd时发送CUSTOM事件上报数据：
 - eventName  埋点事件标识符（trackTimerStart传入）
 - attributes 用户自定义事件属性（trackTimerEnd传入）
 - eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
-eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
-eventDuration 变量及其值会自动添加在 attributes 中<br/>
-eventDuration 时间统计不会计算后台时间
+&nbsp;&nbsp;&nbsp;&nbsp;单位秒，小数点精度保证到毫秒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;变量及其值会自动添加在 attributes 中<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;时间统计不会计算后台时间
 - eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
 :::
 
