@@ -15,12 +15,12 @@ WebJS 3.8：[Hybrid内嵌页打通插件](/docs/webjs/3.8/plugins#hybrid内嵌�
 
 如果 APP 集成的是[**埋点 SDK**](/docs/ios/Introduce#埋点sdk集成)，则需要您添加 Hybrid 依赖
 
-<Tabs>
-  <TabItem value="cocoapods" label="Cocoapods集成" default>
-
 :::info
 **使用时注意模块版本需要与采集 SDK 版本保持一致**
 :::
+
+<Tabs>
+  <TabItem value="cocoapods" label="Cocoapods集成" default>
 
 ```c
 pod 'GrowingAnalytics/Hybrid'
@@ -31,7 +31,7 @@ pod 'GrowingAnalytics/Hybrid'
   </TabItem>
   <TabItem value="swiftPM" label="Swift Package Manager集成">
 
-添加 **GrowingModule_Hybrid**  Package
+添加 **GrowingModule_Hybrid** Package
 
 ![add Package](./../../../static/img/ios/add_package_hybrid.png)
 
