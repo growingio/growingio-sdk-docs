@@ -46,7 +46,7 @@ pod 'GrowingAPM'
 ```objectivec
 int main(int argc, char * argv[]) {
     // GrowingAPM Swizzling
-    [GrowingAPM swizzle:GrowingAPMMonitorsCrash | GrowingAPMMonitorsLaunch | GrowingAPMMonitorsUserInterface];
+    [GrowingAPM swizzle:GrowingAPMMonitorsCrash | GrowingAPMMonitorsUserInterface];
     NSString * appDelegateClassName;
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
@@ -66,7 +66,7 @@ configuration.dataSourceId = @"YourDatasourceId";
 // 添加 GrowingAPM 初始化配置
 GrowingAPMConfig *config = GrowingAPMConfig.config;
 // 根据您需要的监控类型
-config.monitors = GrowingAPMMonitorsCrash | GrowingAPMMonitorsLaunch | GrowingAPMMonitorsUserInterface;
+config.monitors = GrowingAPMMonitorsCrash | GrowingAPMMonitorsUserInterface;
 configuration.APMConfig = config;
 
 [GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
@@ -82,7 +82,6 @@ pod 'GrowingAnalytics/APM'
 
 # 按照所需 GrowingAPM 子模块自由组合
 pod 'GrowingAPM/UIMonitor'
-pod 'GrowingAPM/LaunchMonitor'
 pod 'GrowingAPM/CrashMonitor'
 # ...
 ```
@@ -99,7 +98,7 @@ pod 'GrowingAPM/CrashMonitor'
 1. 在 **main.swift** 中导入 `import GrowingModule_APM`，并添加以下代码：
 
 ```swift
-GrowingAPM.swizzle([.crash, .launch, .userInterface])
+GrowingAPM.swizzle([.crash, .userInterface])
 ```
 
 2. 在 **AppDelegate.swift** 中导入 `import GrowingModule_APM`，并在 `application:didFinishLaunchingWithOptions:` 中初始化 GrowingAnalytics SDK 的同时，导入 GrowingAPMConfig 配置:
@@ -112,7 +111,7 @@ config?.dataSourceId = "YourDatasourceId"
 // 添加 GrowingAPM 初始化配置
 let apmconfig = GrowingAPMConfig()
 // 根据您需要的监控类型
-apmconfig.monitors = [.crash, .launch, .userInterface]
+apmconfig.monitors = [.crash, .userInterface]
 config?.apmConfig = apmconfig
 
 GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
