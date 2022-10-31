@@ -9,7 +9,7 @@ title: 性能监控
 
 ## 采集范围
 
-### 1、首屏加载监控
+### 首屏加载监控
 
 含以下指标监控：
 
@@ -19,7 +19,7 @@ title: 性能监控
 - 最大内容绘制（LCP）；从开始页面加载的时间点到可视区域内可见的最大图像或文本块完成渲染的时间
 - 第一字节时间（TTFB）；从开始页面加载到接收到服务端返回的第一个字节的时间（包含Redirect、Cache、DNS、TCP、Request的时长总和）
 
-### 2、错误监控
+### 错误监控
 
 含以下错误类型监控：
 
@@ -38,21 +38,61 @@ title: 性能监控
 
 ## 浏览器兼容性
 
+### 首屏加载监控
+
+- 页面完整加载时长（PageLoad）：同采集SDK
+- 可交互时长（domReady）：同采集SDK
+- 首次内容绘制/白屏时长（FCP）：Chrome >=51, Edge >= 15, Firefox >= 54, Safari >=14.1
+- 最大内容绘制（LCP）：Chrome >=51, Edge >= 15
+- 第一字节时间（TTFB）：Chrome >=51, Edge >= 15, Firefox >= 54, Safari >=8, Internet Explorer 11
+
+### 错误监控
+
 同采集SDK。[参考文档](/docs/webjs/3.8)
 
 ## 集成
 
-此插件为独立插件，即使您集成了全量版本SDK，需要此功能时，依然需要注册此插件。
+此插件为独立插件，即使您集成了全量版本SDK，需要此功能时，依然需要单独集成或注册此插件。
 
-### 1、引入
-
-#### CDN集成引入
+### CDN集成引入
 
 ```html
-<script src="https://assets.giocdn.com/sdk/webjs/cdp/plugins/gioPerformance.js"></script>
+<script type="text/javascript">
+  !(function (e, n, t, i, r) {
+    (e[r] =
+      e[r] ||
+      function () {
+        (e[r].q = e[r].q || []).push(arguments);
+      }),
+      (e[r].ef =
+        e[r].ef ||
+        function () {
+          c = arguments[0];
+          (c.eventTime = +Date.now()), (e[r].e = e[r].e || []).push(c);
+        }),
+      e.addEventListener('error', e[r].ef, !0),
+      e.addEventListener('unhandledrejection', e[r].ef, !0),
+      (t = n.createElement('script'));
+    s = n.getElementsByTagName('script')[0];
+    (t.async = !0),
+      (t.src = i),
+      s.parentNode.insertBefore(t, s),
+      e[r]('registerPlugins', [e.gioPerformance]);
+  })(
+    window,
+    document,
+    'script',
+    'https://assets.giocdn.com/sdk/webjs/cdp/plugins/gioPerformance.js',
+    'gdp'
+  );
+</script>
 ```
 
-#### npm集成引入
+提示：性能监控的集成代码在数据采集SDK集成代码的前后均可，但必须同时集成数据采集SDK。
+
+### npm集成引入
+
+### 1、引入
 
 ```js
 import gioPerformance from "gio-webjs-sdk-cdp/plugins/gioPerformance"
@@ -60,7 +100,7 @@ import gioPerformance from "gio-webjs-sdk-cdp/plugins/gioPerformance"
 
 ### 2、注册
 
-#### 普通Web站点
+#### 普通工程化Web站点
 
 ```js
 gdp('registerPlugins', [gioPerformance]);
@@ -179,39 +219,36 @@ root.render(
 
 ## 配置
 
-集成性能采集插件时，默认开启 `首屏加载监控` 和 `错误监控` 。如您不需要其中某项监控内容，在注册插件时可添加配置项选择指定内容关闭。
+集成性能采集插件时，默认开启 `首屏加载监控` 和 `错误监控` 。如您不需要其中某项监控内容，在初始化配置项选择指定内容关闭。
 
 ### 关闭首屏加载监控
 
 ```js
-gdp('registerPlugins', [
-  {
-    ...gioPerformance,
-    options: { monitor: false }
+gdp('init', 'your accountId', 'your dataSourceId', {
+    ...other settings
+    performance: { monitor: false }
   }
-]);
+);
 ```
 
 ### 关闭错误监控
 
 ```js
-gdp('registerPlugins', [
-  {
-    ...gioPerformance,
-    options: { exception: false }
+gdp('init', 'your accountId', 'your dataSourceId', {
+    ...other settings
+    performance: { exception: false }
   }
-]);
+);
 ```
 
 <!-- ### 关闭请求监控
 
 ```js
-gdp('registerPlugins', [
-  {
-    ...gioPerformance,
-    options: { network: false }
+gdp('init', 'your accountId', 'your dataSourceId', {
+    ...other settings
+    performance: { network: false }
   }
-]);
+);
 ```
 
 ### 设置请求监控排除名单
@@ -221,10 +258,9 @@ gdp('registerPlugins', [
 注意，一旦您配置了此项，则认为您开启请求监控。
 
 ```js
-gdp('registerPlugins', [
-  {
-    ...gioPerformance,
-    options: {
+gdp('init', 'your accountId', 'your dataSourceId', {
+    ...other settings
+    performance: {
       network: {
         exclude: 'myhost.com'
         // 或 exclude: /myhost.com/gi
@@ -232,7 +268,7 @@ gdp('registerPlugins', [
       }
     }
   }
-]);
+);
 ```
 
 ## 注意
