@@ -34,7 +34,7 @@ GrowingAutotracker.get().trackTimerEnd("timerId")
 GrowingAutotracker.get().removeTimer("timerId")
 GrowingAutotracker.get().clearTrackTimer()
 
-GrowingAutotracker.get().registerComponent(module)
+GrowingAutotracker.get().registerComponent(module,<config>)
 ```
 
 ### 埋点SDK API列表
@@ -57,7 +57,7 @@ GrowingTracker.get().trackTimerEnd("timerId")
 GrowingTracker.get().removeTimer("timerId")
 GrowingTracker.get().clearTrackTimer()
 
-GrowingTracker.get().registerComponent(module)
+GrowingTracker.get().registerComponent(module,<config>)
 ```
 ## API 详细说明
 ### 1. 数据采集开关
@@ -653,13 +653,14 @@ GrowingTracker.get().clearTrackTimer()
 | 参数     | 参数类型           | 说明 |
 | :------- | :----------------- | :--- |
 | `module` | `LibraryGioModule` | 模块 |
+| `config` | `Configuration` | 模块的配置类(可选参数) |
 #### 示例
 
 **无埋点SDK示例代码：**
 ```java
-GrowingAutotracker.get().registerComponent(module)
+GrowingAutotracker.get().registerComponent(module,<config>)
 ```
 **埋点SDK示例代码：**
 ```java
-GrowingTracker.get().registerComponent(module)
+GrowingTracker.get().registerComponent(module,<config>)
 ```

@@ -38,7 +38,7 @@ Web端：用户在一定时间内首次打开网站页面<br/>
 
 一次访问会生成一个 **session**，各平台的 session 刷新机制如下：<br/>
 Web端：首次访问时生成 session，当用户30分钟内无操作行为，之后有操作行为，刷新 session。<br/>
-移动端：冷启动时生成 session，当App进入后台30秒后再次启动，刷新session。<br/>
+移动端：冷启动时生成 session，当App进入后台30秒后再次恢复至前台，刷新session。<br/>
 小程序：冷启动时生成 session，当小程序进入后台5分钟后再次启动，刷新session。<br/>
 
 ### 页面事件

@@ -1,14 +1,14 @@
 ---
-sidebar_position: 4
-title: SDK插件说明
+sidebar_position: 5
+title: AGP 插件说明
 ---
-SDK 插件版本记录及其使用方法
+Android Gradle Plugin 高版本说明及其使用方法
 
 --------------
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Growingio Sdk Gradle Plugin 在V3.4.0重新开发后，实现了更多的功能：
+Growingio Sdk Gradle Plugin 在V3.4.0 重新开发后，实现了更多的功能：
 * 适配 AGP 8.0 Instrumentation API；
 * 兼容 AGP4.2及其更早版本的 Transform API；
 * 优化插件对脱糖的处理；
@@ -18,7 +18,7 @@ Growingio Sdk Gradle Plugin 在V3.4.0重新开发后，实现了更多的功能�
 Github 项目地址为 [GrowingIO Android SDK Plugin](https://github.com/growingio/growingio-sdk-android-plugin)，欢迎star。
 
 ## 如何集成
-这里只说明在 Android Gradle插件为7.0及以上版本时的集成方式，若是AGP7以下则按照 [插件集成](/docs/android/base/Introduce#添加插件) 集成即可
+这里只说明在 Android Gradle插件为7.0及以上版本时的集成方式，若是AGP7以下则按照 [插件集成](/docs/android/Introduce#添加插件) 集成即可
 
 ### 添加 Maven 仓库
 需要在 project 中的 `settings.gradle` 文件中添加Maven仓库
@@ -57,7 +57,7 @@ plugins {
 
     ···
     // 添加GrowingIO 无埋点 SDK 插件
-    id 'com.growingio.android.autotracker' version '3.4.0' apply false
+    id 'com.growingio.android.autotracker' version '3.4.2' apply false
 }
 ```
 

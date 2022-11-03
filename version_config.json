@@ -1,15 +1,23 @@
 [
   {
     "name": "Android",
-    "version": "3.4.2",
+    "version": "3.4.3",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-autotracker/releases",
     "distPath": "docs/android/",
     "fileName": "version.md",
     "enable": true
   },
   {
+    "name": "Android plugin",
+    "version": "3.4.2",
+    "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-plugin/releases",
+    "distPath": "docs/android/",
+    "fileName": "AGP7.md",
+    "enable": false
+  },
+  {
     "name": "iOS",
-    "version": "3.4.3",
+    "version": "3.4.4",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-ios-autotracker/releases",
     "distPath": "docs/ios/",
     "fileName": "version.md",
