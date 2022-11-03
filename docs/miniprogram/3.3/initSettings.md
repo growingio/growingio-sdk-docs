@@ -145,11 +145,12 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 ### followShare
 
-默认情况下，SDK开启跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您不需要此功能，可以通过指定 `followShare: false` 来关闭跟踪分享。
+默认情况下，SDK关闭该功能。
+跟踪分享数据功能，详细的进行转发分享的统计，来帮助您更好的分析。如您需要此功能，可以通过指定 `followShare: true` 来开启跟踪分享。
 
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
-    followShare: false,
+    followShare: true,
     ...其他配置项
 });
 ```
