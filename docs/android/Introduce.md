@@ -52,7 +52,7 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.3'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.2'
     }
 }
 
@@ -67,7 +67,9 @@ apply plugin: 'com.growingio.android.autotracker'
 ...
 
 ```
-:::tip 关于高版本插件
+:::tip 关于插件
+插件最新发布版本为 [Github Releases](https://github.com/growingio/growingio-sdk-android-plugin/releases)
+
 关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/AGP7)
 :::
 
