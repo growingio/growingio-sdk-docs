@@ -2,8 +2,21 @@
 title: 版本记录
 sidebar_position: 0
 ---
-
 ----
+## V3.4.3
+ >[release-3.4.3](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.3) 日期: 2022-11-03 
+
+### Features
+
+- 添加广告的激活事件([#173](https://github.com/growingio/growingio-sdk-android-autotracker/pull/173))
+- 添加更多元化的事件过滤
+
+### Bug Fixes
+
+- bom version([#175](https://github.com/growingio/growingio-sdk-android-autotracker/pull/175))
+- negative array([#176](https://github.com/growingio/growingio-sdk-android-autotracker/pull/176))
+
+------
 ## V3.4.2
  >[release-3.4.2](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.2) 日期: 2022-09-20 
 
