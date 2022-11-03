@@ -52,7 +52,7 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.2'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.3'
     }
 }
 
@@ -68,24 +68,48 @@ apply plugin: 'com.growingio.android.autotracker'
 
 ```
 :::tip 关于高版本插件
-关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/base/AGP7)
+关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/AGP7)
 :::
 
 #### 添加代码依赖
-在需要用到的项目模块下的 `build.gradle` 文件中添加代码依赖
+在需要用到的应用级别下的 `build.gradle` 文件中添加代码依赖
+
+<Tabs
+  groupId="code-language"
+  defaultValue="common"
+  values={[
+    {label: '依赖', value: 'common'},
+    {label: 'BoM', value: 'bom'},
+  ]
+}>
+
+<TabItem value="common">
+
 ```groovy
 apply plugin: 'com.android.application'
 
-...
+dependencies {
+    implementation 'com.growingio.android:autotracker-cdp:3.4.3'
+}
+```
+</TabItem>
+
+<TabItem value="bom">
+
+```groovy
+apply plugin: 'com.android.application'
 
 dependencies {
-    ...
-    //GrowingIO 无埋点 SDK
-    implementation 'com.growingio.android:autotracker-cdp:3.4.2'
-}
+  // Import the BoM for the GrowingIO platform
+  implementation platform('com.growingio.android:autotracker-bom:3.4.3')
 
+  //GrowingIO 无埋点 SDK
+  implementation 'com.growingio.android:autotracker-cdp'
+}
 ```
 
+</TabItem>
+</Tabs>
 
 :::tip 关于版本
 最新版本请参考 [Github Release](https://github.com/growingio/growingio-sdk-android-autotracker/releases)
@@ -195,7 +219,7 @@ class MyApplication : Application() {
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.4.0 !!!`  
+`!!! GrowingIO Tracker version: 3.4.2 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
@@ -211,15 +235,46 @@ class MyApplication : Application() {
 
 ### 添加依赖
 
-只需要在 module 级别的 `build.gradle` 文件中添加tracker依赖即可。
+只需要在应用级别下的 `build.gradle` 文件中添加tracker依赖即可。
+
+
+<Tabs
+  groupId="code-language"
+  defaultValue="common"
+  values={[
+    {label: '依赖', value: 'common'},
+    {label: 'BoM', value: 'bom'},
+  ]
+}>
+
+<TabItem value="common">
 
 ```groovy
-dependencies {
+apply plugin: 'com.android.application'
 
+dependencies {
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.4.2'
+    implementation 'com.growingio.android:tracker-cdp:3.4.3'
 }
 ```
+</TabItem>
+
+<TabItem value="bom">
+
+```groovy
+apply plugin: 'com.android.application'
+
+dependencies {
+  // Import the BoM for the GrowingIO platform
+  implementation platform('com.growingio.android:autotracker-bom:3.4.3')
+
+  //GrowingIO 埋点 SDK
+  implementation 'com.growingio.android:tracker-cdp'
+}
+```
+
+</TabItem>
+</Tabs>
 
 ### 添加URLScheme
 以便唤醒App
@@ -320,7 +375,7 @@ SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用�
 ### 查看集成效果
 运行应用，若 `Logcat` 中输出了  
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.4.0 !!!`  
+`!!! GrowingIO Tracker version: 3.4.2 !!!`  
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。

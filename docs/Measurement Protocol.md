@@ -14,7 +14,7 @@ sidebar_position: 13
 | deviceId | string | ✅ | 设备ID(访问用户ID) |
 | userId | string | ❌ | 登录用户ID |
 | sessionId | string | ✅ | 访问会话ID |
-| eventType | string | ✅ | 事件类型：**VISIT**，<br />**CUSTOM**，<br />**VISITOR_ATTRIBUTES**，<br />**LOGIN_USER_ATTRIBUTES**，<br />**CONVERSION_VARIABLES**，<br />**APP_CLOSED**，<br />**PAGE**，<br />**PAGE_ATTRIBUTES**，<br />**VIEW_CLICK**，<br />**VIEW_CHANGE**，<br />**FORM_SUBMIT** |
+| eventType | string | ✅ | 事件类型：**VISIT**，<br />**CUSTOM**，<br />**VISITOR_ATTRIBUTES**，<br />**LOGIN_USER_ATTRIBUTES**，<br />**CONVERSION_VARIABLES**，<br />**APP_CLOSED**，<br />**PAGE**，<br />**PAGE_ATTRIBUTES**，<br />**VIEW_CLICK**，<br />**VIEW_CHANGE**，<br />**FORM_SUBMIT**，<br />**ACTIVATE** |
 | timestamp | long | ✅ | 时间戳 |
 | domain | string | ✅ | APP包名或者H5页面的域名 |
 | urlScheme | string | ✅ | 链接协议 |
@@ -41,7 +41,6 @@ sidebar_position: 13
 ### 访问事件(VISIT)
 
 * 请求发送时机：每当产生一个新的访问时
-* 服务器请求地址
 * 请求Body
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
@@ -93,7 +92,6 @@ sidebar_position: 13
 ### 埋点事件(CUSTOM)
 
 * 请求发送时机：当用户主动调用track类型的接口时，半自动埋点，自主业务采集
-* 服务器请求地址
 * 请求Body
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
@@ -157,7 +155,6 @@ sidebar_position: 13
 ### 用户属性事件(LOGIN_USER_ATTRIBUTES)
 
 * 请求发送时机：当用户主动调用track类型的接口时
-* 服务器请求地址
 * 请求Body
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
@@ -203,8 +200,6 @@ sidebar_position: 13
 
 * 请求发送时机：当用户关闭APP时，立刻发送
 
-* 服务器请求地址
-
 * 请求Body
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
@@ -246,7 +241,6 @@ sidebar_position: 13
 ### 页面浏览事件(PAGE)
 
 * 请求发送时机：当用户打开一个页面时
-* 服务器请求地址
 * 请求Body
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
@@ -296,7 +290,6 @@ sidebar_position: 13
 ### 元素点击事件(VIEW_CLICK)
 
 * 请求发送时机：当用户点击页面元素的时候
-* 服务器请求地址
 * 请求Body
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
@@ -348,7 +341,6 @@ sidebar_position: 13
 ### 输入框改变内容事件(VIEW_CHANGE)
 
 * 请求发送时机：当用户对App上的输入元素有改变的行为时
-* 服务器请求地址
 * 请求Body
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
@@ -400,7 +392,6 @@ sidebar_position: 13
 ### 网页、小程序表单提交事件(FORM_SUBMIT)
 
 * 请求发送时机：网页、小程序页面发生表单提交事件
-* 服务器请求地址
 * 请求Body
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
@@ -443,5 +434,56 @@ sidebar_position: 13
   "latitude": 39.988518,
   "longitude": 116.478797,
   "sdkVersion": "3.3.6",
+}
+```
+
+### 激活事件(ACTIVATE)
+
+* 请求发送时机：当 App 首次激活打开时
+* 请求Body
+
+| 字段名称            | 数据类型            | 是否必有 | 解释说明                        |
+| :------------------ | ------------------- | -------- | ------------------------------- |
+| attributes     | Map<string, string>      | ❌        | 激活相关属性 |
+| imei                | string              | ❌        | IMEI（Android 特有）            |
+| androidId           | string              | ❌        | AndroidId（Android 特有）       |
+| oaid                | string              | ❌        | 国内的广告ID（Android 特有）    |
+| googleAdvertisingId | string              | ❌        | google广告ID（Android 特有）    |
+| idfa                | string              | ❌        | iOS广告标识符（iOS 特有）       |
+| idfv                | string              | ❌        | iOS应用开发商标识符（iOS 特有） |
+
+示例
+
+```json
+{
+  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
+  "userId": "张三",
+  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
+  "eventType": "ACTIVATE",
+  "timestamp": 1506069592985,
+  "domain": "com.growingio.app",
+  "urlScheme": "growing.756c39fb86f318cc",
+  "appState": "FOREGROUND",
+  "globalSequenceId": 2,
+  "eventSequenceId": 1,
+  "networkState": "4G",
+  "appChannel": "应用宝",
+  "screenHeight": 1920,
+  "screenWidth": 1080,
+  "deviceBrand": "google",
+  "deviceModel": "Nexus 5",
+  "deviceType": "PHONE",
+  "platform": "Android",
+  "platformVersion": "7.1.2",
+  "appName": "看数小助手",
+  "appVersion": "1.2.4",
+  "language": "zh_CN",
+  "latitude": 39.988518,
+  "longitude": 116.478797,
+  "oaid": "eeefbf75-3df7-15e0-ffb5-ff1ff09f1ec3",
+  "sdkVersion": "3.4.3",
+  "attributes": {
+    "userAgent": "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 5 Build/LMY48B; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.65 Mobile Safari/537.36"
+  }
 }
 ```

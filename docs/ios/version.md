@@ -2,10 +2,20 @@
 title: 版本记录
 sidebar_position: 0
 ---
-:::warning
-当前版本标识废弃接口/功能，将在下一个大版本中移除（如3.4.x中标识DEPRECATED，在升级到3.5.0时相关接口/功能将被彻底移除）
-:::
 ----
+## [3.4.4](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.3...3.4.4) (2022-11-03)
+
+
+### Bug Fixes
+
+* parentView 不可见时，圈选遍历不应该包含 subViews ([69953ff](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/69953ff10b70192950d4d0be77a7d4e4125bdf32))
+
+
+### Features
+
+* advert module ([b7b974d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/b7b974df786c87b3da40157b4731e68cb71c6f3b))
+* advert module (only activate) ([188fd2a](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/188fd2ac9ac91ff8c55799ff4c266533d91551d6))
+------
 ## [3.4.3](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.2-hotfix.1...3.4.3) (2022-09-20)
 
 
