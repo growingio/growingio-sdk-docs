@@ -41,7 +41,7 @@ gdp('setOption', 'dataCollect', true | false);
 
 ### 3、开启/关闭调试模式(debug)
 
-默认不开启。当设置为 **`true`** 时，开启后会在开发者工具控制台输出日志。
+默认不开启调试模式。当设置为 **`true`** 时，开启后会在开发者工具控制台输出日志。
 
 ```js
 gdp('setOption', 'debug', true | false);
@@ -96,7 +96,7 @@ gdp('identify', openId);
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）若使用此接口需要在初始化时将 forceLogin 设置为 true。 [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**<br/>
-**2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**
+**2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**<br/>
 **3）该方法仅可合法地调用一次，多次调用无效。**
 
 ### 3、获取访问用户Id(getDeviceId)
@@ -360,31 +360,7 @@ Page({
 
 **3）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，数据打通后，打通H5页面的 dataCollect 数据采集开关由小程序SDK初始化配置项 dataCollect 控制。此项功能使用需H5 页面集成的 Web JS SDK 版本>=3.3.9。**
 
-**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/3.8/integrate#在微信公众号h5小程序内嵌页中集成)**
-
-:::tip
-
-1. 内嵌页Web JS SDK采集的数据与小程序SDK采集数据打通，从url的query中获取来自小程序的gioInfo, 打通规则如下：
-
-- 两者 accountId 和 appId 一致且h5地址中含 gioInfo 时，可实现两边的数据打通，
-- 两者 accountId 或 appId 不一致或h5地址中不含 gioInfo时，无法实现两边数据打通
-在打通后内嵌页中的setUserId，cleanUserID 将无效，只能使用从小程序继承来的登录用户ID。若小程序中改变了userId，但内嵌页并没有更新，则内嵌页的数据将无最新userId。
-
-2. 打通成功效果
-
-当触发了打通规则后，h5内嵌页中发数时以下字段的变化如下：<br/>
-deviceId: 使用小程序的deviceId<br/>
-sessionId: 使用小程序的sessionId<br/>
-gioId: 使用小程序的gioId （web版本>=3.3.11，小程序版本>=3.2.5）<br/>
-userId: 使用小程序的userId<br/>
-userKey: 使用小程序的userKey<br/>
-dataSourceId: 使用小程序的dataSourceId<br/>
-platform: 使用小程序的platform<br/>
-domain: 使用小程序的appId<br/>
-除了以上字段，如果小程序SDK初始化时设置 extraParams ，其中的参数也会在内嵌H5页面数据中进行上报<br/>
-
-用户行为与采集数据描述：用户点击小程序内嵌H5页面，由小程序原生页面进入H5页面，会把采集数据中的以上字段信息带入H5页面；这样 Web JS SDK 就知道 H5页面的用户是小程序的用户，后续发送的采集数据就会使用小程序的用户信息
-:::
+**H5页面集成SDK参考[在小程序内嵌页面中集成](/docs/webjs/3.8/integrate#在小程序内嵌页面中集成)**
 
 ### 10、设置埋点通用属性(setGeneralProps)
 
@@ -462,9 +438,7 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 请勿尝试在密码框上标记 data-growing-track 采集数据，会明文暴露用户填写的密码信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
 :::
 
-#### 提示
-
-**3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
+**提示：3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
 
 ### 2、补充数据标记
 
@@ -509,7 +483,7 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 
 #### 4）gioPageTitle
 
-默认情况下SDK会自动采集页面title，但当SDK可能无法识别时或您需要自定义时，可以通过在页面的`data`对象中设置`gioPageTitle`字段来指定SDK上报事件时的title值。例：
+默认情况下SDK会自动采集页面title，但当SDK可能无法识别或您需要自定义时，可以通过在页面的`data`对象中设置`gioPageTitle`字段来指定SDK上报事件时的title值。例：
 
 ```js
 Page({
@@ -531,96 +505,6 @@ Page({
 ```html
 <view data-growing-ignore bindtap="onLinkTap">要忽略的节点</view>
 ```
-
-## 半自动埋点浏览事件
-
-用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)在平台上进行事件类型和变量的预定义。
-
-#### 曝光逻辑
-
-**always：**只要从**屏幕不可见区域到可见区域**即可计为一次曝光并上报。(默认值)
-
-**once：**从**屏幕不可见区域到可见区域**曝光只上报一次。
-
-#### 支持范围
-
-微信小程序、阿里(支付宝)小程序(基础库>=2.7.0)、百度小程序、字节跳动小程序、QQ小程序、淘宝小程序。
-
-快应用不支持。
-
-#### 使用方法
-
-1、在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
-
-2、在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)。
-
-1）传值方式一：使用变量传值
-
-```js
-Page({
-  data: {
-    impAttrs: JSON.stringify({ type: 'hjh', name: 'yue' }),
-    impItems: { key: 'order_id', id: '12345' }
-  }
-})
-```
-
-```html
-<view
-  class="growing_collect_imp"
-  data-gio-imp-track="imp_picture_var"
-  data-gio-imp-attrs="{{ impAttrs }}"
-  data-gio-imp-items="{{ impItems }}"
->
-  监听的元素，必须有内容或额外样式来让节点有实际大小
-</view>
-```
-
-2）传值方式二：直接手动编写Object字符串（部分框架如uniapp编译时可能会将单引号编译成双引号导致编译失败）
-
-```html
-<view
-  class="growing_collect_imp"
-  data-gio-imp-track="imp_picture_var"
-  data-gio-imp-attrs='{ "type": "hjh", "name": "yue" }'
-  data-gio-imp-items='{ "key": "order_id", "id": "12345" }'
->
-  监听的元素，必须有内容或额外样式来让节点有实际大小
-</view>
-```
-
-对应产生的`CUSTOM`事件相当于： ↓↓↓
-
-```js
-gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' }, { key: 'order_id', id: '12345' });
-```
-
-3、如果您的曝光事件只需要统计一次或触发过于频繁导致曝光事件量过大，可以在节点上添加`data-gio-imp-type="once"`并设置唯一的`节点id`，来使得曝光逻辑变为单次上报。
-
-```html
-<view
-  class="growing_collect_imp"
-  id="imp_1"
-  data-gio-imp-type="once"
-  data-gio-imp-track="imp_picture_var"
-  ...
->
-  监听的元素，必须有内容或额外样式来让节点有实际大小
-</view>
-```
-
-**<font color="#FC5F3A">注意：</font>**<br/>
-**1）此功能需要注册半自动埋点浏览插件使用。参考[半自动埋点浏览插件](plugins#半自动埋点浏览插件gioimpressiontracking)。**
-
-**2）`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object字符串，SDK会自动尝试进行格式化**。
-
-**3）被标记的节点必须有实际的大小，一个没有内容和样式的节点标记可能不会触发事件。**
-
-**4）请勿在同一页面中大量标记半自动埋点浏览事件（如商品列表），可能会严重影响页面性能导致卡顿。**
-
-**5）快手小程序在同一个页面中只能监听相同大小节点的第一个，即如果在同一个页面中需要监听多个节点时，要保证节点大小不一致，否则曝光事件会全部匹配到第一个相同大小的节点。**
-
-**6）`data-gio-imp-type`配置项SDK版本>=3.8.5支持。**
 
 ## 事件时长统计
 
@@ -716,22 +600,24 @@ const result = gdp('trackTimerEnd', 'timerId123');
 
 const result = gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2: 2 });
 ```
+
 :::caution 注意
 trackTimerEnd时发送CUSTOM事件上报数据：
-* eventName  埋点事件标识符（trackTimerStart传入）
-* attributes 用户自定义事件属性（trackTimerEnd传入）
-* eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
-eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
-eventDuration 变量及其值会自动添加在 attributes 中<br/>
-eventDuration 时间统计不会计算后台时间
-* eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
-:::
 
+- eventName  埋点事件标识符（trackTimerStart传入）
+- attributes 用户自定义事件属性（trackTimerEnd传入）
+- eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;单位秒，小数点精度保证到毫秒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;变量及其值会自动添加在 attributes 中<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;时间统计不会计算后台时间
+- eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
+:::
 
 ### 5、删除事件计时器(removeTimer)
 
 删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
 该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
+
 #### 参数说明
 
 | 参数      | 参数类型 | 说明           |
@@ -754,6 +640,7 @@ const result = gdp('removeTimer', 'timerId123');
 
 清除所有已经注册的事件计时器。<br/>
 存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
+
 #### 示例
 
 ```js

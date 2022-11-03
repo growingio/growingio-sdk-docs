@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 title: 3.3与3.8对比
 ---
 
@@ -39,12 +39,12 @@ title: 3.3与3.8对比
 
 **新增项：** `getOption`、`setOption` 方法。
 
-> 新增 `getOption` 方法；用于获取当前SDK配置项状态。[参考文档](/docs/webjs/3.8/commonlyApi#8获取sdk当前配置getoption)
+> 新增 `getOption` 方法；用于获取当前SDK配置项状态。[参考文档](/docs/webjs/3.8/commonlyApi#9获取sdk当前配置getoption)
 >
-> 新增 `setOption` 方法；用于统一动态设置SDK配置项。[参考文档](/docs/webjs/3.8/commonlyApi#动态配置接口setoption)
+> 新增 `setOption` 方法；用于统一动态设置SDK配置项。[参考文档](/docs/webjs/3.8/commonlyApi#动态修改配置接口setoption)
 
 ## 功能点新增、优化、问题修复
 
-1、新增半自动采集浏览功能。详情[参考文档](/docs/webjs/3.8/commonlyApi#半自动埋点浏览事件)
+1、新增半自动采集浏览功能。详情[参考文档](/docs/webjs/3.8/plugins/impressionTracking)
 
 2、带有 `autoplay` 属性且值为 `true` 的原生组件（例如：video）产生的change事件会被自动忽略，如果您想采集它，请[参考文档](/docs/webjs/3.8/commonlyApi#1采集标记)。
