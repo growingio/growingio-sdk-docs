@@ -15,7 +15,7 @@ GrowingIO 性能监控模块目前提供了 App 崩溃分析，应用启动时�
 --------
 
 :::info
-采集 SDK 版本 >=3.4.4
+采集 SDK 版本 >=3.4.5
 
 **使用时注意模块版本需要与采集 SDK 版本保持一致**
 :::
@@ -45,8 +45,8 @@ pod 'GrowingAPM'
 
 ```objectivec
 int main(int argc, char * argv[]) {
-    // GrowingAPM Swizzling
-    [GrowingAPM swizzle:GrowingAPMMonitorsCrash | GrowingAPMMonitorsUserInterface];
+    // GrowingAPM Setup
+    [GrowingAPM setupMonitors:GrowingAPMMonitorsCrash | GrowingAPMMonitorsUserInterface appDelegateClass:[AppDelegate class]];
     NSString * appDelegateClassName;
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
@@ -98,7 +98,7 @@ pod 'GrowingAPM/CrashMonitor'
 1. 在 **main.swift** 中导入 `import GrowingModule_APM`，并添加以下代码：
 
 ```swift
-GrowingAPM.swizzle([.crash, .userInterface])
+GrowingAPM.setupMonitors([.crash, .userInterface], appDelegateClass: AppDelegate.self)
 ```
 
 2. 在 **AppDelegate.swift** 中导入 `import GrowingModule_APM`，并在 `application:didFinishLaunchingWithOptions:` 中初始化 GrowingAnalytics SDK 的同时，导入 GrowingAPMConfig 配置:
