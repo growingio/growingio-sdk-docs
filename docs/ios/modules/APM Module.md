@@ -46,7 +46,7 @@ pod 'GrowingAPM'
 ```objectivec
 int main(int argc, char * argv[]) {
     // GrowingAPM Setup
-    [GrowingAPM setupMonitors:GrowingAPMMonitorsCrash | GrowingAPMMonitorsUserInterface appDelegateClass:[AppDelegate class]];
+    [GrowingAPM setupMonitors];
     NSString * appDelegateClassName;
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
@@ -56,7 +56,7 @@ int main(int argc, char * argv[]) {
 }
 ```
 
-2. 在 AppDelegate.m 中导入 `#import "GrowingAPMModule.h"`，并在 `application:didFinishLaunchingWithOptions:` 中初始化 GrowingAnalytics SDK 的同时，导入 GrowingAPMConfig 配置:
+2. 在 AppDelegate.m 中导入 `#import "GrowingAPMModule.h"`，并在 `application:didFinishLaunchingWithOptions:` 中初始化 GrowingAnalytics SDK 的同时，添加 GrowingAPMConfig 配置:
 
 ```objectivec
 GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithProjectId:@"YourAccountId"];
@@ -73,6 +73,12 @@ configuration.APMConfig = config;
 ```
 
 #### 其他
+
+如您的 App 采用延迟初始化方式初始化 GrowingAnalytics SDK（即不在 `application:didFinishLaunchingWithOptions:` 中初始化），则需要您在 `application:didFinishLaunchingWithOptions:` 中添加以下代码，以便 GrowingAPM 正确获取启动耗时：
+
+```objectivec
+[GrowingAPM didFinishLaunching];
+```
 
 另外，如果您仅需要部分 APM 监控功能，可按需集成对应的 GrowingAPM 子模块：
 
@@ -98,10 +104,10 @@ pod 'GrowingAPM/CrashMonitor'
 1. 在 **main.swift** 中导入 `import GrowingModule_APM`，并添加以下代码：
 
 ```swift
-GrowingAPM.setupMonitors([.crash, .userInterface], appDelegateClass: AppDelegate.self)
+GrowingAPM.setupMonitors()
 ```
 
-2. 在 **AppDelegate.swift** 中导入 `import GrowingModule_APM`，并在 `application:didFinishLaunchingWithOptions:` 中初始化 GrowingAnalytics SDK 的同时，导入 GrowingAPMConfig 配置:
+2. 在 **AppDelegate.swift** 中导入 `import GrowingModule_APM`，并在 `application:didFinishLaunchingWithOptions:` 中初始化 GrowingAnalytics SDK 的同时，添加 GrowingAPMConfig 配置:
 
 ```swift
 let config = GrowingAutotrackConfiguration(projectId: "YourAccountId")
@@ -115,6 +121,14 @@ apmconfig.monitors = [.crash, .userInterface]
 config?.apmConfig = apmconfig
 
 GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
+```
+
+#### 其他
+
+如您的 App 采用延迟初始化方式初始化 GrowingAnalytics SDK（即不在 `application:didFinishLaunchingWithOptions:` 中初始化），则需要您在 `application:didFinishLaunchingWithOptions:` 中添加以下代码，以便 GrowingAPM 正确获取启动耗时：
+
+```swift
+GrowingAPM.didFinishLaunching()
 ```
 
   </TabItem>
