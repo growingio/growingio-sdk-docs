@@ -23,7 +23,7 @@ GrowingIO 性能监控模块目前提供了 App 崩溃分析，应用启动时�
 <Tabs>
   <TabItem value="cocoapods" label="Cocoapods集成" default>
 
-#### 集成 APM
+### 集成 APM
 
 1. 集成 APM 模块
 
@@ -39,7 +39,7 @@ pod 'GrowingAPM'
 
 打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
 
-#### 初始化 GrowingAPM
+### 初始化 GrowingAPM
 
 1. 在 main.m 中导入 `#import "GrowingAPMModule.h"`，并在 main 函数中添加代码：
 
@@ -72,7 +72,7 @@ configuration.APMConfig = config;
 [GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```
 
-#### 其他
+### 其他
 
 如您的 App 采用延迟初始化方式初始化 GrowingAnalytics SDK（即不在 `application:didFinishLaunchingWithOptions:` 中初始化），则需要您在 `application:didFinishLaunchingWithOptions:` 中添加以下代码，以便 GrowingAPM 正确获取启动耗时：
 
@@ -99,7 +99,7 @@ pod 'GrowingAPM/CrashMonitor'
 
 ![add Package](./../../../static/img/ios/add_package_apm.png)
 
-#### 初始化 GrowingAPM
+### 初始化 GrowingAPM
 
 1. 在 **main.swift** 中导入 `import GrowingModule_APM`，并添加以下代码：
 
@@ -123,7 +123,7 @@ config?.apmConfig = apmconfig
 GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
 ```
 
-#### 其他
+### 其他
 
 如您的 App 采用延迟初始化方式初始化 GrowingAnalytics SDK（即不在 `application:didFinishLaunchingWithOptions:` 中初始化），则需要您在 `application:didFinishLaunchingWithOptions:` 中添加以下代码，以便 GrowingAPM 正确获取启动耗时：
 
