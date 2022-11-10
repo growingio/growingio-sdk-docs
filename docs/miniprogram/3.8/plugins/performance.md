@@ -38,7 +38,7 @@ title: 性能监控
 
 ## 小程序兼容性
 
-仅支持 `微信小程序` 和 `字节小程序`。
+当前仅支持 `微信小程序`。
 
 ## 集成
 
@@ -71,39 +71,36 @@ gdp('init', xxxx);
 
 ## 配置
 
-集成性能采集插件时，默认开启 `小程序启动/页面加载监控` 和 `错误监控`。如您不需要其中某项监控内容，在注册插件时可添加配置项选择指定内容关闭。
+集成性能采集插件时，默认开启 `小程序启动/页面加载监控` 和 `错误监控`。如您不需要其中某项监控内容，在初始化配置项选择指定内容关闭。
 
 ### 关闭小程序启动/页面加载监控
 
 ```js
-gdp('registerPlugins', [
-  {
-    ...gioPerformance,
-    options: { monitor: false }
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
+    ...other settings
+    performance: { monitor: false }
   }
-]);
+);
 ```
 
 ### 关闭错误监控
 
 ```js
-gdp('registerPlugins', [
-  {
-    ...gioPerformance,
-    options: { exception: false }
+gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
+    ...other settings
+    performance: { exception: false }
   }
-]);
+);
 ```
 
 <!-- ### 关闭请求监控
 
 ```js
-gdp('registerPlugins', [
-  {
-    ...gioPerformance,
-    options: { network: false }
+gdp('init', 'your accountId', 'your dataSourceId', {
+    ...other settings
+    performance: { network: false }
   }
-]);
+);
 ```
 
 ### 设置请求监控排除名单
@@ -113,10 +110,9 @@ gdp('registerPlugins', [
 注意，一旦您配置了此项，则认为您开启请求监控。
 
 ```js
-gdp('registerPlugins', [
-  {
-    ...gioPerformance,
-    options: {
+gdp('init', 'your accountId', 'your dataSourceId', {
+    ...other settings
+    performance: {
       network: {
         exclude: 'myhost.com'
         // 或 exclude: /myhost.com/gi
@@ -124,11 +120,15 @@ gdp('registerPlugins', [
       }
     }
   }
-]);
+);
 ```
-
+-->
 ## 注意
 
-1、如果您对请求监控设置了排除名单，使用纯字符串校验时应尽可能使用长且准确的字符，过短的字符串可能会使得其他请求被误过滤。
+1、页面加载监控并非每次进入页面都会发送，而是首次进入页面或页面销毁后的重新加载页面才会产生对应的页面性能数据。
 
-2、请求监控强制过滤了Gio上报的请求。 -->
+2、页面 FCP 和 LCP 的指标是根据微信提供的能力获取，可能会存在无值或时长比页面加载时长略大的情况。
+
+<!-- 3、如果您对请求监控设置了排除名单，使用纯字符串校验时应尽可能使用长且准确的字符，过短的字符串可能会使得其他请求被误过滤。
+
+4、请求监控强制过滤了Gio上报的请求。 -->
