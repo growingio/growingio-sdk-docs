@@ -68,3 +68,31 @@ pod 'GrowingToolsKit/SDK2nd', :configurations => ['Debug']
 
 为了避免在正式环境下出现不必要的错误，请务必只在 Debug 环境下使用 GioKit 工具。
 :::
+
+### 3.开启性能监控
+
+如您需要开启性能相关监控，请在 main.m 中导入 `#import "GrowingAPM.h"`，并在 main 函数中添加代码：
+
+```objectivec
+int main(int argc, char * argv[]) {
+    // GrowingAPM Setup
+    [GrowingAPM setupMonitors];
+    NSString * appDelegateClassName;
+    @autoreleasepool {
+        // Setup code that might create autoreleased objects goes here.
+        appDelegateClassName = NSStringFromClass([AppDelegate class]);
+    }
+    return UIApplicationMain(argc, argv, nil, appDelegateClassName);
+}
+```
+
+:::caution 注意
+
+SDK 2.x 默认采集模式与 GrowingAPM 不兼容，需要在 main 函数同时添加代码：
+
+```objectivec
+// SDK 2.0 GrowingAspectModeSubClass 与 GrowingAPM SDK 不兼容
+[Growing setAspectMode:GrowingAspectModeDynamicSwizzling];
+```
+
+:::

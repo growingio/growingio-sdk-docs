@@ -3,6 +3,14 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V1.0.9 - 2022/11/11
+
+[v1.0.9](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.0.9)
+
+* feat: add crashMonitorPlugin
+* feat: add launchTimePlugin
+* feat: SDK 信息添加 SDK 3.0 下所集成模块显示
+
 ## V1.0.8 - 2022/09/07
 
 [v1.0.8](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.0.8)
