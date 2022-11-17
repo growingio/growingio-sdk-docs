@@ -11,7 +11,7 @@ title: React Native SDK
 
 ## 环境配置
 :::info
-请确保原生工程中已经添加**原生埋点SDK**, 如果没有, 请移步至原生端埋点SDK集成文档: [**Android 埋点SDK**](/docs/android/base/Introduce#集成埋点sdk)、[**iOS 埋点SDK**](/docs/ios/base#埋点-sdk-集成)
+请确保原生工程中已经添加**原生埋点SDK**, 如果没有, 请移步至原生端埋点SDK集成文档: [**Android 埋点SDK**](/docs/android/Introduce#集成埋点sdk)、[**iOS 埋点SDK**](/docs/ios/Introduce#埋点-sdk-集成)
 :::
 ## React Native SDK集成
 ### 添加依赖

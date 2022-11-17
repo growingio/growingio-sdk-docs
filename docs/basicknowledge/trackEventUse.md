@@ -128,7 +128,7 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 
 #### Android
 
-[埋点事件说明文档](/docs/android/base/api#6-设置埋点事件)
+[埋点事件说明文档](/docs/android/api#6-设置埋点事件)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"
@@ -144,7 +144,7 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 Map<String, String> map = new HashMap<>();
 map.put("productRuleID_var", "0001");
 map.put("productName_var", "绘画纸");
-map.put("paymentAmount_var", ”15.52");
+map.put("paymentAmount_var", "15.52");
 GrowingAutotracker.get().trackCustomEvent("purchaseProduct", map);
 ```
 
@@ -164,7 +164,7 @@ GrowingTracker.get().trackCustomEvent("purchaseProduct", map);
 
 #### iOS
 
-[埋点事件说明文档](/docs/ios/base/api#7-设置埋点事件)
+[埋点事件说明文档](/docs/ios/api#7-设置埋点事件)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"
@@ -349,7 +349,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 #### Android
 
-[用户属性说明文档](/docs/android/base/api#7-设置登录用户属性)
+[用户属性说明文档](/docs/android/api#7-设置登录用户属性)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"
@@ -383,7 +383,7 @@ GrowingTracker.get().setLoginUserAttributes(map);
 
 #### iOS
 
-[用户属性说明文档](/docs/ios/base/api#8-设置登录用户属性)
+[用户属性说明文档](/docs/ios/api#8-设置登录用户属性)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"

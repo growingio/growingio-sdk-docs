@@ -58,6 +58,12 @@ class GithubVersionSub(object):
         self.version = version
 
     def sub_replace(self, matched):
+        group_name = matched.group(1)
+        # 对 插件 和 adapter 系列模块不做升级
+        if "analytics-" in group_name:
+            return matched.group(1) + matched.group(2)
+        if "autotracker-gradle-plugin" in group_name:
+            return matched.group(1) + matched.group(2)
         return matched.group(1) + self.version
 
 def hotfix_version(tag):

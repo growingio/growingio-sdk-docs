@@ -1,6 +1,16 @@
 ---
-sidebar_position: 2
-title: 自定义 SDK
+slug: custom ios sdk
+title: 基于 GrowingIO 现有 SDK 基础上的二次开发 - iOS 篇
+authors:
+  - name: CaicaiNo
+    title: GrowingIO SDK Team
+    url: https://github.com/CaicaiNo
+    image_url: https://avatars.githubusercontent.com/u/17329515?v=4
+  - name: YoloMao
+    title: GrowingIO SDK Team
+    url: https://github.com/YoloMao
+    image_url: https://avatars.githubusercontent.com/u/16042670?v=4
+tags: [sdk, iOS, custom]
 ---
 --------------
 
@@ -10,6 +20,8 @@ import TabItem from '@theme/TabItem';
 ## SDK结构介绍
 
 SDK 可以通过拆分成模块、服务实现模块化，在 GrowingIO 的 SDK 中，已经有多个模块功能已经从代码中分离出来，后续将会独立出更多的模块，[GrowingAnalytics.podspec](https://github.com/growingio/growingio-sdk-ios-autotracker/blob/master/GrowingAnalytics.podspec) 文件中包含了所有的相关信息。
+
+<!--truncate-->
 
 ### ** 模块 **
 
@@ -21,6 +33,9 @@ SDK 可以通过拆分成模块、服务实现模块化，在 GrowingIO 的 SDK 
 | WebCircle | 基于无埋点的圈选插件，默认集成在无埋点 SDK 中 | 是 |
 | Hybrid | 混合开发模式，默认集成在无埋点 SDK 中（无埋点中自动注入），埋点 SDK 需要手动导入 | 是 |
 | Protobuf |使用 protocol buffer 格式保存和上传事件数据，集成即生效；默认为 JSON 格式，2 种格式互不兼容，迁移将导致数据库内未上传的事件数据丢失|是|
+| DefaultServices |默认 Services 集合，默认集成在埋点 SDK 与无埋点 SDK 中|否|
+| Advert |广告 SDK 模块，包含激活与唤醒事件|是|
+| APM |APM SDK 模块，包括崩溃监控、启动监控、页面加载监控等|是|
 | 更多开发中... |||
 
 ### ** 服务 **
@@ -29,14 +44,14 @@ SDK 可以通过拆分成模块、服务实现模块化，在 GrowingIO 的 SDK 
 
 > 您可以创建自己的 Service 服务并替换原有 Service 服务，例如选用自己的加密服务。您不应该去除任意 Service，除非您的模块和核心库都没有使用该 Service。
 
-|     名称      |                    说明                    | 是否可选 |
-| :-----------: | :----------------------------------------: | :------: |
-|   Database    |          数据库服务，处理事件数据          |    是    |
-|    Network    |                网络发送服务                |    是    |
-|   WebSocket   | websocket 服务，用于圈选以及 Mobile Debugger |    是    |
-|  Compression  |     压缩服务，用于网络发送时的数据压缩(与 Encryption 一起使用)     |    是   |
-|  Encryption   |     加密服务，用于网络发送时的数据加密 (与 Compression 一起使用)     |    是    |
-| 更多开发中... |                                            |          |
+|     名称      |                    说明                    | 是否可替换 | 是否可选 |
+| :-----------: | :----------------------------------------: | :------: | :-----------: |
+|   Database    |          数据库服务，处理事件数据 (Default)          |    是    | 否 |
+|    Network    |                网络发送服务 (Default)                |    是    | 否 |
+|  Compression  |     压缩服务，用于网络发送时的数据压缩 (Default，与 Encryption 一起使用)     |    是   | 否 |
+|  Encryption   |     加密服务，用于网络发送时的数据加密 (Default，与 Compression 一起使用)     |    是    | 否 |
+| WebSocket | websocket 服务，用于圈选以及 Mobile Debugger | 是 | 是 |
+| 更多开发中... | | |  |
 
 
 
@@ -44,7 +59,7 @@ SDK 可以通过拆分成模块、服务实现模块化，在 GrowingIO 的 SDK 
 
 | 名称     | 说明 | 是否可选 |
 | :------- | :------:  | :------:  |
-| TrackerCore | 埋点核心库，包含最基本的埋点逻辑，以及 service 协议，是最基础的模块 | 否 |
+| TrackerCore | 埋点核心库，包含最基本的埋点逻辑，以及 Service 协议，是最基础的模块 | 否 |
 | AutotrackerCore | 无埋点核心库，依赖于埋点核心库，包含无埋点的注入逻辑 | 否（埋点 SDK 无需集成此库） |
 
 ### ** 外壳 **
@@ -55,8 +70,8 @@ SDK 可以通过拆分成模块、服务实现模块化，在 GrowingIO 的 SDK 
 
 | 名称        |    说明    |                             依赖                             |
 | :---------- | :--------: | :----------------------------------------------------------: |
-| Tracker     |  埋点 SDK  | TrackerCore、MobileDebugger、Database、Network、Encryption、Compression |
-| Autotracker | 无埋点 SDK | AutotrackerCore、Hybrid、MobileDebugger、WebCircle、Database、Network、Encryption、Compression |
+| Tracker     |  埋点 SDK  | TrackerCore、MobileDebugger、DefaultServices (Database、Network、Encryption、Compression) |
+| Autotracker | 无埋点 SDK | AutotrackerCore、Hybrid、MobileDebugger、WebCircle、DefaultServices (Database、Network、Encryption、Compression) |
 
 ### ** 配置项 **
 
@@ -67,7 +82,7 @@ SDK 可以通过拆分成模块、服务实现模块化，在 GrowingIO 的 SDK 
 | DISABLE_IDFA     |  禁用 IDFA，且 SDK 中不会再有相关获取 IDFA 代码逻辑  | <font color='red'>>=3.2.0</font> |
 
 :::info
-使用请参考 [**常用可选模块配置**](/docs/ios/base/Configuration#%E5%B8%B8%E7%94%A8%E5%8F%AF%E9%80%89%E6%A8%A1%E5%9D%97%E9%85%8D%E7%BD%AE)
+使用请参考 [**禁用 IDFA**](/docs/ios/Configuration#其他)
 :::
 
 ## 二次开发
@@ -76,14 +91,14 @@ SDK 可以通过拆分成模块、服务实现模块化，在 GrowingIO 的 SDK 
 
 因为外壳固定配置了 Module 以及 Service，所以我们需要自定义我们的外壳，才能自定义配置 Module 以及 Service ,使用 Cocoapods 配置最为方便，这里以修改 SDK 的 Autotracker 配置为例：
 
-1. 首先自定义开发就不能使用 Cocoapods 库上的 Autotracker 版本，可以从 [Github仓库](https://github.com/growingio/growingio-sdk-ios-autotracker) 上下载最新的 Release包 （版本大于或等于 3.2.1）
+1. 首先自定义开发就不能使用 Cocoapods 库上的 Autotracker 版本，可以从 [Github仓库](https://github.com/growingio/growingio-sdk-ios-autotracker) 上下载最新的 Release包
 
-2. 解压到本地，然后在原工程的 podfile 文件中修改依赖关系为路径依赖：
+2. 解压到本地，然后在原工程的 Podfile 文件中修改依赖关系为路径依赖：
 
-```
-原来：
+```bash
+# 原来：
 pod 'GrowingAnalytics/Autotracker'
-修改后：
+# 修改后：
 pod 'GrowingAnalytics/Autotracker', :path => './../growingio-sdk-ios-autotracker'
 ```
 
@@ -91,29 +106,31 @@ pod 'GrowingAnalytics/Autotracker', :path => './../growingio-sdk-ios-autotracker
 
 3. 修改 GrowingAnalytics.podspec 文件中 Autotracker 的配置：
 
-```
+```bash
 s.subspec 'Autotracker' do |autotracker|
   autotracker.source_files = 'GrowingAutotracker/**/*{.h,.m,.c,.cpp,.mm}'
+  autotracker.public_header_files = 'GrowingAutotracker/*.h'
   autotracker.dependency 'GrowingAnalytics/AutotrackerCore'
+
+  # Modules
+  autotracker.dependency 'GrowingAnalytics/Hybrid'
   autotracker.dependency 'GrowingAnalytics/MobileDebugger'
   autotracker.dependency 'GrowingAnalytics/WebCircle'
-
-  autotracker.dependency 'GrowingAnalytics/Network'
-  autotracker.dependency 'GrowingAnalytics/Encryption'
-  autotracker.dependency 'GrowingAnalytics/Compression'
+  autotracker.dependency 'GrowingAnalytics/DefaultServices'
 end
 ```
 
 例如需要去掉 WebCirle 和 MobileDebugger ，则修改为：
 
-```
+```bash
 s.subspec 'Autotracker' do |autotracker|
   autotracker.source_files = 'GrowingAutotracker/**/*{.h,.m,.c,.cpp,.mm}'
+  autotracker.public_header_files = 'GrowingAutotracker/*.h'
   autotracker.dependency 'GrowingAnalytics/AutotrackerCore'
 
-  autotracker.dependency 'GrowingAnalytics/Network'
-  autotracker.dependency 'GrowingAnalytics/Encryption'
-  autotracker.dependency 'GrowingAnalytics/Compression'
+  # Modules
+  autotracker.dependency 'GrowingAnalytics/Hybrid'
+  autotracker.dependency 'GrowingAnalytics/DefaultServices'
 end
 ```
 
@@ -131,7 +148,7 @@ end
 
 Service 必定继承其对应的 Protocol，例如加密 Service 对应协议为 GrowingEncryptionService：
 
-```c
+```objectivec
 @protocol GrowingEncryptionService <GrowingBaseService>
 
 @optional
@@ -154,7 +171,7 @@ Service 必定继承其对应的 Protocol，例如加密 Service 对应协议为
 
 您可以创建一个类，遵循 GrowingEncryptionService 协议，在对应的方法中写您自己的逻辑，例如这里在CustomEncryptionClass 中实现：
 
-```c
+```objectivec
 - (NSData *_Nonnull)encryptEventData:(NSData *_Nonnull)data factor:(unsigned char)hint {
     NSMutableData *dataM = [[NSMutableData alloc] initWithLength:data.length];
     // 加密逻辑处理您的数据
@@ -166,7 +183,7 @@ Service 必定继承其对应的 Protocol，例如加密 Service 对应协议为
 
 1. 注解 (推荐)
 
-```c
+```objectivec
 GrowingService(GrowingEncryptionService, CustomEncryptionClass)
 ```
 
@@ -174,9 +191,9 @@ GrowingService(GrowingEncryptionService, CustomEncryptionClass)
 
 初始化SDK前调用
 
-```c
+```objectivec
 [[GrowingServiceManager sharedInstance] registerService:NSProtocolFromString(GrowingEncryptionService)
-                                                                 implClass:NSClassFromString(@"CustomEncryptionClass")];
+                                              implClass:NSClassFromString(@"CustomEncryptionClass")];
 ```
 
 这样，加密服务就使用的您自己的了，下面我们需要将代码导入。
@@ -185,35 +202,38 @@ GrowingService(GrowingEncryptionService, CustomEncryptionClass)
 
 参考 Encryption 的配置，新增一个
 
-```c
-  s.subspec 'Encryption' do |service|
-      service.source_files = 'Services/Encryption/**/*{.h,.m,.c,.cpp,.mm}'
-      service.dependency 'GrowingAnalytics/TrackerCore'
-  end
+```bash
+s.subspec 'Encryption' do |service|
+  service.source_files = 'Services/Encryption/**/*{.h,.m,.c,.cpp,.mm}'
+  service.public_header_files = 'Services/Encryption/Public/*.h'
+  service.dependency 'GrowingAnalytics/TrackerCore'
+end
 ```
 
 并将 2.1 创建的代码放置对应的 CustomEncryption 目录下
 
-```c
-  s.subspec 'CustomEncryption' do |service|
-      service.source_files = 'Services/CustomEncryption/**/*{.h,.m,.c,.cpp,.mm}'
-      service.dependency 'GrowingAnalytics/TrackerCore'
-  end
+```bash
+s.subspec 'CustomEncryption' do |service|
+  service.source_files = 'Services/CustomEncryption/**/*{.h,.m,.c,.cpp,.mm}'
+  service.public_header_files = 'Services/CustomEncryption/Public/*.h'
+  service.dependency 'GrowingAnalytics/TrackerCore'
+end
 ```
 
 修改 spec 文件进行配置：
 
-```c
-  s.subspec 'Autotracker' do |autotracker|
-      autotracker.source_files = 'GrowingAutotracker/**/*{.h,.m,.c,.cpp,.mm}'
-      autotracker.dependency 'GrowingAnalytics/AutotrackerCore'
-      autotracker.dependency 'GrowingAnalytics/MobileDebugger'
-      autotracker.dependency 'GrowingAnalytics/WebCircle'
-      
-      autotracker.dependency 'GrowingAnalytics/Network'
-      autotracker.dependency 'GrowingAnalytics/CustomEncryption' #原为Encryption
-      autotracker.dependency 'GrowingAnalytics/Compression'
-  end
+```bash
+s.subspec 'DefaultServices' do |services|
+  services.source_files = 'Modules/DefaultServices/**/*{.h,.m,.c,.cpp,.mm}'
+  services.public_header_files = 'Modules/DefaultServices/Public/*.h'
+  services.dependency 'GrowingAnalytics/TrackerCore'
+
+  # Default Services
+  services.dependency 'GrowingAnalytics/Database'
+  services.dependency 'GrowingAnalytics/Network'
+  services.dependency 'GrowingAnalytics/CustomEncryption'
+  services.dependency 'GrowingAnalytics/Compression'
+end
 ```
 
 这样 Autotracker 就替换了 Encryption 的服务。
@@ -233,25 +253,52 @@ SDK 运行的同时，还想将事件写入自己的数据库中做额外操作
 
 1. 找到 GrowingEventManager 事件发送的入口 postEventBuidler:，可以添加拦截者来处理事件信息
 
-```c
+```objectivec
 //拦截者做额外处理
 @protocol GrowingEventInterceptor <NSObject>
+
 @optional
-- (void)growingEventManagerChannels:(NSMutableArray<GrowingEventChannel *> *)channels;
-//事件被触发
-- (void)growingEventManagerEventTriggered:(NSString * _Nullable)eventType;
-//在未完成构造event前，返回builder
-- (void)growingEventManagerEventWillBuild:(GrowingBaseBuilder* _Nullable)builder;
-//在完成构造event之后，返回event
-- (void)growingEventManagerEventDidBuild:(GrowingBaseEvent* _Nullable)event;
-//频段事件的网络请求request对象
-- (id<GrowingRequestProtocol>_Nullable)growingEventManagerRequestWithChannel:(GrowingEventChannel* _Nullable)channel;
+
+/// 可配置事件发送通道
+/// @param channels 默认的事件发送通道
+- (void)growingEventManagerChannels:(NSMutableArray<GrowingEventChannel *> *_Nullable)channels;
+
+/// 事件被触发
+/// @param eventType 当前事件类型
+- (void)growingEventManagerEventTriggered:(NSString *_Nullable)eventType;
+
+/// 即将构造事件
+/// @param builder 事件构造器
+- (void)growingEventManagerEventWillBuild:(GrowingBaseBuilder *_Nullable)builder;
+
+/// 事件构造完毕
+/// @param event 当前事件
+- (void)growingEventManagerEventDidBuild:(GrowingBaseEvent *_Nullable)event;
+
+/// 事件入库完毕
+/// @param event 当前事件
+- (void)growingEventManagerEventDidWrite:(GrowingBaseEvent *_Nullable)event;
+
+/// 自定义event发送请求
+/// @param channel 事件发送通道
+- (id<GrowingRequestProtocol> _Nullable)growingEventManagerRequestWithChannel:(GrowingEventChannel *_Nullable)channel;
+
+/// 即将发送事件
+/// @param events 发送的事件
+- (NSArray *_Nonnull)growingEventManagerEventsWillSend:(NSArray<id<GrowingEventPersistenceProtocol>> *_Nonnull)events
+                                               channel:(GrowingEventChannel *_Nonnull)channel;
+
+/// 事件发送完毕
+/// @param events 发送的事件
+- (void)growingEventManagerEventsDidSend:(NSArray<id<GrowingEventPersistenceProtocol>> *_Nonnull)events
+                                 channel:(GrowingEventChannel *_Nonnull)channel;
+
 @end
 ```
 
 那么我们只需要创建一个类，添加到 GrowingEventManager 拦截者中
 
-```c
+```objectivec
 /// 添加拦截者 - 执行顺序不保证有序
 /// @param interceptor 拦截者
 - (void)addInterceptor:(NSObject<GrowingEventInterceptor>* _Nonnull)interceptor;
@@ -263,7 +310,7 @@ SDK 运行的同时，还想将事件写入自己的数据库中做额外操作
 
 module 需要继承 GrowingModuleProtocol 协议
 
-```c
+```objectivec
 #import <Foundation/Foundation.h>
 #import "GrowingModuleProtocol.h"
 
@@ -278,7 +325,7 @@ NS_ASSUME_NONNULL_END
 
 同时使用 GrowingMod 注册 Module 到 SDK 中，并实现 growingModInit 方法，在方法中将自己添加到 GrowingEventManager 拦截者中 
 
-```c
+```objectivec
 #import "CustomEventModule.h"
 #import "GrowingEventManager.h"
 
@@ -302,25 +349,35 @@ GrowingMod(CustomEventModule)
 
 #### 3.2 示例 2
 
-SDK 中事件少了，想添加自己的额外事件，这部分可以参考 https://github.com/growingio/growingio-sdk-ios-advertising 
+SDK 中事件少了，想添加自己的额外事件，这部分可以参考 https://github.com/growingio/growingio-sdk-ios-autotracker/blob/master/Modules/Advert
 
 1. 首先 SDK 中的事件均继承自 GrowingBaseEvent , 您可以继承该类或者其子类，例如 GrowingActivateEvent
 
-```c
-#import "GrowingReengageEvent.h"
+```objectivec
+#import "GrowingTrackerCore/Event/GrowingBaseAttributesEvent.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
 @class GrowingActivateBuilder;
 
-@interface GrowingActivateEvent : GrowingReengageEvent
+@interface GrowingActivateEvent : GrowingBaseAttributesEvent
 
-+ (GrowingActivateBuilder *_Nonnull)builder;
+@property (nonatomic, copy, readonly) NSString *idfa;
+@property (nonatomic, copy, readonly) NSString *idfv;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
+
++ (GrowingActivateBuilder *)builder;
 
 @end
 
-@interface GrowingActivateBuilder : GrowingReengageBuilder
+@interface GrowingActivateBuilder : GrowingBaseAttributesBuilder
 
-- (GrowingActivateBuilder *_Nonnull (^)(NSDictionary *_Nonnull))setExtraParams;
+@property (nonatomic, copy, readonly) NSString *idfa;
+@property (nonatomic, copy, readonly) NSString *idfv;
+
+- (GrowingActivateBuilder *(^)(NSDictionary<NSString *, NSObject *> *value))setAttributes;
 
 @end
 
@@ -329,22 +386,10 @@ NS_ASSUME_NONNULL_END
 
 2. 发送时机由用户自定，再者就是事件如何发送，均使用 Builder 方式传入
 
-```c
-GrowingReengageBuilder *builder = GrowingReengageEvent.builder.setExtraParams(params);
-[self postEventBuidler:builder];
-```
-
-3. 如果事件发送地址需要自定义，可以参考 https://github.com/growingio/growingio-sdk-ios-advertising 中的处理
-
-```c
-/// 由于vst 以及 reenage activate，发送地址和3.0不一致，需要另创建2个channel来发送
-- (void)growingEventManagerChannels:(NSMutableArray<GrowingEventChannel *> *)channels {
-    [channels addObject:[GrowingEventChannel eventChannelWithEventTypes:@[@"vst"]
-                                                            urlTemplate:@"v3/%@/ios/pv?stm=%llu"
-                                                          isCustomEvent:NO]];
-    [channels addObject:[GrowingEventChannel eventChannelWithEventTypes:@[@"reengage",@"activate"]
-                                                             urlTemplate:@"app/%@/ios/ctvt"
-                                                           isCustomEvent:NO]];
+```objectivec
+GrowingActivateBuilder *builder = GrowingActivateEvent.builder;
+if (userAgent.length > 0) {
+    builder.setAttributes(@{@"userAgent" : userAgent.copy});
 }
+[[GrowingEventManager sharedInstance] postEventBuilder:builder];
 ```
-
