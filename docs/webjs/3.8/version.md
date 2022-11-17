@@ -5,9 +5,11 @@ sidebar_position: 0
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
-## V3.8.0-rc.8 -
+## V3.8.0-rc.8 - 2020/11/17
 
-* 🐞 修复一些其他细节问题。
+* 🐞 修复某些情况下hash参数处理错误的问题。
+* 🐞 修复iOS内嵌页中无埋点圈选报错的问题。
+* 🌟 优化上报事件属性标识符字符长度由50修改为100。
 * 🎉 新增性能监控功能。[参考文档](/docs/webjs/3.8/plugins/performance)
 
 ## V3.8.0-rc.7 - 2022/09/29

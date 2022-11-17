@@ -457,19 +457,22 @@ const gdp = require('./utils/gio/gio-remax.js').default;
 
 ***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
 
-## 插件扩展
-
-集成SDK时，SDK仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
-
-各个插件的介绍和集成方式请见[插件](/docs/miniprogram/3.8/plugins)。
-
-加载插件后会在初始化之前打印日志。例：
-
-![debugLog](/img/miniprogram/plugin_debug.png)
-
 ## 小程序插件中集成
 
-[小程序插件](https://developers.weixin.qq.com/miniprogram/introduction/plugin.html)中集成SDK参考小程序集成，在指定的插件 Component 组件的 js 中集成即可。SDK 初始化时会自动切换为插件模式，将当前 Component 视为一个独立应用发送VISIT事件。
+[小程序插件](https://developers.weixin.qq.com/miniprogram/introduction/)中集成SDK参考小程序集成，在插件入口文件 index.js 或指定的插件 Component 组件的 js 中集成即可。SDK 初始化时会自动切换为插件模式，将当前插件视为一个独立应用发送VISIT事件。
+
+```js
+// 插件入口文件index.js
+import gdp from './utils/gio/sdk.js';
+
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
+    version: 'miniProgram version',
+    host: 'Your ServerHost',
+    ...other settings
+});
+
+module.exports = { ... };
+```
 
 ```js
 // myComponent.js
@@ -484,7 +487,17 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
 Component({ ... });
 ```
 
-**<font color="#FC5F3A">注意：</font>**由于小程序插件中无法获取到页面信息（即没有path），因此在小程序插件中集成时，会自动关闭无埋点功能（不论是否加载无埋点插件和开启autotrack）。
+**<font color="#FC5F3A">注意：</font>**由于小程序插件中无法获取到页面信息（即没有path），因此在小程序插件中集成时，会自动关闭无埋点功能（不论是否加载无埋点插件和开启autotrack）即只能使用埋点。
+
+## 插件扩展
+
+集成SDK时，SDK仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
+
+各个插件的介绍和集成方式请见[插件](/docs/miniprogram/3.8/plugins)。
+
+加载插件后会在初始化之前打印日志。例：
+
+![debugLog](/img/miniprogram/plugin_debug.png)
 
 ## 数据校验
 
@@ -501,4 +514,4 @@ Component({ ... });
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 
-**请在正式生产环境发布前完成白名单的添加，上线后再添加白名单可能会出现SDK无法上报数据的情况。重新发布小程序即可解决。**
+**请在正式生产环境发布前完成白名单的添加，未添加白名单可能会出现SDK无法上报数据的情况。**

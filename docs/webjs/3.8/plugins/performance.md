@@ -3,7 +3,7 @@ sidebar_position: 8
 title: 性能监控
 ---
 
-## 简介（gioPerformance）
+## 简介
 
 提供页面 首屏加载监控 和 错误监控 的性能监控采集插件。
 
@@ -50,6 +50,11 @@ title: 性能监控
 
 同采集SDK。[参考文档](/docs/webjs/3.8)
 
+## 使用
+
+如想试用性能分析，请与您的客户成功经理或销售人员取得联系。
+
+<!-- ### 关闭请求监控
 ## 集成
 
 此插件为独立插件，即使您集成了全量版本SDK，需要此功能时，依然需要单独集成或注册此插件。
@@ -240,8 +245,6 @@ gdp('init', 'your accountId', 'your dataSourceId', {
   }
 );
 ```
-
-<!-- ### 关闭请求监控
 
 ```js
 gdp('init', 'your accountId', 'your dataSourceId', {
