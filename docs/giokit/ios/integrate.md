@@ -48,7 +48,7 @@ pod 'GrowingToolsKit/SDK2nd', :configurations => ['Debug']
 
 ### 2. 初始化
 
-在您的`AppDelegate`导入 GrowingToolsKit
+在您的`AppDelegate.m`导入 GrowingToolsKit
 
 ```objective-c
 #ifdef DEBUG
@@ -71,12 +71,19 @@ pod 'GrowingToolsKit/SDK2nd', :configurations => ['Debug']
 
 ### 3.开启性能监控
 
-如您需要开启性能相关监控，请在 main.m 中导入 `#import "GrowingAPM.h"`，并在 main 函数中添加代码：
+如您需要开启性能相关监控，请在 `main.m` 中导入 GrowingToolsKit，并在 main 函数中添加代码：
 
 ```objectivec
+#ifdef DEBUG
+#import <GrowingToolsKit/GrowingToolsKit.h>
+#endif
+
 int main(int argc, char * argv[]) {
-    // GrowingAPM Setup
-    [GrowingAPM setupMonitors];
+    // 添加以下代码
+#ifdef DEBUG
+    [GrowingToolsKit setupMonitors];
+#endif
+  
     NSString * appDelegateClassName;
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
@@ -88,10 +95,10 @@ int main(int argc, char * argv[]) {
 
 :::caution 注意
 
-SDK 2.x 默认采集模式与 GrowingAPM 不兼容，需要在 main 函数同时添加代码：
+SDK 2.x 默认采集模式与性能监控插件不兼容，需要在 main 函数同时添加代码：
 
 ```objectivec
-// SDK 2.0 GrowingAspectModeSubClass 与 GrowingAPM SDK 不兼容
+// SDK 2.0 GrowingAspectModeSubClass 与性能监控插件不兼容
 [Growing setAspectMode:GrowingAspectModeDynamicSwizzling];
 ```
 
