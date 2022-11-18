@@ -71,31 +71,11 @@ pod 'GrowingToolsKit/SDK2nd', :configurations => ['Debug']
 
 ### 3.开启性能监控
 
-如您需要开启性能相关监控，请在 `main.m` 中导入 GrowingToolsKit，并在 main 函数中添加代码：
-
-```objectivec
-#ifdef DEBUG
-#import <GrowingToolsKit/GrowingToolsKit.h>
-#endif
-
-int main(int argc, char * argv[]) {
-    // 添加以下代码
-#ifdef DEBUG
-    [GrowingToolsKit setupMonitors];
-#endif
-  
-    NSString * appDelegateClassName;
-    @autoreleasepool {
-        // Setup code that might create autoreleased objects goes here.
-        appDelegateClassName = NSStringFromClass([AppDelegate class]);
-    }
-    return UIApplicationMain(argc, argv, nil, appDelegateClassName);
-}
-```
+如您需要开启性能相关监控，请前往 GioKit -> 通用设置 开启所需监控功能。
 
 :::caution 注意
 
-SDK 2.x 默认采集模式与性能监控插件不兼容，需要在 main 函数同时添加代码：
+SDK 2.x 默认采集模式与性能监控插件不兼容，需要在 main 函数添加代码：
 
 ```objectivec
 // SDK 2.0 GrowingAspectModeSubClass 与性能监控插件不兼容
