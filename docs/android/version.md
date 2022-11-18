@@ -3,6 +3,18 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## V3.4.4
+ >[release-3.4.4](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.4) 日期: 2022-11-17 
+
+### Features
+
+- APM模块 ([#177](https://github.com/growingio/growingio-sdk-android-autotracker/pull/177))
+
+### Bug Fixes
+
+- circle计算xpath异常 ([#179](https://github.com/growingio/growingio-sdk-android-autotracker/pull/179))
+
+------
 ## V3.4.3
  >[release-3.4.3](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.3) 日期: 2022-11-03 
 

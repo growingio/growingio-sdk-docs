@@ -55,6 +55,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
  <img alt="网络请求" src={useBaseUrl('/img/giokit/android/sdkhttp.gif')}/>
 
+### 实时事件
+
+点击后打开实时事件监控，App 中触发的所有埋点事件实时展示，点击界面弹出的事件页签可进入事件库列表查看对应事件数据。再次点击关闭监控。
+
+### 错误报告
+该界面会捕获应用运行期间发生的Java错误，包括ANR错误。在详情页可以查看错误的堆栈信息。
+
+### 启动耗时
+启动耗时界面会统计应用每个界面打开的耗时时间，包括app冷热启动时间，Activity启动时间，Fragment启动时间。
+
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
