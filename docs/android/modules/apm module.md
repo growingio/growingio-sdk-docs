@@ -10,7 +10,5 @@ APM (Application Performance Management) 即应用性能管理，属于IT运维�
 GrowingIO 性能监控模块目前提供了 App 崩溃分析，应用启动时间，页面启动时间分析的功能。
 
 :::caution
-该功能正在测试中，预计将在稳定后上线。
-
 如想试用性能分析功能，请与您的客户成功经理或销售人员取得联系。
 :::
