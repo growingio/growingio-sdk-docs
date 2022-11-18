@@ -17,7 +17,7 @@ title: 初始化配置
 | `enableEventStore`    | `boolean`     | `false`    | 是否开启事件存储;若使用有GIO运营SDK需设置为 true(SDK版本>=3.3.2)                   |
 | `enableIdMapping`     | `boolean`     | `false`    | 是否开启多用户身份上报(>= 3.3.0)                     |
 | `extraParams`         | `string[]`    | `-`        | 与H5数据打通时额外获取的字段(>= 3.3.0)             |
-| `followShare`         | `boolean`     | `true`     | 是否跟踪分享数据                                     |
+| `followShare`         | `boolean`     | `false`     | 是否跟踪分享数据                                     |
 | `forceLogin`          | `boolean`     | `false`    | 是否开启强制登录模式；设置为true时需与接口identify一起使用                                 |
 | `getLocation`         | `object`      | `-`        | 获取位置配置项(3.3.6版本中移除)                       |
 | `getLocation.autoGet` | `boolean`     | `false`    | 自动获取用户位置信息(3.3.6版本中移除)                   |
@@ -35,6 +35,7 @@ title: 初始化配置
 默认情况下，SDK开启无埋点采集。如果您不需要无埋点采集，可以通过指定 `autotrack: false` 进行关闭。
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
+
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     autotrack: false,
@@ -45,28 +46,33 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ### comAsPage
 
 有时您可能会使用 Component 来代替 Page 进行代码编写。此时你需要设置 `comAsPage: true` 来将 Component 当做 Page 处理发送 PAGE 事件。
+
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     comAsPage: true,
     ...其他配置项
 });
 ```
+
 **注意：一旦开启此配置，小程序中所有Component组件都会被视为一个页面，组件生命周期 attached 一旦触发即发送PAGE事件。**
 
 ### compress
 
 默认情况下，SDK关闭数据加密，如果您认为不足够安全，可以通过指定 `compress: true` 打开数据加密。
+
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     compress: true,
     ...其他配置项
 });
 ```
+
 **注意：开启加密后抓包工具无法抓取上报的明文数据，但debug模式开启时开发者工具中仍能看到未加密的上报数据。**
 
 ### dataCollect
 
 默认情况下，SDK开启数据采集。如果您需要初始化时暂时关闭数据采集，可以通过指定 `dataCollect: false` 关闭。 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
+
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     dataCollect: false,
@@ -77,6 +83,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ### debug
 
 在开发时设置 `debug: true`，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
+
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     debug: true,
@@ -87,17 +94,20 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ### enableEventStore
 
 默认情况下，SDK关闭事件存储功能。此功能在小程序storage中存储SDK已上报的事件数据，用于运营SDK消费，**隔天清空**。<br/>
+
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     enableEventStore: true,
     ...其他配置项
 });
 ```
+
 **如果您不使用运营SDK可忽略此配置；如果您使用运营SDK，必须开启此配置项，设置为 `true`。**
 
 ### enableIdMapping
 
 多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/miniprogram/3.8/commonlyApi#4设置登录用户idsetuserid)
+
 ```js
 gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
     enableIdMapping: true,
