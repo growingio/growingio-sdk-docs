@@ -21,6 +21,8 @@ import TabItem from '@theme/TabItem';
 
 SDK 可以通过拆分成模块、服务实现模块化，在 GrowingIO 的 SDK 中，已经有多个模块功能已经从代码中分离出来，后续将会独立出更多的模块，[GrowingAnalytics.podspec](https://github.com/growingio/growingio-sdk-ios-autotracker/blob/master/GrowingAnalytics.podspec) 文件中包含了所有的相关信息。
 
+<!--truncate-->
+
 ### ** 模块 **
 
 具有单独业务功能的模块，例如圈选，Mobile Debugger。模块遵循 [模块协议](https://github.com/growingio/growingio-sdk-ios-autotracker/blob/master/GrowingTrackerCore/Public/GrowingModuleProtocol.h) 且需要进行初始化操作，并可能使用服务。Module 可以去除。

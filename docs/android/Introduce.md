@@ -52,7 +52,7 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.2'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.4'
     }
 }
 
@@ -91,7 +91,7 @@ apply plugin: 'com.growingio.android.autotracker'
 apply plugin: 'com.android.application'
 
 dependencies {
-    implementation 'com.growingio.android:autotracker-cdp:3.4.3'
+    implementation 'com.growingio.android:autotracker-cdp:3.4.4'
 }
 ```
 </TabItem>
@@ -103,7 +103,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.3')
+  implementation platform('com.growingio.android:autotracker-bom:3.4.4')
 
   //GrowingIO 无埋点 SDK
   implementation 'com.growingio.android:autotracker-cdp'
@@ -256,7 +256,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.4.3'
+    implementation 'com.growingio.android:tracker-cdp:3.4.4'
 }
 ```
 </TabItem>
@@ -268,7 +268,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.3')
+  implementation platform('com.growingio.android:autotracker-bom:3.4.4')
 
   //GrowingIO 埋点 SDK
   implementation 'com.growingio.android:tracker-cdp'
