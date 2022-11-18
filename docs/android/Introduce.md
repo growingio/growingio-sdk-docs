@@ -228,7 +228,7 @@ class MyApplication : Application() {
 
 运行应用，若 `Logcat` 中输出了
 `!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`
-`!!! GrowingIO Tracker version: 3.4.2 !!!`
+`!!! GrowingIO Tracker version: 3.4.4 !!!`
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
