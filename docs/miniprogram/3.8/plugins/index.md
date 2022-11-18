@@ -13,6 +13,10 @@ title: 插件
 gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking]);
 ```
 
+插件合集：
+**<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.10/plugins.zip></font>**<br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+
 ## 无埋点插件（gioEventAutoTracking）
 
 自动采集 `tap`、`longtap`、`change`、`submit` 事件的插件。<br />
@@ -32,3 +36,8 @@ gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking
 
 当且仅当开发小程序时使用独立开发的分包 **（即主包与分包不在同一项目中且不同框架时）** 时，插件用于打通不同框架间用户数据和页面数据，合并为一个SDK运行逻辑。<br />
 [参考文档](/docs/miniprogram/3.8/plugins/multiIntegrate)
+
+## 性能监控
+
+提供小程序首屏加载监控、错误监控和网络请求监控的全方位性能监控采集插件。<br/>
+[参考文档](/docs/miniprogram/3.8/plugins/performance)

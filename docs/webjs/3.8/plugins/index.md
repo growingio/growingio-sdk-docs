@@ -17,6 +17,10 @@ title: 插件
 gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking]);
 ```
 
+插件合集：
+**<font size="3"><https://assets.giocdn.com/sdk/webjs/cdp/plugins.zip></font>**<br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+
 ### 无埋点插件（gioEventAutoTracking）
 
 自动采集 `click`、`change`、`submit` 事件的插件。<br/>
@@ -51,3 +55,8 @@ gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking
 
 当您的web页面作为Hybrid内嵌页使用且有圈选需求时，自动处理圈选逻辑的插件。<br/>
 [参考文档](/docs/webjs/3.8/plugins/hybridCircle)
+
+### 性能监控插件
+
+提供页面首屏加载监控、错误监控和网络请求监控的全方位性能监控采集插件。<br/>
+[参考文档](/docs/webjs/3.8/plugins/performance)

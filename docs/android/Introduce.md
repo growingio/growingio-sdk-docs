@@ -39,6 +39,7 @@ allprojects {
 ```
 
 #### 添加插件
+
 在 project 级别的build.gradle文件中添加插件路径
 
 ```groovy
@@ -52,13 +53,14 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.2'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.4'
     }
 }
 
 ```
 
 在 app 级别的 `build.gradle` 文件中添加 `com.growingio.android.autotracker` 插件
+
 ```groovy
 apply plugin: 'com.android.application'
 //添加 GrowingIO 插件
@@ -67,6 +69,7 @@ apply plugin: 'com.growingio.android.autotracker'
 ...
 
 ```
+
 :::tip 关于插件
 插件最新发布版本为 [Github Releases](https://github.com/growingio/growingio-sdk-android-plugin/releases)
 
@@ -74,6 +77,7 @@ apply plugin: 'com.growingio.android.autotracker'
 :::
 
 #### 添加代码依赖
+
 在需要用到的应用级别下的 `build.gradle` 文件中添加代码依赖
 
 <Tabs
@@ -91,9 +95,10 @@ apply plugin: 'com.growingio.android.autotracker'
 apply plugin: 'com.android.application'
 
 dependencies {
-    implementation 'com.growingio.android:autotracker-cdp:3.4.3'
+    implementation 'com.growingio.android:autotracker-cdp:3.4.4'
 }
 ```
+
 </TabItem>
 
 <TabItem value="bom">
@@ -103,7 +108,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.3')
+  implementation platform('com.growingio.android:autotracker-bom:3.4.4')
 
   //GrowingIO 无埋点 SDK
   implementation 'com.growingio.android:autotracker-cdp'
@@ -118,6 +123,7 @@ dependencies {
 :::
 
 ### 添加URL Scheme
+
 URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用圈选,[Mobile Debugger](/docs/debugverify/mobiledebugger) 及深度链接等功能时唤醒应用。
 将应用的 URLScheme 和应用权限添加到您的 AndroidManifest.xml 中的 LAUNCHER Activity 下。
 
@@ -153,9 +159,11 @@ URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把
     </application>
 </manifest>
 ```
+
 ### SDK初始化配置
 
-#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/compliance/androidCompliance#合规步骤) 
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/compliance/androidCompliance#合规步骤)
+
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -197,7 +205,7 @@ class MyApplication : Application() {
 
         // Config GrowingIO
         // YourAccountId eg:0a1b4118dd954ec3bcc69da5138bdb96
-        // Your URLScheme eg:growing.xxxxxxxxxxx 
+        // Your URLScheme eg:growing.xxxxxxxxxxx
         // YourServerHost eg:http://106.75.81.105:8080
         // YourDatasourceId eg: 11223344aabbcc
         val sConfiguration = CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
@@ -212,16 +220,15 @@ class MyApplication : Application() {
 </TabItem>
 </Tabs>
 
-
 :::caution 注意
-`GrowingAutotracker.startWithConfiguration`第一个参数为 `ApplicationContext` 对象。 
+`GrowingAutotracker.startWithConfiguration`第一个参数为 `ApplicationContext` 对象。
 :::
 
-
 ### 查看集成效果
-运行应用，若 `Logcat` 中输出了  
-`!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.4.2 !!!`  
+
+运行应用，若 `Logcat` 中输出了
+`!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`
+`!!! GrowingIO Tracker version: 3.4.4 !!!`
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
@@ -230,15 +237,14 @@ class MyApplication : Application() {
 
 另外，您可使用 [GioKit 辅助插件](/docs/giokit/android) 进行集成验证。
 
-
 ## 集成埋点SDK
+
 埋点 SDK只自动采集用户访问事件和APP关闭事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
 埋点相较于无埋点集成步骤会更简单，也不需要添加额外的插件。
 
 ### 添加依赖
 
 只需要在应用级别下的 `build.gradle` 文件中添加tracker依赖即可。
-
 
 <Tabs
   groupId="code-language"
@@ -256,9 +262,10 @@ apply plugin: 'com.android.application'
 
 dependencies {
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.4.3'
+    implementation 'com.growingio.android:tracker-cdp:3.4.4'
 }
 ```
+
 </TabItem>
 
 <TabItem value="bom">
@@ -268,7 +275,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.3')
+  implementation platform('com.growingio.android:autotracker-bom:3.4.4')
 
   //GrowingIO 埋点 SDK
   implementation 'com.growingio.android:tracker-cdp'
@@ -279,7 +286,9 @@ dependencies {
 </Tabs>
 
 ### 添加URLScheme
+
 以便唤醒App
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -306,8 +315,11 @@ dependencies {
     </application>
 </manifest>
 ```
+
 ### SDK初始化配置
-#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/compliance/androidCompliance#合规步骤) 
+
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/compliance/androidCompliance#合规步骤)
+
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -364,9 +376,11 @@ class MyApplication : Application() {
 </Tabs>
 
 ### 混淆
+
 SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用其规则。
 
 如果混淆后还出现问题，可以在您的 proguard-rules.pro 中加入如下代码：
+
 ```xml
 -keep class com.growingio.** {
     *;
@@ -375,9 +389,10 @@ SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用�
 ```
 
 ### 查看集成效果
-运行应用，若 `Logcat` 中输出了  
-`!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`  
-`!!! GrowingIO Tracker version: 3.4.2 !!!`  
+
+运行应用，若 `Logcat` 中输出了
+`!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`
+`!!! GrowingIO Tracker version: 3.4.2 !!!`
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。

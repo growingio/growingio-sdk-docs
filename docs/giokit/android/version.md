@@ -3,6 +3,16 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## V1.3.0
+ >[V1.3.0](https://github.com/growingio/giokit-android/releases/tag/V1.3.0) 日期: 2022-11-17 
+
+Giokit V1.3.0 版本正式发布，包含以下功能：
+
+1. 添加通用设置界面，能够清除SDK产生的数据库数据；
+2. 添加实时事件，能够在屏幕右下角实时显示产生的SDK事件；
+3. 添加错误报告界面，能捕获应用运行期间发生的Java错误，包括ANR错误；
+4. 添加启动耗时界面，会统计应用每个界面打开的耗时时间，包括app冷热启动时间，Activity启动时间，Fragment启动时间。
+------
 ## V1.2.0
  >[V1.2.0](https://github.com/growingio/giokit-android/releases/tag/V1.2.0) 日期: 2022-06-23 
 
