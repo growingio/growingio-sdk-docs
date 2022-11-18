@@ -45,6 +45,10 @@ title: 3.3与3.8对比
 >
 > 新增 `wepy`、`uniVue`、`taroVue`、`remax` 配置项字段；用于准确传入不同框架的实例。
 
+### 初始化配置项
+
+> 在3.3版本中，`followShare`是默认关闭的，但是在3.8版本中我们修改`followShare`为默认开启。
+
 ### 数据采集API
 
 **移除项：** `setPlatformProfile`, `getLocation` 方法。

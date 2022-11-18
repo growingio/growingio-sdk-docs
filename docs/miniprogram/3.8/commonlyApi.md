@@ -653,6 +653,6 @@ gdp('clearTrackTimer');
 
 SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**(非指定类型值均会被替换为空字符串，长度超限均会被截断)**
 
-**`key:` String，length <=50；**
+**`key:` String，length <=100；**
 
 **`value:` String | number 时 length <=1000； Array 时 length <=100**
