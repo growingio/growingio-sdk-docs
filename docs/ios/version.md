@@ -57,13 +57,13 @@ sidebar_position: 0
 
 * GrowingEventInterceptor 增加 EventDidWrite 回调，以便新增事件排序 ([a7843f9](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a7843f9e20f6669d32220fbdaa1231edd9298b7c))
 ------
-# [3.4.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.0...3.4.1) (2022-07-07)
+## [3.4.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.0...3.4.1) (2022-07-07)
 
 ### Bug Fixes
 
 * id<GrowingRequestProtocol\> 对象 optional 调用增加 respondsToSelector 判断 ([7d3d81a](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/7d3d81a633dfac994b4e27e34c18a7ec2445304e))
 ------
-# [3.4.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.6...3.4.0) (2022-06-16)
+## [3.4.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.6...3.4.0) (2022-06-16)
 
 ### Bug Fixes
 
