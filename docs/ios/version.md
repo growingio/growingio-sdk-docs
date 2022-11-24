@@ -22,7 +22,7 @@ sidebar_position: 0
 * APM modules SwiftPM support ([cf65835](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/cf65835f5354e0dfbfa921465a2743ff1fd6f790))
 * podspec ios_deployment_target 改为 9.0 ([5eb504b](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/5eb504b887c44b9437316d045e91aa5fc5bbee18))
 * 圈选提示 ([a90c42d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a90c42ddb7696fa4a1078773f2e865cd97e60156))
-------
+
 ## [3.4.4](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.3...3.4.4) (2022-11-03)
 
 
@@ -35,7 +35,7 @@ sidebar_position: 0
 
 * advert module ([b7b974d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/b7b974df786c87b3da40157b4731e68cb71c6f3b))
 * advert module (only activate) ([188fd2a](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/188fd2ac9ac91ff8c55799ff4c266533d91551d6))
-------
+
 ## [3.4.3](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.2-hotfix.1...3.4.3) (2022-09-20)
 
 
@@ -43,7 +43,7 @@ sidebar_position: 0
 
 * track timer ([be62b64](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/be62b64c8117374abb8129963cfc9a246a72d34c))
 * 废弃 WithAttributesBuilder 相关接口 ([17c1caa](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/17c1caa3f6a4f574c45ed77a46efcee59614ba52))
-------
+
 ## [3.4.2](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.1...3.4.2) (2022-08-09)
 
 
@@ -56,14 +56,14 @@ sidebar_position: 0
 ### Features
 
 * GrowingEventInterceptor 增加 EventDidWrite 回调，以便新增事件排序 ([a7843f9](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a7843f9e20f6669d32220fbdaa1231edd9298b7c))
-------
-# [3.4.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.0...3.4.1) (2022-07-07)
+
+## [3.4.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.0...3.4.1) (2022-07-07)
 
 ### Bug Fixes
 
 * id<GrowingRequestProtocol\> 对象 optional 调用增加 respondsToSelector 判断 ([7d3d81a](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/7d3d81a633dfac994b4e27e34c18a7ec2445304e))
-------
-# [3.4.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.6...3.4.0) (2022-06-16)
+
+## [3.4.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.6...3.4.0) (2022-06-16)
 
 ### Bug Fixes
 
@@ -77,13 +77,13 @@ sidebar_position: 0
 * DefaultServices 单独作为 Module ([e89210e](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/e89210e522d38ee9835ce218778fbee5778d3e1f))
 * Protobuf 模块优化，减少 Category 的使用，避免 ld warnings ([5394ca4](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/5394ca4b2fb1e178466cbd2e00869eb270ae1d2f))
 * 适配 iOS 13 UIScene 冷启动 DeepLink 唤起 ([1302b8b](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/1302b8bee188e087f2c6f49e16f365bda1b6becf))
-------
+
 ## [3.3.6](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.5...3.3.6) (2022-04-28)
 
 ### Features
 
 * LOGIN_USER_ATTRIBUTES 事件属性支持 `NSArray<ObjectType>` ([6d2e971](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/6d2e9712184874b8ed875ae270126393a646b5d7))
-------
+
 ## [3.3.5](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.4...3.3.5) (2022-04-12)
 
 
@@ -99,14 +99,14 @@ sidebar_position: 0
 * 废弃 CUSTOM 事件物品模型关联接口 ([7f15aad](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/7f15aadb8ab9066bd02d0ca8e54520040f2b5d9c))
 * 支持 SwiftPM ([1a56430](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/1a56430b05cd2ab1c91d1bcaa3dfbaef3a14bd14))
 * Hybrid 模块也作为 SwiftPM library 提供给外部，以便仅集成埋点 SDK 时打通 H5 ([67dad16](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/67dad1698d6c2a7dada0ec9002c76559e46a302f))
-------
+
 ## [3.3.4](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.3...3.3.4) (2022-03-08)
 
 ### Bug Fixes
 
 * 边界情况下，点击退出圈选同时产生事件，可能导致 crash ([0b81173](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/0b81173b3ba2dc7f178cf6184c1bcee5f83de1d4))
 * 其他稳定性优化
-------
+
 ##  [3.3.3](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.2...3.3.3) (2021-12-23)
 
 
@@ -121,7 +121,7 @@ sidebar_position: 0
 * 数据存储与发送新增 Protobuf 格式 ([9ce583d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/9ce583d669685d9dcfac2f9bbd4b86fe3fcc0429))
 
 
-------
+
 ## [3.3.2](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.1...3.3.2)  (2021-12-07)
 
 
@@ -137,7 +137,7 @@ sidebar_position: 0
 
 * 3.3.2 正式版发布 ([8c9f3f9](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/8c9f3f925ca304e68d6c7dc157f8fe2d318ab36b))
 * Configuration 增加 EncryptEnabled 配置项 ([1f90d5e](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/1f90d5e342978c9e4314c495e1782199b9372df7))
-------
+
 ##  [3.3.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.3.0...3.3.1) (2021-11-03)
 
 ### Features
@@ -151,7 +151,7 @@ sidebar_position: 0
 * hybrid event domain 设置失效 ([6e871eb](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/6e871eb9555d1ddb77fe782328ee7276084be945))
 
 
-------
+
 ##  [3.3.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.2.2...3.3.0) (2021-10-15)
 
 ### Bug Fixes
@@ -164,7 +164,7 @@ sidebar_position: 0
 * 3.3.0 正式版发布
 * 新增 Id Mapping 开关 ([4bfc426](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4bfc426194b787520e285ec9cb983373ced4c7b9))
 * 新增 version 相关接口 (Private)，提供给 GrowingToolsKit 调用 ([e826d4f](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/e826d4fdf1646480085626d7215abdf0760b5383))
-------
+
 ## [3.2.2](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.2.1...3.2.2)  (2021-09-09)
 
 
@@ -179,7 +179,7 @@ sidebar_position: 0
 * GrowingIgnorePolicy 声明移到 Configuration 中，GrowingAutotracker.h 隐藏 RealAutotracker 导入 ([27b1ac7](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/27b1ac7c385ad05a6dcf72790bce3b394fc8db92))
 * 杀死进程 APP_CLOSED 未发送 ([18666a3](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/18666a32758189f5d03fe8cb8b870d6a25913e48))
 
-------
+
 ##  [3.2.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.2.1-beta...3.2.1)(2021-09-01)
 
 
@@ -208,7 +208,7 @@ sidebar_position: 0
 ### Performance Improvements
 
 * merge commit ba74014 and 4abd0e3 in CocoaLumberjack ([4da828e](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4da828e23dc1c0b5907db8b2af727d14bbfcd958))
-------
+
 ## [3.2.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.1.0...3.2.0) (2021-06-01) 
 
 ### Bug Fixes
@@ -232,7 +232,7 @@ sidebar_position: 0
 * iDFA 获取模块重整 ([02bab81](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/02bab816d94bf87bd4504639870c1b08d5b9d1ba))
 * release 3.2.0-beta ([115d234](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/115d23402fc8e714dc212fbc3bc2cf3e1c16e0b1))
 
-------
+
 ## [3.1.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.0.2...3.1.0) (2021-04-07)
 
 
@@ -252,5 +252,6 @@ sidebar_position: 0
 * 防止数组遍历时增删操作，发布 3.1.0-beta 版本 ([2e7e70b](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2e7e70bf8cc91645abc8bc7014a7ea006572f524))
 * add mobiledebugger & mobileloggeradd ([6834cd4](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/6834cd458a4c6592298f9f7dc7fe4e2725361117))
 
-------
-### 更多发布细节请参考 [Github Releases](https://github.com/growingio/growingio-sdk-ios-autotracker/releases)
+
+---
+## 更多发布细节请参考 [SDK Releases in Github](https://github.com/growingio/growingio-sdk-ios-autotracker/releases)
