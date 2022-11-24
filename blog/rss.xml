@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>一站式数据增长引擎 Blog</title>
-        <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog</link>
+        <link>https://growingio.github.io/growingio-sdk-docs/blog</link>
         <description>一站式数据增长引擎 Blog</description>
         <lastBuildDate>Thu, 13 Oct 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,7 +10,7 @@
         <language>en</language>
         <item>
             <title><![CDATA[基于 GrowingIO 现有 SDK 基础上的二次开发 - iOS 篇]]></title>
-            <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog/custom ios sdk</link>
+            <link>https://growingio.github.io/growingio-sdk-docs/blog/custom ios sdk</link>
             <guid>custom ios sdk</guid>
             <pubDate>Thu, 13 Oct 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[--------------]]></description>
@@ -21,7 +21,7 @@
         </item>
         <item>
             <title><![CDATA[基于 GrowingIO 现有 SDK 基础上的二次开发 - Android 篇]]></title>
-            <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog/custom android sdk</link>
+            <link>https://growingio.github.io/growingio-sdk-docs/blog/custom android sdk</link>
             <guid>custom android sdk</guid>
             <pubDate>Sun, 09 Oct 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[为了满足不同客户的使用需求，我们的SDK可以通过集成不同的模块实现功能的自定义。比如说以下场景：]]></description>
@@ -42,7 +42,7 @@
         </item>
         <item>
             <title><![CDATA[从 iOS AutoreleasePool 到编译器优化]]></title>
-            <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog/AutoreleasePool</link>
+            <link>https://growingio.github.io/growingio-sdk-docs/blog/AutoreleasePool</link>
             <guid>AutoreleasePool</guid>
             <pubDate>Tue, 22 Feb 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[main.m 中的 AutoreleasePool]]></description>
@@ -58,7 +58,7 @@
         </item>
         <item>
             <title><![CDATA[一文搞定前端错误捕获和上报]]></title>
-            <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog/JS Error</link>
+            <link>https://growingio.github.io/growingio-sdk-docs/blog/JS Error</link>
             <guid>JS Error</guid>
             <pubDate>Thu, 18 Nov 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[众所周知，几乎没有一个开发者能够做到开发时100%没有Bug，那么一旦我们的产品出了问题，快速定位问题是迫切需要做的事。好在我们在Web场景中Js运行出现异常不会导致JS引擎崩溃，最多只会终止当前执行的任务。然后逐级上抛错误，类似冒泡事件，在遇到最近的一层catch时停止上抛，如果中间都没有错误处理的catch时，直至window对象结束。那么今天就与大家一起探讨一下我们在Web场景中的异常错误数据如何收集以及如何上报。]]></description>
@@ -85,7 +85,7 @@
         </item>
         <item>
             <title><![CDATA[MavenCentral 迁移步骤]]></title>
-            <link>https://growingio.github.io/growingio-sdk-docs/growingio-sdk-docs/blog/MavenCentral</link>
+            <link>https://growingio.github.io/growingio-sdk-docs/blog/MavenCentral</link>
             <guid>MavenCentral</guid>
             <pubDate>Wed, 21 Jul 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[随着 Jcenter 服务的即将过期，我们需要一个新的仓库来发行我们的SDK.于是我们找上了 MavenCentral，并针对如何在MavenCentral提交包写了这篇文章。]]></description>
