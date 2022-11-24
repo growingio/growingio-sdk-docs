@@ -5,8 +5,8 @@ import os
 import re
 
 readme_header = "---\ntitle: 版本记录\nsidebar_position: 0\n---\n----\n"
-readme_item_title = "## {title}\n >[{name}]({url}) 日期: {date} \n\n"
-readme_footer = "### 更多发布细节请参考 [Github Releases]({url})"
+readme_item_foot = ":::note \n\n 标签:**[{name}]({url})** &nbsp;&nbsp;&nbsp;&nbsp;日期: **{date}** \n\n:::"
+readme_footer = "---\n## 更多发布细节请参考 [SDK Releases in Github]({url})"
 
 
 def github_release(platform):
@@ -26,10 +26,13 @@ def github_release(platform):
             if release["prerelease"] == True:
                 continue
             if platform['name'] != "iOS":
-                readme += readme_item_title.format(title=release["tag_name"].upper(), name=release_name, url=release["html_url"],
+                readme += "## " + release_name.upper() +"\n\n"
+                readme += release["body"] +"\n\n"
+                readme += readme_item_foot.format(name=release["tag_name"], url=release["html_url"],
                                                 date=release["published_at"].split("T")[0])
-            readme += release["body"]
-            readme += "\n------\n"
+                readme += "\n\n"
+            else:
+                readme += release["body"] + "\n\n"
         readme += readme_footer.format(
             url=platform['releaseUrl'].replace("api.github.com", "github.com").replace("repos/growingio", "growingio"))
 
