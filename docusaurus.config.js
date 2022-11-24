@@ -5,7 +5,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: '一站式数据增长引擎',
   tagline: '数据+智能+营销，赋能商业决策，实现业绩增长',
-  url: 'https://growingio.github.io/growingio-sdk-docs',
+  url: 'https://growingio.github.io',
   baseUrl: '/growingio-sdk-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
