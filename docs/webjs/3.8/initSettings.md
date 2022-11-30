@@ -43,7 +43,9 @@ gdp('init', accountId, datasourceId, { autotrack: false });
 
 默认情况下，SDK的用户信息（deviceId、userId、sessionId等）都是存储在您站点的主域名下，子域名都集成SDK时会共享用户信息。但如果您需要进行区分，配置此项并指定为当前的子域名即可区分用户信息进行数据隔离。
 
-例：您有`a.growingio.com`和`b.growingio.com`两个或多个子域名，通常情况下都集成SDK时会共享用户信息，即视为同一个用户。如果您希望进行区分和数据隔离，指定`cookieDomain`为各自的完整子域名即可。
+例：您有`a.growingio.com`和`b.growingio.com`两个或多个子域名，通常情况下都集成SDK访问时会共享用户信息，即视为同一个用户。如果您希望进行区分和数据隔离，指定`cookieDomain`为各自的完整子域名即可。
+
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.8.0-rc.9支持。**
 
 ### compress
 

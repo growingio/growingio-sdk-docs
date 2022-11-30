@@ -3,6 +3,18 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## RELEASE CDP-V3.8.0-RC.9
+
+- 🐞 修复同域站点中iframe页面内外用户信息不一致的问题。
+- 🐞 修复重复加载SDK时提示SDK未集成的问题。
+- 🎉 新增指定cookie存储域用于隔离多个子域名用户冲突的初始化配置项 cookieDomain。
+
+:::note 
+
+ 标签:**[CDP-v3.8.0-rc.9](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases/tag/CDP-v3.8.0-rc.9)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2022-11-30** 
+
+:::
+
 ## RELEASE CDP-V3.8.0-RC.8
 
 - 🐞 修复某些情况下hash参数处理错误的问题。
