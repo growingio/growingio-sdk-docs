@@ -10,7 +10,7 @@ title: 初始化配置
 | **字段名**        | **参数类型** | **默认值**          | **说明**                                              |
 |-------------------|--------------|---------------------|-----------------------------------------------------|
 | `autotrack`       | `boolean`    | `true`              | 是否开启无埋点采集，集成无埋点插件后默认开启无埋点采集 |
-| `cookieDomain`    |  `string`    | `location.hostname` | 自定义cookie存储的域                                 |
+| `cookieDomain`    |  `string`    | `当前站点的一级域名`   | 自定义cookie存储的域                                 |
 | `compress`        | `boolean`    | `true`              | 是否数据加密，集成加密插件后默认开启加密               |
 | `dataCollect`     | `boolean`    | `true`              | 是否开启数据采集                                      |
 | `debug`           | `boolean`    | `false`             | 是否开启调试模式                                      |
