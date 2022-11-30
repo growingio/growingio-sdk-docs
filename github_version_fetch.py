@@ -3,6 +3,7 @@ import json
 from urllib import request, parse
 import os
 import re
+import sys
 
 readme_header = "---\ntitle: 版本记录\nsidebar_position: 0\n---\n----\n"
 readme_item_foot = ":::note \n\n 标签:**[{name}]({url})** &nbsp;&nbsp;&nbsp;&nbsp;日期: **{date}** \n\n:::"
@@ -122,6 +123,11 @@ if __name__ == '__main__':
     for platform in config:
         if platform['enable'] is False:
             continue
+        if len(sys.argv) > 1:
+            target_release = sys.argv[1]
+            name = platform['name']
+            if name != target_release:
+                continue
         platform_newest_tag = github_release(platform)
         if not hotfix_version(platform_newest_tag):
             version = re.findall(version_pattern, platform_newest_tag)[0]
