@@ -10,6 +10,7 @@ title: 初始化配置
 | **字段名**        | **参数类型** | **默认值**          | **说明**                                              |
 |-------------------|--------------|---------------------|-----------------------------------------------------|
 | `autotrack`       | `boolean`    | `true`              | 是否开启无埋点采集，集成无埋点插件后默认开启无埋点采集 |
+| `cookieDomain`    |  `string`    | `当前站点的一级域名`   | 自定义cookie存储的域                                 |
 | `compress`        | `boolean`    | `true`              | 是否数据加密，集成加密插件后默认开启加密               |
 | `dataCollect`     | `boolean`    | `true`              | 是否开启数据采集                                      |
 | `debug`           | `boolean`    | `false`             | 是否开启调试模式                                      |
@@ -37,6 +38,14 @@ gdp('init', accountId, datasourceId, { autotrack: false });
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#1开启关闭无埋点数据采集autotrack)
+
+### cookieDomain
+
+默认情况下，SDK的用户信息（deviceId、userId、sessionId等）都是存储在您站点的主域名下，子域名都集成SDK时会共享用户信息。但如果您需要进行区分，配置此项并指定为当前的子域名即可区分用户信息进行数据隔离。
+
+例：您有`a.growingio.com`和`b.growingio.com`两个或多个子域名，通常情况下都集成SDK访问时会共享用户信息，即视为同一个用户。如果您希望进行区分和数据隔离，指定`cookieDomain`为各自的完整子域名即可。
+
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.8.0-rc.9支持。**
 
 ### compress
 
