@@ -481,7 +481,35 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 **<font color="#FC5F3A">注意：</font>**<br/>
 **在有上述3种额外采集标记的节点上，必须绑定一个点击事件，SDK才能实现点击的额外数据采集。如果没有，需要您手动绑定一个空的点击事件。**
 
-#### 4）gioPageTitle
+#### 4）设置页面标题
+
+**方式一：setNavigationBarTitle（推荐）**
+
+默认情况下SDK会自动采集页面title，但当SDK可能无法识别或您需要自定义时，可以通过在页面的`onLoad`生命周期中调用`setNavigationBarTitle`方法来设置页面标题并同时指定SDK上报事件时的title值。[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/ui/navigation-bar/wx.setNavigationBarTitle.html)
+
+示例：
+
+```js
+Page({
+  onLoad: {
+    wx.setNavigationBarTitle({
+      title: 'NewTitle'
+    });
+  }
+});
+```
+
+注：阿里(支付宝/淘宝)小程序是`setNavigationBar` [参考文档](https://opendocs.alipay.com/mini/api/xwq8e6)
+
+**<font color="#FC5F3A">注意：</font>**
+
+**1）指定title仅支持 String 格式。该功能适配SDK版本>=3.8.11支持。**
+
+**2）想要设置页面标题并同时生效于SDK时，该方法必须在onLoad中调用，如果您业务中无法调整则无法生效于SDK。**
+
+**3）部分框架可能会建议该方法调用时机为onReady（例如uni-app）或其他生命周期中，我们实际测试中在onLoad调用并无影响，因此您可放心在onLoad中使用。**
+
+**方式二：gioPageTitle**
 
 默认情况下SDK会自动采集页面title，但当SDK可能无法识别或您需要自定义时，可以通过在页面的`data`对象中设置`gioPageTitle`字段来指定SDK上报事件时的title值。例：
 
@@ -494,7 +522,13 @@ Page({
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>** **指定title仅支持 String 格式。SDK版本>=3.8.0-rc.9支持。**
+**<font color="#FC5F3A">注意：</font>**
+
+**1）指定title仅支持 String 格式。SDK版本>=3.8.0-rc.9支持。**
+
+**2）该字段不支持在小程序生命周期中动态修改，SDK可能会取值错误。**
+
+**<font color="#57cee7">提示：</font> SDK中事件title取值优先级为 setNavigationBarTitle > data.gioPageTitle > 页面config.js配置 > 全局tabBar配置**
 
 ### 3、忽略采集标记
 
