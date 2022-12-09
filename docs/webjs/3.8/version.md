@@ -3,6 +3,17 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## RELEASE CDP-V3.8.0-RC.10
+
+- 🐞 修复部分原生方法被全局污染复写的问题。（Array.includes、Array.find、Array.findIndex、Array.from、String.startsWith、String.endsWith、Number.isNaN）
+
+
+:::note 
+
+ 标签:**[CDP-v3.8.0-rc.10](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases/tag/CDP-v3.8.0-rc.10)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2022-12-09** 
+
+:::
+
 ## RELEASE CDP-V3.8.0-RC.9
 
 - 🐞 修复同域站点中iframe页面内外用户信息不一致的问题。
