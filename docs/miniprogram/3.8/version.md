@@ -5,6 +5,11 @@ title: 版本记录
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
+### V3.8.11 - 2022/12/06
+
+* 🐞 修复在特定条件下调用getApp会导致死循环卡死的问题。
+* 🌟 优化设置页面标题逻辑。
+
 ### V3.8.10 - 2022/11/17
 
 * 🐞 修复在小程序页面型插件中集成报错的问题。
