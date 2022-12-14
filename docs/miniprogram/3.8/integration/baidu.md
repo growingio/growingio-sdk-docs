@@ -234,16 +234,16 @@ module.exports = {
 ```js
 // app.js
 import React, { Component } from 'react';
-import Taro from '@tarojs/taro';
 // 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
 // npm集成方式
 import gdp from 'gio-miniprogram-sdk-cdp/gio-taro';
 
+const taroRuntime = require('@tarojs/runtime');
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'your serverHost',
-    taro: Taro,
+    host: 'Your ServerHost',
+    taro: taroRuntime,
     ...other settings
 });
 
