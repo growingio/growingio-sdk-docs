@@ -435,7 +435,32 @@ UIViewController 分类声明的属性，设置需要在 viewDidAppear 执行之
 }
 ```
 
-### 17. 设置忽略的页面 
+### 17. 设置页面属性
+`growingPageAttributes`<br/>
+给当前页面设置页面属性。
+
+#### 属性说明
+
+UIViewController 分类声明的属性，设置需要在 viewDidAppear 执行之前
+
+| 参数               | 参数类型   | 说明     |
+| :----------------- | :--------- | :------- |
+| `growingPageAttributes` | `NSDictionary<NSString *, NSString *>` | 页面属性 |
+
+#### 示例
+
+**无埋点 SDK 示例代码：**
+
+```c
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  ...
+  self.growingPageAttributes = @{@"key": @"value"};
+  ...
+}
+```
+
+### 18. 设置忽略的页面 
 `growingPageIgnorePolicy`<br/>
 被设置忽略的页面，不再触发无埋点的 page 事件。
 
@@ -460,7 +485,7 @@ UIViewController 分类声明的属性，设置需要在 viewDidAppear 执行之
 }
 ```
 
-### 18. 设置忽略的 View 
+### 19. 设置忽略的 View 
 `growingViewIgnorePolicy`<br/>
 被设置忽略的 VIew，不再触发点击、曝光等任何事件，被忽略的 WebView 也不会采集 Hybrid 的事件。
 
@@ -480,7 +505,7 @@ UIView 分类声明的属性，设置需要在 viewDidAppear 执行之前
 view.growingViewIgnorePolicy = GrowingIgnoreSelf;
 ```
 
-### 19.设置采集 View 的曝光事件
+### 20.设置采集 View 的曝光事件
 `growingTrackImpression`<br/>
 当被设置的 View 出现在屏幕内时将触发曝光事件
 
@@ -501,7 +526,7 @@ UIView 分类方法
 [self.view growingTrackImpression:@"eventName" attributes:@{@"property" : @"value"}];
 ```
 
-### 20.停止采集 View 的曝光事件
+### 21.停止采集 View 的曝光事件
 `growingStopTrackImpression`<br/>
 停止采集 View 的曝光事件
 
@@ -517,7 +542,7 @@ UIView 分类方法
 [self.view growingStopTrackImpression];
 ```
 
-### 21.设置 View 唯一 Tag 
+### 22.设置 View 唯一 Tag 
 `growingUniqueTag`<br/>
 给 View 设置唯一的 Tag，方便点击等事件确定唯一的 View，一般用于动态布局的场景
 
