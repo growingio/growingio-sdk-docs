@@ -18,6 +18,7 @@ GrowingAutotracker.get().cleanLocation()
 GrowingAutotracker.get().trackCustomEvent("registerSuccess")
 GrowingAutotracker.get().setLoginUserAttributes(new HashMap<>())
 GrowingAutotracker.get().getDeviceId()
+GrowingAutotracker.get().setPageAttributes(new android.app.Fragment(), new HashMap<>())
 GrowingAutotracker.get().setPageAliasX(new androidx.fragment.app.Fragment(),"TestFragment")
 GrowingAutotracker.get().ignorePageX(new androidx.fragment.app.Fragment(),IgnorePolicy.IGNORE_SELF)
 GrowingAutotracker.get().setPageAlias(new android.app.Fragment(),"TestFragment")
@@ -359,7 +360,31 @@ GrowingAutotracker.get().getDeviceId()
 GrowingTracker.get().getDeviceId()
 ```
 
-### 9. 设置页面别名 
+### 9. 设置页面属性
+`setPageAttributes`, `setPageAttributesSupport`, `setPageAttributesX`<br/>
+给指定页面设置属性，必须在`onResume`生命周期之前调用。
+#### 参数说明
+| 参数    | 参数类型              | 说明                                                   |
+| :------ | :-------------------- | :----------------------------------------------------- |
+| `page`  | `Activity / Fragment` | 需要设置属性的页面对象 |
+| `attributes` | `Map<String, String>`              | 属性信息                                               |
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ...
+        Map<String, String> map = new HashMap<>();
+        map.put("key", "value");
+        GrowingAutotracker.get().setPageAttributes(mActivity, map);
+        ...
+
+}
+```
+
+### 10. 设置页面别名 
 `setPageAlias`, `setPageAliasX`<br/>
 给页面设置一个别名，建议设置为汉字、字母、数字和下划线的组合。为查看数据方便，请尽量对 iOS 和安卓的同功能页面取不同的名称。
 #### 参数说明
@@ -374,7 +399,7 @@ GrowingTracker.get().getDeviceId()
 GrowingAutotracker.get().setPageAlias(mActivity, "home")
 ```
 
-### 10. 设置忽略的页面 
+### 11. 设置忽略的页面 
 `ignorePage`,`ignorePageX`<br/>
 被设置忽略的页面，不再触发无埋点的page事件。
 #### 参数说明
@@ -389,7 +414,7 @@ GrowingAutotracker.get().setPageAlias(mActivity, "home")
 GrowingAutotracker.get().ignorePage(mActivity, IgnorePolicy.IGNORE_ALL)
 ```
 
-### 11. 设置忽略的View 
+### 12. 设置忽略的View 
 `ignoreView`<br/>
 被设置忽略的VIew，不再触发点击、曝光等任何事件，被忽略的WebView也不会采集Hybrid的事件。
 #### 参数说明
@@ -404,7 +429,7 @@ GrowingAutotracker.get().ignorePage(mActivity, IgnorePolicy.IGNORE_ALL)
 GrowingAutotracker.get().ignoreView(view, IgnorePolicy.IGNORE_SELF)
 ```
 
-### 12. 设置采集View的曝光事件 
+### 13. 设置采集View的曝光事件 
 `trackViewImpression`<br/>
 当被设置的View出现在屏幕内时将触发曝光事件
 #### 参数说明
@@ -449,7 +474,7 @@ GrowingAutotracker.get().trackViewImpression(view, "buttonShowed", map)
 </TabItem>
 </Tabs>
 
-### 13. 停止采集View的曝光事件 
+### 14. 停止采集View的曝光事件 
 `stopTrackViewImpression`<br/>
 停止采集View的曝光事件
 #### 参数说明
@@ -463,7 +488,7 @@ GrowingAutotracker.get().trackViewImpression(view, "buttonShowed", map)
 GrowingAutotracker.get().stopTrackViewImpression(trackedView)
 ```
 
-### 14. 设置View唯一Tag 
+### 15. 设置View唯一Tag 
 `setUniqueTag`<br/>
 给View设置唯一的Tag，方便点击等事件确定唯一的View，一般用于动态布局的场景
 #### 参数说明
@@ -478,7 +503,7 @@ GrowingAutotracker.get().stopTrackViewImpression(trackedView)
 GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
 ```
 
-### 15. Webview桥接 
+### 16. Webview桥接 
 `bridgeWebView`<br/>
 手动注入js到webview，用来收集webview中的数据，
 :::info
@@ -500,7 +525,7 @@ GrowingAutotracker.get().bridgeWebView(webview)
 GrowingTracker.get().bridgeWebView(webview)
 ```
 
-### 15. 初始事件化计时器
+### 17. 初始事件化计时器
 `trackTimerStart`<br/>
 初始化一个事件计时器，参数为计时事件的事件名称，返回值为该事件计时器唯一标识
 
@@ -526,7 +551,7 @@ String timerId = GrowingAutotracker.get().trackTimerStart('eventName')
 String timerId = GrowingTracker.get().trackTimerStart('eventName')
 ```
 
-### 16. 暂停事件计时器
+### 18. 暂停事件计时器
 `trackTimerPause`<br/>
 暂停事件计时器，参数为trackTimerStart返回的唯一标识
 
@@ -548,7 +573,7 @@ GrowingAutotracker.get().trackTimerPause('timerId')
 GrowingTracker.get().trackTimerPause('timerId')
 ```
 
-### 17. 恢复事件计时器
+### 19. 恢复事件计时器
 `trackTimerResume`<br/>
 恢复事件计时器，参数为trackTimerStart返回的唯一标识
 
@@ -570,7 +595,7 @@ GrowingAutotracker.get().trackTimerResume('timerId')
 GrowingTracker.get().trackTimerResume('timerId')
 ```
 
-### 18. 停止事件计时器
+### 20. 停止事件计时器
 `trackTimerEnd`<br/>
 停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
 
@@ -605,7 +630,7 @@ eventDuration 时间统计不会计算后台时间
 * eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
 :::
 
-### 19. 删除事件计时器
+### 21. 删除事件计时器
 `removeTimer`<br/>
 删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
 该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
@@ -628,7 +653,7 @@ GrowingAutotracker.get().removeTimer('timerId')
 GrowingTracker.get().removeTimer('timerId')
 ```
 
-### 20. 清除事件计时器
+### 22. 清除事件计时器
 `clearTrackTimer`<br/>
 清除所有已经注册的事件计时器。<br/>
 存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
@@ -646,7 +671,7 @@ GrowingAutotracker.get().clearTrackTimer()
 GrowingTracker.get().clearTrackTimer()
 ```
 
-### 21. 注册模块组件 
+### 23. 注册模块组件 
 `registerComponent`<br/>
 可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
 #### 参数说明
