@@ -3,6 +3,14 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V1.1.1 - 2022/12/13
+
+[v1.1.1](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.1.1)
+
+* feat: 支持 SwiftPM
+* fix: SDK 信息 - 数据加密配置显示错误
+* fix: 移除 SDK 2.0 dbclck/lngclck/tchd 事件兼容
+
 ## V1.1.0 - 2022/11/18
 
 [v1.1.0](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.1.0)
