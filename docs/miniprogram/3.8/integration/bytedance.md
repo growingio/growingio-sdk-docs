@@ -31,7 +31,6 @@ import TabItem from '@theme/TabItem';
     {label: 'Native原生', value: 'Native原生'},
     {label: 'uni-app', value: 'uni-app'},
     {label: 'Taro', value: 'Taro'},
-    {label: 'Remax', value: 'Remax'},
   ]
 }>
   <TabItem value="Native原生">
@@ -309,54 +308,6 @@ export default App;
 ```js
 原有 require 的引用方式依然可以使用。
 const gdp = require('./utils/gio/gio-taro.js').default;
-```
-
-  </TabItem>
-
-  <TabItem value="Remax">
-
-#### 1、加载SDK
-
-##### 方式一：下载本地集成
-
-Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.10/gio-remax.js><br/>
-**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
-
-##### 方式二：npm集成
-
-```bash
-npm i gio-miniprogram-sdk-cdp --save
-```
-
-#### 2、使用`init`方法进行初始化
-
-注意`init`方法所处位置在App实例之前。
-
-##### 示例代码
-
-```js
-// app.js
-import * as remax from 'remax';
-// 下载集成方式
-import gdp from './utils/gio/gio-remax.js';
-// npm集成方式
-import gdp from 'gio-miniprogram-sdk-cdp/gio-remax';
-
-gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
-    version: 'miniProgram version',
-    host: 'Your ServerHost',
-    remax: remax,
-    ...other settings
-});
-
-const App = (props) => props.children;
-
-export default App;
-```
-
-```js
-原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-remax.js').default;
 ```
 
   </TabItem>
