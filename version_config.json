@@ -9,7 +9,7 @@
   },
   {
     "name": "Android plugin",
-    "version": "3.4.4",
+    "version": "3.4.5",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-plugin/releases",
     "distPath": "docs/android/",
     "fileName": "AGP7.md",
