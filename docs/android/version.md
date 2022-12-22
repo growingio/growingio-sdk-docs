@@ -3,6 +3,19 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## RELEASE-3.4.5
+
+### Features
+
+- page attributes ([#186](https://github.com/growingio/growingio-sdk-android-autotracker/pull/186))
+
+
+:::note 
+
+ 标签:**[v3.4.5](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.5)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2022-12-15** 
+
+:::
+
 ## RELEASE-3.4.4
 
 ### Features
