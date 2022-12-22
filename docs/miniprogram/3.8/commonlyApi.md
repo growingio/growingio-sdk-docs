@@ -400,7 +400,28 @@ gdp('clearGeneralProps');
 
 **<font color="#FC5F3A">注意：</font>SDK版本>=3.8.2支持。**
 
-### 12、获取SDK当前配置(getOption)
+### 12、设置页面属性(setPageAttributes)
+
+有时我们需要通过区分于页面参数的页面属性来进行拆分分析，这时就调用该方法设置页面属性。
+
+#### 示例
+
+```js
+Page({
+  onLoad() {
+    gdp('setPageAttributes', {
+      page_type: 'page type',
+      page_level: 'page level'
+    });
+  }
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1）SDK版本>=3.8.12支持 且 OP平台版本>=4.2支持。**<br/>
+**2）该方法只能在 onLoad中调用，其他生命周期中调用无效。**
+
+### 13、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
@@ -413,7 +434,7 @@ gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
 gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
 ```
 
-### 13、获取SDK当前版本
+### 14、获取SDK当前版本
 
 在代码或开发者工具中直接调用 `global.gioSDKVersion` 即可获取。
 
