@@ -39,7 +39,7 @@ import TabItem from '@theme/TabItem';
 
 #### 1、加载SDK
 
-阿里(支付宝)原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.10/gio-alipay.js><br/>
+阿里(支付宝)原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-alipay.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -73,7 +73,7 @@ const gdp = require('./utils/gio/gio-alipay.js').default;
 
 ##### 方式一：下载本地集成
 
-uniapp框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.10/gio-uniapp.js><br/>
+uniapp框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-uniapp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -164,7 +164,7 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
 
 ##### 方式一：下载本地集成
 
-Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.10/gio-taro.js><br/>
+Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-taro.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -235,19 +235,18 @@ module.exports = {
 ```js
 // app.js
 import React, { Component } from 'react';
-import Taro from '@tarojs/taro';
 // 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
 // npm集成方式
 import gdp from 'gio-miniprogram-sdk-cdp/gio-taro';
 
+const taroRuntime = require('@tarojs/runtime');
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
-    host: 'your serverHost',
-    taro: Taro,
+    host: 'Your ServerHost',
+    taro: taroRuntime,
     ...other settings
 });
-
 class App extends Component { ... }
 export default App;
 ```
@@ -318,7 +317,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 ##### 方式一：下载本地集成
 
-Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.10/gio-chameleon.js><br/>
+Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-chameleon.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -365,7 +364,7 @@ const gdp = require('./utils/gio/gio-chameleon.js').default;
 
 ##### 方式一：下载本地集成
 
-Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.10/gio-remax.js><br/>
+Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-remax.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成

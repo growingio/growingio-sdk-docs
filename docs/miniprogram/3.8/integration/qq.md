@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 
 #### 1、加载SDK
 
-QQ原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.10/gio-qq.js><br/>
+QQ原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-qq.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -71,7 +71,7 @@ const gdp = require('./utils/gio/gio-qq.js').default;
 
 ##### 方式一：下载本地集成
 
-uniapp框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.10/gio-uniapp.js><br/>
+uniapp框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-uniapp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -162,7 +162,7 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
 
 ##### 方式一：下载本地集成
 
-Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.10/gio-taro.js><br/>
+Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-taro.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm集成
@@ -233,16 +233,16 @@ module.exports = {
 ```js
 // app.js
 import React, { Component } from 'react';
-import Taro from '@tarojs/taro';
 // 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
 // npm集成方式
 import gdp from 'gio-miniprogram-sdk-cdp/gio-taro';
 
+const taroRuntime = require('@tarojs/runtime');
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'Your ServerHost',
-    taro: Taro,
+    taro: taroRuntime,
     ...other settings
 });
 

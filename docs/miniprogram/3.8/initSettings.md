@@ -11,7 +11,7 @@ title: 初始化配置
 |-----------------------|----------------|------------|----------------------------------------------|
 | `autotrack`           | `boolean`      | `true`     | 是否开启无埋点采集，集成无埋点插件后默认开启无埋点采集|
 | `cml`                 | `any`          | `-`        | 使用 Chameleon 开发时使用的实例，参考集成示例代码 |
-| `comAsPage`           | `boolean`      | `false`    | 是否将 Component 组件 当做 Page 处理           |
+| `comAsPage(废弃)`      | `boolean`      | `false`    | 是否将 Component 组件 当做 Page 处理           |
 | `compress`            | `boolean`      | `true`     | 是否数据加密，集成加密插件后默认开启加密          |
 | `dataCollect`         | `boolean`      | `true`     | 是否开启数据采集                               |
 | `debug`               | `boolean`      | `false`    | 是否开启调试模式                               |
@@ -54,7 +54,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#1开启关闭无埋点数据采集autotrack)
 
-### comAsPage
+### comAsPage（废弃）
 
 有时您可能会使用 Component 来代替 Page 进行代码编写。此时你需要设置 `comAsPage: true` 来将 Component 当做 Page 处理发送 PAGE 事件。
 
@@ -66,7 +66,8 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**一旦开启此配置，小程序中所有Component组件都会被视为一个页面，组件生命周期 attached 一旦触发即发送PAGE事件。**
+**1）一旦开启此配置，小程序中所有Component组件都会被视为一个页面。**<br/>
+**2）SDK版本 3.8.12 起废弃，SDK会自动识别作为页面的Component。**
 
 ### compress
 

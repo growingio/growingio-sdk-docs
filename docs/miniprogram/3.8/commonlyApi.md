@@ -400,7 +400,28 @@ gdp('clearGeneralProps');
 
 **<font color="#FC5F3A">注意：</font>SDK版本>=3.8.2支持。**
 
-### 12、获取SDK当前配置(getOption)
+### 12、设置页面属性(setPageAttributes)
+
+有时我们需要通过区分于页面参数的页面属性来进行拆分分析，这时就调用该方法设置页面属性。
+
+#### 示例
+
+```js
+Page({
+  onLoad() {
+    gdp('setPageAttributes', {
+      page_type: 'page type',
+      page_level: 'page level'
+    });
+  }
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1）SDK版本>=3.8.12支持 且 OP平台版本>=4.2支持。**<br/>
+**2）该方法只能在 onLoad中调用，其他生命周期中调用无效。**
+
+### 13、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
@@ -413,7 +434,7 @@ gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
 gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
 ```
 
-### 13、获取SDK当前版本
+### 14、获取SDK当前版本
 
 在代码或开发者工具中直接调用 `global.gioSDKVersion` 即可获取。
 
@@ -481,20 +502,35 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 **<font color="#FC5F3A">注意：</font>**<br/>
 **在有上述3种额外采集标记的节点上，必须绑定一个点击事件，SDK才能实现点击的额外数据采集。如果没有，需要您手动绑定一个空的点击事件。**
 
-#### 4）gioPageTitle
+#### 4）设置页面标题
 
-默认情况下SDK会自动采集页面title，但当SDK可能无法识别或您需要自定义时，可以通过在页面的`data`对象中设置`gioPageTitle`字段来指定SDK上报事件时的title值。例：
+默认情况下SDK会自动采集页面title，但当SDK可能无法识别或您使用了自定义标题时，可以通过在页面的`onLoad`生命周期中调用`setNavigationBarTitle`方法来设置原生页面标题并同时指定SDK上报事件时的title值。[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/ui/navigation-bar/wx.setNavigationBarTitle.html)
+
+示例：
 
 ```js
 Page({
-  data: {
-    gioPageTitle: 'New Title',
-    ...other data
+  onLoad: {
+    wx.setNavigationBarTitle({
+      title: 'NewTitle'
+    });
   }
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>** **指定title仅支持 String 格式。SDK版本>=3.8.0-rc.9支持。**
+注：阿里(支付宝/淘宝)小程序是`setNavigationBar` [参考文档](https://opendocs.alipay.com/mini/api/xwq8e6)
+
+**<font color="#FC5F3A">注意：</font>**
+
+**1）指定title仅支持 String 格式。该功能适配SDK版本>=3.8.11支持。**
+
+**2）想要设置页面标题并同时生效于SDK时，该方法必须在onLoad中调用；如果您业务中无法调整位置，则在不影响原逻辑的情况下无法生效于SDK。**
+
+**3）部分框架可能会建议该方法调用时机为onReady（例如uni-app）或其他生命周期中，我们实际测试中在onLoad调用并无影响，因此您可放心在onLoad中使用。**
+
+**4）在3.8.0-rc.9版本开始，我们提供了gioPageTitle字段供基础使用，但我们发现它无法覆盖大多数场景（例如需要动态修改时），因此我们废弃了它，高版本SDK仍会为您保持基础的向下兼容，请尽快修改为setNavigationBarTitle方式。**
+
+**<font color="#57cee7">提示：</font> SDK中事件title取值优先级为 setNavigationBarTitle > data.gioPageTitle（仅保持向下兼容，不保证能取到） > 页面config.json配置 > 全局app.json中tabBar配置**
 
 ### 3、忽略采集标记
 
