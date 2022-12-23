@@ -5,18 +5,14 @@ title: 版本记录
 
 SDK历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
-### V3.8.12 - 2022/12/22
+### V3.8.11 - 2022/12/22
 
+* 🐞 修复在特定条件下调用getApp会导致死循环卡死的问题。
 * 🐞 修复Taro2框架中支付宝小程序和百度小程序Page事件丢失的问题。
 * 🐞 修复uniapp框架中支付宝小程序偶现报错或报警告的问题。
 * 🌟 优化使用Component作为页面时自动适配，同时移除`comAsPage`初始化配置项。
 * 🌟 优化修改gioPageTitle设置页面标题为setNavigationBarTitle生效。
 * 🎉 新增新增页面属性功能。
-
-### V3.8.11 - 2022/12/06
-
-* 🐞 修复在特定条件下调用getApp会导致死循环卡死的问题。
-* 🌟 优化设置页面标题逻辑。
 
 ### V3.8.10 - 2022/11/17
 
