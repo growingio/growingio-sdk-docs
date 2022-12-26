@@ -67,7 +67,7 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）一旦开启此配置，小程序中所有Component组件都会被视为一个页面。**<br/>
-**2）SDK版本 3.8.12 起废弃，SDK会自动识别作为页面的Component。**
+**2）SDK版本 3.8.11 起废弃此配置项，SDK会自动识别作为页面的Component。**
 
 ### compress
 
