@@ -3,6 +3,18 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## RELEASE CDP-V3.8.1
+
+- 🐞 修复用户访问标记在cookie中可能存在超限的问题。
+- 🐞 修复补发visit事件时丢失原始utm参数的问题。
+- 🐞 修复debug日志样式问题。
+
+:::note 
+
+ 标签:**[CDP-v3.8.1](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases/tag/CDP-v3.8.1)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2022-12-27** 
+
+:::
+
 ## RELEASE CDP-V3.8.0-RC.10
 
 - 🐞 修复部分原生方法被全局污染复写的问题。（Array.includes、Array.find、Array.findIndex、Array.from、String.startsWith、String.endsWith、Number.isNaN）
