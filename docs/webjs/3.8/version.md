@@ -3,6 +3,17 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## RELEASE CDP-V3.8.2
+
+- 🐞 修复站点在重定向子域名或刷新页面后setUserId导致utm参数丢失的问题。
+- 🐞 修复性能分析预置属性名。
+
+:::note 
+
+ 标签:**[CDP-v3.8.2](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases/tag/CDP-v3.8.2)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-01-11** 
+
+:::
+
 ## RELEASE CDP-V3.8.1
 
 - 🐞 修复用户访问标记在cookie中可能存在超限的问题。

@@ -3,7 +3,6 @@ sidebar_position: 6
 title: 淘宝小程序
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -15,20 +14,20 @@ import TabItem from '@theme/TabItem';
 
 2、在您的小程序中获取**`appId`**。
 
-3、下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
+3、下载 SDK 文件存放在项目中，下文中以`utils/gio`目录为例(目录和 SDK 文件可自定义重命名)。
 
 ## 小程序中集成
 
-参考示例在 app.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在小程序中任意生命周期中进行初始化。**
+参考示例在 app.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK 不支持在小程序中任意生命周期中进行初始化。**
 
-#### 1、加载SDK
+#### 1、加载 SDK
 
 ##### 方式一：下载本地集成
 
-淘宝原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.11/gio-taobao.js><br/>
+淘宝原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-taobao.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
-##### 方式二：npm集成
+##### 方式二：npm 集成
 
 ```bash
 npm i gio-miniprogram-sdk-cdp --save
@@ -36,7 +35,7 @@ npm i gio-miniprogram-sdk-cdp --save
 
 #### 2、使用`init`方法进行初始化
 
-注意`init`方法所处位置在App实例之前。
+注意`init`方法所处位置在 App 实例之前。
 
 ##### 示例代码
 
@@ -60,11 +59,11 @@ App({ ... });
 
 **淘宝小程序中，`tbConfig` 为必填项，详情请[参考文档](/docs/miniprogram/3.8/initSettings#tbconfig)**
 
-***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
+**_更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看_**
 
 ## 小部件中集成
 
-参考小程序集成在指定的小部件Component组件的js中集成即可。SDK初始化时会自动切换为插件模式，将当前Component视为一个独立应用发送VISIT事件。
+参考小程序集成在指定的小部件 Component 组件的 js 中集成即可。SDK 初始化时会自动切换为插件模式，将当前 Component 视为一个独立应用发送 VISIT 事件。
 
 ```js
 // myComponent.js
@@ -80,11 +79,11 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
 Component({ ... });
 ```
 
-**<font color="#FC5F3A">注意：</font>**由于小部件中无法获取到页面信息（即没有path），因此在小部件中集成时，会自动关闭无埋点功能（不论是否加载无埋点插件和开启autotrack）。
+**<font color="#FC5F3A">注意：</font>**由于小部件中无法获取到页面信息（即没有 path），因此在小部件中集成时，会自动关闭无埋点功能（不论是否加载无埋点插件和开启 autotrack）。
 
 ## 插件扩展
 
-集成SDK时，SDK仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
+集成 SDK 时，SDK 仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
 
 各个插件的介绍和集成方式请见[插件](/docs/miniprogram/3.8/plugins)。
 
@@ -94,7 +93,7 @@ Component({ ... });
 
 ## 数据校验
 
-请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
+请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中 Console 标签中即可实时查看 SDK 上报的 log 数据。如下图：
 
 ![debugLog](/img/miniprogram/taobao_debug.png)
 
@@ -127,7 +126,7 @@ exports.main = async (context) => {
     domain: context.env === 'online' ? domain : 'your test host',
     path,
     params,
-    body: body
+    body: body,
   });
   return { success: true, msg: result };
 };
@@ -135,4 +134,4 @@ exports.main = async (context) => {
 
 ### 其他信息
 
-由于淘宝小程序底层使用的是阿里(支付宝)小程序代码，所以在SDK识别上可能会被识别为阿里(支付宝)小程序。
+由于淘宝小程序底层使用的是阿里(支付宝)小程序代码，所以在 SDK 识别上可能会被识别为阿里(支付宝)小程序。
