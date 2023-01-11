@@ -8,9 +8,9 @@ import TabItem from '@theme/TabItem';
 
 对于微信小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
 
-如果您使用跨平台框架开发且有多端（特指小程序，快应用、App和Web除外）同时需要集成SDK的需求时，只需在框架代码中集成一次即可。例：
+如果您使用跨平台框架开发且有多端（特指小程序，快应用、App 和 Web 除外）同时需要集成 SDK 的需求时，只需在框架代码中集成一次即可。例：
 
->使用uni-app同时开发微信小程序和阿里(支付宝)小程序，只需集成一次即可。
+> 使用 uni-app 同时开发微信小程序和阿里(支付宝)小程序，只需集成一次即可。
 
 ## 准备工作
 
@@ -18,34 +18,34 @@ import TabItem from '@theme/TabItem';
 
 2、在您的小程序中获取**`appId`**。
 
-3、在下列选项中选择对应的开发框架，并下载对应的SDK文件存放在项目中或使用npm的方式集成。下文中以`utils/gio`目录作为下载集成的示例目录(目录和SDK文件可自定义重命名)。
+3、在下列选项中选择对应的开发框架，并下载对应的 SDK 文件存放在项目中或使用 npm 的方式集成。下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
 ## 小程序中集成
 
-参考示例在 app.js/main.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在小程序中任意生命周期中进行初始化。**
+参考示例在 app.js/main.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK 不支持在小程序中任意生命周期中进行初始化。**
 
 <Tabs
-  groupId="1"
-  defaultValue="Native原生"
-  values={[
-    {label: 'Native原生', value: 'Native原生'},
-    {label: 'uni-app', value: 'uni-app'},
-    {label: 'Taro', value: 'Taro'},
-    {label: 'Chameleon', value: 'Chameleon'},
-    {label: 'WePY2', value: 'WePY2'},
-    {label: 'Remax', value: 'Remax'},
-  ]
+groupId="1"
+defaultValue="Native 原生"
+values={[
+{label: 'Native 原生', value: 'Native 原生'},
+{label: 'uni-app', value: 'uni-app'},
+{label: 'Taro', value: 'Taro'},
+{label: 'Chameleon', value: 'Chameleon'},
+{label: 'WePY2', value: 'WePY2'},
+{label: 'Remax', value: 'Remax'},
+]
 }>
-  <TabItem value="Native原生">
+<TabItem value="Native原生">
 
-#### 1、加载SDK
+#### 1、加载 SDK
 
-微信原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.11/gio-wechat.js><br/>
+微信原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-wechat.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
 
-注意`init`方法所处位置在App实例之前。
+注意`init`方法所处位置在 App 实例之前。
 
 ##### 示例代码
 
@@ -70,14 +70,14 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
   </TabItem>
   <TabItem value="uni-app">
 
-#### 1、加载SDK
+#### 1、加载 SDK
 
 ##### 方式一：下载本地集成
 
-uniapp框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.11/gio-uniapp.js><br/>
+uniapp 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-uniapp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
-##### 方式二：npm集成
+##### 方式二：npm 集成
 
 ```bash
 npm i gio-miniprogram-sdk-cdp --save
@@ -85,19 +85,19 @@ npm i gio-miniprogram-sdk-cdp --save
 
 #### 2、使用`init`方法进行初始化
 
-注意`init`方法所处位置（vue2和vue3中分别与app实例的相对位置不同）
+注意`init`方法所处位置（vue2 和 vue3 中分别与 app 实例的相对位置不同）
 
 ##### 示例代码
 
-  <Tabs
-      groupId="2"
-      defaultValue="uni-app(vue2)"
-      values={[
-        {label: 'uni-app(vue2)', value: 'uni-app(vue2)'},
-        {label: 'uni-app(vue3)', value: 'uni-app(vue3)'},
-      ]
-    }>
-      <TabItem value="uni-app(vue2)">
+<Tabs
+groupId="2"
+defaultValue="uni-app(vue2)"
+values={[
+{label: 'uni-app(vue2)', value: 'uni-app(vue2)'},
+{label: 'uni-app(vue3)', value: 'uni-app(vue3)'},
+]
+}>
+<TabItem value="uni-app(vue2)">
 
 ```js
 // main.js
@@ -161,14 +161,14 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
   </TabItem>
   <TabItem value="Taro">
 
-#### 1、加载SDK
+#### 1、加载 SDK
 
 ##### 方式一：下载本地集成
 
-Taro框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.11/gio-taro.js><br/>
+Taro 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-taro.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
-##### 方式二：npm集成
+##### 方式二：npm 集成
 
 ```bash
 npm i gio-miniprogram-sdk-cdp --save
@@ -176,21 +176,21 @@ npm i gio-miniprogram-sdk-cdp --save
 
 #### 2、使用`init`方法进行初始化
 
-注意`init`方法所处位置（vue2和vue3中分别与app实例的相对位置不同）。使用vue开发时`taro`和`taroVue`都要传。
+注意`init`方法所处位置（vue2 和 vue3 中分别与 app 实例的相对位置不同）。使用 vue 开发时`taro`和`taroVue`都要传。
 
 ##### 示例代码
 
-  <Tabs
-    groupId="3"
-    defaultValue="Taro2"
-    values={[
-      {label: 'Taro2(React)', value: 'Taro2'},
-      {label: 'Taro3(React)', value: 'Taro3(react)'},
-      {label: 'Taro3(vue2)', value: 'Taro3(vue2)'},
-      {label: 'Taro3(vue3)', value: 'Taro3(vue3)'},
-    ]
-  }>
-    <TabItem value="Taro2">
+<Tabs
+groupId="3"
+defaultValue="Taro2"
+values={[
+{label: 'Taro2(React)', value: 'Taro2'},
+{label: 'Taro3(React)', value: 'Taro3(react)'},
+{label: 'Taro3(vue2)', value: 'Taro3(vue2)'},
+{label: 'Taro3(vue3)', value: 'Taro3(vue3)'},
+]
+}>
+<TabItem value="Taro2">
 
 ```js
 // app.jsx
@@ -224,12 +224,13 @@ module.exports = {
   presets: [['taro', { framework: 'react' }]],
   plugins: [
     [
-      'babel-plugin-setname', {
+      'babel-plugin-setname',
+      {
         includes: ['src'],
         lower: false, // 从taro2升级至3时请修改为true
-      }
-    ]
-  ]
+      },
+    ],
+  ],
 };
 ```
 
@@ -316,14 +317,14 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
   <TabItem value="Chameleon">
 
-#### 1、加载SDK
+#### 1、加载 SDK
 
 ##### 方式一：下载本地集成
 
-Chameleon框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.11/gio-chameleon.js><br/>
+Chameleon 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-chameleon.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
-##### 方式二：npm集成
+##### 方式二：npm 集成
 
 ```bash
 npm i gio-miniprogram-sdk-cdp --save
@@ -331,7 +332,7 @@ npm i gio-miniprogram-sdk-cdp --save
 
 #### 2、使用`init`方法进行初始化
 
-注意`init`方法所处位置在App实例之前。
+注意`init`方法所处位置在 App 实例之前。
 
 ##### 示例代码
 
@@ -363,14 +364,14 @@ const gdp = require('./utils/gio/gio-chameleon.js').default;
   </TabItem>
   <TabItem value="WePY2">
 
-#### 1、加载SDK
+#### 1、加载 SDK
 
 ##### 方式一：下载本地集成
 
-WePY2框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.11/gio-wepy.js><br/>
+WePY2 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-wepy.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
-##### 方式二：npm集成
+##### 方式二：npm 集成
 
 ```bash
 npm i gio-miniprogram-sdk-cdp --save
@@ -378,7 +379,7 @@ npm i gio-miniprogram-sdk-cdp --save
 
 #### 2、使用`init`方法进行初始化
 
-注意`init`方法所处位置在App实例之前。
+注意`init`方法所处位置在 App 实例之前。
 
 ##### 示例代码
 
@@ -408,14 +409,14 @@ const gdp = require('./utils/gio/gio-wepy.js').default;
   </TabItem>
   <TabItem value="Remax">
 
-#### 1、加载SDK
+#### 1、加载 SDK
 
 ##### 方式一：下载本地集成
 
-Remax框架SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.11/gio-remax.js><br/>
+Remax 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-remax.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
-##### 方式二：npm集成
+##### 方式二：npm 集成
 
 ```bash
 npm i gio-miniprogram-sdk-cdp --save
@@ -423,7 +424,7 @@ npm i gio-miniprogram-sdk-cdp --save
 
 #### 2、使用`init`方法进行初始化
 
-注意`init`方法所处位置在App实例之前。
+注意`init`方法所处位置在 App 实例之前。
 
 ##### 示例代码
 
@@ -455,11 +456,11 @@ const gdp = require('./utils/gio/gio-remax.js').default;
   </TabItem>
 </Tabs>
 
-***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
+**_更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看_**
 
 ## 小程序插件中集成
 
-[小程序插件](https://developers.weixin.qq.com/miniprogram/introduction/)中集成SDK参考小程序集成，在插件入口文件 index.js 或指定的插件 Component 组件的 js 中集成即可。SDK 初始化时会自动切换为插件模式，将当前插件视为一个独立应用发送VISIT事件。
+[小程序插件](https://developers.weixin.qq.com/miniprogram/introduction/)中集成 SDK 参考小程序集成，在插件入口文件 index.js 或指定的插件 Component 组件的 js 中集成即可。SDK 初始化时会自动切换为插件模式，将当前插件视为一个独立应用发送 VISIT 事件。
 
 ```js
 // 插件入口文件index.js
@@ -487,11 +488,11 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
 Component({ ... });
 ```
 
-**<font color="#FC5F3A">注意：</font>**由于小程序插件中无法获取到页面信息（即没有path），因此在小程序插件中集成时，会自动关闭无埋点功能（不论是否加载无埋点插件和开启autotrack）即只能使用埋点。
+**<font color="#FC5F3A">注意：</font>**由于小程序插件中无法获取到页面信息（即没有 path），因此在小程序插件中集成时，会自动关闭无埋点功能（不论是否加载无埋点插件和开启 autotrack）即只能使用埋点。
 
 ## 插件扩展
 
-集成SDK时，SDK仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
+集成 SDK 时，SDK 仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
 
 各个插件的介绍和集成方式请见[插件](/docs/miniprogram/3.8/plugins)。
 
@@ -501,17 +502,17 @@ Component({ ... });
 
 ## 数据校验
 
-请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
+请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中 Console 标签中即可实时查看 SDK 上报的 log 数据。如下图：
 
 ![debugLog](/img/miniprogram/wx_debug.png)
 
 ## 添加白名单
 
-由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)，您需要将 `https://your serverHost` 在「小程序后台-开发-开发设置-服务器域名」中添加为request合法域名。[小程序后台](https://mp.weixin.qq.com/)
+由于微信小程序对网络请求的限制[参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)，您需要将 `https://your serverHost` 在「小程序后台-开发-开发设置-服务器域名」中添加为 request 合法域名。[小程序后台](https://mp.weixin.qq.com/)
 :::caution
-如果小程序通过第三方平台发布代码，在发布代码之前，需要调用接口在requestdomain中添加`https://your serverHost`，参考[小程序官方第三方说明](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/Server_Address_Configuration.html)。
+如果小程序通过第三方平台发布代码，在发布代码之前，需要调用接口在 requestdomain 中添加`https://your serverHost`，参考[小程序官方第三方说明](https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Mini_Program_Basic_Info/Server_Address_Configuration.html)。
 :::
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 
-**请在正式生产环境发布前完成白名单的添加，未添加白名单可能会出现SDK无法上报数据的情况。**
+**请在正式生产环境发布前完成白名单的添加，未添加白名单可能会出现 SDK 无法上报数据的情况。**

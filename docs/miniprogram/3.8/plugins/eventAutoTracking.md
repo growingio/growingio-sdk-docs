@@ -22,19 +22,19 @@ title: 无埋点
 #### 下载集成引入
 
 - 下载插件并复制至项目中：
-**<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.11/plugins/gioEventAutoTracking.js></font>**<br/>
-**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+  **<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.12/plugins/gioEventAutoTracking.js></font>**<br/>
+  **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 - 引入插件
 
 ```js
-import gioEventAutoTracking from "./utils/plugins/gioEventAutoTracking"
+import gioEventAutoTracking from './utils/plugins/gioEventAutoTracking';
 ```
 
-#### npm集成引入
+#### npm 集成引入
 
 ```js
-import gioEventAutoTracking from "gio-webjs-sdk-cdp/plugins/gioEventAutoTracking"
+import gioEventAutoTracking from 'gio-webjs-sdk-cdp/plugins/gioEventAutoTracking';
 ```
 
 ### 2、注册
@@ -50,7 +50,7 @@ gdp('init', xxxx);
 
 2、初始化配置项 `autotrack` 依然有效并能控制该功能是否启用，请留意`autotrack`是否在开启状态。
 
-3、使用vue2/3语言模式开发时，点击事件需要传参时，可能会无法触发CLICK事件，此时您需要再额外在最后一个参数中传入`$event`，以保证原生事件能传入方法中，才能触发点击事件（函数定义时可忽略$event的参数接受定义，只定义自身业务所需参数即可）。例：
+3、使用 vue2/3 语言模式开发时，点击事件需要传参时，可能会无法触发 CLICK 事件，此时您需要再额外在最后一个参数中传入`$event`，以保证原生事件能传入方法中，才能触发点击事件（函数定义时可忽略$event 的参数接受定义，只定义自身业务所需参数即可）。例：
 
 ```html
 <button @click="myClick(param1, param2, ..., $event)"></button>

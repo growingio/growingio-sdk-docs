@@ -14,22 +14,22 @@ import TabItem from '@theme/TabItem';
 
 2、在您的快应用中获取**`packageName`**。
 
-3、下载SDK文件存放在项目中，下文中以`utils/gio`目录为例(目录和SDK文件可自定义重命名)。
+3、下载 SDK 文件存放在项目中，下文中以`utils/gio`目录为例(目录和 SDK 文件可自定义重命名)。
 
 ## 集成
 
-参考示例在 app.ux 快应用主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK不支持在快应用中任意生命周期中进行初始化。**
+参考示例在 app.ux 快应用主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK 不支持在快应用中任意生命周期中进行初始化。**
 
-#### 1、加载SDK
+#### 1、加载 SDK
 
-快应用原生SDK下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.11/gio-quickapp.js><br/>
+快应用原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.12/gio-quickapp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
 
-注意`init`方法所处位置在App实例之前。
+注意`init`方法所处位置在 App 实例之前。
 
-#### 3、使用`GioApp`方法包裹app文件导出的内容；使用`GioPage`方法包裹page文件导出的内容
+#### 3、使用`GioApp`方法包裹 app 文件导出的内容；使用`GioPage`方法包裹 page 文件导出的内容
 
 ##### 示例代码
 
@@ -54,11 +54,11 @@ export default GioPage({ ... }); // 所有的页面文件要包裹GioPage()方�
 const gdp = require('./utils/gio/gio-quickapp.js').default;
 ```
 
-***更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看***
+**_更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看_**
 
 ## 插件扩展
 
-集成SDK时，SDK仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
+集成 SDK 时，SDK 仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
 
 各个插件的介绍和集成方式请见[插件](/docs/miniprogram/3.8/plugins)。
 
@@ -68,7 +68,7 @@ const gdp = require('./utils/gio/gio-quickapp.js').default;
 
 ## 数据校验
 
-请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
+请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中 Console 标签中即可实时查看 SDK 上报的 log 数据。如下图：
 
 ![debugLog](/img/miniprogram/quickapp_debug.png)
 

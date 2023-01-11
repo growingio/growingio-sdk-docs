@@ -13,18 +13,18 @@ title: 性能监控
 
 含以下指标监控：
 
-- 小程序冷启动耗时（首次加载小程序）；小程序从开始加载至AppOnLaunch结束的耗时
-- 小程序热启动耗时（后台拉起小程序）；小程序从AppOnShow开始至PageOnShow结束的耗时
-- 页面完整加载时长（PageLoad）；页面从AppOnLaunch开始或跳转开始到渲染完成PageOnReady结束的耗时
-- 页面首次内容绘制/白屏时长（FCP）；页面从AppOnLaunch开始或跳转开始(navigationStart)到开始渲染页面内容时的耗时
-- 页面最大内容绘制（LCP）；页面从AppOnLaunch开始或跳转开始(navigationStart)到开始渲染页面最大内容时的耗时
+- 小程序冷启动耗时（首次加载小程序）；小程序从开始加载至 AppOnLaunch 结束的耗时
+- 小程序热启动耗时（后台拉起小程序）；小程序从 AppOnShow 开始至 PageOnShow 结束的耗时
+- 页面完整加载时长（PageLoad）；页面从 AppOnLaunch 开始或跳转开始到渲染完成 PageOnReady 结束的耗时
+- 页面首次内容绘制/白屏时长（FCP）；页面从 AppOnLaunch 开始或跳转开始(navigationStart)到开始渲染页面内容时的耗时
+- 页面最大内容绘制（LCP）；页面从 AppOnLaunch 开始或跳转开始(navigationStart)到开始渲染页面最大内容时的耗时
 
 ### 2、错误监控
 
 含以下错误类型监控：
 
-- JS执行错误
-- Promise执行错误
+- JS 执行错误
+- Promise 执行错误
 - 页面跳转异常错误
 - 网络请求错误
 
@@ -54,7 +54,7 @@ title: 性能监控
 #### 下载集成引入
 
 - 下载插件包并复制至项目中：
-**<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.11/plugins.zip></font>**<br/>
+**<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.12/plugins.zip></font>**<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 - 引入插件
