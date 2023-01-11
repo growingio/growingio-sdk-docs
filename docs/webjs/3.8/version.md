@@ -6,7 +6,7 @@ sidebar_position: 0
 ## RELEASE CDP-V3.8.2
 
 - 🐞 修复站点在重定向子域名或刷新页面后setUserId导致utm参数丢失的问题。
-- 🐞 修复性能分析预置属性名。
+- 🌟 修改埋点事件时长、性能分析事件和属性标识符。
 
 :::note 
 
