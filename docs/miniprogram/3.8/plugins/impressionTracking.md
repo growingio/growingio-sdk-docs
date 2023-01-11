@@ -137,7 +137,7 @@ Page({
     });
     getData.then((result) => {
       this.setData({ impData: result }, () => {
-        // 在setData回调用调用 updateImpression 即可
+        // 在setData回调中调用 updateImpression 即可
         gdp('updateImpression');
       });
     });
