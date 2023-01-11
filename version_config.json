@@ -29,7 +29,7 @@
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-webjs-autotracker/releases",
     "distPath": "docs/webjs/3.8/",
     "fileName": "version.md",
-    "enable": true
+    "enable": false
   },
   {
     "name": "GioKit Android",
