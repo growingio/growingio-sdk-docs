@@ -34,7 +34,7 @@ values={[
 {label: 'Chameleon', value: 'Chameleon'},
 ]
 }>
-<TabItem value="Native原生">
+<TabItem value="Native 原生">
 
 #### 1、加载 SDK
 

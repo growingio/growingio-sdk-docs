@@ -35,7 +35,7 @@ values={[
 {label: 'Remax', value: 'Remax'},
 ]
 }>
-<TabItem value="Native原生">
+<TabItem value="Native 原生">
 
 #### 1、加载 SDK
 
