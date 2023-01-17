@@ -34,9 +34,9 @@ values={[
 {label: 'Chameleon', value: 'Chameleon'},
 {label: 'WePY2', value: 'WePY2'},
 {label: 'Remax', value: 'Remax'},
-]
-}>
-<TabItem value="Native原生">
+]}
+>
+<TabItem value="Native 原生">
 
 #### 1、加载 SDK
 
@@ -67,8 +67,9 @@ App({ ... });
 const gdp = require('./utils/gio/gio-wechat.js').default;
 ```
 
-  </TabItem>
-  <TabItem value="uni-app">
+</TabItem>
+
+<TabItem value="uni-app">
 
 #### 1、加载 SDK
 

@@ -33,7 +33,7 @@ values={[
 {label: 'Taro', value: 'Taro'},
 ]
 }>
-<TabItem value="Native原生">
+<TabItem value="Native 原生">
 
 #### 1、加载 SDK
 
