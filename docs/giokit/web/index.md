@@ -28,7 +28,7 @@ WebJS GioKit 暂仅支持 3.8.0 以上版本的 SDK，其他版本 SDK 接入可
 
 ### 网络请求
 
-查看 `XMLHttpRequest`、`Fetch` 和 `sendBeacon` 请求内容，其中 Gio 的上报请使用橙色`G`标志进行突出标记以方便区分。请求状态实时更新，使用不同颜色标记请求时长。
+查看 `XMLHttpRequest`、`Fetch` 和 `sendBeacon` 请求内容，其中 Gio 的上报请求使用橙色`G`标志进行突出标记以方便区分。请求状态实时更新，使用不同颜色标记请求时长。
 <img alt="网络请求" src={useBaseUrl('/img/giokit/web/pc-network.png')} width="65%" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img alt="网络请求" src={useBaseUrl('/img/giokit/web/n-network.png')} height="50%" width="30%" />
 
@@ -61,6 +61,6 @@ Gio 事件实时监控，不用打开面板即可感知 Gio 事件的产生。�
 
 ### 运行状态
 
-通过查看可快速了解当前 SDK 的集成和运行状态，帮助快速定位基础问题。
+可全面快速地了解当前 SDK 的集成和运行状态，帮助快速定位基础问题。
 <img alt="运行状态" src={useBaseUrl('/img/giokit/web/pc-status.png')} width="65%" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img alt="运行状态" src={useBaseUrl('/img/giokit/web/n-status.png')} height="50%" width="30%" />
