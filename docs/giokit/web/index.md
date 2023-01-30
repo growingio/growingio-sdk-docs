@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## 简介
 
-WebJS GioKit 具有兼容性强、功能丰富、界面美观、使用简单等优点，无需依赖其他环境，可与`VConsole`等其他调试工具同时使用。主要有 `日志`、`网络请求`、`存储`、`页面和设备`、`事件调试`、`快速初始化`、`运行状态` 7 大模块功能。后续会持续迭代并新增其他功能，敬请期待。
+WebJS GioKit 具有兼容性强、功能丰富、界面美观、使用简单等优点，无需依赖其他环境，可与`VConsole`等其他调试工具同时使用。主要有 `日志`、`网络请求`、`存储`、`页面和设备`、`事件调试`、`事件模拟`、`快速初始化`、`运行状态` 8 大模块功能。后续会持续迭代并新增其他功能，敬请期待。
 
 GioKit 同时适配 PC 端和移动端。
 
@@ -52,6 +52,12 @@ Gio 事件实时监控，不用打开面板即可感知 Gio 事件的产生。�
 <br /><br />
 <img alt="事件调试" src={useBaseUrl('/img/giokit/web/pc-debug.png')} width="65%" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img alt="事件调试" src={useBaseUrl('/img/giokit/web/n-debug.png')} height="50%" width="30%" />
+
+### 事件模拟
+
+通过可视化工具本地模拟预览一个指定类型事件。
+<img alt="事件模拟" src={useBaseUrl('/img/giokit/web/pc-mockevent.png')} width="65%" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img alt="事件模拟" src={useBaseUrl('/img/giokit/web/n-mockevent.png')} height="50%" width="30%" />
 
 ### 快速初始化
 
