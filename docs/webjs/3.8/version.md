@@ -5,6 +5,12 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
+### V3.8.3 - 2023/02/21
+
+- 🐞 修复 Native 下圈选偶现报错的问题。
+- 🌟 修改移除集成 Native 圈选插件但未圈选时显示过多无用日志。
+- 🌟 优化 Saas 与 CDP SDK 共存兼容问题。
+
 ### V3.8.2 - 2023/01/05
 
 - 🐞 修复站点在重定向子域名或刷新页面后 setUserId 导致 utm 参数丢失的问题。

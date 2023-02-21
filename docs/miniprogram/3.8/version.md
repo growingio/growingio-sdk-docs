@@ -5,6 +5,13 @@ title: 版本记录
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
+### V3.8.13 - 2023/02/21
+
+- 🐞 修复支付宝小程序丢失加密标记导致加密数据上报无法解析的问题。
+- 🐞 修复使用资源位组件时某些情况下报错的问题。
+- 🐞 修复 Taro3react 框架中 FunctionComponent 调用 hooks 报错的问题。
+- 🐞 修复 uniappVue3 框架中编译打包后点击事件丢失的问题。
+
 ### V3.8.12 - 2023/01/11
 
 - 🐞 修复平台没有运行中的运营弹窗任务时全量存储埋点导致本地存储超限的问题。
