@@ -58,7 +58,7 @@ GrowingTracker.get().trackTimerResume("timerId")
 GrowingTracker.get().trackTimerEnd("timerId")
 GrowingTracker.get().removeTimer("timerId")
 GrowingTracker.get().clearTrackTimer()
-GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
+GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
 
 GrowingTracker.get().registerComponent(module,<config>)
 ```
