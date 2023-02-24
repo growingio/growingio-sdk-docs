@@ -116,7 +116,7 @@ GrowingTracker.startWithConfiguration(this,
     <category android:name="android.intent.category.BROWSABLE" />
 
     <data
-        android:host="Your AD Service Host"
+        android:host="Your DeepLinkHost"
         android:pathPattern="/v8rud.*"
         android:scheme="https" />
 </intent-filter>
