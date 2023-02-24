@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 ```java
 GrowingAutotracker.get().setDataCollectionEnabled(true)
 GrowingAutotracker.get().setLoginUserId("userId")
-GrowingAutotracker.get().setLoginUserId("userId","username")
+GrowingAutotracker.get().setLoginUserId("userId","userKey")
 GrowingAutotracker.get().cleanLoginUserId()
 GrowingAutotracker.get().setLocation(20.11,20.11)
 GrowingAutotracker.get().cleanLocation()
@@ -43,7 +43,7 @@ GrowingAutotracker.get().registerComponent(module,<config>)
 ```java
 GrowingTracker.get().setDataCollectionEnabled(true)
 GrowingTracker.get().setLoginUserId("userId")
-GrowingTracker.get().setLoginUserId("userId", "username")
+GrowingTracker.get().setLoginUserId("userId", "userKey")
 GrowingTracker.get().cleanLoginUserId()
 GrowingTracker.get().setLocation(20.11, 20.11)
 GrowingTracker.get().cleanLocation()
