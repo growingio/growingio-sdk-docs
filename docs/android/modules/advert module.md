@@ -123,3 +123,29 @@ GrowingTracker.startWithConfiguration(this,
 ```
 
 需要将其配置到 AndroidManifest 的入口 Activity 下。
+
+### 主动调用DeepLink接口
+可以通过该方法手动发送DeepLink事件，该接口常用于应用内部广告获客接收。
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback() {
+    @Override
+    public void onReceive(Map<String, String> params, int error, long appAwakePassedTime) {
+        // accept your params
+    }
+});
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback() {
+    @Override
+    public void onReceive(Map<String, String> params, int error, long appAwakePassedTime) {
+        // accept your params
+    }
+});
+```
+
+
+

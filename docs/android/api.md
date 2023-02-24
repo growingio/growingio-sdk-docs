@@ -11,22 +11,22 @@ import TabItem from '@theme/TabItem';
 ```java
 GrowingAutotracker.get().setDataCollectionEnabled(true)
 GrowingAutotracker.get().setLoginUserId("userId")
-GrowingAutotracker.get().setLoginUserId("zhangshan","username")
+GrowingAutotracker.get().setLoginUserId("userId","username")
 GrowingAutotracker.get().cleanLoginUserId()
 GrowingAutotracker.get().setLocation(20.11,20.11)
 GrowingAutotracker.get().cleanLocation()
-GrowingAutotracker.get().trackCustomEvent("registerSuccess")
+GrowingAutotracker.get().trackCustomEvent("eventName")
 GrowingAutotracker.get().setLoginUserAttributes(new HashMap<>())
 GrowingAutotracker.get().getDeviceId()
 GrowingAutotracker.get().setPageAttributes(new android.app.Fragment(), new HashMap<>())
-GrowingAutotracker.get().setPageAliasX(new androidx.fragment.app.Fragment(),"TestFragment")
-GrowingAutotracker.get().ignorePageX(new androidx.fragment.app.Fragment(),IgnorePolicy.IGNORE_SELF)
-GrowingAutotracker.get().setPageAlias(new android.app.Fragment(),"TestFragment")
-GrowingAutotracker.get().ignorePage(new android.app.Fragment(),IgnorePolicy.IGNORE_SELF)
-GrowingAutotracker.get().ignoreView(view,IgnorePolicy.IGNORE_SELF)
-GrowingAutotracker.get().trackViewImpression(view,"buttonShowed")
+GrowingAutotracker.get().setPageAliasX(new androidx.fragment.app.Fragment(), "FragmentAliasName")
+GrowingAutotracker.get().ignorePageX(new androidx.fragment.app.Fragment(), IgnorePolicy.IGNORE_SELF)
+GrowingAutotracker.get().setPageAlias(new android.app.Fragment(), "FragmentAliasName")
+GrowingAutotracker.get().ignorePage(new android.app.Fragment(), IgnorePolicy.IGNORE_SELF)
+GrowingAutotracker.get().ignoreView(view, IgnorePolicy.IGNORE_SELF)
+GrowingAutotracker.get().trackViewImpression(view, "ViewShowed")
 GrowingAutotracker.get().stopTrackViewImpression(view)
-GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
+GrowingAutotracker.get().setUniqueTag(button, "UniqueTagName")
 GrowingAutotracker.get().bridgeWebView(webview)
 GrowingAutotracker.get().trackTimerStart("timer")
 GrowingAutotracker.get().trackTimerPause("timerId")
@@ -34,7 +34,7 @@ GrowingAutotracker.get().trackTimerResume("timerId")
 GrowingAutotracker.get().trackTimerEnd("timerId")
 GrowingAutotracker.get().removeTimer("timerId")
 GrowingAutotracker.get().clearTrackTimer()
-GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkHost", new DeepLinkCallback())
+GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
 
 GrowingAutotracker.get().registerComponent(module,<config>)
 ```
@@ -43,11 +43,11 @@ GrowingAutotracker.get().registerComponent(module,<config>)
 ```java
 GrowingTracker.get().setDataCollectionEnabled(true)
 GrowingTracker.get().setLoginUserId("userId")
-GrowingTracker.get().setLoginUserId("zhangshan","username")
+GrowingTracker.get().setLoginUserId("userId", "username")
 GrowingTracker.get().cleanLoginUserId()
-GrowingTracker.get().setLocation(20.11,20.11)
+GrowingTracker.get().setLocation(20.11, 20.11)
 GrowingTracker.get().cleanLocation()
-GrowingTracker.get().trackCustomEvent("registerSuccess")
+GrowingTracker.get().trackCustomEvent("eventName")
 GrowingTracker.get().setLoginUserAttributes(new HashMap<>())
 GrowingTracker.get().setVisitorAttributes(new HashMap<>())
 GrowingTracker.get().getDeviceId()
@@ -58,7 +58,7 @@ GrowingTracker.get().trackTimerResume("timerId")
 GrowingTracker.get().trackTimerEnd("timerId")
 GrowingTracker.get().removeTimer("timerId")
 GrowingTracker.get().clearTrackTimer()
-GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkHost", new DeepLinkCallback())
+GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
 
 GrowingTracker.get().registerComponent(module,<config>)
 ```
@@ -676,7 +676,11 @@ GrowingAutotracker.get().clearTrackTimer()
 GrowingTracker.get().clearTrackTimer()
 ```
 
-### 23. 注册模块组件 
+### 23. 主动触发DeepLink
+`doDeepLinkByUrl` <br/>
+调用该接口需要集成广告模块，具体集成请参考[广告模块](/docs/android/modules/advert%20module)
+
+### 24. 注册模块组件 
 `registerComponent`<br/>
 可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
 #### 参数说明
@@ -695,26 +699,3 @@ GrowingAutotracker.get().registerComponent(module,<config>)
 GrowingTracker.get().registerComponent(module,<config>)
 ```
 
-### 24. 主动触发DeepLink
-`doDeepLinkByUrl` <br/>
-可以通过该方法手动发送DeepLink事件，该接口常用于应用内部广告获客接收。
-
-**无埋点SDK示例代码：**
-```java
-GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkHost", new DeepLinkCallback() {
-    @Override
-    public void onReceive(Map<String, String> params, int error, long appAwakePassedTime) {
-        // accept your params
-    }
-});
-```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkHost", new DeepLinkCallback() {
-    @Override
-    public void onReceive(Map<String, String> params, int error, long appAwakePassedTime) {
-        // accept your params
-    }
-});
-```
