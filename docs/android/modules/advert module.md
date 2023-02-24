@@ -4,7 +4,7 @@ title: 广告模块
 ---
 
 广告模块包括激活事件和深度链接(DeepLink)，激活事件是当用户应用第一次打开时有且仅发一次的事件，深度链接是提供客户通过活动网页等形式提供App渠道的跳转和下载。
-在深度链接技术场景中,可以直接唤起 App 并跳转至指定页面，同时根据条件判断用户跳转路径，当用户已经安装 App 时可以直接唤起 App，当用户未安装 App 时会引导用户下载 App.
+在深度链接技术场景中，可以直接唤起 App 并跳转至指定页面，同时根据条件判断用户跳转路径，当用户已经安装 App 时可以直接唤起 App，当用户未安装 App 时会引导用户下载 App。
 
 :::info
 平台版本>=4.0支持，具体的深度链接配置可以参考 [获客分析](https://docs.growingio.com/op-help/docs/4.0/product-manual/acquisition-analytics/acquisition-tracing/)
@@ -59,7 +59,7 @@ Advert 广告模块中提供了配置文件可以设置模块的配置：
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明 
 | :-------------------------   | :------         | :----:  |:------  |:------| 
 | `setReadClipBoardEnable` | `Boolean`       | 否      | `true`  | 是否允许读取剪切板的应用信息  |
-| `setDeepLinkHost`  | `String` | 否      | SDK收数服务端地址   | 是否允许该地址向应用发送链接信息  |
+| `setDeepLinkHost`  | `String` | 否      | SDK收数服务端地址   | 是否允许该地址向应用发送链接信息，如：https://n.datayi.cn  |
 | `setDeepLinkCallback`  | `接口回调` | 否      | `null`   | 监听深度链接中的地址参数 |
 
 ```java
@@ -126,6 +126,10 @@ GrowingTracker.startWithConfiguration(this,
 
 ### 主动调用DeepLink接口
 可以通过该方法手动发送DeepLink事件，该接口常用于应用内部广告获客接收。
+
+| 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明
+| :-------------------------   | :------         | :----:  |:------  |:------| 
+| `doDeepLinkByUrl` | `String`       | 是      | `null`  | 深度链接url，如：https://n.datayi.cn/k4wudMXn |
 
 **无埋点SDK示例代码：**
 ```java

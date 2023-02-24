@@ -6,7 +6,7 @@ title: 广告模块
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-广告模块包括激活事件和深度链接(DeepLink)，激活事件是当用户应用第一次打开时有且仅发一次的事件，深度链接是提供客户通过活动网页等形式提供App渠道的跳转和下载。 在深度链接技术场景中,可以直接唤起 App 并跳转至指定页面，同时根据条件判断用户跳转路径，当用户已经安装 App 时可以直接唤起 App，当用户未安装 App 时会引导用户下载 App.
+广告模块包括激活事件和深度链接(DeepLink)，激活事件是当用户应用第一次打开时有且仅发一次的事件，深度链接是提供客户通过活动网页等形式提供App渠道的跳转和下载。 在深度链接技术场景中，可以直接唤起 App 并跳转至指定页面，同时根据条件判断用户跳转路径，当用户已经安装 App 时可以直接唤起 App，当用户未安装 App 时会引导用户下载 App。
 
 --------
 :::info
@@ -38,7 +38,7 @@ pod 'GrowingAnalytics/Advert'
 | 配置接口               | 参数类型   | 是否必填 | 默认值 | 说明                         |
 | :--------------------- | :--------- | :------: | :----- | :--------------------------- |
 | `readClipboardEnabled` | `BOOL`     |    否    | `YES`  | 是否允许读取剪切板的应用信息 |
-| `deepLinkHost`         | `NSString` |    是    | `nil`  | 深度链接配置地址             |
+| `deepLinkHost`         | `NSString` |    是    | `nil`  | 深度链接配置地址，如：https://n.datayi.cn   |
 | `deepLinkCallback`     | `Block`    |    否    | `nil`  | 监听深度链接中的地址参数     |
 
 ```objectivec
@@ -63,8 +63,12 @@ configuration.deepLinkCallback = ^(NSDictionary * _Nullable params,
 
 可以通过该方法手动发送 DeepLink 事件，该接口常用于应用内部广告获客接收
 
+| 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明
+| :-------------------------   | :------         | :----:  |:------  |:------| 
+| `doDeeplinkByUrl` | `String`       | 是      | `null`  | 深度链接url，如：https://n.datayi.cn/k4wudMXn  |
+
 ```objectivec
-[[GrowingAdvertising sharedInstance] doDeeplinkByUrl:[NSURL URLWithString:@"Your DeepLinkHost"]
+[[GrowingAdvertising sharedInstance] doDeeplinkByUrl:[NSURL URLWithString:@"Your DeepLinkUrl"]
                                             callback:^(NSDictionary * _Nullable params,
                                                        NSTimeInterval processTime,
                                                        NSError * _Nullable error) {
@@ -107,7 +111,7 @@ configuration.ASAEnabled = YES;
 | 配置接口               | 参数类型   | 是否必填 | 默认值 | 说明                         |
 | :--------------------- | :--------- | :------: | :----- | :--------------------------- |
 | `readClipboardEnabled` | `Bool`     |    否    | `true` | 是否允许读取剪切板的应用信息 |
-| `deepLinkHost`         | `String`   |    是    | `nil`  | 深度链接配置地址             |
+| `deepLinkHost`         | `String`   |    是    | `nil`  | 深度链接配置地址，如：https://n.datayi.cn             |
 | `deepLinkCallback`     | `Closures` |    否    | `nil`  | 监听深度链接中的地址参数     |
 
 ```swift
@@ -132,12 +136,16 @@ GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
 
 可以通过该方法手动发送 DeepLink 事件，该接口常用于应用内部广告获客接收
 
+| 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明
+| :-------------------------   | :------         | :----:  |:------  |:------| 
+| `doDeeplinkByUrl` | `String`       | 是      | `null`  | 深度链接url，如：https://n.datayi.cn/k4wudMXn  |
+
 ```swift
 let callback = { (params: [AnyHashable : Any]?, 
                   processTime: TimeInterval, 
                   error: Error? ) -> Void in
 }
-GrowingAdvertising.sharedInstance().doDeeplink(by: URL(string: "Your DeepLinkHost")!, callback: callback)
+GrowingAdvertising.sharedInstance().doDeeplink(by: URL(string: "Your DeepLinkUrl")!, callback: callback)
 ```
 
 ### 获取 Apple Search Ads 归因数据分析
