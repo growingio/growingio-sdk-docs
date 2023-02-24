@@ -64,7 +64,7 @@ Advert 广告模块中提供了配置文件可以设置模块的配置：
 
 ```java
 AdvertConfig config = new AdvertConfig();
-config.setDeepLinkHost("https://n.datayi.cn")
+config.setDeepLinkHost("Your DeepLinkHost")
         .setReadClipBoardEnable(true)
         .setDeepLinkCallback((params, error, appAwakePassedTime) -> {
             // accept deeplink params
@@ -116,7 +116,7 @@ GrowingTracker.startWithConfiguration(this,
     <category android:name="android.intent.category.BROWSABLE" />
 
     <data
-        android:host="n.datayi.cn"
+        android:host="Your AD Service Host"
         android:pathPattern="/v8rud.*"
         android:scheme="https" />
 </intent-filter>

@@ -34,7 +34,7 @@ GrowingAutotracker.get().trackTimerResume("timerId")
 GrowingAutotracker.get().trackTimerEnd("timerId")
 GrowingAutotracker.get().removeTimer("timerId")
 GrowingAutotracker.get().clearTrackTimer()
-GrowingAutotracker.get().doDeepLinkByUrl("https://n.datayi.cn", new DeepLinkCallback())
+GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkHost", new DeepLinkCallback())
 
 GrowingAutotracker.get().registerComponent(module,<config>)
 ```
@@ -58,7 +58,7 @@ GrowingTracker.get().trackTimerResume("timerId")
 GrowingTracker.get().trackTimerEnd("timerId")
 GrowingTracker.get().removeTimer("timerId")
 GrowingTracker.get().clearTrackTimer()
-GrowingAutotracker.get().doDeepLinkByUrl("https://n.datayi.cn", new DeepLinkCallback())
+GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkHost", new DeepLinkCallback())
 
 GrowingTracker.get().registerComponent(module,<config>)
 ```
@@ -701,7 +701,7 @@ GrowingTracker.get().registerComponent(module,<config>)
 
 **无埋点SDK示例代码：**
 ```java
-GrowingAutotracker.get().doDeepLinkByUrl("https://n/datayi.cn", new DeepLinkCallback() {
+GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkHost", new DeepLinkCallback() {
     @Override
     public void onReceive(Map<String, String> params, int error, long appAwakePassedTime) {
         // accept your params
@@ -711,7 +711,7 @@ GrowingAutotracker.get().doDeepLinkByUrl("https://n/datayi.cn", new DeepLinkCall
 
 **埋点SDK示例代码：**
 ```java
-GrowingTracker.get().doDeepLinkByUrl("https://n/datayi.cn", new DeepLinkCallback() {
+GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkHost", new DeepLinkCallback() {
     @Override
     public void onReceive(Map<String, String> params, int error, long appAwakePassedTime) {
         // accept your params
