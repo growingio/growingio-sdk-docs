@@ -69,7 +69,7 @@ module.exports = {
             },
             {
               label: 'Web',
-              href: 'https://github.com/growingio/growingio-sdk-js-autotracker',
+              href: 'https://github.com/growingio/growingio-sdk-webjs-autotracker/tree/CDP',
             },
           ],
         },
