@@ -34,6 +34,7 @@ GrowingAutotracker.get().trackTimerResume("timerId")
 GrowingAutotracker.get().trackTimerEnd("timerId")
 GrowingAutotracker.get().removeTimer("timerId")
 GrowingAutotracker.get().clearTrackTimer()
+GrowingAutotracker.get().doDeepLinkByUrl("https://n.datayi.cn", new DeepLinkCallback())
 
 GrowingAutotracker.get().registerComponent(module,<config>)
 ```
@@ -57,6 +58,7 @@ GrowingTracker.get().trackTimerResume("timerId")
 GrowingTracker.get().trackTimerEnd("timerId")
 GrowingTracker.get().removeTimer("timerId")
 GrowingTracker.get().clearTrackTimer()
+GrowingAutotracker.get().doDeepLinkByUrl("https://n.datayi.cn", new DeepLinkCallback())
 
 GrowingTracker.get().registerComponent(module,<config>)
 ```
@@ -691,4 +693,28 @@ GrowingAutotracker.get().registerComponent(module,<config>)
 **埋点SDK示例代码：**
 ```java
 GrowingTracker.get().registerComponent(module,<config>)
+```
+
+### 24. 主动触发DeepLink
+`doDeepLinkByUrl` <br/>
+可以通过该方法手动发送DeepLink事件，该接口常用于应用内部广告获客接收。
+
+**无埋点SDK示例代码：**
+```java
+GrowingAutotracker.get().doDeepLinkByUrl("https://n/datayi.cn", new DeepLinkCallback() {
+    @Override
+    public void onReceive(Map<String, String> params, int error, long appAwakePassedTime) {
+        // accept your params
+    }
+});
+```
+
+**埋点SDK示例代码：**
+```java
+GrowingTracker.get().doDeepLinkByUrl("https://n/datayi.cn", new DeepLinkCallback() {
+    @Override
+    public void onReceive(Map<String, String> params, int error, long appAwakePassedTime) {
+        // accept your params
+    }
+});
 ```
