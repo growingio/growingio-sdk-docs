@@ -59,7 +59,7 @@ Advert 广告模块中提供了配置文件可以设置模块的配置：
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明 
 | :-------------------------   | :------         | :----:  |:------  |:------| 
 | `setReadClipBoardEnable` | `Boolean`       | 否      | `true`  | 是否允许读取剪切板的应用信息  |
-| `setDeepLinkHost`  | `String` | 否      | SDK收数服务端地址   | 是否允许该地址向应用发送链接信息，如：https://n.datayi.cn  |
+| `setDeepLinkHost`  | `String` | 否      | SDK收数服务端地址   | 是否允许该地址向应用发送链接信息，示例：https://n.datayi.cn     |
 | `setDeepLinkCallback`  | `接口回调` | 否      | `null`   | 监听深度链接中的地址参数 |
 
 ```java
@@ -129,7 +129,7 @@ GrowingTracker.startWithConfiguration(this,
 
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明
 | :-------------------------   | :------         | :----:  |:------  |:------| 
-| `doDeepLinkByUrl` | `String`       | 是      | `null`  | 深度链接url，如：https://n.datayi.cn/k4wudMXn |
+| `doDeepLinkByUrl` | `String`       | 是      | `null`  | 深度链接URL，示例：https://n.datayi.cn/k4wudMXn |
 
 **无埋点SDK示例代码：**
 ```java

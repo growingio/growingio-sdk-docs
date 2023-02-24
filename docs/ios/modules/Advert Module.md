@@ -38,7 +38,7 @@ pod 'GrowingAnalytics/Advert'
 | 配置接口               | 参数类型   | 是否必填 | 默认值 | 说明                         |
 | :--------------------- | :--------- | :------: | :----- | :--------------------------- |
 | `readClipboardEnabled` | `BOOL`     |    否    | `YES`  | 是否允许读取剪切板的应用信息 |
-| `deepLinkHost`         | `NSString` |    是    | `nil`  | 深度链接配置地址，如：https://n.datayi.cn   |
+| `deepLinkHost`         | `NSString` |    是    | `nil`  | 深度链接配置地址，示例：https://n.datayi.cn   |
 | `deepLinkCallback`     | `Block`    |    否    | `nil`  | 监听深度链接中的地址参数     |
 
 ```objectivec
@@ -65,7 +65,7 @@ configuration.deepLinkCallback = ^(NSDictionary * _Nullable params,
 
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明
 | :-------------------------   | :------         | :----:  |:------  |:------| 
-| `doDeeplinkByUrl` | `String`       | 是      | `null`  | 深度链接url，如：https://n.datayi.cn/k4wudMXn  |
+| `doDeeplinkByUrl` | `NSURL`       | 是      | `null`  | 深度链接URL，示例：https://n.datayi.cn/k4wudMXn  |
 
 ```objectivec
 [[GrowingAdvertising sharedInstance] doDeeplinkByUrl:[NSURL URLWithString:@"Your DeepLinkUrl"]
@@ -111,7 +111,7 @@ configuration.ASAEnabled = YES;
 | 配置接口               | 参数类型   | 是否必填 | 默认值 | 说明                         |
 | :--------------------- | :--------- | :------: | :----- | :--------------------------- |
 | `readClipboardEnabled` | `Bool`     |    否    | `true` | 是否允许读取剪切板的应用信息 |
-| `deepLinkHost`         | `String`   |    是    | `nil`  | 深度链接配置地址，如：https://n.datayi.cn             |
+| `deepLinkHost`         | `String`   |    是    | `nil`  | 深度链接配置地址，示例：https://n.datayi.cn   |
 | `deepLinkCallback`     | `Closures` |    否    | `nil`  | 监听深度链接中的地址参数     |
 
 ```swift
@@ -138,7 +138,7 @@ GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
 
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明
 | :-------------------------   | :------         | :----:  |:------  |:------| 
-| `doDeeplinkByUrl` | `String`       | 是      | `null`  | 深度链接url，如：https://n.datayi.cn/k4wudMXn  |
+| `doDeeplink` | `URL`       | 是      | `null`  | 深度链接URL，示例：https://n.datayi.cn/k4wudMXn  |
 
 ```swift
 let callback = { (params: [AnyHashable : Any]?, 
