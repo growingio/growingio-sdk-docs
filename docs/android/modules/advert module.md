@@ -7,7 +7,7 @@ title: 广告模块
 在深度链接技术场景中,可以直接唤起 App 并跳转至指定页面，同时根据条件判断用户跳转路径，当用户已经安装 App 时可以直接唤起 App，当用户未安装 App 时会引导用户下载 App.
 
 :::info
-具体的深度链接配置可以参考 [获客分析](https://docs.growingio.com/op-help/docs/4.2/product-manual/acquisition-analytics/acquisition-tracing/)
+平台版本>=4.0支持，具体的深度链接配置可以参考 [获客分析](https://docs.growingio.com/op-help/docs/4.0/product-manual/acquisition-analytics/acquisition-tracing/)
 :::
 
 

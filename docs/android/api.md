@@ -366,7 +366,7 @@ GrowingTracker.get().getDeviceId()
 `setPageAttributes`, `setPageAttributesSupport`, `setPageAttributesX`<br/>
 给指定页面设置属性，必须在`onResume`生命周期之前调用。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.5 且 OP平台版本>=4.2支持**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.5 且 OP平台版本>=4.0支持**
 
 #### 参数说明
 | 参数    | 参数类型              | 说明                                                   |
