@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 3. 点击 App Links 编辑按钮，[获取 SHA256 指纹证书](/docs/android/modules/advert%20module#获取-sha256-指纹证书) 并填入表单中
     ![config_app_links](./../../../static/img/android/config_app_links.png)
 
-4. 点击 **复制代码片段** 按钮，进入您的应用 manifest.xml 文件中，找到入口 Activity 并粘贴，如下：
+4. 点击 **复制代码片段** 按钮，进入您的应用 manifest.xml 文件中，找到入口 Activity 并粘贴，示例格式如下：
 
 ```xml
 <activity
@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
       <category android:name="android.intent.category.DEFAULT" />
       <category android:name="android.intent.category.BROWSABLE" />
       <data
-        android:host="xxx.growingio.cn"
+        android:host="Your DeepLinkHost"
         android:pathPattern="/k4rud.*"
         android:scheme="https" />
     </intent-filter>
@@ -63,7 +63,7 @@ import TabItem from '@theme/TabItem';
       <category android:name="android.intent.category.DEFAULT" />
       <category android:name="android.intent.category.BROWSABLE" />
       <data
-        android:host="xxx.growingio.cn"
+        android:host="Your DeepLinkHost"
         android:pathPattern="/k4r.*id.*"
         android:scheme="https" />
     </intent-filter>
@@ -74,7 +74,7 @@ import TabItem from '@theme/TabItem';
       <category android:name="android.intent.category.DEFAULT" />
       <category android:name="android.intent.category.BROWSABLE" />
       <data
-        android:host="xxx.growingio.cn"
+        android:host="Your DeepLinkHost"
         android:pathPattern="/k4r.*td.*"
         android:scheme="https" />
     </intent-filter>
@@ -241,7 +241,7 @@ GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback() 
 
    ```shell
    Package: com.growingio.android.test    
-   Domains: xxx.growingio.cn  
+   Domains: Your DeepLinkHost  
    Status:  always
    ```
 
