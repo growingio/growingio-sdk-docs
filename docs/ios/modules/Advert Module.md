@@ -28,9 +28,17 @@ import TabItem from '@theme/TabItem';
 
 2. 找到需要配置的 iOS 应用，点击更多信息，查看当前应用的配置
 
-3. 点击 Universal Link 编辑按钮，[获取 Team ID](/docs/ios/modules/Advert%20Module#获取-team-id) 并填入表单中
+3. 点击 Universal Link 编辑按钮，获取 Team ID 并填入表单中
 
   ![config_universal_link](./../../../static/img/ios/config_universal_link.png)
+
+<details>
+  <summary>如何获取 Team ID</summary>
+
+在苹果开发者网站中找到 Team ID 与 Bundle ID
+![config_team_id](./../../../static/img/ios/config_team_id.webp)
+
+</details>
 
 4. 点击 **复制 Link** 按钮，在您的 Xcode 项目配置中打开 **Associated Domains** 功能，并将所复制的 Link 添加到 Associated Domains 列表中
 
@@ -195,9 +203,3 @@ GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
   </TabItem>
 </Tabs>
 
-
-
-### 获取 Team ID
-
-在苹果开发者网站中找到 Team ID 与 Bundle ID
-![config_team_id](./../../../static/img/ios/config_team_id.webp)

@@ -19,14 +19,33 @@ import TabItem from '@theme/TabItem';
 ### 深度链接配置
 
 1. 在顶部导航栏选择 **获客分析 -> 产品配置 -> 深度链接配置**，进入深度链接配置页面
-    ![config_deeplink](./../../../static/img/common/product_config_deeplink.png)
+
+   ![config_deeplink](./../../../static/img/common/product_config_deeplink.png)
 
 2. 找到需要配置的 Android 应用，点击更多信息，查看当前应用的配置
 
-3. 点击 App Links 编辑按钮，[获取 SHA256 指纹证书](/docs/android/modules/advert%20module#获取-sha256-指纹证书) 并填入表单中
-    ![config_app_links](./../../../static/img/android/config_app_links.png)
+3. 点击 App Links 编辑按钮，获取应用 keyStore 签名并填入表单中
 
-4. 点击 **复制代码片段** 按钮，进入您的应用 manifest.xml 文件中，找到入口 Activity 并粘贴，示例格式如下：
+   ![config_app_links](./../../../static/img/android/config_app_links.png)
+
+<details>
+  <summary>如何获取应用 keyStore 签名</summary>
+
+
+    1. 使用命令行进入您的证书目录，一般签名分为 Debug keyStore 和 Release keyStore，开发期间建议先配置为 Debug keyStore，上线前**一定要更新为 Release keyStore**
+    2. 执行以下命令：
+
+```shell
+keytool -list -v -keystore release.keystore
+```
+
+</details>
+
+4. 点击 **复制代码片段** 按钮，进入您的应用 manifest.xml 文件中，找到入口 Activity 并粘贴
+
+<details>
+  <summary>示例格式</summary>
+
 
 ```xml
 <activity
@@ -83,6 +102,9 @@ import TabItem from '@theme/TabItem';
 </activity>
 ```
 
+</details>
+
+
 :::info
 
 - GrowingIO 暂不支持自定义 App Links 的 host，请不要修改复制的代码块中的 host
@@ -94,6 +116,7 @@ import TabItem from '@theme/TabItem';
 5. 点击保存，确认修改
 
 ### SDK说明
+
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
 | advert  | 需要手动集成 |`Activate` | `AdvertResult` | >=3.4.6 |
@@ -211,20 +234,6 @@ GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback() 
 ```
 
 
-
-
-### 获取 SHA256 指纹证书
-
-1. 使用命令行进入你的证书目录，一般签名分为 debug keystore 和 release keystore ，开发期间建议先配置为 debug keystore ，上线前一定要更新为 release keystore 。如果担心忘记，建议新建应用
-
-2. 执行以下命令，获取 SHA256 指纹证书
-
-   ```shell
-   keytool -list -v -keystore my-release-key.keystore
-   ```
-
-
-
 ### 验证您的 App Links
 
 #### 验证 Intent Filter 配置
@@ -285,7 +294,7 @@ App Links 的合法性是由系统校验，不同的手机系统使用不同的�
 adb shell dumpsys package i
 ```
 
-综上，Applink 不能顺利通过系统检验，原因有以下可能：
+综上，App Links 不能顺利通过系统检验，原因有以下可能：
 - 可能是国内网络问题，使用 gms 组件校验的手机需要联通 Google 服务
 - 可能是您产品配置问题，GrowingIO 填写的签名和手机上运行的 APP 签名不同
 
@@ -294,7 +303,6 @@ adb shell dumpsys package i
 Status 状态为 ask 不代表唤起流程有问题，当用户操作允许后，后续唤起流程中将直接唤起，不会再出现询问弹窗
 
 :::
-
 
 
 ### 应用宝微下载
