@@ -3,6 +3,21 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## RELEASE-3.4.6
+
+### Features
+
+- 添加 DeepLink 新的广告模块，能够接受外部传入的 URL 信息并发送给应用 ([#184](https://github.com/growingio/growingio-sdk-android-autotracker/pull/184))
+- 添加 doDeepLinkByUrl 接口提供使用；
+- APM事件和属性标识符重命名 ([#185](https://github.com/growingio/growingio-sdk-android-autotracker/pull/185))
+
+
+:::note 
+
+ 标签:**[v3.4.6](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.6)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-02-23** 
+
+:::
+
 ## RELEASE-3.4.5
 
 ### Features

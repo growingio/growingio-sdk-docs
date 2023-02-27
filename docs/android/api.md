@@ -11,22 +11,22 @@ import TabItem from '@theme/TabItem';
 ```java
 GrowingAutotracker.get().setDataCollectionEnabled(true)
 GrowingAutotracker.get().setLoginUserId("userId")
-GrowingAutotracker.get().setLoginUserId("zhangshan","username")
+GrowingAutotracker.get().setLoginUserId("userId","userKey")
 GrowingAutotracker.get().cleanLoginUserId()
 GrowingAutotracker.get().setLocation(20.11,20.11)
 GrowingAutotracker.get().cleanLocation()
-GrowingAutotracker.get().trackCustomEvent("registerSuccess")
+GrowingAutotracker.get().trackCustomEvent("eventName")
 GrowingAutotracker.get().setLoginUserAttributes(new HashMap<>())
 GrowingAutotracker.get().getDeviceId()
 GrowingAutotracker.get().setPageAttributes(new android.app.Fragment(), new HashMap<>())
-GrowingAutotracker.get().setPageAliasX(new androidx.fragment.app.Fragment(),"TestFragment")
-GrowingAutotracker.get().ignorePageX(new androidx.fragment.app.Fragment(),IgnorePolicy.IGNORE_SELF)
-GrowingAutotracker.get().setPageAlias(new android.app.Fragment(),"TestFragment")
-GrowingAutotracker.get().ignorePage(new android.app.Fragment(),IgnorePolicy.IGNORE_SELF)
-GrowingAutotracker.get().ignoreView(view,IgnorePolicy.IGNORE_SELF)
-GrowingAutotracker.get().trackViewImpression(view,"buttonShowed")
+GrowingAutotracker.get().setPageAliasX(new androidx.fragment.app.Fragment(), "FragmentAliasName")
+GrowingAutotracker.get().ignorePageX(new androidx.fragment.app.Fragment(), IgnorePolicy.IGNORE_SELF)
+GrowingAutotracker.get().setPageAlias(new android.app.Fragment(), "FragmentAliasName")
+GrowingAutotracker.get().ignorePage(new android.app.Fragment(), IgnorePolicy.IGNORE_SELF)
+GrowingAutotracker.get().ignoreView(view, IgnorePolicy.IGNORE_SELF)
+GrowingAutotracker.get().trackViewImpression(view, "ViewShowed")
 GrowingAutotracker.get().stopTrackViewImpression(view)
-GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
+GrowingAutotracker.get().setUniqueTag(button, "UniqueTagName")
 GrowingAutotracker.get().bridgeWebView(webview)
 GrowingAutotracker.get().trackTimerStart("timer")
 GrowingAutotracker.get().trackTimerPause("timerId")
@@ -34,6 +34,7 @@ GrowingAutotracker.get().trackTimerResume("timerId")
 GrowingAutotracker.get().trackTimerEnd("timerId")
 GrowingAutotracker.get().removeTimer("timerId")
 GrowingAutotracker.get().clearTrackTimer()
+GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
 
 GrowingAutotracker.get().registerComponent(module,<config>)
 ```
@@ -42,11 +43,11 @@ GrowingAutotracker.get().registerComponent(module,<config>)
 ```java
 GrowingTracker.get().setDataCollectionEnabled(true)
 GrowingTracker.get().setLoginUserId("userId")
-GrowingTracker.get().setLoginUserId("zhangshan","username")
+GrowingTracker.get().setLoginUserId("userId", "userKey")
 GrowingTracker.get().cleanLoginUserId()
-GrowingTracker.get().setLocation(20.11,20.11)
+GrowingTracker.get().setLocation(20.11, 20.11)
 GrowingTracker.get().cleanLocation()
-GrowingTracker.get().trackCustomEvent("registerSuccess")
+GrowingTracker.get().trackCustomEvent("eventName")
 GrowingTracker.get().setLoginUserAttributes(new HashMap<>())
 GrowingTracker.get().setVisitorAttributes(new HashMap<>())
 GrowingTracker.get().getDeviceId()
@@ -57,6 +58,7 @@ GrowingTracker.get().trackTimerResume("timerId")
 GrowingTracker.get().trackTimerEnd("timerId")
 GrowingTracker.get().removeTimer("timerId")
 GrowingTracker.get().clearTrackTimer()
+GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
 
 GrowingTracker.get().registerComponent(module,<config>)
 ```
@@ -364,7 +366,7 @@ GrowingTracker.get().getDeviceId()
 `setPageAttributes`, `setPageAttributesSupport`, `setPageAttributesX`<br/>
 给指定页面设置属性，必须在`onResume`生命周期之前调用。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.5 且 OP平台版本>=4.2支持**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.5 且 OP平台版本>=4.0支持**
 
 #### 参数说明
 | 参数    | 参数类型              | 说明                                                   |
@@ -532,7 +534,7 @@ GrowingTracker.get().bridgeWebView(webview)
 `trackTimerStart`<br/>
 初始化一个事件计时器，参数为计时事件的事件名称，返回值为该事件计时器唯一标识
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
 #### 参数说明
 | 参数        | 参数类型 | 说明                 |
 | :---------- | :------- | :------------------- |
@@ -558,7 +560,7 @@ String timerId = GrowingTracker.get().trackTimerStart('eventName')
 `trackTimerPause`<br/>
 暂停事件计时器，参数为trackTimerStart返回的唯一标识
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
 #### 参数说明
 | 参数      | 参数类型 | 说明           |
 | :-------- | :------- | :------------- |
@@ -580,7 +582,7 @@ GrowingTracker.get().trackTimerPause('timerId')
 `trackTimerResume`<br/>
 恢复事件计时器，参数为trackTimerStart返回的唯一标识
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
 #### 参数说明
 | 参数      | 参数类型 | 说明           |
 | :-------- | :------- | :------------- |
@@ -602,7 +604,7 @@ GrowingTracker.get().trackTimerResume('timerId')
 `trackTimerEnd`<br/>
 停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
 #### 参数说明
 | 参数         | 参数类型              | 说明                       |
 | :----------- | :-------------------- | :------------------------- |
@@ -638,7 +640,7 @@ eventDuration 时间统计不会计算后台时间
 删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
 该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
 #### 参数说明
 | 参数      | 参数类型 | 说明           |
 | :-------- | :------- | :------------- |
@@ -661,7 +663,7 @@ GrowingTracker.get().removeTimer('timerId')
 清除所有已经注册的事件计时器。<br/>
 存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.2支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -674,7 +676,11 @@ GrowingAutotracker.get().clearTrackTimer()
 GrowingTracker.get().clearTrackTimer()
 ```
 
-### 23. 注册模块组件 
+### 23. 主动触发DeepLink
+`doDeepLinkByUrl` <br/>
+调用该接口需要集成广告模块，具体集成请参考[广告模块](/docs/android/modules/advert%20module)
+
+### 24. 注册模块组件 
 `registerComponent`<br/>
 可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
 #### 参数说明
@@ -692,3 +698,4 @@ GrowingAutotracker.get().registerComponent(module,<config>)
 ```java
 GrowingTracker.get().registerComponent(module,<config>)
 ```
+
