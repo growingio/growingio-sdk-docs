@@ -439,7 +439,7 @@ UIViewController 分类声明的属性，设置需要在 viewDidAppear 执行之
 `growingPageAttributes`<br/>
 给当前页面设置页面属性。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6 且 OP平台版本>=4.0支持**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.7 且 OP平台版本>=4.0支持**
 
 #### 属性说明
 
