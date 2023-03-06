@@ -32,8 +32,8 @@ import TabItem from '@theme/TabItem';
   <summary>如何获取应用 keyStore 签名</summary>
 
 
-    1. 使用命令行进入您的证书目录，一般签名分为 Debug keyStore 和 Release keyStore，开发期间建议先配置为 Debug keyStore，上线前**一定要更新为 Release keyStore**
-    2. 执行以下命令：
+   1. 使用命令行进入您的证书目录，一般签名分为 Debug keyStore 和 Release keyStore，开发期间建议先配置为 Debug keyStore，上线前**一定要更新为 Release keyStore**
+   2. 执行以下命令：
 
 ```shell
 keytool -list -v -keystore release.keystore
