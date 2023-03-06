@@ -1,8 +1,7 @@
 ---
-slug: /other
-title: 第三方 SDK
+slug: /framework
+title: 跨平台SDK
 ---
-
 
 
 ```mdx-code-block
