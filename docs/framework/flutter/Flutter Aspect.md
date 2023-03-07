@@ -86,6 +86,8 @@ flutter clean
 git reset --hard 
 或者
 git reset --hard <tag>
+
+rm -rf bin/cache  ## 用来删除缓存 
 ```
 
 
