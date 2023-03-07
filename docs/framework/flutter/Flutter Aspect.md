@@ -85,7 +85,7 @@ flutter clean
 ```cmd
 git reset --hard 
 或者
-git reset --head <tag>
+git reset --hard <tag>
 ```
 
 
