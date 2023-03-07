@@ -1,13 +1,9 @@
 ---
 sidebar_position: 1
-title: Flutter 插件
+title: Flutter SDK 插件
 ---
 
-Flutter SDK 提供了 无埋点SDK 和 埋点SDK 两个版本：
-* 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
-* 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
-
-请通过 [flutter-sdk-flutter](https://github.com/growingio/growingio-sdk-flutter) 访问我们的代码！
+Flutter SDK 插件虽然提供了 无埋点SDK 和 埋点SDK 两个版本，但是在使用 Flutter 无埋点SDK前需要按照 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect) 才能是无埋点功能生效。
 
 ---
 
@@ -18,7 +14,7 @@ import TabItem from '@theme/TabItem';
 :::info
 * 请确保原生工程中已经添加**原生埋点SDK**, 如果没有, 请移步至原生端SDK集成文档: [**Android 埋点SDK**](/docs/android/Introduce)、[**iOS 埋点SDK**](/docs/ios/Introduce)
 * Flutter SDK 插件的更新日志，可参阅 [Release Notes](/docs/framework/flutter/index.md#版本记录)
-* Flutter SDK 无埋点如何集成，请阅读 [Flutter Aspect 集成](/docs/framework/flutter/flutter_aspect)
+* Flutter SDK 无埋点如何生效，请阅读 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect)
 :::
 
 ## Growingio Flutter SDK 插件集成
@@ -27,7 +23,6 @@ import TabItem from '@theme/TabItem';
 以工程`flutter_app`为例，在`pubspec.yaml`文件中添加依赖。
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -80,7 +75,6 @@ GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原�
 在 Flutter 端进行初始化，代码示例如下：
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -186,7 +180,7 @@ GrowingTracker.startWithConfiguration(
 广告模块包括激活事件和深度链接，能帮助客户提供广告，活动的引导跳转和下载。
 
 :::info
-在 Flutter SDK 启动广告模块同时，原生端（包括Android和iOS端都需要引入相应的模块代码），请参考：
+在 Flutter SDK 启动广告模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
 * [Android 端 引入广告模块](/docs/android/modules/advert%20module)
 * [iOS 端 引入广告模块](/docs/ios/modules/Advert%20Module)
 :::
@@ -225,7 +219,7 @@ GrowingTracker.startWithConfiguration(
 Protobuf 数据模块将会使用 Google Protobuf 格式保存和上传事件数据。
 
 :::info
-在 Flutter SDK 启动 Protobuf 模块同时，原生端（包括Android和iOS端都需要引入相应的模块代码），请参考：
+在 Flutter SDK 启动 Protobuf 模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
 * [Android 端 引入 Protobuf 模块](/docs/android/modules/protobuf%20module)
 * [iOS 端 引入 Protobuf 模块](/docs/ios/modules/Protobuf%20Module)
 :::
@@ -243,7 +237,7 @@ GrowingTracker.startWithConfiguration(
 ```
 若使用了原生的WebView,且内嵌 H5 页面如果也需要进行数据采集（H5 页面已经集成 Web JS SDK），则可以开启该 H5混合模块。
 :::info
-在 Flutter SDK 启动H5混合模块同时，原生端（包括Android和iOS端都需要引入相应的模块代码），请参考：
+在 Flutter SDK 启动H5混合模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
 * [Android 端 引入H5混合模块](/docs/android/modules/hybrid%20module)
 * [iOS 端 引入H5混合模块](/docs/ios/modules/Hybrid%20Module)
 :::
@@ -251,7 +245,6 @@ GrowingTracker.startWithConfiguration(
 ## API说明
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -278,7 +271,7 @@ GrowingAutotracker.get().trackTimerEnd(timerId: timerId,attributes: {});
 GrowingAutotracker.get().removeTimer(timerId: timerId);
 GrowingAutotracker.get().clearTrackTimer();
 
-GrowingAutotracker.get().registerComponent(module,<config>)
+GrowingAutotracker.get().registerComponent(module);
 ```
 
 </TabItem>
@@ -301,7 +294,7 @@ GrowingTracker.get().trackTimerEnd(timerId: timerId,attributes: {});
 GrowingTracker.get().removeTimer(timerId: timerId);
 GrowingTracker.get().clearTrackTimer();
 
-GrowingTracker.get().registerComponent(module,<config>)
+GrowingTracker.get().registerComponent(module);
 ```
 
 </TabItem>
@@ -318,7 +311,6 @@ GrowingTracker.get().registerComponent(module,<config>)
 #### 示例
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -329,16 +321,16 @@ GrowingTracker.get().registerComponent(module,<config>)
 
 <TabItem value="autotracker">
 
-```java
-GrowingAutotracker.get().setDataCollectionEnabled(true)
+```dart
+GrowingAutotracker.get().setDataCollectionEnabled(true);
 ```
 
 </TabItem>
 
 <TabItem value="tracker">
 
-```java
-GrowingTracker.get().setDataCollectionEnabled(true)
+```dart
+GrowingTracker.get().setDataCollectionEnabled(true);
 ```
 
 
@@ -361,8 +353,7 @@ GrowingTracker.get().setDataCollectionEnabled(true)
 | `userKey` | `String` | 适用于ID-MAPPING,可设置 `userId` 的类型,可选填                  |
 #### 示例
 
-<Tabs
-  className="unique-tabs"
+<Tabs 
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -373,17 +364,16 @@ GrowingTracker.get().setDataCollectionEnabled(true)
 
 <TabItem value="autotracker">
 
-```java
-GrowingAutotracker.get().setLoginUserId(userId: "cpacm",userKey: "name")
-
+```dart
+GrowingAutotracker.get().setLoginUserId(userId: "cpacm",userKey: "name");
 ```
 
 </TabItem>
 
 <TabItem value="tracker">
 
-```java
-GrowingTracker.get().setLoginUserId(userId: "cpacm",userKey: "name")
+```dart
+GrowingTracker.get().setLoginUserId(userId: "cpacm",userKey: "name");
 ```
 
 </TabItem>
@@ -395,7 +385,6 @@ GrowingTracker.get().setLoginUserId(userId: "cpacm",userKey: "name")
 #### 示例
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -406,15 +395,15 @@ GrowingTracker.get().setLoginUserId(userId: "cpacm",userKey: "name")
 
 <TabItem value="autotracker">
 
-```java
-GrowingAutotracker.get().cleanLoginUserId()
+```dart
+GrowingAutotracker.get().cleanLoginUserId();
 ```
 
 </TabItem>
 <TabItem value="tracker">
 
-```java
-GrowingTracker.get().cleanLoginUserId()
+```dart
+GrowingTracker.get().cleanLoginUserId();
 ```
 
 </TabItem>
@@ -431,7 +420,6 @@ GrowingTracker.get().cleanLoginUserId()
 #### 示例
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -442,15 +430,15 @@ GrowingTracker.get().cleanLoginUserId()
 
 <TabItem value="autotracker">
 
-```java
-GrowingAutotracker.get().setLocation(39.9, 116.3)
+```dart
+GrowingAutotracker.get().setLocation(latitude: 20.11,longitude: 20.11);
 ```
 
 </TabItem>
 <TabItem value="tracker">
 
-```java
-GrowingTracker.get().setLocation(39.9, 116.3)
+```dart
+GrowingTracker.get().setLocation(latitude: 20.11,longitude: 20.11);
 ```
 
 </TabItem>
@@ -462,7 +450,6 @@ GrowingTracker.get().setLocation(39.9, 116.3)
 #### 示例
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -473,15 +460,15 @@ GrowingTracker.get().setLocation(39.9, 116.3)
 
 <TabItem value="autotracker">
 
-```java
-GrowingAutotracker.get().cleanLocation()
+```dart
+GrowingAutotracker.get().cleanLocation();
 ```
 
 </TabItem>
 <TabItem value="tracker">
 
-```java
-GrowingTracker.get().cleanLocation()
+```dart
+GrowingTracker.get().cleanLocation();
 ```
 
 </TabItem>
@@ -499,7 +486,6 @@ GrowingTracker.get().cleanLocation()
 #### 示例
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -510,14 +496,14 @@ GrowingTracker.get().cleanLocation()
 
 <TabItem value="autotracker">
 
-```java
+```dart
 GrowingAutotracker.get().setLoginUserAttributes(attributes: {"sex":"female"});
 ```
 
 </TabItem>
 <TabItem value="tracker">
 
-```java
+```dart
 GrowingTracker.get().setLoginUserAttributes(attributes: {"sex":"female"});
 ```
 
@@ -536,7 +522,6 @@ GrowingTracker.get().setLoginUserAttributes(attributes: {"sex":"female"});
 #### 示例
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -547,14 +532,14 @@ GrowingTracker.get().setLoginUserAttributes(attributes: {"sex":"female"});
 
 <TabItem value="autotracker">
 
-```java
+```dart
 GrowingAutotracker.get().trackCustomEvent(eventName: "custom",attributes: {"item":"exp"});
 ```
 
 </TabItem>
 <TabItem value="tracker">
 
-```java
+```dart
 GrowingTracker.get().trackCustomEvent(eventName: "custom",attributes: {"item":"exp"});
 ```
 
@@ -568,7 +553,6 @@ GrowingTracker.get().trackCustomEvent(eventName: "custom",attributes: {"item":"e
 #### 示例
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -579,14 +563,14 @@ GrowingTracker.get().trackCustomEvent(eventName: "custom",attributes: {"item":"e
 
 <TabItem value="autotracker">
 
-```java
+```dart
 GrowingAutotracker.get().getDeviceId();
 ```
 
 </TabItem>
 <TabItem value="tracker">
 
-```java
+```dart
 GrowingTracker.get().getDeviceId();
 ```
 </TabItem>
@@ -619,7 +603,6 @@ GrowingTracker.get().getDeviceId();
 #### 示例
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -630,7 +613,7 @@ GrowingTracker.get().getDeviceId();
 
 <TabItem value="autotracker">
 
-```java
+```dart
 String? timerId =await GrowingAutotracker.get().trackTimerStart(eventName: "custom");
 GrowingAutotracker.get().trackTimerPause(timerId: timerId!);
 GrowingAutotracker.get().trackTimerResume(timerId: timerId);
@@ -642,7 +625,7 @@ GrowingAutotracker.get().clearTrackTimer();
 </TabItem>
 <TabItem value="tracker">
 
-```java
+```dart
 String? timerId =await GrowingTracker.get().trackTimerStart(eventName: "custom");
 GrowingTracker.get().trackTimerPause(timerId: timerId!);
 GrowingTracker.get().trackTimerResume(timerId: timerId);
@@ -664,7 +647,6 @@ GrowingTracker.get().clearTrackTimer();
 #### 示例
 
 <Tabs
-  className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotracker"
   values={[
@@ -675,14 +657,14 @@ GrowingTracker.get().clearTrackTimer();
 
 <TabItem value="autotracker">
 
-```java
+```dart
 GrowingAutotracker.get().registerComponent(ProtobufLibraryModule());
 ```
 
 </TabItem>
 <TabItem value="tracker">
 
-```java
+```dart
 GrowingTracker.get().registerComponent(ProtobufLibraryModule());
 ```
 </TabItem>
