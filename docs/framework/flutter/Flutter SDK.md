@@ -683,7 +683,7 @@ GrowingTracker.get().registerComponent(ProtobufLibraryModule());
 
 #### 示例
 ```dart
-class SplashScreen extends StatefulWidget with IGrowingPage{
+class SplashScreen extends StatefulWidget{
 
   SplashScreen({Key? key}) : super(key: key){
     GrowingAutotracker.get().trackCustomPage("Splash页面", this);
