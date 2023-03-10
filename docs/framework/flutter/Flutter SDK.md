@@ -670,3 +670,60 @@ GrowingTracker.get().registerComponent(ProtobufLibraryModule());
 </TabItem>
 </Tabs>
 
+
+### 11. 发送无埋点页面事件
+`trackCustomPage` <br/>
+可以手动将一个 Widget 作为 Page 页面，发送一个 Page 事件。
+
+#### 参数说明
+| 参数     | 参数类型           | 说明 |
+| :------- | :----------------- | :--- |
+| `title` | `String` | 页面标题 |
+| `widget` | `Widget` | 控件 |
+
+#### 示例
+```dart
+class SplashScreen extends StatefulWidget with IGrowingPage{
+
+  SplashScreen({Key? key}) : super(key: key){
+    GrowingAutotracker.get().trackCustomPage("Splash页面", this);
+  }
+}
+```
+
+### 12. 自定义无埋点页面事件属性
+`IGrowingPage` <br/>
+使用 `IGrowingPage` 接口，可以自定义页面事件的标题，路径和事件属性。**页面事件会优先使用该接口里面赋予的值**。
+
+#### 参数说明
+| 参数     | 参数类型           | 说明 |
+| :------- | :----------------- | :--- |
+| `pageTitle` | `String` | 页面标题 |
+| `pageUri` | `String` | 页面Uri |
+| `pagePath` | `String` | 页面路径 |
+| `attributes` | `Map` | 页面属性 |
+
+#### 示例
+
+```dart
+class SplashScreen extends StatefulWidget with IGrowingPage{
+
+  /// 页面标题
+  @override
+  String? get pageTitle => "Splash页面";
+
+  ///格式为：package::aaa/bbb.dart/PageWidget
+  ///其中前缀为 为 dart 的 importUri，后缀为页面的 Widget。
+  @override
+  String? get pageUri => "package::ui/splash.dart/SplashScreen";
+
+  ///如 /books/100
+  @override
+  String? get pagePath => "/splash";
+
+  ///页面属性
+  @override
+  Map<String, String>? get attributes => {"action":"欢迎"};
+
+}
+```
