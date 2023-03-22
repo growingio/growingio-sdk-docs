@@ -10,6 +10,7 @@ SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-minip
 - 🐞 修复分享事件可能在某些情况下丢失默认页面参数的问题。
 - 🌟 优化降低本地存储的存取频率，减少对性能的影响。
 - 🌟 优化事件发送失败时重发逻辑，提高重发成功率。
+- 🌟 优化运营SDK初始化逻辑。
 - 🎉 新增uni-appVue3、Taro3Vue3 &lt;script setup&gt; 写法的支持。
 
 ### V3.8.13 - 2023/02/21
