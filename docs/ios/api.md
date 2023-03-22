@@ -190,7 +190,7 @@ GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 ### 8. 初始化事件计时器
 `trackTimerStart`<br/>初始化事件计时器，调用将返回计时器唯一标识符 `timerId`
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.3支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.7支持。**
 
 #### 参数说明
 
@@ -215,7 +215,7 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 ### 9. 暂停事件计时器
 `trackTimerPause`<br/>暂停当前`timerId`对应事件计时器
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.3支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.7支持。**
 
 #### 参数说明
 
@@ -239,7 +239,7 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 ### 10. 恢复事件计时器
 `trackTimerResume`<br/>恢复当前`timerId`对应事件计时器
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.3支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.7支持。**
 
 #### 参数说明
 
@@ -264,7 +264,7 @@ NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName
 `trackTimerEnd`<br/>
 停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.3支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.7支持。**
 
 #### 参数说明
 
@@ -305,7 +305,7 @@ eventDuration 时间统计不会计算后台时间
 删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
 该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.3支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.7支持。**
 
 #### 参数说明
 
@@ -331,7 +331,7 @@ eventDuration 时间统计不会计算后台时间
 清除所有已经注册的事件计时器。<br/>
 存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.3支持。**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.7支持。**
 
 #### 示例
 
@@ -439,7 +439,7 @@ UIViewController 分类声明的属性，设置需要在 viewDidAppear 执行之
 `growingPageAttributes`<br/>
 给当前页面设置页面属性。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6 且 OP平台版本>=4.2支持**
+**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.7 且 OP平台版本>=4.0支持**
 
 #### 属性说明
 

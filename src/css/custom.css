@@ -128,3 +128,12 @@ a[class^='cardContainerLink_node_modules']{
 a[class^='theme-edit-this-page']{
   display: none;
 }
+
+
+/*blog title*/
+h1[class^=title_node_modules]{
+  font-size: 2.5rem;
+}
+h2[class^=title_node_modules]{
+  font-size: 2.2rem;
+}

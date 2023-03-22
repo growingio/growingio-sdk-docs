@@ -1,7 +1,7 @@
 [
   {
     "name": "Android",
-    "version": "3.4.5",
+    "version": "3.4.6",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-autotracker/releases",
     "distPath": "docs/android/",
     "fileName": "version.md",
@@ -17,7 +17,7 @@
   },
   {
     "name": "iOS",
-    "version": "3.4.6",
+    "version": "3.4.7",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-ios-autotracker/releases",
     "distPath": "docs/ios/",
     "fileName": "version.md",
