@@ -22,7 +22,7 @@ title: 无埋点
 #### 下载集成引入
 
 - 下载插件并复制至项目中：
-  **<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.13/plugins/gioEventAutoTracking.js></font>**<br/>
+  **<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.14/plugins/gioEventAutoTracking.js></font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 - 引入插件
@@ -50,8 +50,21 @@ gdp('init', xxxx);
 
 2、初始化配置项 `autotrack` 依然有效并能控制该功能是否启用，请留意`autotrack`是否在开启状态。
 
-3、使用 vue2/3 语言模式开发时，点击事件需要传参时，可能会无法触发 CLICK 事件，此时您需要再额外在最后一个参数中传入`$event`，以保证原生事件能传入方法中，才能触发点击事件（函数定义时可忽略$event 的参数接受定义，只定义自身业务所需参数即可）。例：
+3、使用 vue2/3 语言模式开发点击事件需要传参时，可能会无法触发 CLICK 事件，此时您需要再额外在最后一个参数中传入`$event`，以保证原生事件能传入方法中，才能触发点击事件（函数定义时可忽略$event 的参数接受定义，只定义自身业务所需参数即可）。例：
 
 ```html
 <button @click="myClick(param1, param2, ..., $event)"></button>
+```
+
+4、使用 vue3 语言模式开发使用 &lt;script setup&gt; 语法时，请在最后将用于直接触发点击事件的方法，调用`defineExpose`进行导出。例：
+
+```html
+<template>
+  <button @tap="onBtnClick">触发完整属性点击</button>
+</template>
+
+<script setup>
+  const onBtnClick = (e) => console.log('触发click', e);
+  defineExpose({ onBtnClick });
+</script>
 ```
