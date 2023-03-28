@@ -198,7 +198,7 @@ NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
 
 #### Web
 
-[埋点事件说明文档](/docs/webjs/3.3/api#3埋点事件接口)
+[埋点事件说明文档](/docs/webjs/commonlyApi#5埋点事件track)
 
 ```js
   gdp('track', 'purchaseProduct', {
@@ -210,7 +210,7 @@ NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
 
 #### 小程序
 
-[埋点事件说明文档](/docs/miniprogram/3.3/commonlyApi#埋点事件track)
+[埋点事件说明文档](/docs/miniprogram/commonlyApi#6埋点事件track)
 
 ```js
   gdp('track', 'purchaseProduct', {
@@ -315,7 +315,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 #### 3. 分析图表 分析验证
 
-需要先在平台找到“增长平台”-->“默认项目”-->“分析模型”-->“事件分析”功能。
+需要先在平台找到“增长分析”-->“智能分析”-->“事件分析”功能。
 
 添加指标和属性拆解，切换时间范围，切换数据展示样式。
 
@@ -413,7 +413,7 @@ NSDictionary *userDict = @{@"age_ppl" : @"18" , @"level_ppl": @"黑卡"};
 
 #### Web
 
-[用户属性说明文档](/docs/webjs/3.3/api#5设置用户属性)
+[用户属性说明文档](/docs/webjs/commonlyApi#6登录用户属性setuserattributes
 
 ```js
 gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
@@ -421,7 +421,7 @@ gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
 
 #### 小程序
 
-[用户属性说明文档](/docs/miniprogram/3.3/commonlyApi#登录用户属性setuserattributes)
+[用户属性说明文档](/docs/miniprogram/commonlyApi#7登录用户属性setuserattributes)
 
 ```js
 gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
@@ -497,7 +497,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 
 #### 2.分析验证
 
-需要先在平台找到“增长平台”-->“默认项目”-->“用户洞察”-->“用户属性”功能。
+需要先在平台找到“客户数据平台”-->“客户分析”-->“属性分析”功能。
 
 查找到对应的用户属性，查看对应的数据。
 

@@ -102,7 +102,7 @@ deviceId = UUID.nameUUIDFromBytes(imi.getBytes(Charset.forName("UTF-8"))).toStri
 deviceId = UUID.randomUUID().toString();
 ```
 
-小程序：如果SDK设置了强制登录模式，小程序打开时调用 wx.login 获取openid或unionId，且调用 identify 上报openid，会使用 openid 作为 DeviceID ，否则会自动生成 随机访问用户ID 作为 DeviceID。存储在 storage 里面，删除小程序再次进入 DeviceID 会改变（DeviceID不是 openid的情况下）。参考[强制登录模式](/docs/miniprogram/3.3/initSettings#forcelogin)
+小程序：如果SDK设置了强制登录模式，小程序打开时调用 wx.login 获取openid或unionId，且调用 identify 上报openid，会使用 openid 作为 DeviceID ，否则会自动生成 随机访问用户ID 作为 DeviceID。存储在 storage 里面，删除小程序再次进入 DeviceID 会改变（DeviceID不是 openid的情况下）。参考[强制登录模式](/docs/miniprogram/initSettings#forcelogin)
 
 Web: 随机访问用户ID  存储在 localStorage 中，永久有效。<br/>
 这样复杂逻辑的目的是尽量使用 DeviceID 标识唯一一台设备，将同一台设备上的访问用户标识为同一个用户。

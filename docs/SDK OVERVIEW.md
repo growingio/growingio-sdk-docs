@@ -91,27 +91,3 @@ SDK未支持的服务端开发语言，GrowingIO 提供有 OPEN API，如有需�
 | 原生iOS | 无埋点、埋点 | iOS 8+ |  - |
 | React Native | 埋点 | Android 4.2+  iOS 8+ |  0.46-0.56、0.59.9 |
 | Flutter | 埋点 | Android 4.2+  iOS 8+ |  - |
-
-## 使用流程
-
-1. 购买 CDP 产品;
-2. 获取 `AccountId`,`UrlScheme`,`ServerHost` 和 `DataSourceId`;
-3. 开始集成;
-
-:::info 关于 CDP 产品
-GrowingIO CDP 产品是集**服务端数据分析和客户端自动埋点一体化**的产品服务。
-:::
-
-## 平台支持功能的版本与 SDK版本对应关系
-
-|    平台版本    | 功能 |  SDK版本  | 备注|
-|:-------:| :----:  |  :-------:  | :----:|
-| OP-13.6 | 无埋点、埋点 | 3.0 | - |
-| OP-14.3.0 | 全量 context 字段传输,服务端通用维度拆解 |  3.2.0 |  - |
-| OP-2.0.0 | 支持 user_key,IDMapping | 3.3.0 | - |
-| OP-2.6.0 | 支持埋点事件属性值、用户变量属性值可传数组类型 | Android SDK 3.3.6<br/>iOS SDK 3.3.6<br/>Web JS SDK 3.3.10<br/>小程序 SDK 3.3.5<br/> | - |
-| OP-2.7.0 | 支持服务端SDK埋点事件可传eventTime参数 |  Java SDK v1.0.11-cdp<br/> PHP SDK v1.0.2<br/> Python SDK v1.0.1 | - |
-
-:::info
-如果使用采集数据加密解密功能产品需要升级到 14.3.0 之后， Android SDK 3.3.0之后， iOS  SDK 3.3.0之后
-:::

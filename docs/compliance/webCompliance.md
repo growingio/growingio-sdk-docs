@@ -25,7 +25,7 @@ GrowingIO使用 IP 地址来分析访问者的地理位置，以及确保此服�
 ## 数据加密传输说明
 
 默认发送数据是明文，可通过将 compress 设置为 true 开启数据压缩，一方面保证数据不能被直接查看，增强了数据的安全性。另一方面可以节省用户的流量。
-使用请参考[SDK数据加密传输 compress](/docs/webjs/3.3/initSettings#compress)。
+使用请参考[SDK数据加密传输 compress](/docs/webjs/initSettings#compress)。
 
 ## 数据存储发送策略说明
 

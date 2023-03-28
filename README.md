@@ -1,20 +1,20 @@
 
 ## 站点地址
 
-[SDK 3.0技术文档-https://growingio.github.io/growingio-sdk-docs/](https://growingio.github.io/growingio-sdk-docs/)
+[SaaS SDK 3.0技术文档-https://growingio.github.io/growingio-sdk-docs-saas/](https://growingio.github.io/growingio-sdk-docs-saas/)
 
 若想要修改文档请 clone 本项目到本地修改。 文档位于 docs 目录下，博客文章位于 blog 目录下。
 具体的写作教程请参考 [docusaurus](https://www.docusaurus.cn/docs/)
 
 ## 关于部署
 
-目前将文档部署在 [Github Pages](https://growingio.github.io/growingio-sdk-docs/) 上，占用的为 `gh-pages` 分支，目前该分支已设置保护，除去 Github CI 可以访问外其他人无法修改。
+目前将文档部署在 [Github Pages](https://growingio.github.io/growingio-sdk-docs-saas/) 上，占用的为 `gh-pages` 分支，目前该分支已设置保护，除去 Github CI 可以访问外其他人无法修改。
 
 ## 关于发版
 
 所有人只能对 master 分支提交 pr 操作，ci会自动检查是否存在错误。
 
-合并分支后，ci 会自动将站点部署到 [Github Pages](https://growingio.github.io/growingio-sdk-docs/) 上。
+合并分支后，ci 会自动将站点部署到 [Github Pages](https://growingio.github.io/growingio-sdk-docs-saas/) 上。
 
 ## 关于本地
 
@@ -31,7 +31,7 @@ npm run build //检查构建是否成功
 npm run start //启动开发服务器
 ```
 
-默认情况下，浏览器将打开 <http://localhost:3000/growingio-sdk-docs/> 地址。
+默认情况下，浏览器将打开 <http://localhost:3000/growingio-sdk-docs-saas/> 地址。
 
 ## 关于 version 脚本
 
