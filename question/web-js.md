@@ -8,8 +8,8 @@ title: Web JS 常见问题
 **A:**
 
 - H5 页面集成 Web JS SDK
-- 提供与原生App打通访问用户数据： [Hybrid打通插件](/docs/webjs/3.3/integrate#app内嵌h5页面使用集成)
-- 提供与小程序打通访问用户数据：[小程序内嵌页打通插件](/docs/webjs/3.3/integrate#小程序内嵌页使用集成)
+- 提供与原生App打通访问用户数据： [Hybrid打通插件](/docs/webjs/plugins/hybridAdapter)
+- 提供与小程序打通访问用户数据：[小程序内嵌页打通插件](/docs/webjs/plugins/embeddedAdapter)
 
 ### 3. 跨域问题 has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present
 

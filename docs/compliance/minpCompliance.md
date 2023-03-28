@@ -13,7 +13,7 @@ title: 小程序 SDK 合规说明
 
 ## 数据加密传输说明
 默认情况下，SDK关闭数据加密，可以通过初始化时设置 compress: true 打开数据加密。
-使用请参考[SDK数据加密传输 compress](/docs/miniprogram/3.3/initSettings#compress)。
+使用请参考[SDK数据加密传输 compress](/docs/miniprogram/initSettings#compress)。
 
 ## 数据存储发送策略说明
 小程序 SDK 采集的用户行为数据采用节流1秒钟(即如果有数据则1秒钟发一次)发送的策略，当节流队列里大于50条行为数据后立即打包发一次，行为数据缓存采用内存缓存。当用户开启强制登录模式(forceLogin 设置为 true)，在调用 identify 接口之前，行为数据采用内存缓存，调用 identify 后立即上报缓存的行为数据。
