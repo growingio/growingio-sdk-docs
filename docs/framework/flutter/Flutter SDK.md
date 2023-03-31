@@ -181,6 +181,7 @@ GrowingTracker.startWithConfiguration(
       AdvertLibraryGioModule(
         config: AdvertConfig(readClipBoardEnable: true, /// 是否打开剪切板
           deepLinkHost: "https://n.datayi.cn", /// 深度链接配置地址
+          asaEnabled: true, /// 仅iOS端使用
           deepLinkCallback:(Map<String,String> params,int error,int time){
             ///监听深度链接中的地址参数
           },
