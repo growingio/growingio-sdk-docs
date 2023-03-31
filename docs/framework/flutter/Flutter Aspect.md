@@ -11,7 +11,7 @@ title: Flutter Aspect 集成
 然后再根据你开发使用的 Flutter 版本，切换到相应的 tag 分支上。
 
 :::info
-目前支持 Flutter SDK 版本为 [v3.3.0](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.3.0)，[v3.3.9](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.3.9)，[v3.7.0](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.0)。
+目前支持 Flutter SDK 版本为 [v3.3.0](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.3.0)，[v3.3.9](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.3.9)，[v3.7.0](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.0)，[v3.7.2](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.2) 。
 
 后续将随着Flutter SDK 的更新会持续推出新的版本，若需要支持特定的 Flutter 版本，请在 [Github Issues](https://github.com/growingio/growingio-dart-frontend/issues) 中提交请求或者向客户成功经理咨询方案。
 :::
