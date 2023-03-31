@@ -72,7 +72,7 @@ GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原�
 * [iOS 端 初始化配置](/docs/ios/Introduce)
 
 #### Flutter 初始化
-在 Flutter 端进行初始化，代码示例如下：
+在 Flutter 端进行初始化，请将 SDK 的初始化代码放入 `main.dart` 的 `main` 中，代码示例如下：
 
 <Tabs
   groupId="sdk-type"
@@ -86,6 +86,10 @@ GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原�
 <TabItem value="autotracker">
 
 ```dart
+
+void main() async {
+  ...
+  WidgetsFlutterBinding.ensureInitialized();
   GrowingAutotracker.startWithConfiguration(
     projectId: "Your ProjectId",
     dataCollectionServerHost: "Your collection server host",
@@ -102,6 +106,9 @@ GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原�
     dataUploadInterval: 15,
     sessionInterval: 20,
   );
+  ...
+  runApp(MyApp());
+}
 ```
 
 </TabItem>
@@ -109,6 +116,9 @@ GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原�
 <TabItem value="tracker">
 
 ```dart
+void main() async {
+  ...
+  WidgetsFlutterBinding.ensureInitialized();
   GrowingTracker.startWithConfiguration(
     projectId: "Your ProjectId",
     dataCollectionServerHost: "Your collection server host",
@@ -125,6 +135,9 @@ GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原�
     dataUploadInterval: 15,
     sessionInterval: 20,
   );
+  ...
+  runApp(MyApp());
+}
 ```
 
 </TabItem>
@@ -342,7 +355,7 @@ GrowingTracker.get().setDataCollectionEnabled(true);
 `setLoginUserId`<br/>
 当用户登录之后调用，设置登录用户ID
 :::info
-**需在初始化 SDK 时设置`setIdMappingEnabled`为`true`**
+**支持 ID-MAPPING 需在初始化 SDK 时设置 `idMappingEnabled` 为 `true`**
 
 如果您的App每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在用户每次升级App版本后初次访问时重新调用setLoginUserId方法
 :::
