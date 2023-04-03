@@ -603,17 +603,24 @@ GrowingTracker.get().getDeviceId();
 `trackTimerEnd`<br/>
 停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
 
+`removeTimer`<br/>
+删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
+该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
+
+`clearTrackTimer`<br/>
+清除所有已经注册的事件计时器。<br/>
+存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
 
 #### 参数说明
 | 参数        | 参数类型 | 说明                 |
 | :---------- | :------- | :------------------- |
 | `eventName` | `String` | 事件名称，事件标识符 |
+| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息 |
 
 #### 返回值说明
 | 参数      | 参数类型 | 说明           |
 | :-------- | :------- | :------------- |
 | `timerId`    | `String`              | 计时器唯一标识             |
-| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息 |
 #### 示例
 
 <Tabs
