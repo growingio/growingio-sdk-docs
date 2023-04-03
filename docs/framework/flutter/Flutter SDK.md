@@ -68,7 +68,7 @@ GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原�
 
 #### 原生端初始化
 原生端初始化请参考各端的初始化文档：
-* [Android 端初始化配置](/docs/android/Introduce)
+* [Android 端初始化配置](/docs/android/modules/flutter%20module)
 * [iOS 端 初始化配置](/docs/ios/Introduce)
 
 #### Flutter 初始化

@@ -7,8 +7,6 @@ Flutter SDK 提供了 [无埋点SDK](/docs/framework/flutter/index.md) 和 [埋�
 * 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
 * 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
-请通过 [flutter-sdk-flutter](https://github.com/growingio/growingio-sdk-flutter) 访问我们的代码！
-
 
 ## 集成准备
 ### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
