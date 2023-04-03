@@ -34,6 +34,7 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 
 ### 1.0.0 - 2023-03-10
 这是 Growingio Flutter sdk Library 的第一个正式版，它包含了以下内容：
+- 全新的 Flutter 埋点插件，能几乎支持原生的全部功能；
 - 通过 Flutter Aspect 支持SDK的无埋点功能；
 - 支持 Flutter 无埋点页面事件，能够基于 Navigation 路由机制发送页面事件；
 - 支持 Flutter 无埋点点击事件，能够在用户点击时发送点击事件；
