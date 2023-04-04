@@ -1,5 +1,5 @@
 ---
-slug: /flutter
+slug: /framework/flutter
 title: Flutter SDK
 ---
 
