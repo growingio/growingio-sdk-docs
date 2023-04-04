@@ -530,7 +530,7 @@ GrowingAutotracker.get().bridgeWebView(webview)
 GrowingTracker.get().bridgeWebView(webview)
 ```
 
-### 17. 事件化计时器
+### 17. 事件计时器
 `trackTimerStart`<br/>
 初始化一个事件计时器，参数为计时事件的事件名称，返回值为该事件计时器唯一标识
 
@@ -609,11 +609,11 @@ GrowingTracker.get().clearTrackTimer();
 trackTimerEnd时发送CUSTOM事件上报数据：
 * eventName  埋点事件标识符（trackTimerStart传入）；
 * attributes 用户自定义事件属性（trackTimerEnd传入）；
-* eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）。<br/>
-eventDuration 按照秒上报，小数点精度保证到毫秒。<br/>
-eventDuration 变量及其值会自动添加在 attributes 中。<br/>
-eventDuration 时间统计不会计算后台时间：
-* eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性。
+* event_duration 事件时长 （SDK内部根据timerId自动计算获取 ）。<br/>
+event_duration 按照秒上报，小数点精度保证到毫秒。<br/>
+event_duration 变量及其值会自动添加在 attributes 中。<br/>
+event_duration 时间统计不会计算后台时间：
+* eventName 对应的埋点事件需要在平台中**绑定**标识符为 event_duration， 且类型为小数的事件属性。
 :::
 
 
