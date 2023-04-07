@@ -7,6 +7,11 @@ Flutter SDK 提供了 [无埋点SDK](/docs/framework/flutter/index.md) 和 [埋�
 * 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
 * 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
+## 版本记录
+|    版本    | 说明 |  日期  |
+|:-------:| :----  |  :-------:  |
+| V1.0.0 | 这是 Growingio Flutter sdk Library 的第一个正式版，它包含了以下内容：<br/>- 全新的 Flutter 埋点插件，能几乎支持原生的全部功能；<br/>- 通过 Flutter Aspect 支持SDK的无埋点功能；<br/>- 支持 Flutter 无埋点页面事件，能够基于 Navigation 路由机制发送页面事件；<br/>- 支持 Flutter 无埋点点击事件，能够在用户点击时发送点击事件；<br/>- 支持 Flutter 圈选，将可交互 Widget 与无埋点事件绑定。 | 2023-04-07 |
+
 
 ## 集成准备
 ### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
@@ -29,17 +34,6 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 **Dart SDK**： >=2.14.0 
 **Flutter 版本**：>=2.5.0<br/>
 :::
-
-## 版本记录
-
-### 1.0.0 - 2023-03-10
-这是 Growingio Flutter sdk Library 的第一个正式版，它包含了以下内容：
-- 全新的 Flutter 埋点插件，能几乎支持原生的全部功能；
-- 通过 Flutter Aspect 支持SDK的无埋点功能；
-- 支持 Flutter 无埋点页面事件，能够基于 Navigation 路由机制发送页面事件；
-- 支持 Flutter 无埋点点击事件，能够在用户点击时发送点击事件；
-- 支持 Flutter 圈选，将可交互 Widget 与无埋点事件绑定。
-
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
