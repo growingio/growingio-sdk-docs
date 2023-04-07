@@ -68,8 +68,8 @@ GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原�
 
 #### 原生端初始化
 原生端初始化请参考各端的初始化文档：
-* [Android 端初始化配置](/docs/android/Introduce)
-* [iOS 端 初始化配置](/docs/ios/Introduce)
+* [Android 端初始化配置](/docs/android/modules/flutter%20module)
+* iOS 端 初始化配置 ：在集成 Flutter SDK 插件时自动引入原生Flutter 模块.
 
 #### Flutter 初始化
 在 Flutter 端进行初始化，请将 SDK 的初始化代码放入 `main.dart` 的 `main` 中，代码示例如下：
@@ -603,17 +603,24 @@ GrowingTracker.get().getDeviceId();
 `trackTimerEnd`<br/>
 停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
 
+`removeTimer`<br/>
+删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
+该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
+
+`clearTrackTimer`<br/>
+清除所有已经注册的事件计时器。<br/>
+存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
 
 #### 参数说明
 | 参数        | 参数类型 | 说明                 |
 | :---------- | :------- | :------------------- |
 | `eventName` | `String` | 事件名称，事件标识符 |
+| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息 |
 
 #### 返回值说明
 | 参数      | 参数类型 | 说明           |
 | :-------- | :------- | :------------- |
 | `timerId`    | `String`              | 计时器唯一标识             |
-| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息 |
 #### 示例
 
 <Tabs
