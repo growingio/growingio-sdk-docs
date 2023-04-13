@@ -55,8 +55,8 @@ allprojects {
 ```groovy
 plugins {
     //...
-    id 'com.growingio.gitkit' version "1.2.0" apply false //针对Cdp Sdk
-    id 'com.growingio.gitkit.saas' version "1.2.0" apply false  //针对SaaS Sdk
+    id 'com.growingio.giokit' version "1.3.0" apply false //针对Cdp Sdk
+    id 'com.growingio.giokit.saas' version "1.3.0" apply false  //针对SaaS Sdk
     //以上二者根据相应的 GrowingIO Android SDK 选择对应的插件，请不要一起使用！！
 }
 ```
@@ -83,7 +83,7 @@ apply plugin: 'com.growingio.giokit'
 // 或者通过id依赖
 plugins {
     //...
-    id 'com.growingio.gitkit'
+    id 'com.growingio.giokit'
 }
 ```
 
@@ -98,7 +98,7 @@ apply plugin: 'com.growingio.giokit.saas'
 // 或者通过id依赖
 plugins {
     //...
-    id 'com.growingio.gitkit.saas'
+    id 'com.growingio.giokit.saas'
 }
 ```
 
