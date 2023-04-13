@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 **accountId，** **urlScheme，** **setDataSourceId，** **setDataCollectionServerHost**
 这四个参数为 CDP 用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 
-### 2. **channel**
+### 2. **setChannel**
 
 对应应用的分发渠道字段，若设置了值则会在每个事件上报中含有渠道信息。
 比如在初始化中设置了`.setChannel("Docs")`,则会在上报信息中出现 `appChannel` 字段：
