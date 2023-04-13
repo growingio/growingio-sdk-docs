@@ -3,6 +3,13 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## [3.4.8](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.7...3.4.8) (2023-03-31)
+
+### Features
+
+* 支持 Flutter 无埋点 SDK ([855bd6e](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/855bd6eed6bb1cd8197dad05060df855ca22c5b7))
+
+
 ## [3.4.7](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.6...3.4.7) (2023-02-23)
 
 ### Bug Fixes

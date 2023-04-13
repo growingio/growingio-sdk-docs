@@ -3,6 +3,19 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+## RELEASE-3.4.7
+
+1. 添加 GrowingIO Flutter SDK 模块，需要与[Growingio Flutter Plugin](https://growingio.github.io/growingio-sdk-docs/docs/framework/flutter)联合使用；
+2. 重命名 Protobuf 模块包名=> `com.growingio.android.protobuf`；
+3. 添加 CacheEventProvider，用于SDK初始化前存储需要发送的时间；
+4. 添加新Saas SDK，设置通用请求接口域名。
+
+:::note 
+
+ 标签:**[v3.4.7](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.4.7)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-04-07** 
+
+:::
+
 ## RELEASE-3.4.6
 
 ### Features
