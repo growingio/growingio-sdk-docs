@@ -7,6 +7,7 @@ title: JAVA SDK
 
 |    版本    | 说明 |  日期  |
 |:-------:| :----  |  :-------:  |
+| 1.0.13-cdp | 1.修复initConfig不生效<br/> 2.升级pb版本为3.27.1<br/> |  2023-03-27 |
 | 1.0.12-cdp | 支持埋点事件事件变量、用户变量可传列表类型 |  2022-04-20 |
 | 1.0.11-cdp | 支持埋点事件可传eventTime参数 |  2022-04-02 |
 | 1.0.10-cdp | 支持最近测量协议 | 2021-11-08 |
@@ -56,7 +57,7 @@ pom.xml
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.12-cdp</version>
+        <version>1.0.13-cdp</version>
     </dependency>
 </dependencies>
 ```
@@ -67,7 +68,7 @@ pom.xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.12-cdp</version>
+    <version>1.0.13-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
@@ -81,13 +82,13 @@ pom.xml
 如果使用gradle依赖，可以使用如下集成方式
 
 ```gradle
-implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.12-cdp'
+implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.13-cdp'
 ```
 
 若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone
 
 ```gradle
-implementation('io.growing.sdk.java:growingio-java-sdk:1.0.12-cdp:standalone') {
+implementation('io.growing.sdk.java:growingio-java-sdk:1.0.13-cdp:standalone') {
     exclude module: 'protobuf-java'
 }
 ```
@@ -413,7 +414,7 @@ Protobuf 从 3.6.0 版本开始不再支持 java 6，相关信息参见[Drop jav
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.12-cdp</version>
+    <version>1.0.13-cdp</version>
     <exclusions>
         <exclusion>
             <groupId>com.google.protobuf</groupId>
