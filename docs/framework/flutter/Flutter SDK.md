@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Flutter SDK 插件
 ---
 
-Flutter SDK 插件虽然提供了 无埋点SDK 和 埋点SDK 两个版本，但是在使用 Flutter 无埋点SDK前需要按照 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect) 才能是无埋点功能生效。
+Flutter SDK 插件虽然提供了 无埋点SDK 和 埋点SDK 两个版本，但是在使用 Flutter 无埋点SDK前需要按照 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect) 才能使无埋点功能生效。
 
 ---
 
