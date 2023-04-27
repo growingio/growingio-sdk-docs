@@ -91,6 +91,14 @@ gdp('init', accountId, datasourceId, { debug: true });
 gdp('init', accountId, datasourceId, { enableIdMapping: true });
 ```
 
+### hashtag
+
+GrowingIO 默认不会把hash识别成页面URL的一部分。对于使用hash进行页面转跳的单页面网站应用来说，可以启用hashtag作为标识页面的一部分。
+
+```js
+gdp('init', accountId, datasourceId, { hashtag: true });
+```
+
 ### ignoreFields
 
 默认情况下，SDK会上报设备的相关信息。如果您不需要这些数据，可以通过指定 `ignoreFields: [xxx,xxx]` 来忽略指定字段的上报。
