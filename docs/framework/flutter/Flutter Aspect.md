@@ -60,7 +60,7 @@ flutter clean
 <TabItem value="automatic">
 
 ### 下载脚本
-请下载我们的帮助脚本 [growingio_flutter_script.sh](https://github.com/growingio/growingio-sdk-flutter/releases/download/untagged-2db07cdfabd4e3482718/growingio_flutter_script.sh)，运行后脚本会自动帮助你覆盖 Flutter SDK 中需要替换的文件。
+请下载我们的帮助脚本 [growingio_flutter_script.sh](https://github.com/growingio/growingio-sdk-flutter/releases/download/v1.0.0/growingio_flutter_script.sh)，运行后脚本会自动帮助你覆盖 Flutter SDK 中需要替换的文件。
 
 ```shell
 $ chmod 777 growingio_flutter_script.sh
