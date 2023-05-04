@@ -5,6 +5,15 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
+### V3.8.4 - 2023/04/27
+
+- 🐞 修复 Native 中初始化时会触发clearUserId的问题。
+- 🐞 修复半自动浏览插件可能在某些情况下报错的问题。
+- 🌟 优化存储逻辑，防止在某些情况下可能出现过多动态Cookie key值导致超限。
+- 🌟 优化在Electron应用中强制使用localStorage存储SDK信息。
+- 🌟 优化数据发送失败重试逻辑提高重试成功率。
+- 🎉 新增初始化配置项允许指定存储类型。
+
 ### V3.8.3 - 2023/02/21
 
 - 🐞 修复 Native 下圈选偶现报错的问题。

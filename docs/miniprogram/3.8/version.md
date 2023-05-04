@@ -11,6 +11,7 @@ SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-minip
 - 🐞 修复分享时promise不生效和自定义utm参数丢失的问题。
 - 🌟 优化跳转小程序时extraData中的参数与query一起上报。
 - 🌟 优化兼容微信小程序2.26.1基础库在windows上崩溃白屏问题。
+- 🌟 优化数据发送失败重试逻辑提高重试成功率。
 
 ### V3.8.14 - 2023/03/22
 
