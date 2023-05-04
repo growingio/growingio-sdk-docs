@@ -19,6 +19,7 @@ title: 初始化配置
 | `host`            | `string`     | `-`                 | 数据上报的服务端地址(无需携带协议头)**(必填)**          |
 | `ignoreFields`    | `string[]`   | `-`                 | 上报忽略字段                                          |
 | `scheme`          | `string`     | `location.protocol` | 网络协议                                              |
+| `storageType`     | `string`     | `cookie`            | SDK信息的持久化存储的类型(仅支持cookie或localStorage)    |
 | `version`         | `string`     | `-`                 | Web应用发版版本号(建议填写)                           |
 
 ## 配置项详解
