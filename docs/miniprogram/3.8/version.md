@@ -5,6 +5,13 @@ title: 版本记录
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
+### V3.8.15 - 2023/04/27
+
+- 🐞 修复进入小程序参数带中文时query会被encode导致平台解析错误的问题。
+- 🐞 修复分享时promise不生效和自定义utm参数丢失的问题。
+- 🌟 优化跳转小程序时extraData中的参数与query一起上报。
+- 🌟 优化兼容微信小程序2.26.1基础库在windows上崩溃白屏问题。
+
 ### V3.8.14 - 2023/03/22
 
 - 🐞 修复分享事件可能在某些情况下丢失默认页面参数的问题。
