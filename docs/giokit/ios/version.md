@@ -3,6 +3,20 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V1.1.3 - 2023/04/27
+
+[v1.1.3](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.1.3)
+
+* feat: 兼容 Protobuf 通过 SwiftPM 集成
+* feat: 适配 mac Catalyst
+
+## V1.1.2 - 2023/03/07
+
+[v1.1.2](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.1.2)
+
+* feat: use in release env
+* fix: 未开启 APM 监控时，Could not open directory (g_reportsPath) 报错
+
 ## V1.1.1 - 2022/12/13
 
 [v1.1.1](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.1.1)
