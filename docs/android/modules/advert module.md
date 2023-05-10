@@ -5,6 +5,7 @@ title: 广告模块
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ImageLoader from '@site/src/components/ImageLoader';
 
 广告模块包括激活事件和深度链接(DeepLink)，激活事件是当用户应用第一次打开时有且仅发一次的事件，深度链接是提供客户通过活动网页等形式提供App渠道的跳转和下载。
 在深度链接技术场景中，可以直接唤起 App 并跳转至指定页面，同时根据条件判断用户跳转路径，当用户已经安装 App 时可以直接唤起 App，当用户未安装 App 时会引导用户下载 App。
@@ -20,13 +21,13 @@ import TabItem from '@theme/TabItem';
 
 1. 在顶部导航栏选择 **获客分析 -> 产品配置 -> 深度链接配置**，进入深度链接配置页面
 
-   ![config_deeplink](./../../../static/img/common/product_config_deeplink.png)
+  <ImageLoader path="img/common/product_config_deeplink" />
 
 2. 找到需要配置的 Android 应用，点击更多信息，查看当前应用的配置
 
 3. 点击 App Links 编辑按钮，获取应用 keyStore 签名并填入表单中
 
-   ![config_app_links](./../../../static/img/android/config_app_links.png)
+  <ImageLoader path="img/android/config_app_links" />
 
 <details>
   <summary>如何获取应用 keyStore 签名</summary>
@@ -311,7 +312,7 @@ GrowingIO 提供跳转到应用宝微下载的功能，应用宝微下载为腾�
 
 [腾讯微下载介绍](https://wikinew.open.qq.com/?title=mobile/%E5%BA%94%E7%94%A8%E5%AE%9D%E5%BE%AE%E4%B8%8B%E8%BD%BD#/iwiki/870029633)
 
-![v_download](./../../../static/img/android/v_download.png)
+<ImageLoader path="img/android/v_download" />
 
 :::caution
 

@@ -5,6 +5,7 @@ title: 淘宝小程序
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ImageLoader from '@site/src/components/ImageLoader';
 
 目前淘宝小程序仅支持原生开发方式。如您使用了其他开发方式，请咨询我们。
 
@@ -89,13 +90,13 @@ Component({ ... });
 
 加载插件后会在初始化之前打印日志。例：
 
-![debugLog](/img/miniprogram/plugin_debug.png)
+<ImageLoader path="img/miniprogram/plugin_debug" />
 
 ## 数据校验
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中 Console 标签中即可实时查看 SDK 上报的 log 数据。如下图：
 
-![debugLog](/img/miniprogram/taobao_debug.png)
+<ImageLoader path="img/miniprogram/taobao_debug" />
 
 ## 添加白名单
 

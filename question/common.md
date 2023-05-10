@@ -2,6 +2,9 @@
 sidebar_position: 1
 title: SDK 共性问题
 ---
+
+import ImageLoader from '@site/src/components/ImageLoader';
+
 ### 1. Release 版本与 Hotfix 版本怎么区别？
 **A：**release 版本是正式版本；例如：release-3.3.1；hotfix版本是非正式版本，是所在版本的 Bug 紧急修复版本；Android 的 hotfix 版本对应带有日期的SNAPSHOT版本，例如：release-3.2.3-09141-SNAPSHOT； 下一个release 版本会包含上个版本的所有 hotfix 版本的内容。
 
@@ -111,7 +114,7 @@ Web: 随机访问用户ID  存储在 localStorage 中，永久有效。<br/>
 **A:**
 2.0升3.0版本SDK autotracker-upgrade (仅无埋点SDK，埋点暂不兼容) 是对 3.0 SDK API进行封装 ，实现  2.0 SDK API 可以调用 3.0 SDK API。
 
-![2update3](../static/img/question/2update3.png)
+<ImageLoader path="img/question/2update3" />
 
 使用：集成 2.0升3.0版本SDK + 3.0 SDK<br/>
 测量协议：2.0升3.0版本SDK  按照3.0的测量协议发送数据<br/>

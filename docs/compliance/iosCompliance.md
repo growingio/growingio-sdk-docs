@@ -2,6 +2,9 @@
 sidebar_position: 2
 title: iOS SDK 合规说明
 ---
+
+import ImageLoader from '@site/src/components/ImageLoader';
+
 ## 隐私协议
 
 根据[工业和信息化部关于开展纵深推进APP侵害用户权益专项整治行动](http://www.gov.cn/zhengce/zhengceku/2020-08/02/content_5531975.htm)和 [User Privacy and Data Use](https://developer.apple.com/app-store/user-privacy-and-data-use/)
@@ -117,7 +120,7 @@ GrowingIO SDK 会采集 `IDFA` 和 `IDFV` 字段上传，如果您的项目中�
 ### 1. 是否会从此 App 中收集数据
 **选择 「是，会从此 App 中收集数据」**
 
-![](./../../static/img/compliance/datacollect_enable.png)
+<ImageLoader path="img/compliance/datacollect_enable" />
 ​​
 
 ### 2. 位置数据收集
@@ -126,7 +129,7 @@ GrowingIO SDK 会采集 `IDFA` 和 `IDFV` 字段上传，如果您的项目中�
 :::info
 如果您想禁用位置信息获取，需调用 `+setEnableLocationTrack:`为 `NO`
 :::
-![](./../../static/img/compliance/datacollect_location.png)
+<ImageLoader path="img/compliance/datacollect_location" />
 
 ### 3. 标识符和使用数据收集
 
@@ -136,58 +139,56 @@ GrowingIO SDK 会采集 `IDFA` 和 `IDFV` 字段上传，如果您的项目中�
 
 **如果使用的是 无埋点SDK 需继续勾选 「产品交互」**
 
-![](./../../static/img/compliance/datacollect_idenfier.png)
-​​
+<ImageLoader path="img/compliance/datacollect_idenfier" />​​
 
 ### 4.1. 位置
 
 #### 1. 请在 「位置」面板中，勾选 「分析」
 
-![](./../../static/img/compliance/datacollect_location_analyze.png)
-​​
+<ImageLoader path="img/compliance/datacollect_location_analyze" />​​
 
 #### 2. 然后下一步，勾选「是，从此 App 中收集的精确位置数据与用户身份关联」
 
-​![](./../../static/img/compliance/datacollect_location_identifier.png)
+<ImageLoader path="img/compliance/datacollect_location_identifier" />
 
 #### 3. 根据您App实际情况选择是否用于追踪目的
 
 ### 4.2 用户 ID
 
 #### 1. GrowingIO SDK 会在调用 设置登录用户ID 接口时收集用户 ID 用于分析功能，因此这里选择「分析」，如图
-​![](./../../static/img/compliance/datacollect_identifier_analyze.png)
+
+<ImageLoader path="img/compliance/datacollect_identifier_analyze" />
 
 #### 2. 勾选后点击下一步，选择「是，从此 App 中收集的用户 ID 与用户身份关联」，这里根据具体的业务进行勾选，如图
 
-![](./../../static/img/compliance/datacollect_identifier_id.png)
-​​
+<ImageLoader path="img/compliance/datacollect_identifier_id" />​​
 
 #### 3. 点击下一步，需要选择「是，我们会将用户 ID 用于追踪目的」​
-​![](./../../static/img/compliance/datacollect_track_id.png)
+<ImageLoader path="img/compliance/datacollect_track_id" />
 
 ### 4.3 设备
 
 #### 1. GrowingIO SDK 收集设备 ID 用于收集用户登录前的数据，因此这里继续选择「分析」，如图
 
-​![](./../../static/img/compliance/datacollect_id_analyze.png)
+<ImageLoader path="img/compliance/datacollect_id_analyze" />
 
 #### 2. 点击下一步，因为收集到的数据会与设备 id 绑定，所以此处继续选择「是」
 
-​![](./../../static/img/compliance/datacollect_id_associate.png)
+<ImageLoader path="img/compliance/datacollect_id_associate" />
 
 #### 3. 继续下一步，同用户 ID ， 会使用 IDFA 与第三方数据相关联以用于定向广告或广告评估目的，如图
 
-​![](./../../static/img/compliance/datacollect_track_deviceID.png)
+<ImageLoader path="img/compliance/datacollect_track_deviceID" />
 
 ### 4.4 产品交互
 
 #### 1. 使用 GrowingIO 无埋点SDK后，会收集 APP启动，APP退出，用户点击，页面浏览等相关行为用于分析产品，因此这里继续选择「分析」，如图
 
-​![](./../../static/img/compliance/datacollect_interface_analyze.png)
+<ImageLoader path="img/compliance/datacollect_interface_analyze" />
 
 #### 2. 点击下一步，继续选择是，如图
 
-​![](./../../static/img/compliance/datacollect_interface_id.png)
+<ImageLoader path="img/compliance/datacollect_interface_id" />
 
 #### 3. 最后追踪目的，请根据您实际情况选择，是否要用于追踪目的
 

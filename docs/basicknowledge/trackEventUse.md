@@ -5,6 +5,7 @@ title: 埋点使用规范
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ImageLoader from '@site/src/components/ImageLoader';
 
 ## 规范步骤
 
@@ -37,11 +38,11 @@ import TabItem from '@theme/TabItem';
 #### 规划方案示例
 
 **埋点方案规划：**
-![埋点方案规划](./../../static/img/basicKnowledge/metricplanning.png)
+<ImageLoader path="img/basicKnowledge/metricplanning" />
 **属性规划：**
-![属性规划](./../../static/img/basicKnowledge/eventVariable.png)
+<ImageLoader path="img/basicKnowledge/eventVariable" />
 **维度表规划：**
-![维度表规划](./../../static/img/basicKnowledge/dimensionTable.png)
+<ImageLoader path="img/basicKnowledge/dimensionTable" />
 :::info 说明
 | 名词 | 说明 |
 | :-: | :---- |
@@ -64,7 +65,7 @@ import TabItem from '@theme/TabItem';
 
 #### 事件属性创建示例
 
-![事件属性创建](./../../static/img/basicKnowledge/eventVariableCreate.png)
+<ImageLoader path="img/basicKnowledge/eventVariableCreate" />
 :::info 提示
 事件属性的配置项“关联维度表”为非必选项，需要与您的埋点方案相对应。<br/>
 **每个事件属性最多只能关联一个维度表**<br/>
@@ -79,14 +80,14 @@ import TabItem from '@theme/TabItem';
 :::
 
 **维度表创建示例**：
-![维度表创建](./../../static/img/basicKnowledge/dimensionCreate.png)
+<ImageLoader path="img/basicKnowledge/dimensionCreate" />
 :::caution 注意
 维度表非必须项。具体根据您的业务需求和规划方案决定是否需要使用该功能。
 :::
 
 #### 埋点事件创建示例
 
-![埋点事件创建](./../../static/img/basicKnowledge/eventCreate.png)
+<ImageLoader path="img/basicKnowledge/eventCreate" />
 :::info 提示
 埋点事件的配置项“关联事件属性”为非必选项，需要与您的埋点方案相对应。<br/>
 如果埋点方案中埋点事件没有对应的属性，则无需关联。<br/>
@@ -320,7 +321,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 添加指标和属性拆解，切换时间范围，切换数据展示样式。
 
 示例：
-![事件分析图表](./../../static/img/basicKnowledge/eventAnalysis.png)
+<ImageLoader path="img/basicKnowledge/eventAnalysis" />
 至此，完成埋点事件数据采集上报展示的验证。
 
 ## 用户属性事件示例
@@ -333,7 +334,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 #### 规划方案示例
 
-![用户属性规划](./../../static/img/basicKnowledge/userAttributes.png)
+<ImageLoader path="img/basicKnowledge/userAttributes" />
 
 ### 平台配置
 
@@ -341,7 +342,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 #### 用户属性事件创建示例
 
-![用户属性创建](./../../static/img/basicKnowledge/userAttributesCreate.png)
+<ImageLoader path="img/basicKnowledge/userAttributesCreate" />
 
 ### 代码实施
 
@@ -502,6 +503,6 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 查找到对应的用户属性，查看对应的数据。
 
 示例：
-![用户属性分析图表](./../../static/img/basicKnowledge/userAttributeAnalysis.png)
+<ImageLoader path="img/basicKnowledge/userAttributeAnalysis" />
 
 至此，完成用户属性数据采集上报展示的验证。
