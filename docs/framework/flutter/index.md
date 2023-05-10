@@ -3,6 +3,8 @@ slug: /framework/flutter
 title: Flutter SDK
 ---
 
+import ImageLoader from '@site/src/components/ImageLoader';
+
 Flutter SDK 提供了 [无埋点SDK](/docs/framework/flutter/index.md) 和 [埋点SDK](/docs/framework/flutter/index.md) 两个版本：
 * 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
 * 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
@@ -25,9 +27,9 @@ Account ID、DataSource ID、URL Scheme 需要在CDP增长平台上新建数据�
 Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
 :::
 ##### 创建
-![新建数据源](/img/createapplication.png)
+<ImageLoader path="img/common/createapplication" />
 ##### 查看
-![查看数据源](/img/showappdatasourceid.png)
+<ImageLoader path="img/common/showappdatasourceid" />
 
 
 :::info

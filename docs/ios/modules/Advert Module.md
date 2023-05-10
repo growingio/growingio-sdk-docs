@@ -5,6 +5,7 @@ title: 广告模块
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ImageLoader from '@site/src/components/ImageLoader';
 
 广告模块包括激活事件和深度链接 (DeepLink)，激活事件是当用户应用第一次打开时有且仅发一次的事件，深度链接是提供客户通过活动网页等形式提供 App 渠道的跳转和下载。 在深度链接技术场景中，可以直接唤起 App 并跳转至指定页面，同时根据条件判断用户跳转路径，当用户已经安装 App 时可以直接唤起 App，当用户未安装 App 时会引导用户下载 App。
 
@@ -24,13 +25,13 @@ import TabItem from '@theme/TabItem';
 
 1. 在顶部导航栏选择 **获客分析 -> 产品配置 -> 深度链接配置**，进入深度链接配置页面
 
-  ![config_deeplink](./../../../static/img/common/product_config_deeplink.png)
+  <ImageLoader path="img/common/product_config_deeplink" />
 
 2. 找到需要配置的 iOS 应用，点击更多信息，查看当前应用的配置
 
 3. 点击 Universal Link 编辑按钮，获取 Team ID 并填入表单中
 
-  ![config_universal_link](./../../../static/img/ios/config_universal_link.png)
+  <ImageLoader path="img/ios/config_universal_link" />
 
 <details>
   <summary>如何获取 Team ID</summary>
@@ -42,8 +43,8 @@ import TabItem from '@theme/TabItem';
 
 4. 点击 **复制 Link** 按钮，在您的 Xcode 项目配置中打开 **Associated Domains** 功能，并将所复制的 Link 添加到 Associated Domains 列表中
 
-   ![associated_domains](./../../../static/img/ios/associated_domains.png)
-   ![associated_domains2](./../../../static/img/ios/associated_domains2.png)
+   <ImageLoader path="img/ios/associated_domains" />
+   <ImageLoader path="img/ios/associated_domains2" />
 
 
 5. 勾选**我已完成 Xcode 配置，允许 Universal Link 跳转**，点击保存
@@ -126,14 +127,14 @@ configuration.ASAEnabled = YES;
 
 在 Target -> Build Phases -> Link Binary With Libraries，添加 **iAd.framework** 和 **AdServices.framework**，并设置 AdServices.framework status 为 **Optional**
 
-![AdServices Framework](./../../../static/img/ios/adservices_framework.png)
+<ImageLoader path="img/ios/adservices_framework" />
 
   </TabItem>
   <TabItem value="swiftPM" label="Swift Package Manager集成">
 
 1. 添加 **GrowingModule_Advert** Package
 
-![add Package](./../../../static/img/ios/add_package_advert.png)
+<ImageLoader path="img/ios/add_package_advert" />
 
 2. 在 AppDelegate.swift 中导入 `import GrowingModule_Advert`
 
@@ -198,7 +199,7 @@ GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
 
 在 Target -> Build Phases -> Link Binary With Libraries，添加 **iAd.framework** 和 **AdServices.framework**，并设置 AdServices.framework status 为 **Optional**
 
-![AdServices Framework](./../../../static/img/ios/adservices_framework.png)
+<ImageLoader path="img/ios/adservices_framework" />
 
   </TabItem>
 </Tabs>

@@ -3,6 +3,8 @@ title: 集成
 sidebar_position: 1
 ---
 
+import ImageLoader from '@site/src/components/ImageLoader';
+
 ### 集成准备
 
 #### 获取SDK初始化必传参数：AccountID、DataSourceID、Host
@@ -17,11 +19,11 @@ AccountID、DataSourceID 需要在CDP增长平台上新建数据源，或从已�
 
 ##### 创建
 
-![新建数据源](/img/createapplication.png)
+<ImageLoader path="img/common/createapplication" />
 
 ##### 查看
 
-![查看数据源](/img/showwebdatasourceid.png)
+<ImageLoader path="img/common/showwebdatasourceid" />
 
 ### Web使用集成
 

@@ -3,6 +3,8 @@ sidebar_position: 7
 title: 服务端 常见问题
 ---
 
+import ImageLoader from '@site/src/components/ImageLoader';
+
 ### 1. 日志中可以看到埋点数据，但是平台或数据库中查不到数据，是哪里的问题？
 **A:** 服务端SDK 开启日志模式时，不向服务端发送数据。需要关闭日志模式。
 
@@ -17,7 +19,7 @@ title: 服务端 常见问题
 ## Java SDK
 ### 1. 报错如下图所示:显示host连接超时，但是在我们自己的demo使用客户的host发数据是没有问题?
 Failed to connect xxxxxx, cause connect timed out
-![Failed to connect](../static/img/question/failedtoconnect.png)
+<ImageLoader path="img/question/failedtoconnect" />
 **A:** 解决方法：删除或注释 配置文件中的默认配置proxy设置
 
 ### 2. 在pom中添加依赖时，为什么找不到 jar包？

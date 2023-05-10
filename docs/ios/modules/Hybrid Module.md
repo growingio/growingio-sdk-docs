@@ -4,6 +4,7 @@ title: H5混合模块
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ImageLoader from '@site/src/components/ImageLoader';
 
 APP 内嵌 H5 页面如果也需要进行数据采集，H5 页面需要集成 Web JS SDK
 
@@ -33,7 +34,7 @@ pod 'GrowingAnalytics/Hybrid'
 
 添加 **GrowingModule_Hybrid** Package
 
-![add Package](./../../../static/img/ios/add_package_hybrid.png)
+<ImageLoader path="img/ios/add_package_hybrid" />
 
   </TabItem>
 </Tabs>

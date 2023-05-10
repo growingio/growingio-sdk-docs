@@ -14,6 +14,7 @@ GrowingIO SDK 加密模块默认使用 snappy 数据压缩和 xor 简单加密�
 --------
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ImageLoader from '@site/src/components/ImageLoader';
 
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
@@ -90,4 +91,4 @@ GrowingTracker.startWithConfiguration(this,
 
 ### 示例
 数据结果如下图所示：
-![数据上传样式](/img/modules/growingio_encoder_module.jpg)
+<ImageLoader path="img/android/modules/growingio_encoder_module.jpg" />

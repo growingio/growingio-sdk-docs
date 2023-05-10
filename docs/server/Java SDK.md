@@ -3,6 +3,8 @@ sidebar_position: 1
 title: JAVA SDK
 ---
 
+import ImageLoader from '@site/src/components/ImageLoader';
+
 ### 版本记录
 
 |    版本    | 说明 |  日期  |
@@ -40,11 +42,11 @@ AccountID、DataSourceID 需要在CDP增长平台上新建数据源，或从已�
 
 ##### 创建
 
-![新建数据源](./../../static/img/createapplication.png)
+<ImageLoader path="img/common/createapplication" />
 
 ##### 查看
 
-![查看数据源](./../../static/img/showServerDataSourceID.png)
+<ImageLoader path="img/common/showServerDataSourceID" />
 
 ### 依赖
 

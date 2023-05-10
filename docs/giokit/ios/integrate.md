@@ -5,6 +5,7 @@ title: 如何集成
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ImageLoader from '@site/src/components/ImageLoader';
 
 ## 集成 GioKit
 
@@ -32,7 +33,7 @@ pod 'GrowingToolsKit', :configurations => ['Debug']
 
 1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
-![add Package Dependencies](./../../../static/img/ios/add_package_dependencies.png)
+<ImageLoader path="img/ios/add_package_dependencies" />
 
 2. 搜索 GrowingToolsKit SDK GitHub 地址
 
@@ -42,11 +43,11 @@ https://github.com/growingio/growingio-sdk-ios-toolskit.git
 
 3. 并设置 Dependency Rule 为 Branch master，Add to Project 选择您所需要的 Project
 
-![set Dependency Rule](./../../../static/img/giokit/ios/set_dependency_rule.png)
+<ImageLoader path="img/giokit/ios/set_dependency_rule" />
 
 4. 点击下方的 Add Package 按钮，选择 GrowingToolsKit，再次点击 Add Package 按钮
 
-![set Dependency Rule](./../../../static/img/giokit/ios/add_package_giokit.png)
+<ImageLoader path="img/giokit/ios/add_package_giokit" />
 
 5. 在 TARGETS -> Build Settings -> Other Linker Flags 中添加 -ObjC
 

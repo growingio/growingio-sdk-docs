@@ -5,6 +5,7 @@ title: 初始化配置
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ImageLoader from '@site/src/components/ImageLoader';
 
 在初始化过程中，SDK 会接收一个由用户传入的默认配置 `Configuration`，配置相关说明如下表：
 
@@ -119,7 +120,7 @@ pod 'GrowingAnalytics/DISABLE_IDFA'
 
 去掉原先集成的 **GrowingAutotracker_cdp**(无埋点) / **GrowingTracker_cdp**(埋点) Package，选择对应的 **GrowingAutotracker_cdp_NoIDFA**(无埋点) / **GrowingTracker_cdp_NoIDFA**(埋点)  Package
 
-![add Package NoIDFA](./../../static/img/ios/add_package_autotracker_noidfa.png)
+<ImageLoader path="img/ios/add_package_autotracker_noidfa" />
 
   </TabItem>
 </Tabs>

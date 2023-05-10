@@ -8,11 +8,13 @@ author_image_url: https://avatars.githubusercontent.com/u/16042670?v=4
 tags: [iOS, AutoreleasePool, 编译器优化]
 ---
 
+import ImageLoader from '@site/src/components/ImageLoader';
+
 main.m 中的 AutoreleasePool
 某次偶然发现main.m里的 main 函数有所变化，经过一番查询[1]，发现是从 Xcode 11 开始。
-![autoreleasepool](../static/blog/autoreleasepool/autoreleasepool-1.png)
+<ImageLoader path="blog/autoreleasepool/autoreleasepool-1" />
 而在此之前， main 函数的实现为：
-![autoreleasepool](../static/blog/autoreleasepool/autoreleasepool-2.png)
+<ImageLoader path="blog/autoreleasepool/autoreleasepool-2" />
 
 <!--truncate-->
 
@@ -260,7 +262,7 @@ LLVM 编译优化是通过 Pass 实现的，查看当前 Optimization Level 对�
 // where X can be Os,O1,O2,O3 and O4
 clang -OX -mllvm -debug-pass=Arguments foo.c
 ```
-![autoreleasepool](../static/blog/autoreleasepool/autoreleasepool-3.png)
+<ImageLoader path="blog/autoreleasepool/autoreleasepool-3" />
 上图是Faster[-O2]对应的 Pass Arguments，可以看到其中有一项是-tailcallelim[10]，这个 Pass 针对的就是尾调用优化。
 
 ```txt

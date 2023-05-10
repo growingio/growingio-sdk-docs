@@ -3,6 +3,8 @@ sidebar_position: 4
 title: Protobuf 模块
 ---
 
+import ImageLoader from '@site/src/components/ImageLoader';
+
 GrowingIO SDK protobuf 数据模块使用 [Google Protobuf](https://developers.google.cn/protocol-buffers) 格式保存和上传事件数据。
 
 :::caution
@@ -85,4 +87,4 @@ GrowingTracker.startWithConfiguration(this,
 
 ### 示例
 数据结果如下图所示：
-![数据上传样式](/img/modules/growingio_protobuf_module.jpg)
+<ImageLoader path="img/android/modules/growingio_protobuf_module.jpg" />
