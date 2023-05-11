@@ -18,6 +18,7 @@ title: 服务端 常见问题
 ### 1. 报错如下图所示:显示host连接超时，但是在我们自己的demo使用客户的host发数据是没有问题?
 Failed to connect xxxxxx, cause connect timed out
 <ImageLoader path="img/question/failedtoconnect" />
+
 **A:** 解决方法：删除或注释 配置文件中的默认配置proxy设置
 
 ### 2. 在pom中添加依赖时，为什么找不到 jar包？

@@ -19,6 +19,7 @@ Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数�
 
 ##### 创建
 <ImageLoader path="img/common/createapplication" />
+
 ##### 查看
 <ImageLoader path="img/common/showappdatasourceid" />
 

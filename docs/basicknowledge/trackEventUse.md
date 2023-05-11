@@ -38,10 +38,13 @@ import TabItem from '@theme/TabItem';
 
 **埋点方案规划：**
 <ImageLoader path="img/basicKnowledge/metricplanning" />
+
 **属性规划：**
 <ImageLoader path="img/basicKnowledge/eventVariable" />
+
 **维度表规划：**
 <ImageLoader path="img/basicKnowledge/dimensionTable" />
+
 :::info 说明
 | 名词 | 说明 |
 | :-: | :---- |
@@ -65,6 +68,7 @@ import TabItem from '@theme/TabItem';
 #### 事件属性创建示例
 
 <ImageLoader path="img/basicKnowledge/eventVariableCreate" />
+
 :::info 提示
 事件属性的配置项“关联维度表”为非必选项，需要与您的埋点方案相对应。<br/>
 **每个事件属性最多只能关联一个维度表**<br/>
@@ -80,6 +84,7 @@ import TabItem from '@theme/TabItem';
 
 **维度表创建示例**：
 <ImageLoader path="img/basicKnowledge/dimensionCreate" />
+
 :::caution 注意
 维度表非必须项。具体根据您的业务需求和规划方案决定是否需要使用该功能。
 :::
@@ -87,6 +92,7 @@ import TabItem from '@theme/TabItem';
 #### 埋点事件创建示例
 
 <ImageLoader path="img/basicKnowledge/eventCreate" />
+
 :::info 提示
 埋点事件的配置项“关联事件属性”为非必选项，需要与您的埋点方案相对应。<br/>
 如果埋点方案中埋点事件没有对应的属性，则无需关联。<br/>
