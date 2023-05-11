@@ -3,8 +3,6 @@ slug: /debugverify
 title: Debug 和校验
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 SDK集成和代码实施后，我们当然需要对数据的正确性和是否成功上传进行校验。
 
 ## 校验工作分为三步完成

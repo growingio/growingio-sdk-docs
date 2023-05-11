@@ -8,8 +8,6 @@ author_image_url: https://avatars.githubusercontent.com/u/23634208?v=4
 tags: [JS， Error，Catch]
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 众所周知，几乎没有一个开发者能够做到开发时100%没有Bug，那么一旦我们的产品出了问题，快速定位问题是迫切需要做的事。好在我们在Web场景中Js运行出现异常不会导致JS引擎崩溃，最多只会终止当前执行的任务。然后逐级上抛错误，类似冒泡事件，在遇到最近的一层catch时停止上抛，如果中间都没有错误处理的catch时，直至window对象结束。那么今天就与大家一起探讨一下我们在Web场景中的异常错误数据如何收集以及如何上报。
 <!--truncate-->
 ### 错误类型

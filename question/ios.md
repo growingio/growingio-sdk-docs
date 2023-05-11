@@ -3,8 +3,6 @@ sidebar_position: 3
 title: iOS 常见问题
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 ### 1. 如何禁用GrowingIO iOS SDK 调用获取 IDFA 相关代码？
 **A：**使用场景：三方监测机构扫描APP或APP上架发现 GIO SDK 有调用有获取IDFA 相关代码（如儿童类应用），且APP中又没有使 用IDFA时（此时IDFA不会被作为访问用户ID）。<br/>
 只添加依赖库就可以实现，原理是: 依赖库中定义有宏，SDK会根据宏判断，是否执行获取代码

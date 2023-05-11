@@ -5,7 +5,6 @@ title: 如何集成
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ImageLoader from '@site/src/components/ImageLoader';
 
 ### 集成准备
 #### 获取 SDK 初始化必传参数：Account ID、DataSource ID、URL Scheme、Host

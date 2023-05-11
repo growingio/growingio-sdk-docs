@@ -8,8 +8,6 @@ author_image_url: https://avatars.githubusercontent.com/u/16042670?v=4
 tags: [iOS, AutoreleasePool, 编译器优化]
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 main.m 中的 AutoreleasePool
 某次偶然发现main.m里的 main 函数有所变化，经过一番查询[1]，发现是从 Xcode 11 开始。
 <ImageLoader path="blog/autoreleasepool/autoreleasepool-1" />

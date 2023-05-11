@@ -5,7 +5,6 @@ title: 如何集成
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ImageLoader from '@site/src/components/ImageLoader';
 
 ## 集成 GioKit
 

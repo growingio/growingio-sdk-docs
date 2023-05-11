@@ -3,8 +3,6 @@ sidebar_position: 2
 title: Android 常见问题
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 ### 1. 集成SDK后本地运行打包没问题，线上自动化打包发现SDK报错，该怎么处理？
 **A:** 需要排查线上打包环境与本地环境哪里不一致，并非SDK 的问题
 

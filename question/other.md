@@ -3,8 +3,6 @@ sidebar_position: 6
 title: 三方框架 常见问题
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 ### 1. 第三方框架采集SDK关系与原生无埋点SDK、埋点SDK调用关系时怎样的？
 **A:**第三方框架采集SDK实现中有桥接通信代码，将第三方框架SDK采集的埋点数据转发至原生埋点SDK，由原生埋点SDK 上报至采集服务器。
 <ImageLoader path="img/question/otherSDK-originSDK" />

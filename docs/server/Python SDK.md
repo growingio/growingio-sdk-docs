@@ -3,8 +3,6 @@ sidebar_position: 3
 title: Python SDK
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 ### 版本记录
 |    版本    | 说明 |  日期  |
 |:-------:| :----:  |  :-------:  |

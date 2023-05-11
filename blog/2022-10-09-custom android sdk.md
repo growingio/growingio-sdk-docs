@@ -8,8 +8,6 @@ author_image_url: https://avatars.githubusercontent.com/u/7134104?v=4
 tags: [sdk, android, custom]
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 为了满足不同客户的使用需求，我们的SDK可以通过集成不同的模块实现功能的自定义。比如说以下场景：
 
 1. 不熟悉Android开发或只想快速集成

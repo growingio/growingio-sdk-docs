@@ -3,8 +3,6 @@ title: 集成
 sidebar_position: 1
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 ### 集成准备
 
 #### 获取SDK初始化必传参数：AccountID、DataSourceID、Host

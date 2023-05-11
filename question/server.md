@@ -3,8 +3,6 @@ sidebar_position: 7
 title: 服务端 常见问题
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 ### 1. 日志中可以看到埋点数据，但是平台或数据库中查不到数据，是哪里的问题？
 **A:** 服务端SDK 开启日志模式时，不向服务端发送数据。需要关闭日志模式。
 

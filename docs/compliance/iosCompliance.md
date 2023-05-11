@@ -3,8 +3,6 @@ sidebar_position: 2
 title: iOS SDK 合规说明
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 ## 隐私协议
 
 根据[工业和信息化部关于开展纵深推进APP侵害用户权益专项整治行动](http://www.gov.cn/zhengce/zhengceku/2020-08/02/content_5531975.htm)和 [User Privacy and Data Use](https://developer.apple.com/app-store/user-privacy-and-data-use/)

@@ -5,7 +5,6 @@ title: 微信小程序
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ImageLoader from '@site/src/components/ImageLoader';
 
 ### 集成准备
 

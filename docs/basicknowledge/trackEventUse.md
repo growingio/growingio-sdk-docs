@@ -5,7 +5,6 @@ title: 埋点使用规范
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ImageLoader from '@site/src/components/ImageLoader';
 
 ## 规范步骤
 
