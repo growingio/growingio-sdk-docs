@@ -27,6 +27,7 @@ title: Android 常见问题
 ### 6. Android SDK 包文件同步报错，或报找不到包文件，包文件不存在，该怎么处理？
 Could not HEAD. Received status code 400 from server: Bad Request<br/>
 <ImageLoader path="img/question/BadRequest" /><br/>
+
 **A:** 在开发工具中按照如下步骤进行操作<br/>
 1. Preferences->Appearance & Behavior->System Settings->HTTP Proxy 设置为 No proxy<br/>
 2. 去掉项目中 gradle.properties 里的代理配置信息<br/>

@@ -22,6 +22,7 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 :::
 ##### 创建
 <ImageLoader path="img/common/createapplication" />
+
 ##### 查看
 <ImageLoader path="img/common/showappdatasourceid" />
 
