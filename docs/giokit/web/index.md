@@ -4,7 +4,6 @@ title: 功能介绍
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import ImageLoader from '@site/src/components/ImageLoader';
 
 ## 简介
 

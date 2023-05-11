@@ -3,8 +3,6 @@ sidebar_position: 1
 title: JAVA SDK
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 ### 版本记录
 
 |    版本    | 说明 |  日期  |

@@ -5,7 +5,6 @@ title: 广告模块
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ImageLoader from '@site/src/components/ImageLoader';
 
 广告模块包括激活事件和深度链接 (DeepLink)，激活事件是当用户应用第一次打开时有且仅发一次的事件，深度链接是提供客户通过活动网页等形式提供 App 渠道的跳转和下载。 在深度链接技术场景中，可以直接唤起 App 并跳转至指定页面，同时根据条件判断用户跳转路径，当用户已经安装 App 时可以直接唤起 App，当用户未安装 App 时会引导用户下载 App。
 

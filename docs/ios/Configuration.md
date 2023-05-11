@@ -5,7 +5,6 @@ title: 初始化配置
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ImageLoader from '@site/src/components/ImageLoader';
 
 在初始化过程中，SDK 会接收一个由用户传入的默认配置 `Configuration`，配置相关说明如下表：
 

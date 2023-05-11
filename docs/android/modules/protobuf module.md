@@ -3,8 +3,6 @@ sidebar_position: 4
 title: Protobuf 模块
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 GrowingIO SDK protobuf 数据模块使用 [Google Protobuf](https://developers.google.cn/protocol-buffers) 格式保存和上传事件数据。
 
 :::caution

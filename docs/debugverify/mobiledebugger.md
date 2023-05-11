@@ -3,8 +3,6 @@ sidebar_position: 1
 title: Mobile Debugger
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 GrowingIO 的移动端的SDK支持 Mobile Debugger 工具，可进行调试和校验。
 
 ## 启动 Mobile Debugger

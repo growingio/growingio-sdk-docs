@@ -8,8 +8,6 @@ author_image_url: https://avatars.githubusercontent.com/u/7134104?v=4
 tags: [scripts, gradle]
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 随着 Jcenter 服务的即将过期，我们需要一个新的仓库来发行我们的SDK.于是我们找上了 MavenCentral，并针对如何在MavenCentral提交包写了这篇文章。
 
 <!--truncate-->

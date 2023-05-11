@@ -3,8 +3,6 @@ sidebar_position: 1
 title: SDK 共性问题
 ---
 
-import ImageLoader from '@site/src/components/ImageLoader';
-
 ### 1. Release 版本与 Hotfix 版本怎么区别？
 **A：**release 版本是正式版本；例如：release-3.3.1；hotfix版本是非正式版本，是所在版本的 Bug 紧急修复版本；Android 的 hotfix 版本对应带有日期的SNAPSHOT版本，例如：release-3.2.3-09141-SNAPSHOT； 下一个release 版本会包含上个版本的所有 hotfix 版本的内容。
 

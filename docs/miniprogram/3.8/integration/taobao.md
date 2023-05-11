@@ -5,7 +5,6 @@ title: 淘宝小程序
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import ImageLoader from '@site/src/components/ImageLoader';
 
 目前淘宝小程序仅支持原生开发方式。如您使用了其他开发方式，请咨询我们。
 
