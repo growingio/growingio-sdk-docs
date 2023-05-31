@@ -5,6 +5,13 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
+### V3.8.5 - 2023/05/30
+
+- 🐞 修复多次调用 setUserId 且值为数字格式时更新 session 逻辑错误的问题。
+- 🐞 修复使用 iframe 内外同域且不同 projectId 时，visit 多发的问题。
+- 🐞 修复 Native 下 webview 设置 setDomStorageEnabled 为 false时，SDK初始化异常的问题。
+- 🌟 优化domain判断逻辑。
+
 ### V3.8.4 - 2023/04/27
 
 - 🐞 修复 Native 中初始化时会触发clearUserId的问题。
