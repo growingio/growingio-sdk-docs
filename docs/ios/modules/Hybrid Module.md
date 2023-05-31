@@ -33,7 +33,7 @@ pod 'GrowingAnalytics/Hybrid'
 
 添加 **GrowingModule_Hybrid** Package
 
-![add Package](./../../../static/img/ios/add_package_hybrid.png)
+<ImageLoader path="img/ios/add_package_hybrid" />
 
   </TabItem>
 </Tabs>

@@ -90,4 +90,4 @@ GrowingTracker.startWithConfiguration(this,
 
 ### 示例
 数据结果如下图所示：
-![数据上传样式](/img/modules/growingio_encoder_module.jpg)
+<ImageLoader path="img/android/modules/growingio_encoder_module.jpg" />

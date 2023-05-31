@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Android 常见问题
 ---
+
 ### 1. 集成SDK后本地运行打包没问题，线上自动化打包发现SDK报错，该怎么处理？
 **A:** 需要排查线上打包环境与本地环境哪里不一致，并非SDK 的问题
 
@@ -21,11 +22,12 @@ title: Android 常见问题
 **A:**
 初始化失败的时候，会返回有个EmptyGrowingIO,此时调用就会返回null。看下初始化growing的log日志，失败会在在log中输出有对应的原因。
 已知的失败原因有如下代码判断：<br/>
-![android init error](../static/img/question/androidiniterror.png)
+<ImageLoader path="img/question/androidiniterror" />
 
 ### 6. Android SDK 包文件同步报错，或报找不到包文件，包文件不存在，该怎么处理？
 Could not HEAD. Received status code 400 from server: Bad Request<br/>
-![Bad Request](../static/img/question/BadRequest.png)<br/>
+<ImageLoader path="img/question/BadRequest" /><br/>
+
 **A:** 在开发工具中按照如下步骤进行操作<br/>
 1. Preferences->Appearance & Behavior->System Settings->HTTP Proxy 设置为 No proxy<br/>
 2. 去掉项目中 gradle.properties 里的代理配置信息<br/>

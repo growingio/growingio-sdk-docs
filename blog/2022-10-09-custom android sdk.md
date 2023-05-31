@@ -259,7 +259,7 @@ DemoAutotracker.start(this)
 
 在 GrowingIO SDK 中，模块加载具有唯一性——每一个输入源仅能注册一个模块，且该模块会被后注册的模块覆盖。
 
-![custom module](/img/custom_module.png)
+<ImageLoader path="blog/custom_android_sdk/custom_module" />
 
 ### 如何自定义一个模块
 

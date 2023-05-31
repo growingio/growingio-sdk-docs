@@ -16,70 +16,92 @@ GioKit 代码已托管在 [Github](https://github.com/growingio/growingio-sdk-io
 **请在 [iOS SDK](/docs/ios/Introduce) 基础上使用 GioKit**
 :::
 
-### 1. Cocoapods 集成
-在 `Podfile` 中添加依赖库
-:::info
-GrowingIO iOS SDK 版本在 **3.2.1 及以上**, 请添加
+<Tabs>
+  <TabItem value="cocoapods" label="Cocoapods集成" default>
+
+在您的 Podfile 文件中添加
+
 ```ruby
 pod 'GrowingToolsKit', :configurations => ['Debug']
 ```
-::::
-
-:::info
-GrowingIO iOS SDK 版本在 **3.2.0 及以下**，请添加：
-
-```ruby
-pod 'GrowingToolsKit/SDK30202', :configurations => ['Debug']
-```
-:::
-:::info
-GrowingIO iOS SDK 版本是 **2.x**，请添加：
-
-```ruby
-pod 'GrowingToolsKit/SDK2nd', :configurations => ['Debug']
-```
-:::
-:::caution 注意
-以上根据相应的 GrowingIO iOS SDK 选择对应的依赖，请不要一起使用！！
-:::
-
 打开终端，切换到项目目录
 执行 `pod install` 或 `pod update`
 
-### 2. 初始化
+  </TabItem>
+ <TabItem value="swiftPM" label="Swift Package Manager集成">
 
-在您的`AppDelegate.m`导入 GrowingToolsKit
+1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
-```objective-c
+<ImageLoader path="img/ios/add_package_dependencies" />
+
+2. 搜索 GrowingToolsKit SDK GitHub 地址
+
+```
+https://github.com/growingio/growingio-sdk-ios-toolskit.git
+```
+
+3. 并设置 Dependency Rule 为 Branch master，Add to Project 选择您所需要的 Project
+
+<ImageLoader path="img/giokit/ios/set_dependency_rule" />
+
+4. 点击下方的 Add Package 按钮，选择 GrowingToolsKit，再次点击 Add Package 按钮
+
+<ImageLoader path="img/giokit/ios/add_package_giokit" />
+
+5. 在 TARGETS -> Build Settings -> Other Linker Flags 中添加 -ObjC
+
+
+  </TabItem>
+</Tabs>
+
+## 初始化
+
+<Tabs>
+  <TabItem value="cocoapods" label="Cocoapods集成" default>
+
+在您的 `AppDelegate.m` 导入 GrowingToolsKit
+
+```objc
 #ifdef DEBUG
 #import <GrowingToolsKit/GrowingToolsKit.h>
 #endif
 ```
 
-并将以下代码加在您的`AppDelegate`的`application:didFinishLaunchingWithOptions:`方法中
+并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中
 
-```objective-c
+```objc
 #ifdef DEBUG
     [GrowingToolsKit start];
 #endif
 ```
+
+  </TabItem>
+ <TabItem value="swiftPM" label="Swift Package Manager集成">
+
+在您的 `AppDelegate.swift` 导入 GrowingToolsKit
+
+```swift
+#if DEBUG
+import GrowingToolsKit
+#endif
+```
+
+并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中
+
+```swift
+#if DEBUG
+    GrowingToolsKit.start()
+#endif
+```
+
+  </TabItem>
+</Tabs>
 
 :::caution 注意
 
 为了避免在正式环境下出现不必要的错误，请务必只在 Debug 环境下使用 GioKit 工具。
 :::
 
-### 3.开启性能监控
+## 开启性能监控
 
 如您需要开启性能相关监控，请前往 GioKit -> 通用设置 开启所需监控功能。
-
-:::caution 注意
-
-SDK 2.x 默认采集模式与性能监控插件不兼容，需要在 main 函数添加代码：
-
-```objectivec
-// SDK 2.0 GrowingAspectModeSubClass 与性能监控插件不兼容
-[Growing setAspectMode:GrowingAspectModeDynamicSwizzling];
-```
-
-:::

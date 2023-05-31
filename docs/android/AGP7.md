@@ -81,6 +81,7 @@ plugins {
 | Extension                    | 参数类型         | 是否必填 | 默认值 | 说明 |  版本 |
 | :-------------------------   | :------         | :----:  |:------  |:------| --------------------------   |
 | `logEnabled`                 | `Boolean`       | 否      | `false`  | 编译时是否输出log日志          |  |
+| `skipDependencyCheck`        | `Boolean`       | 否      | `false`  | 编译时检测当前project是否配置SDK依赖（模块中依赖时配置为true）          |  |
 | `includePackages`            | `Array<String>` | 否      | `null`   | 需要额外包含编译的包名          |  |
 | `excludePackages`            | `Array<String>` | 否      | `null`   | 需要跳过编译的包名             |  |
 

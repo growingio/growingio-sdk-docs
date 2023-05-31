@@ -12,7 +12,7 @@ pod 'GrowingAnalytics/DISABLE_IDFA'
 
 ### 2. iOS SDK pod install 提示 could not find compatible versions，该怎么处理？
 如图: <br/>
-![noversions](../static/img/question/noversions.png)
+<ImageLoader path="img/question/noversions" />
 
 **A：** 按照提示执行命令，或切换网络环境，大部分是网络环境问题无法下砸依赖。
 
