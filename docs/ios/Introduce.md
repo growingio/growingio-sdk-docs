@@ -56,9 +56,13 @@ pod 'GrowingAnalytics-cdp/Autotracker'
 https://github.com/growingio/growingio-sdk-ios-autotracker.git
 ```
 
-3. 并设置 Dependency Rule 为 Branch master，Add to Project 选择您所需要的 Project
+3. 并设置 Dependency Rule 为 Exact Version，输入要使用的 SDK 版本，Add to Project 选择您所需要的 Project
 
 <ImageLoader path="img/ios/set_dependency_rule" />
+
+:::info
+我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本
+:::
 
 4. 点击下方的 Add Package 按钮，选择 GrowingAutotracker_cdp，再次点击 Add Package 按钮
 
@@ -213,7 +217,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ### 查看集成效果
 运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.5`  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.x.x`  
 则说明 SDK 已经集成成功。
 
 若在初始化中 `debugEnabled` 设置为 YES，打开了 Debug，则可以在日志中看到每个事件的 log 日志输出。
@@ -258,9 +262,13 @@ pod 'GrowingAnalytics-cdp/Tracker'
 https://github.com/growingio/growingio-sdk-ios-autotracker.git
 ```
 
-3. 并设置 Dependency Rule 为 Branch master，Add to Project 选择您所需要的 Project
+3. 并设置 Dependency Rule 为 Exact Version，输入要使用的 SDK 版本，Add to Project 选择您所需要的 Project
 
 <ImageLoader path="img/ios/set_dependency_rule" />
+
+:::info
+我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本
+:::
 
 4. 点击下方的 Add Package 按钮，选择 GrowingTracker_cdp，再次点击 Add Package 按钮
 
@@ -415,7 +423,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ### 查看集成效果
 运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.3.5`  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.x.x`  
 则说明 SDK 已经集成成功。
 
 若在初始化中 `debugEnabled` 设置为 YES，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
