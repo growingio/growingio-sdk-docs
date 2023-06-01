@@ -7,7 +7,7 @@ title: 数据转发模块
 
 目前已支持 Google Analytics 3 和 Firebase Analytics 两家数据转发，后续会继续支持。
 
-采集 SDK 版本 >=3.4.1 且只适用于无埋点SDK
+采集 SDK 版本 >=3.4.0 且只适用于无埋点SDK
 
 :::caution
 适用于应用中已经集成 GA 或者 FA 分析SDK的项目；
@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| adapter  | 只适用于无埋点SDK<br />需要手动集成 | 无 | 无 | >=3.4.1 |
+| adapter  | 只适用于无埋点SDK<br />需要手动集成 | 无 | 无 | >=3.4.0 |
 
 ### 依赖方式
 <Tabs
@@ -38,10 +38,10 @@ import TabItem from '@theme/TabItem';
 ```groovy
 dependencies {
   // 支持 Firebase Analytics
-  implementation 'com.growingio.android:analytics-fa:3.4.1'
+  implementation 'com.growingio.android:analytics-fa:3.4.0'
 
   // 支持 Google Analytics 3
-  implementation 'com.growingio.android:analytics-ga:3.4.1'
+  implementation 'com.growingio.android:analytics-ga:3.4.0'
 }
 ```
 </TabItem>
@@ -62,7 +62,7 @@ dependencies {
 </Tabs>
 
 :::caution
-数据转发模块不会随着SDK版本升级，只有固定的版本号 ==3.4.1。
+数据转发模块不会随着SDK版本升级，只有固定的版本号 ==3.4.0。
 :::
 
 ### 使用方式
