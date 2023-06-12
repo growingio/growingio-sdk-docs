@@ -11,7 +11,7 @@ title: Flutter Aspect 集成
 然后再根据你开发使用的 Flutter 版本，切换到相应的 tag 分支上。
 
 :::info
-目前支持 Flutter SDK 版本为 [v3.3.0](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.3.0)，[v3.3.9](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.3.9)，[v3.7.0](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.0)，[v3.7.2](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.2),[v3.7.9](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.9).
+目前支持 Flutter SDK 版本为 [v3.3.0](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.3.0)，[v3.3.9](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.3.9)，[v3.7.0](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.0)，[v3.7.2](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.2)，[v3.7.8](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.8)，[v3.7.9](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.7.9)，[v3.10.4](https://github.com/growingio/growingio-dart-frontend/tree/feat/3.10.4).
 
 后续将随着Flutter SDK 的更新会持续推出新的版本，若需要支持特定的 Flutter 版本，请在 [Github Issues](https://github.com/growingio/growingio-dart-frontend/issues) 中提交请求或者向客户成功经理咨询方案。
 :::
@@ -36,7 +36,7 @@ import TabItem from '@theme/TabItem';
 
 ### 访问源码
 请访问我们的 [Growingio-Dart-Frontend](https://github.com/growingio/growingio-dart-frontend)，该项目的不同分支代表不同的 Flutter 版本，请根据自己项目的flutter版本下载对应tag的 `frontend_server.dart.snapshot`.
-比如说 flutter 3.3.9版本，需要下载 tag 3.3.9 下的 `frontend_server.dart.snapshot` 文件。
+比如说 flutter 3.10.4 版本，需要下载 tag 3.10.4 下的 `frontend_server.dart.snapshot` 文件。
 
 > 具体位置为 `/lib/flutter_frontend_server/frontend_server.dart.snapshot`
 
@@ -89,5 +89,4 @@ git reset --hard <tag>
 
 rm -rf bin/cache  ## 用来删除缓存 
 ```
-
 
