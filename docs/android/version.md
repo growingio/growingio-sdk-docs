@@ -5,9 +5,9 @@ sidebar_position: 0
 ----
 
 <details>
-<summary>Android各个版本对应关系</summary>
+<summary>GrowingIO Android SDK 各个版本对应关系</summary>
 
-| Android SDK    | SDK Plugin    | Giokit      | SDK Demo |
+| GrowingIO SDK  | SDK Plugin    | Giokit      | SDK Demo |
 | :--------------| :----------:  | :--------:  | :----:   |
 | 3.5.0          | 3.5.0         | 1.4.0       | 1.0.0    |
 | 3.4.0-3.4.7    | 3.4.0-3.4.7   | 1.0.0-1.3.0 | ∅        |

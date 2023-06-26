@@ -82,7 +82,7 @@ import TabItem from '@theme/TabItem';
 
 ### 9. **setEventFilterInterceptor**
 
-事件过滤，该接口需要用户提供一个拦截器用于事件拦截的自定义化。
+事件过滤，该接口需要用户提供一个拦截器用于事件拦截的自定义化。**使用事件拦截器时请注意使用，不要过滤掉重要信息，防止数据采集信息丢失或者少采。**
 
 ```java
 // 声明一个事件过滤器，继承 `DefaultEventFilterInterceptor` 或 `EventFilterInterceptor`

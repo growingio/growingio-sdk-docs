@@ -7,7 +7,11 @@ Android SDK 提供了 [无埋点SDK](/docs/android/Introduce#集成无埋点sdk)
 * 埋点SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
 * 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
-无埋点SDK（包括埋点 SDK）代码已托管在 [Github](https://github.com/growingio/growingio-sdk-android-autotracker) 上，欢迎 star,fork 一波。
+:::tip 开源信息
+无埋点SDK（包括埋点 SDK）代码已在 [Github](https://github.com/growingio/growingio-sdk-android-autotracker) 上开源，可以详细查看代码实现细节，欢迎 star, fork。 <br/>
+同时其 [SDK DEMO](https://github.com/growingio/growingio-sdk-android-demo) 也已正式发布, 该 Demo 介绍了大部分SDK中所具有的功能和使用方法，欢迎体验使用。
+:::
+
 
 ## 集成准备
 ### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
