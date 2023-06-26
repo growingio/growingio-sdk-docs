@@ -3,11 +3,47 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+
+<details>
+<summary>GrowingIO Android SDK 各个版本对应关系</summary>
+
+| GrowingIO SDK  | SDK Plugin    | Giokit      | SDK Demo |
+| :--------------| :----------:  | :--------:  | :----:   |
+| 3.5.0          | 3.5.0         | 1.4.0       | 1.0.0    |
+| 3.4.0-3.4.7    | 3.4.0-3.4.7   | 1.0.0-1.3.0 | ∅        |
+| 3.1.0-3.3.6    | 3.1.0-3.3.6   | ∅           | ∅        |
+
+</details>
+
+## RELEASE-3.5.0
+
+### Features
+
+- startWithConfiguration: 初始化时传入 Context 替换原有的Application，Context 可以为 Application 或者 Activity([#193](https://github.com/growingio/growingio-sdk-android-autotracker/pull/193))；
+- 删除 deprecated 过期代码，包括以下内容：`FilterEventType`, `FilterFieldType`, `EventAttrBuilder`, advert sdk api , `UploadExceptionEnabled`接口和 `EventFilterInterceptor` 过滤器的 `filterEventGroup` 接口；
+- 添加忽略View点击的接口： `ignoreViewClick(view,boolean)`;
+- 优化logger的对外输出；
+- 优化对ViewTree的监听，只有在需要曝光事件和获取截图的情况下进行监听；
+- 无埋点事件优化：滑动状态的控件发送VIEW_CHANGE事件，选中状态的控件textValue上报状态；
+-  增加初始化配置setImeiEnabled 默认 false
+
+### Bug Fixes
+
+- 修复在Android O 机型上截图出错的情况（截图时报错）；
+- 修复当中间 fragment 未被注入时导致 fragment 的 findParent 为空的问题；
+- 修复mobileDebugger logger日志循环接收发送的问题。
+
+:::note 
+
+ 标签:**[v3.5.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.5.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-06-21** 
+
+:::
+
 ## RELEASE-3.4.7
 
 1. 添加 GrowingIO Flutter SDK 模块，需要与[Growingio Flutter Plugin](https://growingio.github.io/growingio-sdk-docs/docs/framework/flutter)联合使用；
 2. 重命名 Protobuf 模块包名=> `com.growingio.android.protobuf`；
-3. 添加 CacheEventProvider，用于SDK初始化前存储需要发送的时间；
+3. 添加 CacheEventProvider，用于SDK初始化前存储需要发送的事件；
 4. 添加新Saas SDK，设置通用请求接口域名。
 
 :::note 

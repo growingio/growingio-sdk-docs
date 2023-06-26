@@ -3,6 +3,30 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+
+<details>
+<summary>GrowingIO Android SDK 各个版本对应关系</summary>
+
+| GrowingIO SDK  | SDK Plugin    | Giokit      | SDK Demo |
+| :--------------| :----------:  | :--------:  | :----:   |
+| 3.5.0          | 3.5.0         | 1.4.0       | 1.0.0    |
+| 3.4.0-3.4.7    | 3.4.0-3.4.7   | 1.0.0-1.3.0 | ∅        |
+| 3.1.0-3.3.6    | 3.1.0-3.3.6   | ∅           | ∅        |
+
+</details>
+
+## V1.4.0
+
+1. 添加Giokit 配置项，能够动态实现对Activity的绑定；
+2. 适配 GrowingIO SDK 3.5.0的API变化，删除过期API接口；
+3. 最低Java要求 11。
+
+:::note 
+
+ 标签:**[V1.4.0](https://github.com/growingio/giokit-android/releases/tag/V1.4.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-06-25** 
+
+:::
+
 ## V1.3.0
 
 Giokit V1.3.0 版本正式发布，包含以下功能：

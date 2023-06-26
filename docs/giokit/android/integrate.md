@@ -37,7 +37,7 @@ buildscript {
     }
     dependencies {
         // GioKit plugin
-        classpath "com.growingio.giokit:giokit-plugin:1.3.0"
+        classpath "com.growingio.giokit:giokit-plugin:1.4.0"
     }
 }
 
@@ -55,8 +55,8 @@ allprojects {
 ```groovy
 plugins {
     //...
-    id 'com.growingio.giokit' version "1.3.0" apply false //针对Cdp Sdk
-    id 'com.growingio.giokit.saas' version "1.3.0" apply false  //针对SaaS Sdk
+    id 'com.growingio.giokit' version "1.4.0" apply false //针对Cdp Sdk
+    id 'com.growingio.giokit.saas' version "1.4.0" apply false  //针对SaaS Sdk
     //以上二者根据相应的 GrowingIO Android SDK 选择对应的插件，请不要一起使用！！
 }
 ```
@@ -110,8 +110,8 @@ plugins {
 dependencies {
     ...
     // GioKit
-    debugImplementation "com.growingio.giokit:giokit:1.3.0"
-    releaseImplementation "com.growingio.giokit:giokit-no-op:1.3.0"
+    debugImplementation "com.growingio.giokit:giokit:1.4.0"
+    releaseImplementation "com.growingio.giokit:giokit-no-op:1.4.0"
 }
 ```
 
