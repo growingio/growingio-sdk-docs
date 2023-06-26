@@ -15,6 +15,18 @@ sidebar_position: 0
 
 </details>
 
+## V1.4.0
+
+1. 添加Giokit 配置项，能够动态实现对Activity的绑定；
+2. 适配 GrowingIO SDK 3.5.0的API变化，删除过期API接口；
+3. 最低Java要求 11。
+
+:::note 
+
+ 标签:**[V1.4.0](https://github.com/growingio/giokit-android/releases/tag/V1.4.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-06-25** 
+
+:::
+
 ## V1.3.0
 
 Giokit V1.3.0 版本正式发布，包含以下功能：

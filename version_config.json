@@ -33,7 +33,7 @@
   },
   {
     "name": "GioKit Android",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "releaseUrl": "https://api.github.com/repos/growingio/giokit-android/releases",
     "distPath": "docs/giokit/android/",
     "fileName": "version.md",
