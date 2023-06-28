@@ -60,15 +60,18 @@ flutter clean
 <TabItem value="automatic">
 
 ### 下载脚本
-请下载我们的帮助脚本 [growingio_flutter_script.sh](https://github.com/growingio/growingio-sdk-flutter/releases/download/v1.0.0/growingio_flutter_script.sh)，运行后脚本会自动帮助你覆盖 Flutter SDK 中需要替换的文件。
+请下载我们的帮助脚本 [growingio_flutter_script.sh](https://raw.githubusercontent.com/growingio/growingio-dart-frontend/master/growingio_flutter_script.sh)，运行后脚本会自动帮助你覆盖 Flutter SDK 中需要替换的文件。
 
 ```shell
 $ chmod 777 growingio_flutter_script.sh
 $ ./growingio_flutter_script.sh
 ```
 
+:::info
+如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载
 
-> 需要将环境变量中 Flutter 路径指向 github 下拉取下来的源代码位置。
+需要将环境变量中 Flutter 路径指向 github 下拉取下来的源代码位置
+:::
 
 ### 清除缓存
 运行 `growingio_flutter_script.sh` 脚本后需要清理缓存
