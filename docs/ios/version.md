@@ -3,6 +3,29 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+# [3.5.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.8...3.5.0) (2023-07-06)
+
+### Bug Fixes
+
+* CTTelephonyNetworkInfo 偶现崩溃 ([#262](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/262)) ([8145225](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/81452255f24dda1597a930355e6962843df757a9))
+* priority inversion issue by Xcode14 thread performance checker ([#249](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/249)) ([7283901](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/728390102226ea22d9107fb076e9d9c98bc559e2))
+* priority inversion issue in GrowingSRWebSocket by Xcode14 ([#252](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/252)) ([d3201a0](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/d3201a0799440e7c5315ea20e01e9777268d484c))
+* Remove usage of deprecated Endian with CFSwap ([b24956c](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/b24956c32e1a8e1c39b705cb0b83d56d0c53ceac))
+* SPM 无法通过 exact version 集成 ([#269](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/269)) ([c007055](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/c0070554b65550a2738ae2fe9627221db56cc661))
+* swift project building error about 'Include of non-modular header inside framework module' ([#251](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/251)) ([4ad2838](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4ad2838fb4dd0c926d021d8350eb13688eb8b2c0))
+* verify deep link host ([#255](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/255)) ([bc096a2](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/bc096a267c54a6e20b16183354363d25218e0757))
+* 修复特殊场景下，每当初始化 SDK，ASAFetcher 都会 startFetch (Advert) ([#247](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/247)) ([df9c88b](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/df9c88b04e1bdebaaf836d1ffe9d851b5b1eec30))
+
+### Features
+
+* Protobuf 模块支持 SwiftPM 集成 ([#248](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/248)) ([a643854](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a6438543deec2c04059fa8f849f134edb016e770)), closes [#251](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/251)
+* support macOS ([#244](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/244)) ([c1a332a](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/c1a332af6444a067830fab455ef3d0fe5b83e6d7))
+* 无埋点支持 UISlider，且 UISlider/UISwitch 为 VIEW_CHANGE 事件 ([#258](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/258)) ([92bc335](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/92bc33522e1d8190349406d3fb62c1df0923683a))
+
+
+
+
+
 ## [3.4.8](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.7...3.4.8) (2023-03-31)
 
 ### Features
