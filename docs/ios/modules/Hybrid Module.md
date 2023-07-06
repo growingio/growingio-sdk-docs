@@ -22,6 +22,8 @@ WebJS 3.8：[Hybrid内嵌页打通插件](/docs/webjs/3.8/plugins#hybrid内嵌�
 <Tabs>
   <TabItem value="cocoapods" label="Cocoapods集成" default>
 
+在您的 Podfile 文件中添加
+
 ```c
 pod 'GrowingAnalytics/Hybrid'
 ```
