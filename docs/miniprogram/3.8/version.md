@@ -5,6 +5,13 @@ title: 版本记录
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
+### V3.8.16 - 2023/07/13
+
+- 🐞 修复关闭数据采集开关，事件时长计时器未清除的问题。
+- 🐞 修复动态修改无埋点配置不生效的问题。
+- 🌟 优化初始化配置项host处理逻辑。
+- 🎉 新增京东小程序的支持。
+
 ### V3.8.15 - 2023/04/27
 
 - 🐞 修复进入小程序参数带中文时query会被encode导致平台解析错误的问题。
