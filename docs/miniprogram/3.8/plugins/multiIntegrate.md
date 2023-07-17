@@ -14,7 +14,7 @@ title: 多项目分包打通
 #### 下载集成引入
 
 - 下载插件包并复制至项目中：
-  **<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.15/plugins/gioMultiIntegrate.js></font>**<br/>
+  **<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.16/plugins/gioMultiIntegrate.js></font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 - 引入插件
