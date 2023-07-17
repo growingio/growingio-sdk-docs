@@ -9,7 +9,6 @@ SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-minip
 
 - 🐞 修复关闭数据采集开关，事件时长计时器未清除的问题。
 - 🐞 修复动态修改无埋点配置不生效的问题。
-- 🐞 修复启动页参数url编码在事件中被decode的问题。
 - 🌟 优化初始化配置项host处理逻辑。
 - 🎉 新增京东小程序的支持。
 
