@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
 
 ```c
 dependencies:
-  growingio_autotracker_flutter_plugin: '1.0.1'
+  growingio_autotracker_flutter_plugin: '1.1.0'
 ```
 
 </TabItem>
@@ -44,7 +44,7 @@ dependencies:
 
 ```c
 dependencies:
-  growingio_tracker_flutter_plugin: '1.0.1'
+  growingio_tracker_flutter_plugin: '1.1.0'
 ```
 
 </TabItem>
@@ -58,7 +58,8 @@ dependencies:
 
   | Flutter 插件版本 |  Android SDK 版本范围   |  iOS SDK 版本范围  |
   | :-------------- | :----------------- | :------: |
-  | >= v1.0.0 | >= v3.4.7 | >= v3.4.8 |
+  | = v1.0.0 | >= v3.4.7 | >= v3.4.8 |
+  | = v1.1.0 | >= v3.5.0 | >= v3.5.0 |
 
 </details>
 

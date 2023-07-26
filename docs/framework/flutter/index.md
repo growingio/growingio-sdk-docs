@@ -10,8 +10,8 @@ Flutter SDK 提供了 [无埋点SDK](/docs/framework/flutter/index.md) 和 [埋�
 ## 版本记录
 |    版本    | 说明 |  日期  |
 |:-------:| :----  |  :-------:  |
+| V1.1.0 | 原生SDK升级至 3.5.0；<br/>修复由于Android SDK 升级导致的Android Flutter plugin 类的签名不匹配；<br/> 修复 iOS 从前台到挂起状态下直接杀死 App 异常崩溃捕获。 | 2023-07-26 |
 | V1.0.0 | 这是 Growingio Flutter sdk Library 的第一个正式版，它包含了以下内容：<br/>- 全新的 Flutter 埋点插件，能几乎支持原生的全部功能；<br/>- 通过 Flutter Aspect 支持SDK的无埋点功能；<br/>- 支持 Flutter 无埋点页面事件，能够基于 Navigation 路由机制发送页面事件；<br/>- 支持 Flutter 无埋点点击事件，能够在用户点击时发送点击事件；<br/>- 支持 Flutter 圈选，将可交互 Widget 与无埋点事件绑定。 | 2023-04-07 |
-| V1.0.1 | 修复 iOS 从前台到挂起状态下直接杀死 App 异常崩溃捕获 | 2023-07-26 |
 
 :::info
 **Dart SDK**： >=2.16.0 
