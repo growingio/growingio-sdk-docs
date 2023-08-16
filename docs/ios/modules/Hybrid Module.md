@@ -34,7 +34,8 @@ pod 'GrowingAnalytics/Hybrid'
 
 打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
 
-2. 在需要使用下列接口的文件中导入 `#import "GrowingHybridModule.h"`
+2. 一般情况下，Hybrid 将自动注入进行数据采集，如需额外配置，可在目标文件中，导入 `#import "GrowingHybridModule.h"`，并调用下列配置接口
+
 
   </TabItem>
   <TabItem value="swiftPM" label="Swift Package Manager集成">
@@ -43,7 +44,8 @@ pod 'GrowingAnalytics/Hybrid'
 
 <ImageLoader path="img/ios/add_package_hybrid" />
 
-2. 在需要使用下列接口的文件中导入 `import GrowingModule_Hybrid`
+2. 一般情况下，Hybrid 将自动注入进行数据采集，如需额外配置，可在目标文件中，导入 `import GrowingModule_Hybrid`，并调用下列配置接口
+
 
   </TabItem>
 </Tabs>
@@ -52,7 +54,7 @@ pod 'GrowingAnalytics/Hybrid'
 
 Hybrid 模块中提供了配置接口：
 
-#### 自动对所有 webView 注入 Hybrid SDK
+#### 1.自动对所有 webView 注入 Hybrid SDK
 
 | 配置接口            | 参数类型 | 默认值 | 说明                                   |
 | :------------------ | :------- | :----- | :------------------------------------- |
@@ -65,7 +67,7 @@ Hybrid 模块中提供了配置接口：
 ```
 
 
-#### 单个 webView 启用 Hybrid 注入 (白名单模式)
+#### 2.单个 webView 启用 Hybrid 注入 (白名单模式)
 
 `enableBridgeForWebView`<br/>
 在 autoBridgeEnabled 为 NO 时，对单个 webView 启用 Hybrid 注入，请在主线程调用
@@ -81,7 +83,7 @@ Hybrid 模块中提供了配置接口：
 ```
 
 
-#### 单个 webView 关闭 Hybrid 注入 (黑名单模式)
+#### 3.单个 webView 关闭 Hybrid 注入 (黑名单模式)
 
 `disableBridgeForWebView`<br/>
 在 autoBridgeEnabled 为 YES 时，对单个 webView 关闭 Hybrid 注入，请在主线程调用
@@ -97,7 +99,7 @@ Hybrid 模块中提供了配置接口：
 ```
 
 
-#### 查看 webView 是否可注入
+#### 4.查看 webView 是否可注入
 
 `isBridgeForWebViewEnabled`<br/>
 判断当前配置下，webView 是否可注入
@@ -113,7 +115,7 @@ BOOL enabled = [[GrowingHybridModule sharedInstance] isBridgeForWebViewEnabled:w
 ```
 
 
-#### 重置 Hybrid 注入
+#### 5.重置 Hybrid 注入
 
 `resetBridgeSettings`<br/>
 重置Hybrid注入配置，请在主线程调用
@@ -124,7 +126,7 @@ BOOL enabled = [[GrowingHybridModule sharedInstance] isBridgeForWebViewEnabled:w
 [[GrowingHybridModule sharedInstance] resetBridgeSettings];
 ```
 
-
+--------
 
 :::tip
 **1. H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通规则：**
