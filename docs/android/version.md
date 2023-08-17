@@ -15,6 +15,22 @@ sidebar_position: 0
 
 </details>
 
+## RELEASE-3.5.1
+
+### Feature
+
+- 增加初始化配置项 WebViewBridgeEnabled，控制所有 WebView 事件转发
+
+### Bug Fix
+
+- 修复Flutter圈选情况下 WebView 调用js不在主线程的问题
+
+:::note 
+
+ 标签:**[v3.5.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.5.1)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-08-16** 
+
+:::
+
 ## RELEASE-3.5.0
 
 ### Features

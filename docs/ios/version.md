@@ -3,6 +3,17 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+# [3.6.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.5.0...3.6.0) (2023-08-16)
+
+
+### Features
+
+* hybrid add enable/disable bridge APIs ([#272](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/272)) ([d273ca0](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/d273ca04f3b351192433376c244c4ceabcd9f21b))
+
+
+
+
+
 # [3.5.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.8...3.5.0) (2023-07-06)
 
 ### Bug Fixes
