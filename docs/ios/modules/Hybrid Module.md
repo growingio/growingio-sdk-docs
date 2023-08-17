@@ -52,7 +52,7 @@ pod 'GrowingAnalytics/Hybrid'
 
 ### 模块配置
 
-Hybrid 模块中提供了配置接口：
+Hybrid 模块中提供了配置接口（**SDK 版本需大于等于 3.6.0**）：
 
 #### 1.自动对所有 webView 注入 Hybrid SDK
 
