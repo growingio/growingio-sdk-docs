@@ -32,6 +32,7 @@ import TabItem from '@theme/TabItem';
 | `setRequireAppProcessesEnabled` | `boolean` |    否    | `true`  | SDK 是否能获取应用多进程ID                  | -         | <font color='red'>>= 3.3.4</font>   |
 | `addPreloadComponent`          | `LibraryGioModule` |    否    | `null`  | 注册自定义/预定义模块(如加密模块、OAID模块)       | -         | <font color='red'>>= 3.3.4</font>  |
 | `addPreloadComponent`          | `LibraryGioModule`,`Configurable` |    否  | `null` | 注册自定义/预定义模块及其配置文件 | - | <font color='red'>>= 3.4.3</font>  |
+| `setWebViewBridgeEnabled`       | `boolean`                         |    否    | `true`                          | 是否全量采集 hybrid 数据                      | 无埋点独有 | <font color='red'>>= 3.5.1</font>   |
 
 ### 1. SDK必需参数
 
@@ -157,4 +158,8 @@ GrowingAutotracker.startWithConfiguration(this,
 ```
 模块列表请参考 [功能模块一览](/docs/android/modules)
 
+### 13 **setWebViewBridgeEnabled**
+是否全量采集 hybrid 数据（默认为 true）
 
+无埋点默认会采集对应 webview 的 hybrid 事件，设置为 false，可以关闭采集 hybrid 数据。
+如果需要设置采集单个 webview 的 hybrid 事件，可以通过运行时 API 接口`bridgeWebView(View webView)`开启采集。
