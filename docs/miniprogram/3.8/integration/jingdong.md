@@ -330,7 +330,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中 Console 标签中即可实时查看 SDK 上报的 log 数据。如下图：
 
-<ImageLoader path="img/miniprogram/jingdong_debug.jpg" />
+<ImageLoader path="img/miniprogram/jingdong_debug" />
 
 ## 添加白名单
 
