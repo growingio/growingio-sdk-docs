@@ -1,16 +1,16 @@
 ---
-sidebar_position: 4
-title: 抖音小程序
+sidebar_position: 8
+title: 京东小程序
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-对抖音小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
+对于京东小程序多样的开发方式，我们给出了主流开发方式的集成方法参考。如您使用了其他开发方式，请咨询我们。
 
 如果您使用跨平台框架开发且有多端（特指小程序，快应用、App 和 Web 除外）同时需要集成 SDK 的需求时，只需在框架代码中集成一次即可。例：
 
-> 使用 uni-app 同时开发微信小程序和阿里(支付宝)小程序，只需集成一次即可。
+> 使用 uni-app 同时开发京东小程序和阿里(支付宝)小程序，只需集成一次即可。
 
 ## 准备工作
 
@@ -18,11 +18,11 @@ import TabItem from '@theme/TabItem';
 
 2、在您的小程序中获取**`appId`**。
 
-3、在下列选项中选择对应的开发框架，并下载对应的 SDK 文件存放在项目中或使用 npm 的方式集成。下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
+3、下载 SDK 文件存放在项目中，下文中以`utils/gio`目录为例(目录和 SDK 文件可自定义重命名)。
 
 ## 集成
 
-参考示例在 app.js/main.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK 不支持在小程序中任意生命周期中进行初始化。**
+参考示例在 app.js 小程序主文件中添加初始化代码。添加位置参考示例代码，注意不要随意修改初始化代码位置。**SDK 不支持在小程序中任意生命周期中进行初始化。**
 
 <Tabs
 groupId="1"
@@ -37,7 +37,7 @@ values={[
 
 #### 1、加载 SDK
 
-抖音原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.16/gio-bytedance.js><br/>
+京东原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.16/gio-jingdong.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -48,7 +48,7 @@ values={[
 
 ```js
 // app.js
-import gdp from './utils/gio/gio-bytedance.js';
+import gdp from './utils/gio/gio-jingdong.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
@@ -61,7 +61,7 @@ App({ ... });
 
 ```js
 原有 require 的引用方式依然可以使用。
-const gdp = require('./utils/gio/gio-bytedance.js').default;
+const gdp = require('./utils/gio/gio-jingdong.js').default;
 ```
 
   </TabItem>
@@ -330,12 +330,8 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中 Console 标签中即可实时查看 SDK 上报的 log 数据。如下图：
 
-<ImageLoader path="img/miniprogram/bytedance_debug" />
+<ImageLoader path="img/miniprogram/jingdong_debug.jpg" />
 
 ## 添加白名单
 
-由于抖音小程序对网络请求的限制[参考文档](https://microapp.bytedance.com/docs/zh-CN/mini-app/develop/api/other/network-request-reference/)，您需要在「抖音小程序开发者平台-开发管理-开发设置-服务器域名」中添加 request 合法域名。[抖音小程序开发者平台](https://microapp.bytedance.com/)
-
-**<font color="#FC5F3A">注意：</font>**<br/>
-
-**请在正式生产环境发布前完成白名单的添加，上线后再添加白名单可能会出现 SDK 无法上报数据的情况。重新发布小程序即可解决。**
+由于京东小程序对网络请求的限制[参考文档](https://mp-docs.jd.com/doc/introduction/accessGuide/1606#heading-2)，您需要将 `https://your serverHost` 在「小程序后台-开发管理-设置-开发设置-服务器域名」中添加为 request 合法域名。[小程序后台](https://mp-console.jd.com/)

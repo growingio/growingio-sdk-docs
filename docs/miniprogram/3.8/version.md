@@ -151,7 +151,7 @@ SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-minip
 
 ### V3.8.0-rc.4 - 2022/4/25
 
-- 🐞 修复百度、字节、QQ 小程序上报页面 title 无取值的问题。
+- 🐞 修复百度、抖音、QQ 小程序上报页面 title 无取值的问题。
 - 🐞 修复 uni-app vue3 中监听`@click="$emit(xxx)"`形式的方法调用不会触发无埋点点击事件的问题。
 - 🐞 修复微信小程序 getGioInfo 获取到的 platform 错误导致 H5 打通失败的问题。
 
