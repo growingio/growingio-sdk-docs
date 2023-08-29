@@ -4,15 +4,21 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 export default function ImageLoader({path, width, height}) {
     let prefix = path;
     let suffix = '';
-    if (path.lastIndexOf('.') > -1) {
-        prefix = path.substring(0, path.lastIndexOf('.'));
-        suffix = path.substring(path.lastIndexOf('.'));
+
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+    for (const ext of imageExtensions) {
+        if (path.endsWith(ext)) {
+            suffix = ext;
+            prefix = path.substring(0, path.length - ext.length);
+            break;
+        }
     }
+
     let avif = useBaseUrl(prefix + '.avif');
     let webp = useBaseUrl(prefix + '.webp');
 
     let src = '';
-    if (suffix == '.jpg' || suffix == '.jpeg' || suffix == '.png' || suffix == '.gif') {
+    if (imageExtensions.includes(suffix)) {
         src = useBaseUrl(path);
     } else if (suffix == '') {
         src = useBaseUrl(path + '.png'); // default png
