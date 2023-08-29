@@ -24,55 +24,9 @@ SDK 包括客户端SDK和服务端SDK。目前客户端SDK支持Android和iOS原
 
 小程序支持微信小程序、阿里(支付宝)小程序、百度小程序、抖音小程序、QQ小程序、淘宝小程序、快手小程序、京东小程序、快应用。
 
-微信小程序支持的开发框架如下：
+### SDK支持的事件类型
 
-- 原生 、 原生+第三方插件
-- Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
-- uni-app(vue2)、uni-app(vue3)
-- WePY 1.x、WePY 2.x 以及第三方插件
-- Chameleon
-- Remax
-
-阿里(支付宝)小程序支持的开发框架如下：
-
-- 原生
-- Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
-- uni-app(vue2)、uni-app(vue3)
-- Chameleon
-- Remax
-
-百度小程序支持的开发框架如下：
-
-- 原生
-- Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
-- uni-app(vue2)、uni-app(vue3)
-- Chameleon
-
-抖音小程序支持的开发框架如下：
-
-- 原生
-- Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
-- uni-app(vue2)、uni-app(vue3)
-- Remax
-
-QQ小程序支持的开发框架如下：
-
-- 原生
-- Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
-
-快手小程序支持的开发框架如下：
-
-- 原生
-- Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
-
-京东小程序支持的开发框架如下：
-
-- 原生
-- Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
-
-各SDK支持的事件类型如下表：
-
-| SDK | 访问 |  页面浏览  | 元素点击 | 输入框改变内容 | 表单提交 | 埋点 | 用户属性 | 激活 | 唤醒 | 应用关闭 |
+| SDK | 访问 |  页面浏览  | 元素点击 | 元素变更 | 表单提交 | 埋点 | 用户属性 | 激活 | 唤醒 | 应用关闭 |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:----:|
 |Android无埋点| ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 |Android埋点  | ✅ | - | - | - | - | ✅ | ✅ | ✅ | ✅ | ✅ |
