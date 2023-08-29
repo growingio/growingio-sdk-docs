@@ -22,7 +22,7 @@ GrowingIO 帮助客户提升数据驱动能力，实现更好的增长。
 
 SDK 包括客户端SDK和服务端SDK。目前客户端SDK支持Android和iOS原生，Web JS，小程序，以及众多第三方混合开发框架。服务端SDK支持Java、PHP、Python。
 
-小程序支持微信小程序、阿里(支付宝)小程序、百度小程序、字节(抖音头条)小程序、QQ小程序、淘宝小程序、快手小程序、快应用。
+小程序支持微信小程序、阿里(支付宝)小程序、百度小程序、抖音小程序、QQ小程序、淘宝小程序、快手小程序、京东小程序、快应用。
 
 微信小程序支持的开发框架如下：
 
@@ -48,7 +48,7 @@ SDK 包括客户端SDK和服务端SDK。目前客户端SDK支持Android和iOS原
 - uni-app(vue2)、uni-app(vue3)
 - Chameleon
 
-字节(抖音头条)小程序支持的开发框架如下：
+抖音小程序支持的开发框架如下：
 
 - 原生
 - Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
@@ -60,6 +60,15 @@ QQ小程序支持的开发框架如下：
 - 原生
 - Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
 
+快手小程序支持的开发框架如下：
+
+- 原生
+- Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
+
+京东小程序支持的开发框架如下：
+
+- 原生
+- Taro 2.x 、Taro3(React)、Taro 3.x(vue2)、Taro 3.x(vue3)
 
 各SDK支持的事件类型如下表：
 
