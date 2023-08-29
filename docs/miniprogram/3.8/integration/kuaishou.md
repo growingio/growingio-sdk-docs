@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 如果您使用跨平台框架开发且有多端（特指小程序，快应用、App 和 Web 除外）同时需要集成 SDK 的需求时，只需在框架代码中集成一次即可。例：
 
 > 使用 uni-app 同时开发快手小程序和阿里(支付宝)小程序，只需集成一次即可。
->
+
 ## 准备工作
 
 1、在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
