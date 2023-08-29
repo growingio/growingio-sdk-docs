@@ -17,11 +17,11 @@ AccountID、DataSourceID 需要在CDP增长平台上新建数据源，或从已�
 
 ##### 创建
 
-<ImageLoader path="img/common/createapplication" />
+<ImageLoader path="version-3.x/img/common/createapplication" />
 
 ##### 查看
 
-<ImageLoader path="img/common/showwebdatasourceid" />
+<ImageLoader path="version-3.x/img/common/showwebdatasourceid" />
 
 ### Web使用集成
 

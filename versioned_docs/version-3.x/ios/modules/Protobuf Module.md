@@ -32,7 +32,7 @@ pod 'GrowingAnalytics/Protobuf'
 
 添加 **GrowingModule_Protobuf** Package
 
-<ImageLoader path="img/ios/add_package_protobuf" />
+<ImageLoader path="version-3.x/img/ios/add_package_protobuf" />
 
   </TabItem>
 </Tabs>

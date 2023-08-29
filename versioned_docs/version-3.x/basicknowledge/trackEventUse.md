@@ -37,13 +37,13 @@ import TabItem from '@theme/TabItem';
 #### 规划方案示例
 
 **埋点方案规划：**
-<ImageLoader path="img/basicKnowledge/metricplanning" />
+<ImageLoader path="version-3.x/img/basicKnowledge/metricplanning" />
 
 **属性规划：**
-<ImageLoader path="img/basicKnowledge/eventVariable" />
+<ImageLoader path="version-3.x/img/basicKnowledge/eventVariable" />
 
 **维度表规划：**
-<ImageLoader path="img/basicKnowledge/dimensionTable" />
+<ImageLoader path="version-3.x/img/basicKnowledge/dimensionTable" />
 
 :::info 说明
 | 名词 | 说明 |
@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
 
 #### 事件属性创建示例
 
-<ImageLoader path="img/basicKnowledge/eventVariableCreate" />
+<ImageLoader path="version-3.x/img/basicKnowledge/eventVariableCreate" />
 
 :::info 提示
 事件属性的配置项“关联维度表”为非必选项，需要与您的埋点方案相对应。<br/>
@@ -83,7 +83,7 @@ import TabItem from '@theme/TabItem';
 :::
 
 **维度表创建示例**：
-<ImageLoader path="img/basicKnowledge/dimensionCreate" />
+<ImageLoader path="version-3.x/img/basicKnowledge/dimensionCreate" />
 
 :::caution 注意
 维度表非必须项。具体根据您的业务需求和规划方案决定是否需要使用该功能。
@@ -91,7 +91,7 @@ import TabItem from '@theme/TabItem';
 
 #### 埋点事件创建示例
 
-<ImageLoader path="img/basicKnowledge/eventCreate" />
+<ImageLoader path="version-3.x/img/basicKnowledge/eventCreate" />
 
 :::info 提示
 埋点事件的配置项“关联事件属性”为非必选项，需要与您的埋点方案相对应。<br/>
@@ -326,7 +326,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 添加指标和属性拆解，切换时间范围，切换数据展示样式。
 
 示例：
-<ImageLoader path="img/basicKnowledge/eventAnalysis" />
+<ImageLoader path="version-3.x/img/basicKnowledge/eventAnalysis" />
 至此，完成埋点事件数据采集上报展示的验证。
 
 ## 用户属性事件示例
@@ -339,7 +339,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 #### 规划方案示例
 
-<ImageLoader path="img/basicKnowledge/userAttributes" />
+<ImageLoader path="version-3.x/img/basicKnowledge/userAttributes" />
 
 ### 平台配置
 
@@ -347,7 +347,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 #### 用户属性事件创建示例
 
-<ImageLoader path="img/basicKnowledge/userAttributesCreate" />
+<ImageLoader path="version-3.x/img/basicKnowledge/userAttributesCreate" />
 
 ### 代码实施
 
@@ -508,6 +508,6 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 查找到对应的用户属性，查看对应的数据。
 
 示例：
-<ImageLoader path="img/basicKnowledge/userAttributeAnalysis" />
+<ImageLoader path="version-3.x/img/basicKnowledge/userAttributeAnalysis" />
 
 至此，完成用户属性数据采集上报展示的验证。

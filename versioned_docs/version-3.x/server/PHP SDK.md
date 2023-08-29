@@ -28,10 +28,10 @@ Host：采集数据上报的服务器地址，非平台地址<br/>
 AccountID、DataSourceID 需要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持
 :::
 ##### 创建
-<ImageLoader path="img/common/createapplication" />
+<ImageLoader path="version-3.x/img/common/createapplication" />
 
 ##### 查看
-<ImageLoader path="img/common/showServerDataSourceID" />
+<ImageLoader path="version-3.x/img/common/showServerDataSourceID" />
 
 ### 集成 & 安装
 php sdk已经发布在[Packagist](https://packagist.org/packages/growingio/php-sdk), 可以通过[Composer](https://getcomposer.org)进行安装

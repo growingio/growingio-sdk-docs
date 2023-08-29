@@ -21,11 +21,11 @@ AccountID、DataSourceID、AppId 需要在CDP增长平台上新建数据源，�
 
 ##### 创建
 
-<ImageLoader path="img/common/createapplication" />
+<ImageLoader path="version-3.x/img/common/createapplication" />
 
 ##### 查看
 
-<ImageLoader path="img/miniprogram/dataSourceInfo" />
+<ImageLoader path="version-3.x/img/miniprogram/dataSourceInfo" />
 
 ## 集成
 
@@ -290,4 +290,4 @@ gdp('init','your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中Console标签中即可实时查看SDK上报的log数据。如下图：
 
-<ImageLoader path="img/miniprogram/3.0_wx_debug" />
+<ImageLoader path="version-3.x/img/miniprogram/3.0_wx_debug" />

@@ -85,4 +85,4 @@ GrowingTracker.startWithConfiguration(this,
 
 ### 示例
 数据结果如下图所示：
-<ImageLoader path="img/android/modules/growingio_protobuf_module.jpg" />
+<ImageLoader path="version-3.x/img/android/modules/growingio_protobuf_module.jpg" />

@@ -30,10 +30,10 @@ Account ID、DataSource ID、URL Scheme 需要在CDP增长平台上新建数据�
 Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
 :::
 ##### 创建
-<ImageLoader path="img/common/createapplication" />
+<ImageLoader path="version-3.x/img/common/createapplication" />
 
 ##### 查看
-<ImageLoader path="img/common/showappdatasourceid" />
+<ImageLoader path="version-3.x/img/common/showappdatasourceid" />
 
 
 ```mdx-code-block

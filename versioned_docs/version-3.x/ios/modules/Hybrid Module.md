@@ -42,7 +42,7 @@ pod 'GrowingAnalytics/Hybrid'
 
 1. 添加 **GrowingModule_Hybrid** Package
 
-<ImageLoader path="img/ios/add_package_hybrid" />
+<ImageLoader path="version-3.x/img/ios/add_package_hybrid" />
 
 2. 一般情况下，Hybrid 将自动注入进行数据采集，如需额外配置，可在目标文件中，导入 `import GrowingModule_Hybrid`，并调用下列配置接口
 

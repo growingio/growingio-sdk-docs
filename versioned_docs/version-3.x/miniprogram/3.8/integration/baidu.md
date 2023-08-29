@@ -372,13 +372,13 @@ const gdp = require('./utils/gio/gio-chameleon.js').default;
 
 加载插件后会在初始化之前打印日志。例：
 
-<ImageLoader path="img/miniprogram/plugin_debug" />
+<ImageLoader path="version-3.x/img/miniprogram/plugin_debug" />
 
 ## 数据校验
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中 Console 标签中即可实时查看 SDK 上报的 log 数据。如下图：
 
-<ImageLoader path="img/miniprogram/swan_debug" />
+<ImageLoader path="version-3.x/img/miniprogram/swan_debug" />
 
 ## 添加白名单
 

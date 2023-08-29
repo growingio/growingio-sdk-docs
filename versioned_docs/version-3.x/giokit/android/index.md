@@ -34,7 +34,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 展示了 App 代码中所有的手动埋点位置，以 “类+方法” 的列表形式展现。
 
- <ImageLoader path="img/giokit/android/sdkcode.jpg" />
+ <ImageLoader path="version-3.x/img/giokit/android/sdkcode.jpg" />
 
 ### 事件库
 

@@ -18,10 +18,10 @@ Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数�
 :::
 
 ##### 创建
-<ImageLoader path="img/common/createapplication" />
+<ImageLoader path="version-3.x/img/common/createapplication" />
 
 ##### 查看
-<ImageLoader path="img/common/showappdatasourceid" />
+<ImageLoader path="version-3.x/img/common/showappdatasourceid" />
 
 ## 无埋点 SDK 集成
 :::info
@@ -48,7 +48,7 @@ pod 'GrowingAnalytics-cdp/Autotracker'
 
 1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
-<ImageLoader path="img/ios/add_package_dependencies" />
+<ImageLoader path="version-3.x/img/ios/add_package_dependencies" />
 
 2. 搜索 GrowingAnalytics SDK GitHub 地址
 
@@ -58,7 +58,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 
 3. 并设置 Dependency Rule 为 Exact Version，输入要使用的 SDK 版本，Add to Project 选择您所需要的 Project
 
-<ImageLoader path="img/ios/set_dependency_rule" />
+<ImageLoader path="version-3.x/img/ios/set_dependency_rule" />
 
 :::info
 我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本
@@ -66,7 +66,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 
 4. 点击下方的 Add Package 按钮，选择 GrowingAutotracker_cdp，再次点击 Add Package 按钮
 
-<ImageLoader path="img/ios/add_package_autotracker" />
+<ImageLoader path="version-3.x/img/ios/add_package_autotracker" />
 
   </TabItem>
 </Tabs>
@@ -78,7 +78,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 需要在 GrowingIO 网站上先创建您的 App 应用，获取 URL Scheme
 :::
 选择工程 -> Target -> Info -> URL Types -> 点击 ➕ -> 添加您的 URL Scheme 即可
-<ImageLoader path="img/ios/iOS_Setting_URLScheme" />
+<ImageLoader path="version-3.x/img/ios/iOS_Setting_URLScheme" />
 
 
 ### SDK 初始化配置
@@ -254,7 +254,7 @@ pod 'GrowingAnalytics-cdp/Tracker'
 
 1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
-<ImageLoader path="img/ios/add_package_dependencies" />
+<ImageLoader path="version-3.x/img/ios/add_package_dependencies" />
 
 2. 搜索 GrowingAnalytics SDK GitHub 地址
 
@@ -264,7 +264,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 
 3. 并设置 Dependency Rule 为 Exact Version，输入要使用的 SDK 版本，Add to Project 选择您所需要的 Project
 
-<ImageLoader path="img/ios/set_dependency_rule" />
+<ImageLoader path="version-3.x/img/ios/set_dependency_rule" />
 
 :::info
 我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本
@@ -272,7 +272,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 
 4. 点击下方的 Add Package 按钮，选择 GrowingTracker_cdp，再次点击 Add Package 按钮
 
-<ImageLoader path="img/ios/add_package_tracker" />
+<ImageLoader path="version-3.x/img/ios/add_package_tracker" />
 
   </TabItem>
 </Tabs>
@@ -285,7 +285,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 :::
 选择工程 -> Target -> Info -> URL Types -> 点击 ➕ -> 添加您的 URL Scheme 即可
 
-<ImageLoader path="img/ios/iOS_Setting_URLScheme" />
+<ImageLoader path="version-3.x/img/ios/iOS_Setting_URLScheme" />
 
 ### SDK初始化配置
 #### 导入头文件 `"GrowingTracker.h"`

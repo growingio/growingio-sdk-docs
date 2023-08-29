@@ -32,7 +32,7 @@ pod 'GrowingToolsKit', :configurations => ['Debug']
 
 1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
-<ImageLoader path="img/ios/add_package_dependencies" />
+<ImageLoader path="version-3.x/img/ios/add_package_dependencies" />
 
 2. 搜索 GrowingToolsKit SDK GitHub 地址
 
@@ -42,11 +42,11 @@ https://github.com/growingio/growingio-sdk-ios-toolskit.git
 
 3. 并设置 Dependency Rule 为 Branch master，Add to Project 选择您所需要的 Project
 
-<ImageLoader path="img/giokit/ios/set_dependency_rule" />
+<ImageLoader path="version-3.x/img/giokit/ios/set_dependency_rule" />
 
 4. 点击下方的 Add Package 按钮，选择 GrowingToolsKit，再次点击 Add Package 按钮
 
-<ImageLoader path="img/giokit/ios/add_package_giokit" />
+<ImageLoader path="version-3.x/img/giokit/ios/add_package_giokit" />
 
 5. 在 TARGETS -> Build Settings -> Other Linker Flags 中添加 -ObjC
 
