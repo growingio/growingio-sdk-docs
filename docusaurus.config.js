@@ -31,7 +31,12 @@ module.exports = {
         },
         {to: '/blog', label: '博客', position: 'left'},
         {to: '/question', label: '常见问题', position: 'left'},
-      
+
+        {
+          type: "docsVersionDropdown",
+          position: "right",
+          dropdownActiveClassDisabled: true,
+        },
         {
           href: 'https://www.growingio.com/',
           label: '官网',
@@ -105,6 +110,19 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          onlyIncludeVersions: ["current", "3.x"],
+          lastVersion: "current",
+          versions: {
+            current: {
+              label: "4.x",
+              banner: "none",
+            },
+            "3.x": {
+              label: "3.x",
+              path: "3.x",
+              banner: "none",
+            },
+          },
           // Please change this to your repo.
           editUrl:
             'https://github.com/growingio/growingio-sdk-docs/edit/master/',
