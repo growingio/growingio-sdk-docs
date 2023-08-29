@@ -36,7 +36,8 @@ import TabItem from '@theme/TabItem';
   <summary>如何获取 Team ID</summary>
 
 在苹果开发者网站中找到 Team ID 与 Bundle ID
-![config_team_id](./../../../static/img/ios/config_team_id.webp)
+
+<ImageLoader path="img/ios/config_team_id" />
 
 </details>
 

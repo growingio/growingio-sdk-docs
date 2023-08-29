@@ -13,6 +13,7 @@ module.exports = {
   trailingSlash: false,
   organizationName: 'growingio', // Usually your GitHub org/user name.
   projectName: 'growingio-sdk-docs', // Usually your repo name.
+  staticDirectories: ['static', 'versioned_docs/static'],
   themeConfig: {
     navbar: {
       title: '',
