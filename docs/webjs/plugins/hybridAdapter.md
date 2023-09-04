@@ -5,7 +5,7 @@ title: App内嵌页打通
 
 ## 简介（gioHybridAdapter）
 
-当您的web页面作为App内嵌页使用，将采集信息合并至Native项目分析时使用的插件。
+当您的web页面作为App内嵌页使用，将采集信息合并至Native项目分析时使用；且当有圈选需求时，自动处理圈选逻辑的插件。
 
 集成该插件后，SDK会自动将web页面采集的数据转发给Native端进行处理。
 
