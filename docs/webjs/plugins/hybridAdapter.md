@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: App内嵌页打通
 ---
 
@@ -18,13 +18,13 @@ title: App内嵌页打通
 #### CDN集成引入
 
 ```html
-<script src="https://assets.giocdn.com/sdk/webjs/cdp/plugins/gioHybridAdapter.js"></script>
+<script src="https://assets.giocdn.com/sdk/webjs/plugins/gioHybridAdapter.js"></script>
 ```
 
 #### npm集成引入
 
 ```js
-import gioHybridAdapter from "gio-webjs-sdk-cdp/plugins/gioHybridAdapter"
+import gioHybridAdapter from "gio-webjs-sdk/plugins/gioHybridAdapter"
 ```
 
 ### 2、注册

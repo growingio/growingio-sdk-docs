@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 7
 title: 性能监控
 ---
 
@@ -48,7 +48,7 @@ title: 性能监控
 
 ### 错误监控
 
-同采集SDK。[参考文档](/docs/webjs/3.8)
+同采集SDK。[参考文档](/docs/webjs)
 
 ## 使用
 

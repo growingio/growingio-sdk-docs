@@ -8,65 +8,48 @@ title: 数据采集API
 
 ## 动态修改配置接口(setOption)
 
-由于多样的动态修改配置的需求，我们在`3.8.0`版本开始提供了统一的接口，以降低接口使用难度。设值成功返回true，设值失败返回false。
+自`3.8.0`版本开始我们提供了统一的接口，以降低接口使用难度。`4.0`版本继承了这一设定，但<3.8.0版本的写法不再兼容，请注意修改。
 
 ```js
 gdp('setOption', optionKey, optionValue);  // return true | false
 ```
 
-### 1、开启/关闭无埋点数据采集(autotrack)
+### 1、开启/关闭数据采集(dataCollect)
 
-当加载了无埋点插件时，默认开启无埋点数据采集。当设置为 **`false`** 时，将不再采集 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 无埋点事件。未加载插件时无论 autotrack 是否开启都不会进行采集。
+默认开启数据采集。当设置为 **`false`** 时，SDK将不会采集和上报事件。
 
-```js
-gdp('setOption', 'autotrack', true | false);
-
-// <3.8.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('setAutotrack', true | false);
-```
-
-### 2、开启/关闭数据采集(dataCollect)
-
-默认开启数据采集。当设置为 **`false`** 时，SDK将不会采集和上报事件。由关闭修改为开启时，自动补发VISIT和当前页面的PAGE事件。
+由关闭修改为开启时，视为一次新的访问，自动补发VISIT和当前页面的PAGE事件。
 
 ```js
 gdp('setOption', 'dataCollect', true | false);
-
-// <3.8.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('setDataCollect', true | false);
 ```
 
-### 3、开启/关闭调试模式(debug)
+### 2、开启/关闭调试模式(debug)
 
 默认不开启调试模式。当设置为 **`true`** 时，开启后会在浏览器控制台输出日志。
 
 ```js
 gdp('setOption', 'debug', true | false);
-
-// <3.8.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('enableDebug', true | false);
 ```
 
-### 4、修改请求协议(scheme)
+### 3、修改请求协议(scheme)
 
-默认为**`https`**，您可以在开发过程中设置为 `http` 方便与服务端进行调试。
+默认为`location.protocol`。
+
+Saas客户不建议修改此项，容易产生跨域问题；OP私有部署客户可以在开发过程中设置为 `http` 方便与服务端进行调试。
 
 ```js
 gdp('setOption', 'scheme', 'http' | 'https');
-
-// <3.8.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('setTrackerScheme', 'http' | 'https');
 ```
 
-### 5、修改请求地址(host)
+### 4、修改请求地址(host)
 
-默认为初始化配置项中填写的`host`字段值，方便您动态修改。(支持域名和IP地址，无需协议头)
+默认为`napi.growingio.com`。
+
+Saas客户请不要修改此项，会导致您没有数据上报；OP私有部署客户可以在开发过程中设置为指定地址方便与服务端进行调试。
 
 ```js
 gdp('setOption', 'host', 'api.growingio.com');
-
-// <3.8.0版本的写法仍兼容，但不建议您再这么使用
-// gdp('setTrackerHost', 'api.growingio.com');
 ```
 
 ## 功能接口
@@ -83,12 +66,12 @@ gdp('registerPlugins', [xxxx, xxxxx]);
 
 ### 2、获取访问用户Id(getDeviceId)
 
-访问用户Id，又称为匿名用户Id/设备Id，SDK 自动生成用来定义唯一设备。如果没有初始化SDK 或者关闭采集开关可能返回值为空。
+访问用户Id，又称为匿名用户Id/设备Id，SDK 自动生成（UUID）用来唯一标识设备。如果没有初始化SDK 或者关闭采集开关时返回值为空。
 
 #### 示例
 
 ```js
-gdp('getDeviceId');
+const deviceId = gdp('getDeviceId');
 ```
 
 ### 3、设置登录用户Id(setUserId)
@@ -109,8 +92,7 @@ gdp('setUserId', '112333445');
 gdp('setUserId', '112333445', 'phone');
 ```
 
-**<font color="#FC5F3A">注意：</font>**<br/>
-**设置`userKey`时需SDK初始化时设置 `enableIdMapping` 为 `true`，否则不生效。**
+**<font color="#FC5F3A">注意：</font>设置`userKey`时需SDK初始化时设置 `idMapping` 为 `true`，否则不生效。**
 
 ### 4、清除登录用户Id(clearUserId)
 
@@ -132,26 +114,20 @@ gdp('clearUserId');
 |-------------------|----------|:------------------------|
 | `eventId`         | `String` | 必填；事件名，事件标识符。                                                                                                         |
 | `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/webjs/3.8/commonlyApi#object参数限制) |
-| `item`            | `Object` | 选填；事件发生关联的物品模型。                                                                                                    |
-| `item.id`         | `String` | item 中必填；物品模型 id。                                                                                                        |
-| `item.key`        | `String` | item 中必填；物品模型唯一标识。                                                                                                   |
-| `item.attributes` | `Object` | item 中选填；物品模型属性。参数限制同`properties`。                                                                                |
 
 #### 示例
 
 ```js
-// gdp('track', eventId, properties[, item]);
-
-gdp('track', 'order'); // 无properties，无item
-gdp('track', 'order', { type: 'hjh' }); // 有properties，无item
-gdp('track', 'order', {}, { key: 'order_id', id: '12345' }); // 无properties，有item
-gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有properties，有item
+gdp('track', 'order');
+gdp('track', 'order', {
+  type: 'drinks',
+  name: ['cola', 'milk', 'juice'], // 仅支持字符串和数字的一维数组，其他类型会被强制转为字符串
+  currency: 'RMB',
+  price: 3
+});
 ```
 
-**<font color="#FC5F3A">注意：</font>**<br/>
-**`properties`中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
-
-### 6、登录用户属性(setUserAttributes)
+### 6、用户属性(setUserAttributes)
 
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
 
@@ -164,11 +140,12 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 #### 示例
 
 ```js
-gdp('setUserAttributes', { name: 'hjh' });
+gdp('setUserAttributes', { name: 'Lily', age: 18 });
+gdp('setUserAttributes', {
+  tags: ['clever', 'brave', 'strong'], // 仅支持字符串和数字的一维数组，其他类型会被强制转为字符串
+  age: 18
+});
 ```
-
-**<font color="#FC5F3A">注意：</font>**<br/>
-**用户属性中的属性值为数组格式上报时会被自动转换为以`||`间隔的字符串（例：names: ['tony', 'mike', 'lily']  =>  names: 'tony||mike||lily'）**
 
 ### 7、设置埋点通用属性(setGeneralProps)
 
@@ -190,7 +167,8 @@ gdp('setGeneralProps', {
 
 **<font color="#FC5F3A">注意：</font><br/>**
 **1）定义的通用属性名依然需要在平台上进行事件属性的创建并与埋点事件完成关联。**<br/>
-**2）该方法可多次调用，已有相同属性名的值会被覆盖。**
+**2）该方法可多次调用，已有相同属性名的值会被覆盖。**<br/>
+**3）属性的使用不会因页面的切换而不再使用，会一直调用直至您手动移除它。**
 
 ### 8、清除埋点通用属性(clearGeneralProps)
 
@@ -241,10 +219,10 @@ gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConf
 ```
 
 :::caution 免责声明警告：
-SDK会自动忽略 `type="password"` 类型的input框的内容采集；如果类型为`text`的input中包含敏感信息，请不要添加该标记，可能会明文暴露这些信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
+SDK会自动忽略 `type="password"` 类型的input框的内容采集；如果类型为`text`的input中可能包含敏感信息，请不要添加该标记，可能会明文暴露这些信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
 :::
 
-**提示：3.8.0版本开始，SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
+**提示：SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
 
 ### 2、补充数据标记
 
@@ -258,7 +236,7 @@ SDK会自动忽略 `type="password"` 类型的input框的内容采集；如果�
 
 #### 2）data-growing-index
 
-有时我们页面中可能存在类似列表类的Dom结构相似或一致使得SDK上报数据出现无法区分的情况。此时，我们可以通过索引标记 `data-growing-index` 来准确描述节点信息。例：
+有时我们页面中可能存在类似列表类的Dom结构相似或一致使得SDK上报数据时因xpath一致出现无法区分的情况。此时，我们可以通过索引标记 `data-growing-index` 来准确描述节点信息。例：
 
 ```html
 <ul>
@@ -297,10 +275,7 @@ SDK会自动忽略 `type="password"` 类型的input框的内容采集；如果�
 
 可以统计上报某一事件的持续时长（例如页面浏览时长）。我们提供了事件计时开始、事件计时暂停、事件计时恢复、事件计时停止、事件计时销毁几个方法提供调用。
 
-**<font color="#FC5F3A">注意：</font>**
-
-**1）页面刷新或SDK重新加载时计时器会自动销毁并不做任何处理，因此您可能会因为用户的刷新和关闭网页等操作丢失此事件的上报。**
-**2）SDK版本>=3.8.2支持。**
+**<font color="#FC5F3A">注意：</font>页面刷新或SDK重新加载导致内存信息丢失时计时器会自动销毁并不做任何处理，因此您可能会因为用户的刷新和关闭网页等操作丢失此事件的上报。**
 
 ### 1、初始化计时器(trackTimerStart)
 
@@ -362,7 +337,7 @@ gdp('trackTimerResume', 'timerId123');
 
 ```js
 gdp('trackTimerEnd', 'timerId123');
-gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2:2 });
+gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2: 2 });
 ```
 
 :::caution 注意
@@ -413,3 +388,19 @@ SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**
 **`key:` String，length <=100；**
 
 **`value:` String | number 时 length <=1000； Array 时 length <=100**
+
+### 上报参数说明
+
+调用 埋点事件(track) 和 登录用户属性(setUserAttributes) 时；
+
+1、如果您的属性值是一个字符串或者数字组成的一维数组，上报时会自动转换为 `Array.join('||')` 的字符串便于服务端进行拆分解析。生成的字符串再经上述的Object参数限制进行过滤处理，字符串总长度大于1000时或数组长度大于100时会被截断。因此您需要控制数组中总体字符串和总体数组的长度。
+
+#### 示例
+
+```js
+name: ['cola', 'milk', 'juice']
+// 上报时会自动转换为↓↓↓
+name: 'cola||milk||juice'
+```
+
+2、如果您的属性值是一个 json 格式，则可能会被强制转换为`[object Object]`。因此您需要调整数据格式。

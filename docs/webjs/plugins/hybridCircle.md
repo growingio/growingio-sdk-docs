@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 6
 title: App内嵌页圈选辅助
 ---
 
@@ -18,13 +18,13 @@ title: App内嵌页圈选辅助
 #### CDN集成引入
 
 ```html
-<script src="https://assets.giocdn.com/sdk/webjs/cdp/plugins/gioHybridCircle.js"></script>
+<script src="https://assets.giocdn.com/sdk/webjs/plugins/gioHybridCircle.js"></script>
 ```
 
 #### npm集成引入
 
 ```js
-import gioHybridCircle from "gio-webjs-sdk-cdp/plugins/gioHybridCircle"
+import gioHybridCircle from "gio-webjs-sdk/plugins/gioHybridCircle"
 ```
 
 ### 2、注册
