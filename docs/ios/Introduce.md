@@ -14,7 +14,7 @@ DataSourceID：数据源 ID，代表一个数据源<br/>
 URL Scheme： 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识<br/>
 Host：采集数据上报的服务器地址，非平台地址<br/>
 
-Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持
+Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数据源，或从已创建的数据源中获取，如不清楚或无权限请联系您的专属项目经理或技术支持
 :::
 
 ##### 创建
@@ -207,7 +207,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 `Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 4.x.x`  
 则说明 SDK 已经集成成功。
 
-若在初始化中 `debugEnabled` 设置为 YES，打开了 Debug，则可以在日志中看到每个事件的 log 日志输出。
+若在初始化中 `debugEnabled` 设置为 true，打开了 Debug，则可以在日志中看到每个事件的 log 日志输出。
 
 至此，就完成了无埋点 SDK 的集成。
 
@@ -399,7 +399,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 `Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 4.x.x`  
 则说明 SDK 已经集成成功。
 
-若在初始化中 `debugEnabled` 设置为 YES，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
+若在初始化中 `debugEnabled` 设置为 true，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
 
 至此，就完成了埋点 SDK 的集成。
 

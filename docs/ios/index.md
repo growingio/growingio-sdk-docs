@@ -14,7 +14,7 @@ iOS SDK 提供了 [无埋点SDK](/docs/ios/Introduce#无埋点-sdk-集成) 和 [
 :::info
 **开发环境:** <br/>
 Xcode 13.3 及以上  
-iOS 10.0 及以上
+iOS 10.0 及以上  
 Swift 5.6 及以上
 
 **根据需要选择集成** [<font color='red'>无埋点SDK</font>](/docs/ios/Introduce#无埋点-sdk-集成)  或 [<font color='red'>埋点SDK</font>](/docs/ios/Introduce#埋点-sdk-集成)

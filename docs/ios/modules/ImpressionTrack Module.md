@@ -31,7 +31,7 @@ ImpressionTrack 模块中提供了如下接口：
 
 #### 1.开启某元素的曝光采集
 
-`trackImp(_:attributes:)`<br/>
+`trackImp(_ eventName: String, attributes: [String: String]?)`<br/>
 采集元素曝光，在元素展示前调用即可，SDK 负责监听元素展示并触发事件<br/>
 事件类型为自定义事件 (CUSTOM)，请在主线程调用
 

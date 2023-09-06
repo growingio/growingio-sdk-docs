@@ -52,7 +52,7 @@ hybrid.autoBridgeEnabled = false
 
 #### 2.单个 webView 启用 Hybrid 注入 (白名单模式)
 
-`enableBridge`<br/>
+`enableBridge(_ webView: WKWebView)`<br/>
 在 autoBridgeEnabled 为 false 时，对单个 webView 启用 Hybrid 注入，请在主线程调用
 
 | 参数      | 参数类型    | 说明              |
@@ -69,7 +69,7 @@ hybrid.enableBridge(webView)
 
 #### 3.单个 webView 关闭 Hybrid 注入 (黑名单模式)
 
-`disableBridge`<br/>
+`disableBridge(_ webView: WKWebView)`<br/>
 在 autoBridgeEnabled 为 true 时，对单个 webView 关闭 Hybrid 注入，请在主线程调用
 
 | 参数      | 参数类型    | 说明              |
@@ -86,7 +86,7 @@ hybrid.disableBridge(webView)
 
 #### 4.查看 webView 是否可注入
 
-`isBridgeEnabled`<br/>
+`isBridgeEnabled(_ webView: WKWebView)`<br/>
 判断当前配置下，webView 是否可注入
 
 | 参数      | 参数类型    | 说明              |
@@ -103,7 +103,7 @@ let isBridgeEnabled = hybrid.isBridgeEnabled(webView)
 
 #### 5.重置 Hybrid 注入
 
-`resetBridgeSettings`<br/>
+`resetBridgeSettings()`<br/>
 重置 Hybrid 注入配置，请在主线程调用
 
 ##### 示例
@@ -147,7 +147,7 @@ Hybrid 模块中提供了配置接口：
 
 #### 2.单个 webView 启用 Hybrid 注入 (白名单模式)
 
-`enableBridgeForWebView`<br/>
+`enableBridgeForWebView:`<br/>
 在 autoBridgeEnabled 为 NO 时，对单个 webView 启用 Hybrid 注入，请在主线程调用
 
 | 参数      | 参数类型    | 说明              |
@@ -163,7 +163,7 @@ Hybrid 模块中提供了配置接口：
 
 #### 3.单个 webView 关闭 Hybrid 注入 (黑名单模式)
 
-`disableBridgeForWebView`<br/>
+`disableBridgeForWebView:`<br/>
 在 autoBridgeEnabled 为 YES 时，对单个 webView 关闭 Hybrid 注入，请在主线程调用
 
 | 参数      | 参数类型    | 说明              |
@@ -179,7 +179,7 @@ Hybrid 模块中提供了配置接口：
 
 #### 4.查看 webView 是否可注入
 
-`isBridgeForWebViewEnabled`<br/>
+`isBridgeForWebViewEnabled:`<br/>
 判断当前配置下，webView 是否可注入
 
 | 参数      | 参数类型    | 说明              |

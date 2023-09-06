@@ -27,6 +27,7 @@ import TabItem from '@theme/TabItem';
 | `urlScheme` | `String` | 否 | `nil` | 自定义 URL Scheme | - |
 | `encryptEnabled` | `Bool` | 否 | `false` | 是否开启网络传输加密 | - |
 | `useProtobuf` | `Bool` | 否 | `true` | 是否采用 Protobuf 格式保存和上传事件数据 | - |
+| `autotrackEnabled` | `Bool` | 否 | `true` | 是否开启无埋点采集 | <font color='red'>无埋点独有</font> |
 
 ### 详细说明
 
@@ -78,8 +79,12 @@ import TabItem from '@theme/TabItem';
 
 #### 12. **encryptEnabled**
 
-设置为 YES 时，网络传输内容将会加密，不会明文显示。
+设置为 true 时，网络传输内容将会加密，不会明文显示。
 
 #### 13. **useProtobuf**
 
-是否使用 [Google Protobuf](https://developers.google.cn/protocol-buffers) 格式保存和上传事件数据，默认为 YES，为 NO 则采用 JSON 格式
+是否使用 [Google Protobuf](https://developers.google.cn/protocol-buffers) 格式保存和上传事件数据，默认为 true，为 false 则采用 JSON 格式
+
+#### 14. **autotrackEnabled**
+
+当集成无埋点 SDK 时，设置为 false 将关闭无埋点功能和自动采集
