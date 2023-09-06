@@ -12,21 +12,21 @@ import TabItem from '@theme/TabItem';
 
 | Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 |
 | :-------------------------   | :------   | :----:  |:------  |:------| :---: |
-| `projectId`                  | `NSString`  | 是      | `null`   | 项目 ID(AccountID)，每个应用对应唯一值 | - |
-| `dataSourceId`            | `NSString`  | 是      | `null`   | 应用的 DataSourceId，唯一值 | - |
-| `dataCollectionServerHost`| `NSString`  | 是      | `null`   | 服务端部署后的  ServerHost | - |
-| `debugEnabled`            | `BOOL` | 否      | `NO`  | 调试模式，会打印 SDK log，抛出错误异常，在线上环境请关闭 | - |
-| `cellularDataLimit`       | `NSUInteger`     | 否      | `10`     | 每天发送数据的流量限制，单位 MB | - |
-| `dataUploadInterval`      | `NSTimeInterval`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |
-| `sessionInterval`         | `NSTimeInterval`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |
-| `dataCollectionEnabled`   | `BOOL` | 否      | `YES`   | 是否采集数据 | - |
-| `excludeEvent`            | `int`     | 否      | `0`      | 设置事件过滤 | - |
-| `ignoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - |
-| `impressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | <font color='red'>无埋点独有</font> |
-| `idMappingEnabled` | `BOOL` | 否 | `NO` | 是否开启多用户身份上报 | - |
-| `urlScheme` | `NSString` | 否 | `nil` | 自定义 URL Scheme | - |
-| `encryptEnabled` | `BOOL` | 否 | `NO` | 是否开启网络传输加密 | - |
-| `useProtobuf` | `BOOL` | 否 | `YES` | 是否采用 Protobuf 格式保存和上传事件数据 | - |
+| `projectId`                  | `String`  | 是      | `nil`   | 项目 ID(AccountID)，每个应用对应唯一值 | - |
+| `dataSourceId`            | `String`  | 是      | `nil`   | 应用的 DataSourceId，唯一值 | - |
+| `dataCollectionServerHost`| `String`  | 是      | `nil`   | 服务端部署后的  ServerHost | - |
+| `debugEnabled`            | `Bool` | 否      | `false`  | 调试模式，会打印 SDK log，抛出错误异常，在线上环境请关闭 | - |
+| `cellularDataLimit`       | `UInt`     | 否      | `10`     | 每天发送数据的流量限制，单位 MB | - |
+| `dataUploadInterval`      | `TimeInterval`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |
+| `sessionInterval`         | `TimeInterval`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |
+| `dataCollectionEnabled`   | `Bool` | 否      | `true`   | 是否采集数据 | - |
+| `excludeEvent`            | `UInt`     | 否      | `0`      | 设置事件过滤 | - |
+| `ignoreField`             | `UInt`     | 否      | `0`      | 设置事件属性过滤 | - |
+| `impressionScale`         | `Float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | <font color='red'>无埋点独有</font> |
+| `idMappingEnabled` | `Bool` | 否 | `false` | 是否开启多用户身份上报 | - |
+| `urlScheme` | `String` | 否 | `nil` | 自定义 URL Scheme | - |
+| `encryptEnabled` | `Bool` | 否 | `false` | 是否开启网络传输加密 | - |
+| `useProtobuf` | `Bool` | 否 | `true` | 是否采用 Protobuf 格式保存和上传事件数据 | - |
 
 ### 详细说明
 
