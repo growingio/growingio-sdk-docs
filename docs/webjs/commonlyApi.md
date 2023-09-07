@@ -6,6 +6,32 @@ title: 数据采集API
 
 通过 **`window.gdp`** 这个全局的方法可以调用到SDK中所有开放的接口。
 
+## 参数限制
+
+### Object参数限制
+
+SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**(非指定类型值均会被替换为空字符串，长度超限均会被截断)**
+
+**`key:` String，length <=100；**
+
+**`value:` String | number 时 length <=1000； Array 时 length <=100**
+
+### 上报参数说明
+
+调用 埋点事件(track) 和 登录用户属性(setUserAttributes) 时；
+
+1、如果您的属性值是一个字符串或者数字组成的一维数组，上报时会自动转换为 `Array.join('||')` 的字符串便于服务端进行拆分解析。生成的字符串再经上述的Object参数限制进行过滤处理，字符串总长度大于1000时或数组长度大于100时会被截断。因此您需要控制数组中总体字符串和总体数组的长度。
+
+#### 示例
+
+```js
+name: ['cola', 'milk', 'juice']
+// 上报时会自动转换为↓↓↓
+name: 'cola||milk||juice'
+```
+
+2、如果您的属性值是一个 json 格式，则可能会被强制转换为`[object Object]`。因此您需要调整数据格式。
+
 ## 回调方法
 
 在本页面中所列出的所有api，均支持传入一个**可选**回调函数，回调函数均在gio逻辑执行完毕后执行。部分api会回传部分参数，以api说明为准。
@@ -166,15 +192,15 @@ gdp('setGeneralProps', {
 SDK提供了清除通用属性的方法，调用该方法移除指定字段或所有通用埋点属性。
 
 ```js
-gdp('clearGeneralProps', propertyNames?: string[], callback?: function);
+gdp('clearGeneralProps', propertyNames: string[], callback?: function);
 ```
 
 #### 示例
 
 ```js
 gdp('clearGeneralProps', ['nick_name_var', 'index_var']);
-// 或不传值清空所有通用埋点属性
-gdp('clearGeneralProps');
+// 或传空数组清空所有通用埋点属性
+gdp('clearGeneralProps', []);
 ```
 
 ### 9、获取SDK当前配置(getOption)
@@ -225,7 +251,7 @@ gdp('trackTimerResume', timerId, callback?: function);
 停止事件计时器。注意停止事件计时器时会自动发送事件并删除当前计时器。
 
 ```js
-gdp('trackTimerResume', timerId, attributes?: object, callback?: function);
+gdp('trackTimerEnd', timerId, attributes?: object, callback?: function);
 ```
 
 #### 示例
@@ -241,8 +267,8 @@ trackTimerEnd时发送CUSTOM事件上报数据：
 * eventName  埋点事件标识符（trackTimerStart传入）
 * attributes 用户自定义事件属性（trackTimerEnd传入）
 * event_duration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
-event_duration 按照秒上报，小数点精度保证到毫秒<br/>
-event_duration 变量及其值会自动添加在 attributes 中<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;event_duration 按照秒上报，小数点精度保证到毫秒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;event_duration 变量及其值会自动添加在 attributes 中<br/>
 * eventName 对应的埋点事件需要在平台中**绑定**标识符为 event_duration， 且类型为小数的事件属性
 :::
 
@@ -335,29 +361,3 @@ SDK会自动忽略 `type="password"` 类型的input框的内容采集；如果�
 ```
 
 在上面的示例中，如果点击了图标触发了按钮事件，会同时发送i节点和div节点的两个点击事件。圈选时您可以圈选至div节点即可。
-
-## 其他
-
-### Object参数限制
-
-SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**(非指定类型值均会被替换为空字符串，长度超限均会被截断)**
-
-**`key:` String，length <=100；**
-
-**`value:` String | number 时 length <=1000； Array 时 length <=100**
-
-### 上报参数说明
-
-调用 埋点事件(track) 和 登录用户属性(setUserAttributes) 时；
-
-1、如果您的属性值是一个字符串或者数字组成的一维数组，上报时会自动转换为 `Array.join('||')` 的字符串便于服务端进行拆分解析。生成的字符串再经上述的Object参数限制进行过滤处理，字符串总长度大于1000时或数组长度大于100时会被截断。因此您需要控制数组中总体字符串和总体数组的长度。
-
-#### 示例
-
-```js
-name: ['cola', 'milk', 'juice']
-// 上报时会自动转换为↓↓↓
-name: 'cola||milk||juice'
-```
-
-2、如果您的属性值是一个 json 格式，则可能会被强制转换为`[object Object]`。因此您需要调整数据格式。

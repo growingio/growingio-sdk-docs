@@ -10,9 +10,9 @@ import TabItem from '@theme/TabItem';
 
 首先请先确认您使用的平台版本，Web SDK 4.0 <font size="4" color="#FC5F3A"><b>仅支持 4.2.x 及以上</b></font>版本的分析云。
 
-如果您使用的平台版本是 **19-25的通用大版本** ，请[参考文档](https://docs.growingio.com/v3/developer-manual/sdkintegrated/web-js-sdk/)使用 **2.x 版本SDK**，或联系我们购买新产品后再进行升级操作。
+如果您使用的平台版本是 **19-25的通用大版本** ，请[参考文档](https://docs.growingio.com/v3/developer-manual/sdkintegrated/web-js-sdk/)使用 **2.x 版本SDK**，或联系我们购买升级新产品后再进行升级操作。
 
-如果您使用的平台版本是 **4.0平台，但版本号低于4.2.x** ，请[参考文档]使用 **3.8 版本SDK**，或联系我们购买新产品后再进行升级操作。
+如果您使用的平台版本是 **4.0平台，但版本号低于4.2.x** ，请[参考文档]使用 **3.8 版本SDK**，或联系我们购买升级新产品后再进行升级操作。
 
 如果您使用的平台版本是 **4.0平台，且版本号高于等于4.2.x** ，您可以继续参考下文进行升级操作。
 
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
 * 移除**`evar.set`**方法调用。如需使用转化变量，请将转化变量放在埋点事件属性（track）中进行上报。未使用则忽略。
 * 移除**`visitor.set`**方法调用。如需使用访问用户变量，请将访问用户变量放在用户属性（setUserAttributes）中进行上报。未使用则忽略。
 * 重命名替换**`people.set`**为**`setUserAttributes`**，调用方式不变。未使用则忽略。
-* 重命名替换**`getVisitUserId`**为**`getDeviceId`**，调用方式不变。未使用则忽略。
+* 修改**`getVisitUserId`**为**`getDeviceId`**，调用方式变更，请[参考文档](/docs/webjs/commonlyApi#2获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
 
 ### 4、检查半自动采集浏览事件（曝光事件）
 
@@ -68,7 +68,7 @@ import TabItem from '@theme/TabItem';
 
 ### 5、检查埋点事件和用户属性事件
 
-检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#其他)，如有超出限制或超出限制的可能，请调整业务逻辑。
+检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#参数限制)，如有超出限制或超出限制的可能，请调整业务逻辑。
 
 </TabItem>
 <TabItem value="3.8.x版本">

@@ -9,19 +9,21 @@ import TabItem from '@theme/TabItem';
 
 ## 平台版本确认
 
-首先请先确认您使用的平台版本，Web SDK 4.0 <font size="4" color="#FC5F3A"><b>仅支持 4.2.x 及以上</b></font>版本的分析云。
+首先请先确认您使用的平台版本，小程序SDK 4.0 <font size="4" color="#FC5F3A"><b>仅支持 4.2.x 及以上</b></font>版本的分析云。
 
-如果您使用的OP平台版本**等于或低于13.6版本**，即使用 **0.6.x-2.x 版本SDK**，请联系我们升级新产品后再进行升级操作。
+如果您使用的OP平台版本是 **2.x版本** ，即使用 **0.6.x-1.2 版本SDK**，请联系我们购买升级新产品后再进行升级操作。
 
-如果您使用的OP平台版本是 **13.6(不含)-14.7 和 2.x版本 和 4.2.0以下(不含)的4.x版本** ，即使用 **3.0.x-3.8.x 版本SDK**，或联系我们购买新产品后再进行升级操作。
+如果您使用的OP平台版本是 **13.6(不含)-14.7 和  4.2.0以下(不含)的4.x版本** ，即使用 **3.0.x-3.8.x 版本SDK**，请联系我们购买升级新产品后再进行升级操作。
 
 如果您使用的平台版本是 **4.0平台，且版本号高于等于4.2.x** ，您可以继续参考下文进行升级操作。
+
+如果您使用的平台版本不在上述范围内，请咨询我们的技术支持。
 
 ## SDK版本确认
 
 如何确认您使用的SDK版本？
 
-在您的站点（或浏览器控制台）通过调用 <font size="4"><b>`window.vds`</b></font> 查看。
+在SDK文件中全局搜索`sdkVer="`或`sdkVersion="`，查看双引号后面的版本号。
 
 ## SDK升级
 
@@ -58,8 +60,9 @@ import TabItem from '@theme/TabItem';
 
 * 移除**`send`**方法调用。4.0版本已不再需要它，SDK在初始化完成后且`dataCollect`开启状态下自动上报数据。
 * 移除**`setConfig`、`config`**方法调用。SDK仅支持`init`方法进行初始化和初始化配置。如需在运行过程中动态修改配置，请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
-* 重命名替换**`getVisitUserId`**为**`getDeviceId`**，调用方式不变。未使用则忽略。
-* 修改`track`方法调用，移除**item**传参，即该方法不再支持物品模型上报，仅支持事件属性上报。
+* 移除**`setTrackerScheme`、`setTrackerHost`、`enableDebug`、`setDataCollect`、`setAutoTrack`** 方法调用。请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
+* 修改**`getVisitUserId`**为**`getDeviceId`，调用变更**，请[参考文档](/docs/webjs/commonlyApi#2获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
+* 修改**`track`**方法调用，移除**item**传参，即该方法不再支持物品模型上报，仅支持事件属性上报。未使用则忽略。
 
 ##### 示例
 
@@ -98,7 +101,18 @@ gdp('track', eventId, eventLevelVariables);
 
 * 移除**`send`**方法调用。4.0版本已不再需要它，SDK在初始化完成后且`dataCollect`开启状态下自动上报数据。
 * 移除**`setConfig`、`config`**方法调用。SDK仅支持`init`方法进行初始化和初始化配置。如需在运行过程中动态修改配置，请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
-* 重命名替换**`getVisitUserId`**为**`getDeviceId`**，调用方式不变。未使用则忽略。
+* 移除**`setTrackerScheme`、`setTrackerHost`、`enableDebug`、`setDataCollect`、`setAutoTrack`** 方法调用。请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
+* 修改**`getVisitUserId`**为**`getDeviceId`，调用变更**，请[参考文档](/docs/webjs/commonlyApi#2获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
+* 修改**`track`**方法调用，移除**item**传参，即该方法不再支持物品模型上报，仅支持事件属性上报。未使用则忽略。
+
+##### 示例
+
+```js
+// 不再支持该写法
+gdp('track', eventId, eventLevelVariables, item);
+// 仅支持该写法
+gdp('track', eventId, eventLevelVariables);
+```
 
 ### 4、检查埋点事件和用户属性事件
 

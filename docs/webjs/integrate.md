@@ -76,6 +76,8 @@ values={[
 
   gdp('init', 'your accountId', 'your dataSourceId', {
     version: 'your website version',
+    // OP私有部署客户请填写host，Saas客户请忽略
+    host: 'your server host'
     ...other settings
   });
 </script>
@@ -114,6 +116,8 @@ values={[
 
   gdp('init', 'your accountId', 'your dataSourceId', {
     version: 'your website version',
+    // OP私有部署客户请填写host，Saas客户请忽略
+    host: 'your server host'
     ...other settings
   });
 </script>
@@ -171,6 +175,8 @@ import gdp from 'gio-webjs-sdk';
  */
 gdp('init', 'your accountId', 'your dataSourceId', {
   version: 'your website version',
+  // OP私有部署客户请填写host，Saas客户请忽略
+  host: 'your server host'
   ...other settings
 });
 ```
@@ -200,6 +206,8 @@ import gdp from 'gio-webjs-sdk/gdp-full';
  */
 gdp('init', 'your accountId', 'your dataSourceId', {
   version: 'your website version',
+  // OP私有部署客户请填写host，Saas客户请忽略
+  host: 'your server host'
   ...other settings
 });
 ```
