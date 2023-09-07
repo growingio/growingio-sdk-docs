@@ -41,7 +41,7 @@ SDK 包括客户端SDK和服务端SDK。目前客户端SDK支持Android和iOS原
 |Python      | - | - | - | - | - | ✅ | ✅ | - | - | - |
 
 :::info 注意
-关于事件类型说明请查看[**事件模型**](/docs/basicknowledge/eventModel)，事件包含字段信息请查看[**测量协议**](/docs/Measurement%20Protocol) <br/>
+关于事件类型说明请查看[**事件模型**](/docs/3.x/basicknowledge/eventModel)，事件包含字段信息请查看[**测量协议**](/docs/3.x/Measurement%20Protocol) <br/>
 服务端SDK支持多维度表，用户融合功能，具体参考服务端SDK<br/>
 SDK未支持的服务端开发语言，GrowingIO 提供有 OPEN API，如有需求请联系您的技术支持
 :::

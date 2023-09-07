@@ -35,16 +35,16 @@ import TabItem from '@theme/TabItem';
 
 得益于新架构的SDK，我们将功能以插件的形式进行了拆分，既降低了SDK内部逻辑的耦合程度，又尽可能减小对小程序整体包大小增量的影响。
 
-插件详细介绍请见[插件](/docs/miniprogram/3.8/plugins)。
+插件详细介绍请见[插件](/docs/3.x/miniprogram/3.8/plugins)。
 
 ## 3.3与3.8对比
 
 为了更快速的帮助您理解小程序SDK3.8与旧版本的区别，我们为您详细罗列了两者的区别。
 
-对比详情介绍请见[3.3与3.8对比](/docs/miniprogram/3.8/contrast)
+对比详情介绍请见[3.3与3.8对比](/docs/3.x/miniprogram/3.8/contrast)
 
 ## 3.3升级到3.8
 
 为了帮助原先使用3.3版本的用户快速升级到3.8，我们单独为您详细介绍了如何快速升级。
 
-详情介绍请见[3.3升级到3.8](/docs/miniprogram/3.8/upgrade)
+详情介绍请见[3.3升级到3.8](/docs/3.x/miniprogram/3.8/upgrade)

@@ -186,7 +186,7 @@ growing_tracker.track_custom_event("test", login_user_id='cpacm', login_user_key
 ```
 :::info
 
-详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+详细使用示例:[埋点事件示例](/docs/3.x/basicknowledge/trackEventUse#埋点事件示例)
 
 :::
 
@@ -210,7 +210,7 @@ growing_tracker.track_user(login_user_id='user', login_user_key='email',
 ```
 :::info
 
-详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+详细使用示例:[用户属性事件示例](/docs/3.x/basicknowledge/trackEventUse#用户属性事件示例)
 
 :::
 

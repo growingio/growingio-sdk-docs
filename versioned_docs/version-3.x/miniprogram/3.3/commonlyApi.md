@@ -55,7 +55,7 @@ gdp('setTrackerScheme', 'http' | 'https');
 
 :::info
 若使用此接口需要在初始化时将 forceLogin 设置为 true
-参考[设置强制登录模式](/docs/miniprogram/3.3/initSettings#forcelogin)
+参考[设置强制登录模式](/docs/3.x/miniprogram/3.3/initSettings#forcelogin)
 :::
 在微信小程序调用[登录开放接口](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) `wx.login` 之后，获取 openId，调用 identify 设置访问用户ID。
 
@@ -138,13 +138,13 @@ gdp('track', 'order', { types: ['hjh1', 'hjh2'] }, { key: 'order_id', id: '12345
 
 :::info
 
-详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+详细使用示例:[埋点事件示例](/docs/3.x/basicknowledge/trackEventUse#埋点事件示例)
 
 :::
 
 ### 登录用户属性(setUserAttributes)
 
-以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/3.x/basicknowledge/trackEventUse#用户属性事件示例)
 
 #### 参数说明
 
@@ -358,7 +358,7 @@ Page({
 
 **如果您的H5页面需要获取更多小程序SDK采集的字段数据，请参考[`extraParams`](./initSettings#extraparams)**。
 
-**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/webjs/3.3/integrate#小程序内嵌页使用集成)**
+**H5页面集成SDK参考[小程序内嵌页使用集成](/docs/3.x/webjs/3.3/integrate#小程序内嵌页使用集成)**
 
 :::tip
 1. 内嵌页Web JS SDK采集的数据与小程序SDK采集数据打通，从url的query中获取来自小程序的gioInfo, 打通规则如下：

@@ -73,7 +73,7 @@ apply plugin: 'com.growingio.android.autotracker'
 :::tip 关于插件
 插件最新发布版本为 [Github Releases](https://github.com/growingio/growingio-sdk-android-plugin/releases)
 
-关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/AGP7)
+关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/3.x/android/AGP7)
 :::
 
 #### 添加代码依赖
@@ -124,7 +124,7 @@ dependencies {
 
 ### 添加URL Scheme
 
-URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用圈选,[Mobile Debugger](/docs/debugverify/mobiledebugger) 及深度链接等功能时唤醒应用。
+URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用圈选,[Mobile Debugger](/docs/3.x/debugverify/mobiledebugger) 及深度链接等功能时唤醒应用。
 将应用的 URLScheme 和应用权限添加到您的 AndroidManifest.xml 中的 LAUNCHER Activity 下。
 
 ```xml
@@ -162,7 +162,7 @@ URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把
 
 ### SDK初始化配置
 
-#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/compliance/androidCompliance#合规步骤)
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/3.x/compliance/androidCompliance#合规步骤)
 
 <Tabs
   groupId="code-language"
@@ -235,7 +235,7 @@ class MyApplication : Application() {
 
 至此，就完成了无埋点 SDK 的集成。
 
-另外，您可使用 [GioKit 辅助插件](/docs/giokit/android) 进行集成验证。
+另外，您可使用 [GioKit 辅助插件](/docs/3.x/giokit/android) 进行集成验证。
 
 ## 集成埋点SDK
 
@@ -318,7 +318,7 @@ dependencies {
 
 ### SDK初始化配置
 
-#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/compliance/androidCompliance#合规步骤)
+#### 请将 SDK 的初始化代码放入 `Application` 的 `onCreate` 中。为使 App 合规，请参考[合规步骤](/docs/3.x/compliance/androidCompliance#合规步骤)
 
 <Tabs
   groupId="code-language"
@@ -399,4 +399,4 @@ SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用�
 
 至此，就完成了埋点 SDK 的集成。
 
-另外，您可使用 [GioKit 辅助插件](/docs/giokit/android) 进行集成验证。
+另外，您可使用 [GioKit 辅助插件](/docs/3.x/giokit/android) 进行集成验证。

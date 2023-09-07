@@ -51,7 +51,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 
 关闭无埋点后 **`VIEW_CLICK` , `VIEW_CHANGE` , `FORM_SUBMIT`** 事件将不会再被采集和上报。
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#1开启关闭无埋点数据采集autotrack)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/3.x/miniprogram/3.8/commonlyApi#1开启关闭无埋点数据采集autotrack)
 
 ### compress
 
@@ -75,7 +75,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 ### dataCollect
 
 默认情况下，数据采集开关默认开启。如果您需要初始化时暂时关闭数据采集（例如隐私协议的场景），可以通过指定 `dataCollect: false` 关闭。
-需要开启数据采集时再通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#2开启关闭数据采集datacollect)
+需要开启数据采集时再通过调用动态修改配置接口来修改它。[参考文档](/docs/3.x/miniprogram/3.8/commonlyApi#2开启关闭数据采集datacollect)
 
 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
 
@@ -97,11 +97,11 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 });
 ```
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#3开启关闭调试模式debug)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/3.x/miniprogram/3.8/commonlyApi#3开启关闭调试模式debug)
 
 ### enableIdMapping
 
-多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户 ID 接口时，设置 userKey，服务端调用用户身份融合 API 时，可将不同的登录用户 ID 识别为同一用户。开启多用户身份上报后，需要在设置登录用户 ID 时设置 userKey。[参考文档](/docs/miniprogram/3.3/commonlyApi#设置登录用户idsetuserid)
+多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户 ID 接口时，设置 userKey，服务端调用用户身份融合 API 时，可将不同的登录用户 ID 识别为同一用户。开启多用户身份上报后，需要在设置登录用户 ID 时设置 userKey。[参考文档](/docs/3.x/miniprogram/3.3/commonlyApi#设置登录用户idsetuserid)
 
 ```js
 gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
@@ -206,7 +206,7 @@ gdp('identify', openId);
 
 :::caution 注意：
 如果打开小程序后没有调用 `wx.login` 获取 openId 或 unionId，没有调用 `identify` 方法，但是小程序 SDK 配置了 `forceLogin` 为 `true`，会导致 SDK 不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们技术支持。<br/>
-如果小程序首页中使用的是内嵌 H5 页面，需要使用[内嵌 H5 用户数据打通](/docs/miniprogram/3.8/commonlyApi#9与h5打通用户数据getgioinfo)功能。该场景下，需要在小程序冷启动时，使用开屏页(在小程序首页 page 前增加一个 page 开屏页)。
+如果小程序首页中使用的是内嵌 H5 页面，需要使用[内嵌 H5 用户数据打通](/docs/3.x/miniprogram/3.8/commonlyApi#9与h5打通用户数据getgioinfo)功能。该场景下，需要在小程序冷启动时，使用开屏页(在小程序首页 page 前增加一个 page 开屏页)。
 :::
 
 ### ignoreFields
@@ -254,7 +254,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 });
 ```
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/3.8/commonlyApi#5修改请求协议scheme)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/3.x/miniprogram/3.8/commonlyApi#5修改请求协议scheme)
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **上线时请注意移除此配置项，因为小程序官方是强制使用 https 协议进行通信的。**
@@ -273,7 +273,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceID', 'your AppId', {
 开启此项后分包独立运行时可能会不发送 PAGE 和无埋点事件（但埋点事件会发送），属于正常现象。放入主包后会正常发送 PAGE 事件，建议在主包中调试校验 Gio 事件是否正确。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**使用此功能需主包分包同时注册分包集成插件。[参考文档](/docs/miniprogram/3.8/plugins#多项目打通插件giomultiintegrate)**
+**使用此功能需主包分包同时注册分包集成插件。[参考文档](/docs/3.x/miniprogram/3.8/plugins#多项目打通插件giomultiintegrate)**
 
 ### tbConfig
 

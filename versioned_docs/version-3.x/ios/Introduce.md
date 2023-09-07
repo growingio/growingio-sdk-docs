@@ -27,7 +27,7 @@ Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数�
 :::info
 **3.3.5 版本及以上，Swift 项目建议使用 SwiftPM 集成**
 
-如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
+如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/3.x/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
 
 :::
 
@@ -107,7 +107,7 @@ import GrowingAutotracker_cdp
 
 </Tabs>
 
-#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
+#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/docs/3.x/compliance/iosCompliance#合规步骤)
 
 <Tabs>
   <TabItem value="objc" label="Objective-C" default>
@@ -224,7 +224,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 至此，就完成了无埋点 SDK 的集成。
 
-另外，您可使用 [GioKit 辅助插件](/docs/giokit/ios) 进行集成验证。
+另外，您可使用 [GioKit 辅助插件](/docs/3.x/giokit/ios) 进行集成验证。
 
 ## 埋点 SDK 集成
 
@@ -233,7 +233,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 :::info
 **3.3.5 版本及以上，Swift 项目建议使用 SwiftPM 集成**
 
-如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
+如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/3.x/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
 
 :::
 
@@ -287,7 +287,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 
 <ImageLoader path="version-3.x/img/ios/iOS_Setting_URLScheme" />
 
-### SDK初始化配置
+### SDK 初始化配置
 #### 导入头文件 `"GrowingTracker.h"`
 
 <Tabs>
@@ -313,7 +313,7 @@ import GrowingTracker_cdp
 
 </Tabs>
 
-#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
+#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/docs/3.x/compliance/iosCompliance#合规步骤)
 
 <Tabs>
   <TabItem value="objc" label="Objective-C" default>
@@ -430,7 +430,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 至此，就完成了埋点 SDK 的集成。
 
-另外，您可使用 [GioKit 辅助插件](/docs/giokit/ios) 进行集成验证。
+另外，您可使用 [GioKit 辅助插件](/docs/3.x/giokit/ios) 进行集成验证。
 
 ## App Store 提交应用注意事项
 如果您添加了库 `AdSupport.framework`，GrowingIO 则会启用 `IDFA`，所以在向 App Store 提交应用时，需要：
@@ -520,7 +520,7 @@ GrowingIO SDK 使用 访问用户 ID 标识访问用户 ，其值使用 IDFA 、
 }
 ```
 :::warning 注意
-使用 IDFA 作为访问用户 ID，同时为使 App 合规，则第一次 SDK 初始化应该在 用户同意隐私协议和获取 IDFA 权限之后。参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
+使用 IDFA 作为访问用户 ID，同时为使 App 合规，则第一次 SDK 初始化应该在 用户同意隐私协议和获取 IDFA 权限之后。参考[合规步骤](/docs/3.x/compliance/iosCompliance#合规步骤)
 :::
 
 ## 集成问题

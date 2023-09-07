@@ -76,7 +76,7 @@ gdp('setOption', 'scheme', 'http' | 'https');
 
 ### 1、注册插件(registerPlugins)
 
-默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/webjs/3.8/integrate)和[插件列表](/docs/webjs/3.8/plugins)进行插件的注册。
+默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/3.x/webjs/3.8/integrate)和[插件列表](/docs/3.x/webjs/3.8/plugins)进行插件的注册。
 
 #### 示例
 
@@ -95,7 +95,7 @@ gdp('identify', openId);
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
-**1）若使用此接口需要在初始化时将 forceLogin 设置为 true。 [参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)**<br/>
+**1）若使用此接口需要在初始化时将 forceLogin 设置为 true。 [参考文档](/docs/3.x/miniprogram/3.8/initSettings#forcelogin)**<br/>
 **2）使用多项目集成插件集成时，该方法只能在主包中调用，在分包中(即开启subpackage)会自动失效。**<br/>
 **3）该方法仅可合法地调用一次，多次调用无效。**
 
@@ -149,14 +149,14 @@ gdp('clearUserId');
 
 ### 6、埋点事件(track)
 
-发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/3.x/basicknowledge/trackEventUse#埋点事件示例)
 
 #### 参数说明
 
 | 参数              | 参数类型 | 说明                                                                                                                                  |
 |-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
 | `eventId`         | `String` | 必填；事件名，事件标识符。                                                                                                               |
-| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制) |
+| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/3.x/miniprogram/3.8/commonlyApi#object参数限制) |
 | `item`            | `Object` | 选填；事件发生关联的物品模型。                                                                                                          |
 | `item.id`         | `String` | item 中必填；物品模型 id。                                                                                                              |
 | `item.key`        | `String` | item 中必填；物品模型唯一标识。                                                                                                         |
@@ -178,13 +178,13 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 
 ### 7、登录用户属性(setUserAttributes)
 
-以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/3.x/basicknowledge/trackEventUse#用户属性事件示例)
 
 #### 参数说明
 
 | 参数             | 参数类型 | 说明                                                                                        |
 |------------------|----------|-------------------------------------------------------------------------------------------|
-| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/miniprogram/3.8/commonlyApi#object参数限制) |
+| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/3.x/miniprogram/3.8/commonlyApi#object参数限制) |
 
 #### 示例
 
@@ -307,7 +307,7 @@ giodatacollect    小程序是否采集数据
 gdp('getGioInfo');
 ```
 
-如果以上字段仍不能满足您分析需求，可在初始化时添加 `extraParams` [参考文档](/docs/miniprogram/3.8/initSettings#extraparams)配置字段来额外增加一些信息。
+如果以上字段仍不能满足您分析需求，可在初始化时添加 `extraParams` [参考文档](/docs/3.x/miniprogram/3.8/initSettings#extraparams)配置字段来额外增加一些信息。
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1）gdp('getGioInfo') 返回的是一个 search 字符串，需要您在字符串前手动拼接 ? 或 & 符号。如果您将该字符串拼接在了hash参数中，请在web sdk（>=3.3.10支持）中开启hashtag解析。**
@@ -360,7 +360,7 @@ Page({
 
 **3）3.8.0版本开始，打通数据中会增加`giodatacollect`字段，数据打通后，打通H5页面的 dataCollect 数据采集开关由小程序SDK初始化配置项 dataCollect 控制。此项功能使用需H5 页面集成的 Web JS SDK 版本>=3.3.9。**
 
-**H5页面集成SDK参考[在小程序内嵌页面中集成](/docs/webjs/3.8/integrate#在小程序内嵌页面中集成)**
+**H5页面集成SDK参考[在小程序内嵌页面中集成](/docs/3.x/webjs/3.8/integrate#在小程序内嵌页面中集成)**
 
 ### 10、设置埋点通用属性(setGeneralProps)
 

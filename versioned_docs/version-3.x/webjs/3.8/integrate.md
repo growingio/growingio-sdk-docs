@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 
 使用 WebJS GioKit 的快速初始化功能，可视化填写必要字段并选择需要的功能，即可一键为您自动生成合适您业务需求的初始化代码。省去不必要的理解成本和开发时间。
 
-[使用 GioKit 参考文档](/docs/giokit/web)
+[使用 GioKit 参考文档](/docs/3.x/giokit/web)
 
 ### 手动集成
 
@@ -124,7 +124,7 @@ values={[
 
 #### 其他
 
-**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/3.8/initSettings)。
+**1）**`init`初始化方法其他配置项请见[参考文档](/docs/3.x/webjs/3.8/initSettings)。
 
 **2）**SDK 默认使用`es6`版本进行打包，若您的站点需要支持 **IE11** 等不兼容 es6 的旧版浏览器，请修改为`gdp-es5.js`或`gdp-full-es5.js`即可引用 es5 版本的 SDK。
 
@@ -211,7 +211,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 #### 其他
 
-**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/3.8/initSettings)。
+**1）**`init`初始化方法其他配置项请见[参考文档](/docs/3.x/webjs/3.8/initSettings)。
 
 **2）**初始化代码应尽可能书写在入口文件的所有 js 代码执行的最前面（例如：app.js、index.js）。
 
@@ -227,19 +227,19 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 按需集成 SDK 时，SDK 仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
 
-各个插件的介绍和集成方式请见[插件](/docs/webjs/3.8/plugins)。
+各个插件的介绍和集成方式请见[插件](/docs/3.x/webjs/3.8/plugins)。
 
 ## 在 APP 内嵌页面中集成
 
 全量集成 SDK 时，参考 Web 站点集成即可，无需做额外操作，已内置 App 内嵌页打通功能。
 
-按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加 App 内嵌页打通插件。[参考文档](/docs/webjs/3.8/plugins/hybridAdapter)
+按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加 App 内嵌页打通插件。[参考文档](/docs/3.x/webjs/3.8/plugins/hybridAdapter)
 
 ## 在小程序内嵌页面中集成
 
-全量集成 SDK 时，需在 Web 站点集成的基础之上，修改初始化配置即可，无需再次集成插件，已内置小程序内嵌页打通功能。[参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
+全量集成 SDK 时，需在 Web 站点集成的基础之上，修改初始化配置即可，无需再次集成插件，已内置小程序内嵌页打通功能。[参考文档](/docs/3.x/webjs/3.8/plugins/embeddedAdapter)
 
-按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加小程序内嵌页打通插件并修改初始化配置。[参考文档](/docs/webjs/3.8/plugins/embeddedAdapter)
+按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加小程序内嵌页打通插件并修改初始化配置。[参考文档](/docs/3.x/webjs/3.8/plugins/embeddedAdapter)
 
 ## 在微信公众号 H5 中集成
 
@@ -263,7 +263,7 @@ window._gr_ignore_local_rule = true;
 
 自动适配移动端，摆脱H5页面无法使用浏览器控制台的问题。
 
-[使用 GioKit 参考文档](/docs/giokit/web)
+[使用 GioKit 参考文档](/docs/3.x/giokit/web)
 
 ### 使用 debug 在 Log 中校验
 

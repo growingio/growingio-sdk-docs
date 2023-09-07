@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
 ```cmd
 flutter clean
 ```
-若是已经集成 [Flutter 无埋点插件](/docs/framework/flutter/Flutter%20SDK)，重新编译后，无埋点就能正常运行了。
+若是已经集成 [Flutter 无埋点插件](/docs/3.x/framework/flutter/Flutter%20SDK)，重新编译后，无埋点就能正常运行了。
 
 </TabItem>
 
@@ -78,7 +78,7 @@ $ ./growingio_flutter_script.sh
 ```cmd
 flutter clean
 ```
-若是已经集成 [Flutter 无埋点插件](/docs/framework/flutter/Flutter%20SDK)，重新编译后，无埋点就能正常运行了。
+若是已经集成 [Flutter 无埋点插件](/docs/3.x/framework/flutter/Flutter%20SDK)，重新编译后，无埋点就能正常运行了。
 
 </TabItem>
 </Tabs>

@@ -58,4 +58,4 @@ dependencies {
 ### 使用方式
 
 登录 GrowingIO CDP 管理平台（一般来说，cdp都会配有数据管理），在平台管理--->客户数据平台--->数据校验--->Mobile Debugger 进入Mobile Debugger启动页。
-具体操作参考 [Mobile Debugger](/docs/debugverify/mobiledebugger) 即可。
+具体操作参考 [Mobile Debugger](/docs/3.x/debugverify/mobiledebugger) 即可。

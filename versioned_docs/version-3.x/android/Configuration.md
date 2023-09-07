@@ -156,7 +156,7 @@ GrowingAutotracker.startWithConfiguration(this,
 
 );
 ```
-模块列表请参考 [功能模块一览](/docs/android/modules)
+模块列表请参考 [功能模块一览](/docs/3.x/android/modules)
 
 ### 13 **setWebViewBridgeEnabled**
 是否全量采集 hybrid 数据（默认为 true）

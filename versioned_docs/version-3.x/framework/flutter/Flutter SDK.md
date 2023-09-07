@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Flutter SDK 插件
 ---
 
-Flutter SDK 插件虽然提供了 无埋点SDK 和 埋点SDK 两个版本，但是在使用 Flutter 无埋点SDK前需要按照 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect) 才能使无埋点功能生效。
+Flutter SDK 插件虽然提供了 无埋点SDK 和 埋点SDK 两个版本，但是在使用 Flutter 无埋点SDK前需要按照 [Flutter Aspect 集成](/docs/3.x/framework/flutter/Flutter%20Aspect) 才能使无埋点功能生效。
 
 ---
 
@@ -13,8 +13,8 @@ import TabItem from '@theme/TabItem';
 ## 环境配置
 :::info
 * 请确保原生工程中已经添加**原生埋点SDK**, 如果没有, 请移步至原生端SDK集成文档: [**Android 埋点SDK**](/docs/android/Introduce)、[**iOS 埋点SDK**](/docs/ios/Introduce)
-* Flutter SDK 插件的更新日志，可参阅 [Release Notes](/docs/framework/flutter/index.md#版本记录)
-* Flutter SDK 无埋点如何生效，请阅读 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect)
+* Flutter SDK 插件的更新日志，可参阅 [Release Notes](/docs/3.x/framework/flutter/index.md#版本记录)
+* Flutter SDK 无埋点如何生效，请阅读 [Flutter Aspect 集成](/docs/3.x/framework/flutter/Flutter%20Aspect)
 :::
 
 ## Growingio Flutter SDK 插件集成
@@ -165,8 +165,8 @@ void main() async {
 
 ### urlScheme 说明
 在使用 GrowingIO SDK 的Mobile Debugger 和圈选功能时，需要外部浏览器通过扫描二维码来拉起应用。
-* [Android 端 URLScheme 配置说明](/docs/android/Introduce#添加url-scheme)
-* [iOS 端 URLScheme 配置说明](/docs/ios/Introduce#添加-url-scheme)
+* [Android 端 URLScheme 配置说明](/docs/3.x/android/Introduce#添加url-scheme)
+* [iOS 端 URLScheme 配置说明](/docs/3.x/ios/Introduce#添加-url-scheme)
 
 ### 模块配置
 GrowingIO SDK 利用模块来实现SDK核心功能以外的额外功能，在 Flutter SDK 插件中，可以通过在 modules 传入模块声明来开启相应的功能。
@@ -196,8 +196,8 @@ GrowingTracker.startWithConfiguration(
 
 :::info
 在 Flutter SDK 启动广告模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
-* [Android 端 引入广告模块](/docs/android/modules/advert%20module)
-* [iOS 端 引入广告模块](/docs/ios/modules/Advert%20Module)
+* [Android 端 引入广告模块](/docs/3.x/android/modules/advert%20module)
+* [iOS 端 引入广告模块](/docs/3.x/ios/modules/Advert%20Module)
 :::
 
 #### 加密模块
@@ -215,7 +215,7 @@ GrowingTracker.startWithConfiguration(
 
 :::info
 在 Flutter SDK 启动加密模块同时，Android端需要引入相应的模块代码，请参考：
-* [Android 端 引入加密模块](/docs/android/modules/encoder%20module)
+* [Android 端 引入加密模块](/docs/3.x/android/modules/encoder%20module)
 * iOS端会打开相关配置，无须引入模块。
 :::
 
@@ -235,8 +235,8 @@ Protobuf 数据模块将会使用 Google Protobuf 格式保存和上传事件数
 
 :::info
 在 Flutter SDK 启动 Protobuf 模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
-* [Android 端 引入 Protobuf 模块](/docs/android/modules/protobuf%20module)
-* [iOS 端 引入 Protobuf 模块](/docs/ios/modules/Protobuf%20Module)
+* [Android 端 引入 Protobuf 模块](/docs/3.x/android/modules/protobuf%20module)
+* [iOS 端 引入 Protobuf 模块](/docs/3.x/ios/modules/Protobuf%20Module)
 :::
 
 #### H5混合模块
@@ -253,8 +253,8 @@ GrowingTracker.startWithConfiguration(
 若使用了原生的WebView,且内嵌 H5 页面如果也需要进行数据采集（H5 页面已经集成 Web JS SDK），则可以开启该 H5混合模块。
 :::info
 在 Flutter SDK 启动H5混合模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
-* [Android 端 引入H5混合模块](/docs/android/modules/hybrid%20module)
-* [iOS 端 引入H5混合模块](/docs/ios/modules/Hybrid%20Module)
+* [Android 端 引入H5混合模块](/docs/3.x/android/modules/hybrid%20module)
+* [iOS 端 引入H5混合模块](/docs/3.x/ios/modules/Hybrid%20Module)
 :::
 
 ## API说明

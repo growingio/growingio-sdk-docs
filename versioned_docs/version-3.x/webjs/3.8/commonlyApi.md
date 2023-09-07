@@ -73,7 +73,7 @@ gdp('setOption', 'host', 'api.growingio.com');
 
 ### 1、注册插件(registerPlugins)
 
-默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/webjs/3.8/integrate)和[插件列表](/docs/webjs/3.8/plugins)进行插件的注册。
+默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/3.x/webjs/3.8/integrate)和[插件列表](/docs/3.x/webjs/3.8/plugins)进行插件的注册。
 
 #### 示例
 
@@ -124,14 +124,14 @@ gdp('clearUserId');
 
 ### 5、埋点事件(track)
 
-发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/3.x/basicknowledge/trackEventUse#埋点事件示例)
 
 #### 参数说明
 
 | 参数              | 参数类型 | 说明            |
 |-------------------|----------|:------------------------|
 | `eventId`         | `String` | 必填；事件名，事件标识符。                                                                                                         |
-| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/webjs/3.8/commonlyApi#object参数限制) |
+| `properties`      | `Object` | 选填；事件属性，当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)[参数限制](/docs/3.x/webjs/3.8/commonlyApi#object参数限制) |
 | `item`            | `Object` | 选填；事件发生关联的物品模型。                                                                                                    |
 | `item.id`         | `String` | item 中必填；物品模型 id。                                                                                                        |
 | `item.key`        | `String` | item 中必填；物品模型唯一标识。                                                                                                   |
@@ -153,13 +153,13 @@ gdp('track', 'order', { type: 'hjh' }, { key: 'order_id', id: '12345' }); // 有
 
 ### 6、登录用户属性(setUserAttributes)
 
-以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+以登录用户的身份定义登录用户属性，用于用户信息相关分析。[用户属性事件示例](/docs/3.x/basicknowledge/trackEventUse#用户属性事件示例)
 
 #### 参数说明
 
 | 参数             | 参数类型 | 说明  |
 |------------------|----------|:------------------------|
-| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/webjs/3.8/commonlyApi#object参数限制) |
+| `userAttributes` | `Object` | 包含登录用户属性的 Object 对象。[参数限制](/docs/3.x/webjs/3.8/commonlyApi#object参数限制) |
 
 #### 示例
 

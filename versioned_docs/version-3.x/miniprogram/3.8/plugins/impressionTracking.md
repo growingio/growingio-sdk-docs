@@ -5,7 +5,7 @@ title: 半自动埋点浏览
 
 ## 简介（gioImpressionTracking）
 
-用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)在平台上进行事件类型和变量的预定义。
+用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件。因此您同样需要参考[埋点事件](/docs/3.x/miniprogram/3.8/commonlyApi#6埋点事件track)在平台上进行事件类型和变量的预定义。
 
 ### 曝光逻辑
 
@@ -52,7 +52,7 @@ gdp('init', xxxx);
 
 **1、**在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
 
-**2、**在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)。
+**2、**在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`、`data-gio-imp-items` 属性，并分别对应 `track` 方法中的三个参数进行设置，参数规则参考[埋点事件](/docs/3.x/miniprogram/3.8/commonlyApi#6埋点事件track)。
 
 ### 传值方式一：使用 Object 对象或 JSON 字符串赋值
 

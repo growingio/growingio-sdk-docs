@@ -40,4 +40,4 @@ gdp('init', xxxx);
 
 1、默认情况下，加载该插件后自动开启数据加密压缩功能。
 
-2、初始化配置项 `compress` 依然有效并能控制该功能是否启用，请留意初始化配置项 `compress` 是否在开启状态。[参考文档](/docs/miniprogram/3.8/initSettings#compress)
+2、初始化配置项 `compress` 依然有效并能控制该功能是否启用，请留意初始化配置项 `compress` 是否在开启状态。[参考文档](/docs/3.x/miniprogram/3.8/initSettings#compress)

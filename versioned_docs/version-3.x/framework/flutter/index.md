@@ -3,7 +3,7 @@ slug: /framework/flutter
 title: Flutter SDK
 ---
 
-Flutter SDK 提供了 [无埋点SDK](/docs/framework/flutter/index.md) 和 [埋点SDK](/docs/framework/flutter/index.md) 两个版本：
+Flutter SDK 提供了 [无埋点SDK](/docs/3.x/framework/flutter/index.md) 和 [埋点SDK](/docs/3.x/framework/flutter/index.md) 两个版本：
 * 埋点SDK 只自动采集用户访问事件，需要开发人员调用相应埋点 API 采集埋点事件;
 * 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 

@@ -265,7 +265,7 @@ GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback() 
 
 3. 点击测试 DeepLink，如果可以直接跳转到 App 中，说明可以直接唤起 App，为最理想流程
 
-4. 如果未直接跳转到 App 中，而是跳入下载引导中间页，并且系统弹窗询问是否要在应用中打开，此时可以通过 [验证 Intent Filter 配置](/docs/android/modules/advert%20module#验证-intent-filter-配置) 查看 Status，如果状态显示为 `ask`，并且确认 App Links 集成流程正确无误，则可能是当前测试设备机型在 AppLinks 遇到校验问题，对于该情况请参考下方常见问题说明
+4. 如果未直接跳转到 App 中，而是跳入下载引导中间页，并且系统弹窗询问是否要在应用中打开，此时可以通过 [验证 Intent Filter 配置](/docs/3.x/android/modules/advert%20module#验证-intent-filter-配置) 查看 Status，如果状态显示为 `ask`，并且确认 App Links 集成流程正确无误，则可能是当前测试设备机型在 AppLinks 遇到校验问题，对于该情况请参考下方常见问题说明
 
    对于 Status 状态的说明：
 

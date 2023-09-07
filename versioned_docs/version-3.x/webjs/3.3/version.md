@@ -13,7 +13,7 @@ sidebar_position: 0
 
 ## V3.3.18 - 2022/09/29
 
-* 🎉 新增事件时长统计功能。[参考文档](/docs/webjs/3.3/api#事件时长统计)
+* 🎉 新增事件时长统计功能。[参考文档](/docs/3.x/webjs/3.3/api#事件时长统计)
 
 ## V3.3.17 - 2022/09/08
 
@@ -48,7 +48,7 @@ sidebar_position: 0
 
 ## V3.3.10 - 2022/04/14
 
-* 🎉 新增支持 cookie 中用户信息加密存储，详细参考[关于Cookie](/docs/compliance/webCompliance#关于cookie)
+* 🎉 新增支持 cookie 中用户信息加密存储，详细参考[关于Cookie](/docs/3.x/compliance/webCompliance#关于cookie)
 * 🎉 新增支持开启 hashtag 时，将 hashtag 后的参数拼接到query字段上报
 * 🎉 新增支持埋点事件属性和用户属性值可设置为数组类型
 * 🐞 修复与小程序打通时，当 extraParams 获取不到值，H5页面采集数据对应字段值上报undefined问题

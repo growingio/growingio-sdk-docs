@@ -40,6 +40,6 @@ gdp('init', xxxx);
 
 ## 注意
 
-1、初始化配置项 `autotrack` 依然有效并能控制该功能是否启用，请留意初始化配置项 `autotrack` 是否在开启状态。[参考文档](/docs/webjs/3.8/initSettings#autotrack)
+1、初始化配置项 `autotrack` 依然有效并能控制该功能是否启用，请留意初始化配置项 `autotrack` 是否在开启状态。[参考文档](/docs/3.x/webjs/3.8/initSettings#autotrack)
 
 2、一般情况下，此插件应与Web圈选辅助插件（GioWebCircle）同时集成使用。
