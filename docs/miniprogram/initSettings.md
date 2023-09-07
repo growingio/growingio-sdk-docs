@@ -34,7 +34,7 @@ title: 初始化配置
 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   dataCollect: false,
   ...其他配置项,
 });
@@ -47,7 +47,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 在开发时设置 `debug: true`，打开开发者工具控制台，即可看到实时采集的数据。您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/commonlyApi#3开启关闭调试模式debug)
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   debug: true,
   ...其他配置项,
 });
@@ -60,7 +60,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户 ID 接口时，设置 userKey，服务端调用用户身份融合 API 时，可将不同的登录用户 ID 识别为同一用户。开启多用户身份上报后，需要在设置登录用户 ID 时设置 userKey。[参考文档](/docs/miniprogram/commonlyApi#设置登录用户idsetuserid)
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   idMapping: true,
   ...其他配置项,
 });
@@ -79,7 +79,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 #### 示例
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   extraParams: [
     'appChannel',
     'deviceBrand',
@@ -104,7 +104,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 如您不需要此功能，可以通过指定 followShare: false 来关闭跟踪分享，分享事件将不再上报。
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   followShare: false,
   ...其他配置项,
 });
@@ -115,13 +115,13 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 默认情况下，SDK 会自动生成访问用户 ID 来标识访问用户。如您需要使用 openId 或 unionId 标识访问用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   forceLogin: true,
   ...其他配置项,
 });
 ```
 
-强制登录模式适用于打开小程序就调用 `wx.login` ([参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)) 获取 openId 或 unionId 的小程序。 开启此模式并调用 `identity` 上报 openid 或 unionId，会将上报的 Id 作为访问用户 ID，有助于访问用户数据关联性分析。
+强制登录模式适用于打开小程序就调用 `wx.login` ([参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)) 获取 openId 或 unionId 的小程序。 开启此模式并调用 `identity` 上报 openId 或 unionId，会将上报的 Id 作为访问用户 ID，有助于访问用户数据关联性分析。
 
 设置`forceLogin`为`true`后，SDK 会暂停上报数据，待调用 `wx.login`后获取 openId 或 unionId，调用 `identify` 方法后开始数据上报。**调用 `identify` 会替换事件数据的 deviceId 为设定值（一般是小程序 openId 或 unionId），包括调用`identify`之前触发的事件。**
 
@@ -148,7 +148,7 @@ gdp('identify', openId / unionId);
 #### 示例
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   ignoreFields: [
     'deviceBrand',
     'deviceModel',
@@ -168,7 +168,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 默认情况下，网络协议为`https`，但考虑到在开发小程序的过程中可能需要使用`http`协议的测试服务，因此我们提供了临时修改网络协议的配置。
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   scheme: 'http',
   ...其他配置项,
 });
@@ -189,7 +189,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 **云函数配置方式：**
 
 ```js
-gdp('init','your accountId', 'your dataSourceId', 'your appId', {
+gdp('init',accountId, dataSourceId, appId, {
   tbConfig: {
       cloudFuncSend: true,             // 是否使用云函数进行数据单发，默认为 false
       cloudFuncName: 'httpTunnel'      // 调用的云函数名称，默认为 httpTunnel
@@ -202,7 +202,7 @@ gdp('init','your accountId', 'your dataSourceId', 'your appId', {
 **云应用配置方式：**
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   tbConfig: {
     cloudAppId: 'xxxxxx', // 云应用Id，无默认值
     path: 'your cloudApp interface path', // 云应用数据接口，无默认值
@@ -218,7 +218,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 **单位：ms；允许设值范围 0 ~ 2000；默认 1000（即 1 秒）。**
 
 ```js
-gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+gdp('init', accountId, dataSourceId, appId, {
   uploadInterval: 1000,
   ...其他配置项,
 });

@@ -9,18 +9,20 @@ title: 初始化配置
 
 > <b>提示：所有的配置项均为非必填。</b>
 
-| **字段名**     | **参数取值**            | **默认值**           | **说明**                  |
+| **字段名**      | **参数取值**             | **默认值**            | **说明**                 |
 |----------------|-------------------------|----------------------|-------------------------|
-| `cookieDomain` | `string`                | `当前站点的一级域名` | 自定义cookie存储的域      |
+| `cookieDomain` | `string`                | `当前站点的一级域名`    | 自定义cookie存储的域      |
 | `dataCollect`  | `boolean`               | `true`               | 是否开启数据采集          |
 | `debug`        | `boolean`               | `false`              | 是否开启调试模式          |
+| `forceLogin`   | `boolean`               | `false`              | 是否开启强制登录          |
 | `idMapping`    | `boolean`               | `false`              | 是否开启多用户身份上报    |
 | `hashtag`      | `boolean`               | `false`              | 是否开启hash解析          |
 | `host`         | `string`                | `napi.growingio.com` | 数据上报的服务端地址      |
 | `ignoreFields` | `string[]`              | `[]`                 | 上报忽略字段              |
-| `platform`     | `取值见表`              | `Web`                | 平台类型                  |
+| `platform`     | `取值见表`               | `Web`                | 平台类型                  |
 | `scheme`       | `string`                | `location.protocol`  | 网络协议                  |
 | `storageType`  | `cookie / localStorage` | `cookie`             | SDK信息的持久化存储的类型 |
+| `trackBot`     | `boolean`               | `true`               | 是否采集爬虫环境数据       |
 | `version`      | `string`                | `1.0.0`              | 应用版本号                |
 
 ## 配置项详解
@@ -57,6 +59,26 @@ gdp('init', accountId, datasourceId, { debug: true });
 ```
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#3开启关闭调试模式debug)
+
+### forceLogin
+
+默认情况下，SDK 会自动生成访问用户 ID 来标识访问用户。如您是在微信公众号H5中集成且需要使用 openId 或 unionId 标识访问用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
+
+```js
+gdp('init', accountId, dataSourceId, appId, {
+  forceLogin: true,
+});
+```
+
+强制登录模式适用于打开站点就在公众号H5中调用[网页授权](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html) 之后获取 openId 或 unionId 的微信公众号H5或内嵌页。 开启此模式并调用 `identity` 上报 openId 或 unionId，会将上报的 Id 作为访问用户 ID，有助于访问用户数据关联性分析。
+
+设置`forceLogin`为`true`后，SDK 会暂停上报数据，待调用网页授权后获取 openId 或 unionId，调用 `identify` 方法后开始数据上报。**调用 `identify` 会替换事件数据的 deviceId 为设定值（一般是 openId 或 unionId），包括调用`identify`之前触发的事件。**
+
+```js
+gdp('identify', openId / unionId);
+```
+
+**<font color="#FC5F3A">注意：</font>非微信公众号H5的站点慎用，可能会导致你的站点没有数据上报。**
 
 ### idMapping
 
@@ -123,6 +145,14 @@ gdp('init', accountId, datasourceId, { scheme: 'http' });
 
 ```js
 gdp('init', accountId, datasourceId, { storageType: 'localStorage' });
+```
+
+### trackBot
+
+默认情况下，SDK会采集支持JavaScript的爬虫访问数据，包括会话信息和页面访问信息，但是不会收集页面的元素数据。你可以通过浏览器维度分辨出有多少是爬虫带来的数据，有多少是正常用户访问的数据。如果你希望不采集爬虫的数据，可关闭该配置项。
+
+```js
+gdp('init', accountId, datasourceId, { trackBot: false });
 ```
 
 ### version
