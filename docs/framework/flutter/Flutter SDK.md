@@ -12,7 +12,6 @@ import TabItem from '@theme/TabItem';
 
 ## 环境配置
 :::info
-* 请确保原生工程中已经添加**原生埋点SDK**, 如果没有, 请移步至原生端SDK集成文档: [**Android 埋点SDK**](/docs/android/Introduce)、[**iOS 埋点SDK**](/docs/ios/Introduce)
 * Flutter SDK 插件的更新日志，可参阅 [Release Notes](/docs/framework/flutter/index.md#版本记录)
 * Flutter SDK 无埋点如何生效，请阅读 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect)
 :::
@@ -63,14 +62,125 @@ dependencies:
 
 </details>
 
+### 添加 Android 依赖
+
+<details>
+  <summary>添加 maven 仓库</summary>
+
+在 project 级别的build.gradle文件中添加Maven仓库
+
+```groovy
+buildscript {
+    repositories {
+        // 添加maven仓库
+        mavenCentral()
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+
+allprojects {
+    repositories {
+        // 添加maven仓库
+        mavenCentral()
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+```
+
+</details>
+
+<details>
+  <summary>添加依赖</summary>
+
+在 app 级别的 `build.gradle` 文件中添加代码依赖
+
+<Tabs
+  groupId="code-language"
+  defaultValue="common"
+  values={[
+    {label: '依赖', value: 'common'},
+    {label: 'BoM', value: 'bom'},
+  ]
+}>
+
+<TabItem value="common">
+
+```groovy
+apply plugin: 'com.android.application'
+
+dependencies {
+    implementation 'com.growingio.android:autotracker-cdp:3.5.1'
+    implementation 'com.growingio.android:flutter:3.5.1'
+}
+```
+
+</TabItem>
+
+<TabItem value="bom">
+
+```groovy
+apply plugin: 'com.android.application'
+
+dependencies {
+  // Import the BoM for the GrowingIO platform
+  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+
+  //GrowingIO 无埋点 SDK
+  implementation 'com.growingio.android:autotracker-cdp'
+  implementation 'com.growingio.android:flutter'
+}
+```
+
+</TabItem>
+</Tabs>
+
+</details>
+
+<details>
+  <summary>添加插件(集成无埋点需要)</summary>
+
+在 project 级别的build.gradle文件中添加插件路径
+
+```groovy
+buildscript {
+    ...
+
+    dependencies {
+        //GrowingIO 无埋点 SDK plugin
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.5.0'
+    }
+}
+```
+
+在 app 级别的 `build.gradle` 文件中添加 `com.growingio.android.autotracker` 插件
+
+```groovy
+apply plugin: 'com.android.application'
+//添加 GrowingIO 插件
+apply plugin: 'com.growingio.android.autotracker'
+
+...
+```
+
+:::tip 关于插件
+插件最新发布版本为 [Github Releases](https://github.com/growingio/growingio-sdk-android-plugin/releases)
+
+关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/AGP7)
+:::
+
+</details>
+
+
 ### Flutter 插件初始化
 
 GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原生代码中初始化。如果需要更多的功能设置，我们更推荐您在原生端实现初始化。
 
 #### 原生端初始化
 原生端初始化请参考各端的初始化文档：
-* [Android 端初始化配置](/docs/android/modules/flutter%20module)
-* iOS 端 初始化配置 ：在集成 Flutter SDK 插件时自动引入原生Flutter 模块.
+* Android: [无埋点初始化配置](/docs/android/Introduce#sdk初始化配置)、[埋点初始化配置](/docs/android/Introduce#sdk初始化配置-1)，另外，在 Android 原生初始化需要额外添加 [Flutter 模块](/docs/android/modules/flutter%20module#使用方式)
+* iOS: [无埋点初始化配置](/docs/ios/Introduce#sdk-初始化配置)、[埋点初始化配置](/docs/ios/Introduce#sdk-初始化配置-1)
 
 #### Flutter 初始化
 在 Flutter 端进行初始化，请将 SDK 的初始化代码放入 `main.dart` 的 `main` 中，代码示例如下：
