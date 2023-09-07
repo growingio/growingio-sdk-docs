@@ -11,19 +11,19 @@ GrowingIO 各SDK均支持日志输出模式，开启后可进行调试和校验�
 
 ### Android SDK 日志输出模式
 
-请参考初始化配置中的 [`setDebugEnabled`](/docs/android/Configuration#3-setdebugenabled)
+请参考初始化配置中的 [`setDebugEnabled`](/docs/3.x/android/Configuration#3-setdebugenabled)
 
 ### iOS SDK 日志输出模式
 
-请参考初始化配置中的 [`debugEnabled`](/docs/ios/Configuration#2-debugenabled)
+请参考初始化配置中的 [`debugEnabled`](/docs/3.x/ios/Configuration#2-debugenabled)
 
 ### Web JS SDK 日志输出模式
 
-请参考初始化配置中的 [开启 debug 模式](/docs/webjs/3.3/initSettings#debug)
+请参考初始化配置中的 [开启 debug 模式](/docs/3.x/webjs/3.3/initSettings#debug)
 
 ### 小程序 SDK 日志输出模式
 
-请参考初始化配置中的 [开启 debug 模式](/docs/miniprogram/3.3/initSettings#debug)
+请参考初始化配置中的 [开启 debug 模式](/docs/3.x/miniprogram/3.3/initSettings#debug)
 
 ### 服务端 SDK 日志输出模式
 
@@ -35,4 +35,4 @@ GrowingIO 各SDK均支持日志输出模式，开启后可进行调试和校验�
 
 ## 校验
 
-日志校验的关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
+日志校验的关注点请参考[校验时需关注字段和说明](/docs/3.x/debugverify#校验时需关注字段和说明)。

@@ -41,7 +41,7 @@ SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-minip
 - 🐞 修复平台没有运行中的运营弹窗任务时全量存储埋点导致本地存储超限的问题。
 - 🐞 修复弹窗组件多个同时使用时多次弹窗的问题。
 - 🌟 修改埋点事件时长、性能分析事件和属性标识符。
-- 🎉 新增手动更新半自动埋点监控的功能（以应对动态渲染半自动埋点节点无法被监听的问题）。[参考文档](/docs/miniprogram/3.8/plugins/impressionTracking#手动更新半自动埋点监听)
+- 🎉 新增手动更新半自动埋点监控的功能（以应对动态渲染半自动埋点节点无法被监听的问题）。[参考文档](/docs/3.x/miniprogram/3.8/plugins/impressionTracking#手动更新半自动埋点监听)
 
 ### V3.8.11 - 2022/12/22
 
@@ -61,7 +61,7 @@ SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-minip
 - 🐞 修复 iOS 下小程序分享完成后偶现事件卡住的问题。
 - 🌟 优化初始化关闭数据采集或无埋点时，没有提示的问题。
 - 🌟 优化上报事件属性标识符字符长度由 50 修改为 100。
-- 🎉 新增性能监控功能。[参考文档](/docs/miniprogram/3.8/plugins/performance)
+- 🎉 新增性能监控功能。[参考文档](/docs/3.x/miniprogram/3.8/plugins/performance)
 
 ### V3.8.9 - 2022/10/11
 
@@ -73,7 +73,7 @@ SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-minip
 - 🐞 修复加密上报失败重试时事件乱码的问题。
 - 🌟 优化曝光监听逻辑，减少性能影响。
 - 🌟 优化无埋点处理逻辑，减少性能影响。
-- 🎉 新增事件时长统计功能。[参考文档](/docs/miniprogram/3.8/commonlyApi#事件时长统计)
+- 🎉 新增事件时长统计功能。[参考文档](/docs/3.x/miniprogram/3.8/commonlyApi#事件时长统计)
 
 ### V3.8.7 - 2022/09/14
 

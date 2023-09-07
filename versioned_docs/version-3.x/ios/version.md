@@ -3,7 +3,7 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
-# [3.6.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.5.0...3.6.0) (2023-08-16)
+## [3.6.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.5.0...3.6.0) (2023-08-16)
 
 
 ### Features
@@ -14,7 +14,7 @@ sidebar_position: 0
 
 
 
-# [3.5.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.8...3.5.0) (2023-07-06)
+## [3.5.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.8...3.5.0) (2023-07-06)
 
 ### Bug Fixes
 

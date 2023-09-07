@@ -57,9 +57,9 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
 App({ ... });
 ```
 
-**淘宝小程序中，`tbConfig` 为必填项，详情请[参考文档](/docs/miniprogram/3.8/initSettings#tbconfig)**
+**淘宝小程序中，`tbConfig` 为必填项，详情请[参考文档](/docs/3.x/miniprogram/3.8/initSettings#tbconfig)**
 
-**_更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看_**
+**_更多配置项请在[集成配置](/docs/3.x/miniprogram/3.8/initSettings)菜单中查看_**
 
 ## 小部件中集成
 
@@ -85,7 +85,7 @@ Component({ ... });
 
 集成 SDK 时，SDK 仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
 
-各个插件的介绍和集成方式请见[插件](/docs/miniprogram/3.8/plugins)。
+各个插件的介绍和集成方式请见[插件](/docs/3.x/miniprogram/3.8/plugins)。
 
 加载插件后会在初始化之前打印日志。例：
 

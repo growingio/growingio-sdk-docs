@@ -8,7 +8,7 @@ title: 小程序内嵌页打通
 
 ### 打通逻辑(规则)
 
-为方便描述，下文中来自小程序SDK`getGioInfo`获取的URL参数（参数详情[参考文档](/docs/miniprogram/3.8/commonlyApi#9与h5打通用户数据getgioinfo)）称 `小程序参数`；WebJS SDK初始化配置的参数 称 `H5参数`。
+为方便描述，下文中来自小程序SDK`getGioInfo`获取的URL参数（参数详情[参考文档](/docs/3.x/miniprogram/3.8/commonlyApi#9与h5打通用户数据getgioinfo)）称 `小程序参数`；WebJS SDK初始化配置的参数 称 `H5参数`。
 
 **H5参数的`appId`、`accountId`分别与小程序参数的值(小程序参数中称为`gioappid`、`gioprojectid`)对应一致，即视为打通数据。**
 
@@ -65,11 +65,11 @@ platform     ->   小程序的 platform
 domain       ->   小程序的 appId
 ```
 
-除了以上字段，如果小程序SDK初始化时设置了 `extraParams` [参考文档](/docs/miniprogram/3.8/initSettings#extraparams) ，其中的参数也会在H5内嵌页事件中进行上报。
+除了以上字段，如果小程序SDK初始化时设置了 `extraParams` [参考文档](/docs/3.x/miniprogram/3.8/initSettings#extraparams) ，其中的参数也会在H5内嵌页事件中进行上报。
 
 ## 注意
 
-1、使用时确保相同 appId 的主体小程序在 `webview` 的 `src` 中已拼接 `getGioInfo` 的地址参数。[参考文档](/docs/miniprogram/3.8/commonlyApi#9与h5打通用户数据getgioinfo)
+1、使用时确保相同 appId 的主体小程序在 `webview` 的 `src` 中已拼接 `getGioInfo` 的地址参数。[参考文档](/docs/3.x/miniprogram/3.8/commonlyApi#9与h5打通用户数据getgioinfo)
 
 2、打通时小程序参数会携带小程序是否采集数据的状态。因此小程序的数据采集开关也能**一次性**地控制H5的数据上报。
 

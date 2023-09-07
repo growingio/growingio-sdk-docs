@@ -42,11 +42,11 @@ sidebar_position: 0
 
 * 🐞 修复切换 userId 没有更新session的问题
 * 🎉 新增支持采集数据内嵌页userKey与小程序userKey一致
-* 🎉 新增初始化配置项[extraParams](/docs/miniprogram/3.3/initSettings#extraparams)
+* 🎉 新增初始化配置项[extraParams](/docs/3.x/miniprogram/3.3/initSettings#extraparams)
 
 ### V3.3.2 - 2021/12/06
 
-* 🎉 新增 enableEventStore 初始化配置：在未使用运营SDK时关闭事件本地存储，在使用运营SDK时开启事件本地存储。[使用详情](/docs/miniprogram/3.3/initSettings#enableeventstore)
+* 🎉 新增 enableEventStore 初始化配置：在未使用运营SDK时关闭事件本地存储，在使用运营SDK时开启事件本地存储。[使用详情](/docs/3.x/miniprogram/3.3/initSettings#enableeventstore)
 
 ### V3.3.1 - 2021/11/24
 
@@ -54,11 +54,11 @@ sidebar_position: 0
 
 ### V3.3.0 - 2021/09/30
 
-* 🎉 新增id mapping 支持。[使用详情](/docs/miniprogram/3.3/initSettings#enableidmapping)
+* 🎉 新增id mapping 支持。[使用详情](/docs/3.x/miniprogram/3.3/initSettings#enableidmapping)
 
 ### V3.2.2 - 2021/06/30
 
-* 🎉 新增autotrack和ignoreFields配置。[autotrack](/docs/miniprogram/3.3/initSettings#autotrack)，[ignoreFields](/docs/miniprogram/3.3/initSettings#ignorefields)
+* 🎉 新增autotrack和ignoreFields配置。[autotrack](/docs/3.x/miniprogram/3.3/initSettings#autotrack)，[ignoreFields](/docs/3.x/miniprogram/3.3/initSettings#ignorefields)
 
 ### V3.2.1 - 2021/06/22
 

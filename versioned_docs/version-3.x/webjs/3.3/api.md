@@ -153,7 +153,7 @@ gdp('track', 'order', { types: ['hjh1', 'hjh2'] }, { key: 'order_id', id: '12345
 
 :::info
 
-详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+详细使用示例:[埋点事件示例](/docs/3.x/basicknowledge/trackEventUse#埋点事件示例)
 
 :::
 
@@ -181,7 +181,7 @@ gdp('setUserAttributes', { names: ['tony', 'mike', 'lily'] });
 
 :::info
 
-详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+详细使用示例:[用户属性事件示例](/docs/3.x/basicknowledge/trackEventUse#用户属性事件示例)
 
 :::
 

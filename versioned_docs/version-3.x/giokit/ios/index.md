@@ -34,7 +34,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ### 事件库
 
-以列表形式展示自插件启用后所有的埋点数据及其发送状态，点击单条数据可查看数据详情。数据格式请移步[测量协议](/docs/Measurement%20Protocol)。数据关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
+以列表形式展示自插件启用后所有的埋点数据及其发送状态，点击单条数据可查看数据详情。数据格式请移步[测量协议](/docs/3.x/Measurement%20Protocol)。数据关注点请参考[校验时需关注字段和说明](/docs/3.x/debugverify#校验时需关注字段和说明)。
 
 <img alt="埋点数据" src={useBaseUrl('/img/giokit/ios/sdkdata.gif')}/>
 

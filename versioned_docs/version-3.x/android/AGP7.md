@@ -21,7 +21,7 @@ Github 项目地址为 [GrowingIO Android SDK Plugin](https://github.com/growing
 
 
 ## 如何集成
-这里只说明在 Android Gradle插件为7.0及以上版本时的集成方式，若是AGP7以下则按照 [插件集成](/docs/android/Introduce#添加插件) 集成即可
+这里只说明在 Android Gradle插件为7.0及以上版本时的集成方式，若是AGP7以下则按照 [插件集成](/docs/3.x/android/Introduce#添加插件) 集成即可
 
 ### 添加 Maven 仓库
 需要在 project 中的 `settings.gradle` 文件中添加Maven仓库

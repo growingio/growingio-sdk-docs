@@ -6,12 +6,12 @@ title: H5混合模块
 应用内嵌H5页面如果也需要进行数据采集，H5页面需要集成 Web JS SDK
 
 若需要 H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通，请参考：<br/>
-WebJS 3.3：[APP内嵌H5页面使用集成](/docs/webjs/3.3/integrate#app内嵌h5页面使用集成)<br/>
-WebJS 3.8：[Hybrid内嵌页打通插件](/docs/webjs/3.8/plugins#hybrid内嵌页打通插件giohybridadapter)
+WebJS 3.3：[APP内嵌H5页面使用集成](/docs/3.x/webjs/3.3/integrate#app内嵌h5页面使用集成)<br/>
+WebJS 3.8：[Hybrid内嵌页打通插件](/docs/3.x/webjs/3.8/plugins#hybrid内嵌页打通插件giohybridadapter)
 
-如果集成的是[**无埋点SDK**](/docs/android/Introduce#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
+如果集成的是[**无埋点SDK**](/docs/3.x/android/Introduce#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
 
-如果集成的是[**埋点SDK**](/docs/android/Introduce#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
+如果集成的是[**埋点SDK**](/docs/3.x/android/Introduce#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
 
 :::tip
 hybrid 模块目前支持系统Webview，[X5WebView](https://x5.tencent.com/docs/webview.html)，[UCWebView](https://help.aliyun.com/document_detail/49762.html)

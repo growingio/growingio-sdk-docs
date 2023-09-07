@@ -14,7 +14,7 @@ DataSourceID：数据源 ID，代表一个数据源<br/>
 URL Scheme： 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识<br/>
 Host：采集数据上报的服务器地址，非平台地址<br/>
 
-Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持
+Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数据源，或从已创建的数据源中获取，如不清楚或无权限请联系您的专属项目经理或技术支持
 :::
 
 ##### 创建
@@ -24,27 +24,9 @@ Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数�
 <ImageLoader path="img/common/showappdatasourceid" />
 
 ## 无埋点 SDK 集成
-:::info
-**3.3.5 版本及以上，Swift 项目建议使用 SwiftPM 集成**
-
-如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
-
-:::
 
 <Tabs>
-  <TabItem value="cocoapods" label="Cocoapods集成" default>
-
-在您的 Podfile 文件中添加
-
-```c
-pod 'GrowingAnalytics-cdp/Autotracker'
-```
-
-打开终端，切换到项目目录
-执行 `pod install` 或 `pod update`
-
-  </TabItem>
-  <TabItem value="swiftPM" label="Swift Package Manager集成">
+  <TabItem value="swiftPM" label="Swift Package Manager集成" default>
 
 1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
@@ -61,12 +43,24 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 <ImageLoader path="img/ios/set_dependency_rule" />
 
 :::info
-我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本
+我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本 (>= 4.0)
 :::
 
-4. 点击下方的 Add Package 按钮，选择 GrowingAutotracker_cdp，再次点击 Add Package 按钮
+4. 点击下方的 Add Package 按钮，选择 GrowingAutotracker，再次点击 Add Package 按钮
 
 <ImageLoader path="img/ios/add_package_autotracker" />
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods集成">
+
+在您的 Podfile 文件中添加
+
+```ruby
+pod 'GrowingAnalytics/Autotracker'
+```
+
+打开终端，切换到项目目录
+执行 `pod install` 或 `pod update`
 
   </TabItem>
 </Tabs>
@@ -82,25 +76,20 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 
 
 ### SDK 初始化配置
-#### 导入头文件 `"GrowingAutotracker.h"`
+#### 导入头文件
 
 <Tabs>
-  <TabItem value="cocoapods" label="Cocoapods集成" default>
+  <TabItem value="swiftPM" label="Swift Package Manager集成" default>
 
-```objc
-// Objective-C
-#import "GrowingAutotracker.h"
-
-// Swift
-import GrowingAnalytics_cdp
+```swift
+import GrowingAutotracker
 ```
 
   </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods集成">
 
-  <TabItem value="swiftPM" label="Swift Package Manager集成">
-
-```swift
-import GrowingAutotracker_cdp
+```objectivec
+#import "GrowingAutotracker.h"
 ```
 
   </TabItem>
@@ -110,9 +99,23 @@ import GrowingAutotracker_cdp
 #### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
 
 <Tabs>
-  <TabItem value="objc" label="Objective-C" default>
+  <TabItem value="swift" label="Swift" default>
 
-```objc
+```swift
+// Config GrowingIO
+// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+// YourDatasourceId eg: 11223344aabbcc
+let config = AutotrackConfig(projectId: "YourAccountId")
+config?.dataCollectionServerHost = "YourServerHost"
+config?.dataSourceId = "YourDatasourceId"
+Autotracker.start(config!, launchOptions: launchOptions)
+```
+
+  </TabItem>
+  <TabItem value="objc" label="Objective-C">
+
+```objectivec
 // Config GrowingIO
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
@@ -124,29 +127,29 @@ configuration.dataSourceId = @"YourDatasourceId";
 ```
   </TabItem>
 
-  <TabItem value="swift" label="Swift">
-
-```swift
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
-// YourDatasourceId eg: 11223344aabbcc
-let config = GrowingAutotrackConfiguration(projectId: "YourAccountId")
-config?.dataCollectionServerHost = "YourServerHost"
-config?.dataSourceId = "YourDatasourceId"
-GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
-```
-
-  </TabItem>
-
 </Tabs>
 
 ####  在 appDelegate.m 文件中实现 URL Scheme 跳转以及 DeepLink 跳转的代理方法
 
 <Tabs>
-  <TabItem value="objc" label="Objective-C" default>
+  <TabItem value="swift" label="Swift" default>
 
-```objc
+```swift
+// URL Scheme跳转
+func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    return true
+}
+
+// universal Link执行
+func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    return true
+}
+```
+
+  </TabItem>
+  <TabItem value="objc" label="Objective-C">
+
+```objectivec
 // URL Scheme跳转
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -165,39 +168,13 @@ continueUserActivity:(NSUserActivity *)userActivity
 
   </TabItem>
 
-  <TabItem value="swift" label="Swift">
-
-```swift
-// URL Scheme跳转
-func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    return true
-}
-
-// universal Link执行
-func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-    return true
-}
-```
-
-  </TabItem>
-
 </Tabs>
 
 #### 若使用了 iOS 13 的 UIScene，请在您指定的 SceneDelegate 中设置如下
 
 <Tabs>
-  <TabItem value="objc" label="Objective-C" default>
 
-```c
-- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
-}
-
-- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
-}
-```
-  </TabItem>
-
-  <TabItem value="swift" label="Swift">
+  <TabItem value="swift" label="Swift" default>
 
 ```swift
 func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
@@ -208,6 +185,16 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 ```
 
   </TabItem>
+  <TabItem value="objc" label="Objective-C">
+
+```objectivec
+- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
+}
+
+- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
+}
+```
+  </TabItem>
 
 </Tabs>
 
@@ -217,10 +204,10 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ### 查看集成效果
 运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.x.x`  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 4.x.x`  
 则说明 SDK 已经集成成功。
 
-若在初始化中 `debugEnabled` 设置为 YES，打开了 Debug，则可以在日志中看到每个事件的 log 日志输出。
+若在初始化中 `debugEnabled` 设置为 true，打开了 Debug，则可以在日志中看到每个事件的 log 日志输出。
 
 至此，就完成了无埋点 SDK 的集成。
 
@@ -230,27 +217,8 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 埋点 SDK 只自动采集用户访问事件和 APP 关闭事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
 
-:::info
-**3.3.5 版本及以上，Swift 项目建议使用 SwiftPM 集成**
-
-如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
-
-:::
-
 <Tabs>
-  <TabItem value="cocoapods" label="Cocoapods集成" default>
-
-在您的 Podfile 文件中添加
-
-```c
-pod 'GrowingAnalytics-cdp/Tracker'
-```
-
-打开终端，切换到项目目录
-执行 `pod install` 或 `pod update`
-
-  </TabItem>
-  <TabItem value="swiftPM" label="Swift Package Manager集成">
+  <TabItem value="swiftPM" label="Swift Package Manager集成" default>
 
 1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
@@ -270,9 +238,21 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本
 :::
 
-4. 点击下方的 Add Package 按钮，选择 GrowingTracker_cdp，再次点击 Add Package 按钮
+4. 点击下方的 Add Package 按钮，选择 GrowingTracker，再次点击 Add Package 按钮
 
 <ImageLoader path="img/ios/add_package_tracker" />
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods集成">
+
+在您的 Podfile 文件中添加
+
+```ruby
+pod 'GrowingAnalytics/Tracker'
+```
+
+打开终端，切换到项目目录
+执行 `pod install` 或 `pod update`
 
   </TabItem>
 </Tabs>
@@ -288,25 +268,21 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 <ImageLoader path="img/ios/iOS_Setting_URLScheme" />
 
 ### SDK初始化配置
-#### 导入头文件 `"GrowingTracker.h"`
+#### 导入头文件
 
 <Tabs>
-  <TabItem value="cocoapods" label="Cocoapods集成" default>
 
-```objc
-// Objective-C
-#import "GrowingTracker.h"
+  <TabItem value="swiftPM" label="Swift Package Manager集成" default>
 
-// Swift
-import GrowingAnalytics_cdp
+```swift
+import GrowingTracker
 ```
 
   </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods集成">
 
-  <TabItem value="swiftPM" label="Swift Package Manager集成">
-
-```swift
-import GrowingTracker_cdp
+```objectivec
+#import "GrowingTracker.h"
 ```
 
   </TabItem>
@@ -316,9 +292,23 @@ import GrowingTracker_cdp
 #### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
 
 <Tabs>
-  <TabItem value="objc" label="Objective-C" default>
+  <TabItem value="swift" label="Swift" default>
 
-```objc
+```swift
+// Config GrowingIO
+// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+// YourDatasourceId eg: 11223344aabbcc
+let config = TrackConfig(projectId: "YourAccountId")
+config?.dataCollectionServerHost = "YourServerHost"
+config?.dataSourceId = "YourDatasourceId"
+Tracker.start(config!, launchOptions: launchOptions)
+```
+
+  </TabItem>
+  <TabItem value="objc" label="Objective-C">
+
+```objectivec
 // Config GrowingIO
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
@@ -330,29 +320,29 @@ configuration.dataSourceId = @"YourDatasourceId";
 ```
   </TabItem>
 
-  <TabItem value="swift" label="Swift">
-
-```swift
-// Config GrowingIO
-// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
-// YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
-// YourDatasourceId eg: 11223344aabbcc
-let config = GrowingTrackConfiguration(projectId: "YourAccountId")
-config?.dataCollectionServerHost = "YourServerHost"
-config?.dataSourceId = "YourDatasourceId"
-GrowingTracker.start(with: config!, launchOptions: launchOptions ?? [:])
-```
-
-  </TabItem>
-
 </Tabs>
 
 ####  在 appDelegate.m 文件中实现 URL Scheme 跳转以及 DeepLink 跳转的代理方法
 
 <Tabs>
-  <TabItem value="objc" label="Objective-C" default>
+  <TabItem value="swift" label="Swift" default>
 
-```objc
+```swift
+// URL Scheme跳转
+func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    return true
+}
+
+// universal Link执行
+func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    return true
+}
+```
+
+  </TabItem>
+  <TabItem value="objc" label="Objective-C">
+
+```objectivec
 // URL Scheme跳转
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -371,39 +361,12 @@ continueUserActivity:(NSUserActivity *)userActivity
 
   </TabItem>
 
-  <TabItem value="swift" label="Swift">
-
-```swift
-// URL Scheme跳转
-func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    return true
-}
-
-// universal Link执行
-func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-    return true
-}
-```
-
-  </TabItem>
-
 </Tabs>
 
 #### 若使用了 iOS 13 的 UIScene，请在您指定的 SceneDelegate 中设置如下
 
 <Tabs>
-  <TabItem value="objc" label="Objective-C" default>
-
-```c
-- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
-}
-
-- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
-}
-```
-  </TabItem>
-
-  <TabItem value="swift" label="Swift">
+  <TabItem value="swift" label="Swift" default>
 
 ```swift
 func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
@@ -414,6 +377,16 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 ```
 
   </TabItem>
+  <TabItem value="objc" label="Objective-C">
+
+```objectivec
+- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
+}
+
+- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
+}
+```
+  </TabItem>
 
 </Tabs>
 
@@ -423,10 +396,10 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ### 查看集成效果
 运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 3.x.x`  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 4.x.x`  
 则说明 SDK 已经集成成功。
 
-若在初始化中 `debugEnabled` 设置为 YES，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
+若在初始化中 `debugEnabled` 设置为 true，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
 
 至此，就完成了埋点 SDK 的集成。
 
@@ -460,42 +433,42 @@ A: GrowingIO 使用 `IDFA` 来做来源管理激活设备的精确匹配，让�
 And starting with iOS 14.5, iPadOS 14.5, and tvOS 14.5, you’ll be required to ask users for their permission to track them across apps and websites owned by other companies.
 :::
 
-1. Plist 文件中添加 `NSUserTrackingUsageDescription`
+1. Plist 文件中添加 `NSUserTrackingUsageDescription`，具体描述内容请根据您的 App 进行修改
 
-```c
+```xml
 <key>NSUserTrackingUsageDescription</key>
-<string>GrowingIO测试demo 需要使用您的广告标识信息以用于数据追踪分析</string> //描述内容请根据App修改
+<string>GrowingIO测试demo 需要使用您的广告标识信息以用于数据追踪分析</string>
 ```
 
-2. 导入框架 `#import <AppTrackingTransparency/AppTrackingTransparency.h>`
+2. 导入框架 `import AppTrackingTransparency`
 
 3. 调用获取权限代码
-```c
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-  // 调用AppTrackingTransparency相关实现请在ApplicationDidBecomeActive之后，适配iOS 15
-  // 参考: https://developer.apple.com/forums/thread/690607?answerId=688798022#688798022
-  if (@available(iOS 14, *)) {
-     // iOS14及以上版本需要先请求权限
-     [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-         switch (status) {
-             case ATTrackingManagerAuthorizationStatusDenied:
-                 //用户拒绝向App授权
-                 break;
-             case ATTrackingManagerAuthorizationStatusAuthorized:
-                 //用户同意向App授权
-                 break;
-             case ATTrackingManagerAuthorizationStatusNotDetermined:
-                 //用户未做选择或未弹窗
-                 break;
-             case ATTrackingManagerAuthorizationStatusRestricted:
-                 //用户在系统级别开启了限制广告追踪
-                 break;
-             default:
-                 break;
-         }
-     }];
- }
+```swift
+func applicationDidBecomeActive(_ application: UIApplication) {
+    // 调用AppTrackingTransparency相关实现请在ApplicationDidBecomeActive之后，适配iOS 15
+    // 参考: https://developer.apple.com/forums/thread/690607?answerId=688798022#688798022
+    if #available(iOS 14, *) {
+        // iOS14及以上版本需要先请求权限
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .notDetermined:
+                // 用户未做选择或未弹窗
+                break
+            case .restricted:
+                // 用户在系统级别开启了限制广告追踪
+                break
+            case .denied:
+                // 用户拒绝向App授权
+                break
+            case .authorized:
+                // 用户同意向App授权
+                break
+            @unknown default:
+                break
+            }
+        }
+    }
 }
 ```
 
@@ -506,45 +479,19 @@ GrowingIO SDK 使用 访问用户 ID 标识访问用户 ，其值使用 IDFA 、
 
 如果需要使用 IDFA 作为访问用户 ID，则需要在请求获取 IDFA 权限之后再初始化 SDK。如果用户不允许广告跟踪，则会按照 IDFV > 随机字符串的逻辑生成访问用户 ID。
 
-```c
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-  // 调用AppTrackingTransparency相关实现请在ApplicationDidBecomeActive之后，适配iOS 15
-  // 参考: https://developer.apple.com/forums/thread/690607?answerId=688798022#688798022
-  if (@available(iOS 14, *)) {
-    [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-      // 初始化 GrowingIO SDK
-    }];
-  } else {
-    // 初始化 GrowingIO SDK
-  }
+```swift
+func applicationDidBecomeActive(_ application: UIApplication) {
+    // 调用AppTrackingTransparency相关实现请在ApplicationDidBecomeActive之后，适配iOS 15
+    // 参考: https://developer.apple.com/forums/thread/690607?answerId=688798022#688798022
+    if #available(iOS 14, *) {
+        ATTrackingManager.requestTrackingAuthorization { status in
+            // 初始化 GrowingIO SDK
+        }
+    } else {
+        // 初始化 GrowingIO SDK
+    }
 }
 ```
 :::warning 注意
 使用 IDFA 作为访问用户 ID，同时为使 App 合规，则第一次 SDK 初始化应该在 用户同意隐私协议和获取 IDFA 权限之后。参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
 :::
-
-## 集成问题
-
-### Include of non-modular header inside framework module 报错解决方案
-
-Swift 项目如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，修改方式有以下 2 种：
-
-- 手动添加 Module 形式导入
-
-  需手动修改 Pods/GrowingAnalytics-cdp/Autotracker/GrowingAutotracker.h，添加 `@import GrowingAnalytics;`，示例如下：
-
-  ```
-  #import <UIKit/UIKit.h>
-  @import GrowingAnalytics; // 添加此module形式导入，避免Include of non-modular header inside framework module报错
-  #import "GrowingAttributesBuilder.h"
-  #import "GrowingAutotrackConfiguration.h"
-  #import "GrowingDynamicProxy.h"
-  #import "GrowingTrackConfiguration+CdpTracker.h"
-  ```
-
-  同理，如集成 `pod 'GrowingAnalytics-cdp/Tracker'`，也需对 Pods/GrowingAnalytics-cdp/Tracker/GrowingTracker.h 进行如上调整
-
-- 修改 OTHER_SWIFT_FLAGS
-
-  设置 OTHER_SWIFT_FLAGS 为 `-Xcc -Wno-error=non-modular-include-in-framework-module`
-

@@ -100,7 +100,7 @@ $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
 
 :::info
 
-详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+详细使用示例:[埋点事件示例](/docs/3.x/basicknowledge/trackEventUse#埋点事件示例)
 
 :::
 ### 登录用户属性事件
@@ -125,7 +125,7 @@ $gio->setUserAttributesEvent($gio->getUserAttributesFactory('loginUserId')
 ```
 :::info
 
-详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+详细使用示例:[用户属性事件示例](/docs/3.x/basicknowledge/trackEventUse#用户属性事件示例)
 
 :::
 

@@ -81,7 +81,7 @@ urlScheme 是 SDK 3.3.0 及其之后必传参数，其他参数为必传参数�
 
 > SDK 版本>=3.3.0
 
-自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该 [URL Scheme](/docs/ios/Introduce#添加-url-scheme)
+自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该 [URL Scheme](/docs/3.x/ios/Introduce#添加-url-scheme)
 
 #### 12. **encryptEnabled**
 

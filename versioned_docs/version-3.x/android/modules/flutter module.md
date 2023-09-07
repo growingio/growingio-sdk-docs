@@ -3,7 +3,7 @@ sidebar_position: 10
 title: Flutter 模块
 ---
 
-[GrowingIO Flutter SDK Plugin](/docs/framework/flutter/) 需要通过 `MethodChannel` 来与原生SDK进行通信，所以原生需要集成该 Flutter 模块来接收来自Flutter的消息或者发送消息到Flutter中。
+[GrowingIO Flutter SDK Plugin](/docs/3.x/framework/flutter/) 需要通过 `MethodChannel` 来与原生SDK进行通信，所以原生需要集成该 Flutter 模块来接收来自Flutter的消息或者发送消息到Flutter中。
 
 --------
 import Tabs from '@theme/Tabs';

@@ -261,7 +261,7 @@ GrowingTracker.get().trackCustomEvent("registerSuccess", map, "key", "id")
 
 :::info
 
-详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+详细使用示例:[埋点事件示例](/docs/3.x/basicknowledge/trackEventUse#埋点事件示例)
 
 :::
 
@@ -342,7 +342,7 @@ GrowingTracker.get().setLoginUserAttributes(map)
 
 :::info
 
-详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+详细使用示例:[用户属性事件示例](/docs/3.x/basicknowledge/trackEventUse#用户属性事件示例)
 
 :::
 
@@ -619,7 +619,7 @@ event_duration 时间统计不会计算后台时间：
 
 ### 18. 主动触发DeepLink
 `doDeepLinkByUrl` <br/>
-调用该接口需要集成广告模块，具体集成请参考[广告模块](/docs/android/modules/advert%20module)
+调用该接口需要集成广告模块，具体集成请参考[广告模块](/docs/3.x/android/modules/advert%20module)
 
 ### 19. 注册模块组件 
 `registerComponent`<br/>

@@ -113,7 +113,7 @@ import TabItem from '@theme/TabItem';
 
 **服务端代码上报示例**：
 
-[服务端代码上报说明文档](/docs/server/Java%20SDK#维度表apicdp平台版本21)
+[服务端代码上报说明文档](/docs/3.x/server/Java%20SDK#维度表apicdp平台版本21)
 
 ```java
 GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
@@ -134,7 +134,7 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 
 #### Android
 
-[埋点事件说明文档](/docs/android/api#6-设置埋点事件)
+[埋点事件说明文档](/docs/3.x/android/api#6-设置埋点事件)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"
@@ -170,7 +170,7 @@ GrowingTracker.get().trackCustomEvent("purchaseProduct", map);
 
 #### iOS
 
-[埋点事件说明文档](/docs/ios/api#7-设置埋点事件)
+[埋点事件说明文档](/docs/3.x/ios/api#7-设置埋点事件)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"
@@ -204,7 +204,7 @@ NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
 
 #### Web
 
-[埋点事件说明文档](/docs/webjs/3.3/api#3埋点事件接口)
+[埋点事件说明文档](/docs/3.x/webjs/3.3/api#3埋点事件接口)
 
 ```js
   gdp('track', 'purchaseProduct', {
@@ -216,7 +216,7 @@ NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
 
 #### 小程序
 
-[埋点事件说明文档](/docs/miniprogram/3.3/commonlyApi#埋点事件track)
+[埋点事件说明文档](/docs/3.x/miniprogram/3.3/commonlyApi#埋点事件track)
 
 ```js
   gdp('track', 'purchaseProduct', {
@@ -228,7 +228,7 @@ NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
 
 #### 服务端JAVA
 
-[埋点事件说明文档](/docs/server/Java%20SDK#埋点事件api)
+[埋点事件说明文档](/docs/3.x/server/Java%20SDK#埋点事件api)
 
 ```java
 GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
@@ -258,14 +258,14 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 2. "eventType": "CUSTOM" 表示事件类型为埋点事件。<br/>
 3. "eventName": "purchaseProduct" 表示埋点事件标识符是 purchaseProduct，确保正确。<br/>
 4. attributes 中的 key 对应事件属性，value 对应事件属性的值，确保 key 和 value 都正确。<br/>
-数据关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
+数据关注点请参考[校验时需关注字段和说明](/docs/3.x/debugverify#校验时需关注字段和说明)。
 :::info
 即时校验确保采集SDK发送的数据是正确的<br/>
 **服务端SDK在 debug 模式下，会输出事件数据日志，但是事件数据不会上报至服务端数据库**
 :::
 
 **日志验证：** GrowingIO SDK 提供 debug 日志输出模式。开发过程中开启 debug 模式，可在日志中查看采集端采集数据的日志。<br/>
-数据关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
+数据关注点请参考[校验时需关注字段和说明](/docs/3.x/debugverify#校验时需关注字段和说明)。
 **示例**：
 
 ```js
@@ -306,15 +306,15 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 **工具验证：**
 针对 iOS 和 Android APP， GrowingIO 提供了 工具校验
-[Mobile Debugger](/docs/debugverify/mobiledebugger) 和 [GioKit](/docs/giokit)。<br/>
-数据关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
+[Mobile Debugger](/docs/3.x/debugverify/mobiledebugger) 和 [GioKit](/docs/3.x/giokit)。<br/>
+数据关注点请参考[校验时需关注字段和说明](/docs/3.x/debugverify#校验时需关注字段和说明)。
 
 #### 2. 事件实时查询 验证
 
 需要先在平台找到“平台管理”-->“客户数据平台”-->“数据校验”-->“事件实时查询”功能。<br/>
 输入访问用户ID/登录用户ID 点击查询；访问用户ID 对应 deviceId 的值，登录用户ID 对应 userId 的值。<br/>
 找到事件标识符：purchaseProduct  事件类型：custom_event 的数据 进行数据核对。<br/>
-数据关注点请参考[校验时需关注字段和说明](/docs/debugverify#校验时需关注字段和说明)。
+数据关注点请参考[校验时需关注字段和说明](/docs/3.x/debugverify#校验时需关注字段和说明)。
 :::info
 事件实时查询 验证，可确保采集数据已上报至服务端数据库<br/>
 :::
@@ -355,7 +355,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 #### Android
 
-[用户属性说明文档](/docs/android/api#7-设置登录用户属性)
+[用户属性说明文档](/docs/3.x/android/api#7-设置登录用户属性)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"
@@ -389,7 +389,7 @@ GrowingTracker.get().setLoginUserAttributes(map);
 
 #### iOS
 
-[用户属性说明文档](/docs/ios/api#8-设置登录用户属性)
+[用户属性说明文档](/docs/3.x/ios/api#8-设置登录用户属性)
 <Tabs className="unique-tabs"
   groupId="sdk-type"
   defaultValue="autotrack"
@@ -419,7 +419,7 @@ NSDictionary *userDict = @{@"age_ppl" : @"18" , @"level_ppl": @"黑卡"};
 
 #### Web
 
-[用户属性说明文档](/docs/webjs/3.3/api#5设置用户属性)
+[用户属性说明文档](/docs/3.x/webjs/3.3/api#5设置用户属性)
 
 ```js
 gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
@@ -427,7 +427,7 @@ gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
 
 #### 小程序
 
-[用户属性说明文档](/docs/miniprogram/3.3/commonlyApi#登录用户属性setuserattributes)
+[用户属性说明文档](/docs/3.x/miniprogram/3.3/commonlyApi#登录用户属性setuserattributes)
 
 ```js
 gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
@@ -435,7 +435,7 @@ gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
 
 #### 服务端JAVA
 
-[用户属性说明文档](/docs/server/Java%20SDK#登录用户属性-api)
+[用户属性说明文档](/docs/3.x/server/Java%20SDK#登录用户属性-api)
 
 ```java
 GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
@@ -499,7 +499,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 
 **工具验证：**
 针对 iOS 和 Android APP， GrowingIO 提供了 工具校验
-[Mobile Debugger](/docs/debugverify/mobiledebugger) 和 [GioKit](/docs/giokit)
+[Mobile Debugger](/docs/3.x/debugverify/mobiledebugger) 和 [GioKit](/docs/3.x/giokit)
 
 #### 2.分析验证
 
