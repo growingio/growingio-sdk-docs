@@ -43,15 +43,15 @@ GIO移动端 SDK
 
 集成 [iOS SDK](/docs/ios/Introduce)，请在用户同意《隐私协议》之后再初始化 GrowingIO SDK。 
 示例代码如下：
-```c
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    if (<用户未同意隐私协议>) {
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    if <用户未同意隐私协议> {
       // 展示隐私协议弹框，等待用户同意后，添加 GrowingIO SDK 初始化代码
     } else {
         //  GrowingIO SDK 初始化代码
     }
     ...
-    return YES;
+    return true;
 }
 ```
 
@@ -75,8 +75,8 @@ iOS SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)
 ### 关于 GDPR
 为符合
 [​General Data Protection Regulation 欧盟通用数据保护条例](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)​，GrowingIO SDK 提供 `dataCollectionEnabled` 设置接口，可在用户不同意数据采集时，设置为 `NO` 禁止数据采集；在用户同意数据采集时，设置为 `YES`，开启数据采集。示例代码如下：
-```c
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // 1. dataCollectionEnabled 设置为 NO
     // 设置禁止数据采集代码
     
@@ -84,11 +84,11 @@ iOS SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)
     // 初始化代码
   
     ...
-    return YES;
+    return true;
 }
 ​
 // 某一时刻同意数据采集
-- (void)userAcceptDataCollection {
+func userAcceptDataCollection() {
     ...
     // 3. dataCollectionEnabled 设置为 YES
     // 设置开启数据采集代码
