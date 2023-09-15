@@ -40,7 +40,7 @@ gdp('init', accountId, datasourceId, { cookieDomain: 'test.growingio.com' });
 ### dataCollect
 
 默认情况下，数据采集开关默认开启。如果您需要初始化时暂时关闭数据采集（例如隐私协议的场景），可以通过指定 `dataCollect: false` 关闭。
-需要开启数据采集时再通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#2开启关闭数据采集datacollect)
+需要开启数据采集时再通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)
 
 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
 
@@ -58,7 +58,7 @@ gdp('init', accountId, datasourceId, { dataCollect: false });
 gdp('init', accountId, datasourceId, { debug: true });
 ```
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#3开启关闭调试模式debug)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)
 
 ### forceLogin
 
@@ -82,7 +82,7 @@ gdp('identify', openId / unionId);
 
 ### idMapping
 
-多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/webjs/3.8/commonlyApi#2设置登录用户idsetuserid)
+多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/webjs/commonlyApi#4设置登录用户idsetuserid)
 
 ```js
 gdp('init', accountId, datasourceId, { idMapping: true });
@@ -137,7 +137,7 @@ gdp('init', accountId, datasourceId, {
 gdp('init', accountId, datasourceId, { scheme: 'http' });
 ```
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/3.8/commonlyApi#4修改请求协议scheme)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)
 
 ### storageType
 

@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
 * 移除**`evar.set`**方法调用。如需使用转化变量，请将转化变量放在埋点事件属性（track）中进行上报。未使用则忽略。
 * 移除**`visitor.set`**方法调用。如需使用访问用户变量，请将访问用户变量放在用户属性（setUserAttributes）中进行上报。未使用则忽略。
 * 重命名替换**`people.set`**为**`setUserAttributes`**，调用方式不变。未使用则忽略。
-* 修改**`getVisitUserId`**为**`getDeviceId`**，调用方式变更，请[参考文档](/docs/webjs/commonlyApi#2获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
+* 修改**`getVisitUserId`**为**`getDeviceId`**，调用方式变更，请[参考文档](/docs/webjs/commonlyApi#3获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
 
 ### 4、检查半自动采集浏览事件（曝光事件）
 
@@ -90,6 +90,6 @@ import TabItem from '@theme/TabItem';
 
 ### 3、检查埋点事件和用户属性事件
 
-检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#其他)，如有超出限制或超出限制的可能，请调整业务逻辑。
+检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#参数限制)，如有超出限制或超出限制的可能，请调整业务逻辑。
 </TabItem>
 </Tabs>

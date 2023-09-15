@@ -46,7 +46,7 @@ gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking
 上报请求的数据进行加密压缩。<br/>
 [参考文档](/docs/webjs/plugins/compress)
 
-### 性能监控插件
+### 性能监控插件（gioPerformance）
 
 提供页面首屏加载监控、错误监控和网络请求监控的全方位性能监控采集插件。<br/>
 [参考文档](/docs/webjs/plugins/performance)

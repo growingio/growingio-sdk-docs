@@ -48,7 +48,7 @@ title: 性能监控
 
 ### 错误监控
 
-同采集SDK。[参考文档](/docs/webjs)
+同采集SDK。[参考文档](/docs/webjs/4.0)
 
 ## 使用
 

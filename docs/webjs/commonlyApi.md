@@ -88,7 +88,7 @@ gdp('setOption', 'host', 'api.growingio.com');
 
 ### 1、注册插件(registerPlugins)
 
-默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/webjs/3.8/integrate)和[插件列表](/docs/webjs/3.8/plugins)进行插件的注册。
+默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/webjs/integrate)和[插件列表](/docs/webjs/plugins)进行插件的注册。
 
 ```js
 gdp('registerPlugins', [plugin1, plugin2], callback?: (registeredPlugins: any[]) => void);
@@ -134,7 +134,7 @@ gdp('clearUserId', callback?: function);
 
 ### 6、埋点事件(track)
 
-发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)                                                                                                      |
+发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
 
 ```js
 gdp('track', eventName: string, attributes?: Object, callback?: function);
@@ -308,6 +308,8 @@ gdp('clearTrackTimer', timerId, callback?: function);
 ```
 
 ## 采集标记
+
+以下几种采集标记，多用于无埋点采集，如不了解相关逻辑，可以参考[小百科](/docs/webjs/encyclopedia)文档详细了解相关逻辑。
 
 ### 1、采集补充标记
 

@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
 * 移除**`send`**方法调用。4.0版本已不再需要它，SDK在初始化完成后且`dataCollect`开启状态下自动上报数据。
 * 移除**`setConfig`、`config`**方法调用。SDK仅支持`init`方法进行初始化和初始化配置。如需在运行过程中动态修改配置，请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
 * 移除**`setTrackerScheme`、`setTrackerHost`、`enableDebug`、`setDataCollect`、`setAutoTrack`** 方法调用。请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
-* 修改**`getVisitUserId`**为**`getDeviceId`，调用变更**，请[参考文档](/docs/webjs/commonlyApi#2获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
+* 修改**`getVisitUserId`**为**`getDeviceId`，调用变更**，请[参考文档](/docs/webjs/commonlyApi#3获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
 * 修改**`track`**方法调用，移除**item**传参，即该方法不再支持物品模型上报，仅支持事件属性上报。未使用则忽略。
 
 ##### 示例
@@ -75,7 +75,7 @@ gdp('track', eventId, eventLevelVariables);
 
 ### 4、检查埋点事件和用户属性事件
 
-检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#其他)，如有超出限制或超出限制的可能，请调整业务逻辑。
+检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#参数限制)，如有超出限制或超出限制的可能，请调整业务逻辑。
 
 </TabItem>
 <TabItem value="3.0.x-3.8.x版本">
@@ -102,7 +102,7 @@ gdp('track', eventId, eventLevelVariables);
 * 移除**`send`**方法调用。4.0版本已不再需要它，SDK在初始化完成后且`dataCollect`开启状态下自动上报数据。
 * 移除**`setConfig`、`config`**方法调用。SDK仅支持`init`方法进行初始化和初始化配置。如需在运行过程中动态修改配置，请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
 * 移除**`setTrackerScheme`、`setTrackerHost`、`enableDebug`、`setDataCollect`、`setAutoTrack`** 方法调用。请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
-* 修改**`getVisitUserId`**为**`getDeviceId`，调用变更**，请[参考文档](/docs/webjs/commonlyApi#2获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
+* 修改**`getVisitUserId`**为**`getDeviceId`，调用变更**，请[参考文档](/docs/webjs/commonlyApi#3获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
 * 修改**`track`**方法调用，移除**item**传参，即该方法不再支持物品模型上报，仅支持事件属性上报。未使用则忽略。
 
 ##### 示例
@@ -116,6 +116,6 @@ gdp('track', eventId, eventLevelVariables);
 
 ### 4、检查埋点事件和用户属性事件
 
-检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#其他)，如有超出限制或超出限制的可能，请调整业务逻辑。
+检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#参数限制)，如有超出限制或超出限制的可能，请调整业务逻辑。
 </TabItem>
 </Tabs>

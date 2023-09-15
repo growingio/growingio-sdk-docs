@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 2、在下列选项中选择对应的集成方式，并根据示例进行集成。
 
-## Web 站点 / H5 / 微信公众号 H5 中集成
+## Web 站点 / H5 中集成
 
 <!-- ### 使用工具集成（推荐） -->
 
@@ -59,22 +59,21 @@ values={[
 <!-- GrowingIO Analytics WebJS SDK version 4 -->
 <!-- Copyright 2015-2023 GrowingIO, Inc. More info available at http://www.growingio.com -->
 <script type="text/javascript">
-  !(function (e, n, t, c, i) {
-    (e[i] =
-      e[i] ||
+  !(function (e, n, t, s, c) {
+    var o;
+    e[s] =
+      e[s] ||
       function () {
-        (e[i].q = e[i].q || []).push(arguments);
-      }),
-      (t = n.createElement('script'));
-    s = n.getElementsByTagName('script')[0];
-    (t.async = 1), (t.src = c), s.parentNode.insertBefore(t, s);
-  })(
-    window,
-    document,
-    'script',
-    'https://assets.giocdn.com/sdk/webjs/gdp.js',
-    'gdp'
-  );
+        (e[s].q = e[s].q || []).push(arguments);
+      };
+    (c = c || 'vds'),
+      (e._gio_local_vds = c),
+      (e[c] = null !== (o = e[c]) && void 0 !== o ? o : {}),
+      (e[c].namespace = s);
+    var d = n.createElement('script');
+    var i = n.getElementsByTagName('script')[0];
+    (d.async = !0), (d.src = t), i.parentNode.insertBefore(d, i);
+  })(window, document, 'https://assets.giocdn.com/sdk/webjs/gdp.js', 'gdp');
 
   gdp('init', 'your accountId', 'your dataSourceId', {
     version: 'your website version',
@@ -99,22 +98,21 @@ values={[
 <!-- GrowingIO Analytics WebJS SDK version 4 -->
 <!-- Copyright 2015-2023 GrowingIO, Inc. More info available at http://www.growingio.com -->
 <script type="text/javascript">
-  !(function (e, n, t, c, i) {
-    (e[i] =
-      e[i] ||
+  !(function (e, n, t, s, c) {
+    var o;
+    e[s] =
+      e[s] ||
       function () {
-        (e[i].q = e[i].q || []).push(arguments);
-      }),
-      (t = n.createElement('script'));
-    s = n.getElementsByTagName('script')[0];
-    (t.async = 1), (t.src = c), s.parentNode.insertBefore(t, s);
-  })(
-    window,
-    document,
-    'script',
-    'https://assets.giocdn.com/sdk/webjs/gdp-full.js',
-    'gdp'
-  );
+        (e[s].q = e[s].q || []).push(arguments);
+      };
+    (c = c || 'vds'),
+      (e._gio_local_vds = c),
+      (e[c] = null !== (o = e[c]) && void 0 !== o ? o : {}),
+      (e[c].namespace = s);
+    var d = n.createElement('script');
+    var i = n.getElementsByTagName('script')[0];
+    (d.async = !0), (d.src = t), i.parentNode.insertBefore(d, i);
+  })(window, document, 'https://assets.giocdn.com/sdk/webjs/gdp-full.js', 'gdp');
 
   gdp('init', 'your accountId', 'your dataSourceId', {
     version: 'your website version',
@@ -219,7 +217,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 #### 其他注意事项
 
-**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/4/initSettings)。
+**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/initSettings)。
 
 **2）**SDK **默认使用 es6** 语法，如果您有兼容 IE11 等只支持 es5 语法浏览器的需求，请修改为`gio-webjs-sdk/gdp-es5`（`gio-webjs-sdk/gdp-full-es5`）或者在您的打包工具中直接进行相应的语法转换配置。
 
@@ -233,19 +231,38 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 按需集成 SDK 时，SDK 仅内置埋点功能，如您需要扩展其他功能时，需要集成并注册对应插件方可激活对应功能使用。
 
-各个插件的介绍和集成方式请见[插件](/docs/webjs/4/plugins)。
+各个插件的介绍和集成方式请见[功能插件](/docs/webjs/plugins)。
+
+## 在微信公众号H5中集成
+
+在微信公众号H5中集成时，基本与Web站点一致。但由于其微信生态的特殊性，因此需要您在初始化时额外传入 `appId` 字段。
+
+```js
+/**
+ * GrowingIO Analytics WebJS SDK version 4
+ * Copyright 2015-2023 GrowingIO, Inc. More info available at http://www.growingio.com
+ */
+gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
+  version: 'your website version',
+  // OP私有部署客户请填写host，Saas客户请忽略
+  host: 'your server host'
+  ...other settings
+});
+```
+
+另外，如果您有访问用户Id需替换成 `openId/unionId` 的需求，请在初始化配置项中添加 **`forceLogin: true`**的配置项，具体使用方法，请[参考文档](/docs/webjs/initSettings#forcelogin)。
 
 ## 在 APP 内嵌页面中集成
 
 全量集成 SDK 时，参考 Web 站点集成即可，无需做额外操作，已内置 App 内嵌页打通功能。
 
-按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加 App 内嵌页打通插件。[参考文档](/docs/webjs/4/plugins/hybridAdapter)
+按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加 App 内嵌页打通插件。[参考文档](/docs/webjs/plugins/hybridAdapter)
 
 ## 在小程序内嵌页面中集成
 
-全量集成 SDK 时，需在 Web 站点集成的基础之上，修改初始化配置即可，无需再次集成插件，已内置小程序内嵌页打通功能。[参考文档](/docs/webjs/4/plugins/embeddedAdapter)
+全量集成 SDK 时，需在 Web 站点集成的基础之上，修改初始化配置即可，无需再次集成插件，已内置小程序内嵌页打通功能。[参考文档](/docs/webjs/plugins/embeddedAdapter)
 
-按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加小程序内嵌页打通插件并修改初始化配置。[参考文档](/docs/webjs/4/plugins/embeddedAdapter)
+按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加小程序内嵌页打通插件并修改初始化配置。[参考文档](/docs/webjs/plugins/embeddedAdapter)
 
 ## 在Electron应用中集成和本地调试
 
