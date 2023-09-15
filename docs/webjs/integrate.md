@@ -6,6 +6,8 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+当用户加载页面的时候，会异步加载 WebJS SDK，不会影响到用户的加载速度，所以一般建议把这段代码加入到 `<head></head>` 中的最下面，这样能最大限度的保证数据采集的完整性。如果有限制只能加入到 `<body></body>` 的最下面，也是可以的，但这样潜在可能会丢失掉那些一加载页面就立刻关闭的数据。
+
 ## 准备工作
 
 1、在 GrowingIO 平台中新建数据源并获取**`accountId`和`dataSourceId`**。
