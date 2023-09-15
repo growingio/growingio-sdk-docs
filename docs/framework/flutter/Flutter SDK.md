@@ -346,7 +346,6 @@ Protobuf 数据模块将会使用 Google Protobuf 格式保存和上传事件数
 :::info
 在 Flutter SDK 启动 Protobuf 模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
 * [Android 端 引入 Protobuf 模块](/docs/android/modules/protobuf%20module)
-* [iOS 端 引入 Protobuf 模块](/docs/ios/modules/Protobuf%20Module)
 :::
 
 #### H5混合模块

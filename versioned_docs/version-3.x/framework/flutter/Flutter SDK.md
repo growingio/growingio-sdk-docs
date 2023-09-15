@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 ## 环境配置
 :::info
-* Flutter SDK 插件的更新日志，可参阅 [Release Notes](/docs/3.x/framework/flutter/index.md#版本记录)
+* Flutter SDK 插件的更新日志，可参阅 [Release Notes](/docs/3.x/framework/flutter#版本记录)
 * Flutter SDK 无埋点如何生效，请阅读 [Flutter Aspect 集成](/docs/3.x/framework/flutter/Flutter%20Aspect)
 :::
 
