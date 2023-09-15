@@ -50,9 +50,9 @@ SDK 未支持的服务端开发语言，GrowingIO 提供有 OPEN API，如有需
 | 框架         |   SDK 类别   | App 适配的系统版本  |     框架版本      |
 | :----------- | :----------: | :-----------------: | :---------------: |
 | 原生 Android | 无埋点、埋点 |    Android 4.2+     |         -         |
-| 原生 iOS     | 无埋点、埋点 |       iOS 8+        |         -         |
-| React Native |     埋点     | Android 4.2+ iOS 8+ | 0.46-0.56、0.59.9 |
-| Flutter      |     埋点     | Android 4.2+ iOS 8+ |         -         |
+| 原生 iOS     | 无埋点、埋点 |       iOS 10+        |         -         |
+| React Native |     埋点     | Android 4.2+ iOS 10+ | 0.46-0.56、0.59.9 |
+| Flutter      |     埋点     | Android 4.2+ iOS 10+ |         -         |
 
 ## 使用流程
 

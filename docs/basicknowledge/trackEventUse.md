@@ -182,21 +182,25 @@ GrowingTracker.get().trackCustomEvent("purchaseProduct", map);
 
 <TabItem value="autotrack">
 
-```c
-NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
-                          @"productName_var": @"绘画纸",
-                          @"paymentAmount_var": @"15.52"};
-[[GrowingAutotracker sharedInstance] trackCustomEvent:@"purchaseProduct" withAttributes: proDict];
+```swift
+let proDict = [
+    "productRuleID_var": "0001",
+    "productName_var": "绘画纸",
+    "paymentAmount_var": "15.52"
+]
+Autotracker.track("purchaseProduct", attributes: proDict)
 ```
 
 </TabItem>
 <TabItem value="track">
 
-```c
-NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
-                          @"productName_var": @"绘画纸",
-                          @"paymentAmount_var": @"15.52"};
-[[GrowingTracker sharedInstance] trackCustomEvent:@"purchaseProduct" withAttributes: proDict];
+```swift
+let proDict = [
+    "productRuleID_var": "0001",
+    "productName_var": "绘画纸",
+    "paymentAmount_var": "15.52"
+]
+Tracker.track("purchaseProduct", attributes: proDict)
 ```
 
 </TabItem>
@@ -401,17 +405,23 @@ GrowingTracker.get().setLoginUserAttributes(map);
 
 <TabItem value="autotrack">
 
-```c
-NSDictionary *userDict = @{@"age_ppl" : @"18" , @"level_ppl": @"黑卡"};
-[[GrowingAutotracker sharedInstance] setLoginUserAttributes: userDict];
+```swift
+let userDict = [
+    "age_ppl": "18",
+    "level_ppl": "黑卡"
+]
+Autotracker.setLoginUserAttributes(userDict)
 ```
 
 </TabItem>
 <TabItem value="track">
 
-```c
-NSDictionary *userDict = @{@"age_ppl" : @"18" , @"level_ppl": @"黑卡"};
-[[GrowingTracker sharedInstance] setLoginUserAttributes: userDict];
+```swift
+let userDict = [
+    "age_ppl": "18",
+    "level_ppl": "黑卡"
+]
+Tracker.setLoginUserAttributes(userDict)
 ```
 
 </TabItem>

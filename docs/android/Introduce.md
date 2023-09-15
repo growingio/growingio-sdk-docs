@@ -8,13 +8,7 @@ title: 如何集成
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## 集成无埋点SDK
-
-无埋点SDK能够在不修改代码的情况下，自动帮助应用获取页面浏览，页面点击等埋点事件。
-
-### 如何依赖
-
-#### 添加maven仓库
+## 添加maven仓库
 
 在 project 级别的build.gradle文件中添加Maven仓库
 
@@ -37,6 +31,12 @@ allprojects {
     }
 }
 ```
+
+## 集成无埋点SDK
+
+无埋点SDK能够在不修改代码的情况下，自动帮助应用获取页面浏览，页面点击等埋点事件。
+
+### 如何依赖
 
 #### 添加插件
 

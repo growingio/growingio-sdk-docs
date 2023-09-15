@@ -267,7 +267,7 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 
 <ImageLoader path="img/ios/iOS_Setting_URLScheme" />
 
-### SDK初始化配置
+### SDK 初始化配置
 #### 导入头文件
 
 <Tabs>
