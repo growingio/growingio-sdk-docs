@@ -75,11 +75,11 @@ GrowingIO JS SDK 支持 IE11 浏览器、360 浏览器、谷歌浏览器、搜�
 
 这段 HTML 代码会被渲染成这样的结构：
 
-<ImageLoader path="img/webjs/dom_structure" />
+<ImageLoader path="img/webjs/dom_structure" width="35%" />
 
 每一个框对应都是一个 DOM 对象，也是我们无埋点采集和匹配的基础。换一种呈现方式，用可视化树的方式，是这样的:
 
-<ImageLoader path="img/webjs/dom_tree" />
+<ImageLoader path="img/webjs/dom_tree" width="85%" />
 
 在上面的例子中，当页面加载后，SDK 会采集 body 下的所有节点（SDK本身只会采集内部节点深度小于等于5的节点事件，上文例子中没有节点深度超过5，所以会被全部采集），也就是 div 节点、img 节点、h1 节点、h2 节点、form 节点和 button 节点。
 

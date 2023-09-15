@@ -5,7 +5,7 @@ title: 元数据
 
 所有数据，从业务角度出发，同时基于对信息的组织和解构，我们划分成了 WWWWH 五种维度，即人物、时间、地点、内容和方式。
 
-<ImageLoader path="img/webjs/metadata" />
+<ImageLoader path="img/webjs/metadata" width="50%" />
 
 原子数据的组成
 
@@ -33,7 +33,7 @@ SDK 使用浏览器的 cookie 来存储用户的人物信息，包括用户 ID �
 
 这里值得注意的是，由于客户端时间是用户自己定义的（即系统时间），所以是完全不可信的，所以我们需要在服务端去做检验，计算出事件发生的真正时间。其逻辑如下图：
 
-<ImageLoader path="img/webjs/time_explanation" />
+<ImageLoader path="img/webjs/time_explanation" width="50%" />
 
 ## Where（地点）
 

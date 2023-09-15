@@ -11,31 +11,31 @@ title: 指标规则
 
 #### 例子1
 
-<ImageLoader path="img/webjs/rule_example_1" />
+<ImageLoader path="img/webjs/rule_example_1" width="70%" />
 
 最简单的例子如上图的「免费试用」按钮，A 标签是叶子节点，内容即是标签文本，即“免费试用”。
 
 #### 例子2
 
-<ImageLoader path="img/webjs/rule_example_2" />
+<ImageLoader path="img/webjs/rule_example_2" width="60%" />
 
 例子2是一张图片，IMG 标签也是叶子节点，内容是 alt 文本，即“提高注册转化，降低获客成本”。
 
 #### 例子3
 
-<ImageLoader path="img/webjs/rule_example_3" />
+<ImageLoader path="img/webjs/rule_example_3" width="40%" />
 
 例子3是一个提交按钮，INPUT 标签也是叶子节点，内容是 value 属性，即“探索更多”。
 
 #### 例子4
 
-<ImageLoader path="img/webjs/rule_example_4" />
+<ImageLoader path="img/webjs/rule_example_4" width="60%" />
 
 例子4不再是一个叶子节点，而是一个简单按钮容器，内容是其内文本，即“新建弹窗”。
 
 #### 例子5
 
-<ImageLoader path="img/webjs/rule_example_5" />
+<ImageLoader path="img/webjs/rule_example_5" width="70%" />
 
 例子5也是一个容器节点，因为 I 节点是空内容，同时 LI 节点是倒数第二层节点，所以会采集 LI 节点。
 
@@ -53,7 +53,7 @@ title: 指标规则
 
 除了内容以外，元素在列表里所在位置在某些场景下也是非常重要的信息，比如对于推荐广告位而言，我们是希望知道哪个位置的点击率最高。SDK 会自动识别列表和伪列表元素，并附带上元素在列表里的位置。
 
-<ImageLoader path="img/webjs/rule_index_1" />
+<ImageLoader path="img/webjs/rule_index_1" width="80%" />
 
 LI 标签、TR 标签、DT 标签、DD标签，会被自动识别为列表项元素，如上图。列表内所有元素节点都会附带上位置信息。比如第一项KPI分析中，IMG 标签、H4标签、P 标签，采集的元素都会带上 `{ index: 0 }`。
 
@@ -63,7 +63,7 @@ LI 标签、TR 标签、DT 标签、DD标签，会被自动识别为列表项元
 
 如果 SDK 未能识别或您想自定义，可以使用自定义属性数据补充标签，也即 **`data-growing-index`**。当在容器 DOM 节点上设置 `data-growing-index` 属性，容器内的所有 DOM 元素同样，都会继承该属性值。
 
-#### 实践作用
+### 实践作用
 
 <ImageLoader path="img/webjs/rule_index_2" />
 
@@ -75,7 +75,7 @@ LI 标签、TR 标签、DT 标签、DD标签，会被自动识别为列表项元
 
 在事件驱动模型这一节曾经介绍过，SDK 会自动监听所有的点击事件。当事件发生时，监听回调函数会触发，然后采集相对应的数据。为了达到这个目的，SDK 监听的函数需要做到优先触发，避免被用户自己设置的函数通过 `stopPropagation` 或者 `stopImmediatePropagation` 取消或者跳过。然后，有些场景下，我们是想知道容器的宏观数据，而不只是容器里的某个 DOM 节点的数据。比如还是对于以下这个按钮的例子:
 
-<ImageLoader path="img/webjs/rule_example_4" />
+<ImageLoader path="img/webjs/rule_example_4" width="60%" />
 
 “新建弹窗”按钮是一个 Button 容器，里面包含一个 I 图标和文本“新建弹窗”。当用户点击  图标、“新建弹窗”文本和边缘的 padding 空白时，都会触发新建动作。所以，针对这种简单的 Button 容器情况，所有的点击会自动算到 button 节点，即使点击真实行为是发生在 I 图标、“新建弹窗”文本或者空白处。跟 Button 容器具有同样效果的容器标签还有 A 容器，如果其内是由 svg/i/span/em 节点构成的内容。
 
