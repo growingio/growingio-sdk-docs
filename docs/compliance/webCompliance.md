@@ -23,7 +23,7 @@ GrowingIO使用 IP 地址来分析访问者的地理位置，以及确保此服�
 
 默认情况下，基础SDK不包含数据加密功能，可以通过初始化时注册加密插件来开启请求数据加密，以增强数据传输的安全性。
 
-使用请参考[SDK数据加密传输 compress](/docs/webjs/3.3/initSettings#compress)。
+使用请参考[SDK数据加密传输 compress](/docs/webjs/plugins/compress)。
 
 ## 数据存储发送策略说明
 

@@ -52,7 +52,7 @@ gdp('init', xxxx);
 
 **1、**在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
 
-**2、**在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`属性，并分别对应 `track` 方法中的参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)。
+**2、**在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`属性，并分别对应 `track` 方法中的参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/commonlyApi#6埋点事件track)。
 
 #### 使用对象变量或 JSON 字符串赋值
 

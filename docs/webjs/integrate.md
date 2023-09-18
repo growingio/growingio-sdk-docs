@@ -128,7 +128,7 @@ values={[
 
 #### 其他注意事项
 
-**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/4/initSettings)。
+**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/initSettings)。
 
 **2）**SDK 默认使用`es6`版本进行打包，若您的站点需要支持 **IE11** 等不兼容 es6 的旧版浏览器，请修改为`gdp-es5.js`或`gdp-full-es5.js`即可引用 es5 版本的 SDK。
 

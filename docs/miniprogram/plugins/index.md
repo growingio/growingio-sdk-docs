@@ -24,19 +24,19 @@ gdp('registerPlugins', [
 ## 无埋点插件（gioEventAutoTracking）
 
 自动采集 `tap`、`longtap`、`change` 事件的插件。<br />
-[参考文档](/docs/miniprogram/3.8/plugins/eventAutoTracking)
+[参考文档](/docs/miniprogram/plugins/eventAutoTracking)
 
 ## 半自动埋点浏览插件（gioImpressionTracking）
 
 用户标记一个元素并提供埋点事件，SDK 负责监控指定元素，当此元素出现在屏幕可视区域中时发送用户配置的埋点事件的插件。<br/>
-[参考文档](/docs/miniprogram/3.8/plugins/impressionTracking)
+[参考文档](/docs/miniprogram/plugins/impressionTracking)
 
 ## 数据加密压缩插件（gioCompress）
 
 上报请求的数据进行加密压缩。<br />
-[参考文档](/docs/miniprogram/3.8/plugins/compress)
+[参考文档](/docs/miniprogram/plugins/compress)
 
 ## 性能监控
 
 提供小程序首屏加载监控、错误监控和网络请求监控的全方位性能监控采集插件。<br/>
-[参考文档](/docs/miniprogram/3.8/plugins/performance)
+[参考文档](/docs/miniprogram/plugins/performance)

@@ -26,7 +26,7 @@ title: 小程序 常见问题
 
 ### 5.初始化开启forceLogin以后不上报任何事件了？
 
-**A:** 请[参考文档](/docs/miniprogram/3.8/initSettings#forcelogin)正确使用。
+**A:** 请[参考文档](/docs/miniprogram/initSettings#forcelogin)正确使用。
 
 ### 6. 不支持 mpvue 和 WePY1.x ？
 
