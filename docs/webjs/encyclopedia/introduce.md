@@ -10,22 +10,21 @@ GrowingIO JS SDK 支持 IE11 浏览器、360 浏览器、谷歌浏览器、搜�
 
 ```html
 <script type="text/javascript">
-  !(function (e, n, t, c, i) {
-    (e[i] =
-      e[i] ||
+  !(function (e, n, t, s, c) {
+    var o;
+    e[s] =
+      e[s] ||
       function () {
-        (e[i].q = e[i].q || []).push(arguments);
-      }),
-      (t = n.createElement('script'));
-    s = n.getElementsByTagName('script')[0];
-    (t.async = 1), (t.src = c), s.parentNode.insertBefore(t, s);
-  })(
-    window,
-    document,
-    'script',
-    'https://assets.giocdn.com/sdk/webjs/gdp-full.js',
-    'gdp'
-  );
+        (e[s].q = e[s].q || []).push(arguments);
+      };
+    (c = c || 'vds'),
+      (e._gio_local_vds = c),
+      (e[c] = null !== (o = e[c]) && void 0 !== o ? o : {}),
+      (e[c].namespace = s);
+    var d = n.createElement('script');
+    var i = n.getElementsByTagName('script')[0];
+    (d.async = !0), (d.src = t), i.parentNode.insertBefore(d, i);
+  })(window, document, 'https://assets.giocdn.com/sdk/webjs/gdp-full.js', 'gdp');
 </script>
 ```
 

@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 如果对于特定的 DOM 节点，希望采集事件但是忽略内容，有一个黑科技的方式，设置 `data-growing-title` 属性为 " "（一个空格），这样会采集到事件，但是内容就会是一个空格。
 
-注意 data-growing-title 属性跟 data-growing-ignore 是完全不同的，不会向内部节点继承。
+**注意 data-growing-title 属性跟 data-growing-ignore 是完全不同的，不会向内部节点继承。**
 
 ## 采集白名单
 
