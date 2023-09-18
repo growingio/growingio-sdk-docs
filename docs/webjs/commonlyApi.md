@@ -99,7 +99,7 @@ gdp('registerPlugins', [plugin1, plugin2], callback?: (registeredPlugins: any[])
 访问用户Id，又称为匿名用户Id/设备Id，在公众号H5中调用[网页授权](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)之后，获取 openId 或 unionId，调用 identify 设置访问用户Id。
 
 ```js
-gdp('identify', openId / unionId / customId: string);
+gdp('identify', openId / unionId / customId: string, callback?: function);
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br/>
@@ -108,7 +108,7 @@ gdp('identify', openId / unionId / customId: string);
 
 ### 3、获取访问用户Id(getDeviceId)
 
-访问用户Id，又称为匿名用户Id/设备Id，SDK 自动生成（UUID）用来唯一标识设备。如果没有初始化SDK 或者关闭采集开关时返回值为空。
+访问用户Id，又称为匿名用户Id/设备Id，SDK 自动生成（UUID）用来唯一标识设备。如果没有初始化SDK时返回值为空。
 
 ```js
 gdp('getDeviceId', callback: (deviceId: string) => void);
@@ -225,14 +225,14 @@ gdp('clearGeneralProps', []);
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
 ```js
-gdp('getOption', configName: string, callback?: function);
+gdp('getOption', configName: string, callback?: (configValue: object | string | boolean ) => void);
 ```
 
 #### 示例
 
 ```js
-gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
-gdp('getOption', ''); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
+gdp('getOption', 'dataCollect', (value: boolean) => {}); // 返回dataCollect当前在SDK中的值
+gdp('getOption', ''); // 返回所有支持查看的配置项值
 ```
 
 ### 11、获取SDK当前版本

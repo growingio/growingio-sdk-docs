@@ -9,21 +9,22 @@ title: 初始化配置
 
 > <b>提示：所有的配置项均为非必填。</b>
 
-| **字段名**      | **参数取值**             | **默认值**            | **说明**                 |
-|----------------|-------------------------|----------------------|-------------------------|
-| `cookieDomain` | `string`                | `当前站点的一级域名`    | 自定义cookie存储的域      |
-| `dataCollect`  | `boolean`               | `true`               | 是否开启数据采集          |
-| `debug`        | `boolean`               | `false`              | 是否开启调试模式          |
-| `forceLogin`   | `boolean`               | `false`              | 是否开启强制登录          |
-| `idMapping`    | `boolean`               | `false`              | 是否开启多用户身份上报    |
-| `hashtag`      | `boolean`               | `false`              | 是否开启hash解析          |
-| `host`         | `string`                | `napi.growingio.com` | 数据上报的服务端地址      |
-| `ignoreFields` | `string[]`              | `[]`                 | 上报忽略字段              |
-| `platform`     | `取值见表`               | `Web`                | 平台类型                  |
-| `scheme`       | `string`                | `location.protocol`  | 网络协议                  |
-| `storageType`  | `cookie / localStorage` | `cookie`             | SDK信息的持久化存储的类型 |
-| `trackBot`     | `boolean`               | `true`               | 是否采集爬虫环境数据       |
-| `version`      | `string`                | `1.0.0`              | 应用版本号                |
+| **字段名**       | **参数取值**            | **默认值**           | **说明**                     |
+|------------------|-------------------------|----------------------|----------------------------|
+| `cookieDomain`   | `string`                | `当前站点的一级域名`    | 自定义cookie存储的域         |
+| `dataCollect`    | `boolean`               | `true`               | 是否开启数据采集             |
+| `debug`          | `boolean`               | `false`              | 是否开启调试模式             |
+| `forceLogin`     | `boolean`               | `false`              | 是否开启强制登录             |
+| `idMapping`      | `boolean`               | `false`              | 是否开启多用户身份上报       |
+| `hashtag`        | `boolean`               | `false`              | 是否开启hash解析             |
+| `host`           | `string`                | `napi.growingio.com` | 数据上报的服务端地址         |
+| `ignoreFields`   | `string[]`              | `[]`                 | 上报忽略字段                 |
+| `originalSource` | `boolean`               | `true`               | 访问事件是否使用原始进入数据 |
+| `platform`       | `取值见表`               | `Web`                | 平台类型                     |
+| `scheme`         | `string`                | `location.protocol`  | 网络协议                     |
+| `storageType`    | `cookie / localStorage` | `cookie`             | SDK信息的持久化存储的类型    |
+| `trackBot`       | `boolean`               | `true`               | 是否采集爬虫环境数据         |
+| `version`        | `string`                | `1.0.0`              | 应用版本号                   |
 
 ## 配置项详解
 
@@ -113,6 +114,20 @@ screenWidth       屏幕宽度
 ```js
 gdp('init', accountId, datasourceId, {
   ignoreFields: ['screenHeight', 'screenWidth'],
+});
+```
+
+### originalSource
+
+默认情况下，SDK发送访问事件（VISIT）时，会使用用户初始进入站点时的`path`和`query`信息，以保证能正确上报utm参数等进入信息。但是需要注意的点是，当您的站点不是在用户进入的页面发送访问事件时，会导致VISIT事件和PAGE事件上报的path和query不一致，从而平台的页面跳出率数据会异常。
+
+举例：如果您的站点在进入时关闭了数据采集，用户进入P1页面，操作后跳转进入P2页面，然后您打开了采集开关。此时，发送的VISIT事件中的path和query是P1页面的，而PAGE事件的path和query则是P2页面的，这就会导致跳出率异常。
+
+如果您不是上述场景，维持默认值即可；如果您是上述场景，不考虑utm相关信息丢失的问题且想保证跳出率准确，那么可以关闭该配置项。
+
+```js
+gdp('init', accountId, datasourceId, {
+  originalSource: false,
 });
 ```
 
