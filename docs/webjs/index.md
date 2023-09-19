@@ -17,13 +17,33 @@ GrowingIO WebJS SDK 支持 IE11 浏览器、360 浏览器、谷歌浏览器、�
 
 ## 平台兼容性
 
-<font size="4" color="#FC5F3A">由于4.x版本的SDK调整了无埋点逻辑和上报数据的测量协议，因此4.x版本的SDK要求平台版本最低4.2.0，如果您使用的平台版本低于4.2.0，请使用3.8或对应版本的SDK。否则可能会出现数据无法上报或报错的问题。</font>
+<font size="4" color="#FC5F3A">由于4.x版本的SDK调整了无埋点逻辑和上报数据的测量协议，因此4.x版本的SDK要求平台版本最低4.2.0，如果您使用的平台版本低于4.2.0，请使用对应版本的SDK。否则可能会出现数据无法上报或报错的问题。</font>
+
+### Saas
+
+如果您使用的平台版本是 **19-25的通用大版本** ，即使用 **2.x 版本SDK**，请联系我们购买升级新产品后再进行升级操作。
+
+如果您使用的平台版本是 **4.0平台，但版本号低于4.2.0** ，即使用 **3.0.x-3.8.x 版本SDK**，请联系我们购买升级新产品后再进行升级操作。
+
+### CDP(OP)私有部署
+
+如果您使用的平台版本是 **2.x版本** ，即使用 **0.6.x-1.2 版本SDK**，请联系我们购买升级新产品后再进行升级操作。
+
+如果您使用的平台版本是 **13.6(不含)-14.7 和  4.2.0以下(不含)的4.x版本** ，即使用 **3.0.x-3.8.x 版本SDK**，请联系我们购买升级新产品后再进行升级操作。
+
+如果您使用的平台版本不在上述范围内，请咨询我们的技术支持。
 
 ## 浏览器兼容性
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src//archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png" alt="IE" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>InternetExplorer | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera |[<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Electron |
 | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | 11 | >= 15| >= 54 | >= 51 | >= 10 | >= 38 | >= 10 |
+
+## 升级指南
+
+为了帮助原先使用各个低版本的用户快速升级到4.0，我们单独为您详细介绍了如何快速升级。
+
+详情介绍请见[升级指南](/docs/webjs/upgrade)
 <br/><br/>
 
 ```mdx-code-block
