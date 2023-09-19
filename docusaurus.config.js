@@ -62,7 +62,7 @@ module.exports = {
             },
             {
               label: '3.x文档',
-              to: '/docs/3.x/',
+              to: '/versioned_docs/version-3.x/',
             },
           ],
         },
