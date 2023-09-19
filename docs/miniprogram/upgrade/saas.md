@@ -97,6 +97,7 @@ Component({ ... });
 > 请注意两者的区别:<br/>
 > \* 以往的`setPage`对应的是当前页面所有事件的事件属性；对应现在的改动则是将变量放入页面参数query中的方式，效果一致。<br/>
 > \* `setPageAttributes`对应的只有页面访问事件的属性，并不会对页面中其他事件生效。
+> \* 如果您需要对页面中的所有埋点事件添加属性，请使用`setGeneralProps`[参考文档](/docs/miniprogram/commonlyApi#10设置埋点通用属性setgeneralprops)。
 
 * 6）移除**`setVisitor`**方法调用。如需使用访问用户变量，请将访问用户变量放在用户属性（setUserAttributes）中进行上报。未使用则忽略。
 * 7）重命名替换**`setUser`**为**`setUserAttributes`**，调用方式不变。未使用则忽略。

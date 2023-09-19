@@ -68,7 +68,10 @@ import TabItem from '@theme/TabItem';
 4. 移除**`evar.set`**方法调用。如需使用转化变量，请将转化变量放在埋点事件属性（track）中进行上报。未使用则忽略。
 5. 移除**`visitor.set`**方法调用。如需使用访问用户变量，请将访问用户变量放在用户属性（setUserAttributes）中进行上报。未使用则忽略。
 6. 重命名替换**`people.set`**为**`setUserAttributes`**，调用方式不变。未使用则忽略。
-7. 修改**`getVisitUserId`**为**`getDeviceId`**，调用方式变更，请[参考文档](/docs/webjs/commonlyApi#3获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
+7. 重命名替换**`setUser`**为**`setUserAttributes`**，调用方式不变。未使用则忽略。
+8. 重命名替换**`hybridSetUserId`**为**`setUserId`**，调用方式不变。未使用则忽略。
+9. 重命名替换**`hybridClearUserId`**为**`clearUserId`**，调用方式不变。未使用则忽略。
+10. 修改**`getVisitUserId`**为**`getDeviceId`**，调用方式变更，请[参考文档](/docs/webjs/commonlyApi#3获取访问用户idgetdeviceid)修改使用方式。未使用则忽略。
 
 ### 4、检查半自动采集浏览事件（曝光事件）
 
