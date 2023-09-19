@@ -17,7 +17,7 @@
   },
   {
     "name": "iOS",
-    "version": "3.6.0",
+    "version": "3.7.0",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-ios-autotracker/releases",
     "distPath": "docs/ios/",
     "fileName": "version.md",
