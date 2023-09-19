@@ -17,7 +17,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/">
-            快速接入GrowingIO SDK 3.0
+            快速接入GrowingIO SDK 4.0
           </Link>
         </div>
       </div>
