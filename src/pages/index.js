@@ -14,11 +14,32 @@ function HomepageHeader() {
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/">
-            快速接入GrowingIO SDK 3.0
-          </Link>
+          <div className="dropdown--hoverable" style={{position: 'relative'}}>
+            <div className="button button--secondary button--lg">快速接入GrowingIO SDK</div>
+            <div className="dropdown__menu" style={{top:'calc(100%)', left: '50%', transform: 'translateX(-50%)', minWidth: '30rem'}}> 
+              <table> 
+              <thead> 
+                <tr> 
+                <th align="center" style={{color:'var(--ifm-dropdown-link-color)'}}>平台版本</th>
+                <th align="center" style={{color:'var(--ifm-dropdown-link-color)'}}>SDK版本</th>
+                </tr>
+              </thead> 
+              <tbody> 
+                <tr>
+                <td align="center" style={{color:'var(--ifm-dropdown-link-color)'}}>OP-xxxx</td> 
+                <td className='dropdown_link'><a href='docs'>4.x</a></td> 
+                </tr> 
+                <tr> 
+                <td align="center" style={{color:'var(--ifm-dropdown-link-color)'}}>OP - 13.6、OP-14.3.0、OP - 2.0.0、OP-2.6.0、OP - 2.7.0</td>
+                <td className='dropdown_link'><a href='docs/3.x'>3.x</a></td>
+                </tr>
+              </tbody> 
+              </table> 
+              <Link to="/docs#平台支持功能的版本与-sdk-版本对应关系">
+                具体查看平台支持功能的版本与 SDK 版本对应关系
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </header>

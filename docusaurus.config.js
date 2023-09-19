@@ -57,8 +57,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: '文档',
+              label: '4.x文档',
               to: '/docs/',
+            },
+            {
+              label: '3.x文档',
+              to: '/docs/3.x',
             },
           ],
         },
