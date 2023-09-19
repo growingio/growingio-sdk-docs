@@ -10,7 +10,7 @@ SDK集成和代码实施后，我们当然需要对数据的正确性和是否�
 <ImageLoader path="img//debugverify/debugverify" />
 
 ### 即时校验
-GrowingIO 即时校验工具有日志输出。<br/>
+GrowingIO 即时校验工具有日志输出。Android 和 iOS APP 同时也支持 [Mobile Debugger](/docs/debugverify/mobiledebugger)、[GioKit](/docs/giokit)。<br/>
 即时校验可以确保SDK采集数据的正确性，不能确保数据已上报到服务端数据库，[数据未上报到服务端数据库排查建议](/question/common#3-sdk-集成成功但是数据库中没有查到sdk上报的数据)。
 
 ### 查询验证
@@ -24,6 +24,7 @@ GrowingIO 即时校验工具有日志输出。<br/>
 |    工具/方法     |   依赖  |    功能简介   | 应用场景推荐 |
 |   :------:      | :----: |  :-------:   | :----:|
 |    日志输出      | 开启日志输出功能，研发开工具         | 可以查看所有采集事件日志数据 | 研发开发和排查问题 |
+| Mobile Debugger | 手机与电脑端在同一局域网，仅APP可用  |  [可查看所有采集事件数据](/docs/debugverify/mobiledebugger) |  研发、分析师数据校验 |
 |     GioKit      | 需添加GIOKit，仅 APP Debug包可用    |  [可查所有采集事件数据和上报结果](/docs/giokit) |  研发、分析师数据校验 |
 |      查询验证    | 平台中有对应功能的使用权限           | 查询除用户属性事件外的其他事件数据 | 分析师校验排查问题 |
 |      分析校验    | 平台中有对应功能的使用权限           | 查看采集数据展示效果 | 分析师看板分析问题 |
