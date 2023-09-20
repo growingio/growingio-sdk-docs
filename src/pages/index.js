@@ -20,24 +20,22 @@ function HomepageHeader() {
               <table> 
               <thead> 
                 <tr> 
-                <th align="center" style={{color:'var(--ifm-dropdown-link-color)'}}>平台版本</th>
-                <th align="center" style={{color:'var(--ifm-dropdown-link-color)'}}>SDK版本</th>
+                <th style={{color:'var(--ifm-dropdown-link-color)'}}>平台版本</th>
+                <th style={{color:'var(--ifm-dropdown-link-color)'}}>SDK版本</th>
                 </tr>
               </thead> 
               <tbody> 
                 <tr>
-                <td align="center" style={{color:'var(--ifm-dropdown-link-color)'}}>OP-xxxx</td> 
-                <td className='dropdown_link'><a href='docs'>4.x</a></td> 
+                <td style={{color:'var(--ifm-dropdown-link-color)'}}>OP-xxxx</td> 
+                <td><Link to="docs">4.x</Link></td> 
                 </tr> 
                 <tr> 
-                <td align="center" style={{color:'var(--ifm-dropdown-link-color)'}}>OP - 13.6、OP-14.3.0、OP - 2.0.0、OP-2.6.0、OP - 2.7.0</td>
-                <td className='dropdown_link'><a href='docs/3.x'>3.x</a></td>
+                <td style={{color:'var(--ifm-dropdown-link-color)'}}>OP-13.6、OP-14.3.0、OP-2.0.0、OP-2.6.0、OP-2.7.0</td>
+                <td><Link to="docs/3.x">3.x</Link></td>
                 </tr>
               </tbody> 
               </table> 
-              <Link to="/docs#平台支持功能的版本与-sdk-版本对应关系">
-                具体查看平台支持功能的版本与 SDK 版本对应关系
-              </Link>
+              <Link to="docs#平台支持功能的版本与-sdk-版本对应关系">具体查看平台支持功能的版本与 SDK 版本对应关系</Link>
             </div>
           </div>
         </div>

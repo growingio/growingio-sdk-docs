@@ -24,12 +24,12 @@ module.exports = {
 
       },
       items: [
-        {
-          type: 'doc',
-          docId: 'home',
-          position: 'left',
-          label: '文档',
-        },
+        // {
+        //   type: 'doc',
+        //   docId: 'home',
+        //   position: 'left',
+        //   label: '文档',
+        // },
         {to: '/blog', label: '博客', position: 'left'},
         {to: '/question', label: '常见问题', position: 'left'},
 
