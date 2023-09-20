@@ -260,6 +260,10 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 
 ## 在小程序内嵌页面中集成
 
+如果期望内嵌页作为一个独立站点运行和上报数据，直接按Web/H5的方式集成即可，无需其他步骤。
+
+如果期望内嵌页作为小程序的一部分运行和上报数据，请参考以下内容：
+
 全量集成 SDK 时，需在 Web 站点集成的基础之上，修改初始化配置即可，无需再次集成插件，已内置小程序内嵌页打通功能。[参考文档](/docs/webjs/plugins/embeddedAdapter)
 
 按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加小程序内嵌页打通插件并修改初始化配置。[参考文档](/docs/webjs/plugins/embeddedAdapter)
