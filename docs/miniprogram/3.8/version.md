@@ -5,6 +5,17 @@ title: 版本记录
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
+### V3.8.17 - 2023/09/25
+
+- 🐞 修复百度小程序无法正确获取场景值的问题。
+- 🐞 修复taro2在百度小程序下无埋点失效的问题。
+- 🐞 修复taro3react 使用function component写法且不定义生命周期时不触发page的问题。
+- 🐞 修复taro3react 使用function component写法时自定义方法会报警告的问题。
+- 🐞 修复uniapp-vue3中，使用setup写法并传参的自定义方法点击事件无法触发的问题。
+- 🐞 修复曝光事件在页面销毁时可能没有及时销毁监听导致内存泄漏的问题。
+- 🐞 修复小程序自定义组件中曝光事件无法触发的问题。
+- 🌟 优化快手小程序在曝光插件中的逻辑。
+
 ### V3.8.16 - 2023/07/13
 
 - 🐞 修复关闭数据采集开关，事件时长计时器未清除的问题。
