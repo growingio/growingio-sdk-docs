@@ -153,7 +153,7 @@ Page({
 const { gdp } = global;
 Component({
   lifetimes: {
-    attached: {
+    attached: function(){
       gdp('updateImpression', this);
     }
   }
