@@ -150,8 +150,6 @@ GrowingTracker.setDataCollectionEnabled(true);
 | :----: | :-----: | :--: | :----: | :----------------------------------- |
 | eventName | string |  是  |  undefine  | 事件名，事件标识符 |
 | attributes | object | 否 |  null  |事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选） |
-| itemKey | string | 否 | null | 事件发生关联的物品模型Key（可选，与itemId参数一起传入） |
-| itemId | string | 否 | null | 事件发生关联的物品模型ID （可选，与itemKey参数一起传入 |
 #### 代码示例
 ```javascript
 GrowingTracker.trackCustomEvent('trackCustomEvent(string)');
@@ -159,21 +157,6 @@ GrowingTracker.trackCustomEvent('trackCustomEvent(string)', {
    key1: 'value1',
    key2: 'value2',
 });
-GrowingTracker.trackCustomEvent(
-   'trackCustomEvent(string)',
-   null,
-   'itemKey',
-   'itemId'
-);
-GrowingTracker.trackCustomEvent(
-   'trackCustomEvent(string)',
-   {
-     key1: 'value1',
-     key2: 'value2',
-   },
-   'itemKey',
-   'itemId'
-);
 ```
 
 :::info
