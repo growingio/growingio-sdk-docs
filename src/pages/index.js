@@ -26,11 +26,11 @@ function HomepageHeader() {
               </thead> 
               <tbody> 
                 <tr>
-                <td style={{color:'var(--ifm-dropdown-link-color)'}}>OP-xxxx</td> 
+                <td style={{color:'var(--ifm-dropdown-link-color)'}}>OP-4.2、New SaaS</td> 
                 <td><Link to="docs">4.x</Link></td> 
                 </tr> 
                 <tr> 
-                <td style={{color:'var(--ifm-dropdown-link-color)'}}>OP-13.6、OP-14.3.0、OP-2.0.0、OP-2.6.0、OP-2.7.0</td>
+                <td style={{color:'var(--ifm-dropdown-link-color)'}}>OP-4.0、OP-4.1、OP-2.x、OP-13.6 至 OP-14.7</td>
                 <td><Link to="docs/3.x">3.x</Link></td>
                 </tr>
               </tbody> 
