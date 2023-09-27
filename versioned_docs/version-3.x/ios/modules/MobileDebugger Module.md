@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Debugger 模块
+title: Debugger模块
 ---
 
 GrowingIO SDK 支持的 Mobile Debugger 工具，可对应用中集成的SDK事件发送进行调试和校验。
