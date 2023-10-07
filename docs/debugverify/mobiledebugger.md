@@ -11,7 +11,7 @@ GrowingIO 的移动端的SDK支持 Mobile Debugger 工具，可进行调试和�
 
 ### 1.进入Mobile Debugger启动页
 登录 GrowingIO CDP 管理平台（一般来说，cdp都会配有数据管理），在数据中心--->数据校验--->**Mobile Debugger** 进入Mobile Debugger启动页。
-![Mobile Debugger](../../static/img/EnterMobileDebugger.png)
+<ImageLoader path="img/debugverify/EnterMobileDebugger" />
 
 ### 2.扫码唤起App
 * 选择项目中需要进行调试和校验的应用，并保证手机中已经安装该APP，且该APP已经集成GrowingIO SDK和设置过 URL Scheme。

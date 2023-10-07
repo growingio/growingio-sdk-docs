@@ -9,6 +9,49 @@ readme_header = "---\ntitle: 版本记录\nsidebar_position: 0\n---\n----\n"
 readme_item_foot = ":::note \n\n 标签:**[{name}]({url})** &nbsp;&nbsp;&nbsp;&nbsp;日期: **{date}** \n\n:::"
 readme_footer = "---\n## 更多发布细节请参考 [SDK Releases in Github]({url})"
 
+def android_releases(releases):
+    android_header_append = readme_header + """
+<details>
+<summary>GrowingIO Android SDK 各个版本对应关系</summary>
+
+| GrowingIO SDK  | SDK Plugin    | Giokit      | SDK Demo | Flutter SDK |
+| :--------------| :----------:  | :--------:  | :----:   | :----:      |
+| 3.5.0          | 3.5.0         | 1.4.0       | 1.0.0    | 1.1.0       |
+| 3.4.0-3.4.7    | 3.4.0-3.4.7   | 1.0.0-1.3.0 | ∅        | 1.0.0       |
+| 3.1.0-3.3.6    | 3.1.0-3.3.6   | ∅           | ∅        | ∅           |
+
+</details>
+
+"""
+    android_item_foot = readme_item_foot
+    content = android_header_append
+    for release in releases:
+        release_name = release["name"]
+        if release_name is None or release_name == "":
+            release_name = release["tag_name"]
+        if hotfix_version(release_name):
+            continue
+        if release["prerelease"] == True:
+            continue
+        content += "## " + release_name.upper() +"\n\n"
+        content += release["body"] +"\n\n"
+        content += android_item_foot.format(name=release["tag_name"], url=release["html_url"],
+                                                    date=release["published_at"].split("T")[0])
+        content += "\n\n"
+    return content
+
+def iOS_releases(releases):
+    content = readme_header
+    for release in releases:
+        release_name = release["name"]
+        if release_name is None or release_name == "":
+            release_name = release["tag_name"]
+        if hotfix_version(release_name):
+            continue
+        if release["prerelease"] == True:
+            continue
+        content += release["body"] +"\n\n"
+    return content
 
 def github_release(platform):
     newest_tag = None
@@ -17,23 +60,14 @@ def github_release(platform):
         req = request.Request(url=platform['releaseUrl'], headers=headers, method='GET')
         response = request.urlopen(req)
         releases = json.loads(response.read().decode("utf-8"))
-        readme = readme_header
-        for release in releases:
-            release_name = release["name"]
-            if release_name is None or release_name == "":
-                release_name = release["tag_name"]
-            if hotfix_version(release_name):
-                continue
-            if release["prerelease"] == True:
-                continue
-            if platform['name'] != "iOS":
-                readme += "## " + release_name.upper() +"\n\n"
-                readme += release["body"] +"\n\n"
-                readme += readme_item_foot.format(name=release["tag_name"], url=release["html_url"],
-                                                date=release["published_at"].split("T")[0])
-                readme += "\n\n"
-            else:
-                readme += release["body"] + "\n\n"
+        readme = ""
+        if platform['name'] == "Android" or platform['name'] == "GioKit Android":
+            readme = android_releases(releases)
+        elif platform['name'] == "iOS":
+            readme = iOS_releases(releases)
+        else:
+            readme = iOS_releases(releases)
+
         readme += readme_footer.format(
             url=platform['releaseUrl'].replace("api.github.com", "github.com").replace("repos/growingio", "growingio"))
 

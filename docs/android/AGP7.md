@@ -15,7 +15,10 @@ Growingio Sdk Gradle Plugin 在V3.4.0 重新开发后，实现了更多的功能
 * 兼容 AGP 7.0 及其以上 pluginManagement 的依赖方式；
 * 提供了完整的单元测试。
 
-Github 项目地址为 [GrowingIO Android SDK Plugin](https://github.com/growingio/growingio-sdk-android-plugin)，欢迎star。
+:::tip 开源信息
+Github 项目地址为 [GrowingIO Android SDK Plugin](https://github.com/growingio/growingio-sdk-android-plugin)，欢迎 star, fork。
+:::
+
 
 ## 如何集成
 这里只说明在 Android Gradle插件为7.0及以上版本时的集成方式，若是AGP7以下则按照 [插件集成](/docs/android/Introduce#添加插件) 集成即可
@@ -57,7 +60,7 @@ plugins {
 
     ···
     // 添加GrowingIO 无埋点 SDK 插件
-    id 'com.growingio.android.autotracker' version '3.4.2' apply false
+    id 'com.growingio.android.autotracker' version '3.5.0' apply false
 }
 ```
 
@@ -81,6 +84,7 @@ plugins {
 | Extension                    | 参数类型         | 是否必填 | 默认值 | 说明 |  版本 |
 | :-------------------------   | :------         | :----:  |:------  |:------| --------------------------   |
 | `logEnabled`                 | `Boolean`       | 否      | `false`  | 编译时是否输出log日志          |  |
+| `skipDependencyCheck`        | `Boolean`       | 否      | `false`  | 编译时检测当前project是否配置SDK依赖（模块中依赖时配置为true）          |  |
 | `includePackages`            | `Array<String>` | 否      | `null`   | 需要额外包含编译的包名          |  |
 | `excludePackages`            | `Array<String>` | 否      | `null`   | 需要跳过编译的包名             |  |
 

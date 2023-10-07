@@ -7,7 +7,7 @@ SDK集成和代码实施后，我们当然需要对数据的正确性和是否�
 
 ## 校验工作分为三步完成
 
-![debug and verify](../../static/img/debugverify.png)
+<ImageLoader path="img//debugverify/debugverify" />
 
 ### 即时校验
 GrowingIO 即时校验工具有日志输出。Android 和 iOS APP 同时也支持 [Mobile Debugger](/docs/debugverify/mobiledebugger)、[GioKit](/docs/giokit)。<br/>

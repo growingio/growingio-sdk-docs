@@ -27,14 +27,14 @@ tags: [scripts, gradle]
 
 ### SNAPSHOT
 SNAPSHOT 版本可以在同一版本号下多次提交，当其他人拉取该版本号时会取最后提交的包，如下图所示
-![SNAPSHOT](/img/SNAPSHOT.png)
+<ImageLoader path="blog/MavenCentral/SNAPSHOT" />
 在 SNAPSHOT 仓库中同一个版本下多个包会通过提交日期来区分，这样别人依赖某个版本时就能获得最新更新的包。
 同时 SNAPSHOT 不会对提交的包进行 `close` 操作来对其进行审核，没有一定要有 `javadoc`、`sources`、`GPG加密`等要求。
 
 ### 正式版
 提交正式版后包会先进入 `Staging Repositories`,然后需要在这里依次执行 `close` 和 `release` 操作，`close`操作会验证本次的提交的包是否包含 `javadoc`、`sources`、`GPG加密文件` 和 `pom`文件的合法等，通过后才能执行 `release` 操作向官方仓库发布。
 
-![Staging Repositories](/img/Repositories.png)
+<ImageLoader path="blog/MavenCentral/Repositories" />
 
 ## 开始准备
 
@@ -355,7 +355,7 @@ apply from: "${rootProject.projectDir}/gradle/publishMaven.gradle"
 ### 5. Github Ci脚本
 GitHub上有提供 Action 这一工具，该工具可以在线上进行各种操作：比如编译，测试，校验等，所以打包上传也是可以的。
 1. 配置 Github Secrets
-![Github Secrets](/img/Secrets.png)
+<ImageLoader path="blog/MavenCentral/Secrets" />
 各个配置分别对应 `全局 gradle 配置` 步骤中的各个参数，其中 `SIGNING_SECRET_KEY_RING_FILE` 是秘钥文件经过 base64 后产生的字符串。
 
 2. 自动 close 和 release

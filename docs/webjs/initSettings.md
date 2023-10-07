@@ -19,6 +19,7 @@ title: 初始化配置
 | `host`            | `string`     | `-`                 | 数据上报的服务端地址(无需携带协议头)**(必填)**          |
 | `ignoreFields`    | `string[]`   | `-`                 | 上报忽略字段                                          |
 | `scheme`          | `string`     | `location.protocol` | 网络协议                                              |
+| `storageType`     | `string`     | `cookie`            | SDK信息的持久化存储的类型(仅支持cookie或localStorage)    |
 | `version`         | `string`     | `-`                 | Web应用发版版本号(建议填写)                           |
 
 ## 配置项详解
@@ -88,6 +89,14 @@ gdp('init', accountId, datasourceId, { debug: true });
 
 ```js
 gdp('init', accountId, datasourceId, { enableIdMapping: true });
+```
+
+### hashtag
+
+GrowingIO 默认不会把hash识别成页面URL的一部分。对于使用hash进行页面转跳的单页面网站应用来说，可以启用hashtag作为标识页面的一部分。
+
+```js
+gdp('init', accountId, datasourceId, { hashtag: true });
 ```
 
 ### ignoreFields

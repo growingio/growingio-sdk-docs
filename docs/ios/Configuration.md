@@ -119,7 +119,7 @@ pod 'GrowingAnalytics/DISABLE_IDFA'
 
 去掉原先集成的 **GrowingAutotracker_cdp**(无埋点) / **GrowingTracker_cdp**(埋点) Package，选择对应的 **GrowingAutotracker_cdp_NoIDFA**(无埋点) / **GrowingTracker_cdp_NoIDFA**(埋点)  Package
 
-![add Package NoIDFA](./../../static/img/ios/add_package_autotracker_noidfa.png)
+<ImageLoader path="img/ios/add_package_autotracker_noidfa" />
 
   </TabItem>
 </Tabs>
