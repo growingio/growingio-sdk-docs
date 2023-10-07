@@ -58,9 +58,6 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
 App({ ... });
 ```
 
-<<<<<<< HEAD:docs/miniprogram/integration/kuaishou.md
-**_更多配置项请在[集成配置](/docs/miniprogram/initSettings)菜单中查看_**
-=======
 ```js
 原有 require 的引用方式依然可以使用。
 const gdp = require('./utils/gio/gio-kuaishou.js').default;
@@ -316,8 +313,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
   </TabItem>
 </Tabs>
 
-**_更多配置项请在[集成配置](/docs/miniprogram/3.8/initSettings)菜单中查看_**
->>>>>>> upstream/master:docs/miniprogram/3.8/integration/kuaishou.md
+**_更多配置项请在[集成配置](/docs/miniprogram/initSettings)菜单中查看_**
 
 ## 插件扩展
 
