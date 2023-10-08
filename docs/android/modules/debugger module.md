@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| debugger  | 无埋点自动集成 | `Debugger` | `WebService` | >=3.3.0 |
+| debugger  | 无埋点自动集成 | `Debugger` | `WebService` | - |
 
 ### 依赖方式
 <Tabs

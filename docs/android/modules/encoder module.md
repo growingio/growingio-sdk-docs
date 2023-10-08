@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| encoder  | 需要手动集成 |`EventEncoder` | `EventEncoder` | >=3.3.0 |
+| encoder  | 需要手动集成 |`EventEncoder` | `EventEncoder` | - |
 
 ### 依赖方式
 <Tabs
@@ -68,7 +68,7 @@ dependencies {
 ```java
 // 初始化无埋点SDK时, 调用方法注册加密模块
 GrowingAutotracker.startWithConfiguration(this,
-                new CdpAutotrackConfiguration("accountId", "urlScheme")
+                new AutotrackConfiguration("accountId", "urlScheme")
                 //...
                 .addPreloadComponent(new EncoderLibraryGioModule()));
 ```
@@ -79,7 +79,7 @@ GrowingAutotracker.startWithConfiguration(this,
 ```java
 // 初始化埋点SDK时, 调用方法注册加密模块
 GrowingTracker.startWithConfiguration(this,
-                new CdpTrackConfiguration("accountId", "urlScheme")
+                new TrackConfiguration("accountId", "urlScheme")
                 //...
                 .addPreloadComponent(new EncoderLibraryGioModule()));
 ```

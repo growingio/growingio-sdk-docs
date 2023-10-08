@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| hybrid  | 埋点SDK中，手动集成<br />无埋点中自动注入 | 1. `HybridBridge` <br /> 2. `HybridDom` | 1. `Boolean` <br /> 2.`HybridJson` | >=3.3.0 |
+| hybrid  | 埋点SDK中，手动集成<br />无埋点中自动注入 | 1. `HybridBridge` <br /> 2. `HybridDom` | 1. `Boolean` <br /> 2.`HybridJson` | - |
 
 ### 依赖方式
 <Tabs
@@ -66,7 +66,7 @@ dependencies {
 // 在初始化SDK时，可以提前注册hybrid模块
 // hybrid模块需要依赖对应 hybrid模块包 hybrid
 GrowingTracker.startWithConfiguration(this,
-                new CdpTrackConfiguration("accountId", "urlScheme")
+                new TrackConfiguration("accountId", "urlScheme")
                 //...
                 .addPreloadComponent(new HybridLibraryGioModule()));
 ```

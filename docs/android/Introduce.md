@@ -8,15 +8,55 @@ title: 如何集成
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## 添加maven仓库
+## 添加代码依赖的仓库地址
 
-在 project 级别的build.gradle文件中添加Maven仓库
+集成 GrowingIO SDK 时需要注意是否已经添加 `mavenCentral()` 仓库地址。<br/>
+集成无埋点时，需要添加额外的 Gradle 插件，集成插件时需要注意是否已经添加 `gradlePluginPortal()`仓库。
+
+<Tabs
+  groupId="AGP"
+  defaultValue="AGP7"
+  values={[
+    {label: 'AGP7及以上', value: 'AGP7'},
+    {label: '低版本Gradle', value: 'LOW'},
+  ]}
+>
+
+<TabItem value="AGP7">
+
+在 project 中的 `settings.gradle` 文件中添加代码仓库地址。
+
+```groovy
+pluginManagement {
+    repositories {
+        // 添加 gradle plugin 依赖的仓库地址
+        gradlePluginPortal()
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        // 添加sdk依赖的 maven 仓库地址
+        mavenCentral()
+        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="LOW">
+
+在 project 中的 `build.gradle` 文件中添加代码仓库地址。
 
 ```groovy
 buildscript {
     repositories {
-        // 添加maven仓库
-        mavenCentral()
+        // 添加 gradle plugin 依赖的仓库地址
+        gradlePluginPortal()
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
@@ -32,15 +72,57 @@ allprojects {
 }
 ```
 
+</TabItem>
+</Tabs>
+
 ## 集成无埋点SDK
 
 无埋点SDK能够在不修改代码的情况下，自动帮助应用获取页面浏览，页面点击等埋点事件。
 
 ### 如何依赖
+无埋点 SDK 需要集成 SDK代码 和 Gradle 插件。
 
 #### 添加插件
 
-在 project 级别的build.gradle文件中添加插件路径
+<Tabs
+  groupId="AGP"
+  defaultValue="AGP7"
+  values={[
+    {label: 'AGP7及以上', value: 'AGP7'},
+    {label: '低版本Gradle', value: 'LOW'},
+  ]}
+>
+
+<TabItem value="AGP7">
+
+在 project 下的 `build.gradle` 中添加 GrowingIO 插件
+
+```groovy
+plugins {
+    id 'com.android.application' version '7.2.0' apply false
+
+    ···
+    // 添加GrowingIO 无埋点 SDK 插件
+    id 'com.growingio.android.autotracker' version '4.0.0' apply false
+}
+```
+
+在 app 级别的 `build.gradle` 文件中引入 `com.growingio.android.autotracker` 插件
+
+```groovy
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    // 使用 GrowingIO 无埋点 SDK 插件
+    id 'com.growingio.android.autotracker'
+}
+
+```
+</TabItem>
+
+<TabItem value="LOW">
+
+在 project 下的 `build.gradle` 中添加 GrowingIO 插件
 
 ```groovy
 
@@ -53,27 +135,28 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.5.0'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:4.0.0'
     }
 }
 
 ```
 
-在 app 级别的 `build.gradle` 文件中添加 `com.growingio.android.autotracker` 插件
+在 app 级别的 `build.gradle` 文件中引入 `com.growingio.android.autotracker` 插件
 
 ```groovy
 apply plugin: 'com.android.application'
 //添加 GrowingIO 插件
 apply plugin: 'com.growingio.android.autotracker'
 
-...
-
 ```
+
+</TabItem>
+</Tabs>
 
 :::tip 关于插件
 插件最新发布版本为 [Github Releases](https://github.com/growingio/growingio-sdk-android-plugin/releases)
 
-关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/AGP7)
+关于插件的更多使用和配置请参考 [SDK 插件说明](/docs/android/AGP7)
 :::
 
 #### 添加代码依赖
@@ -82,25 +165,12 @@ apply plugin: 'com.growingio.android.autotracker'
 
 <Tabs
   groupId="code-language"
-  defaultValue="common"
+  defaultValue="bom"
   values={[
-    {label: '依赖', value: 'common'},
     {label: 'BoM', value: 'bom'},
+    {label: '依赖', value: 'common'},
   ]
 }>
-
-<TabItem value="common">
-
-```groovy
-apply plugin: 'com.android.application'
-
-dependencies {
-    implementation 'com.growingio.android:autotracker-cdp:3.5.1'
-}
-```
-
-</TabItem>
-
 <TabItem value="bom">
 
 ```groovy
@@ -108,10 +178,22 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   //GrowingIO 无埋点 SDK
   implementation 'com.growingio.android:autotracker-cdp'
+}
+```
+
+</TabItem>
+
+<TabItem value="common">
+
+```groovy
+apply plugin: 'com.android.application'
+
+dependencies {
+    implementation 'com.growingio.android:autotracker:4.0.0'
 }
 ```
 
@@ -125,7 +207,7 @@ dependencies {
 ### 添加URL Scheme
 
 URL Scheme 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识。把 URL Scheme 添加到您的项目，以便使用圈选,[Mobile Debugger](/knowledge/debugverify/mobiledebugger) 及深度链接等功能时唤醒应用。
-将应用的 URLScheme 和应用权限添加到您的 AndroidManifest.xml 中的 LAUNCHER Activity 下。
+将应用的 URLScheme 和应用权限添加到您的 AndroidManifest.xml 中的启动 Activity 下。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -186,11 +268,14 @@ public class MyApplication extends Application {
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
-        CdpAutotrackConfiguration sConfiguration = new CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
+        AutotrackConfiguration sConfiguration = new AutotrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
-                .setDebugEnabled(BuildConfig.DEBUG);
-        GrowingAutotracker.startWithConfiguration(this,sConfiguration);
+                .setDebugEnabled(BuildConfig.DEBUG)
+                .setAndroidIdEnabled(true)
+                .setRequireAppProcessesEnabled(true)
+                .setDataCollectionEnabled(true);
+        GrowingAutotracker.startWithConfiguration(this, sConfiguration);
     }
 }
 ```
@@ -208,10 +293,13 @@ class MyApplication : Application() {
         // Your URLScheme eg:growing.xxxxxxxxxxx
         // YourServerHost eg:http://106.75.81.105:8080
         // YourDatasourceId eg: 11223344aabbcc
-        val sConfiguration = CdpAutotrackConfiguration("Your AccountId", "Your URLScheme")
+        val sConfiguration = AutotrackConfiguration("Your AccountId", "Your URLScheme")
             .setDataCollectionServerHost("Your ServerHost")
             .setDataSourceId("Your DataSourceId")
             .setDebugEnabled(BuildConfig.DEBUG)
+            .setAndroidIdEnabled(true)
+            .setRequireAppProcessesEnabled(true)
+            .setDataCollectionEnabled(true)
         GrowingAutotracker.startWithConfiguration(this, sConfiguration)
     }
 }
@@ -220,19 +308,18 @@ class MyApplication : Application() {
 </TabItem>
 </Tabs>
 
-:::caution 注意
-`GrowingAutotracker.startWithConfiguration`第一个参数为 `ApplicationContext` 对象。
-:::
-
 ### 查看集成效果
 
 运行应用，若 `Logcat` 中输出了
-`!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`
-`!!! GrowingIO Tracker version: 3.4.4 !!!`
+
+```shell
+!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!
+!!! GrowingIO Tracker version: 4.0.0 !!!
+```
+
 则说明SDK已经集成成功。
 
 若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
-
 至此，就完成了无埋点 SDK 的集成。
 
 另外，您可使用 [GioKit 辅助插件](/docs/giokit/android) 进行集成验证。
@@ -248,25 +335,12 @@ class MyApplication : Application() {
 
 <Tabs
   groupId="code-language"
-  defaultValue="common"
+  defaultValue="bom"
   values={[
+     {label: 'BoM', value: 'bom'},
     {label: '依赖', value: 'common'},
-    {label: 'BoM', value: 'bom'},
   ]
 }>
-
-<TabItem value="common">
-
-```groovy
-apply plugin: 'com.android.application'
-
-dependencies {
-    //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.5.1'
-}
-```
-
-</TabItem>
 
 <TabItem value="bom">
 
@@ -275,10 +349,23 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   //GrowingIO 埋点 SDK
-  implementation 'com.growingio.android:tracker-cdp'
+  implementation 'com.growingio.android:tracker'
+}
+```
+
+</TabItem>
+
+<TabItem value="common">
+
+```groovy
+apply plugin: 'com.android.application'
+
+dependencies {
+    //GrowingIO 埋点 SDK
+    implementation 'com.growingio.android:tracker:4.0.0'
 }
 ```
 
@@ -287,7 +374,7 @@ dependencies {
 
 ### 添加URLScheme
 
-以便唤醒App
+将应用的 URLScheme 和应用权限添加到您的 AndroidManifest.xml 中的启动 Activity 下。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -341,10 +428,13 @@ public class MyApplication extends Application {
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
-        CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("Your AccountId", "Your URLScheme")
+        TrackConfiguration sConfiguration = new TrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
-                .setDebugEnabled(BuildConfig.DEBUG);
+                .setDebugEnabled(BuildConfig.DEBUG)
+                .setAndroidIdEnabled(true)
+                .setRequireAppProcessesEnabled(true)
+                .setDataCollectionEnabled(true);
         GrowingTracker.startWithConfiguration(this, sConfiguration);
     }
 }
@@ -362,11 +452,13 @@ class MyApplication : Application() {
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
-        val sConfiguration: CdpTrackConfiguration =
-            CdpTrackConfiguration("Your AccountId", "Your URLScheme")
+        val sConfiguration = TrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG)
+                .setAndroidIdEnabled(true)
+                .setRequireAppProcessesEnabled(true)
+                .setDataCollectionEnabled(true)
         GrowingTracker.startWithConfiguration(this, sConfiguration)
     }
 }
@@ -375,7 +467,21 @@ class MyApplication : Application() {
 </TabItem>
 </Tabs>
 
-### 混淆
+### 查看集成效果
+
+运行应用，若 `Logcat` 中输出了
+
+```shell
+!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!
+!!! GrowingIO Tracker version: 4.0.0 !!!
+```
+
+则说明SDK已经集成成功。
+
+若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
+至此，就完成了埋点 SDK 的集成。
+
+## 混淆
 
 SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用其规则。
 
@@ -387,16 +493,3 @@ SDK中已经默认集成了混淆规则，R8 在编译项目时会自动应用�
 }
 -dontwarn com.growingio.**
 ```
-
-### 查看集成效果
-
-运行应用，若 `Logcat` 中输出了
-`!!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!`
-`!!! GrowingIO Tracker version: 3.4.2 !!!`
-则说明SDK已经集成成功。
-
-若在初始化中打开了Debug `setDebugEnabled(true)` ，则可以在 `Logcat` 中看到每个事件的log日志输出。
-
-至此，就完成了埋点 SDK 的集成。
-
-另外，您可使用 [GioKit 辅助插件](/docs/giokit/android) 进行集成验证。
