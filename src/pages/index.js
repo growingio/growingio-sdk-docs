@@ -13,32 +13,14 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <div className="dropdown--hoverable" style={{position: 'relative'}}>
-            <div className="button button--secondary button--lg">快速接入GrowingIO SDK</div>
-            <div className="dropdown__menu" style={{top:'calc(100%)', left: '50%', transform: 'translateX(-50%)', minWidth: '30rem'}}> 
-              <table> 
-              <thead> 
-                <tr> 
-                <th style={{color:'var(--ifm-dropdown-link-color)'}}>平台版本</th>
-                <th style={{color:'var(--ifm-dropdown-link-color)'}}>SDK版本</th>
-                </tr>
-              </thead> 
-              <tbody> 
-                <tr>
-                <td style={{color:'var(--ifm-dropdown-link-color)'}}>OP-4.2、New SaaS</td> 
-                <td><Link to="docs">4.x</Link></td> 
-                </tr> 
-                <tr> 
-                <td style={{color:'var(--ifm-dropdown-link-color)'}}>OP-4.0、OP-4.1、OP-2.x、OP-13.6 至 OP-14.7</td>
-                <td><Link to="docs/3.x">3.x</Link></td>
-                </tr>
-              </tbody> 
-              </table> 
-              <Link to="docs#平台支持功能的版本与-sdk-版本对应关系">具体查看平台支持功能的版本与 SDK 版本对应关系</Link>
-            </div>
+
+          <div className={styles.buttons}>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/">
+              快速接入GrowingIO SDK 4.0
+            </Link>
           </div>
-        </div>
       </div>
     </header>
   );

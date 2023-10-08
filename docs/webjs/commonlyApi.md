@@ -134,7 +134,7 @@ gdp('clearUserId', callback?: function);
 
 ### 6、埋点事件(track)
 
-发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/knowledge/basicknowledge/trackEventUse#埋点事件示例)
 
 ```js
 gdp('track', eventName: string, attributes?: Object, callback?: function);

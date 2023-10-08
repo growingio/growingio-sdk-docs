@@ -40,7 +40,7 @@ gdp('init', accountId, dataSourceId, appId, {
 });
 ```
 
-提示：隐私协议相关逻辑请[参考文档](/docs/compliance/minpCompliance)。
+提示：隐私协议相关逻辑请[参考文档](/knowledge/compliance/minpCompliance)。
 
 ### debug
 

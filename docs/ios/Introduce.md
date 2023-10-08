@@ -96,7 +96,7 @@ import GrowingAutotracker
 
 </Tabs>
 
-#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
+#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
 
 <Tabs>
   <TabItem value="swift" label="Swift" default>
@@ -290,7 +290,7 @@ import GrowingTracker
 
 </Tabs>
 
-#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
+#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
 
 <Tabs>
   <TabItem value="swift" label="Swift" default>
@@ -494,5 +494,5 @@ func applicationDidBecomeActive(_ application: UIApplication) {
 }
 ```
 :::warning 注意
-使用 IDFA 作为访问用户 ID，同时为使 App 合规，则第一次 SDK 初始化应该在 用户同意隐私协议和获取 IDFA 权限之后。参考[合规步骤](/docs/compliance/iosCompliance#合规步骤)
+使用 IDFA 作为访问用户 ID，同时为使 App 合规，则第一次 SDK 初始化应该在 用户同意隐私协议和获取 IDFA 权限之后。参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
 :::

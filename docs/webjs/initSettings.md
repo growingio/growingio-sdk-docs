@@ -49,7 +49,7 @@ gdp('init', accountId, datasourceId, { cookieDomain: 'test.growingio.com' });
 gdp('init', accountId, datasourceId, { dataCollect: false });
 ```
 
-隐私合规相关内容（隐私协议的实现）请[参考文档](/docs/compliance/webCompliance#合规步骤)
+隐私合规相关内容（隐私协议的实现）请[参考文档](/knowledge/compliance/webCompliance#合规步骤)
 
 ### debug
 
