@@ -43,7 +43,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Web Js SDK',
+      label: 'Web JS SDK',
       link: {
         type: 'doc',
         id: 'index/webjs',
