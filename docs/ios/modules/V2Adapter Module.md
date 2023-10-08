@@ -5,7 +5,7 @@ title: V2Adapter模块
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-V2Adapter 支持从 SaaS/CDP v2.x SDK 无缝升级到当前 SDK，兼容 2.x APIs 调用；只需要修改初始化代码和集成 V2Adapter 即可按照最新测量协议发送数据
+V2Adapter 支持从 SaaS v2.x/CDP v1.x SDK 无缝升级到当前 SDK，兼容 2.x APIs 调用；只需要修改初始化代码和集成 V2Adapter 即可按照最新测量协议发送数据
 
 - 支持 SaaS (v2.x) to New SaaS，CDP (v1.x) to OP (v3.x v4.x) (皆指 SDK 版本)
 - 仅支持 Cocoapods 集成

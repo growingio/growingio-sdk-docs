@@ -1,10 +1,26 @@
 ---
-title: 从 3.x 升级至 4.x
+title: 升级指南
 sidebar_position: 5
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+
+
+:::info
+
+请注意，仅平台版本从老版本升级至 OP-4.2 以上或者 New SaaS，才需要进行升级 SDK 操作
+
+下文中的版本皆为 SDK 版本
+
+:::
+
+### 升级步骤
+
+<Tabs>
+  <TabItem value="从 CDP 3.x 升级至 CDP 4.x" label="从 CDP 3.x 升级至 CDP 4.x" default>
+
 
 4.x SDK 移除了 cdp 后缀，在集成步骤中，请参考使用非 cdp 后缀的 SDK 集成步骤，具体如下：
 
@@ -56,6 +72,14 @@ pod 'GrowingAnalytics/Tracker', '>= 4.0.0'
 </Tabs>
 
 
-----
+  </TabItem>
+  <TabItem value="从 SaaS 升级至 New SaaS" label="从 SaaS 升级至 New SaaS">
 
+请参考 [V2Adapter 模块](/docs/ios/modules/V2Adapter%20Module)集成
+
+  </TabItem>
+</Tabs>
+
+
+----
 
