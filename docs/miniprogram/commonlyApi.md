@@ -6,7 +6,9 @@ title: 数据采集API
 
 通过 **`global.gdp`** 这个全局的方法可以调用到SDK中所有开放的接口。
 
-您可在页面头部进行解构获取gdp方法。**`const { gdp } = global;`**(阿里(支付宝)小程序和淘宝小程序为 `const { gdp } = $global;`)
+您可在页面头部进行解构获取gdp方法。**`const { gdp } = global;`**
+
+(阿里(支付宝)小程序和淘宝小程序为 **`const { gdp } = $global;`**)
 
 ## 参数限制
 

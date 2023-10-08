@@ -108,6 +108,31 @@ gdp(
 </view>
 ```
 
+## 在自定义组件中使用曝光事件
+
+由于SDK以前默认是只取页面上的曝光节点并自动发送事件，在自定义组件中可能无法触发。如果您需要在自定义组件中使用曝光事件，请将SDK升级至**3.8.17及以上版本**，同时升级曝光插件。
+
+并且在页面引用自定义组件时，为自定义组件添加 **`growing_collect_imp_component`** 样式名。
+
+#### 示例
+
+```html
+<!-- Page -->
+<view>
+  <my-component class="growing_collect_imp_component"></my-component>
+</view>
+
+<!-- Component -->
+<view
+  class="growing_collect_imp"
+  data-gio-imp-track="imp_picture_var"
+  data-gio-imp-attrs='{ "type": "hjh", "name": "yue" }'
+  data-gio-imp-items='{ "key": "order_id", "id": "12345" }'
+>
+  自定义组件内的元素
+</view>
+```
+
 ## 手动更新半自动埋点监听
 
 当您需要添加半自动埋点的节点是动态渲染时（例如根据接口数据渲染不同的内容），SDK 可能会因为无法感知节点渲染时机而失去对标记节点的监听。此时，您需要调用 `updateImpression` 手动更新 SDK 的监听来保证您的动态渲染节点能够被监听到。
@@ -134,6 +159,21 @@ Page({
       });
     });
   },
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**如果您是在自定义组件中为自定义组件更新曝光监听，请传入 **`this`** 对象。
+
+#### 示例
+
+```js
+const { gdp } = global;
+Component({
+  lifetimes: {
+    attached: function(){
+      gdp('updateImpression', this);
+    }
+  }
 });
 ```
 
