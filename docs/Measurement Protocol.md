@@ -1,4 +1,5 @@
 ---
+id: measurement
 title: 测量协议
 sidebar_position: 13
 ---
