@@ -119,3 +119,46 @@ gdp('track', eventId, eventLevelVariables);
 检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#参数限制)，如有超出限制或超出限制的可能，请调整业务逻辑。
 </TabItem>
 </Tabs>
+
+## App内嵌页高低版本兼容
+
+当您的安卓、iOS App集成的是3.x版本SDK需要升级时，可能会因为用户不能及时升级App而出现的高低版本兼容使用问题，我们在这里给出H5内嵌页的参考集成代码，以帮助您平稳地完成版本切换。
+
+以下示例代码会自动帮助您判断App(安卓/iOS) SDK的版本，如果是3.x的环境，自动加载3.8的 Web SDK，如果是4.x的环境，则自动加载4.0的 Web SDK。从而保证不会出现版本错位而导致数据混乱的问题。
+
+##### 示例
+
+```html
+<script>
+ !(function (e, s, t, n) {
+    var i;
+    (e[t] =
+        e[t] ||
+        function () {
+            (e[t].q = e[t].q || []), e[t].q.push(arguments);
+        }),
+    (n = n || 'vds'),
+    (e._gio_local_vds = n),
+    (e[n] = e[n] || {}),
+    (e[n].namespace = t);
+    var c = '3';
+    try {
+        c = JSON.parse(e.GrowingWebViewJavascriptBridge.getConfiguration())
+            .nativeSdkVersion.split('.')
+            .shift();
+    } catch (e) {}
+    i =
+        '4' === c ?
+        'https://assets.giocdn.com/sdk/webjs/gdp-full.js' :
+        'https://assets.giocdn.com/sdk/webjs/cdp/gdp-full.js';
+    var o = s.createElement('script'),
+        d = s.getElementsByTagName('script')[0];
+    (o.async = !0),
+    (o.crossorigin = !0),
+    (o.src = i),
+    d.parentNode.insertBefore(o, d);
+})(window, document, 'gdp', 'vds');
+</script>
+```
+
+**<font color="#FC5F3A">注意：</font>这里给出的是3.x版本与4.0版本的兼容代码，如果您使用的是其他版本的App(安卓、iOS) SDK，请咨询我们的技术支持。**
