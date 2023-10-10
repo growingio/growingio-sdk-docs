@@ -469,28 +469,7 @@ gdp('clearTrackTimer', timerId);
 
 ## 采集标记
 
-### 1、采集标记
-
-有时我们表单页面中可能需要获取用户选择框、单/多选框的值进行上报以准确分析用户行为。此时，我们可以通过数值采集标记 `data-growing-track` 来获取值。例：
-
-```html
-<checkbox-group bindchange='checkboxChange' data-growing-track>
-  <label class='checkbox'>
-    <checkbox value='GrowingIO' checked='true' /> GrowingIO
-  </label>
-  <label class='checkbox'>
-    <checkbox value='CDP' checked='false' /> GrowingIO CDP
-  </label>
-</checkbox-group>
-```
-
-:::caution 免责声明警告：
-请勿尝试在密码框上标记 data-growing-track 采集数据，会明文暴露用户填写的密码信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
-:::
-
-**提示：SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
-
-### 2、补充数据标记
+### 1、采集补充标记
 
 #### 1）data-title
 
@@ -547,7 +526,7 @@ Page({
 });
 ```
 
-注：阿里(支付宝/淘宝)小程序是`setNavigationBar` [参考文档](https://opendocs.alipay.com/mini/api/xwq8e6)
+提示：阿里(支付宝)和淘宝小程序中是`setNavigationBar` [参考文档](https://opendocs.alipay.com/mini/api/xwq8e6)
 
 **<font color="#FC5F3A">注意：</font>**
 
@@ -557,13 +536,34 @@ Page({
 
 **3）部分框架可能会建议该方法调用时机为onReady（例如uni-app）或其他生命周期中，我们实际测试中在onLoad调用并无影响，因此您可放心在onLoad中使用。**
 
-**提示：SDK中事件title取值优先级为 setNavigationBarTitle > data.gioPageTitle（仅保持向下兼容，不保证能取到） > 页面config.json配置 > 全局app.json中tabBar配置**
+**提示：SDK中事件title取值优先级为 setNavigationBarTitle > 页面config.json配置 > 全局app.json中tabBar配置**
 
-### 3、忽略采集标记
+### 2、采集白名单标记
+
+有时我们表单页面中可能需要获取用户选择框、单/多选框的值进行上报以准确分析用户行为。此时，我们可以通过数值采集标记 `data-growing-track` 来获取值。例：
+
+```html
+<checkbox-group bindchange='checkboxChange' data-growing-track>
+  <label class='checkbox'>
+    <checkbox value='GrowingIO' checked='true' /> GrowingIO
+  </label>
+  <label class='checkbox'>
+    <checkbox value='CDP' checked='false' /> GrowingIO CDP
+  </label>
+</checkbox-group>
+```
+
+:::caution 免责声明警告：
+请勿尝试在密码框上标记 data-growing-track 采集数据，会明文暴露用户填写的密码信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
+:::
+
+**提示：SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
+
+### 3、采集黑名单标记
 
 有时我们会根据业务中不同的需要使用一些自己开发的组件或第三方组件，可能会触发SDK的 `VIEW_CHANGE` 事件，但我们并不期望它发生。
 
-此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。**注意标记在事件绑定的节点上，没事件绑定的节点默认不会采集。**例：
+此时，我们可以通过黑名单标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。**注意标记在事件绑定的节点上，没事件绑定的节点默认不会采集。**例：
 
 ```html
 <view data-growing-ignore bindtap="onLinkTap">要忽略的节点</view>
