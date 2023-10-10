@@ -15,7 +15,7 @@ title: 半自动埋点浏览
 
 ## 兼容性
 
-微信小程序、阿里(支付宝)小程序(基础库>=2.7.0)、百度小程序、抖音小程序、QQ 小程序、淘宝小程序、快手小程序、京东小程序。
+微信小程序、阿里(支付宝)小程序(基础库>=2.7.0)、百度小程序、抖音小程序、QQ 小程序、淘宝小程序(基础库>=2.7.0)、快手小程序、京东小程序。
 
 快应用不支持。
 
@@ -38,7 +38,7 @@ import gioImpressionTracking from './utils/plugins/gioImpressionTracking';
 #### npm 集成引入
 
 ```js
-import gioImpressionTracking from 'gio-webjs-sdk/plugins/gioImpressionTracking';
+import gioImpressionTracking from 'gio-miniprogram-sdk/plugins/gioImpressionTracking';
 ```
 
 ### 2、注册
@@ -110,9 +110,7 @@ gdp(
 
 ## 在自定义组件中使用曝光事件
 
-由于SDK以前默认是只取页面上的曝光节点并自动发送事件，在自定义组件中可能无法触发。如果您需要在自定义组件中使用曝光事件，请将SDK升级至**3.8.17及以上版本**，同时升级曝光插件。
-
-并且在页面引用自定义组件时，为自定义组件添加 **`growing_collect_imp_component`** 样式名。
+在页面引用自定义组件中需要使用曝光事件时，请为自定义组件添加 **`growing_collect_imp_component`** 样式名。
 
 #### 示例
 

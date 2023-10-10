@@ -9,7 +9,7 @@ title: 无埋点
 
 **点击事件(tap)：** 对应 `VIEW_CLICK` 事件。自动上报，当小程序中**绑定的点击事件**触发时上报。
 
-**长按事件(longtap)：** 对应 `VIEW_CLICK` 事件。自动上报，当小程序中**绑定的长按事件**触发时上报。（阿里(支付宝)小程序/淘宝小程序不支持）
+**长按事件(longtap)：** 对应 `VIEW_CLICK` 事件。自动上报，当小程序中**绑定的长按事件**触发时上报。（阿里(支付宝)小程序、淘宝小程序不支持）
 
 **变更事件(change)：** 对应 `VIEW_CHANGE` 事件。自动上报，当小程序中**绑定的变更事件**触发时上报。
 
@@ -32,7 +32,7 @@ import gioEventAutoTracking from './utils/plugins/gioEventAutoTracking';
 #### npm 集成引入
 
 ```js
-import gioEventAutoTracking from 'gio-webjs-sdk/plugins/gioEventAutoTracking';
+import gioEventAutoTracking from 'gio-miniprogram-sdk/plugins/gioEventAutoTracking';
 ```
 
 ### 2、注册

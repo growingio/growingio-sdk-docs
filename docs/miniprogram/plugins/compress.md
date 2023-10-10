@@ -26,7 +26,7 @@ import gioCompress from './utils/plugins/gioCompress';
 #### npm 集成引入
 
 ```js
-import gioCompress from 'gio-webjs-sdk/plugins/gioCompress';
+import gioCompress from 'gio-miniprogram-sdk/plugins/gioCompress';
 ```
 
 ### 2、注册
