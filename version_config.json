@@ -27,7 +27,7 @@
     "name": "webjs",
     "version": "3.8.2",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-webjs-autotracker/releases",
-    "distPath": "docs/webjs/3.8/",
+    "distPath": "docs/webjs/",
     "fileName": "version.md",
     "enable": false
   },

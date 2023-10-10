@@ -18,7 +18,7 @@ Android SDK 提供了 [无埋点SDK](/docs/android/Introduce#集成无埋点sdk)
 :::
 
 ### SDK DEMO
-从 4.0 版本开始，[Android SDK Demo](https://github.com/growingio/growingio-sdk-android-demo) 将同步更新。该App是为了让开发者能够简单快速上手GrowingIO SDK而参考使用的Demo，里面基本覆盖了SDK中所有的功能介绍，欢迎体验使用。
+从 4.0 版本开始，[Android SDK Demo](https://github.com/growingio/growingio-sdk-android-demo) 将同步更新。该App是为了让开发者能够简单快速上手GrowingIO SDK而参考使用的Demo，里面基本覆盖了SDK中常用的功能介绍，欢迎体验使用。
 
 <div align="center">
     <img src="https://raw.githubusercontent.com/growingio/growingio-sdk-android-demo/master/images/feature.jpg" width="24.5%" alt="feature" />  
