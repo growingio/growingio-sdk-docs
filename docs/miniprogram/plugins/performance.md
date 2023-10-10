@@ -66,7 +66,7 @@ import gioPerformance from "./utils/plugins/gioPerformance"
 #### npm集成引入
 
 ```js
-import gioPerformance from "gio-webjs-sdk-cdp/plugins/gioPerformance"
+import gioPerformance from "gio-miniprogram-sdk/plugins/gioPerformance"
 ```
 
 ### 2、注册
