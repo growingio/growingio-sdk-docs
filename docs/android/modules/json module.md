@@ -1,12 +1,12 @@
 ---
 sidebar_position: 4
-title: Protobuf 模块
+title: Json 模块
 ---
 
-GrowingIO SDK protobuf 数据模块使用 [Google Protobuf](https://developers.google.cn/protocol-buffers) 格式保存和上传事件数据。
+GrowingIO SDK 数据模块默认使用 [Google Protobuf](https://developers.google.cn/protocol-buffers) 格式保存和上传事件数据。如需要使用Json格式保存和上传事件数据，需要集成本模块。
 
 :::caution
-使用 Protobuf 格式保存和上传事件数据，集成即生效；与其他格式,如json 互不兼容，迁移将导致APP本地数据库内未上传的事件数据丢失，后续产生的新数据则不受影响。
+使用 Protobuf 格式保存和上传事件数据兼容 json 格式，但是迁移会导致APP本地数据库内未上传的事件数据丢失，后续产生的新数据则不受影响。
 :::
 
 --------
@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| protobuf  | 需要手动集成 | `EventFormatData` | `EventByteArray` | >=3.3.3 |
+| json  | 手动集成 | `EventFormatData` | `EventByteArray` | - |
 
 ### 依赖方式
 <Tabs
@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:protobuf:3.5.1'
+	implementation 'com.growingio.android:json:3.5.1'
 }
 ```
 </TabItem>
@@ -44,7 +44,7 @@ dependencies {
   // Import the BoM for the GrowingIO platform
   implementation platform('com.growingio.android:autotracker-bom:3.5.1')
 
-  implementation 'com.growingio.android:protobuf'
+  implementation 'com.growingio.android:json'
 }
 ```
 
@@ -65,9 +65,9 @@ dependencies {
 
 ```java
 GrowingAutotracker.startWithConfiguration(this,
-                new CdpAutotrackConfiguration("accountId", "urlScheme")
+                new AutotrackConfiguration("accountId", "urlScheme")
                 //...
-                .addPreloadComponent(new ProtobufLibraryModule()));
+                .addPreloadComponent(new JsonLibraryModule()));
 ```
 
 </TabItem>
@@ -75,14 +75,10 @@ GrowingAutotracker.startWithConfiguration(this,
 
 ```java
 GrowingTracker.startWithConfiguration(this,
-                new CdpTrackConfiguration("accountId", "urlScheme")
+                new TrackConfiguration("accountId", "urlScheme")
                 //...
-                .addPreloadComponent(new ProtobufLibraryModule()));
+                .addPreloadComponent(new JsonLibraryModule()));
 ```
 
 </TabItem>
 </Tabs>
-
-### 示例
-数据结果如下图所示：
-<ImageLoader path="img/android/modules/growingio_protobuf_module.jpg" />

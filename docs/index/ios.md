@@ -7,9 +7,7 @@ iOS SDK 提供了 [无埋点SDK](/docs/ios/Introduce#无埋点-sdk-集成) 和 [
 * 埋点 SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
 * 无埋点 SDK 具备 埋点 SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
-无埋点 SDK（包括埋点 SDK）代码托管在 [Github](https://github.com/growingio/growingio-sdk-ios-autotracker)
-
-欢迎 star，fork 一波。
+无埋点 SDK（包括埋点 SDK）代码已托管在 [Github](https://github.com/growingio/growingio-sdk-ios-autotracker)，欢迎 star，fork。
 :::info
 **开发环境:** <br/>
 Xcode 13.3 及以上  

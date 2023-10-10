@@ -2,21 +2,7 @@
 title: 版本记录
 sidebar_position: 0
 ---
-----
-
-<details>
-<summary>GrowingIO Android SDK 各个版本对应关系</summary>
-
-| GrowingIO SDK  | SDK Plugin    | Giokit      | SDK Demo | Flutter SDK |
-| :--------------| :----------:  | :--------:  | :----:   | :----:      |
-| 3.5.0          | 3.5.0         | 1.4.0       | 1.0.0    | 1.1.0       |
-| 3.4.0-3.4.7    | 3.4.0-3.4.7   | 1.0.0-1.3.0 | ∅        | 1.0.0       |
-| 3.1.0-3.3.6    | 3.1.0-3.3.6   | ∅           | ∅        | ∅           |
-
-</details>
-
 ## RELEASE-3.5.1
-
 ### Feature
 
 - 增加初始化配置项 WebViewBridgeEnabled，控制所有 WebView 事件转发
@@ -32,7 +18,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.5.0
-
 ### Features
 
 - startWithConfiguration: 初始化时传入 Context 替换原有的Application，Context 可以为 Application 或者 Activity([#193](https://github.com/growingio/growingio-sdk-android-autotracker/pull/193))；
@@ -56,7 +41,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.4.7
-
 1. 添加 GrowingIO Flutter SDK 模块，需要与[Growingio Flutter Plugin](https://growingio.github.io/growingio-sdk-docs/docs/framework/flutter)联合使用；
 2. 重命名 Protobuf 模块包名=> `com.growingio.android.protobuf`；
 3. 添加 CacheEventProvider，用于SDK初始化前存储需要发送的事件；
@@ -69,7 +53,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.4.6
-
 ### Features
 
 - 添加 DeepLink 新的广告模块，能够接受外部传入的 URL 信息并发送给应用 ([#184](https://github.com/growingio/growingio-sdk-android-autotracker/pull/184))
@@ -84,7 +67,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.4.5
-
 ### Features
 
 - page attributes ([#186](https://github.com/growingio/growingio-sdk-android-autotracker/pull/186))
@@ -97,7 +79,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.4.4
-
 ### Features
 
 - APM模块 ([#177](https://github.com/growingio/growingio-sdk-android-autotracker/pull/177))
@@ -114,7 +95,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.4.3
-
 ### Features
 
 - 添加广告的激活事件([#173](https://github.com/growingio/growingio-sdk-android-autotracker/pull/173))
@@ -133,7 +113,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.4.2
-
 ### Features
 
 - 新增埋点事件计时功能相关接口([#172](https://github.com/growingio/growingio-sdk-android-autotracker/pull/172))
@@ -149,7 +128,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.4.1
-
 ### Bug Fixes
 
 * findPage getTitle() 增加非空判断 ([#164](https://github.com/growingio/growingio-sdk-android-autotracker/issues/164))
@@ -162,7 +140,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.4.0
-
 ### Features
 - 移除injector和gradle-plugin，已迁移到 [sdk plugin](https://github.com/growingio/growingio-sdk-android-plugin) ([#154](https://github.com/growingio/growingio-sdk-android-autotracker/pull/154))
 - gradle-plugin 适配 AGP 8.0 Instrumentation API，兼容 AGP4.2及其更早版本的 Transform API；
@@ -180,7 +157,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.3.6
-
 ### Bug Fixes
 
 - 修复原生页面有webview 或 dialog不能圈选的问题 ([#152](https://github.com/growingio/growingio-sdk-android-autotracker/pull/152))
@@ -199,7 +175,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.3.5
-
 ### Bug Fixes
 
 - Android 5以下机型webview注入崩溃修复 ([#145](https://github.com/growingio/growingio-sdk-android-autotracker/pull/145)) 
@@ -217,7 +192,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.3.4
-
 ### Features
 
 - 添加初始化开关setRequireAppProcessesEnabled，控制是否获取应用多进程id
@@ -233,7 +207,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.3.3
-
 ### Bug Fixes
 
 * 修复sonar提示的缺陷 ([#137](https://github.com/growingio/growingio-sdk-android-autotracker/pull/137))
@@ -249,7 +222,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.3.2
-
 ### Bug Fixes
 
 * databse or disk is full ([c83e64f](https://github.com/growingio/growingio-sdk-android-autotracker/commit/c83e64f712b94cce2942ac77dcfa756f5dc78ad6))
@@ -264,7 +236,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.3.1
-
 ### Bug Fixes
 
 * unknow contentprovider ([3de0829](https://github.com/growingio/growingio-sdk-android-autotracker/commit/3de082941cbd30952cb47964a3cac636d9af80c5))
@@ -284,7 +255,6 @@ sidebar_position: 0
 :::
 
 ## RELEASE-3.3.0
-
 Android 无埋点/埋点 SDK 3.3.0
 ### Bug Fixes
 
@@ -312,7 +282,6 @@ Android 无埋点/埋点 SDK 3.3.0
 :::
 
 ## V3.2.2
-
 ### Bug Fixes
 
 * memory leak ([4b74679](https://github.com/growingio/growingio-sdk-android-autotracker/commit/4b74679ad3ba86d91e660ed34249d645ca471a0c))
@@ -328,7 +297,6 @@ Android 无埋点/埋点 SDK 3.3.0
 :::
 
 ## RELEASE-3.2.1
-
 Android 无埋点/埋点 SDK 3.2.1
 ### Bug Fixes
 
@@ -356,7 +324,6 @@ Android 无埋点/埋点 SDK 3.2.1
 :::
 
 ## RELEASE-3.2.0
-
 Android 无埋点/埋点 SDK 3.2.0
 
 更新内容：
@@ -371,7 +338,6 @@ Android 无埋点/埋点 SDK 3.2.0
 :::
 
 ## RELEASE-3.1.0
-
 Android   无埋点/埋点 SDK 3.1.0
 
 1. 支持mobile debugger功能
