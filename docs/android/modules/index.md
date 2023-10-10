@@ -17,8 +17,8 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 | 数据加密-encoder | 使用 snappy 加密上报的事件数据,需要集成生效  | [数据加密](/docs/android/modules/encoder%20module) |
 | 设备标识符-oaid | 提供采集 OAID 的能力,需要集成生效  | [OAID](/docs/android/modules/oaid%20module) |
 | 混合开发数据收集-hybrid | 混合开发模式，默认集成在埋点SDK中，需要手动注入（无埋点中自动注入） | [H5混合模块](/docs/android/modules/hybrid%20module) |
-| 数据传输格式-protobuf | 使用protobuf格式保存和上传事件数据，sdk 默认  | [Protobuf 模块](/docs/android/modules/protobuf%20module) |
-| 数据传输格式-json | 使用json格式保存和上传事件数据，需要集成生效  | [JSON格式模块](/docs/android/modules/core%20module#数据格式库) |
+| 数据传输格式-protobuf | 使用protobuf格式保存和上传事件数据，sdk 默认  | [Protobuf 模块](/docs/android/modules/core%20module) |
+| 数据传输格式-json | 使用json格式保存和上传事件数据，需要集成生效  | [JSON格式模块](/docs/android/modules/json%20module#数据格式库) |
 | 无埋点圈选-circler | 基于无埋点的圈选插件，默认集成在无埋点SDK中  | [圈选模块](/docs/android/modules/circler%20module) |
 | 数据调试-debugger | 数据调试Mobile Debugger，默认集成在无埋点/埋点SDK中 | [Debugger 模块](/docs/android/modules/debugger%20module) |
 | 广告-advert | 添加激活事件和DeepLink功能，需要集成生效 | [广告模块](/docs/android/modules/advert%20module) |

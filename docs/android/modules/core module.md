@@ -106,7 +106,7 @@ dependencies {
 </Tabs>
 
 ## 数据格式库
-默认使用 `json` 来做数据传输的格式。通过数据格式转换可以将输入 `EventFormatData` 转为字节数组数据 `EventByteArray` 方便网络数据上传。
+默认使用 `protobuf` 来做数据传输的格式。通过数据格式转换可以将输入 `EventFormatData` 转为字节数组数据 `EventByteArray` 方便网络数据上传。
 
 ### 依赖方式
 <Tabs
@@ -122,7 +122,7 @@ dependencies {
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:json:3.5.1'
+	implementation 'com.growingio.android:protobuf:3.5.1'
 }
 ```
 </TabItem>
@@ -134,7 +134,7 @@ dependencies {
   // Import the BoM for the GrowingIO platform
   implementation platform('com.growingio.android:autotracker-bom:3.5.1')
 
-  implementation 'com.growingio.android:json'
+  implementation 'com.growingio.android:protobuf'
 }
 ```
 
