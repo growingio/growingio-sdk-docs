@@ -1,7 +1,7 @@
 
 ## 站点地址
 
-[SDK 3.0技术文档-https://growingio.github.io/growingio-sdk-docs/](https://growingio.github.io/growingio-sdk-docs/)
+[SDK 4.0技术文档-https://growingio.github.io/growingio-sdk-docs/](https://growingio.github.io/growingio-sdk-docs/)
 
 若想要修改文档请 clone 本项目到本地修改。 文档位于 docs 目录下，博客文章位于 blog 目录下。
 具体的写作教程请参考 [docusaurus](https://www.docusaurus.cn/docs/)
@@ -87,8 +87,8 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 ### 新建导航模块
 
-找到 `docusaurus,config.js`，以添加常见问题为例，进行下列操作
+找到 `docusaurus.config.js`，以添加数据指南为例，进行下列操作
 
-1. 在 `plugins` 节点，添加一个新的doc节点，其名为 `question`，并且新建 `sidebarsQuestion.js` 使其为文章自动生成目录；
-2. 在 `themeConfig->navbar->items`，添加新的导航 **{to: '/question', label: '常见问题', position: 'left'},**
-3. 新建 `question` 文件夹，并新建一个 `slug: /` 的文档，保证点击能链接到正确的文档地址。
+1. 在 `plugins` 节点，添加一个新的doc节点，其名为 `knowledge`，并且新建 `sidebarsknowledge.js` 使其为文章自动生成目录；
+2. 在 `themeConfig->navbar->items`，添加新的导航 **{to: '/knowledge', label: '数据指南', position: 'left'},**
+3. 新建 `knowledge` 文件夹，并新建一个 `slug: /` 的文档，保证点击能链接到正确的文档地址。

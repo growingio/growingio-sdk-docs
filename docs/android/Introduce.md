@@ -181,7 +181,7 @@ dependencies {
   implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   //GrowingIO 无埋点 SDK
-  implementation 'com.growingio.android:autotracker-cdp'
+  implementation 'com.growingio.android:autotracker'
 }
 ```
 

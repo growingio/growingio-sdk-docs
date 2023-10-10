@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:flutter:3.5.1'
+	implementation 'com.growingio.android:flutter:4.0.0'
 }
 ```
 </TabItem>
@@ -38,7 +38,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   implementation 'com.growingio.android:flutter'
 }

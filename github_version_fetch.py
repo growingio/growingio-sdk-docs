@@ -138,6 +138,8 @@ def replace_giokit_android_version(dir, version):
 version_pattern = r'\d+\.(?:\d+\.)*\d+'
 
 if __name__ == '__main__':
+    # replace_android_version("docs/android/", "4.0.0")
+    # replace_giokit_android_version("docs/giokit/android/", "2.0.0")
     config_file = './version_config.json'
     with(open(config_file, 'r')) as f:
         config = json.load(f)
