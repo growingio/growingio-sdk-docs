@@ -17,7 +17,7 @@ module.exports = {
   themeConfig: {
     announcementBar: {
       id: 'announcement-bar',
-      content: '若要集成3.0老版本的SDK, 请前往 👉 <a target="_blank" rel="noopener noreferrer" href="https://growingio.github.io/growingio-sdk-docs-v3/">GrowingIO SDK 3.0 </a> 👈',
+      content: '若要集成3.0老版本的SDK, 请前往 👉 <a target="_blank" rel="noopener noreferrer" href="https://growingio.github.io/growingio-sdk-docs-saas/">GrowingIO SDK 3.0 </a> 👈',
       backgroundColor: '#fafbfc',
       textColor: '#091E42',
       isCloseable: true,
@@ -68,7 +68,7 @@ module.exports = {
         },
         {to: '/docs/question', label: '常见问题', position: 'left'},
         {
-          href: 'https://www.growingio.com/',
+          href: 'https://growingio.github.io/growingio-sdk-docs-saas/',
           label: 'V3.0文档',
           position: 'right',
         },
@@ -134,7 +134,7 @@ module.exports = {
             },
             {
               label: '旧文档地址',
-              href: 'https://growingio.github.io/growingio-sdk-docs-v3/',
+              href: 'https://growingio.github.io/growingio-sdk-docs-saas/',
             },
           ],
         },
