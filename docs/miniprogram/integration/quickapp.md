@@ -41,7 +41,8 @@ import gdp from './utils/gio/gio-quickapp.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your packageName', {
     version: 'quickapp version',
-    host: 'Your ServerHost',
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url',
     ...other settings
 });
 

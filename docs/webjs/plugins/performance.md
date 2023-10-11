@@ -127,7 +127,7 @@ import App from './App.vue';
 // 注册Gio插件并初始化SDK
 gdp('registerPlugins', [gioPerformance]);
 gdp('init', 'your accountId', 'your dataSourceId', {
-  host: 'your apiServerHost',
+  serverUrl: 'your server url',
   version: 'your website version'
 });
 // 注册vue插件
@@ -151,7 +151,7 @@ import App from './App.vue';
 // 注册Gio插件并初始化SDK
 gdp('registerPlugins', [gioPerformance]);
 gdp('init', 'your accountId', 'your dataSourceId', {
-  host: 'your apiServerHost',
+  serverUrl: 'your server url',
   version: 'your website version'
 });
 
@@ -210,7 +210,7 @@ import ErrorBoundary from './ErrorBoundary';
 // 注册Gio插件并初始化SDK
 gdp('registerPlugins', [gioPerformance]);
 gdp('init', 'your accountId', 'your dataSourceId', {
-  host: 'your apiServerHost',
+  serverUrl: 'your server url',
   version: 'your website version'
 });
 

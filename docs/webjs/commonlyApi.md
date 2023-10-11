@@ -64,24 +64,14 @@ gdp('setOption', 'dataCollect', true | false);
 gdp('setOption', 'debug', true | false);
 ```
 
-### 3、修改请求协议(scheme)
+### 3、修改数据上报请求地址(serverUrl)
 
-默认为`location.protocol`。
-
-Saas客户不建议修改此项，容易产生跨域问题；OP私有部署客户可以在开发过程中设置为 `http` 方便与服务端进行调试。
-
-```js
-gdp('setOption', 'scheme', 'http' | 'https');
-```
-
-### 4、修改请求地址(host)
-
-默认为`napi.growingio.com`。
+默认为`https://napi.growingio.com`。
 
 Saas客户请不要修改此项，会导致您没有数据上报；OP私有部署客户可以在开发过程中设置为指定地址方便与服务端进行调试。
 
 ```js
-gdp('setOption', 'host', 'api.growingio.com');
+gdp('setOption', 'serverUrl', 'http://api.growingio.com');
 ```
 
 ## 功能接口
@@ -231,13 +221,10 @@ gdp('getOption', configName: string, callback?: (configValue: object | string | 
 #### 示例
 
 ```js
-gdp('getOption', 'dataCollect', (value: boolean) => {}); // 返回dataCollect当前在SDK中的值
-gdp('getOption', ''); // 返回所有支持查看的配置项值
+gdp('getOption', 'dataCollect', (value: boolean) => {}); // 获取dataCollect当前在SDK中的值
+gdp('getOption', 'version', (value: string) => {}); // 获取SDK版本号
+gdp('getOption', ''); // 获取所有支持查看的配置项值
 ```
-
-### 11、获取SDK当前版本
-
-在代码或浏览器控制台中直接调用 `window.gioSDKVersion` 即可获取。
 
 ## 事件时长统计
 

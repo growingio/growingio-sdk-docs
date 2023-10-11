@@ -43,7 +43,7 @@ gdp('init', xxxx);
 
 ```js
 gdp('init', 'your miniprogram accountId', 'your dataSourceId', 'your miniprogram appId', {
-  host: 'your apiServerHost',
+  serverUrl: 'your server url',
   version: 'your website version'
 });
 ```

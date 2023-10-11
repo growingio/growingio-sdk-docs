@@ -54,8 +54,8 @@ import gdp from './utils/gio/gio-kuaishou.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
-    // OP私有部署客户请填写host，Saas客户请忽略
-    host: 'your server host',
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url'
     ...other settings
 });
 
@@ -118,8 +118,8 @@ App.mpType = 'app';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
-    // OP私有部署客户请填写host，Saas客户请忽略
-    host: 'your server host',
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url'
     uniVue: Vue,
     ...other settings
 });
@@ -148,8 +148,8 @@ export function createApp() {
 
   gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
       version: 'your miniProgram version',
-      // OP私有部署客户请填写host，Saas客户请忽略
-      host: 'your server host',
+      // OP私有部署客户请填写serverUrl，Saas客户请忽略
+      serverUrl: 'your server url'
       uniVue: app,
       ...other settings
   });
@@ -217,8 +217,8 @@ import gdp from 'gio-miniprogram-sdk/gio-taro';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
-    // OP私有部署客户请填写host，Saas客户请忽略
-    host: 'your server host',
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url'
     taro: Taro,
     ...other settings
 });
@@ -261,8 +261,8 @@ import gdp from 'gio-miniprogram-sdk/gio-taro';
 const taroRuntime = require('@tarojs/runtime');
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
-    // OP私有部署客户请填写host，Saas客户请忽略
-    host: 'your server host',
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url'
     taro: taroRuntime,
     ...other settings
 });
@@ -285,8 +285,8 @@ import gdp from 'gio-miniprogram-sdk/gio-taro';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
-    // OP私有部署客户请填写host，Saas客户请忽略
-    host: 'your server host',
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url'
     // 注意taro和taroVue都需要传
     taro: Taro,
     taroVue: Vue,
@@ -315,8 +315,8 @@ const App = createApp({ ... });
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
-    // OP私有部署客户请填写host，Saas客户请忽略
-    host: 'your server host',
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url'
     // 注意taro和taroVue都需要传
     taro: Taro,
     taroVue: App,

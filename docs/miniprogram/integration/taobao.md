@@ -61,8 +61,8 @@ import gdp from 'gio-miniprogram-sdk/gio-taobao';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
-    // OP私有部署客户请填写host，Saas客户请忽略
-    host: 'your server host'
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url',
     // tbConfig 为必填项，详情参考文档
     tbConfig: { ... },
     ...other settings
@@ -103,8 +103,8 @@ import gdp from './utils/gio/gio-taobao.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your widget version',
-    // OP私有部署客户请填写host，Saas客户请忽略
-    host: 'your server host'
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url',
     // 开启插件模式
     pluginMode: true,
     // tbConfig 为必填项，详情参考文档

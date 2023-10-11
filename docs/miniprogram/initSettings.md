@@ -7,23 +7,22 @@ title: 初始化配置
 
 下表中列出了所有小程序 SDK 的配置项，请按需设置。如您不确定是否需要，请咨询我们。
 
-| **字段名**       | **参数类型** | **默认值**           | **说明**                                           |
-|------------------|--------------|----------------------|--------------------------------------------------|
-| `dataCollect`    | `boolean`    | `true`               | 是否开启数据采集                                   |
-| `debug`          | `boolean`    | `false`              | 是否开启调试模式                                   |
-| `idMapping`      | `boolean`    | `false`              | 是否开启多用户身份上报                             |
-| `extraParams`    | `string[]`   | `[]`                 | 与 H5 数据打通时额外获取的字段                     |
-| `followShare`    | `boolean`    | `true`               | 是否跟踪分享数据                                   |
-| `forceLogin`     | `boolean`    | `false`              | 是否开启强制登录模式                               |
-| `host`           | `string`     | `napi.growingio.com` | 数据上报的服务端地址(无需携带协议头)               |
-| `ignoreFields`   | `string[]`   | `[]`                 | 上报忽略字段                                       |
-| `scheme`         | `http/https` | `https`              | 网络协议                                           |
-| `taro`           | `any`        | `-`                  | 使用 Taro 开发时使用的实例，参考集成示例代码        |
-| `taroVue`        | `any`        | `-`                  | 使用 Taro3vue2/3 开发时使用的实例，参考集成示例代码 |
-| `tbConfig`       | `object`     | `-`                  | 淘宝小程序配置项                                   |
-| `uniVue`         | `any`        | `-`                  | 使用 uni-app 开发时使用的实例，参考集成示例代码     |
-| `uploadInterval` | `number`     | `1000`               | SDK 上报数据的节流间隔时间(单位：ms)                |
-| `version`        | `string`     | `1.0.0`              | 小程序发版版本号(建议填写)                         |
+| **字段名**       | **参数类型** | **默认值**                   | **说明**                                           |
+|------------------|--------------|------------------------------|--------------------------------------------------|
+| `dataCollect`    | `boolean`    | `true`                       | 是否开启数据采集                                   |
+| `debug`          | `boolean`    | `false`                      | 是否开启调试模式                                   |
+| `idMapping`      | `boolean`    | `false`                      | 是否开启多用户身份上报                             |
+| `extraParams`    | `string[]`   | `[]`                         | 与 H5 数据打通时额外获取的字段                     |
+| `followShare`    | `boolean`    | `true`                       | 是否跟踪分享数据                                   |
+| `forceLogin`     | `boolean`    | `false`                      | 是否开启强制登录模式                               |
+| `ignoreFields`   | `string[]`   | `[]`                         | 上报忽略字段                                       |
+| `serverUrl`      | `string`     | `https://napi.growingio.com` | 数据上报的服务端地址                               |
+| `taro`           | `any`        | `-`                          | 使用 Taro 开发时使用的实例，参考集成示例代码        |
+| `taroVue`        | `any`        | `-`                          | 使用 Taro3vue2/3 开发时使用的实例，参考集成示例代码 |
+| `tbConfig`       | `object`     | `-`                          | 淘宝小程序配置项                                   |
+| `uniVue`         | `any`        | `-`                          | 使用 uni-app 开发时使用的实例，参考集成示例代码     |
+| `uploadInterval` | `number`     | `1000`                       | SDK 上报数据的节流间隔时间(单位：ms)                |
+| `version`        | `string`     | `1.0.0`                      | 小程序发版版本号(建议填写)                         |
 
 ## 配置项详解
 
@@ -163,20 +162,17 @@ gdp('init', accountId, dataSourceId, appId, {
 
 **<font color="#FC5F3A">注意：</font>如果 extraParams 和 ignoreFields 中同时指定了同一字段，getGioInfo 将不再获取到指定的字段，即 ignoreFields 优先级更高。**
 
-### scheme
+### serverUrl
 
-默认情况下，网络协议为`https`，但考虑到在开发小程序的过程中可能需要使用`http`协议的测试服务，因此我们提供了临时修改网络协议的配置。
+Saas客户忽略此项配置；OP私有部署客户请填写此项，否则您的服务将无法收获行为数据上报。支持域名和IP地址。
 
 ```js
-gdp('init', accountId, dataSourceId, appId, {
-  scheme: 'http',
-  ...其他配置项,
-});
+gdp('init', accountId, datasourceId, { serverUrl: 'https://api.growingio.com' });
 ```
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/commonlyApi#5修改请求协议scheme)
 
-**<font color="#FC5F3A">注意：</font>上线时请注意移除此配置项，会导致数据无法上报。因为小程序官方是强制使用 https 协议进行通信的。**
+**<font color="#FC5F3A">注意：</font>与3.x版本的SDK不同的是，您需要填写携带协议头的完整服务地址。**
 
 ### tbConfig
 

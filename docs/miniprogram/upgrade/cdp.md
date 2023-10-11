@@ -75,13 +75,14 @@ Component({ ... });
 
 以下步骤仅列出需要改动的点，没有列出的初始化配置项即为自动兼容无需更改。
 
-* 1）移除配置项**`getLocation`**。微信小程序已经调整获取位置信息的权限，因此被废弃。如需上报位置信息，请参考`setLocation`方法。[参考文档](/docs/miniprogram/commonlyApi#8地理位置setlocation)
-* 2）移除配置项**`usePlugin`**。SDK会自动识别插件内容，因此被废弃。
-* 3）移除配置项**`comAsPage`**。SDK会自动识别Component写的页面，因此被废弃。
-* 4）移除配置项**`autotrack`**。无埋点相关逻辑已改造拆分为插件，不集成插件即关闭无埋点功能。
-* 4）移除配置项**`compress`**。无埋点相关逻辑已改造拆分为插件，不集成插件即关闭无埋点功能。
-* 5）使用**`uniapp`**开发的小程序，初始化配置项对应的传参有变化，请参考集成文档初始化部分修改实例传参。(移除配置项**`vue`**，改为`uniVue`)
-* 7）使用**`taro`**开发的小程序，初始化配置项对应的传参有变化，请参考集成文档初始化部分修改实例传参。(例如taro3vue开发时需同时传参两个实例)
+1. 移除已废弃配置项**`getLocation`**。微信小程序已经调整获取位置信息的权限，因此被废弃。如需上报位置信息，请参考`setLocation`方法。[参考文档](/docs/miniprogram/commonlyApi#8地理位置setlocation)
+2. 移除已废弃配置项**`usePlugin`**。SDK会自动识别插件内容，因此被废弃。
+3. 移除已废弃配置项**`comAsPage`**。SDK会自动识别Component写的页面，因此被废弃。
+4. 移除已废弃配置项**`autotrack`**。无埋点相关逻辑已改造拆分为插件，不集成插件即关闭无埋点功能。
+5. 移除已废弃配置项**`compress`**。无埋点相关逻辑已改造拆分为插件，不集成插件即关闭无埋点功能。
+6. 移除已废弃配置项：`scheme`、`host`。添加**`serverUrl`**，并在serverUrl中填写完整的协议头+地址（例：`https://api.growingio.com`）。
+7. 使用**`uniapp`**开发的小程序，初始化配置项对应的传参有变化，请参考集成文档初始化部分修改实例传参。(移除配置项**`vue`**，改为`uniVue`)
+8. 使用**`taro`**开发的小程序，初始化配置项对应的传参有变化，请参考集成文档初始化部分修改实例传参。(例如taro3vue开发时需同时传参两个实例)
 
 其他配置项请[参考文档](/docs/miniprogram/initSettings)按需配置功能，如果您不确定是否需要对应配置项，请咨询我们的技术支持。
 
@@ -89,10 +90,10 @@ Component({ ... });
 
 以下步骤仅列出需要改动的点，没有列出的api或内容即为自动兼容无需更改。
 
-* 1）移除**`setConfig`、`config`**方法调用。SDK仅支持**`init`**方法进行初始化和初始化配置。如需在运行过程中动态修改配置，请使用 `setOption` [参考文档](/docs/miniprogram/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
-* 2）移除**`setTrackerScheme`、`setTrackerHost`、`enableDebug`、`setDataCollect`、`setAutoTrack`** 方法调用。请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
-* 3）移除**`getLocation`**方法调用。请使用`setLocation`方法。[参考文档](/docs/miniprogram/commonlyApi#8地理位置setlocation)未使用则忽略。
-* 4）修改**`track`**方法调用，移除**item**传参，即该方法不再支持物品模型上报，仅支持事件属性上报。未使用则忽略。示例：
+1. 移除**`setConfig`、`config`**方法调用。SDK仅支持**`init`**方法进行初始化和初始化配置。如需在运行过程中动态修改配置，请使用 `setOption` [参考文档](/docs/miniprogram/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
+2. 移除**`setTrackerScheme`、`setTrackerHost`、`enableDebug`、`setDataCollect`、`setAutoTrack`** 方法调用。请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
+3. 移除**`getLocation`**方法调用。请使用`setLocation`方法。[参考文档](/docs/miniprogram/commonlyApi#8地理位置setlocation)未使用则忽略。
+4. 修改**`track`**方法调用，移除**item**传参，即该方法不再支持物品模型上报，仅支持事件属性上报。未使用则忽略。示例：
 
 ```js
 // 不再支持该写法
@@ -128,8 +129,9 @@ gdp('track', eventId, eventLevelVariables);
 
 ### 3、检查初始化配置项
 
-* 1）移除已废弃的配置项：**`autotrack`、`compress`**。如果您想禁用无埋点事件和数据加密，请**按需集成SDK**，**不要注册**对应插件即可。未使用则忽略。
-* 2）重命名替换**`enableIdMapping`**为**`idMapping`**。未使用则忽略。
+1. 移除已废弃配置项：**`autotrack`、`compress`**。如果您想禁用无埋点事件和数据加密，请**按需集成SDK**，**不要注册**对应插件即可。未使用则忽略。
+2. 移除已废弃配置项：`scheme`、`host`。添加**`serverUrl`**，并在serverUrl中填写完整的协议头+地址（例：`https://api.growingio.com`）。
+3. 重命名替换**`enableIdMapping`**为**`idMapping`**。未使用则忽略。
 
 其他配置项请[参考文档](/docs/webjs/initSettings)按需配置功能，如果您不确定是否需要对应配置项，请咨询我们的技术支持。
 
@@ -137,7 +139,7 @@ gdp('track', eventId, eventLevelVariables);
 
 以下步骤仅列出需要改动的点，没有列出的api或内容即为自动兼容无需更改。
 
-* 修改**`track`**方法调用，移除**item**传参，即该方法不再支持物品模型上报，仅支持事件属性上报。未使用则忽略。示例：
+1. 修改**`track`**方法调用，移除**item**传参，即该方法不再支持物品模型上报，仅支持事件属性上报。未使用则忽略。示例：
 
 ```js
 // 不再支持该写法

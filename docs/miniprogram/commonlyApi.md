@@ -60,20 +60,14 @@ gdp('setOption', 'dataCollect', true | false);
 gdp('setOption', 'debug', true | false);
 ```
 
-### 3、修改上报地址(host)
+### 3、修改数据上报请求地址(serverUrl)
 
-请设置准确的host地址，支持 **`IP`** 或 **`域名`** 格式，**无需携带协议头**。
+默认为`https://napi.growingio.com`。
 
-```js
-gdp('setOption', 'host', 'your serverHost');
-```
-
-### 4、修改请求协议(scheme)
-
-默认为**`https`**，您可以在开发过程中设置为 `http` 方便与服务端进行调试。注意上生产环境前修改回 `https`。
+Saas客户请不要修改此项，会导致您没有数据上报；OP私有部署客户可以在开发过程中设置为指定地址方便与服务端进行调试。
 
 ```js
-gdp('setOption', 'scheme', 'http' | 'https');
+gdp('setOption', 'serverUrl', 'http://api.growingio.com');
 ```
 
 ## 功能接口
@@ -390,13 +384,10 @@ gdp('getOption', optionKey: string);
 #### 示例
 
 ```js
-gdp('getOption', 'dataCollect'); // 返回dataCollect当前在SDK中的值
-gdp('getOption'); // 返回所有支持查看的配置项值(即原来的vdsConfig对象)
+gdp('getOption', 'dataCollect'); // 获取dataCollect当前在SDK中的值
+gdp('getOption', 'version'); // 获取SDK版本号
+gdp('getOption'); // 获取所有支持查看的配置项值(即原来的vdsConfig对象)
 ```
-
-### 14、获取SDK当前版本
-
-在代码或开发者工具中直接调用 `global.gioSDKVersion` 即可获取。
 
 ## 事件时长统计
 

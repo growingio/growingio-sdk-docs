@@ -9,22 +9,21 @@ title: 初始化配置
 
 > <b>提示：所有的配置项均为非必填。</b>
 
-| **字段名**       | **参数取值**            | **默认值**           | **说明**                     |
-|------------------|-------------------------|----------------------|----------------------------|
-| `cookieDomain`   | `string`                | `当前站点的一级域名`    | 自定义cookie存储的域         |
-| `dataCollect`    | `boolean`               | `true`               | 是否开启数据采集             |
-| `debug`          | `boolean`               | `false`              | 是否开启调试模式             |
-| `forceLogin`     | `boolean`               | `false`              | 是否开启强制登录             |
-| `idMapping`      | `boolean`               | `false`              | 是否开启多用户身份上报       |
-| `hashtag`        | `boolean`               | `false`              | 是否开启hash解析             |
-| `host`           | `string`                | `napi.growingio.com` | 数据上报的服务端地址         |
-| `ignoreFields`   | `string[]`              | `[]`                 | 上报忽略字段                 |
-| `originalSource` | `boolean`               | `true`               | 访问事件是否使用原始进入数据 |
-| `platform`       | `取值见表`               | `Web`                | 平台类型                     |
-| `scheme`         | `string`                | `location.protocol`  | 网络协议                     |
-| `storageType`    | `cookie / localStorage` | `cookie`             | SDK信息的持久化存储的类型    |
-| `trackBot`       | `boolean`               | `true`               | 是否采集爬虫环境数据         |
-| `version`        | `string`                | `1.0.0`              | 应用版本号                   |
+| **字段名**       | **参数取值**            | **默认值**                   | **说明**                     |
+|------------------|-------------------------|------------------------------|----------------------------|
+| `cookieDomain`   | `string`                | `当前站点的一级域名`         | 自定义cookie存储的域         |
+| `dataCollect`    | `boolean`               | `true`                       | 是否开启数据采集             |
+| `debug`          | `boolean`               | `false`                      | 是否开启调试模式             |
+| `forceLogin`     | `boolean`               | `false`                      | 是否开启强制登录             |
+| `idMapping`      | `boolean`               | `false`                      | 是否开启多用户身份上报       |
+| `hashtag`        | `boolean`               | `false`                      | 是否开启hash解析             |
+| `ignoreFields`   | `string[]`              | `[]`                         | 上报忽略字段                 |
+| `originalSource` | `boolean`               | `true`                       | 访问事件是否使用原始进入数据 |
+| `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
+| `serverUrl`      | `string`                | `https://napi.growingio.com` | 数据上报的服务端地址         |
+| `storageType`    | `cookie / localStorage` | `cookie`                     | SDK信息的持久化存储的类型    |
+| `trackBot`       | `boolean`               | `true`                       | 是否采集爬虫环境数据         |
+| `version`        | `string`                | `1.0.0`                      | 应用版本号                   |
 
 ## 配置项详解
 
@@ -79,7 +78,7 @@ gdp('init', accountId, dataSourceId, appId, {
 gdp('identify', openId / unionId);
 ```
 
-**<font color="#FC5F3A">注意：</font>非微信公众号H5的站点慎用，可能会导致你的站点没有数据上报。**
+**<font color="#FC5F3A">注意：非微信公众号H5的站点慎用，可能会导致你的站点没有数据上报。</font>**
 
 ### idMapping
 
@@ -96,10 +95,6 @@ GrowingIO 默认不会把hash识别成页面URL的一部分。对于使用hash�
 ```js
 gdp('init', accountId, datasourceId, { hashtag: true });
 ```
-
-### host
-
-Saas客户忽略此项配置；OP私有云部署客户请填写此项，否则您的服务将无法收获行为数据上报。支持域名和IP地址，无需协议头。
 
 ### ignoreFields
 
@@ -135,24 +130,26 @@ gdp('init', accountId, datasourceId, {
 
 默认情况下，SDK的平台取值为`Web`，当您的站点为微信内嵌页等其他场景时，可指定平台。
 
-| **取值** | **对应端**               | **取值**  | **对应端**         |
-|----------|------------------------|-----------|-----------------|
-| Web      | PC/H5站点                | baidup    | 百度小程序内嵌页   |
-| wxwv     | 微信公众号内嵌页         | qq        | QQ小程序内嵌页     |
-| Android  | 安卓内嵌页               | bytedance | 头条小程序内嵌页   |
-| iOS      | iOS内嵌页                | kuaishoup | 快手小程序内嵌页   |
-| Minp     | 微信小程序内嵌页         | jdp       | 京东小程序内嵌页   |
-| alip     | 阿里(支付宝)小程序内嵌页 | xhsp      | 小红书小程序内嵌页 |
+| **取值** | **对应端**       | **取值**  | **对应端**       |
+|----------|----------------|-----------|---------------|
+| Web      | PC/H5站点        | baidup    | 百度小程序内嵌页 |
+| wxwv     | 微信公众号内嵌页 | qq        | QQ小程序内嵌页   |
+| Android  | 安卓内嵌页       | bytedance | 头条小程序内嵌页 |
+| iOS      | iOS内嵌页        | kuaishoup | 快手小程序内嵌页 |
+| Minp     | 微信小程序内嵌页 | jdp       | 京东小程序内嵌页 |
+| alip     | 阿里(支付宝)小程序内嵌页 |
 
-### scheme
+### serverUrl
 
-默认情况下，网络协议为自动获取`location.protocol`，但考虑到在开发的过程中可能需要使用`http`等指定协议的测试服务，因此我们提供了初始化修改数据上报网络协议的配置。注意正式上线时关闭它或指定正确的协议，否则可能会因为跨域等问题导致数据上报失败。
+Saas客户忽略此项配置；OP私有部署客户请填写此项，否则您的服务将无法收获行为数据上报。支持域名和IP地址。
 
 ```js
-gdp('init', accountId, datasourceId, { scheme: 'http' });
+gdp('init', accountId, datasourceId, { serverUrl: 'https://api.growingio.com' });
 ```
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)
+
+**<font color="#FC5F3A">注意：</font>与3.x版本的SDK不同的是，您需要填写携带协议头的完整服务地址。**
 
 ### storageType
 
