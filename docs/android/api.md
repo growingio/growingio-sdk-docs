@@ -17,7 +17,6 @@ GrowingAutotracker.get().setLocation(20.11,20.11)
 GrowingAutotracker.get().cleanLocation()
 GrowingAutotracker.get().trackCustomEvent("eventName")
 GrowingAutotracker.get().setLoginUserAttributes(new HashMap<>())
-GrowingAutotracker.get().setVisitorAttributes(new HashMap<>())
 GrowingAutotracker.get().getDeviceId()
 GrowingAutotracker.get().bridgeWebView(webview)
 GrowingAutotracker.get().trackTimerStart("timer")
@@ -55,7 +54,6 @@ GrowingTracker.get().setLocation(20.11, 20.11)
 GrowingTracker.get().cleanLocation()
 GrowingTracker.get().trackCustomEvent("eventName")
 GrowingTracker.get().setLoginUserAttributes(new HashMap<>())
-GrowingTracker.get().setVisitorAttributes(new HashMap<>())
 GrowingTracker.get().getDeviceId()
 GrowingTracker.get().bridgeWebView(webview)
 GrowingTracker.get().trackTimerStart("timer")
@@ -350,85 +348,6 @@ GrowingTracker.get().setLoginUserAttributes(map)
 
 :::
 
-### 8. 设置访问者属性 
-`setVisitorAttributes`<br/>
-发送访问者属性事件，用于用户信息相关分析。
-
-#### 参数说明
-| 参数         | 参数类型              | 说明         |
-| :----------- | :-------------------- | :----------- |
-| `attributes` | _Map<String, String>_ | 用户属性信息 |
-#### 示例
-
-**无埋点SDK示例代码：**
-<Tabs
-  groupId="code-language"
-  defaultValue="kotlin"
-  values={[
-    {label: 'java', value: 'java'},
-    {label: 'kotlin', value: 'kotlin'},
-  ]
-}>
-
-<TabItem value="java">
-
-```java
-Map<String, String> map = new HashMap<>();
-map.put("gender", "male");
-map.put("age", "12");
-GrowingAutotracker.get().setVisitorAttributes(map);
-```
-
-</TabItem>
-<TabItem value="kotlin">
-
-```kotlin
-val map: MutableMap<String, String> = HashMap()
-map["gender"] = "male"
-map["age"] = "12"
-GrowingAutotracker.get().setVisitorAttributes(map)
-```
-
-</TabItem>
-</Tabs>
-
-**埋点SDK示例代码：**
-<Tabs
-  groupId="code-language"
-  defaultValue="kotlin"
-  values={[
-    {label: 'java', value: 'java'},
-    {label: 'kotlin', value: 'kotlin'},
-  ]
-}>
-
-<TabItem value="java">
-
-```java
-Map<String, String> map = new HashMap<>();
-map.put("gender", "male");
-map.put("age", "12");
-GrowingTracker.get().setVisitorAttributes(map);
-```
-
-</TabItem>
-<TabItem value="kotlin">
-
-```kotlin
-val map: MutableMap<String, String> = HashMap()
-map["gender"] = "male"
-map["age"] = "12"
-GrowingTracker.get().setVisitorAttributes(map)
-```
-
-</TabItem>
-</Tabs>
-
-:::info
-
-访问用户说明:[访问用户事件说明](/knowledge/basicknowledge/userModel#访问用户)
-
-:::
 
 ### 8. 获取设备ID 
 `getDeviceId`<br/>
