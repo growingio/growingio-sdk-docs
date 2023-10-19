@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 | Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 |
 | :-------------------------   | :------   | :----:  |:------  |:------| :---: |
-| `projectId`                  | `String`  | 是      | `nil`   | 项目 ID(AccountID)，每个应用对应唯一值 | - |
+| `accountId`                  | `String`  | 是      | `nil`   | 项目 ID(AccountID)，每个应用对应唯一值 | - |
 | `dataSourceId`            | `String`  | 是      | `nil`   | 应用的 DataSourceId，唯一值 | - |
 | `dataCollectionServerHost`| `String`  | 是      | `nil`   | 服务端部署后的  ServerHost | - |
 | `debugEnabled`            | `Bool` | 否      | `false`  | 调试模式，会打印 SDK log，抛出错误异常，在线上环境请关闭 | - |
@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 ### 详细说明
 
-#### 1. **projectId**， **setDataSourceId**， **setDataCollectionServerHost**
+#### 1. **accountId**， **setDataSourceId**， **setDataCollectionServerHost**
 
 这些为必传参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 

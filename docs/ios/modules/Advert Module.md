@@ -69,7 +69,7 @@ import TabItem from '@theme/TabItem';
 | `deepLinkCallback`     | `Closures` |    否    | `nil`  | 监听深度链接中的地址参数     |
 
 ```swift
-let config = AutotrackConfig(projectId: "YourAccountId")
+let config = AutotrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
 
@@ -108,7 +108,7 @@ advert.doDeeplink(by: URL(string: "Your DeepLinkUrl")!, callback: callback)
 如您需要使用 Apple Search Ads 归因数据分析，在 SDK 初始化时打开 ASAEnabled 开关：
 
 ```swift
-let config = AutotrackConfig(projectId: "YourAccountId")
+let config = AutotrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
 
@@ -148,7 +148,7 @@ pod 'GrowingAnalytics/Advert'
 | `deepLinkCallback`     | `Block`    |    否    | `nil`  | 监听深度链接中的地址参数     |
 
 ```objectivec
-GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithProjectId:@"YourAccountId"];
+GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
 
@@ -187,7 +187,7 @@ configuration.deepLinkCallback = ^(NSDictionary * _Nullable params,
 如您需要使用 Apple Search Ads 归因数据分析，在 SDK 初始化时打开 ASAEnabled 开关：
 
 ```objectivec
-GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithProjectId:@"YourAccountId"];
+GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
 

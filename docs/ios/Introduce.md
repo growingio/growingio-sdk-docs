@@ -106,7 +106,7 @@ import GrowingAutotracker
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
 // YourDatasourceId eg: 11223344aabbcc
-let config = AutotrackConfig(projectId: "YourAccountId")
+let config = AutotrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
 Autotracker.start(config!, launchOptions: launchOptions)
@@ -120,7 +120,7 @@ Autotracker.start(config!, launchOptions: launchOptions)
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
 // YourDatasourceId eg: 11223344aabbcc
-GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithProjectId:@"YourAccountId"];
+GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
 [GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
@@ -300,7 +300,7 @@ import GrowingTracker
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
 // YourDatasourceId eg: 11223344aabbcc
-let config = TrackConfig(projectId: "YourAccountId")
+let config = TrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
 Tracker.start(config!, launchOptions: launchOptions)
@@ -314,7 +314,7 @@ Tracker.start(config!, launchOptions: launchOptions)
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
 // YourDatasourceId eg: 11223344aabbcc
-GrowingTrackConfiguration *configuration = [GrowingTrackConfiguration configurationWithProjectId:@"YourAccountId"];
+GrowingTrackConfiguration *configuration = [GrowingTrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
 [GrowingTracker startWithConfiguration:configuration launchOptions:launchOptions];
