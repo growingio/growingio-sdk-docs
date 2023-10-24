@@ -37,6 +37,7 @@ sidebar_position: 11
 | longitude | double | ❌ | 经度 |
 | sdkVersion | string | ✅ | SDK 版本号 |
 | userKey | string | ❌ | 登录用户ID的类型(用户自定义) |
+| operatingSystem | string | ❌ | 小程序必有，系统类型 |
 
 ### 访问事件(VISIT)
 

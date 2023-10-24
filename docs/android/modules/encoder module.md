@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:encoder:3.4.6'
+	implementation 'com.growingio.android:encoder:3.5.1'
 }
 ```
 </TabItem>
@@ -44,7 +44,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.6')
+  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
 
   implementation 'com.growingio.android:encoder'
 }
@@ -90,4 +90,4 @@ GrowingTracker.startWithConfiguration(this,
 
 ### 示例
 数据结果如下图所示：
-![数据上传样式](/img/modules/growingio_encoder_module.jpg)
+<ImageLoader path="img/android/modules/growingio_encoder_module.jpg" />

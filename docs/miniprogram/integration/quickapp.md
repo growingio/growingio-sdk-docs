@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 #### 1、加载 SDK
 
-快应用原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.14/gio-quickapp.js><br/>
+快应用原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.17/gio-quickapp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -64,13 +64,13 @@ const gdp = require('./utils/gio/gio-quickapp.js').default;
 
 加载插件后会在初始化之前打印日志。例：
 
-![debugLog](/img/miniprogram/plugin_debug.png)
+<ImageLoader path="img/miniprogram/plugin_debug" />
 
 ## 数据校验
 
 请在`init`初始化配置项中，将 **`debug`** 设置为 **`true`** 打开调试模式，然后在开发者工具中 Console 标签中即可实时查看 SDK 上报的 log 数据。如下图：
 
-![debugLog](/img/miniprogram/quickapp_debug.png)
+<ImageLoader path="img/miniprogram/quickapp_debug" />
 
 ## 其他信息
 

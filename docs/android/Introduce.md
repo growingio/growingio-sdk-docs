@@ -8,13 +8,7 @@ title: 如何集成
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## 集成无埋点SDK
-
-无埋点SDK能够在不修改代码的情况下，自动帮助应用获取页面浏览，页面点击等埋点事件。
-
-### 如何依赖
-
-#### 添加maven仓库
+## 添加maven仓库
 
 在 project 级别的build.gradle文件中添加Maven仓库
 
@@ -38,6 +32,12 @@ allprojects {
 }
 ```
 
+## 集成无埋点SDK
+
+无埋点SDK能够在不修改代码的情况下，自动帮助应用获取页面浏览，页面点击等埋点事件。
+
+### 如何依赖
+
 #### 添加插件
 
 在 project 级别的build.gradle文件中添加插件路径
@@ -53,7 +53,7 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.4.6'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:3.5.0'
     }
 }
 
@@ -95,7 +95,7 @@ apply plugin: 'com.growingio.android.autotracker'
 apply plugin: 'com.android.application'
 
 dependencies {
-    implementation 'com.growingio.android:autotracker-cdp:3.4.6'
+    implementation 'com.growingio.android:autotracker-cdp:3.5.1'
 }
 ```
 
@@ -108,7 +108,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.6')
+  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
 
   //GrowingIO 无埋点 SDK
   implementation 'com.growingio.android:autotracker-cdp'
@@ -262,7 +262,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker-cdp:3.4.6'
+    implementation 'com.growingio.android:tracker-cdp:3.5.1'
 }
 ```
 
@@ -275,7 +275,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.6')
+  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
 
   //GrowingIO 埋点 SDK
   implementation 'com.growingio.android:tracker-cdp'

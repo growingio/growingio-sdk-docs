@@ -7,6 +7,8 @@ title: JAVA SDK
 
 |    版本    | 说明 |  日期  |
 |:-------:| :----  |  :-------:  |
+| 1.0.14-cdp | 1.维度表支持列表属性<br/> 2.支持埋点事件预置属性<br/> |  2023-08-11 |
+| 1.0.13-cdp | 1.修复initConfig不生效<br/> 2.升级pb版本为3.27.1<br/> |  2023-03-27 |
 | 1.0.12-cdp | 支持埋点事件事件变量、用户变量可传列表类型 |  2022-04-20 |
 | 1.0.11-cdp | 支持埋点事件可传eventTime参数 |  2022-04-02 |
 | 1.0.10-cdp | 支持最近测量协议 | 2021-11-08 |
@@ -39,11 +41,11 @@ AccountID、DataSourceID 需要在CDP增长平台上新建数据源，或从已�
 
 ##### 创建
 
-![新建数据源](./../../static/img/createapplication.png)
+<ImageLoader path="img/common/createapplication" />
 
 ##### 查看
 
-![查看数据源](./../../static/img/showServerDataSourceID.png)
+<ImageLoader path="img/common/showServerDataSourceID" />
 
 ### 依赖
 
@@ -56,7 +58,7 @@ pom.xml
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.12-cdp</version>
+        <version>1.0.14-cdp</version>
     </dependency>
 </dependencies>
 ```
@@ -67,7 +69,7 @@ pom.xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.12-cdp</version>
+    <version>1.0.14-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
@@ -75,19 +77,19 @@ pom.xml
             <artifactId>protobuf-java</artifactId>
         </exclusion>
     </exclusions>
-</dependency>     
+</dependency>
 ```
 
 如果使用gradle依赖，可以使用如下集成方式
 
 ```gradle
-implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.12-cdp'
+implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.14-cdp'
 ```
 
 若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone
 
 ```gradle
-implementation('io.growing.sdk.java:growingio-java-sdk:1.0.12-cdp:standalone') {
+implementation('io.growing.sdk.java:growingio-java-sdk:1.0.14-cdp:standalone') {
     exclude module: 'protobuf-java'
 }
 ```
@@ -200,6 +202,14 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 | :-------------- | :---------------------------: | :--------------: | ------------------ |
 | eventTime         | long                          | 否       | 事件发生时间(毫秒)；<br/>需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认 |
 | eventKey          | string                        | 是       | 埋点事件标识 |
+| domain            | string                        | 否       | APP包名或H5域名 |
+| urlScheme         | string                        | 否       | 链接协议 |
+| deviceBrand       | string                        | 否       | 设备品牌 |
+| deviceModel       | string                        | 否       | 设备型号 |
+| deviceType        | string                        | 否       | 设备类型（只能为PHONE/PAD） |
+| appVersion        | string                        | 否       | App版本 |
+| appName           | string                        | 否       | App名称 |
+| language          | string                        | 否       | 语言，ISO 639标准 |
 | anonymousId       | string                        | 否       | 访问用户ID，与登录用户ID，不能同时为空 |
 | loginUserKey      | string                        | 否       | 登录用户KEY，传此参数时，同时需传登录用户ID |
 | loginUserId       | string                        | 否       | 登录用户ID，与访问用户ID，不能同时为空|
@@ -214,6 +224,14 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
                     .eventTime(System.currentTimeMillis())            // 默认为系统当前时间 (选填)
                     .eventKey("eventKey")                             // 事件标识 (必填)
+                    .domain("com.growingio.app")                      // App包名或H5域名（选填）
+                    .urlScheme("growing.123c12fb12f123cc")            // 链接协议（选填）
+                    .deviceBrand("google")                            // 设备品牌（选填）
+                    .deviceModel("Nexus 5")                           // 设备型号（选填）
+                    .deviceType("PHONE")                              // 设备类型（选填）
+                    .appVersion("1.2.4")                              // App版本（选填）
+                    .appName("看数助手")                               // App名称（选填）
+                    .language("zh_CN")                                // 语言（选填）
                     .anonymousId("device_id")                         // 访问用户ID (选填)
                     .loginUserKey("account")                          // 登录用户KEY (选填)
                     .loginUserId("417abcabcabcbac")                   // 登录用户ID (选填)
@@ -406,6 +424,7 @@ public class DemoLogger implements GioLoggerInterface {
 
 
 ### 支持 Java 6 版本环境
+编译源码时如果出现不再支持源选项6。请使用7或更高版本，请降低当前环境jdk版本
 Protobuf 从 3.6.0 版本开始不再支持 java 6，相关信息参见[Drop java 6 support](https://github.com/protocolbuffers/protobuf/pull/4224)
 
 使用如下依赖方式，依赖java 6的pb版本
@@ -413,7 +432,7 @@ Protobuf 从 3.6.0 版本开始不再支持 java 6，相关信息参见[Drop jav
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.12-cdp</version>
+    <version>1.0.13-cdp</version>
     <exclusions>
         <exclusion>
             <groupId>com.google.protobuf</groupId>

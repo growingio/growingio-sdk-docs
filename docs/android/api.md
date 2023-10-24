@@ -421,7 +421,7 @@ GrowingAutotracker.get().ignorePage(mActivity, IgnorePolicy.IGNORE_ALL)
 
 ### 12. 设置忽略的View 
 `ignoreView`<br/>
-被设置忽略的VIew，不再触发点击、曝光等任何事件，被忽略的WebView也不会采集Hybrid的事件。
+被设置忽略的View，不再触发点击、曝光等任何事件，被忽略的WebView也不会采集Hybrid的事件。
 #### 参数说明
 | 参数     | 参数类型       | 说明                                                                                                                              |
 | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
@@ -530,15 +530,34 @@ GrowingAutotracker.get().bridgeWebView(webview)
 GrowingTracker.get().bridgeWebView(webview)
 ```
 
-### 17. 初始事件化计时器
+### 17. 事件计时器
 `trackTimerStart`<br/>
 初始化一个事件计时器，参数为计时事件的事件名称，返回值为该事件计时器唯一标识
 
+`trackTimerPause`<br/>
+暂停事件计时器，参数为trackTimerStart返回的唯一标识
+
+`trackTimerResume`<br/>
+恢复事件计时器，参数为trackTimerStart返回的唯一标识
+
+`trackTimerEnd`<br/>
+停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
+
+`removeTimer`<br/>
+删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
+该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
+
+`clearTrackTimer`<br/>
+清除所有已经注册的事件计时器。<br/>
+存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
+
 **<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
+
 #### 参数说明
 | 参数        | 参数类型 | 说明                 |
 | :---------- | :------- | :------------------- |
 | `eventName` | `String` | 事件名称，事件标识符 |
+| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息 |
 
 #### 返回值说明
 | 参数      | 参数类型 | 说明           |
@@ -548,139 +567,61 @@ GrowingTracker.get().bridgeWebView(webview)
 
 **无埋点SDK示例代码：**
 ```java
-String timerId = GrowingAutotracker.get().trackTimerStart('eventName')
+//初始化一个事件计时器
+String timerId = GrowingAutotracker.get().trackTimerStart('eventName');
+//暂停事件计时器
+GrowingAutotracker.get().trackTimerPause(timerId);
+//恢复事件计时器
+GrowingAutotracker.get().trackTimerResume(timerId);
+
+//停止事件计时器
+GrowingAutotracker.get().trackTimerEnd(timerId);
+//停止事件计时器携带事件属性
+GrowingAutotracker.get().trackTimerEnd(timerId, new HashMap<>());
+
+//删除事件计时器
+GrowingAutotracker.get().removeTimer(timerId);
+//清除事件计时器
+GrowingAutotracker.get().clearTrackTimer();
 ```
 
 **埋点SDK示例代码：**
 ```java
+//初始化一个事件计时器
 String timerId = GrowingTracker.get().trackTimerStart('eventName')
+//暂停事件计时器
+GrowingTracker.get().trackTimerPause(timerId);
+//恢复事件计时器
+GrowingTracker.get().trackTimerResume(timerId);
+
+//停止事件计时器
+GrowingTracker.get().trackTimerEnd(timerId);
+//停止事件计时器携带事件属性
+GrowingTracker.get().trackTimerEnd(timerId, new HashMap<>());
+
+//删除事件计时器
+GrowingTracker.get().removeTimer(timerId);
+//清除事件计时器
+GrowingTracker.get().clearTrackTimer();
 ```
 
-### 18. 暂停事件计时器
-`trackTimerPause`<br/>
-暂停事件计时器，参数为trackTimerStart返回的唯一标识
-
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
-#### 参数说明
-| 参数      | 参数类型 | 说明           |
-| :-------- | :------- | :------------- |
-| `timerId` | `String` | 计时器唯一标识 |
-
-#### 示例
-
-**无埋点SDK示例代码：**
-```java
-GrowingAutotracker.get().trackTimerPause('timerId')
-```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().trackTimerPause('timerId')
-```
-
-### 19. 恢复事件计时器
-`trackTimerResume`<br/>
-恢复事件计时器，参数为trackTimerStart返回的唯一标识
-
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
-#### 参数说明
-| 参数      | 参数类型 | 说明           |
-| :-------- | :------- | :------------- |
-| `timerId` | `String` | 计时器唯一标识 |
-
-#### 示例
-
-**无埋点SDK示例代码：**
-```java
-GrowingAutotracker.get().trackTimerResume('timerId')
-```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().trackTimerResume('timerId')
-```
-
-### 20. 停止事件计时器
-`trackTimerEnd`<br/>
-停止事件计时器，参数为trackTimerStart返回的唯一标识。调用该接口会自动触发删除定时器。
-
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
-#### 参数说明
-| 参数         | 参数类型              | 说明                       |
-| :----------- | :-------------------- | :------------------------- |
-| `timerId`    | `String`              | 计时器唯一标识             |
-| `attributes` | `Map<String, String>` | 事件发生时所伴随的属性信息 |
-
-#### 示例
-
-**无埋点SDK示例代码：**
-```java
-GrowingAutotracker.get().trackTimerEnd('timerId')
-GrowingAutotracker.get().trackTimerEnd('timerId', new HashMap<>())
-```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().trackTimerEnd('timerId')
-GrowingTracker.get().trackTimerEnd('timerId', new HashMap<>())
-```
 :::caution 注意
 trackTimerEnd时发送CUSTOM事件上报数据：
-* eventName  埋点事件标识符（trackTimerStart传入）
-* attributes 用户自定义事件属性（trackTimerEnd传入）
-* eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
-eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
-eventDuration 变量及其值会自动添加在 attributes 中<br/>
-eventDuration 时间统计不会计算后台时间
-* eventName 对应的埋点事件需要在平台中**绑定**标识符为 eventDuration， 且类型为小数的事件属性
+* eventName  埋点事件标识符（trackTimerStart传入）；
+* attributes 用户自定义事件属性（trackTimerEnd传入）；
+* event_duration 事件时长 （SDK内部根据timerId自动计算获取 ）。<br/>
+event_duration 按照秒上报，小数点精度保证到毫秒。<br/>
+event_duration 变量及其值会自动添加在 attributes 中。<br/>
+event_duration 时间统计不会计算后台时间：
+* eventName 对应的埋点事件需要在平台中**绑定**标识符为 event_duration， 且类型为小数的事件属性。
 :::
 
-### 21. 删除事件计时器
-`removeTimer`<br/>
-删除事件计时器，参数为 trackTimerStart 返回的唯一标识。<br/>
-该接口会将标识为 timerId 的计时器置为空。调用停止计时器接口，会自动触发该接口。注意移除时不论计时器处于什么状态，都不会发送事件。
 
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
-#### 参数说明
-| 参数      | 参数类型 | 说明           |
-| :-------- | :------- | :------------- |
-| `timerId` | `String` | 计时器唯一标识 |
-
-#### 示例
-
-**无埋点SDK示例代码：**
-```java
-GrowingAutotracker.get().removeTimer('timerId')
-```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().removeTimer('timerId')
-```
-
-### 22. 清除事件计时器
-`clearTrackTimer`<br/>
-清除所有已经注册的事件计时器。<br/>
-存在所有计时器需要清除时调用。注意移除时不论计时器处于什么状态，都不会发送事件。
-
-**<font color="#FC5F3A">注意：</font>SDK版本>=3.4.6支持。**
-#### 示例
-
-**无埋点SDK示例代码：**
-```java
-GrowingAutotracker.get().clearTrackTimer()
-```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().clearTrackTimer()
-```
-
-### 23. 主动触发DeepLink
+### 18. 主动触发DeepLink
 `doDeepLinkByUrl` <br/>
 调用该接口需要集成广告模块，具体集成请参考[广告模块](/docs/android/modules/advert%20module)
 
-### 24. 注册模块组件 
+### 19. 注册模块组件 
 `registerComponent`<br/>
 可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
 #### 参数说明

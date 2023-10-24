@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:oaid:3.4.6'
+	implementation 'com.growingio.android:oaid:3.5.1'
 }
 ```
 </TabItem>
@@ -47,7 +47,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.4.6')
+  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
 
   implementation 'com.growingio.android:oaid'
 }
@@ -71,12 +71,16 @@ OAID 模块中提供了配置文件可以设置OAID的来源，默认优先级�
 // provideCert -> provideCertAsset -> OnProvideCertCallback -> 默认
 OaidConfig oaidConfig = new OaidConfig();
 oaidConfig.setProvideOaid("<YOUR OAID>");
+// 或者
 oaidConfig.setProvideOaidCallback(context -> {
     //require oaid logic,it's will run in sub thread.
     return "<YOUR OAID>";
 });
+// 或者
 oaidConfig.setProvideCert("<YOUR CERT VALUE>");
+// 或者
 oaidConfig.setProvideCertAsset("<THE PATH OF YOUR CERT IN ASSET>");
+// 或者
 oaidConfig.setProvideCertCallback(new OaidConfig.OnProvideCertCallback() {
     @Override
     public String provideCertJob(Context context) {
@@ -103,7 +107,7 @@ oaidConfig.setProvideCertCallback(new OaidConfig.OnProvideCertCallback() {
 GrowingAutotracker.startWithConfiguration(this,
         new CdpAutotrackConfiguration("accountId", "urlScheme")
         // ...
-        .addPreloadComponent(new OaidLibraryGioModule(),oaidConfig)
+        .addPreloadComponent(new OaidLibraryGioModule(), oaidConfig)
 
 );
 ```
@@ -116,7 +120,7 @@ GrowingAutotracker.startWithConfiguration(this,
 GrowingTracker.startWithConfiguration(this,
         new CdpTrackConfiguration("accountId", "urlScheme")
         //...
-        .addPreloadComponent(new OaidLibraryGioModule(),oaidConfig)
+        .addPreloadComponent(new OaidLibraryGioModule(), oaidConfig)
 );
 ```
 
