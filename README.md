@@ -1,20 +1,19 @@
-
 ## 站点地址
 
-[SaaS SDK 3.0技术文档-https://growingio.github.io/growingio-sdk-docs-saas/](https://growingio.github.io/growingio-sdk-docs-saas/)
+[SaaS SDK 3.0 技术文档-https://growingio.github.io/growingio-sdk-docs-v3/](https://growingio.github.io/growingio-sdk-docs-v3/)
 
 若想要修改文档请 clone 本项目到本地修改。 文档位于 docs 目录下，博客文章位于 blog 目录下。
 具体的写作教程请参考 [docusaurus](https://www.docusaurus.cn/docs/)
 
 ## 关于部署
 
-目前将文档部署在 [Github Pages](https://growingio.github.io/growingio-sdk-docs-saas/) 上，占用的为 `gh-pages` 分支，目前该分支已设置保护，除去 Github CI 可以访问外其他人无法修改。
+目前将文档部署在 [Github Pages](https://growingio.github.io/growingio-sdk-docs-v3/) 上，占用的为 `gh-pages` 分支，目前该分支已设置保护，除去 Github CI 可以访问外其他人无法修改。
 
 ## 关于发版
 
-所有人只能对 master 分支提交 pr 操作，ci会自动检查是否存在错误。
+所有人只能对 master 分支提交 pr 操作，ci 会自动检查是否存在错误。
 
-合并分支后，ci 会自动将站点部署到 [Github Pages](https://growingio.github.io/growingio-sdk-docs-saas/) 上。
+合并分支后，ci 会自动将站点部署到 [Github Pages](https://growingio.github.io/growingio-sdk-docs-v3/) 上。
 
 ## 关于本地
 
@@ -31,7 +30,7 @@ npm run build //检查构建是否成功
 npm run start //启动开发服务器
 ```
 
-默认情况下，浏览器将打开 <http://localhost:3000/growingio-sdk-docs-saas/> 地址。
+默认情况下，浏览器将打开 <http://localhost:3000/growingio-sdk-docs-v3/> 地址。
 
 ## 关于 version 脚本
 
@@ -44,7 +43,7 @@ python github_version_fetch.py
 ```
 
 该脚本会更新各个平台下的 `version.md` 文件。
-配置文件为 `version_config.json`,其中enable字段表示是否启用。
+配置文件为 `version_config.json`,其中 enable 字段表示是否启用。
 
 ## 项目结构概要
 
@@ -89,6 +88,6 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 找到 `docusaurus,config.js`，以添加常见问题为例，进行下列操作
 
-1. 在 `plugins` 节点，添加一个新的doc节点，其名为 `question`，并且新建 `sidebarsQuestion.js` 使其为文章自动生成目录；
+1. 在 `plugins` 节点，添加一个新的 doc 节点，其名为 `question`，并且新建 `sidebarsQuestion.js` 使其为文章自动生成目录；
 2. 在 `themeConfig->navbar->items`，添加新的导航 **{to: '/question', label: '常见问题', position: 'left'},**
 3. 新建 `question` 文件夹，并新建一个 `slug: /` 的文档，保证点击能链接到正确的文档地址。
