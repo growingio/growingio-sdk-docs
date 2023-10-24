@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgrowingio_sdk_doc=self.webpackChunkgrowingio_sdk_doc||[]).push([[4907],{9478:e=>{e.exports=JSON.parse('[{"label":"knowledge","permalink":"/growingio-sdk-docs/knowledge/tags/knowledge","count":1}]')}}]);
