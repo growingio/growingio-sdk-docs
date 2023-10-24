@@ -6,13 +6,13 @@ module.exports = {
   title: "一站式数据增长引擎",
   tagline: "数据+智能+营销，赋能商业决策，实现业绩增长",
   url: "https://growingio.github.io",
-  baseUrl: "/growingio-sdk-docs-saas/",
+  baseUrl: "/growingio-sdk-docs-v3/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.png",
   trailingSlash: false,
   organizationName: "growingio", // Usually your GitHub org/user name.
-  projectName: "growingio-sdk-docs-saas", // Usually your repo name.
+  projectName: "growingio-sdk-docs-v3", // Usually your repo name.
   themeConfig: {
     navbar: {
       title: "",
@@ -114,13 +114,13 @@ module.exports = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
-            "https://github.com/growingio/growingio-sdk-docs-saas/edit/master/",
+            "https://github.com/growingio/growingio-sdk-docs-v3/edit/master/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            "https://github.com/growingio/growingio-sdk-docs-saas/edit/master/",
+            "https://github.com/growingio/growingio-sdk-docs-v3/edit/master/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -143,7 +143,7 @@ module.exports = {
         path: "question",
         routeBasePath: "question",
         editUrl:
-          "https://github.com/growingio/growingio-sdk-docs-saas/edit/master/",
+          "https://github.com/growingio/growingio-sdk-docs-v3/edit/master/",
         sidebarPath: require.resolve("./sidebarsQuestion.js"),
         showLastUpdateTime: true,
       },
