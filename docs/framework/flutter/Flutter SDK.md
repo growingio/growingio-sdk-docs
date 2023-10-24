@@ -330,24 +330,23 @@ GrowingTracker.startWithConfiguration(
 * iOS端会打开相关配置，无须引入模块。
 :::
 
-#### Protobuf 模块
+#### Json 模块
 
 ```dart
 GrowingTracker.startWithConfiguration(
     //....
     modules: {
-      ProtobufLibraryModule(),
+      JsonLibraryModule(),
     },
     //....
   );
 
 ```
-Protobuf 数据模块将会使用 Google Protobuf 格式保存和上传事件数据。
+Json 数据模块将会使用 Json 格式保存和上传事件数据。
 
 :::info
 在 Flutter SDK 启动 Protobuf 模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
-* [Android 端 引入 Protobuf 模块](/docs/android/modules/protobuf%20module)
-* [iOS 端 引入 Protobuf 模块](/docs/ios/modules/Protobuf%20Module)
+* [Android 端 引入 Json 模块](/docs/android/modules/json%20module)
 :::
 
 #### H5混合模块

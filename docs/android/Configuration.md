@@ -2,53 +2,61 @@
 sidebar_position: 2
 title: 初始化配置
 ---
---------------
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-在初始化过程中，SDK会接收一个由用户传入的默认配置`Configuration`,配置相关说明如下表：
+在初始化过程中，SDK会接收一个由用户传入的默认配置 `Configuration`, 配置相关说明如下表：
 
 ## 配置表格
 
-| Config                         |   参数类型  | 是否必填 | 默认值  | 说明                                       | 其它       | 版本      |
-| :----------------------------- | :--------- | :----:  | :----- | :-----------------------------------------| --------- | ----------|
-| `accountId`                    |   `String` |    是   | `null` | 项目ID，每个应用对应唯一值                    | -         |           |
-| `urlScheme`                    |   `String` |    是   | `null` | 应用的URLScheme，唯一值                      | -         |           |
-| `setDataSourceId`              | `String`   |    是   | `null` | 应用的DataSourceId，唯一值                   | -         |           |
-| `setDataCollectionServerHost`  | `String`   |    是    | `null`  | 服务端部署后的 ServerHost                  | -         |           |
-| `setChannel`                   | `String`   |    否    | `null`  | 应用的分发渠道                             | -         |           |
-| `setDebugEnabled`              | `boolean`  |    否    | `false` | 调试模式，会打印 Log 和错误，在线上环境请关闭  | -         |           |
-| `setCellularDataLimit`         | `int`      |    否    | `10`    | 每天发送数据的流量限制，单位MB               | -         |           |
-| `setDataUploadInterval`        | `int`      |    否    | `15`    | 数据发送的间隔，单位秒                      | -         |           |
-| `setSessionInterval`           | `int`      |    否    | `30`    | 会话后台留存时长，单位秒                    | -         |           |
-| `setImeiEnabled`               | `boolean`  |    否    | `false` | 是否采集Imei信息，默认不采集                | -         |  <font color='red'>>= 3.5.0</font>  |
-| `setDataCollectionEnabled`     | `boolean`  |    否    | `true`  | 是否采集数据                              | -         |          |
-| `setEventFilterInterceptor`    | `EventFilterInterceptor` |  否  | `DefaultEventFilterInterceptor` | 用于事件过滤,替换废弃的事件过滤和属性过滤 | - |  <font color='red'>>= 3.4.3</font>  |
-| `setExcludeEvent`              | `int`      |    否    | `0`     | 设置事件过滤，已被废弃                      |  -     |   <font color='red'>3.5.0 删除</font>       |
-| `setIgnoreField`               | `int`      |    否    | `0`     | 设置事件属性过滤，已被废弃                   | -          |  <font color='red'>3.5.0 删除</font>        |
-| `setIdMappingEnabled`          | `boolean`  |    否    | `false` | 是否开启多用户身份上报                      | -         | <font color='red'>>= 3.3.0</font>   |
-| `setImpressionScale`           | `float`    |    否    | `0`     | 元素曝光事件中的比例因子,范围 [0-1]          | 无埋点独有 |           |
-| `setRequireAppProcessesEnabled` | `boolean` |    否    | `true`  | SDK 是否能获取应用多进程ID                  | -         | <font color='red'>>= 3.3.4</font>   |
-| `addPreloadComponent`          | `LibraryGioModule` |    否    | `null`  | 注册自定义/预定义模块(如加密模块、OAID模块)       | -         | <font color='red'>>= 3.3.4</font>  |
-| `addPreloadComponent`          | `LibraryGioModule`,`Configurable` |    否  | `null` | 注册自定义/预定义模块及其配置文件 | - | <font color='red'>>= 3.4.3</font>  |
-| `setWebViewBridgeEnabled`       | `boolean`                         |    否    | `true`                          | 是否全量采集 hybrid 数据                      | 无埋点独有 | <font color='red'>>= 3.5.1</font>   |
+### 通用配置
+
+| 配置方法                                     | 参数类型        | 是否必填 | 默认值    | 说明                                       | 版本     |
+| :------------------------------------------ | :------------  | :----: | :------- | :---------------------------------------- | ---------|
+| **accountId** [#](#1-sdk必需参数)             | _String_      |  **是** |**`null`**| 项目ID，每个应用对应唯一值                   |  |
+| **urlScheme** [#](#1-sdk必需参数)             | _String_      |  **是** |**`null`**| 应用的URLScheme，唯一值                    |  |
+| **setDataSourceId** [#](#1-sdk必需参数)       | _String_      |  **是** |**`null`**| 应用的DataSourceId，唯一值                 |  |
+| **setDataCollectionServerHost** [#](#1-sdk必需参数) |_String_ |  **是** |**`null`**| 服务端部署后的 ServerHost                  |  |
+| setChannel [#](#2-setchannel)                | _String_      |    否   | `null`  | 设置应用的分发渠道                          |  |
+| setDebugEnabled [#](#3-setdebugenabled)      | _boolean_     |    否   | `false` | 调试模式，会打印 Log 和错误，在线上环境请关闭   |  |
+| setCellularDataLimit [#](#4-setcellulardatalimit) | _int_    |    否   | `10`    | 每天发送数据的流量限制，单位MB                |  |
+| setDataUploadInterval [#](#5-setdatauploadinterval) | _int_  |    否   | `15`    | 数据发送的间隔，单位秒                       |  |
+| setSessionInterval [#](#6-setsessioninterval)| _int_         |    否   | `30`    | 会话后台留存时长，单位秒                     |  |
+| setImeiEnabled [#](#8-setimeienabled)        | _boolean_     |    否   | `false` | 是否采集Imei信息，默认不采集                 |  |
+| setDataCollectionEnabled [#](#7-setdatacollectionenabled)| _boolean_ | 否 |`true`| 是否采集数据                               |  |
+| setEventFilterInterceptor [#](#8-seteventfilterinterceptor)| _EventFilterInterceptor_ |否|`不拦截`| 用于事件过滤,过滤事件类型和事件属性 |  |
+| setIdMappingEnabled [#](#12-setidmappingenabled) | _boolean_ |    否   | `false` | 是否开启多用户身份上报                       |  |
+| setRequireAppProcessesEnabled [#](#11-setrequireappprocessesenabled) | _boolean_ | 否 | `false`  | SDK 是否能获取应用多进程ID   | |
+| setAndroidIdEnabled [#](#10-setandroididenabled) | _boolean_ |    否   | `false` | SDK 是否能获取 AndroidId                   | |
+| addPreloadComponent [#](#13-addpreloadcomponent) | _LibraryGioModule_,<br/>[_Configurable_] |否| `null` | 注册自定义/预定义模块及其配置文件 | |
+
+### 无埋点配置
+
+| 配置方法                                       |   参数类型     | 是否必填 | 默认值  | 说明                               | 版本     |
+| :------------------------------------------- | :------------- | :----:  | :------ | :-------------------------------- | ------- |
+| setImpressionScale [#](#1-setimpressionscale) |    _float_    |   否    | `0`     | 元素曝光事件中的比例因子,范围 [0-1]    |         |
+| setWebViewBridgeEnabled [#](#2-setwebviewbridgeenabled)| _boolean_|  否 | `true`   | 是否全量采集 hybrid 数据            |         |
+| downgrade [#](#3-downgrade)                   | _void_        |  否     |  无      | 恢复旧版本无埋点上报逻辑            |         |
+
+
+## 通用配置说明
 
 ### 1. SDK必需参数
 
 **accountId，** **urlScheme，** **setDataSourceId，** **setDataCollectionServerHost**
-这四个参数为 CDP 用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
+这四个参数为用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 
-### 2. **setChannel**
+### 2. setChannel
 
 对应应用的分发渠道字段，若设置了值则会在每个事件上报中含有渠道信息。
-比如在初始化中设置了`.setChannel("Docs")`,则会在上报信息中出现 `appChannel` 字段：
+比如在初始化中设置了`.setChannel("Google")`,则会在上报信息中出现 `appChannel` 字段：
 
 ```json
     ╔═══════════════════════════════════════════════════════════════════════════════════════
     ║ {
     ║   "platform": "Android",
-    ║   "appChannel": "Docs",
+    ║   "appChannel": "Google",
     ║   "screenHeight": 1920,
     ║   "screenWidth": 1080,
     ║   ...
@@ -56,32 +64,28 @@ import TabItem from '@theme/TabItem';
     ╚═══════════════════════════════════════════════════════════════════════════════════════
 ```
 
-### 3. **setDebugEnabled**
+### 3. setDebugEnabled
 
 默认不开启，开启后会输出 SDK Log 日志。
 建议做法设为 `setDebugEnabled(BuildConfig.DEBUG)` 这样既能保证Debug时能够打印日志，正式发布时也能关闭日志；
 
-### 4. **setCellularDataLimit**
+### 4. setCellularDataLimit
 
 为每日在4G环境下的流量限制，默认为10M。WIFI环境下则不计流量。
 
-### 5. **setDataUploadInterval**
+### 5. setDataUploadInterval
 
 上报间隔。GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15秒的情况下向服务器发送事件包（最大50条事件）。
 
-### 6. **setSessionInterval**
+### 6. setSessionInterval
 
 设置会话后台留存时长。指当前会话在应用进入后台后的最大留存时间，默认为30秒。另外，其他情况下也会重新生成一个新的会话，如设置用户ID等核心信息，重新打开数据收集等。
 
-### 7. **setDataCollectionEnabled**
+### 7. setDataCollectionEnabled
 
 数据收集。当数据收集关闭时，SDK将不会再获取设备信息，也不会产生事件和上报事件。
 
-### 8. **setImeiEnabled**
-
-是否采集Imei信息，默认不采集，且Android 10及以上已不再支持 Imei 的获取。
-
-### 9. **setEventFilterInterceptor**
+### 8. setEventFilterInterceptor
 
 事件过滤，该接口需要用户提供一个拦截器用于事件拦截的自定义化。**使用事件拦截器时请注意使用，不要过滤掉重要信息，防止数据采集信息丢失或者少采。**
 
@@ -125,30 +129,36 @@ class CustomEventFilterInterceptor implements EventFilterInterceptor {
 
 ```java
 GrowingTracker.startWithConfiguration(this,
-    new CdpTrackConfiguration("accountId", "urlScheme")
+    new AutotrackConfiguration("accountId", "urlScheme")
         ...
        .setEventFilterInterceptor(new CustomEventFilterInterceptor())
 );
 ```
 
+### 9. setImeiEnabled
 
+是否采集Imei信息，默认不采集，且Android 10及以上已不再支持 Imei 的获取。
 
-### 10. **setIdMappingEnabled**
+### 10. setAndroidIdEnabled
+
+是否获取AndroidId信息。默认不获取，**建议打开**，可以帮助更准确的匹配广告信息。
+
+### 11. setRequireAppProcessesEnabled
+
+SDK 是否能获取应用多进程ID。默认不获取，在应用有多进程的场景下**建议打开**。
+
+### 12. setIdMappingEnabled
 
 是否支持多用户身份上报, 默认不支持。
 是否支持多用户身份上报, 与 API 接口`setLoginUserId(String userId, String userKey)`对应, 开启时, userKey会在每次上报数据时携带, 关闭时, 接口与`setLoginUserId(String userId)`作用相同
 
-### 11. **setImpressionScale**
-
-曝光比例。与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
-
-### 12 **addPreloadComponent**
+### 13. addPreloadComponent
 注册功能模块，为 Growingio SDK 添加更多的额外功能。
 
 ```java
 // 初始化SDK时，可以注册对应模块
 GrowingAutotracker.startWithConfiguration(this,
-        new CdpAutotrackConfiguration("accountId", "urlScheme")
+        new AutotrackConfiguration("accountId", "urlScheme")
         //...
         .addPreloadComponent(<模块对象>, <模块配置>)
         // 或者
@@ -158,8 +168,17 @@ GrowingAutotracker.startWithConfiguration(this,
 ```
 模块列表请参考 [功能模块一览](/docs/android/modules)
 
-### 13 **setWebViewBridgeEnabled**
+## 无埋点配置说明
+
+### 1. setImpressionScale
+
+曝光比例。与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
+
+### 2. setWebViewBridgeEnabled
 是否全量采集 hybrid 数据（默认为 true）
 
-无埋点默认会采集对应 webview 的 hybrid 事件，设置为 false，可以关闭采集 hybrid 数据。
+无埋点默认会采集对应 webview 的 hybrid 事件，设置为 false，可以关闭采集 hybrid 数据。<br/>
 如果需要设置采集单个 webview 的 hybrid 事件，可以通过运行时 API 接口`bridgeWebView(View webView)`开启采集。
+
+### 3. downgrade
+调用该方法后，所有的无埋点将以旧版本的无埋点逻辑上报数据，请谨慎使用。

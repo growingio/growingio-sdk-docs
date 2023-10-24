@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| circler  | 无埋点自动集成 | `Circler` | `WebService` | >=3.3.0 |
+| circler  | 无埋点自动集成 | `Circler` | `WebService` | - |
 
 ### 依赖方式
 <Tabs
@@ -36,7 +36,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:circler:3.5.1'
+	implementation 'com.growingio.android:circler:4.0.0'
 }
 ```
 </TabItem>
@@ -46,7 +46,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   implementation 'com.growingio.android:circler'
 }

@@ -9,10 +9,10 @@ title: 核心模块
 
 | 名称           |                                        说明                                         | 依赖                                           |
 | :------------- | :---------------------------------------------------------------------------------: | :--------------------------------------------- |
-| 埋点 Library   |                          埋点核心库，包含最基本的埋点逻辑                           | `com.growingio.android:tracker-core:3.5.1`     |
-| 无埋点 Library |                无埋点核心库，依赖于埋点核心库，包含无埋点的注入逻辑                 | `com.growingio.android:autotracker-core:3.5.1` |
-| 模块注解库     | 注解声明，通过注解可以自动生成 SDK 的初始化类来注册所有的模块和聚合模块内的配置类。 | `com.growingio.android:annotation:3.5.1`       |
-| 注解解析器     |                                 与上面注解配合使用                                  | `com.growingio.android:compiler:3.5.1`         |
+| 埋点 Library   |                          埋点核心库，包含最基本的埋点逻辑                           | `com.growingio.android:tracker-core:4.0.0`     |
+| 无埋点 Library |                无埋点核心库，依赖于埋点核心库，包含无埋点的注入逻辑                 | `com.growingio.android:autotracker-core:4.0.0` |
+| 模块注解库     | 注解声明，通过注解可以自动生成 SDK 的初始化类来注册所有的模块和聚合模块内的配置类。 | `com.growingio.android:annotation:4.0.0`       |
+| 注解解析器     |                                 与上面注解配合使用                                  | `com.growingio.android:compiler:4.0.0`         |
 
 --------
 import Tabs from '@theme/Tabs';
@@ -37,7 +37,7 @@ SDK 事件通过 `EventDatabase` 来传递到数据库并进行增删改查的�
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:database:3.5.1'
+	implementation 'com.growingio.android:database:4.0.0'
 }
 ```
 </TabItem>
@@ -47,7 +47,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   implementation 'com.growingio.android:database'
 }
@@ -77,11 +77,11 @@ SDK 事件通过 `EventUrl` 指定请求方式、服务器请求地址，再通�
 ```groovy
 dependencies {
 	// 网络模块-okhttp3
-	implementation 'com.growingio.android:okhttp3:3.5.1'
+	implementation 'com.growingio.android:okhttp3:4.0.0'
 	// 可选网络模块-volley
-	implementation 'com.growingio.android:volley:3.5.1'
+	implementation 'com.growingio.android:volley:4.0.0'
 	// 可选网络模块-urlconnnection
-	implementation 'com.growingio.android:urlconnnection:3.5.1'
+	implementation 'com.growingio.android:urlconnnection:4.0.0'
 }
 ```
 </TabItem>
@@ -91,7 +91,7 @@ dependencies {
 ```groovy
 dependencies {
 	// Import the BoM for the GrowingIO platform
-	implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+	implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   	// 网络模块-okhttp3
 	implementation 'com.growingio.android:okhttp3'
@@ -106,7 +106,7 @@ dependencies {
 </Tabs>
 
 ## 数据格式库
-默认使用 `json` 来做数据传输的格式。通过数据格式转换可以将输入 `EventFormatData` 转为字节数组数据 `EventByteArray` 方便网络数据上传。
+默认使用 `protobuf` 来做数据传输的格式。通过数据格式转换可以将输入 `EventFormatData` 转为字节数组数据 `EventByteArray` 方便网络数据上传。
 
 ### 依赖方式
 <Tabs
@@ -122,7 +122,7 @@ dependencies {
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:json:3.5.1'
+	implementation 'com.growingio.android:protobuf:4.0.0'
 }
 ```
 </TabItem>
@@ -132,9 +132,9 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
-  implementation 'com.growingio.android:json'
+  implementation 'com.growingio.android:protobuf'
 }
 ```
 

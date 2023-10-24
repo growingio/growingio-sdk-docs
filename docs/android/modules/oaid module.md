@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| oaid  | 需要手动集成 | `OaidHelper` | `String` | >=3.3.4 |
+| oaid  | 需要手动集成 | `OaidHelper` | `String` | - |
 
 ### 依赖方式
 <Tabs
@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:oaid:3.5.1'
+	implementation 'com.growingio.android:oaid:4.0.0'
 }
 ```
 </TabItem>
@@ -47,7 +47,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   implementation 'com.growingio.android:oaid'
 }
@@ -105,7 +105,7 @@ oaidConfig.setProvideCertCallback(new OaidConfig.OnProvideCertCallback() {
 ```java
 // 初始化SDK时，可以提前注册 oaid 模块
 GrowingAutotracker.startWithConfiguration(this,
-        new CdpAutotrackConfiguration("accountId", "urlScheme")
+        new AutotrackConfiguration("accountId", "urlScheme")
         // ...
         .addPreloadComponent(new OaidLibraryGioModule(), oaidConfig)
 
@@ -118,7 +118,7 @@ GrowingAutotracker.startWithConfiguration(this,
 ```java
 // 初始化SDK时，可以提前注册 oaid 模块
 GrowingTracker.startWithConfiguration(this,
-        new CdpTrackConfiguration("accountId", "urlScheme")
+        new TrackConfiguration("accountId", "urlScheme")
         //...
         .addPreloadComponent(new OaidLibraryGioModule(), oaidConfig)
 );

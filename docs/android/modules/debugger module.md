@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| debugger  | 无埋点自动集成 | `Debugger` | `WebService` | >=3.3.0 |
+| debugger  | 无埋点自动集成 | `Debugger` | `WebService` | - |
 
 ### 依赖方式
 <Tabs
@@ -36,7 +36,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:debugger:3.5.1'
+	implementation 'com.growingio.android:debugger:4.0.0'
 }
 ```
 </TabItem>
@@ -46,7 +46,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   implementation 'com.growingio.android:debugger'
 }
@@ -58,4 +58,4 @@ dependencies {
 ### 使用方式
 
 登录 GrowingIO CDP 管理平台（一般来说，cdp都会配有数据管理），在平台管理--->客户数据平台--->数据校验--->Mobile Debugger 进入Mobile Debugger启动页。
-具体操作参考 [Mobile Debugger](/docs/debugverify/mobiledebugger) 即可。
+具体操作参考 [Mobile Debugger](/knowledge/debugverify/mobiledebugger) 即可。

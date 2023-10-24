@@ -119,7 +119,7 @@ keytool -list -v -keystore release.keystore
 
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| advert  | 需要手动集成 |`Activate` | `AdvertResult` | >=3.4.6 |
+| advert  | 需要手动集成 |`Activate` | `AdvertResult` | - |
 
 ### 依赖方式
 <Tabs
@@ -135,7 +135,7 @@ keytool -list -v -keystore release.keystore
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:advert:3.5.1'
+	implementation 'com.growingio.android:advert:4.0.0'
 }
 ```
 </TabItem>
@@ -145,7 +145,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   implementation 'com.growingio.android:advert'
 }
@@ -159,9 +159,9 @@ Advert 广告模块中提供了配置文件可以设置模块的配置：
 
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明 
 | :-------------------------   | :------         | :----:  |:------  |:------| 
-| `setReadClipBoardEnable` | `Boolean`       | 否      | `true`  | 是否允许读取剪切板的应用信息  |
-| `setDeepLinkHost`  | `String` | 是      |  `null`  | 是否允许该地址向应用发送链接信息，示例：https://n.datayi.cn     |
-| `setDeepLinkCallback`  | `接口回调` | 否      | `null`   | 监听深度链接中的地址参数 |
+| setReadClipBoardEnable | _Boolean_       | 否      | `true`  | 是否允许读取剪切板的应用信息  |
+| setDeepLinkHost  | _String_ | 是      |  `null`  | 是否允许该地址向应用发送链接信息，示例：https://n.datayi.cn     |
+| setDeepLinkCallback  | _接口回调_ | 否      | `null`   | 监听深度链接中的地址参数 |
 
 ```java
 AdvertConfig config = new AdvertConfig();
@@ -187,7 +187,7 @@ config.setDeepLinkHost("Your DeepLinkHost")
 ```java
 // 初始化无埋点SDK时, 调用方法注册广告模块
 GrowingAutotracker.startWithConfiguration(this,
-                new CdpAutotrackConfiguration("accountId", "urlScheme")
+                new AutotrackConfiguration("accountId", "urlScheme")
                 //...
                 .addPreloadComponent(new AdvertLibraryGioModule(), config));
 ```
@@ -198,7 +198,7 @@ GrowingAutotracker.startWithConfiguration(this,
 ```java
 // 初始化埋点SDK时, 调用方法注册广告模块
 GrowingTracker.startWithConfiguration(this,
-                new CdpTrackConfiguration("accountId", "urlScheme")
+                new TrackConfiguration("accountId", "urlScheme")
                 //...
                 .addPreloadComponent(new AdvertLibraryGioModule(), config));
 ```
@@ -211,7 +211,7 @@ GrowingTracker.startWithConfiguration(this,
 
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明
 | :-------------------------   | :------         | :----:  |:------  |:------| 
-| `doDeepLinkByUrl` | `String`       | 是      | `null`  | 深度链接URL，示例：https://n.datayi.cn/k4wudMXn |
+| doDeepLinkByUrl | _String_       | 是      | `null`  | 深度链接URL，示例：https://n.datayi.cn/k4wudMXn |
 
 **无埋点SDK示例代码：**
 ```java

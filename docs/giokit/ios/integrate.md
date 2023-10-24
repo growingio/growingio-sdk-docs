@@ -17,18 +17,7 @@ GioKit 代码已托管在 [Github](https://github.com/growingio/growingio-sdk-io
 :::
 
 <Tabs>
-  <TabItem value="cocoapods" label="Cocoapods集成" default>
-
-在您的 Podfile 文件中添加
-
-```ruby
-pod 'GrowingToolsKit', :configurations => ['Debug']
-```
-打开终端，切换到项目目录
-执行 `pod install` 或 `pod update`
-
-  </TabItem>
- <TabItem value="swiftPM" label="Swift Package Manager集成">
+ <TabItem value="swiftPM" label="Swift Package Manager集成" default>
 
 1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
@@ -52,31 +41,23 @@ https://github.com/growingio/growingio-sdk-ios-toolskit.git
 
 
   </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods集成">
+
+在您的 Podfile 文件中添加
+
+```ruby
+pod 'GrowingToolsKit', :configurations => ['Debug']
+```
+打开终端，切换到项目目录
+执行 `pod install` 或 `pod update`
+
+  </TabItem>
 </Tabs>
 
 ## 初始化
 
 <Tabs>
-  <TabItem value="cocoapods" label="Cocoapods集成" default>
-
-在您的 `AppDelegate.m` 导入 GrowingToolsKit
-
-```objc
-#ifdef DEBUG
-#import <GrowingToolsKit/GrowingToolsKit.h>
-#endif
-```
-
-并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中
-
-```objc
-#ifdef DEBUG
-    [GrowingToolsKit start];
-#endif
-```
-
-  </TabItem>
- <TabItem value="swiftPM" label="Swift Package Manager集成">
+ <TabItem value="swiftPM" label="Swift Package Manager集成" default>
 
 在您的 `AppDelegate.swift` 导入 GrowingToolsKit
 
@@ -91,6 +72,25 @@ import GrowingToolsKit
 ```swift
 #if DEBUG
     GrowingToolsKit.start()
+#endif
+```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods集成">
+
+在您的 `AppDelegate.m` 导入 GrowingToolsKit
+
+```objectivec
+#ifdef DEBUG
+#import <GrowingToolsKit/GrowingToolsKit.h>
+#endif
+```
+
+并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中
+
+```objectivec
+#ifdef DEBUG
+    [GrowingToolsKit start];
 #endif
 ```
 

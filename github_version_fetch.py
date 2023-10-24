@@ -5,24 +5,12 @@ import os
 import re
 import sys
 
-readme_header = "---\ntitle: 版本记录\nsidebar_position: 0\n---\n----\n"
+readme_header = "---\ntitle: 版本记录\nsidebar_position: 0\n---\n"
 readme_item_foot = ":::note \n\n 标签:**[{name}]({url})** &nbsp;&nbsp;&nbsp;&nbsp;日期: **{date}** \n\n:::"
 readme_footer = "---\n## 更多发布细节请参考 [SDK Releases in Github]({url})"
 
 def android_releases(releases):
-    android_header_append = readme_header + """
-<details>
-<summary>GrowingIO Android SDK 各个版本对应关系</summary>
-
-| GrowingIO SDK  | SDK Plugin    | Giokit      | SDK Demo | Flutter SDK |
-| :--------------| :----------:  | :--------:  | :----:   | :----:      |
-| 3.5.0          | 3.5.0         | 1.4.0       | 1.0.0    | 1.1.0       |
-| 3.4.0-3.4.7    | 3.4.0-3.4.7   | 1.0.0-1.3.0 | ∅        | 1.0.0       |
-| 3.1.0-3.3.6    | 3.1.0-3.3.6   | ∅           | ∅        | ∅           |
-
-</details>
-
-"""
+    android_header_append = readme_header
     android_item_foot = readme_item_foot
     content = android_header_append
     for release in releases:
@@ -33,7 +21,7 @@ def android_releases(releases):
             continue
         if release["prerelease"] == True:
             continue
-        content += "## " + release_name.upper() +"\n\n"
+        content += "## " + release_name.upper() +"\n"
         content += release["body"] +"\n\n"
         content += android_item_foot.format(name=release["tag_name"], url=release["html_url"],
                                                     date=release["published_at"].split("T")[0])
@@ -150,6 +138,8 @@ def replace_giokit_android_version(dir, version):
 version_pattern = r'\d+\.(?:\d+\.)*\d+'
 
 if __name__ == '__main__':
+    # replace_android_version("docs/android/", "4.0.0")
+    # replace_giokit_android_version("docs/giokit/android/", "2.0.0")
     config_file = './version_config.json'
     with(open(config_file, 'r')) as f:
         config = json.load(f)

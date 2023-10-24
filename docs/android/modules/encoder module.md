@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| encoder  | 需要手动集成 |`EventEncoder` | `EventEncoder` | >=3.3.0 |
+| encoder  | 需要手动集成 |`EventEncoder` | `EventEncoder` | - |
 
 ### 依赖方式
 <Tabs
@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:encoder:3.5.1'
+	implementation 'com.growingio.android:encoder:4.0.0'
 }
 ```
 </TabItem>
@@ -44,7 +44,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
   implementation 'com.growingio.android:encoder'
 }
@@ -68,7 +68,7 @@ dependencies {
 ```java
 // 初始化无埋点SDK时, 调用方法注册加密模块
 GrowingAutotracker.startWithConfiguration(this,
-                new CdpAutotrackConfiguration("accountId", "urlScheme")
+                new AutotrackConfiguration("accountId", "urlScheme")
                 //...
                 .addPreloadComponent(new EncoderLibraryGioModule()));
 ```
@@ -79,7 +79,7 @@ GrowingAutotracker.startWithConfiguration(this,
 ```java
 // 初始化埋点SDK时, 调用方法注册加密模块
 GrowingTracker.startWithConfiguration(this,
-                new CdpTrackConfiguration("accountId", "urlScheme")
+                new TrackConfiguration("accountId", "urlScheme")
                 //...
                 .addPreloadComponent(new EncoderLibraryGioModule()));
 ```

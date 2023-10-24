@@ -2,7 +2,6 @@
 title: 版本记录
 sidebar_position: 0
 ---
-----
 # [3.7.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.6.0...3.7.0) (2023-09-19)
 
 

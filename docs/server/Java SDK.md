@@ -244,7 +244,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 
 :::info
 
-详细使用示例:[埋点事件示例](/docs/basicknowledge/trackEventUse#埋点事件示例)
+详细使用示例:[埋点事件示例](/knowledge/basicknowledge/trackEventUse#埋点事件示例)
 
 :::
 
@@ -281,7 +281,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 
 :::info
 
-详细使用示例:[用户属性事件示例](/docs/basicknowledge/trackEventUse#用户属性事件示例)
+详细使用示例:[用户属性事件示例](/knowledge/basicknowledge/trackEventUse#用户属性事件示例)
 
 :::
 

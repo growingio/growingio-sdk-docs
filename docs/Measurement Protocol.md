@@ -1,4 +1,5 @@
 ---
+id: measurement
 title: 测量协议
 sidebar_position: 13
 ---
@@ -14,12 +15,11 @@ sidebar_position: 13
 | deviceId | string | ✅ | 设备ID(访问用户ID) |
 | userId | string | ❌ | 登录用户ID |
 | sessionId | string | ✅ | 访问会话ID |
-| eventType | string | ✅ | 事件类型：**VISIT**，<br />**CUSTOM**，<br />**VISITOR_ATTRIBUTES**，<br />**LOGIN_USER_ATTRIBUTES**，<br />**CONVERSION_VARIABLES**，<br />**APP_CLOSED**，<br />**PAGE**，<br />**PAGE_ATTRIBUTES**，<br />**VIEW_CLICK**，<br />**VIEW_CHANGE**，<br />**FORM_SUBMIT**，<br />**ACTIVATE** |
+| eventType | string | ✅ | 事件类型：**VISIT**，<br />**CUSTOM**，<br />**LOGIN_USER_ATTRIBUTES**，<br />**APP_CLOSED**，<br />**PAGE**，<br />**VIEW_CLICK**，<br />**VIEW_CHANGE**，<br />**ACTIVATE** |
 | timestamp | long | ✅ | 时间戳 |
 | domain | string | ✅ | APP包名或者H5页面的域名 |
 | urlScheme | string | ✅ | 链接协议 |
 | appState | string | ✅ | APP状态：1. FOREGROUND 前台运行 <br /> 2. BACKGROUND 后台运行 |
-| globalSequenceId | long | ✅ | 全局请求编号 |
 | eventSequenceId | long | ✅ | 事件请求编号 |
 | dataSourceId | string | ✅ | CDP特有，只有在cdp上面才是必须字段 |
 | gioId | string | ❌ | CDP特有，idMapping使用 |
@@ -37,7 +37,9 @@ sidebar_position: 13
 | longitude | double | ❌ | 经度 |
 | sdkVersion | string | ✅ | SDK 版本号 |
 | userKey | string | ❌ | 登录用户ID的类型(用户自定义) |
+| timezoneOffset | string | ✅ | 时区偏移  |
 | operatingSystem | string | ❌ | 小程序必有，系统类型 |
+
 
 ### 访问事件(VISIT)
 
@@ -58,35 +60,29 @@ sidebar_position: 13
 
 ```json
 {
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
+  "platform": "Android",
+  "platformVersion": "12",
+  "deviceId": "ef512d03-9912-377f-8e6e-2bc27c9c6b9b",
+  "sessionId": "351b2e50-1be9-4b17-b899-49445f305ec6",
   "eventType": "VISIT",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
-  "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
+  "timestamp": 1692911673474,
+  "domain": "com.growingio.myapplication",
+  "urlScheme": "growing.12345678",
+  "appState": "BACKGROUND",
+  "eventSequenceId": 1,
+  "dataSourceId": "12345678",
+  "networkState": "WIFI",
+  "screenHeight": 2160,
   "screenWidth": 1080,
   "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
+  "deviceModel": "sdk_gphone64_arm64",
   "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "oaid": "eeefbf75-3df7-15e0-ffb5-ff1ff09f1ec3",
-  "sdkVersion": "3.3.6",
-  "extraSdk": {
-    "GrowingTouch": "1.2.3"
-  }
+  "appName": "My Application",
+  "appVersion": "1.0",
+  "language": "zh",
+  "sdkVersion": "4.0.0-SNAPSHOT",
+  "timezoneOffset": "-480",
+  "androidId": "c71972f5ace2b4f9"
 }
 ```
 
@@ -116,40 +112,33 @@ sidebar_position: 13
 
 ```json
 {
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
+  "platform": "Android",
+  "platformVersion": "12",
+  "deviceId": "ef512d03-9912-377f-8e6e-2bc27c9c6b9b",
+  "sessionId": "80210d54-66d1-42a5-beff-595985bfede3",
   "eventType": "CUSTOM",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
+  "timestamp": 1692911996960,
+  "domain": "com.growingio.myapplication",
+  "urlScheme": "growing.12345678",
   "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "eventName": "pay",
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
+  "eventSequenceId": 2,
+  "dataSourceId": "12345678",
+  "networkState": "WIFI",
+  "screenHeight": 2160,
   "screenWidth": 1080,
   "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
+  "deviceModel": "sdk_gphone64_arm64",
   "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "sdkVersion": "3.3.6",
+  "appName": "My Application",
+  "appVersion": "1.0",
+  "language": "zh",
+  "sdkVersion": "4.0.0-SNAPSHOT",
+  "timezoneOffset": "-480",
   "attributes": {
-    "goods": "shoe",
+    "goods": "Shoe",
     "brand": "Nick"
-  }
-  "resourceItem": {
-    "key": "itemKey",
-    "id": "itemId"
-  }
+  },
+  "eventName": "pay"
 }
 ```
 
@@ -166,35 +155,33 @@ sidebar_position: 13
 
 ```json
 {
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
+  "platform": "Android",
+  "platformVersion": "12",
+  "deviceId": "ef512d03-9912-377f-8e6e-2bc27c9c6b9b",
+  "sessionId": "da55d848-82ff-4a46-94df-b005589c18ae",
   "eventType": "LOGIN_USER_ATTRIBUTES",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
+  "timestamp": 1692912458904,
+  "domain": "com.growingio.myapplication",
+  "urlScheme": "growing.12345678",
   "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
+  "eventSequenceId": 0,
+  "dataSourceId": "12345678",
+  "networkState": "WIFI",
+  "screenHeight": 2160,
   "screenWidth": 1080,
   "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
+  "deviceModel": "sdk_gphone64_arm64",
   "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "sdkVersion": "3.3.6",
+  "appName": "My Application",
+  "appVersion": "1.0",
+  "language": "zh",
+  "sdkVersion": "4.0.0-SNAPSHOT",
+  "timezoneOffset": "-480",
   "attributes": {
     "vipLevel": "10",
     "email": "xxx@growingio.com"
   }
 }
-
 ```
 
 ### APP、小程序关闭事件(APP_CLOSED)
@@ -211,31 +198,28 @@ sidebar_position: 13
 
 ```json
 {
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
+  "platform": "Android",
+  "platformVersion": "12",
+  "deviceId": "ef512d03-9912-377f-8e6e-2bc27c9c6b9b",
+  "sessionId": "da55d848-82ff-4a46-94df-b005589c18ae",
   "eventType": "APP_CLOSED",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
+  "timestamp": 1692912530812,
+  "domain": "com.growingio.myapplication",
+  "urlScheme": "growing.12345678",
   "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
+  "eventSequenceId": 0,
+  "dataSourceId": "12345678",
+  "networkState": "WIFI",
+  "screenHeight": 2160,
   "screenWidth": 1080,
   "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
+  "deviceModel": "sdk_gphone64_arm64",
   "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "sdkVersion": "3.3.6",
+  "appName": "My Application",
+  "appVersion": "1.0",
+  "language": "zh",
+  "sdkVersion": "4.0.0-SNAPSHOT",
+  "timezoneOffset": "-480"
 }
 ```
 
@@ -252,39 +236,41 @@ sidebar_position: 13
 | referralPage | string | ❌ | 来源页面 |
 | query | string | ❌ | Hybrid页面url 中的query |
 | protocolType | string | ❌ | Hybrid页面url 中的协议头，如https |
+| attributes | Map<string, string> | ❌ | 页面属性 |
 
 示例
 
 ```json
 {
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
+  "platform": "Android",
+  "platformVersion": "12",
+  "deviceId": "ef512d03-9912-377f-8e6e-2bc27c9c6b9b",
+  "sessionId": "b64dbce1-fbae-497e-b6fe-be3a69ae289c",
   "eventType": "PAGE",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
+  "timestamp": 1692912241647,
+  "domain": "com.growingio.myapplication",
+  "urlScheme": "growing.12345678",
   "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "path": "/NestedFragmentActivity/GreenFragment[fragment1]",
-  "orientation": "PORTRAIT",
-  "title": "GreenFragment",
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
+  "eventSequenceId": 5,
+  "dataSourceId": "12345678",
+  "networkState": "WIFI",
+  "screenHeight": 2160,
   "screenWidth": 1080,
   "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
+  "deviceModel": "sdk_gphone64_arm64",
   "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "sdkVersion": "3.3.6",
+  "appName": "My Application",
+  "appVersion": "1.0",
+  "language": "zh",
+  "sdkVersion": "4.0.0-SNAPSHOT",
+  "timezoneOffset": "-480",
+  "attributes": {
+    "pageName": "MainPage"
+  },
+  "path": "/Main",
+  "orientation": "PORTRAIT",
+  "title": "My Application",
+  "referralPage": ""
 }
 ```
 
@@ -298,7 +284,8 @@ sidebar_position: 13
 | path | string | ✅ | 元素所属页面名
 | pageShowTimestamp | long | ✅ | 页面显示时间 |
 | textValue | string | ❌ | 元素文本内容 |
-| xpath | string | ✅ | xpath标识符 |
+| xpath | string | ✅ | 元素骨架 |
+| xcontent | string | ✅ | 元素样式/元素位置组 |
 | index | int | ❌ | 列表元素序号 |
 | hyperlink | string | ❌ | Hybrid页面元素的href |
 | query | string | ❌ | Hybrid页面url 中的query |
@@ -307,35 +294,33 @@ sidebar_position: 13
 
 ```json
 {
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
+  "platform": "Android",
+  "platformVersion": "12",
+  "deviceId": "ef512d03-9912-377f-8e6e-2bc27c9c6b9b",
+  "sessionId": "c4462783-9bd9-4b05-8775-31f8125a8599",
   "eventType": "VIEW_CLICK",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
+  "timestamp": 1692912568659,
+  "domain": "com.growingio.myapplication",
+  "urlScheme": "growing.12345678",
   "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "path": "/NestedFragmentActivity/GreenFragment[fragment1]",
-  "pageShowTimestamp": 1506069592985,
-  "textValue": "登录",
-  "xpath": "/Page/LinearLayout[0]/FrameLayout[1]/Button#login",
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
+  "eventSequenceId": 10,
+  "dataSourceId": "12345678",
+  "networkState": "WIFI",
+  "screenHeight": 2160,
   "screenWidth": 1080,
   "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
+  "deviceModel": "sdk_gphone64_arm64",
   "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "sdkVersion": "3.3.6",
+  "appName": "My Application",
+  "appVersion": "1.0",
+  "language": "zh",
+  "sdkVersion": "4.0.0-SNAPSHOT",
+  "timezoneOffset": "-480",
+  "path": "",
+  "textValue": "显示悬浮窗",
+  "xpath": "/MainActivity/DecorView/LinearLayout/FrameLayout/ActionBarOverlayLayout/ContentFrameLayout/LinearLayout/AppCompatTextView",
+  "index": -1,
+  "xcontent": "/0/0/0/0/decor_content_parent/0/0/tv1"
 }
 ```
 
@@ -358,83 +343,33 @@ sidebar_position: 13
 
 ```json
 {
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
+  "platform": "Android",
+  "platformVersion": "12",
+  "deviceId": "ef512d03-9912-377f-8e6e-2bc27c9c6b9b",
+  "sessionId": "a911d86e-200d-43be-942c-4899b9ff6aed",
   "eventType": "VIEW_CHANGE",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
+  "timestamp": 1692912805657,
+  "domain": "com.growingio.myapplication",
+  "urlScheme": "growing.12345678",
   "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "path": "/NestedFragmentActivity/GreenFragment[fragment1]",
-  "pageShowTimestamp": 1506069592985,
+  "eventSequenceId": 14,
+  "dataSourceId": "12345678",
+  "networkState": "WIFI",
+  "screenHeight": 2160,
+  "screenWidth": 1080,
+  "deviceBrand": "google",
+  "deviceModel": "sdk_gphone64_arm64",
+  "deviceType": "PHONE",
+  "appName": "My Application",
+  "appVersion": "1.0",
+  "language": "zh",
+  "sdkVersion": "4.0.0-SNAPSHOT",
+  "timezoneOffset": "-480",
+  "path": "",
   "textValue": "张三",
-  "xpath": "/Page/LinearLayout[0]/FrameLayout[1]/EditText#loginName",
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
-  "screenWidth": 1080,
-  "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
-  "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "sdkVersion": "3.3.6",
-}
-```
-
-### 网页、小程序表单提交事件(FORM_SUBMIT)
-
-* 请求发送时机：网页、小程序页面发生表单提交事件
-* 请求Body
-
-| 字段名称 | 数据类型 | 是否必有 | 解释说明 |
-| :---- | ---- | ---- | ---- |
-| path | string | ✅ | 元素所属页面名 |
-| pageShowTimestamp | long | ✅ | 页面显示时间 |
-| xpath | string | ✅ | xpath标识符 |
-| index | int | ❌ | 列表元素序号 |
-| query | string | ❌ | Hybrid页面url 中的query |
-
-示例
-
-```json
-{
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
-  "eventType": "FORM_SUBMIT",
-  "timestamp": 1506069592985,
-  "domain": "www.growingio.com",
-  "urlScheme": "growing.756c39fb86f318cc",
-  "appState": "FOREGROUND",
-  "globalSequenceId": 99,
-  "eventSequenceId": 3,
-  "path": "/",
-  "pageShowTimestamp": 1506069592985,
-  "xpath": "/div.align-items-start.d-flex.flex-column.justify-content-between.scaffold/div.align-items-start.d-flex.flex-fill.flex-row.justify-content-start/div.full/div/form",
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
-  "screenWidth": 1080,
-  "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
-  "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "sdkVersion": "3.3.6",
+  "xpath": "/MainActivity/DecorView/LinearLayout/FrameLayout/ActionBarOverlayLayout/ContentFrameLayout/LinearLayout/AppCompatEditText",
+  "index": -1,
+  "xcontent": "/0/0/0/0/decor_content_parent/0/0/et"
 }
 ```
 
@@ -457,34 +392,32 @@ sidebar_position: 13
 
 ```json
 {
-  "deviceId": "7196f014-d7bc-4bd8-b920-757cb2375ff6",
-  "userId": "张三",
-  "sessionId": "d5cbcf77-b38b-4223-954f-c6a2fdc0c098",
+  "platform": "Android",
+  "platformVersion": "12",
+  "deviceId": "ef512d03-9912-377f-8e6e-2bc27c9c6b9b",
+  "sessionId": "58ef553b-9c60-4b48-8e8b-60b2b085077c",
   "eventType": "ACTIVATE",
-  "timestamp": 1506069592985,
-  "domain": "com.growingio.app",
-  "urlScheme": "growing.756c39fb86f318cc",
+  "timestamp": 1692912871447,
+  "domain": "com.growingio.myapplication",
+  "urlScheme": "growing.12345678",
   "appState": "FOREGROUND",
-  "globalSequenceId": 2,
-  "eventSequenceId": 1,
-  "networkState": "4G",
-  "appChannel": "应用宝",
-  "screenHeight": 1920,
+  "eventSequenceId": 0,
+  "dataSourceId": "12345678",
+  "networkState": "WIFI",
+  "screenHeight": 2160,
   "screenWidth": 1080,
   "deviceBrand": "google",
-  "deviceModel": "Nexus 5",
+  "deviceModel": "sdk_gphone64_arm64",
   "deviceType": "PHONE",
-  "platform": "Android",
-  "platformVersion": "7.1.2",
-  "appName": "看数小助手",
-  "appVersion": "1.2.4",
-  "language": "zh_CN",
-  "latitude": 39.988518,
-  "longitude": 116.478797,
-  "oaid": "eeefbf75-3df7-15e0-ffb5-ff1ff09f1ec3",
-  "sdkVersion": "3.4.3",
+  "appName": "My Application",
+  "appVersion": "1.0",
+  "language": "zh",
+  "sdkVersion": "4.0.0-SNAPSHOT",
+  "timezoneOffset": "-480",
   "attributes": {
-    "userAgent": "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 5 Build/LMY48B; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.65 Mobile Safari/537.36"
-  }
+    "userAgent": "Dalvik/2.1.0 (Linux; U; Android 12; sdk_gphone64_arm64 Build/SE1A.211012.001)"
+  },
+  "eventName": "$app_activation",
+  "androidId": "c71972f5ace2b4f9"
 }
 ```
