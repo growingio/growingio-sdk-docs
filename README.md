@@ -1,6 +1,6 @@
 ## 站点地址
 
-[SaaS SDK 3.0 技术文档-https://growingio.github.io/growingio-sdk-docs-v3/](https://growingio.github.io/growingio-sdk-docs-v3/)
+[SDK 3.0 技术文档-https://growingio.github.io/growingio-sdk-docs-v3/](https://growingio.github.io/growingio-sdk-docs-v3/)
 
 若想要修改文档请 clone 本项目到本地修改。 文档位于 docs 目录下，博客文章位于 blog 目录下。
 具体的写作教程请参考 [docusaurus](https://www.docusaurus.cn/docs/)
