@@ -29,11 +29,10 @@ Github 项目地址为 [GrowingIO Android SDK Plugin](https://github.com/growing
 // 当AGP版本为7.0及以上添加
 pluginManagement {
     repositories {
-        // 添加maven仓库
-        mavenCentral()
+        // 添加gradle仓库
+        gradlePluginPortal()
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
-        gradlePluginPortal()
         google()
       
     }
@@ -41,10 +40,9 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        // 添加maven仓库
-        mavenCentral()
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        mavenCentral()
         google()
     }
 }
@@ -128,7 +126,7 @@ dependencies {
 growingAutotracker {
     logEnabled true
     giokit {
-        enabled true  //开启引入 GioKit 即可
+        enabled false  //开启则可引入 GioKit
         trackerFinderEnabled true
         trackerFinderDomain "com.xxxx.yourapplication"
         trackerCalledMethod "com.growingio.android.tracker#trackCumtomEvent"
