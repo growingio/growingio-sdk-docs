@@ -38,6 +38,8 @@ sidebar_position: 13
 | sdkVersion | string | ✅ | SDK 版本号 |
 | userKey | string | ❌ | 登录用户ID的类型(用户自定义) |
 | timezoneOffset | string | ✅ | 时区偏移  |
+| operatingSystem | string | ❌ | 小程序必有，系统类型 |
+
 
 ### 访问事件(VISIT)
 
