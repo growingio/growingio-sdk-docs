@@ -72,6 +72,7 @@ import TabItem from '@theme/TabItem';
 let config = AutotrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
 
 // 是否允许读取剪切板的应用信息
 config?.readClipboardEnabled = true
@@ -111,6 +112,7 @@ advert.doDeeplink(by: URL(string: "Your DeepLinkUrl")!, callback: callback)
 let config = AutotrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
 
 // 打开 ASAEnabled 开关
 config?.ASAEnabled = true
@@ -151,6 +153,7 @@ pod 'GrowingAnalytics/Advert'
 GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
+configuration.urlScheme = @"YourURLScheme";
 
 // 是否允许读取剪切板的应用信息
 configuration.readClipboardEnabled = YES;
@@ -190,6 +193,7 @@ configuration.deepLinkCallback = ^(NSDictionary * _Nullable params,
 GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
+configuration.urlScheme = @"YourURLScheme";
 
 // 打开 ASAEnabled 开关
 configuration.ASAEnabled = YES;

@@ -106,9 +106,11 @@ import GrowingAutotracker
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
 // YourDatasourceId eg: 11223344aabbcc
+// YourURLScheme eg: growing.123456789
 let config = AutotrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
 Autotracker.start(config!, launchOptions: launchOptions)
 ```
 
@@ -120,9 +122,11 @@ Autotracker.start(config!, launchOptions: launchOptions)
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
 // YourDatasourceId eg: 11223344aabbcc
+// YourURLScheme eg: growing.123456789
 GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
+configuration.urlScheme = @"YourURLScheme";
 [GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```
   </TabItem>
@@ -300,9 +304,11 @@ import GrowingTracker
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
 // YourDatasourceId eg: 11223344aabbcc
+// YourURLScheme eg: growing.123456789
 let config = TrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
 Tracker.start(config!, launchOptions: launchOptions)
 ```
 
@@ -314,9 +320,11 @@ Tracker.start(config!, launchOptions: launchOptions)
 // YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
 // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
 // YourDatasourceId eg: 11223344aabbcc
+// YourURLScheme eg: growing.123456789
 GrowingTrackConfiguration *configuration = [GrowingTrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
+configuration.urlScheme = @"YourURLScheme";
 [GrowingTracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```
   </TabItem>
