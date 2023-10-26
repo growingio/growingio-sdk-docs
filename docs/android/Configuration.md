@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 | **accountId** [#](#1-sdk必需参数)             | _String_      |  **是** |**`null`**| 项目ID，每个应用对应唯一值                   |  |
 | **urlScheme** [#](#1-sdk必需参数)             | _String_      |  **是** |**`null`**| 应用的URLScheme，唯一值                    |  |
 | **setDataSourceId** [#](#1-sdk必需参数)       | _String_      |  **是** |**`null`**| 应用的DataSourceId，唯一值                 |  |
-| **setDataCollectionServerHost** [#](#1-sdk必需参数) |_String_ |  **是** |**`null`**| 服务端部署后的 ServerHost                  |  |
+| setDataCollectionServerHost [#](#1-sdk必需参数) | _String_    |    否   |**`新saas地址`**| 收数地址                             |  |
 | setChannel [#](#2-setchannel)                | _String_      |    否   | `null`  | 设置应用的分发渠道                          |  |
 | setDebugEnabled [#](#3-setdebugenabled)      | _boolean_     |    否   | `false` | 调试模式，会打印 Log 和错误，在线上环境请关闭   |  |
 | setCellularDataLimit [#](#4-setcellulardatalimit) | _int_    |    否   | `10`    | 每天发送数据的流量限制，单位MB                |  |
@@ -44,8 +44,10 @@ import TabItem from '@theme/TabItem';
 
 ### 1. SDK必需参数
 
-**accountId，** **urlScheme，** **setDataSourceId，** **setDataCollectionServerHost**
-这四个参数为用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
+**accountId，** **urlScheme，** **setDataSourceId，** 
+这三个参数为用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
+
+**setDataCollectionServerHost** 默认域名为 `napi.growingio.com`，若是OP客户，需要设置自己的ServerHost。
 
 ### 2. setChannel
 
