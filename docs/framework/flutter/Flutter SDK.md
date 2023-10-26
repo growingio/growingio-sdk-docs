@@ -308,7 +308,7 @@ GrowingTracker.startWithConfiguration(
 :::info
 在 Flutter SDK 启动广告模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
 * [Android 端 引入广告模块](/docs/android/modules/advert%20module)
-* [iOS 端 引入广告模块](/docs/ios/modules/Advert%20Module)
+* [iOS 端 引入广告模块](/docs/ios/modules/Ads%20Module)
 :::
 
 #### 加密模块
