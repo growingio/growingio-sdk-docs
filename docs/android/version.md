@@ -9,11 +9,22 @@ sidebar_position: 0
 
 | GrowingIO SDK  | SDK Plugin    | Giokit      | SDK Demo | Flutter SDK |
 | :--------------| :----------:  | :--------:  | :----:   | :----:      |
-| 3.5.0          | 3.5.0         | 1.4.0       | 1.0.0    | 1.1.0       |
+| 3.5.2          | 3.5.2         | 1.4.0       | 1.0.0    | 1.1.3       |
 | 3.4.0-3.4.7    | 3.4.0-3.4.7   | 1.0.0-1.3.0 | ∅        | 1.0.0       |
 | 3.1.0-3.3.6    | 3.1.0-3.3.6   | ∅           | ∅        | ∅           |
 
 </details>
+
+## RELEASE-3.5.2
+
+- 加强无埋点对View为空的判断
+- 隐藏无埋点配置项的接口
+
+:::note 
+
+ 标签:**[v3.5.2](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.5.2)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-10-27** 
+
+:::
 
 ## RELEASE-3.5.1
 
