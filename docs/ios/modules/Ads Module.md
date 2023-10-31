@@ -52,11 +52,11 @@ import TabItem from '@theme/TabItem';
 
 ### 模块集成
 
-1. 添加 **GrowingModule_Advert** Package
+1. 添加 **GrowingModule_Ads** Package
 
-<ImageLoader path="img/ios/add_package_advert" />
+<ImageLoader path="img/ios/add_package_ads" />
 
-2. 在 AppDelegate.swift 中导入 `import GrowingModule_Advert`
+2. 在 AppDelegate.swift 中导入 `import GrowingModule_Ads`
 
 ### 模块配置
 
@@ -72,6 +72,7 @@ import TabItem from '@theme/TabItem';
 let config = AutotrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
 
 // 是否允许读取剪切板的应用信息
 config?.readClipboardEnabled = true
@@ -95,12 +96,12 @@ Autotracker.start(config!, launchOptions: launchOptions)
 | `doDeeplink` | `URL`       | 是      | `null`  | 深度链接URL，示例：https://n.datayi.cn/k4wudMXn  |
 
 ```swift
-let advert = Advertising.sharedInstance()
+let ads = Advertising.sharedInstance()
 let callback = { (params: [AnyHashable : Any]?,
                   processTime: TimeInterval,
                   error: Error? ) -> Void in
 }
-advert.doDeeplink(by: URL(string: "Your DeepLinkUrl")!, callback: callback)
+ads.doDeeplink(by: URL(string: "Your DeepLinkUrl")!, callback: callback)
 ```
 
 ### 获取 Apple Search Ads 归因数据分析
@@ -111,6 +112,7 @@ advert.doDeeplink(by: URL(string: "Your DeepLinkUrl")!, callback: callback)
 let config = AutotrackConfig(accountId: "YourAccountId")
 config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
 
 // 打开 ASAEnabled 开关
 config?.ASAEnabled = true
@@ -130,7 +132,7 @@ Autotracker.start(config!, launchOptions: launchOptions)
 1. 使用 Cocoapods 安装
 
 ```shell
-pod 'GrowingAnalytics/Advert'
+pod 'GrowingAnalytics/Ads'
 ```
 
 打开终端，切换到项目目录，执行 `pod install` 或 `pod update`
@@ -151,6 +153,7 @@ pod 'GrowingAnalytics/Advert'
 GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
+configuration.urlScheme = @"YourURLScheme";
 
 // 是否允许读取剪切板的应用信息
 configuration.readClipboardEnabled = YES;
@@ -190,6 +193,7 @@ configuration.deepLinkCallback = ^(NSDictionary * _Nullable params,
 GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
 configuration.dataCollectionServerHost = @"YourServerHost";
 configuration.dataSourceId = @"YourDatasourceId";
+configuration.urlScheme = @"YourURLScheme";
 
 // 打开 ASAEnabled 开关
 configuration.ASAEnabled = YES;
