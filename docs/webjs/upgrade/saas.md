@@ -26,18 +26,6 @@ import TabItem from '@theme/TabItem';
 
 ## SDK升级
 
-请选择您当前使用的SDK版本查看升级步骤。
-
-<Tabs
-  groupId="1"
-  defaultValue="2.x版本"
-  values={[
-    {label: '2.x版本', value: '2.x版本'},
-    {label: '3.8.x版本', value: '3.8.x版本'},
-  ]
-}>
-<TabItem value="2.x版本">
-
 下面将正式介绍SDK从2.x版本升级到4.0版本的步骤。
 
 ### 1、修改集成代码
@@ -80,27 +68,3 @@ import TabItem from '@theme/TabItem';
 ### 5、检查埋点事件和用户属性事件
 
 检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#参数限制)，如有超出限制或超出限制的可能，请调整业务逻辑。
-
-</TabItem>
-<TabItem value="3.8.x版本">
-
-下面将正式介绍SDK从3.8版本升级到4.0版本的步骤。
-
-### 1、修改集成代码
-
-如果您使用标准CDN集成或NPM集成方式进行集成，请参考[集成文档](/docs/webjs/integrate)重新集成SDK。
-
-如果您是下载SDK至本地项目集成，请[前往下载地址](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)下载4.0版本SDK并加载至项目中。
-
-### 2、检查初始化配置项
-
-* 移除已废弃的配置项：`autotrack`、`compress`。如果您想禁用无埋点事件和数据加密，请**按需集成SDK**，**不要注册**对应插件即可。未使用则忽略。
-* 重命名替换**`enableIdMapping`**为**`idMapping`**。未使用则忽略。
-
-其他配置项请[参考文档](/docs/webjs/initSettings)按需配置功能，如果您不确定是否需要对应配置项，请咨询我们的技术支持。
-
-### 3、检查埋点事件和用户属性事件
-
-检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#参数限制)，如有超出限制或超出限制的可能，请调整业务逻辑。
-</TabItem>
-</Tabs>
