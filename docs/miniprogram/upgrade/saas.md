@@ -133,7 +133,24 @@ Component({ ... });
 
 其他配置项请[参考文档](/docs/miniprogram/initSettings)按需配置功能，如果您不确定是否需要对应配置项，请咨询我们的技术支持。
 
-### 4、检查埋点事件和用户属性事件
+### 4、检查api调用
+
+以下步骤仅列出需要改动的点，没有列出的api或内容即为自动兼容无需更改。
+
+1. 移除**`setEvar`**方法调用。如需使用转化变量，请将转化变量放在埋点事件属性（track）中进行上报。未使用则忽略。
+2. 移除**`setPage`**方法调用。如需使用页面级变量，请将变量加入页面参数query中，作为页面参数的一部分上报，平台会自动解析处理。如需使用页面访问变量，请使用`setPageAttributes`[参考文档](/docs/miniprogram/commonlyApi#12设置页面属性setpageattributes)。未使用则忽略。
+
+> 请注意两者的区别:<br/>
+> \* 以往的`setPage`对应的是当前页面所有事件的事件属性；对应现在的改动则是将变量放入页面参数query中的方式，效果一致。<br/>
+> \* `setPageAttributes`对应的只有页面访问事件的属性，并不会对页面中其他事件生效。<br/>
+> \* 如果您需要对页面中的所有埋点事件添加属性，请使用`setGeneralProps`[参考文档](/docs/miniprogram/commonlyApi#10设置埋点通用属性setgeneralprops)。
+
+3. 移除**`setVisitor`**方法调用。如需使用访问用户变量，请将访问用户变量放在用户属性（setUserAttributes）中进行上报。未使用则忽略。
+4. 重命名替换**`setUser`**为**`setUserAttributes`**，调用方式不变。未使用则忽略。
+
+其他api调用请[参考文档](/docs/miniprogram/commonlyApi)使用，如果您不确定是否需要调用api，请咨询我们的技术支持。
+
+### 5、检查埋点事件和用户属性事件
 
 检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/miniprogram/commonlyApi#object参数限制)，如有超出限制或超出限制的可能，请调整业务逻辑。
 </TabItem>
