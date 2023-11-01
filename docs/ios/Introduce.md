@@ -25,9 +25,10 @@ Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数�
 
 ## 无埋点 SDK 集成
 :::info
-**3.3.5 版本及以上，Swift 项目建议使用 SwiftPM 集成**
 
-如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
+**Swift 项目建议使用 SwiftPM 集成**
+
+如需使用 Cocoapods 集成 SDK 3.3.5 (含) 至 3.7.0 (含) 之间的版本，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
 
 :::
 
@@ -231,9 +232,10 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 埋点 SDK 只自动采集用户访问事件和 APP 关闭事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
 
 :::info
-**3.3.5 版本及以上，Swift 项目建议使用 SwiftPM 集成**
 
-如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
+**Swift 项目建议使用 SwiftPM 集成**
+
+如需使用 Cocoapods 集成 SDK 3.3.5 (含) 至 3.7.0 (含) 之间的版本，会出现 `Include of non-modular header inside framework module` 报错，请参考 [<font color='red'>解决方案</font>](/docs/ios/Introduce#include-of-non-modular-header-inside-framework-module-报错解决方案)
 
 :::
 
@@ -527,7 +529,7 @@ GrowingIO SDK 使用 访问用户 ID 标识访问用户 ，其值使用 IDFA 、
 
 ### Include of non-modular header inside framework module 报错解决方案
 
-Swift 项目如需使用 Cocoapods 集成 SDK 3.3.5 版本及以上，会出现 `Include of non-modular header inside framework module` 报错，修改方式有以下 2 种：
+Swift 项目如需使用 Cocoapods 集成 SDK 3.3.5 (含) 至 3.7.0 (含) 之间的版本，会出现 `Include of non-modular header inside framework module` 报错，修改方式有以下 2 种：
 
 - 手动添加 Module 形式导入
 

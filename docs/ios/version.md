@@ -3,6 +3,13 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+# [3.7.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.7.0...3.7.1) (2023-11-1)
+
+
+### Bug Fixes
+
+* 进一步适配 Swift 项目在 Cocoapods 下集成 ([#290](https://github.com/growingio/growingio-sdk-ios-autotracker/pull/290))
+
 # [3.7.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.6.0...3.7.0) (2023-09-19)
 
 
