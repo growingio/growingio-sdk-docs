@@ -522,7 +522,7 @@ Map<String, String> map = new HashMap<>();
 map.put("gender", "male");
 map.put("age", "12");
 GrowingAutotracker.get().setGeneralProps(map);
-// 删除置顶全局通用属性
+// 删除指定全局通用属性
 GrowingAutotracker.get().removeGeneralProps("gender", "age");
 // 清空全局通用属性
 GrowingAutotracker.get().clearGeneralProps();
@@ -534,7 +534,7 @@ Map<String, String> map = new HashMap<>();
 map.put("gender", "male");
 map.put("age", "12");
 GrowingTracker.get().setGeneralProps(map);
-// 删除置顶全局通用属性
+// 删除指定全局通用属性
 GrowingTracker.get().removeGeneralProps("gender", "age");
 // 清空全局通用属性
 GrowingTracker.get().clearGeneralProps();

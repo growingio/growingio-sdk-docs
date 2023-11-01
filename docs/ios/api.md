@@ -680,3 +680,71 @@ view.growingViewCustomContent = @"content";
 
   </TabItem>
 </Tabs>
+
+### 17. 全局通用属性
+`setGeneralProps(_ props: [String:String])`<br/>
+设置全局通用属性
+
+`clearGeneralProps()`<br/>
+清空全局通用属性
+
+`removeGeneralProps(_ keys: [String])`<br/>
+删除指定通用属性
+
+#### 参数说明
+
+| 参数        | 参数类型   | 说明               |
+| :---------- | :--------- | :---------------|
+| `props` | `[String: String]` | 设置通用属性信息 |
+
+
+| 参数      | 参数类型   | 说明          |
+| :-------- | :--------- | :--------- |
+| `keys` | `[String]` | 删除指定的通用属性 |
+
+#### 示例
+
+<Tabs>
+  <TabItem value="无埋点" label="无埋点" default>
+
+```swift
+// 设置全局通用属性
+GrowingAutotracker.sharedInstance().setGeneralProps(["gender": "male", "age": "12"])
+// 删除指定全局通用属性
+GrowingAutotracker.sharedInstance().removeGeneralProps(["gender"])
+// 清空全局通用属性
+GrowingAutotracker.sharedInstance().clearGeneralProps()
+```
+
+```objectivec
+// 设置全局通用属性
+[[GrowingAutotracker sharedInstance] setGeneralProps:@{@"gender" : @"male", @"age": @"12"}];
+// 删除指定全局通用属性
+[[GrowingAutotracker sharedInstance] removeGeneralProps:@[@"gender"]];
+// 清空全局通用属性
+[[GrowingAutotracker sharedInstance] clearGeneralProps];
+```
+
+  </TabItem>
+  <TabItem value="埋点" label="埋点">
+
+```swift
+// 设置全局通用属性
+GrowingTracker.sharedInstance().setGeneralProps(["gender": "male", "age": "12"])
+// 删除指定全局通用属性
+GrowingTracker.sharedInstance().removeGeneralProps(["gender"])
+// 清空全局通用属性
+GrowingTracker.sharedInstance().clearGeneralProps()
+```
+
+```objectivec
+// 设置全局通用属性
+[[GrowingTracker sharedInstance] setGeneralProps:@{@"gender" : @"male", @"age": @"12"}];
+// 删除指定全局通用属性
+[[GrowingTracker sharedInstance] removeGeneralProps:@[@"gender"]];
+// 清空全局通用属性
+[[GrowingTracker sharedInstance] clearGeneralProps];
+```
+
+  </TabItem>
+</Tabs>
