@@ -709,11 +709,11 @@ view.growingViewCustomContent = @"content";
 
 ```swift
 // 设置全局通用属性
-GrowingAutotracker.sharedInstance().setGeneralProps(["gender": "male", "age": "12"])
+Autotracker.setGeneralProps(["gender": "male", "age": "12"])
 // 删除指定全局通用属性
-GrowingAutotracker.sharedInstance().removeGeneralProps(["gender"])
+Autotracker.sharedInstance().removeGeneralProps(["gender"])
 // 清空全局通用属性
-GrowingAutotracker.sharedInstance().clearGeneralProps()
+Autotracker.sharedInstance().clearGeneralProps()
 ```
 
 ```objectivec
@@ -730,11 +730,11 @@ GrowingAutotracker.sharedInstance().clearGeneralProps()
 
 ```swift
 // 设置全局通用属性
-GrowingTracker.sharedInstance().setGeneralProps(["gender": "male", "age": "12"])
+Tracker.setGeneralProps(["gender": "male", "age": "12"])
 // 删除指定全局通用属性
-GrowingTracker.sharedInstance().removeGeneralProps(["gender"])
+Tracker.removeGeneralProps(["gender"])
 // 清空全局通用属性
-GrowingTracker.sharedInstance().clearGeneralProps()
+Tracker.clearGeneralProps()
 ```
 
 ```objectivec
