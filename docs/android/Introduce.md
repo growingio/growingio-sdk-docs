@@ -17,8 +17,10 @@ buildscript {
     repositories {
         // 添加maven仓库
         mavenCentral()
-        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        // 如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        // 3.5.1版本开始，插件发布在gradlePluginPortal
+        gradlePluginPortal()
     }
 }
 
@@ -26,7 +28,7 @@ allprojects {
     repositories {
         // 添加maven仓库
         mavenCentral()
-        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        // 如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
@@ -48,8 +50,10 @@ buildscript {
     repositories {
         // 添加maven仓库
         mavenCentral()
-        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
+        // 如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
         maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        // 3.5.1版本开始，插件发布在gradlePluginPortal
+        gradlePluginPortal()
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
