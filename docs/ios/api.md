@@ -682,7 +682,7 @@ view.growingViewCustomContent = @"content";
 </Tabs>
 
 ### 17. 全局通用属性
-`setGeneralProps(_ props: [String:String])`<br/>
+`setGeneralProps(_ props: [String: String])`<br/>
 设置全局通用属性
 
 `clearGeneralProps()`<br/>
@@ -711,9 +711,9 @@ view.growingViewCustomContent = @"content";
 // 设置全局通用属性
 Autotracker.setGeneralProps(["gender": "male", "age": "12"])
 // 删除指定全局通用属性
-Autotracker.sharedInstance().removeGeneralProps(["gender"])
+Autotracker.removeGeneralProps(["gender"])
 // 清空全局通用属性
-Autotracker.sharedInstance().clearGeneralProps()
+Autotracker.clearGeneralProps()
 ```
 
 ```objectivec
