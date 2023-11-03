@@ -21,7 +21,7 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 | 数据传输格式-json | 使用json格式保存和上传事件数据，需要集成生效  | [JSON格式模块](/docs/android/modules/json%20module#数据格式库) |
 | 无埋点圈选-circler | 基于无埋点的圈选插件，默认集成在无埋点SDK中  | [圈选模块](/docs/android/modules/circler%20module) |
 | 数据调试-debugger | 数据调试Mobile Debugger，默认集成在无埋点/埋点SDK中 | [Debugger 模块](/docs/android/modules/debugger%20module) |
-| 广告-advert | 添加激活事件和DeepLink功能，需要集成生效 | [广告模块](/docs/android/modules/advert%20module) |
+| 广告-ads | 添加激活事件和DeepLink功能，需要集成生效 | [广告模块](/docs/android/modules/advert%20module) |
 | 性能监控-apm | 用于监控应用的性能和错误分析，需要集成生效  | [性能监控模块](/docs/android/modules/apm%20module) |
 | flutter | 当应用需要使用Growingio Flutter SDK，需要在原生SDK中集成 | [Flutter模块](/docs/android/modules/flutter%20module) |
 | 更多开发中... |
