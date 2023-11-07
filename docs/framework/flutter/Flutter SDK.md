@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Flutter SDK 插件
 ---
 
-Flutter SDK 插件虽然提供了 无埋点SDK 和 埋点SDK 两个版本，但是在使用 Flutter 无埋点SDK前需要按照 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect) 才能使无埋点功能生效。
+Flutter SDK 插件提供了无埋点 SDK 和埋点 SDK 两个版本，在使用 Flutter 无埋点 SDK 前，需要按照 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect) 才能使无埋点功能生效。
 
 ---
 
@@ -68,7 +68,7 @@ dependencies:
 <details>
   <summary>添加 maven 仓库</summary>
 
-在 project 级别的build.gradle文件中添加Maven仓库
+在 project 级别的 build.gradle 文件中添加 Maven 仓库
 
 ```groovy
 buildscript {
@@ -142,7 +142,7 @@ dependencies {
 <details>
   <summary>添加插件(集成无埋点需要)</summary>
 
-在 project 级别的build.gradle文件中添加插件路径
+在 project 级别的 build.gradle 文件中添加插件路径
 
 ```groovy
 buildscript {

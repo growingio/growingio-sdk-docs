@@ -3,16 +3,18 @@ slug: /framework/flutter
 title: Flutter SDK
 ---
 
-Flutter SDK 提供了 [无埋点SDK](/docs/framework/flutter/index.md) 和 [埋点SDK](/docs/framework/flutter/index.md) 两个版本：
-* 埋点SDK 只自动采集用户访问事件，需要开发人员调用相应埋点 API 采集埋点事件;
-* 无埋点SDK 具备 埋点SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
+Flutter SDK 提供了无埋点 SDK 和埋点 SDK 两个版本：
+* 埋点 SDK 只自动采集用户访问事件，需要开发人员调用相应埋点 API 采集埋点事件;
+* 无埋点 SDK 具备埋点 SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
+
+前往 [Flutter SDK 插件](/docs/framework/flutter/Flutter%20SDK) 开始集成
 
 ## 版本记录
 |    版本    | 说明 |  日期  |
 |:-------:| :----  |  :-------:  |
 | v1.1.3 | - 修复 iOS 在元素位置信息为 NaN 情况下出现圈选界面不刷新<br/>- 修复 UrlScheme 多环境配置 | 2023-10-18 |
-| V1.1.0 | - 原生SDK升级至 3.5.0；<br/>- 修复由于Android SDK 升级导致的Android Flutter plugin 类的签名不匹配；<br/>- 修复 iOS 从前台到挂起状态下直接杀死 App 异常崩溃捕获。 | 2023-07-26 |
-| V1.0.0 | 这是 Growingio Flutter sdk Library 的第一个正式版，它包含了以下内容：<br/>- 全新的 Flutter 埋点插件，能几乎支持原生的全部功能；<br/>- 通过 Flutter Aspect 支持SDK的无埋点功能；<br/>- 支持 Flutter 无埋点页面事件，能够基于 Navigation 路由机制发送页面事件；<br/>- 支持 Flutter 无埋点点击事件，能够在用户点击时发送点击事件；<br/>- 支持 Flutter 圈选，将可交互 Widget 与无埋点事件绑定。 | 2023-04-07 |
+| V1.1.0 | - 原生 SDK 升级至 3.5.0；<br/>- 修复由于 Android SDK 升级导致的 Android Flutter plugin 类的签名不匹配；<br/>- 修复 iOS 从前台到挂起状态下直接杀死 App 异常崩溃捕获。 | 2023-07-26 |
+| V1.0.0 | 这是 Growingio Flutter SDK Library 的第一个正式版，它包含了以下内容：<br/>- 全新的 Flutter 埋点插件，能几乎支持原生的全部功能；<br/>- 通过 Flutter Aspect 支持 SDK 的无埋点功能；<br/>- 支持 Flutter 无埋点页面事件，能够基于 Navigation 路由机制发送页面事件；<br/>- 支持 Flutter 无埋点点击事件，能够在用户点击时发送点击事件；<br/>- 支持 Flutter 圈选，将可交互 Widget 与无埋点事件绑定。 | 2023-04-07 |
 
 :::info
 **Dart SDK**： >=2.16.0 

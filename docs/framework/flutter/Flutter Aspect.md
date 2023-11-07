@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Flutter Aspect 集成
 ---
 
-由于 Dart 语言未提供在编译期修改代码的整套API，所以 Flutter SDK的无埋点需要通过修改Dart源码方式织入外部的 `Transformer` 能使其在dart代码优化前参与到 Flutter 代码的编译中；在 Flutter 的源码中添加整套 Transformer 流程的API，使其实现 Aspect 功能。
+由于 Dart 语言未提供在编译期修改代码的整套 API，所以 Flutter SDK 的无埋点需要通过修改 Dart 源码方式织入外部的 `Transformer` 能使其在 dart 代码优化前参与到 Flutter 代码的编译中；在 Flutter 的源码中添加整套 Transformer 流程的 API，使其实现 Aspect 功能。
 
 基于上述说明，我们的 Flutter SDK 无埋点方案基于修改 Flutter 源代码的方式进行，需要拉取 GitHub 上的 [Flutter SDK](https://github.com/flutter/flutter)。
 具体安装可以参考官方引导：[Install Flutter From Github](https://docs.flutter.dev/get-started/install/macos#downloading-straight-from-github-instead-of-using-an-archive)
@@ -11,9 +11,9 @@ title: Flutter Aspect 集成
 然后再根据你开发使用的 Flutter 版本，切换到相应的 tag 分支上。
 
 :::info
-目前支持 Flutter SDK 版本为 [v3.3.0](https://github.com/growingio/growingio-dart-frontend/tree/3.3.0)，[v3.3.9](https://github.com/growingio/growingio-dart-frontend/tree/3.3.9)，[v3.7.0](https://github.com/growingio/growingio-dart-frontend/tree/3.7.0)，[v3.7.2](https://github.com/growingio/growingio-dart-frontend/tree/3.7.2)，[v3.7.8](https://github.com/growingio/growingio-dart-frontend/tree/3.7.8)，[v3.7.9](https://github.com/growingio/growingio-dart-frontend/tree/3.7.9)，[v3.10.4](https://github.com/growingio/growingio-dart-frontend/tree/3.10.4)，[v3.10.5](https://github.com/growingio/growingio-dart-frontend/tree/3.10.5)，[v3.13.2](https://github.com/growingio/growingio-dart-frontend/tree/3.13.2).
+目前支持 Flutter SDK 版本为 [v3.3.0](https://github.com/growingio/growingio-dart-frontend/tree/3.3.0)，[v3.3.9](https://github.com/growingio/growingio-dart-frontend/tree/3.3.9)，[v3.7.0](https://github.com/growingio/growingio-dart-frontend/tree/3.7.0)，[v3.7.2](https://github.com/growingio/growingio-dart-frontend/tree/3.7.2)，[v3.7.8](https://github.com/growingio/growingio-dart-frontend/tree/3.7.8)，[v3.7.9](https://github.com/growingio/growingio-dart-frontend/tree/3.7.9)，[v3.10.4](https://github.com/growingio/growingio-dart-frontend/tree/3.10.4)，[v3.10.5](https://github.com/growingio/growingio-dart-frontend/tree/3.10.5)，[v3.13.2](https://github.com/growingio/growingio-dart-frontend/tree/3.13.2)，[v3.13.9](https://github.com/growingio/growingio-dart-frontend/tree/3.13.9).
 
-后续将随着Flutter SDK 的更新会持续推出新的版本，若需要支持特定的 Flutter 版本，请在 [Github Issues](https://github.com/growingio/growingio-dart-frontend/issues) 中提交请求或者向客户成功经理咨询方案。
+后续将随着 Flutter SDK 的更新会持续推出新的版本，若需要支持特定的 Flutter 版本，请在 [Github Issues](https://github.com/growingio/growingio-dart-frontend/issues) 中提交请求或者向客户成功经理咨询方案。
 :::
 
 import Tabs from '@theme/Tabs';
@@ -35,13 +35,13 @@ import TabItem from '@theme/TabItem';
 <TabItem value="manual">
 
 ### 访问源码
-请访问我们的 [Growingio-Dart-Frontend](https://github.com/growingio/growingio-dart-frontend)，该项目的不同分支代表不同的 Flutter 版本，请根据自己项目的flutter版本下载对应tag的 `frontend_server.dart.snapshot`.
-比如说 flutter 3.10.4 版本，需要下载 tag 3.10.4 下的 `frontend_server.dart.snapshot` 文件。
+请访问我们的 [Growingio-Dart-Frontend](https://github.com/growingio/growingio-dart-frontend)，该项目的不同分支代表不同的 Flutter 版本，请根据自己项目的 Flutter 版本下载对应 tag 的 `frontend_server.dart.snapshot`.
+比如说 Flutter 3.10.4 版本，需要下载 tag 3.10.4 下的 `frontend_server.dart.snapshot` 文件。
 
 > 具体位置为 `/lib/flutter_frontend_server/frontend_server.dart.snapshot`
 
 ### 覆盖源文件
-需要在 flutter sdk下进行替换，位置分别为：
+需要在 Flutter SDK 下进行替换，位置分别为：
 1.  `<flutter sdk dir>/bin/cache/artifacts/engine/darwin-x64/frontend_server.dart.snapshot （macos）`  
     或 `<flutter sdk dir>/bin/cache/artifacts/engine/windows-x64/frontend_server.dart.snapshot (windows)`  
     或 `<flutter sdk dir>/bin/cache/artifacts/engine/linux-x64/frontend_server.dart.snapshot (linux)`
