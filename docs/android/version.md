@@ -9,11 +9,27 @@ sidebar_position: 0
 
 | GrowingIO SDK  | SDK Plugin    | Giokit      | SDK Demo | Flutter SDK |
 | :--------------| :----------:  | :--------:  | :----:   | :----:      |
-| 3.5.2          | 3.5.2         | 1.4.0       | 1.0.0    | 1.1.3       |
+| 3.5.0 ~        | 3.5.0 ~       | 1.4.0       | 1.0.0    | 1.1.0 ~     |
 | 3.4.0-3.4.7    | 3.4.0-3.4.7   | 1.0.0-1.3.0 | ∅        | 1.0.0       |
 | 3.1.0-3.3.6    | 3.1.0-3.3.6   | ∅           | ∅        | ∅           |
 
 </details>
+
+## RELEASE-3.5.3
+
+### Feature
+
+- 网络请求添加超时配置 ([#202](https://github.com/growingio/growingio-sdk-android-autotracker/pull/202))
+
+### Bug Fix
+
+- 修复使用插件3.5.2版本时丢失UtilsInjector Class的错误([#202](https://github.com/growingio/growingio-sdk-android-autotracker/pull/202))
+
+:::note 
+
+ 标签:**[v3.5.3](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.5.3)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-11-17** 
+
+:::
 
 ## RELEASE-3.5.2
 

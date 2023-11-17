@@ -26,6 +26,7 @@ import TabItem from '@theme/TabItem';
 | `idMappingEnabled` | `BOOL` | 否 | `NO` | 是否开启多用户身份上报 | - | <font color='red'>>=3.3.0</font> |
 | `urlScheme` | `NSString` | 否 | `nil` | 自定义 URL Scheme | - | <font color='red'>>=3.3.0</font> |
 | `encryptEnabled` | `BOOL` | 否 | `NO` | 是否开启网络传输加密 | - | <font color='red'>>=3.3.2</font> |
+| `requestTimeout` | `NSTimeInterval` | 否 | `30` | 事件请求超时时长，单位秒 | - | <font color='red'>>=3.8.0</font> |
 
 ### 详细说明
 
@@ -88,6 +89,10 @@ urlScheme 是 SDK 3.3.0 及其之后必传参数，其他参数为必传参数�
 > SDK 版本>=3.3.2，pod ENABLE_ENCRYPTION 已被废弃, 请使用 -[GrowingTrackConfiguration setEncryptEnabled] 进行配置
 
 设置为 YES 时，网络传输内容将会加密，不会明文显示。
+
+#### 13. **requestTimeout**
+
+设置事件请求超时时长，超过该时长未请求成功，则将等待下一次事件定时上报，默认为 30 秒。
 
 ## 其他
 
