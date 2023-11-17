@@ -3,6 +3,13 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+# [3.8.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.7.1...3.8.0) (2023-11-17)
+
+
+### Features
+
+* 添加初始化配置项 requestTimeout ([#293](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/293))
+
 # [3.7.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.7.0...3.7.1) (2023-11-1)
 
 
@@ -322,26 +329,6 @@ page attributes ([acece74](https://github.com/growingio/growingio-sdk-ios-autotr
 * 增加 sonarcloud ([60f905e](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/60f905e831e98479e8f09912107be847379e55cb))
 * iDFA 获取模块重整 ([02bab81](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/02bab816d94bf87bd4504639870c1b08d5b9d1ba))
 * release 3.2.0-beta ([115d234](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/115d23402fc8e714dc212fbc3bc2cf3e1c16e0b1))
-
-
-## [3.1.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.0.2...3.1.0) (2021-04-07)
-
-
-### Bug Fixes
-
-* 修改头文件导入 ([2f759f1](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2f759f150916bb99857ecee0affc28818f132c6c))
-* 添加队列出队，防止 mobiledebugger 无事件时队列数据无法读取 ([f7ddd92](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/f7ddd92f1aec49635fdaf413401d60f11dc20898))
-* 修改事件缓存机制，适配冷启动情况 ([a42ba83](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a42ba83b8f95d01fec307c389a58e6b0d76e055e))
-* 修改网络配置去除多余代码，url 路径使用属性 ([d821b6d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/d821b6d362ce9b364d54bb1acda01428aadfbab2))
-* log Level capitalization ([391d87d](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/391d87d45ab8502696458a70929b50861e48f0eb))
-* mobiledebugger ([daadd83](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/daadd830e4e68f62008eb8ca964b0dec41470be3))
-* test: updata testcase ([25b586c](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/25b586cf02b6b468c7cdd5ad99714f76da0eb92a))
-
-
-### Features
-
-* 防止数组遍历时增删操作，发布 3.1.0-beta 版本 ([2e7e70b](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2e7e70bf8cc91645abc8bc7014a7ea006572f524))
-* add mobiledebugger & mobileloggeradd ([6834cd4](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/6834cd458a4c6592298f9f7dc7fe4e2725361117))
 
 
 ---
