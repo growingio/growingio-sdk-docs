@@ -22,6 +22,8 @@ import TabItem from '@theme/TabItem';
 | `setCellularDataLimit`         | `int`      |    否    | `10`    | 每天发送数据的流量限制，单位MB               | -         |           |
 | `setDataUploadInterval`        | `int`      |    否    | `15`    | 数据发送的间隔，单位秒                      | -         |           |
 | `setSessionInterval`           | `int`      |    否    | `30`    | 会话后台留存时长，单位秒                    | -         |           |
+| `setRequestTimeout`            | `long`,`TimeUnit`      |    否    | `30`    | OkHttp请求默认超时时间                    | -         |      <font color='red'>>= 3.5.3</font>     |
+| `setRequestDetailTimeout`      | `long`,`long`,`long`,`TimeUnit`   |    否    | `10+10+10`   | 分别为OkHttp 连接超时时间，read超时时间和write超时时间 | -         |      <font color='red'>>= 3.5.3</font>     |
 | `setImeiEnabled`               | `boolean`  |    否    | `false` | 是否采集Imei信息，默认不采集                | -         |  <font color='red'>>= 3.5.0</font>  |
 | `setDataCollectionEnabled`     | `boolean`  |    否    | `true`  | 是否采集数据                              | -         |          |
 | `setEventFilterInterceptor`    | `EventFilterInterceptor` |  否  | `DefaultEventFilterInterceptor` | 用于事件过滤,替换废弃的事件过滤和属性过滤 | - |  <font color='red'>>= 3.4.3</font>  |
@@ -73,15 +75,19 @@ import TabItem from '@theme/TabItem';
 
 设置会话后台留存时长。指当前会话在应用进入后台后的最大留存时间，默认为30秒。另外，其他情况下也会重新生成一个新的会话，如设置用户ID等核心信息，重新打开数据收集等。
 
-### 7. **setDataCollectionEnabled**
+### 7. **setRequestTimeout**
+
+设置OkHttp超时时间，默认为30秒。另外，如果想要详细设置OkHttp具体的超时时间，可以调用 `setRequestDetailTimeout`，分别为连接超时时间，读取超时时间，写入超时时间。
+
+### 8. **setDataCollectionEnabled**
 
 数据收集。当数据收集关闭时，SDK将不会再获取设备信息，也不会产生事件和上报事件。
 
-### 8. **setImeiEnabled**
+### 9. **setImeiEnabled**
 
 是否采集Imei信息，默认不采集，且Android 10及以上已不再支持 Imei 的获取。
 
-### 9. **setEventFilterInterceptor**
+### 10. **setEventFilterInterceptor**
 
 事件过滤，该接口需要用户提供一个拦截器用于事件拦截的自定义化。**使用事件拦截器时请注意使用，不要过滤掉重要信息，防止数据采集信息丢失或者少采。**
 
@@ -133,16 +139,16 @@ GrowingTracker.startWithConfiguration(this,
 
 
 
-### 10. **setIdMappingEnabled**
+### 11. **setIdMappingEnabled**
 
 是否支持多用户身份上报, 默认不支持。
 是否支持多用户身份上报, 与 API 接口`setLoginUserId(String userId, String userKey)`对应, 开启时, userKey会在每次上报数据时携带, 关闭时, 接口与`setLoginUserId(String userId)`作用相同
 
-### 11. **setImpressionScale**
+### 12. **setImpressionScale**
 
 曝光比例。与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
 
-### 12 **addPreloadComponent**
+### 13 **addPreloadComponent**
 注册功能模块，为 Growingio SDK 添加更多的额外功能。
 
 ```java
@@ -158,7 +164,7 @@ GrowingAutotracker.startWithConfiguration(this,
 ```
 模块列表请参考 [功能模块一览](/docs/android/modules)
 
-### 13 **setWebViewBridgeEnabled**
+### 14 **setWebViewBridgeEnabled**
 是否全量采集 hybrid 数据（默认为 true）
 
 无埋点默认会采集对应 webview 的 hybrid 事件，设置为 false，可以关闭采集 hybrid 数据。
