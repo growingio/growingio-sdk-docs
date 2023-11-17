@@ -13,7 +13,7 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 | 数据库-database | 数据库为sqlite，默认集成在埋点SDK中 | [数据库模块](/docs/android/modules/core%20module#数据库模块) |
 | 数据传输格式-json | 使用json格式保存和上传事件数据，sdk 默认  | [JSON格式模块](/docs/android/modules/core%20module#数据格式库) |
 | 网络库-okhttp | 使用okhttp请求网络，sdk默认网络模块  | [网络请求库](/docs/android/modules/core%20module#网络请求库) |
-| 网络库-urlconnnection | 使用`urlconnnection`请求网络  | [网络请求库](/docs/android/modules/core%20module#网络请求库) |
+| 网络库-urlconnection | 使用`urlconnection`请求网络  | [网络请求库](/docs/android/modules/core%20module#网络请求库) |
 | 网络库-volley | 使用volley请求网络  | [网络请求库](/docs/android/modules/core%20module#网络请求库) |
 | 数据加密-encoder | 使用 snappy 加密上报的事件数据,需要集成生效  | [数据加密](/docs/android/modules/encoder%20module) |
 | 设备标识符-oaid | 提供采集 OAID 的能力,需要集成生效  | [OAID](/docs/android/modules/oaid%20module) |

@@ -80,8 +80,8 @@ dependencies {
 	implementation 'com.growingio.android:okhttp3:3.5.3'
 	// 可选网络模块-volley
 	implementation 'com.growingio.android:volley:3.5.3'
-	// 可选网络模块-urlconnnection
-	implementation 'com.growingio.android:urlconnnection:3.5.3'
+	// 可选网络模块-urlconnection
+	implementation 'com.growingio.android:urlconnection:3.5.3'
 }
 ```
 </TabItem>
@@ -97,8 +97,8 @@ dependencies {
 	implementation 'com.growingio.android:okhttp3'
 	// 可选网络模块-volley
 	implementation 'com.growingio.android:volley'
-	// 可选网络模块-urlconnnection
-	implementation 'com.growingio.android:urlconnnection'
+	// 可选网络模块-urlconnection
+	implementation 'com.growingio.android:urlconnection'
 }
 ```
 
