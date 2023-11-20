@@ -9,9 +9,9 @@ title: 初始化配置
 
 > <b>提示：所有的配置项均为非必填。</b>
 
-| **字段名**       | **参数取值**            | **默认值**                   | **说明**                     |
+| **字段名**        | **参数取值**             | **默认值**                    | **说明**                     |
 |------------------|-------------------------|------------------------------|----------------------------|
-| `cookieDomain`   | `string`                | `当前站点的一级域名`         | 自定义cookie存储的域         |
+| `cookieDomain`   | `string`                | `当前站点的一级域名`            | 自定义cookie存储的域         |
 | `dataCollect`    | `boolean`               | `true`                       | 是否开启数据采集             |
 | `debug`          | `boolean`               | `false`                      | 是否开启调试模式             |
 | `forceLogin`     | `boolean`               | `false`                      | 是否开启强制登录             |
@@ -20,6 +20,7 @@ title: 初始化配置
 | `ignoreFields`   | `string[]`              | `[]`                         | 上报忽略字段                 |
 | `originalSource` | `boolean`               | `true`                       | 访问事件是否使用原始进入数据 |
 | `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
+| `sendType`       | `string`                | `beacon`                     | 数据上报优先方式             |
 | `serverUrl`      | `string`                | `https://napi.growingio.com` | 数据上报的服务端地址         |
 | `storageType`    | `cookie / localStorage` | `cookie`                     | SDK信息的持久化存储的类型    |
 | `trackBot`       | `boolean`               | `true`                       | 是否采集爬虫环境数据         |
@@ -34,7 +35,10 @@ title: 初始化配置
 例：您有`a.growingio.com`和`b.growingio.com`两个或多个子域名，通常情况下都集成SDK访问时会共享用户信息，即视为同一个用户。如果您希望进行区分和数据隔离，指定`cookieDomain`为各自的完整子域名即可。
 
 ```js
-gdp('init', accountId, datasourceId, { cookieDomain: 'test.growingio.com' });
+gdp('init', accountId, datasourceId, {
+  cookieDomain: 'test.growingio.com',
+  ...其他配置项,
+});
 ```
 
 ### dataCollect
@@ -45,7 +49,10 @@ gdp('init', accountId, datasourceId, { cookieDomain: 'test.growingio.com' });
 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
 
 ```js
-gdp('init', accountId, datasourceId, { dataCollect: false });
+gdp('init', accountId, datasourceId, {
+  dataCollect: false,
+  ...其他配置项,
+});
 ```
 
 隐私合规相关内容（隐私协议的实现）请[参考文档](/knowledge/compliance/webCompliance#合规步骤)
@@ -55,7 +62,10 @@ gdp('init', accountId, datasourceId, { dataCollect: false });
 在开发时设置 `debug: true`，打开开发者工具控制台，即可看到实时采集的数据。注意正式上线时关闭它，尤其是开启了数据加密时。
 
 ```js
-gdp('init', accountId, datasourceId, { debug: true });
+gdp('init', accountId, datasourceId, {
+  debug: true,
+  ...其他配置项,
+});
 ```
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)
@@ -67,6 +77,7 @@ gdp('init', accountId, datasourceId, { debug: true });
 ```js
 gdp('init', accountId, dataSourceId, appId, {
   forceLogin: true,
+  ...其他配置项,
 });
 ```
 
@@ -85,7 +96,10 @@ gdp('identify', openId / unionId);
 多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户ID接口时，设置 userKey，服务端调用用户身份融合API时，可将不同的登录用户ID识别为同一用户。开启多用户身份上报后，需要在设置登录用户ID时设置userKey。[参考文档](/docs/webjs/commonlyApi#4设置登录用户idsetuserid)
 
 ```js
-gdp('init', accountId, datasourceId, { idMapping: true });
+gdp('init', accountId, datasourceId, {
+  idMapping: true,
+  ...其他配置项,
+});
 ```
 
 ### hashtag
@@ -93,7 +107,10 @@ gdp('init', accountId, datasourceId, { idMapping: true });
 GrowingIO 默认不会把hash识别成页面URL的一部分。对于使用hash进行页面转跳的单页面网站应用来说，可以启用hashtag作为标识页面的一部分。
 
 ```js
-gdp('init', accountId, datasourceId, { hashtag: true });
+gdp('init', accountId, datasourceId, {
+  hashtag: true,
+  ...其他配置项,
+});
 ```
 
 ### ignoreFields
@@ -109,6 +126,7 @@ screenWidth       屏幕宽度
 ```js
 gdp('init', accountId, datasourceId, {
   ignoreFields: ['screenHeight', 'screenWidth'],
+  ...其他配置项,
 });
 ```
 
@@ -123,6 +141,7 @@ gdp('init', accountId, datasourceId, {
 ```js
 gdp('init', accountId, datasourceId, {
   originalSource: false,
+  ...其他配置项,
 });
 ```
 
@@ -139,12 +158,54 @@ gdp('init', accountId, datasourceId, {
 | Minp     | 微信小程序内嵌页 | jdp       | 京东小程序内嵌页 |
 | alip     | 阿里(支付宝)小程序内嵌页 |
 
+```js
+gdp('init', accountId, datasourceId, {
+  platform: 'wxwv',
+  ...其他配置项,
+});
+```
+
+<!-- ### requestTimeout
+
+默认情况下，SDK的上报请求在`XHR`和`图片`的形式下超时时长为 5000毫秒（即5秒），超时即自动失败。当您需要控制数据上报请求超时时长时可修改。
+
+配置项取值：整数大于0，单位毫秒。
+
+**<font color="#FC5F3A">注意：</font>该配置项仅在`XHR`和`图片`请求时生效，`beacon`请求无法控制。**
+
+```js
+gdp('init', accountId, datasourceId, {
+  requestTimeout: '3000',
+  ...其他配置项,
+});
+``` -->
+
+### sendType
+
+默认情况下，SDK上报数据的请求方式为自动判断，优先使用`sendBeacon`进行上报；当sendBeacon无法支持或队列繁忙无法继续使用时，会自动降级为`XMLHttpRequest`异步请求；当XMLHttpRequest遇到问题发送失败时，会自动降级为`图片`请求继续上报。
+
+如果您的站点对某些请求方式有特殊限制或更愿意使用其中某种方式时，可指定优先上报的方式，失败时依然会按上述优先级自动降级。
+
+配置项取值：**`beacon`、`xhr`、`image`**，默认值`beacon`。
+
+**<font color="#FC5F3A">注意：</font>在您修改默认的优先上报方式之前，请在网络上查阅相关资料以充分了解3种发送方式的区别及优缺点。**
+
+```js
+gdp('init', accountId, datasourceId, {
+  sendType: 'xhr',
+  ...其他配置项,
+});
+```
+
 ### serverUrl
 
 Saas客户忽略此项配置；OP私有部署客户请填写此项，否则您的服务将无法收获行为数据上报。支持域名和IP地址。
 
 ```js
-gdp('init', accountId, datasourceId, { serverUrl: 'https://api.growingio.com' });
+gdp('init', accountId, datasourceId, {
+  serverUrl: 'your server url',
+  ...其他配置项,
+});
 ```
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)
@@ -156,7 +217,10 @@ gdp('init', accountId, datasourceId, { serverUrl: 'https://api.growingio.com' })
 默认情况下，SDK使用 Cookie 来持久性地存储访问用户Id、SessionId等信息。但有的站点可能有较高的安全设置禁止使用 Cookie 或当前环境不支持 Cookie 时，可指定存储类型为 `localStorage`。
 
 ```js
-gdp('init', accountId, datasourceId, { storageType: 'localStorage' });
+gdp('init', accountId, datasourceId, {
+  storageType: 'localStorage',
+  ...其他配置项,
+});
 ```
 
 ### trackBot
@@ -164,7 +228,10 @@ gdp('init', accountId, datasourceId, { storageType: 'localStorage' });
 默认情况下，SDK会采集支持JavaScript的爬虫访问数据，包括会话信息和页面访问信息，但是不会收集页面的元素数据。你可以通过浏览器维度分辨出有多少是爬虫带来的数据，有多少是正常用户访问的数据。如果你希望不采集爬虫的数据，可关闭该配置项。
 
 ```js
-gdp('init', accountId, datasourceId, { trackBot: false });
+gdp('init', accountId, datasourceId, {
+  trackBot: false,
+  ...其他配置项,
+});
 ```
 
 ### version
@@ -172,5 +239,8 @@ gdp('init', accountId, datasourceId, { trackBot: false });
 该字段的含义为当前客户站点的版本号，建议填写，可用于分析不同版本之间数据的对比。如不填写，默认值则为1.0.0。
 
 ```js
-gdp('init', accountId, datasourceId, { version: '2.1.1' });
+gdp('init', accountId, datasourceId, {
+  version: 'your website version',
+  ...其他配置项,
+});
 ```

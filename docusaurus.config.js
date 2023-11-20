@@ -64,6 +64,7 @@ module.exports = {
             {to: '/knowledge/basicknowledge/', label: '基础知识'},
             {to: '/knowledge/compliance/', label: '合规指南'},
             {to: '/knowledge/debugverify/', label: '数据校验'},
+            {to: '/knowledge/measurement/', label: '测量协议'}
           ],
         },
         {to: '/docs/question', label: '常见问题', position: 'left'},
