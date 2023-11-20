@@ -66,3 +66,7 @@ import TabItem from '@theme/TabItem';
 ### 5、检查埋点事件和用户属性事件
 
 检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#参数限制)，如有超出限制或超出限制的可能，请调整业务逻辑。
+
+### 6、检查采集标记
+
+从4.0版本开始，所有事件中的index字段取值将从 **1** 开始，所以如果您在页面中使用了`data-growing-index` 或 `data-growing-idx`，请注意排查修改。

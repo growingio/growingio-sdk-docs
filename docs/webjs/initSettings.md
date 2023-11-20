@@ -9,9 +9,9 @@ title: 初始化配置
 
 > <b>提示：所有的配置项均为非必填。</b>
 
-| **字段名**       | **参数取值**            | **默认值**                   | **说明**                     |
+| **字段名**        | **参数取值**             | **默认值**                    | **说明**                     |
 |------------------|-------------------------|------------------------------|----------------------------|
-| `cookieDomain`   | `string`                | `当前站点的一级域名`         | 自定义cookie存储的域         |
+| `cookieDomain`   | `string`                | `当前站点的一级域名`            | 自定义cookie存储的域         |
 | `dataCollect`    | `boolean`               | `true`                       | 是否开启数据采集             |
 | `debug`          | `boolean`               | `false`                      | 是否开启调试模式             |
 | `forceLogin`     | `boolean`               | `false`                      | 是否开启强制登录             |
@@ -20,6 +20,8 @@ title: 初始化配置
 | `ignoreFields`   | `string[]`              | `[]`                         | 上报忽略字段                 |
 | `originalSource` | `boolean`               | `true`                       | 访问事件是否使用原始进入数据 |
 | `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
+| `requestTimeout` | `number`                | `5000`                       | 数据上报超时时长             |
+| `sendType`       | `string`                | `beacon`                     | 数据上报优先方式             |
 | `serverUrl`      | `string`                | `https://napi.growingio.com` | 数据上报的服务端地址         |
 | `storageType`    | `cookie / localStorage` | `cookie`                     | SDK信息的持久化存储的类型    |
 | `trackBot`       | `boolean`               | `true`                       | 是否采集爬虫环境数据         |
@@ -138,6 +140,24 @@ gdp('init', accountId, datasourceId, {
 | iOS      | iOS内嵌页        | kuaishoup | 快手小程序内嵌页 |
 | Minp     | 微信小程序内嵌页 | jdp       | 京东小程序内嵌页 |
 | alip     | 阿里(支付宝)小程序内嵌页 |
+
+### requestTimeout
+
+默认情况下，SDK的上报请求在`XHR`和`图片`的形式下超时时长为 5000毫秒（即5秒），超时即自动失败。当您需要控制数据上报请求超时时长时可修改。
+
+配置项取值：整数大于0，单位毫秒。
+
+**<font color="#FC5F3A">注意：</font>该配置项仅在`XHR`和`图片`请求时生效，`beacon`请求无法控制。**
+
+### sendType
+
+默认情况下，SDK上报数据的请求方式为自动判断，优先使用`sendBeacon`进行上报；当sendBeacon无法支持或队列繁忙无法继续使用时，会自动降级为`XMLHttpRequest`异步请求；当XMLHttpRequest遇到问题发送失败时，会自动降级为`图片`请求继续上报。
+
+如果您的站点对某些请求方式有特殊限制或更愿意使用其中某种方式时，可指定优先上报的方式，失败时依然会按上述优先级自动降级。
+
+配置项取值：**`beacon`、`xhr`、`image`**，默认值`beacon`。
+
+**<font color="#FC5F3A">注意：</font>在您修改默认的优先上报方式之前，请在网络上查阅相关资料以充分了解3种发送方式的区别及优缺点。**
 
 ### serverUrl
 
