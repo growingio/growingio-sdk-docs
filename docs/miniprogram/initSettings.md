@@ -183,7 +183,7 @@ Saas客户忽略此项配置；OP私有部署客户请填写此项，否则您�
 
 ```js
 gdp('init', accountId, datasourceId, appId, {
-  serverUrl: 'https://api.myserver.com',
+  serverUrl: 'your server url',
   ...其他配置项,
 });
 ```
@@ -245,3 +245,14 @@ gdp('init', accountId, dataSourceId, appId, {
 相反，数值越大，节流限制越大，发送时间越远离事件产生时间；设为 2000 则产生事件后会推入请求队列进行计时，直至下一次事件产生的间隔超过 2 秒或者 2 秒内没有事件产生才上报数据（请求队列中存储的事件数达到 50 条时会强制发送一次）。虽然请求次数会变少，但是一旦用户操作过快杀掉了小程序进程或者退出了小程序，最后的行为数据可能就被丢失无法上报。
 
 我们推荐使用 1 秒（即默认值）的间隔限制，最大程度上减少性能影响同时兼顾数据上报准确性。
+
+### version
+
+该字段的含义为当前客户站点的版本号，建议填写，可用于分析不同版本之间数据的对比。如不填写，默认值则为1.0.0。
+
+```js
+gdp('init', accountId, datasourceId, {
+  version: 'your miniprogram app version',
+  ...其他配置项,
+});
+```

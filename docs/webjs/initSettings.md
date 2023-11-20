@@ -203,7 +203,7 @@ Saas客户忽略此项配置；OP私有部署客户请填写此项，否则您�
 
 ```js
 gdp('init', accountId, datasourceId, {
-  serverUrl: 'https://api.myserver.com',
+  serverUrl: 'your server url',
   ...其他配置项,
 });
 ```
@@ -240,7 +240,7 @@ gdp('init', accountId, datasourceId, {
 
 ```js
 gdp('init', accountId, datasourceId, {
-  version: '2.1.1',
+  version: 'your website version',
   ...其他配置项,
 });
 ```
