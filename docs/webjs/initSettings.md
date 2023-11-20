@@ -20,7 +20,6 @@ title: 初始化配置
 | `ignoreFields`   | `string[]`              | `[]`                         | 上报忽略字段                 |
 | `originalSource` | `boolean`               | `true`                       | 访问事件是否使用原始进入数据 |
 | `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
-| `requestTimeout` | `number`                | `5000`                       | 数据上报超时时长             |
 | `sendType`       | `string`                | `beacon`                     | 数据上报优先方式             |
 | `serverUrl`      | `string`                | `https://napi.growingio.com` | 数据上报的服务端地址         |
 | `storageType`    | `cookie / localStorage` | `cookie`                     | SDK信息的持久化存储的类型    |
@@ -166,7 +165,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-### requestTimeout
+<!-- ### requestTimeout
 
 默认情况下，SDK的上报请求在`XHR`和`图片`的形式下超时时长为 5000毫秒（即5秒），超时即自动失败。当您需要控制数据上报请求超时时长时可修改。
 
@@ -179,7 +178,7 @@ gdp('init', accountId, datasourceId, {
   requestTimeout: '3000',
   ...其他配置项,
 });
-```
+``` -->
 
 ### sendType
 

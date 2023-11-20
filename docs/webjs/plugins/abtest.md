@@ -37,3 +37,11 @@ import gioABTest from "gio-webjs-sdk/plugins/gioABTest"
 gdp('registerPlugins', [{ ...gioABTest, options: { abServerUrl: 'server url' }}]);
 gdp('init', xxxx);
 ```
+
+### 4、api调用
+
+```js
+gdp('getABTest', 实验层Id, (result: any) => {
+  console.log(result);
+});
+```
