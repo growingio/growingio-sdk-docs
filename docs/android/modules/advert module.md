@@ -119,7 +119,7 @@ keytool -list -v -keystore release.keystore
 
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| advert  | 需要手动集成 |`Activate` | `AdvertResult` | - |
+| ads  | 需要手动集成 |`Activate` | `AdsResult` | - |
 
 ### 依赖方式
 <Tabs
@@ -135,7 +135,7 @@ keytool -list -v -keystore release.keystore
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:advert:4.0.0'
+	implementation 'com.growingio.android:ads:4.0.0'
 }
 ```
 </TabItem>
@@ -147,7 +147,7 @@ dependencies {
   // Import the BoM for the GrowingIO platform
   implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
-  implementation 'com.growingio.android:advert'
+  implementation 'com.growingio.android:ads'
 }
 ```
 
@@ -155,7 +155,7 @@ dependencies {
 </Tabs>
 
 ### 模块配置
-Advert 广告模块中提供了配置文件可以设置模块的配置：
+Ads 广告模块中提供了配置文件可以设置模块的配置：
 
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明 
 | :-------------------------   | :------         | :----:  |:------  |:------| 
@@ -164,7 +164,7 @@ Advert 广告模块中提供了配置文件可以设置模块的配置：
 | setDeepLinkCallback  | _接口回调_ | 否      | `null`   | 监听深度链接中的地址参数 |
 
 ```java
-AdvertConfig config = new AdvertConfig();
+AdsConfig config = new AdsConfig();
 config.setDeepLinkHost("Your DeepLinkHost")
         .setReadClipBoardEnable(true)
         .setDeepLinkCallback((params, error, appAwakePassedTime) -> {
@@ -189,7 +189,7 @@ config.setDeepLinkHost("Your DeepLinkHost")
 GrowingAutotracker.startWithConfiguration(this,
                 new AutotrackConfiguration("accountId", "urlScheme")
                 //...
-                .addPreloadComponent(new AdvertLibraryGioModule(), config));
+                .addPreloadComponent(new AdsLibraryGioModule(), config));
 ```
 
 </TabItem>
@@ -200,7 +200,7 @@ GrowingAutotracker.startWithConfiguration(this,
 GrowingTracker.startWithConfiguration(this,
                 new TrackConfiguration("accountId", "urlScheme")
                 //...
-                .addPreloadComponent(new AdvertLibraryGioModule(), config));
+                .addPreloadComponent(new AdsLibraryGioModule(), config));
 ```
 
 </TabItem>

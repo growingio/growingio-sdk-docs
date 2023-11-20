@@ -59,3 +59,16 @@ dependencies {
 
 登录 GrowingIO CDP 管理平台（一般来说，cdp都会配有数据管理），在平台管理--->客户数据平台--->数据校验--->Mobile Debugger 进入Mobile Debugger启动页。
 具体操作参考 [Mobile Debugger](/knowledge/debugverify/mobiledebugger) 即可。
+
+### 在埋点中使用 MobileDebugger
+
+由于浏览器有时候在应用进程已经运行的情况下打开App，会从 `onNewIntent` 方法重新进入Activity，所以埋点 SDK 需要在启动的Activity中额外添加 ‘GrowingTracker.get().onActivityNewIntent(this,intent)’,如下所示：
+
+```kotlin
+override fun onNewIntent(intent: Intent?) {
+    super.onNewIntent(intent)
+    GrowingTracker.get().onActivityNewIntent(this, intent)
+}
+```
+
+> 无埋点SDK中会在插件中处理这个逻辑，所以无须做此处理。
