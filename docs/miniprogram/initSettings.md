@@ -183,7 +183,7 @@ Saas客户忽略此项配置；OP私有部署客户请填写此项，否则您�
 
 ```js
 gdp('init', accountId, datasourceId, appId, {
-  serverUrl: 'https://api.growingio.com',
+  serverUrl: 'https://api.myserver.com',
   ...其他配置项,
 });
 ```
