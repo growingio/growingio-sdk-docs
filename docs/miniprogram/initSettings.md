@@ -162,12 +162,30 @@ gdp('init', accountId, dataSourceId, appId, {
 
 **<font color="#FC5F3A">注意：</font>如果 extraParams 和 ignoreFields 中同时指定了同一字段，getGioInfo 将不再获取到指定的字段，即 ignoreFields 优先级更高。**
 
+### originalSource
+
+默认情况下，SDK发送访问事件（VISIT）时，会使用用户初始进入小程序时的`path`和`query`信息，以保证能正确上报utm参数等进入信息。但是需要注意的点是，当您的小程序不是在用户进入的页面发送访问事件时，会导致VISIT事件和PAGE事件上报的path和query不一致，从而平台的页面跳出率数据会异常。
+
+举例：如果您的小程序在进入时关闭了数据采集，用户进入P1页面，操作后跳转进入P2页面，然后您打开了采集开关。此时，发送的VISIT事件中的path和query是P1页面的，而PAGE事件的path和query则是P2页面的，这就会导致跳出率异常。
+
+如果您不是上述场景，维持默认值即可；如果您是上述场景，不考虑utm相关信息丢失的问题且想保证跳出率准确，那么可以关闭该配置项。
+
+```js
+gdp('init', accountId, datasourceId, appId, {
+  originalSource: false,
+  ...其他配置项,
+});
+```
+
 ### serverUrl
 
 Saas客户忽略此项配置；OP私有部署客户请填写此项，否则您的服务将无法收获行为数据上报。支持域名和IP地址。
 
 ```js
-gdp('init', accountId, datasourceId, { serverUrl: 'https://api.growingio.com' });
+gdp('init', accountId, datasourceId, appId, {
+  serverUrl: 'https://api.growingio.com',
+  ...其他配置项,
+});
 ```
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/commonlyApi#5修改请求协议scheme)
