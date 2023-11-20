@@ -112,6 +112,10 @@ gdp('track', eventId, eventLevelVariables);
 
 检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#其他)，如有超出限制或超出限制的可能，请调整业务逻辑。
 
+### 7、检查采集标记
+
+从4.0版本开始，所有事件中的index字段取值将从 **1** 开始，所以如果您在小程序应用中使用了`data-index`，请注意排查修改。
+
 </TabItem>
 <TabItem value="3.8.x版本">
 
@@ -157,5 +161,10 @@ gdp('track', eventId, eventLevelVariables);
 ### 6、检查埋点事件和用户属性事件
 
 检查埋点事件（track）、用户属性事件（setUserAttributes）、半自动采集浏览事件（曝光事件）的属性键值对，key和value是否符合限制条件[参考文档](/docs/webjs/commonlyApi#其他)，如有超出限制或超出限制的可能，请调整业务逻辑。
+
+### 7、检查采集标记
+
+从4.0版本开始，所有事件中的index字段取值将从 **1** 开始，所以如果您在小程序应用中使用了`data-index`，请注意排查修改。
+
 </TabItem>
 </Tabs>
