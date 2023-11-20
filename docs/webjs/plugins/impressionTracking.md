@@ -127,6 +127,26 @@ gdp('track', 'imp_cat_var', { name: 'cat_picture', time: '20210601' });
 </div>
 ```
 
+### 手动更新半自动埋点监听
+
+当您需要添加半自动埋点的节点是动态渲染时（例如根据接口数据渲染不同的内容），SDK 可能会因为无法感知节点渲染时机而失去对标记节点的监听。此时，您需要调用 `updateImpression` 手动更新 SDK 的监听来保证您的动态渲染节点能够被监听到。
+
+#### 示例
+
+```js
+// 这里通过一个Promise来模拟调用接口
+const getData = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve({ name: 'Lily', age: 18 });
+  }, 3000);
+});
+getData.then((result) => {
+  setData({ impData: result });
+  // setData触发渲染后再调用 updateImpression 即可
+  gdp('updateImpression');
+});
+```
+
 ## 注意
 
 1、`data-gio-imp-attrs` 和 `data-gio-imp-items` 允许接受一个Object或者JSON.stringify后的Object字符串，SDK会自动尝试进行格式化，格式化失败时默认返回空对象。

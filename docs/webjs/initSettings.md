@@ -18,6 +18,8 @@ title: 初始化配置
 | `hashtag`         | `boolean`    | `false`             | 是否开启hash解析                                      |
 | `host`            | `string`     | `-`                 | 数据上报的服务端地址(无需携带协议头)**(必填)**          |
 | `ignoreFields`    | `string[]`   | `-`                 | 上报忽略字段                                          |
+| `requestTimeout`  | `number`     | `5000`              | 上报降级至xhr和图片时，请求的超时时长                    |
+| `sendType`        | `string`     | `beacon`            | 数据上报优先方式                                     |
 | `scheme`          | `string`     | `location.protocol` | 网络协议                                              |
 | `storageType`     | `string`     | `cookie`            | SDK信息的持久化存储的类型(仅支持cookie或localStorage)    |
 | `version`         | `string`     | `-`                 | Web应用发版版本号(建议填写)                           |
@@ -120,6 +122,32 @@ gdp('init', '91eaf9b283361032', 'ae45f95742195faa', 'wx123456', {
     'screenWidth'
   ],
 });
+```
+
+### requestTimeout
+
+默认情况下，SDK的上报请求在`XHR`和`图片`的形式下超时时长为 5000毫秒（即5秒），超时即自动失败。当您需要控制降级至XHR和图片的数据上报发送方式请求超时时长时可修改，以避免一些意外的网络请求阻塞的问题。
+
+配置项取值：整数大于0，单位毫秒。
+
+**<font color="#FC5F3A">注意：</font>该配置项仅在`XHR`和`图片`请求时生效，`beacon`请求无法控制。**
+
+```js
+gdp('init', accountId, datasourceId, { requestTimeout: '3000' });
+```
+
+### sendType
+
+默认情况下，SDK上报数据的请求方式为自动判断，优先使用`sendBeacon`进行上报；当sendBeacon无法支持或队列繁忙无法继续使用时，会自动降级为`XMLHttpRequest`异步请求；当XMLHttpRequest遇到问题发送失败时，会自动降级为`图片`请求继续上报。
+
+如果您的站点对某些请求方式有特殊限制或更愿意使用其中某种方式时，可指定优先上报的方式，失败时依然会按上述优先级自动降级。
+
+配置项取值：**`beacon`、`xhr`、`image`**，默认值`beacon`。
+
+**<font color="#FC5F3A">注意：</font>在您修改默认的优先上报方式之前，请在网络上查阅相关资料以充分了解3种发送方式的区别及优缺点。**
+
+```js
+gdp('init', accountId, datasourceId, { sendType: 'xhr' });
 ```
 
 ### scheme
