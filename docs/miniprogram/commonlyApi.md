@@ -236,13 +236,13 @@ wx.getLocation({
 
 ### 9、与h5打通用户数据(getGioInfo)
 
-当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下数据。
+当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下9个字段的数据。
 
 | 字段名 | 字段含义             | 字段名       | 字段含义    | 字段名          | 字段含义       |
 |--------|----------------------|--------------|-----------|-----------------|----------------|
-| giou   | 访问用户Id(deviceId) | giouserkey   | 用户Key     | gioplatform     | 小程序平台     |
-| gios   | sessionId            | gioprojectid | 项目Id      | giodatasourceid | dataSourceId   |
-| giocs1 | 登录用户Id           | gioappid     | 小程序appId | giodatacollect  | 小程序采集状态 |
+| **giou**   | <font color="#4b5563">访问用户Id(deviceId)</font> | **giouserkey**   | <font color="#4b5563">用户Key</font>     | **gioplatform**     | <font color="#4b5563">小程序平台</font>     |
+| **gios**   | <font color="#4b5563">sessionId</font>            | **gioprojectid** | <font color="#4b5563">项目Id</font>      | **giodatasourceid** | <font color="#4b5563">数据源Id</font>   |
+| **giocs1** | <font color="#4b5563">登录用户Id</font>           | **gioappid**     | <font color="#4b5563">小程序appId</font> | **giodatacollect**  | <font color="#4b5563">小程序采集状态</font> |
 
 ```js
 const gioInfo:string = gdp('getGioInfo');
