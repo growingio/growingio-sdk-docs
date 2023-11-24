@@ -4,6 +4,7 @@ title: SDK 共性问题
 ---
 
 ### 1. Release 版本与 Hotfix 版本怎么区别？
+
 **A：**release 版本是正式版本；例如：release-3.3.1；hotfix版本是非正式版本，是所在版本的 Bug 紧急修复版本；Android 的 hotfix 版本对应带有日期的SNAPSHOT版本，例如：release-3.2.3-09141-SNAPSHOT； 下一个release 版本会包含上个版本的所有 hotfix 版本的内容。
 
 ### 2.  SDK 初始化参数 AccountID、DataSourceID、Host 获取方式
@@ -13,26 +14,32 @@ title: SDK 共性问题
 Host需要服务端部署，如不清楚请联系该项目的运维或项目经理。
 
 ### 3. SDK 集成成功，但是数据库中没有查到SDK上报的数据？
+
 **A：**
+
 - SDK 初始化参数 AccountID、DataSourceID、Host 填写是否正确；
 - Host 是否可以访问：在IP/域名后 加healthy-check 如果返回 OK 则表示可以访问，例如：[http://cdp.growingio.com/healthy-check](http://cdp.growingio.com/healthy-check)
 - web js sdk 默认不采集 localhost、127.0.0.1 页面数据；
 - 服务端SDK， 如果Java SDK 运行模式，test:仅输出消息体，不发送消息，production: 发送消息；如果PHP SDK，初始化时 debug 配置为 true ，仅输出消息体，不发送消息。
   
 ### 4. 访问事件的计算口径是什么，各端的Session周期是怎样的？
+
 **A：** Session 由各端SDK维护
 Web端：首次访问时生成 session，当用户30分钟内无操作行为，之后有操作行为，刷新 session。<br/>
 移动端：冷启动时生成 session，当App进入后台30秒后再次启动，刷新session。<br/>
 小程序：冷启动时生成 session，当小程序进入后台5分钟后再次启动，刷新session。<br/>
   
 ### 5. 页面浏览事件的生成时机口径是什么？
+
 **A：**页面的一次浏览行为，通过Page事件来统计的
+
 - H5、Web：集成代码中的gdp('send'), 监听history及hashtag
 - 小程序：onShow
 - APP：安卓：onResume
 - iOS：viewDidAppear
   
 ### 6. 采集数据接收的服务器(即Host)停掉之后，移动端采集到的数据会存多长时间呢。其他端的数据是否直接就丢掉了？
+
 **A：**各端SDK侧存储时间：
 
 - Android 2.0/3.0 7天
@@ -41,10 +48,12 @@ Web端：首次访问时生成 session，当用户30分钟内无操作行为，�
 - Web 小程序 没有持久化
 
 ### 7. GIO帮助文档有英文版吗？
+
 **A：** 目前帮助文档还未提供英文版，产品英文版本已经在 2.2 版本上支持
 
 ### 8. GIO各端SDK采集数据的发送数据策略是怎样的？
-**A：** 
+
+**A：**
 发送数据策略：<br/>
 WeB JS SDK: 采集数据发送策略为实时上报，即事件生成即向服务器发送请求。<br/>
 小程序SDK：采集数据发送策略采用节流技术，即设置执行周期为1秒，只有在大于等于执行周期时才向服务器发送请求，执行周期内调用不发送。<br/>
@@ -53,9 +62,10 @@ iOS 和Android SDK：以每隔默认时间15秒的情况下向服务器发送事
 iOS 和Android失败后数据还在数据库中会再次发送请求；web 和小程序会一直重发；<br/>
 服务端SDK，请求失败后数据直接丢弃。
 
-
 ### 9. 埋点和无埋点区别是什么？为什么要有埋点SDK和无埋点SDK？
+
 **A:** 埋点和无埋点是业界常见的两种数据采集方式；
+
 - 埋点采集属于主观数据采集，采集的范围、口径具有主观性
     优点是数据质量稳定，适合用于指标长期监测 （数据准确）
     缺点是由于实施过程中的主观性，经常导致漏埋、时机不对、参数不对等因素导致数据质量问题，需要大量的数据稽核（体现在指标梳理和数据校验）
@@ -70,14 +80,17 @@ iOS 和Android失败后数据还在数据库中会再次发送请求；web 和�
 - 对于一些使用第三方框架开发的APP，由于暂不支持无埋点采集，原生部分需要使用埋点SDK，第三方框架中使用对应的第三方SDK，也可以自定义适配插件，支持第三方框架的数据采集。
 
 ### 10. 客户端SDK DeviceID 生成机制简要逻辑是什么？
+
 **A:**
+
 - iOS： IDFA > IDFV > 随机访问用户ID
-- Android：androidId  > imei > 随机访问用户ID 
+- Android：androidId  > imei > 随机访问用户ID
 - 小程序：OpenID > 随机访问用户ID
 - Web: 随机访问用户ID
   
 访问用户ID 的生成时机是在SDK初始化时。<br/>
 iOS设备如果想要使用IDFA作为访问用户ID，需要在用户授权获取到之后初始化SDK；如果拒绝授权，iOS 按照优先级 IDFV > 随机访问用户ID, 生成访问用户ID  DeviceID；Keychain存储，删掉应用后再次安装还是同一个DeviceID。
+
 ```c
 NSString *deviceId;
 NSUUID *uuid = ((NSUUID * (*)(id, SEL))[sharedManager methodForSelector:advertisingIdentifierSelector])(
@@ -103,12 +116,13 @@ deviceId = UUID.nameUUIDFromBytes(imi.getBytes(Charset.forName("UTF-8"))).toStri
 deviceId = UUID.randomUUID().toString();
 ```
 
-小程序：如果SDK设置了强制登录模式，小程序打开时调用 wx.login 获取openid或unionId，且调用 identify 上报openid，会使用 openid 作为 DeviceID ，否则会自动生成 随机访问用户ID 作为 DeviceID。存储在 storage 里面，删除小程序再次进入 DeviceID 会改变（DeviceID不是 openid的情况下）。参考[强制登录模式](/docs/miniprogram/initSettings#forcelogin)
+小程序：如果SDK设置了强制登录模式，小程序打开时调用 wx.login 获取openid或unionId，且调用 identify 上报openid，会使用 openid 作为 DeviceID ，否则会自动生成 随机访问用户ID 作为 DeviceID。存储在 storage 里面，删除小程序再次进入 DeviceID 会改变（DeviceID不是 openid的情况下）。参考[强制登录模式](/docs/miniprogram/3.8/initSettings#forcelogin)
 
 Web: 随机访问用户ID  存储在 localStorage 中，永久有效。<br/>
 这样复杂逻辑的目的是尽量使用 DeviceID 标识唯一一台设备，将同一台设备上的访问用户标识为同一个用户。
 
-### 11. 移动端 SDK 2.0升3.0版本SDK 与 2.0SDK、3.0SDK的关系是什么？ 
+### 11. 移动端 SDK 2.0升3.0版本SDK 与 2.0SDK、3.0SDK的关系是什么？
+
 **A:**
 2.0升3.0版本SDK autotracker-upgrade (仅无埋点SDK，埋点暂不兼容) 是对 3.0 SDK API进行封装 ，实现  2.0 SDK API 可以调用 3.0 SDK API。
 
@@ -119,31 +133,34 @@ Web: 随机访问用户ID  存储在 localStorage 中，永久有效。<br/>
 补充：[3.0 SDK 版本与 CDP 平台支持功能对应关系](/docs#平台支持功能的版本与-sdk版本对应关系)
 
 ### 12. 客户端 SDK path 值的生成逻辑是什么？
+
 **A:**
+
 - Web： 如果设置 hashtag 为 true时，hashtag会作为 path的一部分 <br/>
-如URL：https://blog.growingio.com/posts/search?keywords=data<br/>
+如URL：<https://blog.growingio.com/posts/search?keywords=data><br/>
 字段和值： domain: blog.growingio.com；<br/>   path:/posts/search； <br/>  query: keywords=data
 - 小程序：
 "path": "pages/index/index"
 逻辑：从 page目录 至显示页面的目录嵌套路径。
 - iOS：
-"path" : "/UITabBarController/UINavigationController[1]/ViewController[0]"<br/> 
+"path" : "/UITabBarController/UINavigationController[1]/ViewController[0]"<br/>
 逻辑：从根 Controller到当前展示 Controller 的嵌套路径，  [1]:表示有多个 Controller 时 给Controller 分配的编号。
 - Android：
-"path": "/NestedFragmentActivity/GreenFragment[fragment1]"<br/> 
+"path": "/NestedFragmentActivity/GreenFragment[fragment1]"<br/>
 逻辑：从根Activity到当前展示 Fragment 的嵌套路径， [fragment1]:表示 给Fragment 设置分配的tag
 内嵌H5页面：内嵌H5 页面的 path 的生成逻辑和Web 的 path 生成逻辑相同。
 
 ### 13.SDK 数据加密压缩传输是怎么实现的？
+
 **A:**
-数据加密压缩传输是SDK在发送数据请求时对数据进行加密压缩，在请求头中设置压缩和加密标记；服务端收到请求后根据请求头标记自动选择对应的解密和解压缩方式对数据进行处理。<br/> 
-对SDK 日志中的数据和数据端数据库中查询到的数据没有影响。<br/> 
-使用抓包工具，看到的数据将是密文数据。<br/> 
-注：数据格式 JSON 和 Protobuf  都可加密压缩<br/> 
-**加密算法:** VDS_XOR<br/> 
-xor_code stm的16进制的最后一个字节( xor_code = stm&0xff), 对压缩的内容按字节XOR(xor_code) 
-数据处理前处理方式：SendData = Encode(Crypt(Compress(Data)))<br/> 
-**优势**<br/> 
-数据加密增强一定的数据安全性，数据压缩可以节省一部分用户流量<br/> 
-**劣势**<br/> 
+数据加密压缩传输是SDK在发送数据请求时对数据进行加密压缩，在请求头中设置压缩和加密标记；服务端收到请求后根据请求头标记自动选择对应的解密和解压缩方式对数据进行处理。<br/>
+对SDK 日志中的数据和数据端数据库中查询到的数据没有影响。<br/>
+使用抓包工具，看到的数据将是密文数据。<br/>
+注：数据格式 JSON 和 Protobuf  都可加密压缩<br/>
+**加密算法:** VDS_XOR<br/>
+xor_code stm的16进制的最后一个字节( xor_code = stm&0xff), 对压缩的内容按字节XOR(xor_code)
+数据处理前处理方式：SendData = Encode(Crypt(Compress(Data)))<br/>
+**优势**<br/>
+数据加密增强一定的数据安全性，数据压缩可以节省一部分用户流量<br/>
+**劣势**<br/>
 会增加加密压缩的计算开销
