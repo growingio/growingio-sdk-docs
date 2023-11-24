@@ -5,6 +5,13 @@ title: 版本记录
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
+### V3.8.18 - 2023/11/23
+
+- 🐞 修复淘宝小程序云函数上报请求异常的问题。
+- 🐞 修复uniapp-vue3中，使用setup写法的变量被污染导致异常的问题。
+- 🌟 优化请求队列逻辑。
+- 🎉 新增初始化配置项允许指定上报请求超时时长。
+
 ### V3.8.17 - 2023/09/25
 
 - 🐞 修复百度小程序无法正确获取场景值的问题。
