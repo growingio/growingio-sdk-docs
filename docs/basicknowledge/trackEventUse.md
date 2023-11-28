@@ -204,7 +204,7 @@ NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
 
 #### Web
 
-[埋点事件说明文档](/docs/webjs/commonlyApi#5埋点事件track)
+[埋点事件说明文档](/docs/webjs/3.8/commonlyApi#5埋点事件track)
 
 ```js
   gdp('track', 'purchaseProduct', {
@@ -216,7 +216,7 @@ NSDictionary *proDict = @{@"productRuleID_var" : @"0001",
 
 #### 小程序
 
-[埋点事件说明文档](/docs/miniprogram/commonlyApi#6埋点事件track)
+[埋点事件说明文档](/docs/miniprogram/3.8/commonlyApi#6埋点事件track)
 
 ```js
   gdp('track', 'purchaseProduct', {
@@ -419,7 +419,7 @@ NSDictionary *userDict = @{@"age_ppl" : @"18" , @"level_ppl": @"黑卡"};
 
 #### Web
 
-[用户属性说明文档](/docs/webjs/commonlyApi#6登录用户属性setuserattributes
+[用户属性说明文档](/docs/webjs/3.8/commonlyApi#6登录用户属性setuserattributes)
 
 ```js
 gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
@@ -427,7 +427,7 @@ gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
 
 #### 小程序
 
-[用户属性说明文档](/docs/miniprogram/commonlyApi#7登录用户属性setuserattributes)
+[用户属性说明文档](/docs/miniprogram/3.8/commonlyApi#7登录用户属性setuserattributes)
 
 ```js
 gdp('setUserAttributes', { age_ppl: '18'， level_ppl: '黑卡' });
