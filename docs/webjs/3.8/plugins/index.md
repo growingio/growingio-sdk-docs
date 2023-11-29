@@ -1,5 +1,5 @@
 ---
-slug: /webjs/plugins
+slug: /webjs/3.8/plugins
 title: 插件
 ---
 

@@ -1,6 +1,6 @@
 ---
-slug: /webjs
-title: Web JS SDK
+slug: /webjs/3.8
+title: Web JS SDK（3.8）
 ---
 
 ## 简介
