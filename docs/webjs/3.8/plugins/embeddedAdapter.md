@@ -65,7 +65,7 @@ platform     ->   小程序的 platform
 domain       ->   小程序的 appId
 ```
 
-除了以上字段，如果小程序SDK初始化时设置了 `extraParams` [参考文档](3.8/initSettings#extraparams) ，其中的参数也会在H5内嵌页事件中进行上报。
+除了以上字段，如果小程序SDK初始化时设置了 `extraParams` [参考文档](/docs/webjs/3.8/initSettings) ，其中的参数也会在H5内嵌页事件中进行上报。
 
 ## 注意
 

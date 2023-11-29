@@ -1,5 +1,6 @@
 ---
 sidebar_position: 5
+slug: /miniprogram/3.8/plugins
 title: 插件
 ---
 

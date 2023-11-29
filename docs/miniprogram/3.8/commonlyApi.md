@@ -61,7 +61,7 @@ gdp('setOption', 'scheme', 'http' | 'https');
 
 ### 1、注册插件(registerPlugins)
 
-默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/webjs/3.8/integrate)和[插件列表](/docs/webjs/3.8/plugins)进行插件的注册。
+默认情况下基础SDK仅包含埋点功能，如果您需要额外扩展功能，请参考[初始化集成](/docs/webjs/3.8/integrate)和[插件列表](/docs/miniprogram/3.8/plugins)进行插件的注册。
 
 #### 示例
 
