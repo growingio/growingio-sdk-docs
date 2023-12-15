@@ -5,7 +5,7 @@ title: 版本记录
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
 
-### V3.8.18 - 2023/12/15
+### V3.8.19 - 2023/12/15
 
 - 🐞 修复taro3react集成时可能出现的框架报错的问题。<br/>
 **<font size="2">(自该版本起，集成SDK时不再需要`babel-plugin-setname`插件)</font>**
