@@ -25,6 +25,10 @@ GrowingIO 各SDK均支持日志输出模式，开启后可进行调试和校验�
 
 请参考初始化配置中的 [开启 debug 模式](/docs/miniprogram/initSettings#debug)
 
+### HarmonyOS SDK 日志输出模式
+
+请参考初始化配置中的 debugEnabled 配置项
+
 ### 服务端 SDK 日志输出模式
 
 请参考对应SDK的初始化配置。
