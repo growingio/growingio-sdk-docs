@@ -41,7 +41,6 @@ module.exports = {
             {to: '/docs/ios/', label: 'iOS'},
             {to: '/docs/webjs/', label: 'Web JS'},
             {to: '/docs/miniprogram/', label: '小程序'},
-            {to: '/docs/harmonyos/', label: '鸿蒙'},
             {to: '/docs/framework/', label: '多平台'},
           ],
         },

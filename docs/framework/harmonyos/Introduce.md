@@ -54,7 +54,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 ```
 > 其中 accountId/dataSourceId/urlScheme 为必填项，dataCollectionServerHost 为可选项，若不清楚请联系您的专属项目经理或技术支持
 
-其他初始化配置项见[表格](/docs/harmonyos/Configuration)，在 start 方法调用前通过`config.<配置项> = 对应值`进行配置
+其他初始化配置项见[表格](/docs/framework/harmonyos/Configuration)，在 start 方法调用前通过`config.<配置项> = 对应值`进行配置
 
 ### 查看集成效果
 
