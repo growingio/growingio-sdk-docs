@@ -39,7 +39,7 @@ values={[
 
 #### 1、加载 SDK
 
-阿里(支付宝)原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.18/gio-alipay.js><br/>
+阿里(支付宝)原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.19/gio-alipay.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -73,7 +73,7 @@ const gdp = require('./utils/gio/gio-alipay.js').default;
 
 ##### 方式一：下载本地集成
 
-uniapp 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.18/gio-uniapp.js><br/>
+uniapp 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.19/gio-uniapp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -164,7 +164,7 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
 
 ##### 方式一：下载本地集成
 
-Taro 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.18/gio-taro.js><br/>
+Taro 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.19/gio-taro.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -212,26 +212,6 @@ Taro.render(<App />, document.getElementById('app'));
 
   </TabItem>
   <TabItem value="Taro3(react)">
-
-```text
-npm i babel-plugin-setname --save
-```
-
-```js
-// babel.config.js
-module.exports = {
-  presets: [['taro', { framework: 'react' }]],
-  plugins: [
-    [
-      'babel-plugin-setname',
-      {
-        includes: ['src'],
-        lower: false, // 从taro2升级至3时请修改为true
-      },
-    ],
-  ],
-};
-```
 
 ```js
 // app.js
@@ -283,19 +263,19 @@ export default App;
 ```js
 // app.js
 import { createApp } from 'vue';
-import Taro from '@tarojs/taro';
 // 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
 // npm集成方式
 import gdp from 'gio-miniprogram-sdk-cdp/gio-taro';
 
+const taroRuntime = require('@tarojs/runtime');
 // 注意vue3中App实例在初始化之前
 const App = createApp({ ... });
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'miniProgram version',
     host: 'your serverHost',
-    taro: Taro, // 注意taro和taroVue都需要传
+    taro: taroRuntime, // 注意taro和taroVue都需要传
     taroVue: App, // 注意taro和taroVue都需要传
     ...other settings
 });
@@ -318,7 +298,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 ##### 方式一：下载本地集成
 
-Chameleon 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.18/gio-chameleon.js><br/>
+Chameleon 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.19/gio-chameleon.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -365,7 +345,7 @@ const gdp = require('./utils/gio/gio-chameleon.js').default;
 
 ##### 方式一：下载本地集成
 
-Remax 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.18/gio-remax.js><br/>
+Remax 框架 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.19/gio-remax.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成

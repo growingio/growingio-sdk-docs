@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 #### 1、加载 SDK
 
-快应用原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.18/gio-quickapp.js><br/>
+快应用原生 SDK 下载：<https://assets.giocdn.com/sdk/minip/cdp/3.8.19/gio-quickapp.js><br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
