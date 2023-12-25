@@ -21,7 +21,7 @@
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-ios-autotracker/releases",
     "distPath": "docs/ios/",
     "fileName": "version.md",
-    "enable": true
+    "enable": false
   },
   {
     "name": "webjs",
