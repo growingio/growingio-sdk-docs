@@ -130,35 +130,16 @@ $gio->setUserAttributesEvent($gio->getUserAttributesFactory('loginUserId')
 :::
 
 
-### 物品模型(CDP平台版本<2.1)
-发送一个物品模型。在添加所需要发送的物品模型代码之前，需要在物品管理界面中创建对应物品及其属性
-
-**参数说明**
-
-| 参数       | 必选  | 类型   | 默认值  | 说明             |
-| :--------- | :---- | :----- | :------ | ---------------- |
-| itemId     | true  | string |         | 物品模型id       |
-| itemKey    | true  | string |         | 物品模型key      |
-| properties | false | array  | array() | 物品模型属性信息 |
-
-**代码示例**
-```php
-$gio->setItemAttributes(
-    '1001',
-    'product',
-    array('color' => 'red')
-);
-```
-### 维度表(CDP平台版本>=2.1)
+### 维度表
 上传一个维度表记录。在添加所需要上传维度表记录代码之前，需要在维度表管理界面中创建对应维度表及其属性
 
 **参数说明**
 
 | 参数       | 必选  | 类型   | 默认值  | 说明             |
 | :--------- | :---- | :----- | :------ | ---------------- |
-| itemId     | true  | string |         | 物品模型id       |
-| itemKey    | true  | string |         | 物品模型key      |
-| properties | false | array  | array() | 物品模型属性信息 |
+| itemId     | true  | string |         | 维度表模型ID(记录ID)|
+| itemKey    | true  | string |         | 维度表标识符        |
+| properties | false | array  | array() | 维度表属性及值      |
 
 **代码示例**
 ```php
