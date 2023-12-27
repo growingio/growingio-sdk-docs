@@ -3,6 +3,12 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V2.0.0 - 2023/12/27
+
+[v2.0.0](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/2.0.0)
+
+* feat: 适配 SDK 4.x
+
 ## V1.1.3 - 2023/04/27
 
 [v1.1.3](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/1.1.3)
