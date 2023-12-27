@@ -497,6 +497,115 @@ GrowingAutotracker.get().registerComponent(module,<config>)
 GrowingTracker.get().registerComponent(module,<config>)
 ```
 
+### 13. 全局通用属性
+`setGeneralProps`<br/>
+设置全局通用属性
+
+`clearGeneralProps`<br/>
+清空全局通用属性
+
+`removeGeneralProps`<br/>
+删除指定通用属性
+
+#### 参数说明
+| 参数        | 参数类型 | 说明                 |
+| :---------- | :------- | :------------------- |
+| `variables` | _Map<String, String>_ | 设置通用属性信息 |
+| `keys`      | _String..._ | 删除指定通用属性|
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+// 设置全局通用属性
+Map<String, String> map = new HashMap<>();
+map.put("gender", "male");
+map.put("age", "12");
+GrowingAutotracker.get().setGeneralProps(map);
+// 删除指定全局通用属性
+GrowingAutotracker.get().removeGeneralProps("gender", "age");
+// 清空全局通用属性
+GrowingAutotracker.get().clearGeneralProps();
+```
+
+**埋点SDK示例代码：**
+```java
+Map<String, String> map = new HashMap<>();
+map.put("gender", "male");
+map.put("age", "12");
+GrowingTracker.get().setGeneralProps(map);
+// 删除指定全局通用属性
+GrowingTracker.get().removeGeneralProps("gender", "age");
+// 清空全局通用属性
+GrowingTracker.get().clearGeneralProps();
+```
+
+### 14. 属性工具
+AttributesBuilder是SDK提供给用户协助设置属性的工具类，支持传入多种类型属性值(包含列表类型)
+
+`addAttribute`<br/>
+添加属性
+
+`removeAttribute`<br/>
+删除指定属性
+
+`clear`<br/>
+清空属性
+
+`size`<br/>
+返回当前设置的属性个数
+
+`build`<br/>
+返回设置埋点事件API所需属性参数类型对应的数据结构
+
+#### 示例
+
+**无埋点SDK示例代码：**
+```java
+AttributesBuilder builder = new AttributesBuilder();
+// 设置属性
+Map<String, Object> map = new HashMap<>();
+map.put("Key", "Value");
+builder.addAttribute(map);
+builder.addAttribute("String", "1");
+builder.addAttribute("List", Arrays.asList("1", "2"));
+builder.addAttribute("Set", Set.of("1", "2"));
+builder.addAttribute("JSONArray", new JSONArray());
+builder.addAttribute("SparseArray", new SparseArray<>());
+builder.addAttribute("String[]", new String[]{"1", "2"});
+// 删除指定属性
+builder.removeAttribute("Key");
+// 清除属性
+builder.clear();
+// 返回当前设置的属性个数
+builder.size();
+// 发送埋点
+GrowingAutotracker.get().trackCustomEvent("registerSuccess", builder.build());
+```
+
+**埋点SDK示例代码：**
+```java
+AttributesBuilder builder = new AttributesBuilder();
+// 设置属性
+Map<String, Object> map = new HashMap<>();
+map.put("Key", "Value");
+builder.addAttribute(map);
+builder.addAttribute("String", "1");
+builder.addAttribute("List", Arrays.asList("1", "2"));
+builder.addAttribute("Set", Set.of("1", "2"));
+builder.addAttribute("JSONArray", new JSONArray());
+builder.addAttribute("SparseArray", new SparseArray<>());
+builder.addAttribute("String[]", new String[]{"1", "2"});
+// 删除指定属性
+builder.removeAttribute("Key");
+// 清除属性
+builder.clear();
+// 返回当前设置的属性个数
+builder.size();
+// 发送埋点
+GrowingTracker.get().trackCustomEvent("registerSuccess", builder.build());
+```
+
 ## 无埋点 API 详细说明
 无埋点 API 是用户集成无埋点SDK后可以调用的接口，主要用于辅助无埋点事件的采集和发送。
 
