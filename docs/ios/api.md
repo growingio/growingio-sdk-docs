@@ -681,26 +681,23 @@ view.growingViewCustomContent = @"content";
   </TabItem>
 </Tabs>
 
-### 17. 全局通用属性
-`setGeneralProps(_ props: [String: String])`<br/>
-设置全局通用属性
+### 17. 设置埋点通用属性
 
-`clearGeneralProps()`<br/>
-清空全局通用属性
+`setGeneralProps(_ props: [String: String])`<br/>
+设置埋点通用属性
 
 `removeGeneralProps(_ keys: [String])`<br/>
-删除指定通用属性
+清除指定字段的埋点通用属性
+
+`clearGeneralProps()`<br/>
+清除所有埋点通用属性
 
 #### 参数说明
 
 | 参数        | 参数类型   | 说明               |
-| :---------- | :--------- | :---------------|
-| `props` | `[String: String]` | 设置通用属性信息 |
-
-
-| 参数      | 参数类型   | 说明          |
-| :-------- | :--------- | :--------- |
-| `keys` | `[String]` | 删除指定的通用属性 |
+| :---------- | :--------- | :----------------- |
+| `props` | `[String: String]` | 事件通用属性，相同字段的新值将覆盖旧值 |
+| `keys` | `[String]` | 通用属性指定字段 |
 
 #### 示例
 
@@ -708,20 +705,14 @@ view.growingViewCustomContent = @"content";
   <TabItem value="无埋点" label="无埋点" default>
 
 ```swift
-// 设置全局通用属性
-Autotracker.setGeneralProps(["gender": "male", "age": "12"])
-// 删除指定全局通用属性
-Autotracker.removeGeneralProps(["gender"])
-// 清空全局通用属性
+Autotracker.setGeneralProps(["property": "value"])
+Autotracker.removeGeneralProps(["key1", "key2"])
 Autotracker.clearGeneralProps()
 ```
 
 ```objectivec
-// 设置全局通用属性
-[[GrowingAutotracker sharedInstance] setGeneralProps:@{@"gender" : @"male", @"age": @"12"}];
-// 删除指定全局通用属性
-[[GrowingAutotracker sharedInstance] removeGeneralProps:@[@"gender"]];
-// 清空全局通用属性
+[[GrowingAutotracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
+[[GrowingAutotracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
 [[GrowingAutotracker sharedInstance] clearGeneralProps];
 ```
 
@@ -729,22 +720,22 @@ Autotracker.clearGeneralProps()
   <TabItem value="埋点" label="埋点">
 
 ```swift
-// 设置全局通用属性
-Tracker.setGeneralProps(["gender": "male", "age": "12"])
-// 删除指定全局通用属性
-Tracker.removeGeneralProps(["gender"])
-// 清空全局通用属性
+Tracker.setGeneralProps(["property": "value"])
+Tracker.removeGeneralProps(["key1", "key2"])
 Tracker.clearGeneralProps()
 ```
 
 ```objectivec
-// 设置全局通用属性
-[[GrowingTracker sharedInstance] setGeneralProps:@{@"gender" : @"male", @"age": @"12"}];
-// 删除指定全局通用属性
-[[GrowingTracker sharedInstance] removeGeneralProps:@[@"gender"]];
-// 清空全局通用属性
+[[GrowingTracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
+[[GrowingTracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
 [[GrowingTracker sharedInstance] clearGeneralProps];
 ```
 
   </TabItem>
 </Tabs>
+
+:::caution 注意
+定义的通用属性名需要在平台上进行事件属性的创建并与埋点事件完成关联<br/>
+该方法可多次调用，相同字段的新值将覆盖旧值<br/>
+通用属性存储在内存中，每次应用冷启动需要重新设置
+:::

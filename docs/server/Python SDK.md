@@ -6,6 +6,7 @@ title: Python SDK
 ### 版本记录
 |    版本    | 说明 |  日期  |
 |:-------:| :----:  |  :-------:  |
+| V1.0.5 | 修复消息事件中 DataSourceId 参数错误的问题,维度表上报时删除多余参数 |  2023-12-01 |
 | V1.0.2 | 支持埋点事件事件变量、用户变量可传列表类型 |  2022-04-20 |
 | V1.0.1 | 支持埋点事件可传eventTime参数 |  2022-04-02 |
 | V1.0.0 | 支持自定义事件，用户属性事件 | 2022-03-28 |
@@ -214,20 +215,20 @@ growing_tracker.track_user(login_user_id='user', login_user_key='email',
 
 :::
 
-### 维度表(CDP平台版本>=2.1)
+### 维度表
 上传一个维度表记录。在添加所需要上传维度表记录代码之前，需要在维度表管理界面中创建对应维度表及其属性
 
 **参数说明**
 
 | 参数       | 必选  | 类型   | 默认值 | 说明             |
 | :--------- | :---- | :----- | :----- | ---------------- |
-| item_key   | true  | string |        | 物品模型key      |
-| item_id    | true  | string |        | 物品模型id       |
-| item_attrs | false | dict   | None   | 物品模型属性信息 |
+| item_id   | true  | string |        | 维度表模型ID(记录ID) |
+| item_key    | true  | string |        | 维度表标识符      |
+| item_attrs | false | dict   | None   | 维度表属性及值 |
 
 **代码示例**
 ```php
-growing_tracker.submit_item('item_key', 'item_name', item_attrs={'attr': 'item'})
+growing_tracker.submit_item('item_id', 'item_key', item_attrs={'attr': 'item'})
 ```
 
 
@@ -245,6 +246,16 @@ from growingio_tracker_snappy import SnappyParser
 from growingio_tracker_protobuf import ProtobufParser
 
 if __name__ == '__main__':
+
+    def tracker():
+        buffer_consumer = BufferedConsumer('bc675c65b3b0290e', '939c0b26233d3ed1', 'http://uat-api.growingio.com')
+        growing_tracker = GrowingTracker.consumer(buffer_consumer)
+        message = CustomEventMessage.EventBuilder() \
+            .set_event_name("tracker_consumer").set_attributes({'num': 3}).set_anonymous_id('python') \
+            .build()
+        growing_tracker.track(message)
+        buffer_consumer.flush()
+        time.sleep(5)
 
     def tracker_consumer():
         buffer_consumer = BufferedConsumer('<product_id>', '<data_source_id>', '<server_host>')
@@ -330,7 +341,7 @@ if __name__ == '__main__':
 
         time.sleep(15)
 
-
+    tracker()
     tracker_test()
     tracker_user()
     tracker_consumer()

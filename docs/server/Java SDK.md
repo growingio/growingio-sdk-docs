@@ -200,7 +200,7 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 
 | 参数名称         | 类型                          | 是否必填 | 说明               |
 | :-------------- | :---------------------------: | :--------------: | ------------------ |
-| eventTime         | long                          | 否       | 事件发生时间(毫秒)；<br/>需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认 |
+| eventTime         | long                          | 否       | 事件发生时间(毫秒)；<br/>需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认（仅支持OP版本，SaaS版本暂不支持） |
 | eventKey          | string                        | 是       | 埋点事件标识 |
 | domain            | string                        | 否       | APP包名或H5域名 |
 | urlScheme         | string                        | 否       | 链接协议 |
@@ -285,29 +285,8 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 
 :::
 
-### 物品模型(CDP平台版本<2.1)
 
-发送一个物品模型。在添加所需要发送的物品模型代码之前，需要在物品管理界面中创建对应物品及其属性
-
-**参数说明**
-
-| 参数名称        | 类型               | 是否必填 | 说明                                 |
-| --------------- | ------------------ | -------- | ------------------------------------ |
-| id              | string             | 是       | 物品模型ID                           |
-| key             | string             | 是       | 物品模型KEY                          |
-| addItemVariable | map<string,string> | 否       | 物品模型属性及值；多个属性可调用多次 |
-
-**代码示例**
-
-```java
-GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
-                .id("1001")                        // 物品模型ID (必填)
-                .key("product")                    // 物品模型KEY (必填)
-                .addItemVariable("color", "red")   // 物品模型属性 (选填)
-                .build();
-```
-
-### 维度表(CDP平台版本>=2.1)
+### 维度表
 
 上传一个维度表记录。在添加所需要上传维度表记录代码之前，需要在维度表管理界面中创建对应维度表及其属性
 

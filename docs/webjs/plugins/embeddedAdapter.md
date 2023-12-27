@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 title: 小程序内嵌页打通
 ---
 ## 简介（gioEmbeddedAdapter）
