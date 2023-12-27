@@ -39,7 +39,7 @@ config?.dataSourceId = "YourDatasourceId"
 config?.urlScheme = "YourURLScheme"
 
 // ABTesting 配置地址
-config?.abTestingServerHost = "https://ab.growingio.com"
+config?.abTestingServerHost = "YourABTestingServerHost"
 // 单个实验 TTL 时长
 config?.abTestingRequestInterval = 5
 // 获取实验配置的请求超时时间
@@ -64,7 +64,7 @@ ABTesting.fetchExperiment(_ layerId: String, completedBlock: (ABTExperiment?) ->
 | `completedBlock` | `(ABTExperiment?) -> Void` |    否    | `nil`  | 根据返回的 experiment 判断，若 experiment 为 nil，则为请求失败，请按需重试；若 experiment.experimentId 或 experiment.strategyId 为 nil，则未命中实验 |
 
 ```swift
-ABTesting.fetchExperiment("123456") { experiment in
+ABTesting.fetchExperiment("Put layerId here") { experiment in
     guard let exp = experiment else {
         return
     }
@@ -112,7 +112,7 @@ configuration.dataSourceId = @"YourDatasourceId";
 configuration.urlScheme = @"YourURLScheme";
 
 // ABTesting 配置地址
-configuration.abTestingServerHost = @"https://ab.growingio.com";
+configuration.abTestingServerHost = @"YourABTestingServerHost";
 // 单个实验 TTL 时长
 configuration.abTestingRequestInterval = 5;
 // 获取实验配置的请求超时时间
@@ -137,7 +137,7 @@ configuration.networkConfig = networkConfig;
 | `completedBlock` | `void (^)(GrowingABTExperiment *_Nullable)` |    否    | `nil`  | 根据返回的 experiment 判断，若 experiment 为 nil，则为请求失败，请按需重试；若 experiment.experimentId 或 experiment.strategyId 为 nil，则未命中实验 |
 
 ```objectivec
-[GrowingABTesting fetchExperiment:@"123456" completedBlock:^(GrowingABTExperiment * _Nullable experiment) {
+[GrowingABTesting fetchExperiment:@"Put layerId here" completedBlock:^(GrowingABTExperiment * _Nullable experiment) {
     if (!experiment) {
         // 请求失败
         return;
