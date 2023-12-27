@@ -49,3 +49,10 @@ gdp('getABTest', 实验层Id, (result: any) => {
   console.log(result);
 });
 ```
+
+<details>
+  <summary>点击查看如何获取layerId(实验层ID)</summary>
+
+  <ImageLoader path="img/common/get_abtesting_layer_id" />
+
+</details>
