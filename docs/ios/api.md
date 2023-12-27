@@ -680,3 +680,62 @@ view.growingViewCustomContent = @"content";
 
   </TabItem>
 </Tabs>
+
+### 17. 设置埋点通用属性
+
+`setGeneralProps(_ props: [String: String])`<br/>
+设置埋点通用属性
+
+`removeGeneralProps(_ keys: [String])`<br/>
+清除指定字段的埋点通用属性
+
+`clearGeneralProps()`<br/>
+清除所有埋点通用属性
+
+#### 参数说明
+
+| 参数        | 参数类型   | 说明               |
+| :---------- | :--------- | :----------------- |
+| `props` | `[String: String]` | 事件通用属性，相同字段的新值将覆盖旧值 |
+| `keys` | `[String]` | 通用属性指定字段 |
+
+#### 示例
+
+<Tabs>
+  <TabItem value="无埋点" label="无埋点" default>
+
+```swift
+Autotracker.setGeneralProps(["property": "value"])
+Autotracker.removeGeneralProps(["key1", "key2"])
+Autotracker.clearGeneralProps()
+```
+
+```objectivec
+[[GrowingAutotracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
+[[GrowingAutotracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
+[[GrowingAutotracker sharedInstance] clearGeneralProps];
+```
+
+  </TabItem>
+  <TabItem value="埋点" label="埋点">
+
+```swift
+Tracker.setGeneralProps(["property": "value"])
+Tracker.removeGeneralProps(["key1", "key2"])
+Tracker.clearGeneralProps()
+```
+
+```objectivec
+[[GrowingTracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
+[[GrowingTracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
+[[GrowingTracker sharedInstance] clearGeneralProps];
+```
+
+  </TabItem>
+</Tabs>
+
+:::caution 注意
+定义的通用属性名需要在平台上进行事件属性的创建并与埋点事件完成关联<br/>
+该方法可多次调用，相同字段的新值将覆盖旧值<br/>
+通用属性存储在内存中，每次应用冷启动需要重新设置
+:::
