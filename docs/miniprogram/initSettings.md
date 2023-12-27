@@ -16,6 +16,7 @@ title: 初始化配置
 | `followShare`    | `boolean`    | `true`                       | 是否跟踪分享数据                                   |
 | `forceLogin`     | `boolean`    | `false`                      | 是否开启强制登录模式                               |
 | `ignoreFields`   | `string[]`   | `[]`                         | 上报忽略字段                                       |
+| `requestTimeout` | `number`     | `5000`                       | 上报请求超时时长                                       |
 | `serverUrl`      | `string`     | `https://napi.growingio.com` | 数据上报的服务端地址                               |
 | `taro`           | `any`        | `-`                          | 使用 Taro 开发时使用的实例，参考集成示例代码        |
 | `taroVue`        | `any`        | `-`                          | 使用 Taro3vue2/3 开发时使用的实例，参考集成示例代码 |
@@ -161,6 +162,19 @@ gdp('init', accountId, dataSourceId, appId, {
 ```
 
 **<font color="#FC5F3A">注意：</font>如果 extraParams 和 ignoreFields 中同时指定了同一字段，getGioInfo 将不再获取到指定的字段，即 ignoreFields 优先级更高。**
+
+### requestTimeout
+
+默认情况下，SDK的上报请求超时时长为 5000毫秒（即5秒），超时即自动失败。当您需要控制数据上报请求超时时长时可修改，以避免一些意外的网络请求阻塞的问题。
+
+配置项取值：整数大于0，单位毫秒。
+
+```js
+gdp('init', accountId, dataSourceId, appId, {
+  requestTimeout: 3000,
+  ...其他配置项,
+});
+```
 
 ### originalSource
 
