@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 
 1. 添加 **GrowingModule_ABTesting** Package
 
-<ImageLoader path="img/ios/add_package_ab_testing" />
+<ImageLoader path="img/ios/add_package_ab_testing" width='50%'/>
 
 2. 在 AppDelegate.swift 中导入 `import GrowingModule_ABTesting`
 
@@ -57,6 +57,13 @@ Autotracker.start(config!, launchOptions: launchOptions)
 ```swift
 ABTesting.fetchExperiment(_ layerId: String, completedBlock: (ABTExperiment?) -> Void)
 ```
+
+<details>
+  <summary>点击查看如何获取layerId(实验层ID)</summary>
+
+  <ImageLoader path="img/common/get_abtesting_layer_id" />
+
+</details>
 
 | 参数             | 参数类型                                    | 是否必填 | 默认值 | 说明                                                         |
 | :--------------- | :------------------------------------------ | :------: | :----- | :----------------------------------------------------------- |
@@ -130,6 +137,13 @@ configuration.networkConfig = networkConfig;
 ```objectivec
 + (void)fetchExperiment:(NSString *)layerId completedBlock:(void (^)(GrowingABTExperiment *_Nullable))completedBlock;
 ```
+
+<details>
+  <summary>点击查看如何获取layerId(实验层ID)</summary>
+
+  <ImageLoader path="img/common/get_abtesting_layer_id" />
+
+</details>
 
 | 参数             | 参数类型                                    | 是否必填 | 默认值 | 说明                                                         |
 | :--------------- | :------------------------------------------ | :------: | :----- | :----------------------------------------------------------- |
