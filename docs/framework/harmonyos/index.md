@@ -1,5 +1,5 @@
 ---
-slug: /HarmonyOS
+slug: /framework/HarmonyOS
 title: "HarmonyOS SDK"
 ---
 
