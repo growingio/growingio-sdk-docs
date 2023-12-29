@@ -9,12 +9,14 @@ readme_header = "---\ntitle: 版本记录\nsidebar_position: 0\n---\n"
 readme_item_foot = ":::note \n\n 标签:**[{name}]({url})** &nbsp;&nbsp;&nbsp;&nbsp;日期: **{date}** \n\n:::"
 readme_footer = "---\n## 更多发布细节请参考 [SDK Releases in Github]({url})"
 
-def android_releases(releases):
+def android_releases(releases, fromId):
     android_header_append = readme_header
     android_item_foot = readme_item_foot
     content = android_header_append
     for release in releases:
         release_name = release["name"]
+        if release["id"] < fromId:
+            continue
         if release_name is None or release_name == "":
             release_name = release["tag_name"]
         if hotfix_version(release_name):
@@ -28,10 +30,12 @@ def android_releases(releases):
         content += "\n\n"
     return content
 
-def iOS_releases(releases):
+def iOS_releases(releases, fromId):
     content = readme_header
     for release in releases:
         release_name = release["name"]
+        if release["id"] < fromId:
+            continue
         if release_name is None or release_name == "":
             release_name = release["tag_name"]
         if hotfix_version(release_name):
@@ -50,11 +54,11 @@ def github_release(platform):
         releases = json.loads(response.read().decode("utf-8"))
         readme = ""
         if platform['name'] == "Android" or platform['name'] == "GioKit Android":
-            readme = android_releases(releases)
+            readme = android_releases(releases, platform['fromId'])
         elif platform['name'] == "iOS":
-            readme = iOS_releases(releases)
+            readme = iOS_releases(releases, platform['fromId'])
         else:
-            readme = iOS_releases(releases)
+            readme = iOS_releases(releases, platform['fromId'])
 
         readme += readme_footer.format(
             url=platform['releaseUrl'].replace("api.github.com", "github.com").replace("repos/growingio", "growingio"))

@@ -1,26 +1,29 @@
 [
   {
     "name": "Android",
-    "version": "3.5.1",
+    "version": "4.0.0",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-autotracker/releases",
     "distPath": "docs/android/",
     "fileName": "version.md",
+    "fromId": 135090303,
     "enable": true
   },
   {
     "name": "Android plugin",
-    "version": "3.4.5",
+    "version": "4.0.0",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-plugin/releases",
     "distPath": "docs/android/",
     "fileName": "AGP7.md",
+    "fromId": 135081134,
     "enable": false
   },
   {
     "name": "iOS",
-    "version": "3.7.0",
+    "version": "4.0.0",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-ios-autotracker/releases",
     "distPath": "docs/ios/",
     "fileName": "version.md",
+    "fromId": 135048692,
     "enable": true
   },
   {
@@ -29,14 +32,16 @@
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-webjs-autotracker/releases",
     "distPath": "docs/webjs/",
     "fileName": "version.md",
+    "fromId": 0,
     "enable": false
   },
   {
     "name": "GioKit Android",
-    "version": "1.4.0",
+    "version": "2.0.0",
     "releaseUrl": "https://api.github.com/repos/growingio/giokit-android/releases",
     "distPath": "docs/giokit/android/",
     "fileName": "version.md",
+    "fromId": 135096043,
     "enable": true
   },
   {
@@ -45,6 +50,7 @@
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-ios-toolskit/releases",
     "distPath": "docs/giokit/ios/",
     "fileName": "version.md",
+    "fromId": 0,
     "enable": false
   }
 ]
