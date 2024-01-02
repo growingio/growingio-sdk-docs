@@ -138,6 +138,12 @@ GrowingTracker.get().getAbTest(layerId,
 )
 ```
 
+<details>
+  <summary>点击查看如何获取layerId(实验层ID)</summary>
+
+  <ImageLoader path="img/common/get_abtesting_layer_id" />
+
+</details>
 
 ### ABTestCallback 回调
 1. `onABExperimentReceived(ABExperiment experiment, int dataType)` 实验返回数据和数据来源的回调方法。
