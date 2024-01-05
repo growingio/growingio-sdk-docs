@@ -2,10 +2,7 @@
 title: 版本记录
 sidebar_position: 0
 ---
-
-------
-
-## [4.0.0](https://github.com/growingio/growingio-sdk-ios-autotracker/tree/4.0.0) (2023-12-25)
+# [4.0.0](https://github.com/growingio/growingio-sdk-ios-autotracker/tree/4.0.0) (2023-12-25)
 
 ### Features
 
@@ -16,3 +13,10 @@ sidebar_position: 0
 ### Refactor (BREAKING CHANGE)
 
 * Enhancing Autotrack Core in SDK 4.x ([#268](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/268))
+
+
+
+
+
+---
+## 更多发布细节请参考 [SDK Releases in Github](https://github.com/growingio/growingio-sdk-ios-autotracker/releases)

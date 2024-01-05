@@ -27,6 +27,9 @@ GrowingAutotracker.get().removeTimer("timerId")
 GrowingAutotracker.get().clearTrackTimer()
 GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
 GrowingAutotracker.get().registerComponent(module,<config>)
+GrowingAutotracker.get().setGeneralProps(new HashMap<>())
+GrowingAutotracker.get().removeGeneralProps("key1", "key2")
+GrowingAutotracker.get().clearGeneralProps()
 
 GrowingAutotracker.get().autotrackPage(activity, "alias", new HashMap<>())
 GrowingAutotracker.get().autotrackPage(androidx.fragment.app.Fragment, "alias", new HashMap<>())
@@ -64,6 +67,9 @@ GrowingTracker.get().removeTimer("timerId")
 GrowingTracker.get().clearTrackTimer()
 GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
 GrowingTracker.get().registerComponent(module,<config>)
+GrowingTracker.get().setGeneralProps(new HashMap<>())
+GrowingTracker.get().removeGeneralProps("key1", "key2")
+GrowingTracker.get().clearGeneralProps()
 ```
 ## 通用 API 详细说明
 无埋点SDK和埋点SDK中都可以使用通用API，唯一的区别在于调用的主体不同，比如说在配置SDK模块的接口上：

@@ -60,7 +60,7 @@ dependencies {
 默认使用 `okhttp3` 网络请求框架，用于将事件数据传输到服务器中。
 SDK 事件通过 `EventUrl` 指定请求方式、服务器请求地址，再通过网络模块进行发送。 返回 `EventResponse` 通知请求结果。
 
-若是应用使用了其他的网络请求框架，可以选择其他的网络模块，如 `volley` 或 `urlconnection`
+若是应用使用了其他的网络请求框架，可以选择其他的网络模块，如 `urlconnection`
 
 ### 依赖方式
 <Tabs
@@ -78,8 +78,6 @@ SDK 事件通过 `EventUrl` 指定请求方式、服务器请求地址，再通�
 dependencies {
 	// 网络模块-okhttp3
 	implementation 'com.growingio.android:okhttp3:4.0.0'
-	// 可选网络模块-volley
-	implementation 'com.growingio.android:volley:4.0.0'
 	// 可选网络模块-urlconnnection
 	implementation 'com.growingio.android:urlconnnection:4.0.0'
 }
@@ -93,10 +91,8 @@ dependencies {
 	// Import the BoM for the GrowingIO platform
 	implementation platform('com.growingio.android:autotracker-bom:4.0.0')
 
-  	// 网络模块-okhttp3
+  // 网络模块-okhttp3
 	implementation 'com.growingio.android:okhttp3'
-	// 可选网络模块-volley
-	implementation 'com.growingio.android:volley'
 	// 可选网络模块-urlconnnection
 	implementation 'com.growingio.android:urlconnnection'
 }
