@@ -56,7 +56,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 在您的 Podfile 文件中添加
 
 ```ruby
-pod 'GrowingAnalytics/Autotracker', '>= 4.0.0'
+pod 'GrowingAnalytics/Autotracker', '~> 4.1.0'
 ```
 
 打开终端，切换到项目目录
@@ -239,7 +239,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 <ImageLoader path="img/ios/set_dependency_rule" />
 
 :::info
-我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本
+我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本 (>= 4.0)
 :::
 
 4. 点击下方的 Add Package 按钮，选择 GrowingTracker，再次点击 Add Package 按钮
@@ -252,7 +252,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 在您的 Podfile 文件中添加
 
 ```ruby
-pod 'GrowingAnalytics/Tracker', '>= 4.0.0'
+pod 'GrowingAnalytics/Tracker', '~> 4.1.0'
 ```
 
 打开终端，切换到项目目录
@@ -413,6 +413,50 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 至此，就完成了埋点 SDK 的集成。
 
 另外，您可使用 [GioKit 辅助插件](/docs/giokit/ios) 进行集成验证。
+
+## App Extension 集成
+
+在 App Extension 上，SDK 只自动采集用户访问事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
+
+:::info
+请首先在 Containing App 按照上述集成步骤集成 SDK，并确保 Containing App 和 Extension 集成同一类 SDK：
+* Containing App 集成无埋点 SDK，Extension 也需集成无埋点 SDK
+* Containing App 集成埋点 SDK，Extension 也需集成埋点 SDK
+
+SDK 自 4.1.0 起，支持 App Extension 集成
+:::
+
+<Tabs>
+  <TabItem value="swiftPM" label="Swift Package Manager集成" default>
+
+添加 SDK 到对应的 Extension Target
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods集成">
+
+添加 SDK 到 Podfile 中对应的 Extension Target
+:::info
+如果 Containing App 集成了 SDK 的功能模块，且 Containing App 和 Extension 都通过动态 framework 方式集成 SDK，需要保证 Extension 也集成相同的功能模块，否则在链接时将报错
+:::
+
+打开终端，切换到项目目录
+执行 `pod install` 或 `pod update`
+
+  </TabItem>
+</Tabs>
+
+### SDK 初始化
+
+在您的 Extension 对应的 ViewController，导入 SDK，并在 `viewDidLoad` 方法中，初始化 SDK
+
+### 查看集成效果
+运行 Extension，若日志中输出了  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 4.x.x`  
+则说明 SDK 已经集成成功。
+
+若在初始化中 `debugEnabled` 设置为 true，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
+
+至此，就完成了 App Extension 上的 SDK 集成。
 
 ## App Store 提交应用注意事项
 如果您添加了库 `AdSupport.framework`，GrowingIO 则会启用 `IDFA`，所以在向 App Store 提交应用时，需要：
