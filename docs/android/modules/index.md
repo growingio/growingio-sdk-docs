@@ -25,6 +25,7 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 | 性能监控-apm | 用于监控应用的性能和错误分析，需要集成生效  | [性能监控模块](/docs/android/modules/apm%20module) |
 | flutter | 当应用需要使用Growingio Flutter SDK，需要在原生SDK中集成生效 | [Flutter模块](/docs/android/modules/flutter%20module) |
 | A/B分组实验-abtest | 当应用需要使用A/B分组实验功能时，需要在原生SDK中集成生效 | [A/B分组测试模块](/docs/android/modules/abtest%20module) |
+| 系统信息-platform | 当应用需要进一步区分系统时（如Android、Harmony等），需要在原生SDK中集成生效 | [系统信息模块](/docs/android/modules/platform%20module) |
 | 更多开发中... |
 
 ## 注册模块代码
