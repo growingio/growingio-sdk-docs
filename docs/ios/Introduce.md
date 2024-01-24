@@ -89,7 +89,11 @@ import GrowingAutotracker
   <TabItem value="cocoapods" label="Cocoapods集成">
 
 ```objectivec
+// Objective-C
 #import "GrowingAutotracker.h"
+
+// Swift
+import GrowingAnalytics
 ```
 
   </TabItem>
@@ -99,7 +103,7 @@ import GrowingAutotracker
 #### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
 
 <Tabs>
-  <TabItem value="swift" label="Swift" default>
+  <TabItem value="swiftPM" label="Swift Package Manager" default>
 
 ```swift
 // Config GrowingIO
@@ -114,6 +118,21 @@ config?.urlScheme = "YourURLScheme"
 Autotracker.start(config!, launchOptions: launchOptions)
 ```
 
+  </TabItem>
+  <TabItem value="swift" label="Swift">
+
+```swift
+// Config GrowingIO
+// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+// YourDatasourceId eg: 11223344aabbcc
+// YourURLScheme eg: growing.123456789
+let config = GrowingAutotrackConfiguration(accountId: "YourAccountId")
+config?.dataCollectionServerHost = "YourServerHost"
+config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
+GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
+```
   </TabItem>
   <TabItem value="objc" label="Objective-C">
 
@@ -287,7 +306,11 @@ import GrowingTracker
   <TabItem value="cocoapods" label="Cocoapods集成">
 
 ```objectivec
+// Objective-C
 #import "GrowingTracker.h"
+
+// Swift
+import GrowingAnalytics
 ```
 
   </TabItem>
@@ -297,7 +320,7 @@ import GrowingTracker
 #### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
 
 <Tabs>
-  <TabItem value="swift" label="Swift" default>
+  <TabItem value="swiftPM" label="Swift Package Manager" default>
 
 ```swift
 // Config GrowingIO
@@ -310,6 +333,22 @@ config?.dataCollectionServerHost = "YourServerHost"
 config?.dataSourceId = "YourDatasourceId"
 config?.urlScheme = "YourURLScheme"
 Tracker.start(config!, launchOptions: launchOptions)
+```
+
+  </TabItem>
+  <TabItem value="swift" label="Swift">
+
+```swift
+// Config GrowingIO
+// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+// YourDatasourceId eg: 11223344aabbcc
+// YourURLScheme eg: growing.123456789
+let config = GrowingTrackConfiguration(accountId: "YourAccountId")
+config?.dataCollectionServerHost = "YourServerHost"
+config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
+GrowingTracker.start(with: config!, launchOptions: launchOptions ?? [:])
 ```
 
   </TabItem>
