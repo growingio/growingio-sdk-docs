@@ -12,25 +12,36 @@ import TabItem from '@theme/TabItem';
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 let success = Autotracker.isInitializedSuccessfully()
-```
 
-```objectivec
-BOOL success = [GrowingAutotracker isInitializedSuccessfully];
-```
-
-  </TabItem>
-  <TabItem value="埋点" label="埋点">
-
-```swift
+// 埋点
 let success = Tracker.isInitializedSuccessfully()
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+let success = GrowingAutotracker.isInitializedSuccessfully()
+
+// 埋点
+let success = GrowingTracker.isInitializedSuccessfully()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+BOOL success = [GrowingAutotracker isInitializedSuccessfully];
+
+// 埋点
 BOOL success = [GrowingTracker isInitializedSuccessfully];
 ```
 
@@ -50,25 +61,36 @@ BOOL success = [GrowingTracker isInitializedSuccessfully];
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 Autotracker.setDataCollectionEnabled(true)
-```
 
-```objectivec
-[[GrowingAutotracker sharedInstance] setDataCollectionEnabled:YES];
-```
-
-  </TabItem>
-  <TabItem value="埋点" label="埋点">
-
-```swift
+// 埋点
 Tracker.setDataCollectionEnabled(true)
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+GrowingAutotracker.sharedInstance().setDataCollectionEnabled(true)
+
+// 埋点
+GrowingTracker.sharedInstance().setDataCollectionEnabled(true)
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+[[GrowingAutotracker sharedInstance] setDataCollectionEnabled:YES];
+
+// 埋点
 [[GrowingTracker sharedInstance] setDataCollectionEnabled:YES];
 ```
 
@@ -94,28 +116,41 @@ Tracker.setDataCollectionEnabled(true)
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 Autotracker.setLoginUserId("123456")
 Autotracker.setLoginUserId("13111111111", userKey: "phone")
-```
 
-```objectivec
-[[GrowingAutotracker sharedInstance] setLoginUserId:@"123456"];
-[[GrowingAutotracker sharedInstance] setLoginUserId:@"13111111111" userKey:@"phone"];
-```
-
-  </TabItem>
-  <TabItem value="埋点" label="埋点">
-
-```swift
+// 埋点
 Tracker.setLoginUserId("123456")
 Tracker.setLoginUserId("13111111111", userKey: "phone")
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+GrowingAutotracker.sharedInstance().setLoginUserId("123456")
+GrowingAutotracker.sharedInstance().setLoginUserId("13111111111", userKey: "phone")
+
+// 埋点
+GrowingTracker.sharedInstance().setLoginUserId("123456")
+GrowingTracker.sharedInstance().setLoginUserId("13111111111", userKey: "phone")
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+[[GrowingAutotracker sharedInstance] setLoginUserId:@"123456"];
+[[GrowingAutotracker sharedInstance] setLoginUserId:@"13111111111" userKey:@"phone"];
+
+// 埋点
 [[GrowingTracker sharedInstance] setLoginUserId:@"123456"];
 [[GrowingTracker sharedInstance] setLoginUserId:@"13111111111" userKey:@"phone"];
 ```
@@ -130,25 +165,36 @@ Tracker.setLoginUserId("13111111111", userKey: "phone")
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 Autotracker.cleanLoginUserId()
-```
 
-```objectivec
-[[GrowingAutotracker sharedInstance] cleanLoginUserId];
-```
-
-  </TabItem>
-  <TabItem value="埋点" label="埋点">
-
-```swift
+// 埋点
 Tracker.cleanLoginUserId()
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+GrowingAutotracker.sharedInstance().cleanLoginUserId()
+
+// 埋点
+GrowingTracker.sharedInstance().cleanLoginUserId()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+[[GrowingAutotracker sharedInstance] cleanLoginUserId];
+
+// 埋点
 [[GrowingTracker sharedInstance] cleanLoginUserId];
 ```
 
@@ -169,25 +215,36 @@ Tracker.cleanLoginUserId()
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 Autotracker.setLocation(latitude: 39.9, longitude: 116.36)
-```
 
-```objectivec
-[[GrowingAutotracker sharedInstance] setLocation:39.9 longitude:116.36];
-```
-
-  </TabItem>
-  <TabItem value="埋点" label="埋点">
-
-```swift
+// 埋点
 Tracker.setLocation(latitude: 39.9, longitude: 116.36)
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+GrowingAutotracker.sharedInstance().setLocation(latitude: 39.9, longitude: 116.36)
+
+// 埋点
+GrowingTracker.sharedInstance().setLocation(latitude: 39.9, longitude: 116.36)
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+[[GrowingAutotracker sharedInstance] setLocation:39.9 longitude:116.36];
+
+// 埋点
 [[GrowingTracker sharedInstance] setLocation:39.9 longitude:116.36];
 ```
 
@@ -201,25 +258,36 @@ Tracker.setLocation(latitude: 39.9, longitude: 116.36)
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 Autotracker.cleanLocation()
-```
 
-```objectivec
-[[GrowingAutotracker sharedInstance] cleanLocation];
-```
-
-  </TabItem>
-  <TabItem value="埋点" label="埋点">
-
-```swift
+// 埋点
 Tracker.cleanLocation()
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+GrowingAutotracker.sharedInstance().cleanLocation()
+
+// 埋点
+GrowingTracker.sharedInstance().cleanLocation()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+[[GrowingAutotracker sharedInstance] cleanLocation];
+
+// 埋点
 [[GrowingTracker sharedInstance] cleanLocation];
 ```
 
@@ -241,58 +309,48 @@ Tracker.cleanLocation()
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 Autotracker.track("eventName")
 Autotracker.track("eventName", attributes: ["property": "value"])
 
-// 事件属性支持List类型，注意：CDP平台暂不支持展示
-let attrBuilder = GrowingAttributesBuilder<NSString>()
-attrBuilder.setString("value", forKey: "property")
-attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
-Autotracker.track("eventName", attributes: attrBuilder.build() as! [String: String]?)
-```
-
-```objectivec
-[[GrowingAutotracker sharedInstance] trackCustomEvent:@"eventName"];
-[[GrowingAutotracker sharedInstance] trackCustomEvent:@"eventName" withAttributes:@{@"property": @"value"}];
-
-// 事件属性支持List类型，注意：CDP平台暂不支持展示
-GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"property"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
-[[GrowingAutotracker sharedInstance] trackCustomEvent:@"eventName" withAttributes:builder.build];
+// 埋点
+Tracker.track("eventName")
+Tracker.track("eventName", attributes: ["property": "value"])
 ```
 
   </TabItem>
-  <TabItem value="埋点" label="埋点">
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
 
 ```swift
-Tracker.track("eventName")
-Tracker.track("eventName", attributes: ["property": "value"])
+// 无埋点
+GrowingAutotracker.sharedInstance().trackCustomEvent("eventName")
+GrowingAutotracker.sharedInstance().trackCustomEvent("eventName", withAttributes: ["property": "value"])
 
-// 事件属性支持List类型，注意：CDP平台暂不支持展示
-let attrBuilder = GrowingAttributesBuilder<NSString>()
-attrBuilder.setString("value", forKey: "property")
-attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
-Tracker.track("eventName", attributes: attrBuilder.build() as! [String: String]?)
+// 埋点
+GrowingTracker.sharedInstance().trackCustomEvent("eventName")
+GrowingTracker.sharedInstance().trackCustomEvent("eventName", withAttributes: ["property": "value"])
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+[[GrowingAutotracker sharedInstance] trackCustomEvent:@"eventName"];
+[[GrowingAutotracker sharedInstance] trackCustomEvent:@"eventName" withAttributes:@{@"property": @"value"}];
+
+// 埋点
 [[GrowingTracker sharedInstance] trackCustomEvent:@"eventName"];
 [[GrowingTracker sharedInstance] trackCustomEvent:@"eventName" withAttributes:@{@"property": @"value"}];
-
-// 事件属性支持List类型，注意：CDP平台暂不支持展示
-GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"property"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
-[[GrowingTracker sharedInstance] trackCustomEvent:@"eventName" withAttributes:builder.build];
 ```
 
   </TabItem>
 </Tabs>
+
 
 :::info
 
@@ -336,10 +394,11 @@ GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 let timerId = Autotracker.trackTimer("eventName")
 if let timerId = timerId {
     Autotracker.pauseTimer(timerId)
@@ -349,24 +408,8 @@ if let timerId = timerId {
     Autotracker.removeTimer(timerId)
 }
 Autotracker.clearTimers()
-```
 
-```objectivec
-NSString *timerId = [[GrowingAutotracker sharedInstance] trackTimerStart:@"eventName"];
-if (timerId) {
-    [[GrowingAutotracker sharedInstance] trackTimerPause:timerId];
-    [[GrowingAutotracker sharedInstance] trackTimerResume:timerId];
-    [[GrowingAutotracker sharedInstance] trackTimerEnd:timerId];
-    [[GrowingAutotracker sharedInstance] trackTimerEnd:timerId withAttributes:@{@"property" : @"value"}];
-    [[GrowingAutotracker sharedInstance] removeTimer:timerId];
-}
-[[GrowingAutotracker sharedInstance] clearTrackTimer];
-```
-
-  </TabItem>
-  <TabItem value="埋点" label="埋点">
-
-```swift
+// 埋点
 let timerId = Tracker.trackTimer("eventName")
 if let timerId = timerId {
     Tracker.pauseTimer(timerId)
@@ -378,7 +421,49 @@ if let timerId = timerId {
 Tracker.clearTimers()
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+let timerId = GrowingAutotracker.sharedInstance().trackTimerStart("eventName")
+if let timerId = timerId {
+    GrowingAutotracker.sharedInstance().trackTimerPause(timerId)
+    GrowingAutotracker.sharedInstance().trackTimerResume(timerId)
+    GrowingAutotracker.sharedInstance().trackTimerEnd(timerId)
+    GrowingAutotracker.sharedInstance().trackTimerEnd(timerId, withAttributes: ["property": "value"])
+    GrowingAutotracker.sharedInstance().removeTimer(timerId)
+}
+GrowingAutotracker.sharedInstance().clearTrackTimer()
+
+// 埋点
+let timerId = GrowingTracker.sharedInstance().trackTimerStart("eventName")
+if let timerId = timerId {
+    GrowingTracker.sharedInstance().trackTimerPause(timerId)
+    GrowingTracker.sharedInstance().trackTimerResume(timerId)
+    GrowingTracker.sharedInstance().trackTimerEnd(timerId)
+    GrowingTracker.sharedInstance().trackTimerEnd(timerId, withAttributes: ["property": "value"])
+    GrowingTracker.sharedInstance().removeTimer(timerId)
+}
+GrowingTracker.sharedInstance().clearTrackTimer()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+NSString *timerId = [[GrowingAutotracker sharedInstance] trackTimerStart:@"eventName"];
+if (timerId) {
+    [[GrowingAutotracker sharedInstance] trackTimerPause:timerId];
+    [[GrowingAutotracker sharedInstance] trackTimerResume:timerId];
+    [[GrowingAutotracker sharedInstance] trackTimerEnd:timerId];
+    [[GrowingAutotracker sharedInstance] trackTimerEnd:timerId withAttributes:@{@"property" : @"value"}];
+    [[GrowingAutotracker sharedInstance] removeTimer:timerId];
+}
+[[GrowingAutotracker sharedInstance] clearTrackTimer];
+
+// 埋点
 NSString *timerId = [[GrowingTracker sharedInstance] trackTimerStart:@"eventName"];
 if (timerId) {
     [[GrowingTracker sharedInstance] trackTimerPause:timerId];
@@ -392,6 +477,7 @@ if (timerId) {
 
   </TabItem>
 </Tabs>
+
 
 :::caution 注意
 endTimer 时发送 CUSTOM 事件上报数据：
@@ -416,54 +502,42 @@ event_duration 时间统计不会计算后台时间
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 Autotracker.setLoginUserAttributes(["property": "value"])
 
-// 事件属性支持List类型，注意：CDP平台暂不支持展示
-let attrBuilder = GrowingAttributesBuilder<NSString>()
-attrBuilder.setString("value", forKey: "property")
-attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
-Autotracker.setLoginUserAttributes(attrBuilder.build() as! [String: String])
-```
-
-```objectivec
-[[GrowingAutotracker sharedInstance] setLoginUserAttributes:@{@"property" : @"value"}];
-
-// 事件属性支持List类型，注意：CDP平台暂不支持展示
-GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"property"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
-[[GrowingAutotracker sharedInstance] setLoginUserAttributes:builder.build];
+// 埋点
+Tracker.setLoginUserAttributes(["property": "value"])
 ```
 
   </TabItem>
-  <TabItem value="埋点" label="埋点">
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
 
 ```swift
-Tracker.setLoginUserAttributes(["property": "value"])
+// 无埋点
+GrowingAutotracker.sharedInstance().setLoginUserAttributes(["property": "value"])
 
-// 事件属性支持List类型，注意：CDP平台暂不支持展示
-let attrBuilder = GrowingAttributesBuilder<NSString>()
-attrBuilder.setString("value", forKey: "property")
-attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
-Tracker.setLoginUserAttributes(attrBuilder.build() as! [String: String])
+// 埋点
+GrowingTracker.sharedInstance().setLoginUserAttributes(["property": "value"])
 ```
 
-```objectivec
-[[GrowingTracker sharedInstance] setLoginUserAttributes:@{@"property" : @"value"}];
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
-// 事件属性支持List类型，注意：CDP平台暂不支持展示
-GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"property"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
-[[GrowingTracker sharedInstance] setLoginUserAttributes:builder.build];
+```objectivec
+// 无埋点
+[[GrowingAutotracker sharedInstance] setLoginUserAttributes:@{@"property" : @"value"}];
+
+// 埋点
+[[GrowingTracker sharedInstance] setLoginUserAttributes:@{@"property" : @"value"}];
 ```
 
   </TabItem>
 </Tabs>
+
 
 :::info
 
@@ -478,25 +552,36 @@ GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 let deviceId = Autotracker.deviceId()
-```
 
-```objectivec
-NSString *deviceId = [[GrowingAutotracker sharedInstance] getDeviceId];
-```
-
-  </TabItem>
-  <TabItem value="埋点" label="埋点">
-
-```swift
+// 埋点
 let deviceId = Tracker.deviceId()
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+let deviceId = GrowingAutotracker.sharedInstance().getDeviceId()
+
+// 埋点
+let deviceId = GrowingTracker.sharedInstance().getDeviceId()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+NSString *deviceId = [[GrowingAutotracker sharedInstance] getDeviceId];
+
+// 埋点
 NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
 ```
 
@@ -518,13 +603,24 @@ NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 Autotracker.autotrackPage(self, alias: "viewController")
 Autotracker.autotrackPage(self, alias: "viewController", attributes: ["key": "value"])
 ```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+GrowingAutotracker.sharedInstance().autotrackPage(self, alias: "viewController")
+GrowingAutotracker.sharedInstance().autotrackPage(self, alias: "viewController", attributes: ["key": "value"])
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 [[GrowingAutotracker sharedInstance] autotrackPage:self alias:@"viewController"];
@@ -549,8 +645,8 @@ UIView 分类声明的属性 (Objective-C 实现)，建议在 view 初始化之�
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 view.ignorePolicy = .`self`
@@ -558,6 +654,19 @@ view.ignorePolicy = .children
 view.ignorePolicy = .all
 view.ignorePolicy = .none
 ```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+view.growingViewIgnorePolicy = .`self`
+view.growingViewIgnorePolicy = .children
+view.growingViewIgnorePolicy = .all
+view.growingViewIgnorePolicy = .none
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 view.growingViewIgnorePolicy = GrowingIgnoreSelf;
@@ -582,12 +691,22 @@ view.growingViewIgnorePolicy = GrowingIgnoreNone;
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 Autotracker.ignore(UIButton.self)
 ```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+GrowingAutotracker.sharedInstance().ignoreViewClass(UIButton.self)
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 [[GrowingAutotracker sharedInstance] ignoreViewClass:[UIButton class]];
@@ -609,12 +728,22 @@ Autotracker.ignore(UIButton.self)
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 Autotracker.ignore([UIButton.self, UISwitch.self])
 ```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+GrowingAutotracker.sharedInstance().ignoreViewClasses([UIButton.self, UISwitch.self])
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 [[GrowingAutotracker sharedInstance] ignoreViewClasses:@[[UIButton class], [UISwitch class]]];
@@ -638,12 +767,22 @@ Autotracker.ignore([UIButton.self, UISwitch.self])
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 view.uniqueTag = "我是一个特别的view"
 ```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+view.growingUniqueTag = "我是一个特别的view"
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 view.growingUniqueTag = @"我是一个特别的view";
@@ -667,12 +806,22 @@ view.growingUniqueTag = @"我是一个特别的view";
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 view.customContent = "content"
 ```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+view.growingViewCustomContent = "content"
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 view.growingViewCustomContent = @"content";
@@ -680,6 +829,7 @@ view.growingViewCustomContent = @"content";
 
   </TabItem>
 </Tabs>
+
 
 ### 17. 设置埋点通用属性
 
@@ -701,31 +851,46 @@ view.growingViewCustomContent = @"content";
 
 #### 示例
 
-<Tabs>
-  <TabItem value="无埋点" label="无埋点" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
+// 无埋点
 Autotracker.setGeneralProps(["property": "value"])
 Autotracker.removeGeneralProps(["key1", "key2"])
 Autotracker.clearGeneralProps()
-```
 
-```objectivec
-[[GrowingAutotracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
-[[GrowingAutotracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
-[[GrowingAutotracker sharedInstance] clearGeneralProps];
-```
-
-  </TabItem>
-  <TabItem value="埋点" label="埋点">
-
-```swift
+// 埋点
 Tracker.setGeneralProps(["property": "value"])
 Tracker.removeGeneralProps(["key1", "key2"])
 Tracker.clearGeneralProps()
 ```
 
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+GrowingAutotracker.sharedInstance().setGeneralProps(["property": "value"])
+GrowingAutotracker.sharedInstance().removeGeneralProps(["key1", "key2"])
+GrowingAutotracker.sharedInstance().clearGeneralProps()
+
+// 埋点
+GrowingTracker.sharedInstance().setGeneralProps(["property": "value"])
+GrowingTracker.sharedInstance().removeGeneralProps(["key1", "key2"])
+GrowingTracker.sharedInstance().clearGeneralProps()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
 ```objectivec
+// 无埋点
+[[GrowingAutotracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
+[[GrowingAutotracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
+[[GrowingAutotracker sharedInstance] clearGeneralProps];
+
+// 埋点
 [[GrowingTracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
 [[GrowingTracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
 [[GrowingTracker sharedInstance] clearGeneralProps];
@@ -733,6 +898,57 @@ Tracker.clearGeneralProps()
 
   </TabItem>
 </Tabs>
+
+
+### 18. 属性工具 
+`GrowingAttributesBuilder`<br/>
+`GrowingAttributesBuilder<T>` 是 SDK 提供给用户协助设置属性的工具类，支持传入多种类型属性值(包含列表类型)<br/>
+`T` 可为 `NSString`、`NSNumber` 或 `AnyObject`
+
+`setString(_ value: String, forkey key: String)`<br/>
+设置一个字符串类型属性
+
+`setArray(_ value: [T], forkey key: String)`<br/>
+设置一个数组类型属性
+
+`build()`<br/>
+返回设置埋点事件API所需属性参数类型对应的数据结构
+
+#### 示例
+
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
+
+```swift
+let attrBuilder = GrowingAttributesBuilder<NSString>()
+attrBuilder.setString("value", forKey: "property")
+attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
+let attributes = attrBuilder.build()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+let attrBuilder = GrowingAttributesBuilder<NSString>()
+attrBuilder.setString("value", forKey: "property")
+attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
+let attributes = attrBuilder.build()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
+```objectivec
+GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
+[builder setString:@"value" forKey:@"property"];
+[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
+NSDictionary *attributes = builder.build;
+```
+
+  </TabItem>
+</Tabs>
+
 
 :::caution 注意
 定义的通用属性名需要在平台上进行事件属性的创建并与埋点事件完成关联<br/>
