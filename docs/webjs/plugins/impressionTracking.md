@@ -129,7 +129,7 @@ gdp('track', 'imp_cat_var', { name: 'cat_picture', time: '20210601' });
   getData.then((result) => {
     // 设值触发节点渲染
     data.impData = result;
-    // 在setData回调中调用 updateImpression 即可
+    // 赋值后调用
     gdp('updateImpression');
   });
 ```
