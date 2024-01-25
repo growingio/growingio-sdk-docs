@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 title: 半自动埋点浏览
 ---
 
@@ -106,6 +106,32 @@ gdp('track', 'imp_cat_var', { name: 'cat_picture', time: '20210601' });
 >
   监听的元素，必须有内容或额外样式来让节点有实际大小
 </div>
+```
+
+## 手动更新半自动埋点监听
+
+当您需要添加半自动埋点的节点是动态渲染时（例如根据接口数据渲染不同的内容），SDK 可能会因为无法感知节点渲染时机而失去对标记节点的监听。此时，您需要调用 `updateImpression` 手动更新 SDK 的监听来保证您的动态渲染节点能够被监听到。
+
+#### 示例
+
+```js
+  const data = {
+    impData: [],
+  };
+
+  // 这里通过一个Promise来模拟调用接口
+  const getData = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ name: 'Lily', age: 18 });
+    }, 3000);
+  });
+
+  getData.then((result) => {
+    // 设值触发节点渲染
+    data.impData = result;
+    // 在setData回调中调用 updateImpression 即可
+    gdp('updateImpression');
+  });
 ```
 
 ## 注意

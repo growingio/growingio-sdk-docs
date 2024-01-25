@@ -20,10 +20,12 @@ title: 初始化配置
 | `ignoreFields`   | `string[]`              | `[]`                         | 上报忽略字段                 |
 | `originalSource` | `boolean`               | `true`                       | 访问事件是否使用原始进入数据 |
 | `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
+| `requestTimeout` | `number`                | `5000`                       | 请求超时时长                 |
 | `sendType`       | `string`                | `beacon`                     | 数据上报优先方式             |
 | `serverUrl`      | `string`                | `https://napi.growingio.com` | 数据上报的服务端地址         |
 | `storageType`    | `cookie / localStorage` | `cookie`                     | SDK信息的持久化存储的类型    |
 | `trackBot`       | `boolean`               | `true`                       | 是否采集爬虫环境数据         |
+| `trackPage`      | `boolean`               | `true`                       | 是否自动采集页面访问事件       |
 | `version`        | `string`                | `1.0.0`                      | 应用版本号                   |
 
 ## 配置项详解
@@ -89,7 +91,9 @@ gdp('init', accountId, dataSourceId, appId, {
 gdp('identify', openId / unionId);
 ```
 
-**<font color="#FC5F3A">注意：非微信公众号H5的站点慎用，可能会导致你的站点没有数据上报。</font>**
+**<font color="#FC5F3A">注意：</font>**<br/>
+**<font color="#FC5F3A">1、非微信公众号H5的站点慎用，可能会导致你的站点没有数据上报。</font>**<br/>
+**<font color="#FC5F3A">2、使用多实例能力时，该配置项以主实例为准，当且仅当主实例调用 `identify` 后，所有实例才会开始发数。</font>**
 
 ### idMapping
 
@@ -112,6 +116,8 @@ gdp('init', accountId, datasourceId, {
   ...其他配置项,
 });
 ```
+
+**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例生效，子实例设置无效。
 
 ### ignoreFields
 
@@ -165,20 +171,20 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-<!-- ### requestTimeout
+### requestTimeout
 
 默认情况下，SDK的上报请求在`XHR`和`图片`的形式下超时时长为 5000毫秒（即5秒），超时即自动失败。当您需要控制数据上报请求超时时长时可修改。
 
-配置项取值：整数大于0，单位毫秒。
-
-**<font color="#FC5F3A">注意：</font>该配置项仅在`XHR`和`图片`请求时生效，`beacon`请求无法控制。**
+配置项取值：**整数大于0**，单位毫秒，默认值`5000`。
 
 ```js
 gdp('init', accountId, datasourceId, {
   requestTimeout: '3000',
   ...其他配置项,
 });
-``` -->
+```
+
+**<font color="#FC5F3A">注意：</font>该配置项仅在`XHR`和`图片`请求时生效，`beacon`请求无法控制。**
 
 ### sendType
 
@@ -223,6 +229,8 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
+**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例生效，子实例设置无效。
+
 ### trackBot
 
 默认情况下，SDK会采集支持JavaScript的爬虫访问数据，包括会话信息和页面访问信息，但是不会收集页面的元素数据。你可以通过浏览器维度分辨出有多少是爬虫带来的数据，有多少是正常用户访问的数据。如果你希望不采集爬虫的数据，可关闭该配置项。
@@ -233,6 +241,19 @@ gdp('init', accountId, datasourceId, {
   ...其他配置项,
 });
 ```
+
+### trackPage
+
+默认情况下，SDK会采集页面访问事件，包括页面跳转、查询参数变更、hash变更等场景。可以在平台上查看到页面访问时长，页面跳出率等分析数据。如果您确认不需要采集，可关闭该配置项。
+
+```js
+gdp('init', accountId, datasourceId, {
+  trackPage: false,
+  ...其他配置项,
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**关闭该配置项，会导致页面访问时长，页面跳出率等与页面相关的分析数据异常，请充分了解影响后操作。
 
 ### version
 
