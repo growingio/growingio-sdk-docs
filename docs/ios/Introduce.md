@@ -25,8 +25,8 @@ Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数�
 
 ## 无埋点 SDK 集成
 
-<Tabs>
-  <TabItem value="swiftPM" label="Swift Package Manager集成" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
@@ -51,12 +51,12 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 <ImageLoader path="img/ios/add_package_autotracker" />
 
   </TabItem>
-  <TabItem value="cocoapods" label="Cocoapods集成">
+  <TabItem value="cocoapods" label="Cocoapods">
 
 在您的 Podfile 文件中添加
 
 ```ruby
-pod 'GrowingAnalytics/Autotracker', '>= 4.0.0'
+pod 'GrowingAnalytics/Autotracker', '~> 4.1.0'
 ```
 
 打开终端，切换到项目目录
@@ -78,28 +78,34 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 ### SDK 初始化配置
 #### 导入头文件
 
-<Tabs>
-  <TabItem value="swiftPM" label="Swift Package Manager集成" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 import GrowingAutotracker
 ```
 
   </TabItem>
-  <TabItem value="cocoapods" label="Cocoapods集成">
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+import GrowingAnalytics
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 #import "GrowingAutotracker.h"
 ```
 
   </TabItem>
-
 </Tabs>
 
 #### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
 
-<Tabs>
-  <TabItem value="swift" label="Swift" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 // Config GrowingIO
@@ -115,7 +121,22 @@ Autotracker.start(config!, launchOptions: launchOptions)
 ```
 
   </TabItem>
-  <TabItem value="objc" label="Objective-C">
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// Config GrowingIO
+// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+// YourDatasourceId eg: 11223344aabbcc
+// YourURLScheme eg: growing.123456789
+let config = GrowingAutotrackConfiguration(accountId: "YourAccountId")
+config?.dataCollectionServerHost = "YourServerHost"
+config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
+GrowingAutotracker.start(with: config!, launchOptions: launchOptions ?? [:])
+```
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 // Config GrowingIO
@@ -130,13 +151,12 @@ configuration.urlScheme = @"YourURLScheme";
 [GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```
   </TabItem>
-
 </Tabs>
 
 ####  在 appDelegate.m 文件中实现 URL Scheme 跳转以及 DeepLink 跳转的代理方法
 
-<Tabs>
-  <TabItem value="swift" label="Swift" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift" default>
 
 ```swift
 // URL Scheme跳转
@@ -151,7 +171,7 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 ```
 
   </TabItem>
-  <TabItem value="objc" label="Objective-C">
+  <TabItem value="cocoapods_oc" label="Objective-C">
 
 ```objectivec
 // URL Scheme跳转
@@ -171,14 +191,12 @@ continueUserActivity:(NSUserActivity *)userActivity
 ```
 
   </TabItem>
-
 </Tabs>
 
 #### 若使用了 iOS 13 的 UIScene，请在您指定的 SceneDelegate 中设置如下
 
-<Tabs>
-
-  <TabItem value="swift" label="Swift" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift" default>
 
 ```swift
 func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
@@ -189,7 +207,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 ```
 
   </TabItem>
-  <TabItem value="objc" label="Objective-C">
+  <TabItem value="cocoapods_oc" label="Objective-C">
 
 ```objectivec
 - (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
@@ -199,7 +217,6 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 }
 ```
   </TabItem>
-
 </Tabs>
 
 :::info
@@ -221,8 +238,8 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 埋点 SDK 只自动采集用户访问事件和 APP 关闭事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
 
-<Tabs>
-  <TabItem value="swiftPM" label="Swift Package Manager集成" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
@@ -239,7 +256,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 <ImageLoader path="img/ios/set_dependency_rule" />
 
 :::info
-我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本
+我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本 (>= 4.0)
 :::
 
 4. 点击下方的 Add Package 按钮，选择 GrowingTracker，再次点击 Add Package 按钮
@@ -247,12 +264,12 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 <ImageLoader path="img/ios/add_package_tracker" />
 
   </TabItem>
-  <TabItem value="cocoapods" label="Cocoapods集成">
+  <TabItem value="cocoapods" label="Cocoapods">
 
 在您的 Podfile 文件中添加
 
 ```ruby
-pod 'GrowingAnalytics/Tracker', '>= 4.0.0'
+pod 'GrowingAnalytics/Tracker', '~> 4.1.0'
 ```
 
 打开终端，切换到项目目录
@@ -275,29 +292,34 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 
 #### 导入头文件
 
-<Tabs>
-
-  <TabItem value="swiftPM" label="Swift Package Manager集成" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 import GrowingTracker
 ```
 
   </TabItem>
-  <TabItem value="cocoapods" label="Cocoapods集成">
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+import GrowingAnalytics
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 #import "GrowingTracker.h"
 ```
 
   </TabItem>
-
 </Tabs>
 
 #### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
 
-<Tabs>
-  <TabItem value="swift" label="Swift" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
 // Config GrowingIO
@@ -313,7 +335,23 @@ Tracker.start(config!, launchOptions: launchOptions)
 ```
 
   </TabItem>
-  <TabItem value="objc" label="Objective-C">
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// Config GrowingIO
+// YourAccountId eg: 0a1b4118dd954ec3bcc69da5138bdb96
+// YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
+// YourDatasourceId eg: 11223344aabbcc
+// YourURLScheme eg: growing.123456789
+let config = GrowingTrackConfiguration(accountId: "YourAccountId")
+config?.dataCollectionServerHost = "YourServerHost"
+config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
+GrowingTracker.start(with: config!, launchOptions: launchOptions ?? [:])
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
 
 ```objectivec
 // Config GrowingIO
@@ -328,13 +366,12 @@ configuration.urlScheme = @"YourURLScheme";
 [GrowingTracker startWithConfiguration:configuration launchOptions:launchOptions];
 ```
   </TabItem>
-
 </Tabs>
 
 ####  在 appDelegate.m 文件中实现 URL Scheme 跳转以及 DeepLink 跳转的代理方法
 
-<Tabs>
-  <TabItem value="swift" label="Swift" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift" default>
 
 ```swift
 // URL Scheme跳转
@@ -349,7 +386,7 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 ```
 
   </TabItem>
-  <TabItem value="objc" label="Objective-C">
+  <TabItem value="cocoapods_oc" label="Objective-C">
 
 ```objectivec
 // URL Scheme跳转
@@ -369,13 +406,12 @@ continueUserActivity:(NSUserActivity *)userActivity
 ```
 
   </TabItem>
-
 </Tabs>
 
 #### 若使用了 iOS 13 的 UIScene，请在您指定的 SceneDelegate 中设置如下
 
-<Tabs>
-  <TabItem value="swift" label="Swift" default>
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift" default>
 
 ```swift
 func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
@@ -386,7 +422,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 ```
 
   </TabItem>
-  <TabItem value="objc" label="Objective-C">
+  <TabItem value="cocoapods_oc" label="Objective-C">
 
 ```objectivec
 - (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
@@ -396,7 +432,6 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 }
 ```
   </TabItem>
-
 </Tabs>
 
 :::info
@@ -413,6 +448,50 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 至此，就完成了埋点 SDK 的集成。
 
 另外，您可使用 [GioKit 辅助插件](/docs/giokit/ios) 进行集成验证。
+
+## App Extension 集成
+
+在 App Extension 上，SDK 只自动采集用户访问事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
+
+:::info
+请首先在 Containing App 按照上述集成步骤集成 SDK，并确保 Containing App 和 Extension 集成同一类 SDK：
+* Containing App 集成无埋点 SDK，Extension 也需集成无埋点 SDK
+* Containing App 集成埋点 SDK，Extension 也需集成埋点 SDK
+
+SDK 自 4.1.0 起，支持 App Extension 集成
+:::
+
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
+
+添加 SDK 到对应的 Extension Target
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods">
+
+添加 SDK 到 Podfile 中对应的 Extension Target
+:::info
+如果 Containing App 集成了 SDK 的功能模块，且 Containing App 和 Extension 都通过动态 framework 方式集成 SDK，需要保证 Extension 也集成相同的功能模块，否则在链接时将报错
+:::
+
+打开终端，切换到项目目录
+执行 `pod install` 或 `pod update`
+
+  </TabItem>
+</Tabs>
+
+### SDK 初始化
+
+在您的 Extension 对应的 ViewController，导入 SDK，并在 `viewDidLoad` 方法中，初始化 SDK
+
+### 查看集成效果
+运行 Extension，若日志中输出了  
+`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 4.x.x`  
+则说明 SDK 已经集成成功。
+
+若在初始化中 `debugEnabled` 设置为 true，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
+
+至此，就完成了 App Extension 上的 SDK 集成。
 
 ## App Store 提交应用注意事项
 如果您添加了库 `AdSupport.framework`，GrowingIO 则会启用 `IDFA`，所以在向 App Store 提交应用时，需要：
