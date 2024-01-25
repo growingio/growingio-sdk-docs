@@ -30,6 +30,7 @@ import TabItem from '@theme/TabItem';
 | setRequireAppProcessesEnabled [#](#11-setrequireappprocessesenabled) | _boolean_ | 否 | `false`  | SDK 是否能获取应用多进程ID   | |
 | setAndroidIdEnabled [#](#10-setandroididenabled) | _boolean_ |    否   | `false` | SDK 是否能获取 AndroidId                   | |
 | addPreloadComponent [#](#13-addpreloadcomponent) | _LibraryGioModule_,<br/>[_Configurable_] |否| `null` | 注册自定义/预定义模块及其配置文件 | |
+| setRequestTimeout [#](#14-setrequesttimeout) | _int_,_TimeUnit_ |否| `30s` | 网络数据发送超时设置 | |
 
 ### 无埋点配置
 
@@ -169,6 +170,23 @@ GrowingAutotracker.startWithConfiguration(this,
 );
 ```
 模块列表请参考 [功能模块一览](/docs/android/modules)
+
+### 14. setRequestTimeout
+设置请求超时时长，默认30s。
+
+```java
+GrowingAutotracker.startWithConfiguration(this,
+        new AutotrackConfiguration("accountId", "urlScheme")
+        // 设置网络请求超时
+        .setRequestTimeout(30,TimeUnit.SECONDS)
+        // 或者在使用okHttp请求库时，可以详细设置请求超时时间
+        .setRequestDetailTimeout(10, 10, 10, TimeUnit.SECONDS)
+
+);
+```
+
+> 当使用默认 Okhttp 请求库时，可以使用 `setRequestDetailTimeout(10, 10, 10, TimeUnit.SECONDS)` 接口，其值分别对应 Okhttp 网络库的请求超时设置 `connectTimeout`, `readTimeout`, `writeTimeout`
+
 
 ## 无埋点配置说明
 
