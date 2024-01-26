@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgrowingio_sdk_doc=self.webpackChunkgrowingio_sdk_doc||[]).push([[7534],{1725:o=>{o.exports=JSON.parse('{"label":"android","permalink":"/growingio-sdk-docs/blog/tags/android","allTagsPath":"/growingio-sdk-docs/blog/tags","count":1,"unlisted":false}')}}]);
