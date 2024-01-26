@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
 | 配置接口               | 参数类型   | 是否必填 | 默认值 | 说明                         |
 | :--------------------- | :--------- | :------: | :----- | :--------------------------- |
 | `readClipboardEnabled` | `Bool`     |    否    | `true` | 是否允许读取剪切板的应用信息 |
-| `deepLinkHost`         | `String`   |    是    | `nil`  | 深度链接配置地址，示例：https://n.datayi.cn   |
+| `deepLinkHost`         | `String`   |    否    | `https://link.growingio.com`  | 深度链接配置地址，SaaS取默认值   |
 | `deepLinkCallback`     | `Closures` |    否    | `nil`  | 监听深度链接中的地址参数     |
 
 ```swift

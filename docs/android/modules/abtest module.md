@@ -55,13 +55,13 @@ A/B分组实验模块中提供了配置文件可以设置模块的配置：
 
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明 
 | :-------------------------   | :------         | :----:  |:------  |:------| 
-| setAbTestServerHost | _String_       | 否      | `https://ab.growingio.com`  | 设置AB分流服务请求地址  |
+| setAbTestServerHost | _String_       | 否      | `https://ab.growingio.com`  | 设置AB分流服务请求地址，SaaS取默认值  |
 | setAbTestExpired  | _long_ , _TimeUnit_ | 否      |  `5分`  | 配置用于设置实验结果的缓存时效     |
 | setAbTestTimeout  | _long_ , _TimeUnit_  | 否      | `5秒`   | 配置AB请求超时时间 |
 
 ```java
 ABTestConfig config = ABTestConfig();
-config.setAbTestServerHost("https://ab.growingio.com");
+config.setAbTestServerHost("Your AbTestServerHost");
 config.setAbTestExpired(5, TimeUnit.MINUTES);
 config.setAbTestTimeout(5,TimeUnit.SECONDS);
 ```
