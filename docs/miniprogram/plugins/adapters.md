@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: 数据转发插件
+title: 第三方数据转发
 ---
 ## 简介（gioAdapters）
 

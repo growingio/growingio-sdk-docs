@@ -3,7 +3,7 @@ sidebar_position: 6
 title: 性能监控
 ---
 
-## 简介
+## 简介（gioPerformance）
 
 提供小程序 小程序启动/页面加载监控 和 错误监控 的性能监控采集插件。
 

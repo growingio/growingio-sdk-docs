@@ -1,9 +1,9 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 title: 性能监控
 ---
 
-## 简介
+## 简介（gioPerformance）
 
 提供页面 首屏加载监控 和 错误监控 的性能监控采集插件。
 
