@@ -1,5 +1,6 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const {themes} = require('prism-react-renderer');
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -8,6 +9,7 @@ module.exports = {
   url: 'https://growingio.github.io',
   baseUrl: '/growingio-sdk-docs/',
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
   trailingSlash: false,
@@ -191,21 +193,6 @@ module.exports = {
         showLastUpdateTime: true,
       }
     ],
-    [
-      "docusaurus-plugin-includes",
-      {
-        injectedHtmlTags:{
-          preBodyTags: [
-            {
-              tagName: "script",
-              attributes: {
-                type: "text/javascript",
-                src: "https://growingio.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-dtzt95/b/3/c95134bc67d3a521bb3f4331beb9b804/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?jsI18nTransformer=existing&locale=en-US&collectorId=d067cced",
-              },
-            }
-          ],
-        },
-      },
-    ],
+    './src/components/feedback',
   ],
 };

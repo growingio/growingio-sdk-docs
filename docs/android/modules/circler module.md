@@ -36,7 +36,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:circler:4.0.0'
+	implementation 'com.growingio.android:circler:4.1.0'
 }
 ```
 </TabItem>
@@ -46,7 +46,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.1.0')
 
   implementation 'com.growingio.android:circler'
 }
@@ -57,5 +57,5 @@ dependencies {
 
 ### 使用方式
 
-需要在 ”数据管理 > 无埋点事件” 中点击 “新建无埋点事件 > {App应用}” 进入App唤醒页面。
+需要在 ”数据管理 > 无埋点事件” 中点击 “新建无埋点事件 > App应用” 进入App唤醒页面。
 后续操作参考 [APP端数据定义](https://docs.growingio.com/op-help/docs/4.0/product-manual/user-behavior-analytics/data-management/data-management/auto-track/app-data-definition) 即可。

@@ -214,7 +214,7 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 | loginUserKey      | string                        | 否       | 登录用户KEY，传此参数时，同时需传登录用户ID |
 | loginUserId       | string                        | 否       | 登录用户ID，与访问用户ID，不能同时为空|
 | addEventVariable  | (string, object)              | 否       | 事件发生时所伴随的属性信息；<br/>object支持 string\|double\|int\|List,List 中元素支持string\|double\|int；<br/>当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID) |
-| addEventVariables | map<string,object>            | 否       | 事件属性集合；<br/>object支持 string\|double\|int\|List,List 中元素支持string\|double\|int；<br/>当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)                |
+| addEventVariables | map{'<'}string, object{'>'}       | 否       | 事件属性集合；<br/>object支持 string\|double\|int\|List,List 中元素支持string\|double\|int；<br/>当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)                |
 | addItem           | (string, string)              | 否       | 物品模型ID, 物品模型Key |
 
 **代码示例**
@@ -262,7 +262,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 | loginUserKey     | string                        | 否       | 登录用户KEY，传此参数时，同时需传登录用户ID |
 | loginUserId      | string                        | 是       | 登录用户ID，与访问用户ID，不能同时为空 |
 | addUserVariable  | (string, object)              | 否       | 登录用户属性；<br/>object支持 string\|double\|int\|List,List中元素支持string\|double\|int      |
-| addUserVariables | map<string,object>            | 否       | 登录用户属性集合；<br/>object支持 string\|double\|int\|List,List 中元素支持string\|double\|int   |
+| addUserVariables | map{'<'}string, object{'>'}            | 否       | 登录用户属性集合；<br/>object支持 string\|double\|int\|List,List 中元素支持string\|double\|int   |
 
 **代码示例**
 
@@ -296,7 +296,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 | --------------- | ------------------ | -------- | ---------------------------------- |
 | id              | string             | 是       | 维度表模型ID(记录ID)               |
 | key             | string             | 是       | 维度表标识符                       |
-| addItemVariable | map<string,string> | 否       | 维度表属性及值；多个属性可调用多次 |
+| addItemVariable | map{'<'}string, string{'>'} | 否       | 维度表属性及值；多个属性可调用多次 |
 
 **代码示例**
 
@@ -317,7 +317,7 @@ GioCdpItemMessage msg = new GioCdpItemMessage.Builder()
 | 参数名称      | 类型               | 是否必填 | 说明                  |
 | ------------- | ------------------ | -------- | --------------------- |
 | addIdentities | (string, string)   | 否       | 用户KEY, 用户ID       |
-| addIdentities | map<string,string> | 否       | (用户KEY, 用户ID)集合 |
+| addIdentities | map{'<'}string, string{'>'} | 否       | (用户KEY, 用户ID)集合 |
 
 **代码示例**
 
@@ -345,7 +345,9 @@ GioCdpUserMappingMessage msg = new GioCdpUserMappingMessage.Builder()
 3. 在您的Java项目中找到合适的埋点位置，调用埋点事件API/登录用户属性API上传数据
 4. 在输出的日志中查找是否包含期望事件内容，如下：
 
-> gio message is [{"cs1":"10324","t":"cstm","var":{"product_name":"苹果"},"tm":1575895053509,"n":"order"}]
+```cmd
+gio message is [{"cs1": "10324", "t": "cstm", "var": {"product_name": "苹果"}, "tm": 1575895053509, "n": "order"}]
+```
 
 ![code](https://3953104361-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M2qbZInaXgdm8kkNosp%2F-M3jX91jAu6IT2O2PJVo%2F-M3jZ7JgLc5nEzRbIQQh%2Fimage.png?alt=media&token=02d9d860-892b-43f5-b90c-4c8a9155401a)
 

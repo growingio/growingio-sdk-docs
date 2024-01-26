@@ -3,7 +3,7 @@ sidebar_position: 0
 title: 版本记录
 ---
 
-SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases>
+SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
 ### V4.0.1 - 2023/12/21
 

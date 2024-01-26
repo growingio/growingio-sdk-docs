@@ -54,7 +54,7 @@ sidebar_position: 4
 | googleAdvertisingId | string | ❌ | google广告ID（Android 特有）|
 | idfa | string | ❌ | iOS广告标识符（iOS 特有）|
 | idfv | string | ❌ | iOS应用开发商标识符（iOS 特有）|
-| extraSdk | Map<string, string> | ❌ | 额外的SDK信息 |
+| extraSdk | Map{'<'}string, string{'>'} | ❌ | 额外的SDK信息 |
 
 示例
 
@@ -96,7 +96,7 @@ sidebar_position: 4
 | eventName | string | ✅ | 埋点事件的标识符 |
 | path | string | ❌ | 埋点事件关联的page |
 | pageShowTimestamp | long | ❌ | 埋点事件关联的page的显示时间戳 |
-| attributes | Map<string, string> | ❌ | 埋点事件属性 |
+| attributes | Map{'<'}string, string{'>'} | ❌ | 埋点事件属性 |
 | query | string | ❌ | Hybrid页面url 中的query |
 | resourceItem | 对象 ResourceItem | ❌ | 物品模型（CDP 特有）|
 
@@ -106,7 +106,7 @@ sidebar_position: 4
 | :---- | ---- | ---- | ---- |
 | id | string | ✅ | 物品模型id |
 | key | string | ✅ | 物品模型key |
-| attributes | Map<string, string> | ❌ | 物品模型属性 |
+| attributes | Map{'<'}string, string{'>'} | ❌ | 物品模型属性 |
 
 示例
 
@@ -149,7 +149,7 @@ sidebar_position: 4
 
 | 字段名称 | 数据类型 | 是否必有 | 解释说明 |
 | :---- | ---- | ---- | ---- |
-| attributes | Map<string, string> | ✅ | 登录用户属性 |
+| attributes | Map{'<'}string, string{'>'} | ✅ | 登录用户属性 |
 
 示例
 
@@ -236,7 +236,7 @@ sidebar_position: 4
 | referralPage | string | ❌ | 来源页面 |
 | query | string | ❌ | Hybrid页面url 中的query |
 | protocolType | string | ❌ | Hybrid页面url 中的协议头，如https |
-| attributes | Map<string, string> | ❌ | 页面属性 |
+| attributes | Map{'<'}string, string{'>'} | ❌ | 页面属性 |
 
 示例
 
@@ -380,7 +380,7 @@ sidebar_position: 4
 
 | 字段名称            | 数据类型            | 是否必有 | 解释说明                        |
 | :------------------ | ------------------- | -------- | ------------------------------- |
-| attributes     | Map<string, string>      | ❌        | 激活相关属性 |
+| attributes     | Map{'<'}string, string{'>'}      | ❌        | 激活相关属性 |
 | imei                | string              | ❌        | IMEI（Android 特有）            |
 | androidId           | string              | ❌        | AndroidId（Android 特有）       |
 | oaid                | string              | ❌        | 国内的广告ID（Android 特有）    |

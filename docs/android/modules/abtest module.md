@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:abtest:4.0.0'
+	implementation 'com.growingio.android:abtest:4.1.0'
 }
 ```
 </TabItem>
@@ -41,7 +41,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.1.0')
 
   implementation 'com.growingio.android:abtest'
 }
@@ -156,7 +156,7 @@ GrowingTracker.get().getAbTest(layerId,
 | layerId | _String_  | 发出请求的实验层ID |
 | strategyId | _long_  | 当前业务命中的分组ID |
 | experimentId | _long_  | 当前业务命中的实验ID |
-| variables | _Map<String, String>_  | 实验数据变量 |
+| variables | _Map{'<'}String, String{'>'}_  | 实验数据变量 |
 
 **dataType** 表示数据来源：
 * `ABTEST_CACHE = 0` 表示实验数据来源自未过期的缓存中；

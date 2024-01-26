@@ -81,8 +81,8 @@ plugins {
 | :-------------------------   | :------         | :----:  |:------  |:------| --------------------------   |
 | logEnabled                 | _Boolean_       | 否      | `false`  | 编译时是否输出log日志          |  |
 | skipDependencyCheck       | _Boolean_       | 否      | `false`  | 编译时检测当前project是否配置SDK依赖（模块中依赖时配置为true）          |  |
-| includePackages            | _Array<String\>_ | 否      | `null`   | 需要额外包含编译的包名          |  |
-| excludePackages            | _Array<String\>_ | 否      | `null`   | 需要跳过编译的包名             |  |
+| includePackages            | _Array\<String\>_ | 否      | `null`   | 需要额外包含编译的包名          |  |
+| excludePackages            | _Array\<String\>_ | 否      | `null`   | 需要跳过编译的包名             |  |
 | giokit                     | _GiokitExtension_ | 否    | `null`   | 可以用来配置是否引入 Giokit | | 
 
 配置代码示例
@@ -114,8 +114,8 @@ dependencies {
 | :-------------------------   | :------         | :----:  |:------  |:------|
 | enabled                   | _Boolean_       | 否      | `false`  |  是否添加 Giokit        |
 | trackerFinderEnabled      | _Boolean_       | 否      | `true`  | 查找App下调用App埋点接口的信息      |
-| trackerFinderDomain        | _Array<String\>_ | 否      | 默认为应用 ApplicationId   | 查找的范围  |
-| trackerCalledMethod        | _Array<String\>_ | 否      | 默认为SDK相应接口   | 要查找的类和方法,类名与方法名使用#连接  |
+| trackerFinderDomain        | _Array\<String\>_ | 否      | 默认为应用 ApplicationId   | 查找的范围  |
+| trackerCalledMethod        | _Array\<String\>_ | 否      | 默认为SDK相应接口   | 要查找的类和方法,类名与方法名使用#连接  |
 | autoAttachEnabled          | _Boolean_       | 否      | `true`  |  GioKit 是否自动依附在Activity上，若设为false，需要自行调用api打开GioKit  |
 | releaseEnabled             | _Boolean_       | 否      | `false`   |  **请不要打开**，否则会在 Release 打包中包含 GioKit 代码    |
 | autoInstallVersion         | _String_        | 否      | `2.0.0`   |  自动依赖的GioKit版本号             |

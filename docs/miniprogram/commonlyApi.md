@@ -16,9 +16,9 @@ title: 数据采集API
 
 SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**(非指定类型值均会被替换为空字符串，长度超限均会被截断)**
 
-**`key:` String，length <=100；**
+**`key:` String，length {'<='}100；**
 
-**`value:` String | number 时 length <=1000； Array 时 length <=100**
+**`value:` String | number 时 length {'<='}1000； Array 时 length {'<='}100**
 
 ### 上报参数说明
 
@@ -38,7 +38,7 @@ name: 'cola||milk||juice'
 
 ## 动态修改配置接口(setOption)
 
-自`3.8.0`版本开始我们提供了统一的接口，以降低接口使用难度。`4.0`版本继承了这一设定，但**<3.8.0版本的写法不再兼容**，请注意修改。
+自`3.8.0`版本开始我们提供了统一的接口，以降低接口使用难度。`4.0`版本继承了这一设定，但**< 3.8.0版本的写法不再兼容**，请注意修改。
 
 ```js
 gdp('setOption', optionKey: string, optionValue: boolean | string);

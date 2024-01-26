@@ -192,7 +192,7 @@ GrowingTracker.get().cleanLocation()
 | 参数         | 参数类型              | 说明                                                                                 |
 | :----------- | :-------------------- | :-------------------------------------------------------------------------------- |
 | `eventName`  | _String_              | 事件名，事件标识符                                                                   |
-| `attributes` | _Map<String, String>_ | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选） |
+| `attributes` | _Map{'<'}String, String{'>'}_ | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选） |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -281,7 +281,7 @@ GrowingTracker.get().trackCustomEvent("registerSuccess", map)
 #### 参数说明
 | 参数         | 参数类型              | 说明         |
 | :----------- | :-------------------- | :----------- |
-| `attributes` | _Map<String, String>_ | 用户属性信息 |
+| `attributes` | _Map{'<'}String, String{'>'}_ | 用户属性信息 |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -420,7 +420,7 @@ GrowingTracker.get().bridgeWebView(webview)
 | 参数        | 参数类型 | 说明                 |
 | :---------- | :------- | :------------------- |
 | `eventName` | _String_ | 事件名称，事件标识符 |
-| `attributes` | _Map<String, String>_ | 事件发生时所伴随的属性信息 |
+| `attributes` | _Map{'<'}String, String{'>'}_ | 事件发生时所伴随的属性信息 |
 
 #### 返回值说明
 | 参数      | 参数类型 | 说明           |
@@ -516,7 +516,7 @@ GrowingTracker.get().registerComponent(module,<config>)
 #### 参数说明
 | 参数        | 参数类型 | 说明                 |
 | :---------- | :------- | :------------------- |
-| `variables` | _Map<String, String>_ | 设置通用属性信息 |
+| `variables` | _Map{'<'}String, String{'>'}_ | 设置通用属性信息 |
 | `keys`      | _String..._ | 删除指定通用属性|
 
 #### 示例
@@ -624,7 +624,7 @@ GrowingTracker.get().trackCustomEvent("registerSuccess", builder.build());
 | :------ | :---------------------- | :---:  | :---------------|
 | `page`  | _Activity_ / _Fragment_ | 是      | 需要采集的页面对象 |
 | `alias` | _String_                | 是      | 采集的页面名称    |
-| `attributes` | _Map<String, String>_ |  否  | 页面的属性信息，可选|
+| `attributes` | _Map{'<'}String, String{'>'}_ |  否  | 页面的属性信息，可选|
 
 在Android系统中，可以采集的页面主要为 `Activity`,`Fragment`(包括support，app的和androidx包下)。同时需要开发者为每一个页面指定一个名称，用于分析云平台页面数据处理。<br/>
 为了保证页面信息的准确性，推荐在页面的 `onCreate` 中调用采集页面事件接口。
@@ -681,7 +681,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 | 参数    | 参数类型              | 说明                      |
 | :------ | :-------------------- | :----------------------|
 | `page`  | _Activity_ / _Fragment_ | 需要设置属性的页面对象 |
-| `attributes` | _Map<String, String>_     | 属性信息      |
+| `attributes` | _Map{'<'}String, String{'>'}_     | 属性信息      |
 #### 示例
 
 **无埋点SDK示例代码：**
@@ -733,7 +733,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 | :-------------------- | :-------------------- | :------------------------- |
 | `view`                | _View_               | 需要采集曝光事件的View对象 |
 | `impressionEventName` | _String_             | 曝光的事件名               |
-| `attributes`          | _Map<String, String>_ | 曝光的事件属性             |
+| `attributes`          | _Map{'<'}String, String{'>'}_ | 曝光的事件属性             |
 #### 示例
 
 **无埋点SDK示例代码：**

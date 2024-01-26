@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| flutter  | 需要手动集成 | `EventFlutter` | `Void` | - |
+| flutter  | 需要手动集成 | `EventFlutter` | `Void` | 4.1.0 |
 
 ### 依赖方式
 <Tabs
@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:flutter:4.0.0'
+	implementation 'com.growingio.android:flutter:4.1.0'
 }
 ```
 </TabItem>
@@ -38,7 +38,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.1.0')
 
   implementation 'com.growingio.android:flutter'
 }

@@ -16,16 +16,12 @@ import TabItem from '@theme/TabItem';
 
 :::
 
-### 升级步骤
-
-<Tabs>
-  <TabItem value="从 CDP 3.x 升级至 CDP 4.x" label="从 CDP 3.x 升级至 CDP 4.x" default>
-
+### 从 CDP 3.x 升级至 CDP 4.x
 
 4.x SDK 移除了 cdp 后缀，在集成步骤中，请参考使用非 cdp 后缀的 SDK 集成步骤，具体如下：
 
 <Tabs>
-  <TabItem value="无埋点集成" label="无埋点集成" default>
+<TabItem value="无埋点集成" label="无埋点集成" default>
 
 **如果您通过 Cocoapods 集成**：
 
@@ -46,8 +42,7 @@ pod 'GrowingAnalytics/Autotracker', '>= 4.0.0'
 * 导入时，`import GrowingAutotracker_cdp` 改为 `import GrowingAutotracker`
 
 
-  </TabItem>
-  <TabItem value="埋点集成" label="埋点集成">
+</TabItem><TabItem value="埋点集成" label="埋点集成">
 
 **如果您通过 Cocoapods 集成**：
 
@@ -68,17 +63,13 @@ pod 'GrowingAnalytics/Tracker', '>= 4.0.0'
 * 导入时，`import GrowingTracker_cdp` 改为 `import GrowingTracker`
 
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
-
-  </TabItem>
-  <TabItem value="从 SaaS 升级至 New SaaS" label="从 SaaS 升级至 New SaaS">
+### 从 SaaS 升级至 New SaaS
 
 请参考 [V2Adapter 模块](/docs/ios/modules/V2Adapter%20Module)集成
 
-  </TabItem>
-</Tabs>
 
 
 ----

@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:json:4.0.0'
+	implementation 'com.growingio.android:json:4.1.0'
 }
 ```
 </TabItem>
@@ -42,7 +42,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.1.0')
 
   implementation 'com.growingio.android:json'
 }
