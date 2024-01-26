@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 6
 title: A/B测试
 ---
 
@@ -52,3 +52,7 @@ gdp('getABTest', 实验层Id, (result: any) => {
   <ImageLoader path="img/common/get_abtesting_layer_id" />
 
 </details>
+
+## 注意
+
+当您的web页面作为移动端内嵌页/小程序内嵌页且打通时，A/B测试插件会使用移动端/小程序的`dataSourceId`去获取数据。

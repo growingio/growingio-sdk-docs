@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 title: 数据加密压缩
 ---
 ## 简介（gioCompress）

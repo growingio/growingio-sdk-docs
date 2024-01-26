@@ -40,6 +40,108 @@ gdp('registerPlugins', [gioEventAutoTracking]);
 gdp('init', xxxx);
 ```
 
+## 采集标记
+
+### 1、采集补充标记
+
+#### 1）data-title
+
+有时SDK自动采集的节点数据并不能完全满足上报分析需要。此时，我们可以通过额外信息的标记 `data-title` 来补充SDK采集的内容。例：
+
+```html
+<button data-title="额外的上报信息">节点</button>
+```
+
+#### 2）data-index
+
+有时我们页面中可能存在类似列表类的Dom结构相似或一致使得SDK上报数据出现无法区分的情况。此时，我们可以通过索引标记 `data-index` 来准确描述节点信息。例：
+
+```html
+<view>
+  <button data-index="1">节点1</button>
+  <button data-index="2">节点2</button>
+  <button data-index="3">节点3</button>
+</view>
+```
+
+#### 3）data-src
+
+有时页面中有需要跳转的链接（尤其是navigator组件）时，为了上报完整的用户目标去向。此时，我们可以通过链接标记 `data-src` 来上报点击链接的目标去向。例：
+
+```html
+<navigator url="/pages/h5/h5?from=navigate" data-src="/pages/h5/h5?from=navigate" bindtap="onNavigatorTap">
+  <view >
+     ...
+  </view>
+</navigator>
+
+<view data-src="/pages/h5/h5?from=navigate" bindtap="onLinkTap">
+  模拟一个链接
+</view>
+```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**在有上述3种额外采集标记的节点上，必须绑定一个点击事件，SDK才能实现点击的额外数据采集。如果没有，需要您手动绑定一个空的点击事件。**
+
+#### 4）设置页面标题
+
+默认情况下SDK会自动采集页面title，但当SDK可能无法识别或您使用了自定义标题时，可以通过在页面的`onLoad`生命周期中调用`setNavigationBarTitle`方法来设置原生页面标题并同时指定SDK上报事件时的title值。[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/ui/navigation-bar/wx.setNavigationBarTitle.html)
+
+示例：
+
+```js
+Page({
+  onLoad: {
+    wx.setNavigationBarTitle({
+      title: 'NewTitle'
+    });
+  }
+});
+```
+
+提示：阿里(支付宝)和淘宝小程序中是`setNavigationBar` [参考文档](https://opendocs.alipay.com/mini/api/xwq8e6)
+
+**<font color="#FC5F3A">注意：</font>**
+
+**1）指定title仅支持 String 格式。**
+
+**2）想要设置页面标题并同时生效于SDK时，该方法必须在onLoad中调用；如果您业务中无法调整位置，则在不影响原逻辑的情况下无法生效于SDK。**
+
+**3）部分框架可能会建议该方法调用时机为onReady（例如uni-app）或其他生命周期中，我们实际测试中在onLoad调用并无影响，因此您可放心在onLoad中使用。**
+
+**提示：SDK中事件title取值优先级为 setNavigationBarTitle > 页面config.json配置 > 全局app.json中tabBar配置**
+
+### 2、采集白名单标记
+
+有时我们表单页面中可能需要获取用户选择框、单/多选框的值进行上报以准确分析用户行为。此时，我们可以通过数值采集标记 `data-growing-track` 来获取值。例：
+
+```html
+<checkbox-group bindchange='checkboxChange' data-growing-track>
+  <label class='checkbox'>
+    <checkbox value='GrowingIO' checked='true' /> GrowingIO
+  </label>
+  <label class='checkbox'>
+    <checkbox value='CDP' checked='false' /> GrowingIO CDP
+  </label>
+</checkbox-group>
+```
+
+:::caution 免责声明警告：
+请勿尝试在密码框上标记 data-growing-track 采集数据，会明文暴露用户填写的密码信息。GrowingIO不承担由此直接或间接产生的数据风险和法律风险。
+:::
+
+**提示：SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
+
+### 3、采集黑名单标记
+
+有时我们会根据业务中不同的需要使用一些自己开发的组件或第三方组件，可能会触发SDK的 `VIEW_CHANGE` 事件，但我们并不期望它发生。
+
+此时，我们可以通过黑名单标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。**注意标记在事件绑定的节点上，没事件绑定的节点默认不会采集。**例：
+
+```html
+<view data-growing-ignore bindtap="onLinkTap">要忽略的节点</view>
+```
+
 ## 注意
 
 1、默认情况下，加载该插件后自动开启无埋点功能。
@@ -50,7 +152,7 @@ gdp('init', xxxx);
 <button @click="myClick(param1, param2, ..., $event)"></button>
 ```
 
-3、使用 vue3 语言模式开发使用 &lt;script setup&gt; 语法时，请在最后将用于直接触发点击事件的方法，调用`defineExpose`进行导出。例：
+3、使用 vue3 语言模式开发使用 &lt;script setup&gt; 语法无法触发点击事件时，请在最后将用于直接触发点击事件的方法，调用`defineExpose`进行导出。例：
 
 ```html
 <template>
