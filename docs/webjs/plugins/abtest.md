@@ -52,3 +52,7 @@ gdp('getABTest', 实验层Id, (result: any) => {
   <ImageLoader path="img/common/get_abtesting_layer_id" />
 
 </details>
+
+## 注意
+
+当您的web页面作为移动端内嵌页且打通时，A/B测试插件会使用移动端的`dataSourceId`去获取数据。

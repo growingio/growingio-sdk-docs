@@ -87,7 +87,7 @@ values={[
   </TabItem>
   <TabItem value="全量引入">
 
-全量引入集成，SDK 将<font size="4" color="#FC5F3A"><b>包含 除性能监控之外 的其他所有功能</b></font>，功能全覆盖，简单快速集成。
+全量引入集成，SDK 将<font size="4" color="#FC5F3A"><b>包含 除了多实例和性能监控之外 的其他所有功能</b></font>，功能全覆盖，简单快速集成。
 
 - 优点：复杂度低，理解成本低，快速集成。
 - 缺点：SDK 较大，约 75-80KB ，可能会拖慢加载速度。
@@ -130,7 +130,7 @@ values={[
 
 **1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/initSettings)。
 
-**2）**SDK 默认使用`es6`版本进行打包，若您的站点需要支持 **IE11** 等不兼容 es6 的旧版浏览器，请修改为`gdp-es5.js`或`gdp-full-es5.js`即可引用 es5 版本的 SDK。
+**2）**SDK 默认使用`es5`版本进行打包，直接支持 **IE11** 等不兼容 es6 的旧版浏览器。
 
 **3）**SDK 默认使用`umd`格式进行打包，若您的站点需要使用`esm`格式的 SDK，请修改为`gdp.es.js`或`gdp-full.es.js`即可引用 es 格式的 SDK。
 
@@ -184,7 +184,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
   </TabItem>
   <TabItem value="全量引入">
 
-全量引入集成，SDK 将<font size="4" color="#FC5F3A"><b>包含 除性能监控之外 的其他所有功能</b></font>，功能全覆盖，简单快速集成。
+全量引入集成，SDK 将<font size="4" color="#FC5F3A"><b>包含 除了多实例和性能监控之外 的其他所有功能</b></font>，功能全覆盖，简单快速集成。
 
 - 优点：复杂度低，理解成本低，快速集成。
 - 缺点：SDK 较大，约 75-80KB ，会增加打包产物的大小，可能会拖慢加载速度。
@@ -219,9 +219,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 **1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/initSettings)。
 
-**2）**SDK **默认使用 es6** 语法，如果您有兼容 IE11 等只支持 es5 语法浏览器的需求，请修改为`gio-webjs-sdk/gdp-es5`（`gio-webjs-sdk/gdp-full-es5`）或者在您的打包工具中直接进行相应的语法转换配置。
-
-**3）**SDK **默认使用 esm** 格式进行打包，若您的站点需要使用 umd 格式的 SDK，请修改为`gio-webjs-sdk/gdp.umd`（`gio-webjs-sdk/gdp-full.umd`）即可引用 umd 格式的 SDK。
+**2）**SDK **默认使用 esm** 格式进行打包，若您的站点需要使用 umd 格式的 SDK，请修改为`gio-webjs-sdk/gdp.umd.js`（`gio-webjs-sdk/gdp-full.umd.js`）即可引用 umd 格式的 SDK。
 </TabItem>
 </Tabs>
 

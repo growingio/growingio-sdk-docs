@@ -8,8 +8,6 @@ title: 多实例
 
 ## 集成
 
-全量集成SDK时无需再次集成此插件。
-
 **<font color="#FC5F3A">注意：</font>SDK版本大于等于 4.1.0 支持。**
 
 ### 1、引入
@@ -57,9 +55,9 @@ gdp('g1.track', xxx, xxx);
 
 ## 注意
 
-1、主实例与子实例共享同一个 `deviceId`。因此，`forceLogin` 配置项**仅主实例生效**，当且仅当主实例调用 `identify` 后，所有实例才会开始发数。
+1、主实例与子实例共享同一个 `deviceId`。因此，`forceLogin` 配置项**仅主实例设值生效**，当且仅当主实例调用 `identify` 后，所有实例才会开始发数。
 
-2、`hashtag` 和 `storageType` 配置项**仅主实例生效**。因此您无法为子实例单独设置这两个配置项。
+2、`cookieDomain`、`debug`、`forceLogin`、`hashtag`、`performance` 和 `storageType` 配置项**仅主实例设值生效**，即子实例的表现与主实例相同。因此您无法为子实例单独设置这些配置项。
 
 3、除了以上3个初始化配置项子实例无法使用以外，其他初始化配置项均可单独为子实例进行配置。
 
@@ -93,3 +91,5 @@ gdp('init', accountId, datasourceId, { ...主实例配置项 });
 // 等同于↓↓↓
 gdp('g0.init', accountId, datasourceId, { ...主实例配置项 });
 ```
+
+11、本插件为独立插件，集成全量(full)版本的SDK时，并不包括本插件。因此，你需要使用多实例时，不论是否集成了全量版本的SDK，都要注册本插件以激活多实例的能力。
