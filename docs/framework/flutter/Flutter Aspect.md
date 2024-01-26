@@ -36,7 +36,7 @@ import TabItem from '@theme/TabItem';
 
 ### 访问源码
 请访问我们的 [Growingio-Dart-Frontend](https://github.com/growingio/growingio-dart-frontend)，该项目的不同分支代表不同的 Flutter 版本，请根据自己项目的flutter版本下载对应tag的 `frontend_server.dart.snapshot`.
-比如说 flutter 3.10.4 版本，需要下载 tag 3.10.4 下的 `frontend_server.dart.snapshot` 文件。
+比如说 flutter 3.16.9 版本，需要下载 tag 3.16.9 下的 `frontend_server.dart.snapshot` 文件。
 
 > 具体位置为 `/lib/flutter_frontend_server/frontend_server.dart.snapshot`
 
