@@ -2,6 +2,25 @@
 title: 版本记录
 sidebar_position: 0
 ---
+## RELEASE-4.1.0
+### Features
+
+- Flutter 模块支持无埋点SDK 4.0逻辑  ([#206](https://github.com/growingio/growingio-sdk-android-autotracker/pull/206))
+
+- 支持识别设备是否为 HarmonyOS ([#207](https://github.com/growingio/growingio-sdk-android-autotracker/pull/207))
+
+### Bug Fixes
+
+- 修复pb格式上报数据多了operatingSystem字段 ([#207](https://github.com/growingio/growingio-sdk-android-autotracker/pull/207))
+
+- 修复fragment tag 随机赋值的问题 ([#208](https://github.com/growingio/growingio-sdk-android-autotracker/pull/208))
+
+:::note 
+
+ 标签:**[v4.1.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.1.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2024-01-25** 
+
+:::
+
 ## RELEASE-4.0.0
 新版本4.0.0，架构调整和无埋点业务需求([#195](https://github.com/growingio/growingio-sdk-android-autotracker/pull/195))。
 

@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:abtest:4.0.0'
+	implementation 'com.growingio.android:abtest:4.1.0'
 }
 ```
 </TabItem>
@@ -41,7 +41,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.0.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.1.0')
 
   implementation 'com.growingio.android:abtest'
 }
@@ -55,13 +55,13 @@ A/B分组实验模块中提供了配置文件可以设置模块的配置：
 
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明 
 | :-------------------------   | :------         | :----:  |:------  |:------| 
-| setAbTestServerHost | _String_       | 否      | `https://ab.growingio.com`  | 设置AB分流服务请求地址  |
+| setAbTestServerHost | _String_       | 否      | `https://ab.growingio.com`  | 设置AB分流服务请求地址，SaaS取默认值  |
 | setAbTestExpired  | _long_ , _TimeUnit_ | 否      |  `5分`  | 配置用于设置实验结果的缓存时效     |
 | setAbTestTimeout  | _long_ , _TimeUnit_  | 否      | `5秒`   | 配置AB请求超时时间 |
 
 ```java
 ABTestConfig config = ABTestConfig();
-config.setAbTestServerHost("https://ab.growingio.com");
+config.setAbTestServerHost("Your AbTestServerHost");
 config.setAbTestExpired(5, TimeUnit.MINUTES);
 config.setAbTestTimeout(5,TimeUnit.SECONDS);
 ```
@@ -156,7 +156,7 @@ GrowingTracker.get().getAbTest(layerId,
 | layerId | _String_  | 发出请求的实验层ID |
 | strategyId | _long_  | 当前业务命中的分组ID |
 | experimentId | _long_  | 当前业务命中的实验ID |
-| variables | _Map<String, String>_  | 实验数据变量 |
+| variables | _Map{'<'}String, String{'>'}_  | 实验数据变量 |
 
 **dataType** 表示数据来源：
 * `ABTEST_CACHE = 0` 表示实验数据来源自未过期的缓存中；

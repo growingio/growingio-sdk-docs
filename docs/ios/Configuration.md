@@ -35,6 +35,8 @@ import TabItem from '@theme/TabItem';
 
 这些为必传参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 
+**setDataCollectionServerHost** 默认域名为 `napi.growingio.com`，若是OP客户，需要设置自己的ServerHost。
+
 #### 2. **debugEnabled**
 
 默认不开启，开启后会输出 SDK Log 日志。

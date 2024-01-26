@@ -137,7 +137,7 @@ Web: 随机访问用户ID  存储在 localStorage 中，永久有效。<br/>
 **A:**
 
 - Web： 如果设置 hashtag 为 true时，hashtag会作为 path的一部分 <br/>
-如URL：<https://blog.growingio.com/posts/search?keywords=data><br/>
+如URL：[https://blog.growingio.com/posts/search?keywords=data](https://blog.growingio.com/posts/search?keywords=data)<br/>
 字段和值： domain: blog.growingio.com；<br/>   path:/posts/search； <br/>  query: keywords=data
 - 小程序：
 "path": "pages/index/index"

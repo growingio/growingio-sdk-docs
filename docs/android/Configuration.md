@@ -39,6 +39,7 @@ import TabItem from '@theme/TabItem';
 | setImpressionScale [#](#1-setimpressionscale) |    _float_    |   否    | `0`     | 元素曝光事件中的比例因子,范围 [0-1]    |         |
 | setWebViewBridgeEnabled [#](#2-setwebviewbridgeenabled)| _boolean_|  否 | `true`   | 是否全量采集 hybrid 数据            |         |
 | downgrade [#](#3-downgrade)                   | _void_        |  否     |  无      | 恢复旧版本无埋点上报逻辑            |         |
+| enableFragmentTag [#](#4-enableFragmentTag) |    _boolean_    |   否    | `false`     | 是否将Fragment的tag作为无埋点路径的记号 |    |
 
 
 ## 通用配置说明
@@ -202,3 +203,7 @@ GrowingAutotracker.startWithConfiguration(this,
 
 ### 3. downgrade
 调用该方法后，所有的无埋点将以旧版本的无埋点逻辑上报数据，请谨慎使用。
+
+### 4. enableFragmentTag
+在使用一些库时会导致Fragment的Tag不可预计，比如在高版本 Navigation 库，Navigation库会对所有的导航 Fragment 赋予一个 UUID 生成的随机TAG。为了保证无埋点路径的准确，取消无埋点路径xcontent中对tag的支持，现在默认取 Fragment 的id为xcontent路径。
+若客户需要tag支持，可打开 enableFragmentTag(true)。

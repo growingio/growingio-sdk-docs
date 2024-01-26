@@ -15,6 +15,6 @@ title: 圈选模块
 
 ### 使用方式
 
-需要在 ”数据管理 > 无埋点事件” 中点击 “新建无埋点事件 > {App 应用}” 进入 App 唤醒页面。
+需要在 ”数据管理 > 无埋点事件” 中点击 “新建无埋点事件 > App 应用” 进入 App 唤醒页面。
 后续操作参考 [APP端数据定义](https://docs.growingio.com/op-help/docs/4.0/product-manual/user-behavior-analytics/data-management/data-management/auto-track/app-data-definition) 即可。
 

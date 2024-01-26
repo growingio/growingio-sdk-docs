@@ -136,7 +136,7 @@ values={[
 
 **4）**如果您希望不受 CDN（内容分发网络）影响，请下载 SDK 至本地集成，并修改上述集成代码中的 SDK CDN 地址为您本地的相对地址。
 
-WebJS SDK 下载：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
+WebJS SDK 下载：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
 
   </TabItem>
   <TabItem value="npm">

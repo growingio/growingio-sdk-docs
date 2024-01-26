@@ -27,6 +27,9 @@ tags: [sdk, android, custom]
 
 <!--truncate-->
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## 自定义SDK
 
 在 GrowingIO 的 SDK 中，已经有多个模块功能已经从代码中分离出来后续将会独立出更多的模块。具体可以到[模块功能](/docs/android/modules)查看已有的功能模块。
@@ -45,7 +48,7 @@ buildscript {
     }
     dependencies {
         //无埋点注入插件
-        classpath "com.growingio.android:autotracker-gradle-plugin:3.4.2"
+        classpath "com.growingio.android:autotracker-gradle-plugin:4.0.0"
     }
 }
 ```
@@ -62,7 +65,7 @@ plugins {
 
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:3.4.2'
+	implementation 'com.growingio.android:autotracker-core:4.0.0'
 }
 
 ```
@@ -74,12 +77,12 @@ dependencies {
 ```groovy
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:3.4.2'
+	implementation 'com.growingio.android:autotracker-core:4.0.0'
 
 	//所需的模块
-	implementation 'com.growingio.android:okhttp3:3.4.2'
-	implementation 'com.growingio.android:database:3.4.2'
-	implementation 'com.growingio.android:json:3.4.2'
+	implementation 'com.growingio.android:okhttp3:4.0.0'
+	implementation 'com.growingio.android:database:4.0.0'
+	implementation 'com.growingio.android:protobuf:4.0.0'
 }
 ```
 
@@ -90,23 +93,23 @@ dependencies {
 ```groovy
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:3.4.2'
+	implementation 'com.growingio.android:autotracker-core:4.0.0'
 
 	//所需的模块
-	implementation 'com.growingio.android:okhttp3:3.4.2'
-	implementation 'com.growingio.android:database:3.4.2'
-	implementation 'com.growingio.android:json:3.4.2'
+	implementation 'com.growingio.android:okhttp3:4.0.0'
+	implementation 'com.growingio.android:database:4.0.0'
+	implementation 'com.growingio.android:json:4.0.0'
 
 	//注解解析
-	implementation 'com.growingio.android:annotation:3.4.2'
-	annotationProcessor 'com.growingio.android:compiler:3.4.2'
+	implementation 'com.growingio.android:annotation:4.0.0'
+	annotationProcessor 'com.growingio.android:compiler:4.0.0'
 }
 ```
 
 :::tip kapt
 若使用kotlin，可以通过 kapt 来依赖注解器
 
-`kapt 'com.growingio.android:compiler:3.4.2'`
+`kapt 'com.growingio.android:compiler:4.0.0'`
 :::
 
 ### 4. 使用注解自定义SDK的属性
@@ -151,7 +154,7 @@ class GrowingIODemoAppModule : AppGioModule(){
 
 2. DemoAutotracker 类
 该类名称由 `@GIOAppModule#name` 决定。
-该类主要用来提供SDK初始化接口，总共提供了两个初始化方法， 一个为 `startWithConfiguration(Application,DemoTackerConfiguration)`,该方法要求传入用户已经配置完成的config对象；另一为 `start(Application)`,该方法需要配合 `@GIOTracker` 注解使用，会在下面介绍，可以直接获取config进行代码配置；两者方法效果一样，都是整个 SDK 初始化的入口。
+该类主要用来提供SDK初始化接口，总共提供了两个初始化方法， 一个为 `startWithConfiguration(Coontext,DemoTackerConfiguration)`,该方法要求传入用户已经配置完成的config对象；另一为 `start(Context)`,该方法需要配合 `@GIOTracker` 注解使用，会在下面介绍，可以直接获取config进行代码配置；两者方法效果一样，都是整个 SDK 初始化的入口。
 
 同时，还可以通过调用 `DemoAutotracker.get()` 来获取整个 SDK 对外的开放接口。
 
@@ -161,7 +164,7 @@ class GrowingIODemoAppModule : AppGioModule(){
 
 | 名称      | 参数     | 作用                 |
 | --------- | -------- | -------------------- |
-| path      | Class<?> | Tracker接口类路径    |
+| path      | Class{'<'}?{'>'} | Tracker接口类路径    |
 | accountId | String   | SDK初始化的项目id    |
 | urlScheme | String   | SDK初始化的urlScheme |
 
@@ -232,7 +235,7 @@ DemoAutotracker.start(this)
 
 ```txt
 !!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!
-!!! GrowingIO Tracker version: 3.4.2 !!!
+!!! GrowingIO Tracker version: 4.0.0 !!!
 ```
 和点击后出现 click 事件日志
 
@@ -242,10 +245,11 @@ DemoAutotracker.start(this)
     ║   "eventType": "VIEW_CLICK",
     ║   "timestamp": 1626847839398,
     ║   ...
-    ║   "sdkVersion": "3.4.2",
+    ║   "sdkVersion": "4.0.0",
     ║   "path": "/MainActivity",
     ║   "pageShowTimestamp": 1626839380613,
-    ║   "xpath": "/Page/LinearLayout[0]/FrameLayout[0]/ActionBarOverlayLayout[0]#decor_content_parent/ContentFrameLayout[0]/CoordinatorLayout[0]/FloatingActionButton[0]#fab",
+    ║   "xpath": "/MainActivity/LinearLayout/FrameLayout/ActionBarOverlayLayout/ContentFrameLayout/CoordinatorLayout/FloatingActionButton",
+    ║   "xcontent": "/0/0/0/decor_content_parent/0/0/fab",
     ║   "index": -1
     ║ }
     ╚═══════════════════════════════════════════════════════════════════════════════════════
@@ -279,11 +283,11 @@ DemoAutotracker.start(this)
 ```groovy
 dependencies {
 	//埋点基础库
-	implementation 'com.growingio.android:tracker-core:3.4.2'
+	implementation 'com.growingio.android:tracker-core:4.0.0'
 
 	//注解解析
-	implementation 'com.growingio.android:annotation:3.4.2'
-	annotationProcessor 'com.growingio.android:compiler:3.4.2'
+	implementation 'com.growingio.android:annotation:4.0.0'
+	annotationProcessor 'com.growingio.android:compiler:4.0.0'
 }
 ```
 
@@ -500,7 +504,7 @@ public class OkhttpConfig implements Configurable {
 后续需要将该配置类配置到模块注解中，自动注册完成后生成的 `<Custom>TackerConfiguration` 类中会自动包含 `OkhttpConfig` 中的配置方法以便 SDK 初始化时同时配置。
 
 ### 添加模块注解
-最后一步是将模块的 `Factory` 与输入输出数据绑定一起，提供给 `TrackerRegistry` 注册。这时候有两种情况：通过注解注册和通过代码调用
+最后一步是将模块的 `Factory` 与输入输出数据绑定一起，提供给 `TrackerRegistry` 注册。这时候有两种情况：通过注解注册或者通过代码调用
 
 #### 在Library模块中
 使用 `@GIOLibraryModule` 注解和 `LibraryGioModule` 配合，如下所示：
@@ -509,8 +513,8 @@ public class OkhttpConfig implements Configurable {
 @GIOLibraryModule(config = OkhttpConfig.class)
 public class OkhttpLibraryGioModule extends LibraryGioModule {
     @Override
-    public void registerComponents(Context context, TrackerRegistry registry) {
-        registry.register(EventUrl.class, EventResponse.class, new OkHttpDataLoader.Factory());
+    public void registerComponents(TrackerContext context) {
+        context.getRegistry().register(EventUrl.class, EventResponse.class, new OkHttpDataLoader.Factory());
     }
 }
 
@@ -518,7 +522,7 @@ public class OkhttpLibraryGioModule extends LibraryGioModule {
 > `@GIOLibraryModule` 在项目中的 Project Module 中使用，经过 APT 编译后每一个 Project Module 中都会生成一个有着 `@Index` 注解的类，该类会记录其 Module 下的所有`@GIOLibraryModule`信息。
 
 #### 在App主模块中
-需要将模块放入到主模块的注解中，如下所示：
+或者手动将模块放入到主模块的注解中，如下所示：
 
 ```java
 @GIOAppModule(name = "DemoAutotracker", configName = "DemoTackerConfiguration",config = OkhttpConfig.class)
@@ -532,8 +536,8 @@ public class GrowingIODemoAppModule extends AppGioModule {
     }
 
     @Override
-    public void registerComponents(Context context, TrackerRegistry registry) {
-        registry.register(EventUrl.class, EventResponse.class, new OkHttpDataLoader.Factory());
+    public void registerComponents(TrackerContext context) {
+        context.getRegistry().register(EventUrl.class, EventResponse.class, new OkHttpDataLoader.Factory());
     }
 }
 ```
@@ -554,8 +558,7 @@ GrowingTracker.startWithConfiguration(this,
 ```java
 DemoAutotracker.start(this);
 //手动注册模块和配置类
-ConfigurationProvider.get().addConfiguration(new OkhttpConfig());
-DemoAutotracker.get().registerComponent(new OkhttpLibraryGioModule());
+DemoAutotracker.get().registerComponent(new OkhttpLibraryGioModule(), new OkhttpConfig());
 ```
 
 ## 结束语

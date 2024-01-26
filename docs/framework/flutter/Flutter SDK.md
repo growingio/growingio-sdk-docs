@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 
 ```c
 dependencies:
-  growingio_autotracker_flutter_plugin: '1.1.3'
+  growingio_autotracker_flutter_plugin: '2.0.0'
 ```
 
 </TabItem>
@@ -43,7 +43,7 @@ dependencies:
 
 ```c
 dependencies:
-  growingio_tracker_flutter_plugin: '1.1.3'
+  growingio_tracker_flutter_plugin: '2.0.0'
 ```
 
 </TabItem>
@@ -57,131 +57,28 @@ dependencies:
 
   | Flutter 插件版本 |  Android SDK 版本范围   |  iOS SDK 版本范围  |
   | :-------------- | :----------------- | :------: |
-  | = v1.0.0 | >= v3.4.7 | >= v3.4.8 |
-  | = v1.1.0 | >= v3.5.0 | >= v3.5.0 |
-  | = v1.1.3 | >= v3.5.0 | >= v3.5.0 |
+  | >= v1.1.3 | >= v3.5.0 | >= v3.5.0 |
+  | = v2.0.0 | >= v4.1.0 | >= v4.1.0 |
 
 </details>
 
-### 添加 Android 依赖
+:::info 原生+Flutter
+若是纯 Flutter 应用，上述集成就可以使用了。若是项目中同时具有原生代码和Flutter，且原生也需要支持无埋点功能，那么就需要基于[无埋点初始化配置](/docs/android/Introduce#sdk初始化配置)集成原生的SDK。
+Flutter和原生共用一套SDK逻辑，不会初始化两次。
 
-<details>
-  <summary>添加 maven 仓库</summary>
+> 在Android中， Gradle Plugin 若出现 'no growingio autotracker sdk dependency was found' 的编译错误，可以将插件的配置项 skipDependencyCheck 设置为true。
 
-在 project 级别的build.gradle文件中添加Maven仓库
-
-```groovy
-buildscript {
-    repositories {
-        // 添加maven仓库
-        mavenCentral()
-        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
-    }
-}
-
-allprojects {
-    repositories {
-        // 添加maven仓库
-        mavenCentral()
-        //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
-    }
-}
-```
-
-</details>
-
-<details>
-  <summary>添加依赖</summary>
-
-在 app 级别的 `build.gradle` 文件中添加代码依赖
-
-<Tabs
-  groupId="code-language"
-  defaultValue="common"
-  values={[
-    {label: '依赖', value: 'common'},
-    {label: 'BoM', value: 'bom'},
-  ]
-}>
-
-<TabItem value="common">
-
-```groovy
-apply plugin: 'com.android.application'
-
-dependencies {
-    implementation 'com.growingio.android:autotracker-cdp:3.5.1'
-    implementation 'com.growingio.android:flutter:3.5.1'
-}
-```
-
-</TabItem>
-
-<TabItem value="bom">
-
-```groovy
-apply plugin: 'com.android.application'
-
-dependencies {
-  // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.1')
-
-  //GrowingIO 无埋点 SDK
-  implementation 'com.growingio.android:autotracker-cdp'
-  implementation 'com.growingio.android:flutter'
-}
-```
-
-</TabItem>
-</Tabs>
-
-</details>
-
-<details>
-  <summary>添加插件(集成无埋点需要)</summary>
-
-在 project 级别的build.gradle文件中添加插件路径
-
-```groovy
-buildscript {
-    ...
-
-    dependencies {
-        //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:3.5.0'
-    }
-}
-```
-
-在 app 级别的 `build.gradle` 文件中添加 `com.growingio.android.autotracker` 插件
-
-```groovy
-apply plugin: 'com.android.application'
-//添加 GrowingIO 插件
-apply plugin: 'com.growingio.android.autotracker'
-
-...
-```
-
-:::tip 关于插件
-插件最新发布版本为 [Github Releases](https://github.com/growingio/growingio-sdk-android-plugin/releases)
-
-关于如何在 Android Gradle Plugin 7 及其更高版本使用插件请参考 [SDK 插件说明](/docs/android/AGP7)
 :::
-
-</details>
-
 
 ### Flutter 插件初始化
 
-GrowingIO Flutter SDK 支持在 Flutter 中初始化SDK，也同时支持在原生代码中初始化。如果需要更多的功能设置，我们更推荐您在原生端实现初始化。
+GrowingIO Flutter SDK 支持在 Flutter 中初始化 SDK，也同时支持在原生代码中初始化。如果需要更多的功能设置，我们更推荐您在原生端实现初始化。
 
 #### 原生端初始化
 原生端初始化请参考各端的初始化文档：
 * Android: [无埋点初始化配置](/docs/android/Introduce#sdk初始化配置)、[埋点初始化配置](/docs/android/Introduce#sdk初始化配置-1)，另外，在 Android 原生初始化需要额外添加 [Flutter 模块](/docs/android/modules/flutter%20module#使用方式)
 * iOS: [无埋点初始化配置](/docs/ios/Introduce#sdk-初始化配置)、[埋点初始化配置](/docs/ios/Introduce#sdk-初始化配置-1)
+
 
 #### Flutter 初始化
 在 Flutter 端进行初始化，请将 SDK 的初始化代码放入 `main.dart` 的 `main` 中，代码示例如下：
@@ -210,7 +107,6 @@ void main() async {
     debugEnabled: true,
     modules: {
       AdvertLibraryGioModule(config: AdvertConfig()),
-      ProtobufLibraryModule()
     },
     dataCollectionEnabled: true,
     idMappingEnabled: true,
@@ -272,6 +168,9 @@ void main() async {
 | dataUploadInterval        | int              |    否    | 15    | 数据发送的间隔，单位秒                | -          |
 | sessionInterval           | int              |    否    | 30   | 会话后台留存时长，单位秒  |  - |
 | dataCollectionEnabled     | bool          |    否    | true  | 是否采集数据               |  - |
+| requestTimeout            | int          |    否    | 30  | 设置数据上报请求的超时时间，单位秒               |  - |
+| androidIdEnabled     | bool          |    否    | false  | 是否在 Android 设备上采集 AndroidId           |  - |
+| imeiEnabled     | bool          |    否    | false  | 是否在 Android 设备上采集 imei          |  - |
 | modules  | `Set<LibraryGioModule>` | 否 | empty | 模块集成，具体请阅读下方的模块说明 | - |
 
 ### urlScheme 说明
@@ -292,7 +191,7 @@ GrowingTracker.startWithConfiguration(
     modules: {
       AdvertLibraryGioModule(
         config: AdvertConfig(readClipBoardEnable: true, /// 是否打开剪切板
-          deepLinkHost: "https://n.datayi.cn", /// 深度链接配置地址
+          deepLinkHost: "Your deepLinkHost", /// 深度链接配置地址, SaaS取默认值 “https://link.growingio.com”
           asaEnabled: true, /// 仅iOS端使用
           deepLinkCallback:(Map<String,String> params,int error,int time){
             ///监听深度链接中的地址参数
@@ -324,12 +223,6 @@ GrowingTracker.startWithConfiguration(
 ```
 加密模块用于数据网络上传数据的加密。
 
-:::info
-在 Flutter SDK 启动加密模块同时，Android端需要引入相应的模块代码，请参考：
-* [Android 端 引入加密模块](/docs/android/modules/encoder%20module)
-* iOS端会打开相关配置，无须引入模块。
-:::
-
 #### Json 模块
 
 ```dart
@@ -344,10 +237,6 @@ GrowingTracker.startWithConfiguration(
 ```
 Json 数据模块将会使用 Json 格式保存和上传事件数据。
 
-:::info
-在 Flutter SDK 启动 Protobuf 模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
-* [Android 端 引入 Json 模块](/docs/android/modules/json%20module)
-:::
 
 #### H5混合模块
 ```dart
@@ -363,8 +252,8 @@ GrowingTracker.startWithConfiguration(
 若使用了原生的WebView,且内嵌 H5 页面如果也需要进行数据采集（H5 页面已经集成 Web JS SDK），则可以开启该 H5混合模块。
 :::info
 在 Flutter SDK 启动H5混合模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
-* [Android 端 引入H5混合模块](/docs/android/modules/hybrid%20module)
-* [iOS 端 引入H5混合模块](/docs/ios/modules/Hybrid%20Module)
+* Android 端 默认已引入H5混合模块
+* [iOS 端 需引入H5混合模块](/docs/ios/modules/Hybrid%20Module)
 :::
 
 ## API说明
@@ -395,6 +284,9 @@ GrowingAutotracker.get().trackTimerResume(timerId: timerId);
 GrowingAutotracker.get().trackTimerEnd(timerId: timerId,attributes: {});
 GrowingAutotracker.get().removeTimer(timerId: timerId);
 GrowingAutotracker.get().clearTrackTimer();
+GrowingAutotracker.get().setGeneralProps(props:{});
+GrowingAutotracker.get().removeGeneralProps(keys:["col1 row1", "key1"]);
+GrowingAutotracker.get().clearGeneralProps();
 
 GrowingAutotracker.get().registerComponent(module);
 ```
@@ -418,6 +310,9 @@ GrowingTracker.get().trackTimerResume(timerId: timerId);
 GrowingTracker.get().trackTimerEnd(timerId: timerId,attributes: {});
 GrowingTracker.get().removeTimer(timerId: timerId);
 GrowingTracker.get().clearTrackTimer();
+GrowingTracker.get().setGeneralProps(props:{});
+GrowingTracker.get().removeGeneralProps(keys:["col1 row1", "key1"]);
+GrowingTracker.get().clearGeneralProps();
 
 GrowingTracker.get().registerComponent(module);
 ```
@@ -768,7 +663,46 @@ GrowingTracker.get().clearTrackTimer();
 </TabItem>
 </Tabs>
 
-### 10. 注册模块组件 
+### 10. 通用属性
+`setGeneralProps({required Map<String, dynamic> props})`<br/>
+为所有的自定义事件（CustomEvent）添加通用属性。
+
+`removeGeneralProps({required List<String> keys})`<br/>
+根据Key值移除已经设置的属性，如不存在则不影响。
+
+`clearGeneralProps()`<br/>
+清除所有已经设置的通用属性。
+
+<Tabs
+  groupId="sdk-type"
+  defaultValue="autotracker"
+  values={[
+    {label: '无埋点', value: 'autotracker'},
+    {label: '埋点', value: 'tracker'},
+  ]
+}>
+
+<TabItem value="autotracker">
+
+```dart
+GrowingAutotracker.get().setGeneralProps(props:{"key1":"name"});
+GrowingAutotracker.get().removeGeneralProps(keys:["xxx", "key1"]);
+GrowingAutotracker.get().clearGeneralProps();
+```
+
+</TabItem>
+<TabItem value="tracker">
+
+```dart
+GrowingTracker.get().setGeneralProps(props:{"key1":"name"});
+GrowingTracker.get().removeGeneralProps(keys:["xxx", "key1"]);
+GrowingTracker.get().clearGeneralProps();
+```
+</TabItem>
+</Tabs>
+
+
+### 11. 注册模块组件 
 `registerComponent`<br/>
 可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
 #### 参数说明
@@ -790,72 +724,46 @@ GrowingTracker.get().clearTrackTimer();
 <TabItem value="autotracker">
 
 ```dart
-GrowingAutotracker.get().registerComponent(ProtobufLibraryModule());
+GrowingAutotracker.get().registerComponent(JsonLibraryModule());
 ```
 
 </TabItem>
 <TabItem value="tracker">
 
 ```dart
-GrowingTracker.get().registerComponent(ProtobufLibraryModule());
+GrowingTracker.get().registerComponent(JsonLibraryModule());
 ```
 </TabItem>
 </Tabs>
 
 
-### 11. 发送无埋点页面事件
-`trackCustomPage` <br/>
-可以手动将一个 Widget 作为 Page 页面，发送一个 Page 事件。
+### 12. 无埋点页面事件
+Flutter的 Page事件不再基于 Router，而是用开发者通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来实现。
 
-#### 参数说明
-| 参数     | 参数类型           | 说明 |
-| :------- | :----------------- | :--- |
-| `title` | `String` | 页面标题 |
-| `widget` | `Widget` | 控件 |
+1. 在 `StatefulWidget` 中，可以将其 State 声明为 Page页面，如下：
 
-#### 示例
 ```dart
-class SplashScreen extends StatefulWidget{
+class _HomeScreenState extends State<HomeScreen> with GrowingPageStateMixin {
+  @override
+  String get alias => "HomeScreen";
 
-  SplashScreen({Key? key}) : super(key: key){
-    GrowingAutotracker.get().trackCustomPage("Splash页面", this);
-  }
+  @override
+  Map<String, dynamic>? get attributes => {};
 }
 ```
 
-### 12. 自定义无埋点页面事件属性
-`IGrowingPage` <br/>
-使用 `IGrowingPage` 接口，可以自定义页面事件的标题，路径和事件属性。**页面事件会优先使用该接口里面赋予的值**。
-
-#### 参数说明
-| 参数     | 参数类型           | 说明 |
-| :------- | :----------------- | :--- |
-| `pageTitle` | `String` | 页面标题 |
-| `pageUri` | `String` | 页面Uri |
-| `pagePath` | `String` | 页面路径 |
-| `attributes` | `Map` | 页面属性 |
-
-#### 示例
+2. 在 `StatelessWidget` 中，直接将自己声明为 Page 页面，如下：
 
 ```dart
-class SplashScreen extends StatefulWidget with IGrowingPage{
-
-  /// 页面标题
+class SplashScreen extends StatelessWidget with GrowingPageStatelessMixin {
   @override
-  String? get pageTitle => "Splash页面";
+  String get alias => "SplashScreen";
 
-  ///格式为：package::aaa/bbb.dart/PageWidget
-  ///其中前缀为 为 dart 的 importUri，后缀为页面的 Widget。
   @override
-  String? get pageUri => "package::ui/splash.dart/SplashScreen";
-
-  ///如 /books/100
-  @override
-  String? get pagePath => "/splash";
-
-  ///页面属性
-  @override
-  Map<String, String>? get attributes => {"action":"欢迎"};
-
+  Map<String, dynamic>? get attributes => {};
 }
 ```
+
+alias 对应页面的名称，attributes为页面属性。
+
+> 另外，可以直接在 Page 下调用 `trackCustomEvent` 方法，发送的自定义事件就会携带事件属性，如不需要则可以调用`GrowingAutotracker.get().trackCustomEvent`.

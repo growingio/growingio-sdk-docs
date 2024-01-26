@@ -26,3 +26,4 @@ yarn-error.log*
 
 pnpm-lock.yaml
 .pnpm-debug.log
+package-lock.json

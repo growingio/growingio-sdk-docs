@@ -32,7 +32,7 @@ WebJS GioKit 仅支持 3.8.0 以上版本的 SDK，其他版本 SDK 接入可能
 
 **2）如果您希望不受 CDN（内容分发网络）影响，请下载至本地集成，并修改上述集成代码中的 CDN 地址为您本地的相对地址。**
 
-WebJS GioKit 下载：<https://assets.giocdn.com/sdk/webjs/giokit.min.js>
+WebJS GioKit 下载：[https://assets.giocdn.com/sdk/webjs/giokit.min.js](https://assets.giocdn.com/sdk/webjs/giokit.min.js)
 
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 

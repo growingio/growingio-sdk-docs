@@ -53,18 +53,6 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   --ifm-color-info-contrast-foreground: rgb(25, 60, 71); */
 }
 
-.title_node_modules-\@docusaurus-theme-classic-lib-theme-BlogPostItem-Header-Title-styles-module {
-  font-size: 2rem;
-}
-
-/**
-  Blog post title should be smaller on smaller devices
-**/
-@media (max-width: 576px) {
-  .title_node_modules-\@docusaurus-theme-classic-lib-theme-BlogPostItem-Header-Title-styles-module {
-    font-size: 1.2rem;
-  }
-}
 
 div[class^=announcementBar_] {
   --site-announcement-bar-stripe-color1: hsl(var(--site-primary-hue-saturation) 85%);
@@ -149,4 +137,12 @@ a[class^='cardContainerLink_node_modules']{
 
 a[class^='theme-edit-this-page']{
   display: none;
+}
+
+article > header > h2 > a {
+  font-size: 2.6rem;
+}
+
+article > header > h1{
+  font-size: 3rem;
 }
