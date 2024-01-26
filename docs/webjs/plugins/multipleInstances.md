@@ -57,7 +57,7 @@ gdp('g1.track', xxx, xxx);
 
 1、主实例与子实例共享同一个 `deviceId`。因此，`forceLogin` 配置项**仅主实例设值生效**，当且仅当主实例调用 `identify` 后，所有实例才会开始发数。
 
-2、`cookieDomain`、`debug`、`forceLogin`、`hashtag`、`performance` 和 `storageType` 配置项**仅主实例设值生效**，即子实例的表现与主实例相同。因此您无法为子实例单独设置这些配置项。
+2、`cookieDomain`、`debug`、`forceLogin`、`hashtag`、`originalSource`、`performance` 和 `storageType` 配置项**仅主实例设值生效**，即子实例的表现与主实例相同。因此您无法为子实例单独设置这些配置项。
 
 3、除了以上3个初始化配置项子实例无法使用以外，其他初始化配置项均可单独为子实例进行配置。
 

@@ -43,6 +43,8 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
+**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+
 ### dataCollect
 
 默认情况下，数据采集开关默认开启。如果您需要初始化时暂时关闭数据采集（例如隐私协议的场景），可以通过指定 `dataCollect: false` 关闭。
@@ -72,6 +74,8 @@ gdp('init', accountId, datasourceId, {
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)
 
+**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+
 ### forceLogin
 
 默认情况下，SDK 会自动生成访问用户 ID 来标识访问用户。如您是在微信公众号H5中集成且需要使用 openId 或 unionId 标识访问用户，可以通过指定 `forceLogin: true` 来打开强制登录模式。
@@ -93,7 +97,7 @@ gdp('identify', openId / unionId);
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **<font color="#FC5F3A">1、非微信公众号H5的站点慎用，可能会导致你的站点没有数据上报。</font>**<br/>
-**<font color="#FC5F3A">2、使用多实例能力时，该配置项以主实例为准，当且仅当主实例调用 `identify` 后，所有实例才会开始发数。</font>**
+**<font color="#FC5F3A">2、使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。当且仅当主实例调用 `identify` 后，所有实例才会开始发数。</font>**
 
 ### idMapping
 
@@ -117,7 +121,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例生效，子实例设置无效。
+**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
 
 ### ignoreFields
 
@@ -150,6 +154,8 @@ gdp('init', accountId, datasourceId, {
   ...其他配置项,
 });
 ```
+
+**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
 
 ### platform
 
@@ -229,7 +235,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例生效，子实例设置无效。
+**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
 
 ### trackBot
 
