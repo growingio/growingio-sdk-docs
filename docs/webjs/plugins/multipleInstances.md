@@ -59,7 +59,7 @@ gdp('g1.track', xxx, xxx);
 
 2、`cookieDomain`、`debug`、`forceLogin`、`hashtag`、`originalSource`、`performance` 和 `storageType` 配置项**仅主实例设值生效**，即子实例的表现与主实例相同。因此您无法为子实例单独设置这些配置项。
 
-3、除了以上3个初始化配置项子实例无法使用以外，其他初始化配置项均可单独为子实例进行配置。
+3、除了以上几个初始化配置项子实例无法使用以外，其他初始化配置项均可单独为子实例进行配置。
 
 4、主实例与子实例的用户信息（userId、userKey、sessionId）互相隔离。
 
