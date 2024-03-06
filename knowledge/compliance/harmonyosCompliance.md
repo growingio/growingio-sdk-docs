@@ -40,7 +40,7 @@ GrowingIO HarmonyOS SDK
    
 2.请务必告知用户您使用了 GrowingIO SDK，请在 《隐私协议》 中添加隐私条款，参考[隐私协议填写](#隐私协议填写)
    
-3.集成 [HarmonyOS SDK](/docs/framework/harmonyos)，请在用户同意《隐私协议》后 [延迟初始化 SDK](#延迟初始化)。
+3.集成 [HarmonyOS SDK](/docs/framework/HarmonyOS)，请在用户同意《隐私协议》后 [延迟初始化 SDK](#延迟初始化)。
 ​
 ## 采集详情
 

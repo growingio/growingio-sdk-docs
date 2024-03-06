@@ -35,16 +35,15 @@ Web端：首次访问时生成 session，当用户30分钟内无操作行为，�
 
 - H5、Web：集成代码中的gdp('send'), 监听history及hashtag
 - 小程序：onShow
-- APP：安卓：onResume
-- iOS：viewDidAppear
+- 安卓：onResume
+- Apple：viewDidAppear
   
 ### 6. 采集数据接收的服务器(即Host)停掉之后，移动端采集到的数据会存多长时间呢。其他端的数据是否直接就丢掉了？
 
 **A：**各端SDK侧存储时间：
 
-- Android 2.0/3.0 7天
-- iOS 3.0 7天
-- iOS 2.0 持久化存储不做删除
+- Android 2.0/3.0/4.0 7天
+- Apple 3.0/4.0 7天，2.0 持久化存储不做删除
 - Web 小程序 没有持久化
 
 ### 7. GIO帮助文档有英文版吗？
@@ -56,11 +55,11 @@ Web端：首次访问时生成 session，当用户30分钟内无操作行为，�
 **A：**
 发送数据策略：<br/>
 WeB JS SDK: 采集数据发送策略为实时上报，即事件生成即向服务器发送请求。<br/>
-小程序SDK：采集数据发送策略采用节流技术，即设置执行周期为1秒，只有在大于等于执行周期时才向服务器发送请求，执行周期内调用不发送。<br/>
-iOS 和Android SDK：以每隔默认时间15秒的情况下向服务器发送事件包（最大500条事件）。<br/>
+小程序 SDK：采集数据发送策略采用节流技术，即设置执行周期为1秒，只有在大于等于执行周期时才向服务器发送请求，执行周期内调用不发送。<br/>
+Apple 和 Android SDK：以每隔默认时间15秒的情况下向服务器发送事件包（最大500条事件）。<br/>
 发送失败处理策略：<br/>
-iOS 和Android失败后数据还在数据库中会再次发送请求；web 和小程序会一直重发；<br/>
-服务端SDK，请求失败后数据直接丢弃。
+Apple 和 Android 失败后数据还在数据库中会再次发送请求；web 和小程序会一直重发；<br/>
+服务端 SDK，请求失败后数据直接丢弃。
 
 ### 9. 埋点和无埋点区别是什么？为什么要有埋点SDK和无埋点SDK？
 
@@ -71,7 +70,7 @@ iOS 和Android失败后数据还在数据库中会再次发送请求；web 和�
     缺点是由于实施过程中的主观性，经常导致漏埋、时机不对、参数不对等因素导致数据质量问题，需要大量的数据稽核（体现在指标梳理和数据校验）
 - 无埋点采集属于客观采集，采集的范围、口径不受主观因素影响
     优点是数据采集全面，无需提前设计，适合短期数据（如投放页、活动页）的采集监测，后期运营业务人员通过界面圈选定义即可分析使用，实施工作量低，也因为客观性适合用于做机器学习的行为特征使用
-    缺点是数据不受主观因素控制，与开发技术框架关连比较紧密，采集的数据价值密度低（和业务相关性低；目前支持的有原生 Android、iOS、小程序、Web）
+    缺点是数据不受主观因素控制，与开发技术框架关连比较紧密，采集的数据价值密度低（和业务相关性低；目前支持的有原生 Android、原生 Apple、小程序、Web）
 - 无埋点SDK是包含埋点SDK全部功能的；区别在于是否支持无埋点数据采集；
 - 埋点SDK默认仅自动采集预定义的访问量、访问属性数据。行为数据、业务数据需要通过埋点采集实现。（事件：VISIT、CUSTOM、LOGIN_USER_ATTRIBUTES、APP_CLOSED）
 - 无埋点SDK是全量自动采集用户行为数据，同时包含埋点SDK；（事件：VISIT、CUSTOM、LOGIN_USER_ATTRIBUTES、APP_CLOSED、PAGE、VIEW_CLICK、FROM_SUBMIT）
@@ -83,13 +82,13 @@ iOS 和Android失败后数据还在数据库中会再次发送请求；web 和�
 
 **A:**
 
-- iOS： IDFA > IDFV > 随机访问用户ID
+- Apple： IDFA > IDFV > 随机访问用户ID
 - Android：androidId  > imei > 随机访问用户ID
 - 小程序：OpenID > 随机访问用户ID
 - Web: 随机访问用户ID
   
 访问用户ID 的生成时机是在SDK初始化时。<br/>
-iOS设备如果想要使用IDFA作为访问用户ID，需要在用户授权获取到之后初始化SDK；如果拒绝授权，iOS 按照优先级 IDFV > 随机访问用户ID, 生成访问用户ID  DeviceID；Keychain存储，删掉应用后再次安装还是同一个DeviceID。
+Apple设备如果想要使用IDFA作为访问用户ID，需要在用户授权获取到之后初始化SDK；如果拒绝授权，按照优先级 IDFV > 随机访问用户ID, 生成访问用户ID  DeviceID；Keychain存储，删掉应用后再次安装还是同一个DeviceID。
 
 ```c
 NSString *deviceId;
@@ -142,7 +141,7 @@ Web: 随机访问用户ID  存储在 localStorage 中，永久有效。<br/>
 - 小程序：
 "path": "pages/index/index"
 逻辑：从 page目录 至显示页面的目录嵌套路径。
-- iOS：
+- Apple：
 "path" : "/UITabBarController/UINavigationController[1]/ViewController[0]"<br/>
 逻辑：从根 Controller到当前展示 Controller 的嵌套路径，  [1]:表示有多个 Controller 时 给Controller 分配的编号。
 - Android：

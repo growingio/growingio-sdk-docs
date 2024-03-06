@@ -10,7 +10,7 @@ title: 服务端 常见问题
 **A:** validty check fail
 数据验证错误，检查ssl证书是否过期，重新配置证书，或者重启nginx
 
-### 3. JAVA SDK请求报证书错误，js端 和 iOS端 请求都没问题，可以正常上传，https://uatcollect.gmcc.net/healthy-check 也OK，该怎么处理？
+### 3. JAVA SDK请求报证书错误，web 端和移动端请求都没问题，可以正常上传，https://uatcollect.gmcc.net/healthy-check 也OK，该怎么处理？
 **A:** 可通过 [https://www.myssl.cn/tools/check-server-cert.html](https://www.myssl.cn/tools/check-server-cert.html) 检查中间证书是否完整
 通过 [https://www.ssllabs.com/ssltest/analyze.html](https://www.ssllabs.com/ssltest/analyze.html)、[https://myssl.com/ssl.html](https://myssl.com/ssl.html) 对 https进行深度检查
 
