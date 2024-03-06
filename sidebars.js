@@ -29,7 +29,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'iOS SDK',
+      label: 'Apple SDK',
       link: {
         type: 'doc',
         id: 'index/ios',

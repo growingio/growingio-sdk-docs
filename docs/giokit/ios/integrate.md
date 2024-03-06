@@ -11,9 +11,9 @@ import TabItem from '@theme/TabItem';
 GioKit 代码已托管在 [Github](https://github.com/growingio/growingio-sdk-ios-toolskit) 上，欢迎 star, fork 一波。
 :::info
 **使用环境**
-**Xcode 9.0 及以上**<br/>
-**iOS 9.0 及以上**<br/>
-**请在 [iOS SDK](/docs/ios/Introduce) 基础上使用 GioKit**
+**Xcode 14.3 及以上**<br/>
+**iOS 10.0 及以上**<br/>
+**请在 [Apple SDK](/docs/ios/Introduce) 基础上使用 GioKit**
 :::
 
 <Tabs>

@@ -35,9 +35,9 @@ dependencies:
 然后执行 `flutter pub get` 指令安装插件。
 
 <details>
-  <summary>点击查看Growingio Flutter 插件和 SDK 版本的依赖关系</summary>
+  <summary>点击查看 GrowingIO Flutter 插件和 SDK 版本的依赖关系</summary>
 
-  | Flutter 插件版本 |  Android SDK 版本范围   |  iOS SDK 版本范围  |
+  | Flutter 插件版本 |  Android SDK 版本范围   |  Apple SDK 版本范围  |
   | :-------------- | :----------------- | :------: |
   | >= v1.1.3 | >= v3.5.0 | >= v3.5.0 |
   | = v2.0.0 | >= v4.1.0 | >= v4.1.0 |
@@ -61,7 +61,7 @@ GrowingIO Flutter SDK 支持在 Flutter 中初始化 SDK，也同时支持在原
 原生端初始化请参考各端的初始化文档：
 
 * Android: [无埋点初始化配置](/docs/android/Introduce#sdk初始化配置)、[埋点初始化配置](/docs/android/Introduce#sdk初始化配置-1)，另外，在 Android 原生初始化需要额外添加 [Flutter 模块](/docs/android/modules/flutter%20module#使用方式)
-* iOS: [无埋点初始化配置](/docs/ios/Introduce#sdk-初始化配置)、[埋点初始化配置](/docs/ios/Introduce#sdk-初始化配置-1)
+* iOS: [无埋点初始化配置](/docs/ios/Introduce#添加无埋点-sdk-到您的应用)、[埋点初始化配置](/docs/ios/Introduce#添加埋点-sdk-到您的应用)
 
 #### Flutter 初始化
 
@@ -164,7 +164,7 @@ void main() async {
 在使用 GrowingIO SDK 的Mobile Debugger 和圈选功能时，需要外部浏览器通过扫描二维码来拉起应用。
 
 * [Android 端 URLScheme 配置说明](/docs/android/Introduce#添加url-scheme)
-* [iOS 端 URLScheme 配置说明](/docs/ios/Introduce#添加-url-scheme)
+* [iOS 端 URLScheme 配置说明](/docs/ios/Introduce#步骤-4-添加-url-scheme-ios-平台)
 
 ### 模块配置
 

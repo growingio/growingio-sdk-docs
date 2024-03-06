@@ -6,7 +6,7 @@ title: 如何集成
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-### 集成准备
+### 步骤 1: 集成准备
 #### 获取 SDK 初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
 :::info
 AccountID：项目 ID，代表一个项目<br/>
@@ -14,7 +14,7 @@ DataSourceID：数据源 ID，代表一个数据源<br/>
 URL Scheme： 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识<br/>
 Host：采集数据上报的服务器地址，非平台地址<br/>
 
-Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数据源，或从已创建的数据源中获取，如不清楚或无权限请联系您的专属项目经理或技术支持
+Account ID、DataSource ID、URL Scheme 需要在 GrowingIO 平台上新建数据源，或从已创建的数据源中获取，如不清楚或无权限请联系您的专属项目经理或技术支持
 :::
 
 ##### 创建
@@ -23,30 +23,46 @@ Account ID、DataSource ID、URL Scheme 需要在 CDP 增长平台上新建数�
 ##### 查看
 <ImageLoader path="img/common/showappdatasourceid" />
 
-## 无埋点 SDK 集成
+## 步骤 2: SDK 集成
+
+选择您想要的 SDK 类型(无埋点 SDK 或埋点 SDK)，参考以下内容，添加到您的应用
+
+SDK 类型与平台的支持关系：
+
+| 目标平台 |    SDK 类型     | 功能模块支持 |
+| :------: | :-------------: | :----------: |
+|   iOS    | 无埋点/埋点 SDK |   所有模块   |
+|  macOS   |    埋点 SDK     |      -       |
+| watchOS  |    埋点 SDK     |      -       |
+|   tvOS   | 无埋点/埋点 SDK |      -       |
+| visionOS |    埋点 SDK     |      -       |
+
+### 添加无埋点 SDK 到您的应用
+
+1. 使用 Swift Package Manager 或 Cocoapods 添加无埋点 SDK 到您的应用
 
 <Tabs groupId="integration" queryString>
   <TabItem value="spm" label="Swift Package Manager" default>
 
-1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
+在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
 <ImageLoader path="img/ios/add_package_dependencies" />
 
-2. 搜索 GrowingAnalytics SDK GitHub 地址
+搜索 GrowingAnalytics SDK GitHub 地址
 
 ```
 https://github.com/growingio/growingio-sdk-ios-autotracker.git
 ```
 
-3. 并设置 Dependency Rule 为 Exact Version，输入要使用的 SDK 版本，Add to Project 选择您所需要的 Project
+并设置 Dependency Rule 为 Exact Version，输入要使用的 SDK 版本，Add to Project 选择您所需要的 Project
 
 <ImageLoader path="img/ios/set_dependency_rule" />
 
 :::info
-我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本 (>= 4.0)
+我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本 (>= 4.0.0)
 :::
 
-4. 点击下方的 Add Package 按钮，选择 GrowingAutotracker，再次点击 Add Package 按钮
+点击下方的 Add Package 按钮，选择 GrowingAutotracker，再次点击 Add Package 按钮
 
 <ImageLoader path="img/ios/add_package_autotracker" />
 
@@ -65,18 +81,7 @@ pod 'GrowingAnalytics/Autotracker', '~> 4.2.0'
   </TabItem>
 </Tabs>
 
-### 添加 URL Scheme
-
-URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。把 URL Scheme 添加到您的项目，以便使用 Mobile Debugger 等功能时唤醒您的应用。  
-:::info
-需要在 GrowingIO 网站上先创建您的 App 应用，获取 URL Scheme
-:::
-选择工程 -> Target -> Info -> URL Types -> 点击 ➕ -> 添加您的 URL Scheme 即可
-<ImageLoader path="img/ios/iOS_Setting_URLScheme" />
-
-
-### SDK 初始化配置
-#### 导入头文件
+2. 在您的 `ApplicationDelegate` 中导入
 
 <Tabs groupId="integration" queryString>
   <TabItem value="spm" label="Swift Package Manager" default>
@@ -102,7 +107,7 @@ import GrowingAnalytics
   </TabItem>
 </Tabs>
 
-#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
+3. 将以下初始化代码添加到您的 `ApplicationDelegate` 的 `application(_:didFinishLaunchingWithOptions:)` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
 
 <Tabs groupId="integration" queryString>
   <TabItem value="spm" label="Swift Package Manager" default>
@@ -153,113 +158,50 @@ configuration.urlScheme = @"YourURLScheme";
   </TabItem>
 </Tabs>
 
-####  在 appDelegate.m 文件中实现 URL Scheme 跳转以及 DeepLink 跳转的代理方法
-
-<Tabs groupId="integration" queryString>
-  <TabItem value="spm" label="Swift" default>
-
+4. 如果您使用的是 SwiftUI，则必须创建一个 `ApplicationDelegate`，并通过 `UIApplicationDelegateAdaptor` 或 `NSApplicationDelegateAdaptor` 将其附加到 `App` 结构体
 ```swift
-// URL Scheme跳转
-func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    return true
-}
+@main
+struct Example_SwiftUIApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
-// universal Link执行
-func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-    return true
-}
-```
-
-  </TabItem>
-  <TabItem value="cocoapods_oc" label="Objective-C">
-
-```objectivec
-// URL Scheme跳转
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    return YES;
-}
-
-// universal Link执行
-- (BOOL) application:(UIApplication *)application
-continueUserActivity:(NSUserActivity *)userActivity
-  restorationHandler:(void (^)(NSArray<id <UIUserActivityRestoring>> *_Nullable))restorationHandler {
-    return YES;
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
 }
 ```
 
-  </TabItem>
-</Tabs>
-
-#### 若使用了 iOS 13 的 UIScene，请在您指定的 SceneDelegate 中设置如下
-
-<Tabs groupId="integration" queryString>
-  <TabItem value="spm" label="Swift" default>
-
-```swift
-func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-}
-
-func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-}
-```
-
-  </TabItem>
-  <TabItem value="cocoapods_oc" label="Objective-C">
-
-```objectivec
-- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
-}
-
-- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
-}
-```
-  </TabItem>
-</Tabs>
+### 添加埋点 SDK 到您的应用
 
 :::info
-上述代理方法空实现即可，SDK 会自动加入处理代码
+埋点 SDK 只自动采集用户访问事件和 APP 关闭事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
 :::
 
-### 查看集成效果
-运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 4.x.x`  
-则说明 SDK 已经集成成功。
-
-若在初始化中 `debugEnabled` 设置为 true，打开了 Debug，则可以在日志中看到每个事件的 log 日志输出。
-
-至此，就完成了无埋点 SDK 的集成。
-
-另外，您可使用 [GioKit 辅助插件](/docs/giokit/ios) 进行集成验证。
-
-## 埋点 SDK 集成
-
-埋点 SDK 只自动采集用户访问事件和 APP 关闭事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
+1. 使用 Swift Package Manager 或 Cocoapods 添加无埋点 SDK 到您的应用
 
 <Tabs groupId="integration" queryString>
   <TabItem value="spm" label="Swift Package Manager" default>
 
-1. 在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
+在 Xcode 菜单栏点击 File -> Add Packages... 或选择工程 -> 对应 Project -> Package Dependencies -> 点击 ➕
 
 <ImageLoader path="img/ios/add_package_dependencies" />
 
-2. 搜索 GrowingAnalytics SDK GitHub 地址
+搜索 GrowingAnalytics SDK GitHub 地址
 
 ```
 https://github.com/growingio/growingio-sdk-ios-autotracker.git
 ```
 
-3. 并设置 Dependency Rule 为 Exact Version，输入要使用的 SDK 版本，Add to Project 选择您所需要的 Project
+并设置 Dependency Rule 为 Exact Version，输入要使用的 SDK 版本，Add to Project 选择您所需要的 Project
 
 <ImageLoader path="img/ios/set_dependency_rule" />
 
 :::info
-我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本 (>= 4.0)
+我们建议您使用当前已发布的最新版本，您也可以根据需要选择较低版本 (>= 4.0.0)
 :::
 
-4. 点击下方的 Add Package 按钮，选择 GrowingTracker，再次点击 Add Package 按钮
+点击下方的 Add Package 按钮，选择 GrowingTracker，再次点击 Add Package 按钮
 
 <ImageLoader path="img/ios/add_package_tracker" />
 
@@ -278,19 +220,7 @@ pod 'GrowingAnalytics/Tracker', '~> 4.2.0'
   </TabItem>
 </Tabs>
 
-### 添加 URL Scheme
-
-URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。把 URL Scheme 添加到您的项目，以便使用 Mobile Debugger 等功能时唤醒您的应用。  
-:::info
-您需要在 CDP 增长平台上先创建您的 App 应用，获取 URL Scheme
-:::
-选择工程 -> Target -> Info -> URL Types -> 点击 ➕ -> 添加您的 URL Scheme 即可
-
-<ImageLoader path="img/ios/iOS_Setting_URLScheme" />
-
-### SDK 初始化配置
-
-#### 导入头文件
+2. 在您的 `ApplicationDelegate` 中导入
 
 <Tabs groupId="integration" queryString>
   <TabItem value="spm" label="Swift Package Manager" default>
@@ -316,7 +246,7 @@ import GrowingAnalytics
   </TabItem>
 </Tabs>
 
-#### 并将以下代码加在您的 `AppDelegate` 的 `application:didFinishLaunchingWithOptions:` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
+3. 将以下初始化代码添加到您的 `ApplicationDelegate` 的 `application(_:didFinishLaunchingWithOptions:)` 方法中。为使 App 合规，请参考[合规步骤](/knowledge/compliance/iosCompliance#合规步骤)
 
 <Tabs groupId="integration" queryString>
   <TabItem value="spm" label="Swift Package Manager" default>
@@ -368,93 +298,28 @@ configuration.urlScheme = @"YourURLScheme";
   </TabItem>
 </Tabs>
 
-####  在 appDelegate.m 文件中实现 URL Scheme 跳转以及 DeepLink 跳转的代理方法
-
-<Tabs groupId="integration" queryString>
-  <TabItem value="spm" label="Swift" default>
-
+4. 如果您使用的是 SwiftUI，则必须创建一个 `ApplicationDelegate`，并通过 `UIApplicationDelegateAdaptor` 或 `NSApplicationDelegateAdaptor` 将其附加到 `App` 结构体
 ```swift
-// URL Scheme跳转
-func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    return true
-}
+@main
+struct Example_SwiftUIApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
-// universal Link执行
-func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-    return true
-}
-```
-
-  </TabItem>
-  <TabItem value="cocoapods_oc" label="Objective-C">
-
-```objectivec
-// URL Scheme跳转
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    return YES;
-}
-
-// universal Link执行
-- (BOOL) application:(UIApplication *)application
-continueUserActivity:(NSUserActivity *)userActivity
-  restorationHandler:(void (^)(NSArray<id <UIUserActivityRestoring>> *_Nullable))restorationHandler {
-    return YES;
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
 }
 ```
 
-  </TabItem>
-</Tabs>
+## 步骤 3: App Extension 集成 (可选)
 
-#### 若使用了 iOS 13 的 UIScene，请在您指定的 SceneDelegate 中设置如下
-
-<Tabs groupId="integration" queryString>
-  <TabItem value="spm" label="Swift" default>
-
-```swift
-func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-}
-
-func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-}
-```
-
-  </TabItem>
-  <TabItem value="cocoapods_oc" label="Objective-C">
-
-```objectivec
-- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
-}
-
-- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
-}
-```
-  </TabItem>
-</Tabs>
+1. 如您的应用支持 App Extension，您还可添加 SDK 到您的 App Extension Target 上
 
 :::info
-上述代理方法空实现即可，SDK 会自动加入处理代码
-:::
+在 App Extension 上，SDK 只自动采集用户访问事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件
 
-### 查看集成效果
-运行应用，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 4.x.x`  
-则说明 SDK 已经集成成功。
-
-若在初始化中 `debugEnabled` 设置为 true，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
-
-至此，就完成了埋点 SDK 的集成。
-
-另外，您可使用 [GioKit 辅助插件](/docs/giokit/ios) 进行集成验证。
-
-## App Extension 集成
-
-在 App Extension 上，SDK 只自动采集用户访问事件，其他事件均需要开发同学调用相应埋点 API 采集埋点事件。
-
-:::info
-请首先在 Containing App 按照上述集成步骤集成 SDK，并确保 Containing App 和 Extension 集成同一类 SDK：
+请首先在 Containing App 按照步骤 2 进行 SDK 集成，并确保 Containing App 和 Extension 集成同一类 SDK：
 * Containing App 集成无埋点 SDK，Extension 也需集成无埋点 SDK
 * Containing App 集成埋点 SDK，Extension 也需集成埋点 SDK
 
@@ -480,18 +345,81 @@ SDK 自 4.1.0 起，支持 App Extension 集成
   </TabItem>
 </Tabs>
 
-### SDK 初始化
+2. 在您的 Extension 对应的 ViewController，导入 SDK，并在 `viewDidLoad` 方法中，初始化 SDK
 
-在您的 Extension 对应的 ViewController，导入 SDK，并在 `viewDidLoad` 方法中，初始化 SDK
+## 步骤 4: 添加 URL Scheme （iOS 平台）
 
-### 查看集成效果
-运行 Extension，若日志中输出了  
-`Thank you very much for using GrowingIO. We will do our best to provide you with the best service. GrowingIO version: 4.x.x`  
-则说明 SDK 已经集成成功。
+URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。在 iOS 平台进行集成时，把 URL Scheme 添加到您的项目，以便使用 Mobile Debugger 等功能时唤醒您的应用。  
+
+1. 选择工程 -> Target -> Info -> URL Types -> 点击 ➕ -> 添加您的 URL Scheme
+<ImageLoader path="img/ios/iOS_Setting_URLScheme" />
+
+2. 添加 URL Scheme 跳转以及 DeepLink 跳转的代理方法
+
+<Tabs>
+  <TabItem value="UIApplicationDelegate" label="UIApplicationDelegate" default>
+
+  ```swift
+  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+      return true
+  }
+
+  func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+      return true
+  }
+  ```
+
+  </TabItem>
+  <TabItem value="UISceneDelegate" label="UISceneDelegate">
+
+  ```swift
+  func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+  }
+
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+  }
+  ```
+
+  </TabItem>
+  <TabItem value="SwiftUI" label="SwiftUI">
+
+  ```swift
+  @main
+  struct Example_SwiftUIApp: App {
+      @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
+      var body: some Scene {
+          WindowGroup {
+              ContentView()
+                  // 添加下列方法实现
+                  .onOpenURL(perform: { url in
+                      DeepLink.handle(url)
+                  })
+                  .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: { userActivity in
+                      DeepLink.handle(userActivity.webpageURL)
+                  })
+          }
+      }
+  }
+  ```
+
+  </TabItem>
+</Tabs>
+
+## 步骤 5: 查看集成效果
+
+运行应用，若日志中输出了
+```
+Thank you very much for using GrowingIO. We will do our best to provide you with the best service. 
+GrowingIO version: 4.x.x
+```
+大功告成，SDK 已经集成成功。
 
 若在初始化中 `debugEnabled` 设置为 true，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
 
-至此，就完成了 App Extension 上的 SDK 集成。
+:::info
+在 iOS 平台，您还可以使用 [GioKit 辅助插件](/docs/giokit/ios) 进行集成验证。
+:::
 
 ## App Store 提交应用注意事项
 如果您添加了库 `AdSupport.framework`，GrowingIO 则会启用 `IDFA`，所以在向 App Store 提交应用时，需要：
@@ -560,7 +488,7 @@ func applicationDidBecomeActive(_ application: UIApplication) {
 }
 ```
 
-### 关于使用 IDFA 作为访问用户ID
+### 关于使用 IDFA 作为访问用户 ID
 GrowingIO SDK 使用 访问用户 ID 标识访问用户 ，其值使用 IDFA 、IDFV 或随机字符串 ，三者的优先级为 IDFA > IDFV > 随机字符串 ，例如：如果获取不到 IDFA，SDK 会使用 IDFV 作为访问用户 ID。
 
 访问用户 ID 生成时机是在 SDK 第一次初始化时，生成之后会被存储在 Keychain 中，如果 Keychain 数据一直存在，则访问用户 ID 不会发生改变。

@@ -79,7 +79,7 @@ import TabItem from '@theme/TabItem';
 
 #### 11. **urlScheme**
 
-自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该 [URL Scheme](/docs/ios/Introduce#添加-url-scheme)
+自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该 [URL Scheme](/docs/ios/Introduce#步骤-4-添加-url-scheme-ios-平台)
 
 #### 12. **encryptEnabled**
 
