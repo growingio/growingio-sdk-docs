@@ -28,6 +28,7 @@ import TabItem from '@theme/TabItem';
 | `encryptEnabled` | `Bool` | 否 | `false` | 是否开启网络传输加密 | - |
 | `useProtobuf` | `Bool` | 否 | `true` | 是否采用 Protobuf 格式保存和上传事件数据 | - |
 | `autotrackEnabled` | `Bool` | 否 | `true` | 是否开启无埋点采集 | <font color='red'>无埋点独有</font> |
+| `autotrackAllPages` | `Bool` | 否 | `false` | 是否开启页面自动采集 | <font color='red'>无埋点独有</font> |
 
 ### 详细说明
 
@@ -90,3 +91,7 @@ import TabItem from '@theme/TabItem';
 #### 14. **autotrackEnabled**
 
 当集成无埋点 SDK 时，设置为 false 将关闭无埋点功能和自动采集
+
+#### 15. **autotrackAllPages**
+
+当集成无埋点 SDK 时，设置为 true 将开启页面自动采集，alias 默认为 ViewController 的类名；通过调用 `autotrackPage` 接口所配置的 alias 将覆盖默认值
