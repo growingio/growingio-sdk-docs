@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 
 ```c
 dependencies:
-  growingio_autotracker_flutter_plugin: '2.0.0'
+  growingio_autotracker_flutter_plugin: '2.0.1'
 ```
 
 </TabItem>
@@ -43,7 +43,7 @@ dependencies:
 
 ```c
 dependencies:
-  growingio_tracker_flutter_plugin: '2.0.0'
+  growingio_tracker_flutter_plugin: '2.0.1'
 ```
 
 </TabItem>
