@@ -10,6 +10,7 @@ Flutter SDK 提供了 [无埋点SDK](/docs/framework/flutter/index.md) 和 [埋�
 ## 版本记录
 |    版本    | 说明 |  日期  |
 |:-------:| :----  |  :-------:  |
+| v2.0.1 | 稳定性优化，见：[v2.0.1](https://github.com/growingio/growingio-sdk-flutter/releases/tag/v2.0.1) | 2024-03-19 |
 | v2.0.0 | 新版本 与 GrowingIO SDK 4.0 同步，添加新的接口和参数<br/>- Flutter 的 Page 不再基于 Router，由 mixin 类实现，更加清晰的生命周期逻辑和代码结构；<br/>- 圈选的元素只有在定义为 Page 的页面下才能发送元素；<br/>- 无埋点点击事件现在异步发送。 | 2024-01-25 |
 
 :::info
