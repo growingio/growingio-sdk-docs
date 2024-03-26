@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: iOS SDK 合规说明
+title: Apple SDK 合规说明
 ---
 
 ## 隐私协议
@@ -41,7 +41,7 @@ GIO移动端 SDK
 
 3.延迟初始化
 
-集成 [iOS SDK](/docs/ios/Introduce)，请在用户同意《隐私协议》之后再初始化 GrowingIO SDK。 
+集成 [Apple SDK](/docs/ios/Introduce)，请在用户同意《隐私协议》之后再初始化 GrowingIO SDK。 
 示例代码如下：
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -56,7 +56,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 
 4.集成了 GrowingIO SDK，默认会尝试获取 `IDFA`、`IDFV` 信息，用于统计分析用户在 App 内的使用效果。
-参考：[App Store 提交应用注意事项​​](/docs/ios/Introduce#app-store提交应用注意事项)
+参考：[App Store 提交应用注意事项​​](/docs/ios/Introduce#app-store-提交应用注意事项)
 
 ## iOS 权限说明
 | 权限 | 用途 | 
@@ -69,7 +69,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 使用请参考[SDK数据加密传输 encryptEnabled](/docs/ios/Configuration#12-encryptenabled)。
 
 ## 数据存储发送策略说明
-iOS SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 500 条行为数据），首次请求之后，如果剩余行为数据量大于500条，则继续发送；否则等待下一次定时器轮询，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
+Apple SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 500 条行为数据），首次请求之后，如果剩余行为数据量大于500条，则继续发送；否则等待下一次定时器轮询，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
 
 ## 其他说明
 

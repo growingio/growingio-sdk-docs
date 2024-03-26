@@ -24,9 +24,9 @@ V2Adapter 支持从 SaaS v2.x/CDP v1.x SDK 无缝升级到当前 SDK，兼容 2.
 <Tabs>
   <TabItem value="cocoapods" label="无埋点集成" default>
 
-1. 集成当前版本[无埋点 SDK](/docs/ios/Introduce#无埋点-sdk-集成)
+1. 集成当前版本[无埋点 SDK](/docs/ios/Introduce#添加无埋点-sdk-到您的应用)
 2. 移除老版本 SaaS/CDP SDK 集成，如使用 Cocoapods 集成，删除 Podfile 中对应行；如手动集成，移除对应 framework 文件
-3. 移除老版本 SaaS/CDP SDK 初始化代码，如 `[Growing startWithAccountId:...]`，并初始化[当前 SDK](/docs/ios/Introduce#sdk-初始化配置)
+3. 移除老版本 SaaS/CDP SDK 初始化代码，如 `[Growing startWithAccountId:...]`
 4. 在您的 Podfile 文件中添加
 
 ```ruby
@@ -38,9 +38,9 @@ pod 'GrowingAnalytics/V2Adapter'
   </TabItem>
   <TabItem value="swiftPM" label="埋点集成">
 
-1. 集成当前版本[埋点 SDK](/docs/ios/Introduce#埋点-sdk-集成)
+1. 集成当前版本[埋点 SDK](/docs/ios/Introduce#添加埋点-sdk-到您的应用)
 2. 移除老版本 SaaS/CDP SDK 集成，如使用 Cocoapods 集成，删除 Podfile 中对应行；如手动集成，移除对应 framework 文件
-3. 移除老版本 SaaS/CDP SDK 初始化代码，如 `[Growing startWithAccountId:...]`，并初始化[当前 SDK](/docs/ios/Introduce#sdk-初始化配置-1)
+3. 移除老版本 SaaS/CDP SDK 初始化代码，如 `[Growing startWithAccountId:...]`
 4. 在您的 Podfile 文件中添加
 
 ```ruby

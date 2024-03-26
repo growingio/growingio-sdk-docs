@@ -13,7 +13,7 @@ GrowingIO 各SDK均支持日志输出模式，开启后可进行调试和校验�
 
 请参考初始化配置中的 [`setDebugEnabled`](/docs/android/Configuration#3-setdebugenabled)
 
-### iOS SDK 日志输出模式
+### Apple SDK 日志输出模式
 
 请参考初始化配置中的 [`debugEnabled`](/docs/ios/Configuration#2-debugenabled)
 

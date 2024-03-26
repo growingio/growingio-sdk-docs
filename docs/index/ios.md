@@ -1,23 +1,26 @@
 ---
-slug: /iOS
-title: "iOS SDK"
+slug: /ios
+title: "Apple SDK"
 ---
 
-iOS SDK 提供了 [无埋点SDK](/docs/ios/Introduce#无埋点-sdk-集成) 和 [埋点SDK](/docs/ios/Introduce#埋点-sdk-集成) 两个版本：
+Apple SDK 提供了无埋点 SDK 和埋点 SDK 两个版本：
 * 埋点 SDK 只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
 * 无埋点 SDK 具备 埋点 SDK 的所有功能，同时具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
-:::tip 开源信息
-无埋点SDK（包括埋点 SDK）代码已在 [Github](https://github.com/growingio/growingio-sdk-ios-autotracker) 上开源，可以详细查看代码实现细节，欢迎 star, fork。
+:::info
+开发环境：
+Xcode 14.3 及以上
+
+确保您的项目的目标平台不得低于以下版本：
+* iOS 10
+* macOS 10.12
+* watchOS 7.0
+* tvOS 12.0
+* visionOS 1.0
 :::
 
-:::info
-**开发环境:** <br/>
-Xcode 13.3 及以上  
-iOS 10.0 及以上  
-Swift 5.6 及以上
-
-**根据需要选择集成** [<font color='red'>无埋点SDK</font>](/docs/ios/Introduce#无埋点-sdk-集成)  或 [<font color='red'>埋点SDK</font>](/docs/ios/Introduce#埋点-sdk-集成)
+:::tip 开源信息
+Apple SDK 代码已在 [Github](https://github.com/growingio/growingio-sdk-ios-autotracker) 上开源，可以详细查看代码实现细节，欢迎 star, fork。
 :::
 
 
