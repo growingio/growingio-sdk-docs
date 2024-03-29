@@ -64,6 +64,7 @@ dependencies {
 
 <details>
   <summary>应用使用的 Gradle 版本低于 5.0 还可以使用 BoM 吗？</summary>
+
   可以！对于 Gradle 5.0 及更高版本，BoM 支持将自动启用。不过，对于更早版本的 Gradle，只需启用 BoM 功能并采用略微不同的方式导入 BoM。
 
 在 `settings.gradle`  文件中，添加 `enableFeaturePreview('IMPROVED_POM_SUPPORT')`。
@@ -81,5 +82,6 @@ dependencies {
 
 <details>
   <summary>如何报告问题或提供与 BoM 有关的反馈？</summary>
+  
   请访问 GitHub 上的 <a href="https://github.com/growingio/growingio-sdk-android-autotracker">GrowingIO Android SDK 代码库</a>
 </details>
