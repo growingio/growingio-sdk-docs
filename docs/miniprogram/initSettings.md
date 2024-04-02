@@ -57,7 +57,7 @@ gdp('init', accountId, dataSourceId, appId, {
 
 ### idMapping
 
-多用户身份上报，是否开启多用户身份上报，默认不开启。开启后，调用设置登录用户 ID 接口时，设置 userKey，服务端调用用户身份融合 API 时，可将不同的登录用户 ID 识别为同一用户。开启多用户身份上报后，需要在设置登录用户 ID 时设置 userKey。[参考文档](/docs/miniprogram/commonlyApi#设置登录用户idsetuserid)
+多用户身份上报，是否开启多用户身份上报，默认不开启。需要上报 userkey 时开启，开启后，调用设置登录用户 ID 接口时，设置 userKey，服务端调用用户身份融合 API 时，可将不同的登录用户 ID 识别为同一用户。开启多用户身份上报后，需要在设置登录用户 ID 时设置 userKey。[参考文档](/docs/miniprogram/commonlyApi#设置登录用户idsetuserid)
 
 ```js
 gdp('init', accountId, dataSourceId, appId, {

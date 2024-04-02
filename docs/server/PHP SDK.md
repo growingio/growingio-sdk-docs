@@ -79,12 +79,16 @@ $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 ### 埋点事件
 发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性
 
+:::info
+* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
+:::
+
 **参数说明**
 
 | 参数         | 是否必填  | 类型   | 默认值           | 说明                                                                     |
 | :----------- | :----: | :-----: | :---------------: | ---------- |
 | eventTime    | false | int    | 当前时间的时间戳 | 事件发生时间(毫秒)；<br/>需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认 |
-| loginUserKey | false | string |                  | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| loginUserKey | false | string |                  | 登录用户KEY (选填，需有规划并在平台配置后再上报)，传此参数时，同时需传登录用户ID |
 | anonymousId  |   false  | string           |      | 访问用户ID，与登录用户ID，不能同时为空 |
 | loginUserId  | false  | string |                  | 登录用户ID，与访问用户ID，不能同时为空 |
 | eventKey     | true  | string |                  | 埋点事件标识符 |
@@ -107,11 +111,15 @@ $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
 以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析<br/>
 在添加登录用户属性代码之前，需要在CDP平台用户管理界面中创建用户属性
 
+:::info
+* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
+:::
+
 **参数说明**
 
 | 参数         | 是否必填  | 类型   | 默认值 | 说明         |
 | :----------- | :----: | :-----: | :----- | ------------ |
-| loginUserKey | false | string |        | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| loginUserKey | false | string |        | 登录用户KEY (选填，需有规划并在平台配置后再上报)，传此参数时，同时需传登录用户ID |
 | loginUserId  | false  | string |        | 登录用户ID，与访问用户ID，不能同时为空 |
 | anonymousId  | false | string  |        | 访问用户ID，与登录用户ID，不能同时为空  |
 | properties   | true  | array  |        | 用户属性信息；<br/>value支持 string\|double\|int\|数组,数组中元素支持string\|double\|int |
