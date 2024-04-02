@@ -364,10 +364,12 @@ GrowingTracker.get().setDataCollectionEnabled(true);
 `setLoginUserId`<br/>
 当用户登录之后调用，设置登录用户ID
 :::info
-**支持 ID-MAPPING 需在初始化 SDK 时设置 `idMappingEnabled` 为 `true`**
+* 如果您的App每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在用户每次升级App版本后初次访问时重新调用setLoginUserId方法
 
-如果您的App每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在用户每次升级App版本后初次访问时重新调用setLoginUserId方法
+* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 **同时在初始化 SDK 时设置`idMappingEnabled`为`true`**
+
 :::
+
 #### 参数说明
 | 参数      | 参数类型 | 说明                                                            |
 | :-------- | :------- | :-------------------------------------------------------------- |

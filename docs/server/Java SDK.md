@@ -161,7 +161,7 @@ GioCdpEventMessage eventMessage = new GioCdpEventMessage.Builder()
     .eventKey("3")                                    // 埋点事件标识 (必填)
     .eventNumValue(1.0)                               // 打点事件数值 (选填), 已废弃
     .anonymousId("device_id")                         // 访问用户ID (选填)
-    .loginUserKey("account")                          // 登录用户KEY (选填)
+    .loginUserKey("account")                          // 登录用户KEY (选填，需有规划并在平台配置后再上报)
     .loginUserId("417abcabcabcbac")                   // 登陆用户ID (选填)
     .addEventVariable("product_name", "苹果")          // 事件属性 (选填)
     .addEventVariable("product_classify", "水果")      // 事件属性 (选填)
@@ -194,7 +194,11 @@ private static GrowingAPI project = new GrowingAPI.Builder().setProjectKey("your
 
 ### 埋点事件
 
-发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性
+发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性。
+
+:::info
+* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
+:::
 
 **参数说明**
 
@@ -233,7 +237,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
                     .appName("看数助手")                               // App名称（选填）
                     .language("zh_CN")                                // 语言（选填）
                     .anonymousId("device_id")                         // 访问用户ID (选填)
-                    .loginUserKey("account")                          // 登录用户KEY (选填)
+                    .loginUserKey("account")  // 登录用户KEY (选填，需有规划并在平台配置后再上报)
                     .loginUserId("417abcabcabcbac")                   // 登录用户ID (选填)
                     .addEventVariable("product_name", "cdp苹果")       // 事件属性 (选填)
                     .addEventVariable("product_classify", Arrays.asList("苹果", "香蕉"))       // 事件属性 (选填)
@@ -253,6 +257,10 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析。<br/>
 在添加登录用户属性代码之前，需要在CDP平台用户管理界面中创建用户属性
 
+:::info
+* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
+:::
+
 **参数说明**
 
 | 参数名称         | 类型                          | 是否必填 | 说明               |
@@ -271,7 +279,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
                 .time(System.currentTimeMillis())      // 默认为系统当前时间 (选填)
                 .anonymousId("device_id")              // 访问用户ID (选填)
-                .loginUserKey("account")               // 登录用户KEY (选填)
+                .loginUserKey("account")    // 登录用户KEY (选填，需有规划并在平台配置后再上报)
                 .loginUserId("loginUserId")            // 登录用户ID的 (选填)
                 .addUserVariable("gender", "man")      // 登录用户属性 (选填)
                 .addUserVariable("education", Arrays.asList("本科", "硕士"))      // 登录用户属性 (选填)

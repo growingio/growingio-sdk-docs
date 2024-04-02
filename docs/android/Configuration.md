@@ -154,7 +154,7 @@ SDK 是否能获取应用多进程ID。默认不获取，在应用有多进程�
 ### 12. setIdMappingEnabled
 
 是否支持多用户身份上报, 默认不支持。
-是否支持多用户身份上报, 与 API 接口`setLoginUserId(String userId, String userKey)`对应, 开启时, userKey会在每次上报数据时携带, 关闭时, 接口与`setLoginUserId(String userId)`作用相同
+是否支持多用户身份上报, 与 API 接口`setLoginUserId(String userId, String userKey)`对应，需要上报 userkey 时开启； 开启时，userKey会在每次上报数据时携带；关闭时，userKey不上报。
 
 ### 13. addPreloadComponent
 注册功能模块，为 Growingio SDK 添加更多的额外功能。
