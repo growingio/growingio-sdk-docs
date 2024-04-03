@@ -210,7 +210,83 @@ gdp('clearGeneralProps', ['nick_name_var', 'index_var']);
 gdp('clearGeneralProps', []);
 ```
 
-### 10、获取SDK当前配置(getOption)
+### 10、设置页面变更回调(setPageListener)
+
+当您有需要为页面设置页面属性，或需要根据SDK的页面变更做一些事情（例如发送埋点）时，可以设置页面变更回调。在SDK触发页面变更时会调用该回调。一般建议配合关闭 trackPage 后手动调用 sendPage 来实现某些复杂的场景。
+
+```js
+gdp('setPageListener', callback: (pageProps: { path: string, query: string, title: string } ) => void);
+```
+
+#### 示例
+
+```js
+gdp('setPageListener', ({ path, query, title }) => {
+  // 根据path/query/title做判断只针对某些页面做一些事，例如设置页面属性
+  if (path === 'path/aaa') {
+    gdp('setPageAttributes', {
+      page_type: 'page type',
+      page_level: 'page level'
+    });
+  }
+
+  // 不判断页面，“全局“设置页面属性（即每次发页面浏览事件之前都设一次页面属性）
+  gdp('setPageAttributes', {
+    page_url: path,
+    page_title: title
+  });
+
+  // 不建议做接口调用复杂运算等耗时过长的操作，以免耽误页面访问事件的发送导致丢数
+  ...
+
+  // 设置完页面属性后手动控制发送页面访问事件
+  gdp('sendPage');
+
+  // 发送跟页面地址绑定的埋点要在sendPage后
+  gdp('track', 'mytrack', {
+    name: 'Mike',
+    age: '18'
+  });
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**<br />
+**1）如果您关闭了 trackPage，需要在SDK初始化完成后尽快设置页面变更回调，避免丢失页面访问数据。**<br />
+**2）调用api设置回调方法时，会立即执行一次回调，以保证当前页面的浏览能正确触发。**<br />
+**3）api多次调用会覆盖回调方法，不同页面上的特殊处理可以直接使用if判断props值即可，建议在SDK初始化完成后立即调用一次即可。否则可能出现同一个页面发送两次页面访问事件的情况。**
+
+### 11、设置页面属性(setPageAttributes)
+
+有时我们需要通过区分于页面参数的页面属性来进行拆分分析，这时就调用该方法设置页面属性。
+
+```js
+gdp('setPageAttributes', properties: object);
+```
+
+#### 示例
+
+```js
+gdp('setPageAttributes', {
+  page_type: 'page type',
+  page_level: 'page level'
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**<br />
+设置页面属性后，仅在下次产生的页面访问事件生效。如需对所有页面访问事件生效，请参考`setPageListener`配合使用。
+
+### 12、手动发送页面访问事件(sendPage)
+
+当您需要手动设置页面属性或手动发送页面访问事件时，可以调用此api触发发送页面访问事件。
+
+```js
+gdp('sendPage');
+```
+
+**<font color="#FC5F3A">注意：</font>**<br />
+手动发页面访问事件是比较“危险”的操作，极其容易导致页面访问时长，页面跳出率等与页面相关的分析数据异常，请充分了解后或咨询我们的技术支持后再进行使用。并且使用时强烈建议配合`setPageListener`使用。
+
+### 13、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 

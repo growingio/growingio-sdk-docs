@@ -42,7 +42,8 @@ gdp('init', xxxx);
 在init方法中传入**主体小程序的 `accountId` 和 `appId` 字段**。
 
 ```js
-gdp('init', 'your miniprogram accountId', 'your dataSourceId', 'your miniprogram appId', {
+gdp('init', 'your miniprogram accountId', 'your dataSourceId', {
+  appId: 'your miniprogram appId',
   serverUrl: 'your server url',
   version: 'your website version'
 });
