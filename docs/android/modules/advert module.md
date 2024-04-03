@@ -160,7 +160,7 @@ Ads 广告模块中提供了配置文件可以设置模块的配置：
 | 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明 
 | :-------------------------   | :------         | :----:  |:------  |:------| 
 | setReadClipBoardEnable | _Boolean_       | 否      | `true`  | 是否允许读取剪切板的应用信息  |
-| setDeepLinkHost  | _String_ | 是      |  `null`  | 是否允许该地址向应用发送链接信息，示例：https://n.datayi.cn     |
+| setDeepLinkHost  | _String_ | 否      |  `https://link.growingio.com`  | 是否允许该地址向应用发送链接信息，SaaS取默认值     |
 | setDeepLinkCallback  | _接口回调_ | 否      | `null`   | 监听深度链接中的地址参数 |
 
 ```java

@@ -72,6 +72,10 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 iOS SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 500 条行为数据），首次请求之后，如果剩余行为数据量大于500条，则继续发送；否则等待下一次定时器轮询，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
 
 ## 其他说明
+
+### 关于 Privacy manifest 隐私清单
+SDK 内置了 privacy manifest，采用 Cocoapods/Swift Package Manager 方式进行集成，即可自动导入到您生成的 App 产物中
+
 ### 关于 GDPR
 为符合
 [​General Data Protection Regulation 欧盟通用数据保护条例](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)​，GrowingIO SDK 提供 `dataCollectionEnabled` 设置接口，可在用户不同意数据采集时，设置为 `NO` 禁止数据采集；在用户同意数据采集时，设置为 `YES`，开启数据采集。示例代码如下：

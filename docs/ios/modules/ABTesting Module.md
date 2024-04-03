@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 | 配置接口              | 参数类型     | 是否必填 | 默认值 | 说明                                                         |
 | :-------------------- | :----------- | :------: | :----- | :----------------------------------------------------------- |
 | `abTestingRequestInterval`       | `UInt` |    否    | `5`    | 单个实验 TTL 时长，超出 TTL 时获取对应实验则重新请求；单位分钟 |
-| `abTestingServerHost` | `String`   |    是    | `https://ab.growingio.com`  | ABTesting 配置地址，示例：https://ab.growingio.com                |
+| `abTestingServerHost` | `String`   |    否     | `https://ab.growingio.com`  | 设置AB分流服务请求地址，SaaS取默认值            |
 | `abTestingRequestTimeout`       | `TimeInterval` |    否    | `5`    | ABTesting 获取实验配置的请求超时时间；单位秒 |
 
 ```swift
