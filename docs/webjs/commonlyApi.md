@@ -122,9 +122,17 @@ gdp('setUserId', userId: string | number, userKey?: string | number, callback?: 
 gdp('clearUserId', callback?: function);
 ```
 
-### 6、埋点事件(track)
+### 6、用户属性(setUserAttributes)
 
-发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/knowledge/basicknowledge/trackEventUse#埋点事件示例)
+以登录用户的身份定义登录用户属性，用于用户信息相关分析。
+
+```js
+gdp('setUserAttributes', userAttributes, callback?: function);
+```
+
+### 7、埋点事件(track)
+
+发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点使用规范](/knowledge/basicknowledge/trackEventUse)
 
 ```js
 gdp('track', eventName: string, attributes?: Object, callback?: function);
@@ -142,28 +150,12 @@ gdp('track', 'order', {
 });
 ```
 
-### 7、用户属性(setUserAttributes)
-
-以登录用户的身份定义登录用户属性，用于用户信息相关分析。
-
-```js
-gdp('setUserAttributes', userAttributes, callback?: function);
-```
-
-#### 示例
-
-```js
-gdp('setUserAttributes', { name: 'Lily', age: 18 });
-gdp('setUserAttributes', {
-  tags: ['clever', 'brave', 'strong'], // 仅支持字符串和数字的一维数组，其他类型会被强制转为字符串
-  age: 18
-});
-```
+提示：您可以使用多实例的能力将埋点同时上报给其他实例 [参考文档](/docs/webjs/plugins/multipleInstances#4埋点埋点计时半自动埋点浏览多发)
 
 **<font color="#FC5F3A">注意：</font><br/>**
 **1）所有属性都必须是用户的属性，不能是订单 ID，商品ID 等和用户没有确定的关联关系的属性。**<br/>
 **2）同一个字段，必须保持在各个平台意义相同。**<br/>
-**3）cs1 和 userId 字段是特殊用来唯一标识你自己站点的注册用户的预置属性，GrowingIO 以此来识别登录用户数据。**
+**3）cs1 和 userId 字段是特殊用来唯一标识你自己站点的注册用户的预置属性，请不要使用重名字段。**
 
 ### 8、设置埋点通用属性(setGeneralProps)
 
@@ -212,7 +204,7 @@ gdp('clearGeneralProps', []);
 
 ### 10、设置页面变更回调(setPageListener)
 
-当您有需要为页面设置页面属性，或需要根据SDK的页面变更做一些事情（例如发送埋点）时，可以设置页面变更回调。在SDK触发页面变更时会调用该回调。一般建议配合关闭 trackPage 后手动调用 sendPage 来实现某些复杂的场景。
+当您有需要为页面设置页面属性，或需要根据SDK的页面变更做一些事情（例如发送埋点）时，可以设置页面变更回调。在SDK触发页面变更时会调用该回调。一般建议配合关闭 trackPage 后手动调用 sendPage 来实现某些复杂的场景。**请勿执行复杂度过高的运算逻辑或异步运算，可能会导致报错或无法获取准确值。**
 
 ```js
 gdp('setPageListener', callback: (pageProps: { path: string, query: string, title: string } ) => void);
@@ -236,7 +228,7 @@ gdp('setPageListener', ({ path, query, title }) => {
     page_title: title
   });
 
-  // 不建议做接口调用复杂运算等耗时过长的操作，以免耽误页面访问事件的发送导致丢数
+  // 不要做接口调用复杂运算等耗时过长的操作，以免耽误页面访问事件的发送或数据解析错误导致丢数和数据错误
   ...
 
   // 设置完页面属性后手动控制发送页面访问事件
@@ -251,9 +243,9 @@ gdp('setPageListener', ({ path, query, title }) => {
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br />
-**1）如果您关闭了 trackPage，需要在SDK初始化完成后尽快设置页面变更回调，避免丢失页面访问数据。**<br />
-**2）调用api设置回调方法时，会立即执行一次回调，以保证当前页面的浏览能正确触发。**<br />
-**3）api多次调用会覆盖回调方法，不同页面上的特殊处理可以直接使用if判断props值即可，建议在SDK初始化完成后立即调用一次即可。否则可能出现同一个页面发送两次页面访问事件的情况。**
+**1）调用api设置回调方法时，会立即执行一次回调，以保证当前页面的浏览能正确触发。**<br />
+**2）如果您关闭了 trackPage，需要在SDK初始化完成后尽快设置页面变更回调并发送页面访问事件，避免丢失页面访问数据。**<br />
+**3）api多次调用会覆盖回调方法，不同页面上的特殊处理可以直接使用if判断props值，建议在SDK初始化完成后立即调用一次即可。否则可能出现同一个页面发送两次页面访问事件的情况。**
 
 ### 11、设置页面属性(setPageAttributes)
 
@@ -328,7 +320,7 @@ gdp('trackTimerResume', timerId, callback?: function);
 
 ### 4、停止事件计时器(trackTimerEnd)
 
-停止事件计时器。注意停止事件计时器时会自动发送事件并删除当前计时器。
+停止事件计时器。注意停止事件计时器时会自动发送事件并删除当前计时器。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点使用规范](/knowledge/basicknowledge/trackEventUse)
 
 ```js
 gdp('trackTimerEnd', timerId, attributes?: object, callback?: function);
@@ -337,9 +329,11 @@ gdp('trackTimerEnd', timerId, attributes?: object, callback?: function);
 #### 示例
 
 ```js
-gdp('trackTimerEnd', 'timerId123');
-gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2: 2 });
+gdp('trackTimerEnd', 'timerId');
+gdp('trackTimerEnd', 'timerId', { extraVar1: 1, extraVar2: 2 });
 ```
+
+提示：您可以使用多实例的能力将埋点计时同时上报给其他实例 [参考文档](/docs/webjs/plugins/multipleInstances)
 
 :::caution 注意
 trackTimerEnd时发送CUSTOM事件上报数据：
@@ -349,7 +343,7 @@ trackTimerEnd时发送CUSTOM事件上报数据：
 * event_duration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;event_duration 按照秒上报，小数点精度保证到毫秒<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;event_duration 变量及其值会自动添加在 attributes 中<br/>
-* eventName 对应的埋点事件需要在平台中**绑定**标识符为 event_duration， 且类型为小数的事件属性
+* eventName 对应的埋点事件需要在平台中**绑定**标识符名为 event_duration， 且类型为小数的事件属性
 :::
 
 ### 5、删除事件计时器(removeTimer)
