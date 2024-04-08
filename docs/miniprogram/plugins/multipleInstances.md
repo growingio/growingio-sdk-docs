@@ -1,10 +1,10 @@
 ---
-sidebar_position: 7
+sidebar_position: 6
 title: 多实例
 ---
 ## 简介（gioMultipleInstances）
 
-当您的web页面需要使用两套不同采集方案逻辑和数据双发时，我们提供了多实例的方案。
+当您的小程序需要使用两套不同采集方案逻辑和数据双发时，我们提供了多实例的方案。
 
 ## 集成
 
@@ -12,16 +12,20 @@ title: 多实例
 
 ### 1、引入
 
-#### CDN集成引入
+#### 下载集成引入
 
-```html
-<script src="https://assets.giocdn.com/sdk/webjs/plugins/gioMultipleInstances.js"></script>
-```
-
-#### npm集成引入
+- 下载插件并复制至项目中：
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.1.0/plugins/gioMultipleInstances.js](https://assets.giocdn.com/sdk/minip/4.1.0/plugins/gioMultipleInstances.js)</font>**<br/>
+  **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ```js
-import gioMultipleInstances from "gio-webjs-sdk/plugins/gioMultipleInstances"
+import gioMultipleInstances from './utils/plugins/gioMultipleInstances';
+```
+
+#### npm 集成引入
+
+```js
+import gioMultipleInstances from 'gio-miniprogram-sdk/plugins/gioMultipleInstances';
 ```
 
 ### 2、注册
@@ -90,7 +94,7 @@ gdp('trackTimerEnd', 'timerId', {
 通过 `data-gio-imp-sendto` 自定义属性标记指定当前节点的半自动埋点浏览发送的目标实例，实例字符串切用英文逗号分隔。
 
 ```html
-<div
+<view
   id="imp_11"
   data-gio-imp-track="imp_cat_var"
   data-gio-track-name="cat_picture"
@@ -98,7 +102,7 @@ gdp('trackTimerEnd', 'timerId', {
   data-gio-imp-sendto="g2,g5"
 >
   这是一个半自动埋点浏览的节点
-</div>
+</view>
 ```
 
 上述示例代码，会将该埋点事件发送给 主实例 并同时分别复制发送给 `g2`和`g5` 两个实例，前提是他们都已经被正确初始化。不存在或未正确初始化的实例会被自动跳过。
@@ -111,11 +115,9 @@ gdp('trackTimerEnd', 'timerId', {
 
 ### 1、初始化配置项
 
- `cookieDomain`、`debug`、`forceLogin`、`hashtag`、`originalSource`、`performance` 和 `storageType` 配置项**仅主实例设值生效**，即子实例的表现与主实例相同。因此您无法为子实例单独设置这些配置项
+ `autotrack`、`debug`、`forceLogin`、`keepAlive`、`originalSource`、`performance`、`pluginMode`、`taro`、`taroVue`、`tbConfig` 和 `uniVue` 配置项**仅主实例设值生效**，即子实例的表现与主实例相同。因此您无法为子实例单独设置这些配置项。
 
 除了以上几个初始化配置项子实例无法使用以外，其他初始化配置项均可单独为子实例进行配置。
-
-使用多实例能力时，建议设置 `storageType` 为localstorage，避免因字段过多过长导致cookie超限。
 
 ### 2、设备id（匿名用户Id）
 
@@ -133,11 +135,7 @@ gdp('trackTimerEnd', 'timerId', {
 
 ### 5、SDK插件相关
 
-正常web站点中的无埋点事件**仅主实例**会上报，其他子实例不会上报（无论是否开启无埋点），您使用Web圈选时，请对主实例进行圈选操作。
-
-同时使用小程序内嵌页打通或App内嵌页打通时，**主实例和打通的实例**都会上报无埋点事件。
-
-所有实例在配置项正确的情况下，均可以作为小程序和移动端打通的实例。多个实例配置值一致时，先初始化完成的实例打通。换言之，只有一个实例可以与配置对应的小程序或移动端打通。
+集成且开启无埋点功能时，无埋点事件**仅主实例**会上报，其他子实例不会上报（无论是否开启无埋点），您使用小程序圈选时，请对主实例进行圈选操作。
 
 ### 6、其他规则
 
@@ -163,8 +161,6 @@ gdp('init', accountId, datasourceId, { ...实例初始化配置项 });
 ```
 
 上面示例中，先初始化别名为`g1`的实例，后初始化没有别名的实例，则主实例为`g1`。
-
-**（4）** 本插件为独立插件，集成全量(full)版本的SDK时，不包含本插件。因此，你需要使用多实例时，不论是否集成了全量版本的SDK，都要注册本插件以激活多实例的能力。
 
 ## 注意
 

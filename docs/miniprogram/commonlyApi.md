@@ -122,27 +122,7 @@ gdp('setUserId', userId: string | number, userKey?: string | number);
 gdp('clearUserId');
 ```
 
-### 6、埋点事件(track)
-
-发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/knowledge/basicknowledge/trackEventUse#埋点事件示例)
-
-```js
-gdp('track', eventName: string, attributes?: Object);
-```
-
-#### 示例
-
-```js
-gdp('track', 'order');
-gdp('track', 'order', {
-  type: 'drinks',
-  name: ['cola', 'milk', 'juice'], // 支持字符串和数字的一维数组，其他类型会被强制转为字符串
-  currency: 'RMB',
-  price: 3
-});
-```
-
-### 7、登录用户属性(setUserAttributes)
+### 6、登录用户属性(setUserAttributes)
 
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。
 
@@ -215,7 +195,7 @@ my.getAuthUserInfo({
 
 **<font color="#FC5F3A">注意：</font>该方法可多次调用，已有相同属性名的值会被覆盖，多次结果在服务端进行合并。**
 
-### 8、地理位置(setLocation)
+### 7、地理位置(setLocation)
 
 当用户访问至某一功能需要位置信息时，可以手动调用小程序Api获取地理位置接口，赋值给SDK采集位置信息，提升用户地域分布的分析准确性。同时您需要配置项目的`permission`字段[参考文档](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission)和对应的权限申请[参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.getLocation.html)。
 
@@ -234,7 +214,99 @@ wx.getLocation({
 });
 ```
 
-### 9、与h5打通用户数据(getGioInfo)
+### 8、埋点事件(track)
+
+发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点事件示例](/knowledge/basicknowledge/trackEventUse#埋点事件示例)
+
+```js
+gdp('track', eventName: string, attributes?: Object);
+```
+
+#### 示例
+
+```js
+gdp('track', 'order');
+gdp('track', 'order', {
+  type: 'drinks',
+  name: ['cola', 'milk', 'juice'], // 支持字符串和数字的一维数组，其他类型会被强制转为字符串
+  currency: 'RMB',
+  price: 3
+});
+```
+
+提示：您可以使用多实例的能力将埋点同时上报给其他实例 [参考文档](/docs/webjs/plugins/multipleInstances#4埋点埋点计时半自动埋点浏览多发)
+
+### 9、设置埋点通用属性(setGeneralProps)
+
+有时我们埋点需要大量业务属性，但需要每次调用时都进行传值，这给埋点工作带来了一定程度上的无用重复劳动。现在我们可以通过`setGeneralProps`来给后续产生的所有的埋点事件加上通用属性，从而免去一些不必要的重复劳动。也可以利用该方法为所有的埋点事件进行动态设置通用属性。
+
+设置的通用属性可以是静态固定值，也可以是一个**简单的方法执行结果**的动态值。当属性值为方法时，SDK会自动执行尝试获取返回值，支持返回的数据类型：`String`、`Number`、一元`Array`、`Boolean`。不合法的数据类型会被强制转换为字符串。并且**请勿执行复杂度过高的运算逻辑或异步运算，可能会导致报错或无法获取准确值。**
+
+```js
+gdp('setGeneralProps', properties: object);
+```
+
+#### 示例
+
+```js
+// 固定值
+gdp('setGeneralProps', { 'currency': 'RMB' });
+
+// 变量
+let index = 0;
+gdp('setGeneralProps', {
+  'nick_name_var': 'Mike',
+  'index_var': () => index++
+});
+```
+
+**<font color="#FC5F3A">注意：</font><br/>**
+**1）定义的通用属性名依然需要在平台上进行事件属性的创建并与埋点事件完成关联。**<br/>
+**2）该方法可多次调用，已有相同属性名的值会被覆盖。**<br/>
+**3）埋点通用属性仅限小程序中共享使用，内嵌页无法共享通用属性。**
+
+### 10、清除埋点通用属性(clearGeneralProps)
+
+SDK提供了清除通用属性的方法，调用该方法移除指定字段或所有通用埋点属性。
+
+```js
+gdp('clearGeneralProps', propertyNames: string[]);
+```
+
+#### 示例
+
+```js
+gdp('clearGeneralProps', ['nick_name_var', 'index_var']);
+// 或传空数组清空所有通用埋点属性
+gdp('clearGeneralProps', []);
+```
+
+### 11、设置页面属性(setPageAttributes)
+
+有时我们需要通过区分于页面参数的页面属性来进行拆分分析，这时就调用该方法设置页面属性。
+
+```js
+gdp('setGeneralProps', properties: object);
+```
+
+#### 示例
+
+```js
+Page({
+  onLoad() {
+    gdp('setPageAttributes', {
+      page_type: 'page type',
+      page_level: 'page level'
+    });
+  }
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**<br />
+**1）该方法只能在 onLoad中调用，其他生命周期中调用无效。**<br />
+**2）该方法仅对页面浏览事件生效，不会对页面中发生的其他事件生效。如需对页面其他事件添加相同的页面属性，请将属性拼在页面查询参数query中上报（同样需要在页面加载前完成操作）。**
+
+### 12、与h5打通用户数据(getGioInfo)
 
 当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下9个字段的数据。
 
@@ -303,76 +375,6 @@ Page({
 
 **H5页面集成SDK参考[在小程序内嵌页面中集成](/docs/webjs/integrate#在小程序内嵌页面中集成)**
 
-### 10、设置埋点通用属性(setGeneralProps)
-
-有时我们埋点需要大量业务属性，但需要每次调用时都进行传值，这给埋点工作带来了一定程度上的无用重复劳动。现在我们可以通过`setGeneralProps`来给后续产生的所有的埋点事件加上通用属性，从而免去一些不必要的重复劳动。也可以利用该方法为所有的埋点事件进行动态设置通用属性。
-
-设置的通用属性可以是静态固定值，也可以是一个**简单的方法执行结果**的动态值。当属性值为方法时，SDK会自动执行尝试获取返回值，支持返回的数据类型：`String`、`Number`、一元`Array`、`Boolean`。不合法的数据类型会被强制转换为字符串。并且**请勿执行复杂度过高的运算逻辑或异步运算，可能会导致报错或无法获取准确值。**
-
-```js
-gdp('setGeneralProps', properties: object);
-```
-
-#### 示例
-
-```js
-// 固定值
-gdp('setGeneralProps', { 'currency': 'RMB' });
-
-// 变量
-let index = 0;
-gdp('setGeneralProps', {
-  'nick_name_var': 'Mike',
-  'index_var': () => index++
-});
-```
-
-**<font color="#FC5F3A">注意：</font><br/>**
-**1）定义的通用属性名依然需要在平台上进行事件属性的创建并与埋点事件完成关联。**<br/>
-**2）该方法可多次调用，已有相同属性名的值会被覆盖。**<br/>
-**3）埋点通用属性仅限小程序中共享使用，内嵌页无法共享通用属性。**
-
-### 11、清除埋点通用属性(clearGeneralProps)
-
-SDK提供了清除通用属性的方法，调用该方法移除指定字段或所有通用埋点属性。
-
-```js
-gdp('clearGeneralProps', propertyNames: string[]);
-```
-
-#### 示例
-
-```js
-gdp('clearGeneralProps', ['nick_name_var', 'index_var']);
-// 或传空数组清空所有通用埋点属性
-gdp('clearGeneralProps', []);
-```
-
-### 12、设置页面属性(setPageAttributes)
-
-有时我们需要通过区分于页面参数的页面属性来进行拆分分析，这时就调用该方法设置页面属性。
-
-```js
-gdp('setGeneralProps', properties: object);
-```
-
-#### 示例
-
-```js
-Page({
-  onLoad() {
-    gdp('setPageAttributes', {
-      page_type: 'page type',
-      page_level: 'page level'
-    });
-  }
-});
-```
-
-**<font color="#FC5F3A">注意：</font>**<br />
-**1）该方法只能在 onLoad中调用，其他生命周期中调用无效。**<br />
-**2）该方法仅对页面浏览事件生效，不会对页面中发生的其他事件生效。如需对页面其他事件添加相同的页面属性，请将属性拼在页面查询参数query中上报（同样需要在页面加载前完成操作）。**
-
 ### 13、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
@@ -427,6 +429,8 @@ gdp('trackTimerEnd', timerId, attributes?: object);
 gdp('trackTimerEnd', 'timerId123');
 gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2: 2 });
 ```
+
+提示：您可以使用多实例的能力将埋点计时同时上报给其他实例 [参考文档](/docs/webjs/plugins/multipleInstances)
 
 :::caution 注意
 trackTimerEnd时发送CUSTOM事件上报数据：
