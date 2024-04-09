@@ -178,7 +178,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.1.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
 
   //GrowingIO 无埋点 SDK
   implementation 'com.growingio.android:autotracker'
@@ -193,7 +193,7 @@ dependencies {
 apply plugin: 'com.android.application'
 
 dependencies {
-    implementation 'com.growingio.android:autotracker:4.1.0'
+    implementation 'com.growingio.android:autotracker:4.2.0'
 }
 ```
 
@@ -349,7 +349,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.1.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
 
   //GrowingIO 埋点 SDK
   implementation 'com.growingio.android:tracker'
@@ -365,7 +365,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker:4.1.0'
+    implementation 'com.growingio.android:tracker:4.2.0'
 }
 ```
 
