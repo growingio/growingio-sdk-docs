@@ -109,6 +109,7 @@ void main() async {
       AdvertLibraryGioModule(config: AdvertConfig()),
     },
     dataCollectionEnabled: true,
+    autoTrackAllRoutePage: false,
     idMappingEnabled: true,
     cellularDataLimit: 10,
     dataUploadInterval: 15,
@@ -162,6 +163,7 @@ void main() async {
 | urlScheme             | String           |    是    | null  | Android 应用特有的URLScheme，用于外部应用拉起应用，如圈选   | -          |
 | dataSourceId          | String           |    是    | null  | 应用的DataSourceId，唯一值        |  -  | 
 | dataCollectionServerHost  | String           |    是    | null  | 服务端部署后的 ServerHost     |  -  |
+| autoTrackAllRoutePage  | bool           |    否    | false  | 是否自动开启页面采集，无埋点独有     |  >=4.1.0  |
 | channel                   | String           |    否    | null  | 应用的分发渠道     | -          |
 | debugEnabled              | bool          |    否    | false | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |
 | cellularDataLimit         | int             |    否    | 10    | 每天发送数据的流量限制，单位MB        | -  |

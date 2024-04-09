@@ -103,7 +103,7 @@ plugins {
 
     ···
     // 添加GrowingIO 无埋点 SDK 插件
-    id 'com.growingio.android.autotracker' version '4.0.0' apply false
+    id 'com.growingio.android.autotracker' version '4.2.0' apply false
 }
 ```
 
@@ -135,7 +135,7 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:4.1.0'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:4.2.0'
     }
 }
 
@@ -178,7 +178,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.1.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
 
   //GrowingIO 无埋点 SDK
   implementation 'com.growingio.android:autotracker'
@@ -193,7 +193,7 @@ dependencies {
 apply plugin: 'com.android.application'
 
 dependencies {
-    implementation 'com.growingio.android:autotracker:4.1.0'
+    implementation 'com.growingio.android:autotracker:4.2.0'
 }
 ```
 
@@ -314,7 +314,7 @@ class MyApplication : Application() {
 
 ```shell
 !!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!
-!!! GrowingIO Tracker version: 4.0.0 !!!
+!!! GrowingIO Tracker version: 4.2.0 !!!
 ```
 
 则说明SDK已经集成成功。
@@ -349,7 +349,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.1.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
 
   //GrowingIO 埋点 SDK
   implementation 'com.growingio.android:tracker'
@@ -365,7 +365,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
     //GrowingIO 埋点 SDK
-    implementation 'com.growingio.android:tracker:4.1.0'
+    implementation 'com.growingio.android:tracker:4.2.0'
 }
 ```
 
@@ -473,7 +473,7 @@ class MyApplication : Application() {
 
 ```shell
 !!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!
-!!! GrowingIO Tracker version: 4.0.0 !!!
+!!! GrowingIO Tracker version: 4.2.0 !!!
 ```
 
 则说明SDK已经集成成功。

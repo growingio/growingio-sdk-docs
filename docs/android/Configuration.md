@@ -39,6 +39,7 @@ import TabItem from '@theme/TabItem';
 | setImpressionScale [#](#1-setimpressionscale) |    _float_    |   否    | `0`     | 元素曝光事件中的比例因子,范围 [0-1]    |         |
 | setWebViewBridgeEnabled [#](#2-setwebviewbridgeenabled)| _boolean_|  否 | `true`   | 是否全量采集 hybrid 数据            |         |
 | enableFragmentTag [#](#3-enableFragmentTag) |    _boolean_    |   否    | `false`     | 是否将Fragment的tag作为无埋点路径的记号 |    |
+| setPageRuleXml [#](#4-setPageRuleXml)       |    _int_    |   是        | `xml id`     | 用于自动采集无埋点页面 |    |
 
 
 ## 通用配置说明
@@ -203,3 +204,39 @@ GrowingAutotracker.startWithConfiguration(this,
 ### 3. enableFragmentTag
 在使用一些库时会导致Fragment的Tag不可预计，比如在高版本 Navigation 库，Navigation库会对所有的导航 Fragment 赋予一个 UUID 生成的随机TAG。为了保证无埋点路径的准确，取消无埋点路径xcontent中对tag的支持，现在默认取 Fragment 的id为xcontent路径。
 若客户需要tag支持，可打开 enableFragmentTag(true)。
+
+### 4. setPageRuleXml
+在无埋点SDK中，该方法通过一个 xml 配置文件来自动采集无埋点页面。在页面配置文件中有两种规则，一种是指定页面的完整路径和页面名称，另一种是正则匹配页面路径，页面名称默认取页面的类名，如"com.growingio.demo.MainActicity"文件，取 "MainActivity" 为页面名称。
+
+页面配置xml固定格式如下所示：
+```xml
+<growingio-setting xmlns:android="http://schemas.android.com/apk/res/android">
+    <page-rule>
+        <page-list>
+            <page
+                name="Main"
+                path="com.growingio.demo.MainActivity" />
+            <page
+                name="Dashboard"
+                path="com.growingio.demo.ui.dashboard.DashboardFragment" />
+        </page-list>
+
+        <page-match>
+            <page regex="com.growingio.demo.ui.*Fragment" />
+        </page-match>
+    </page-rule>
+</growingio-setting>
+```
+* page-list 节点下的page为指定页面配置，name 表示为页面的名称，path表示为类的路径，在java中对应方法为 `getClass().getName()`;
+* page-match 节点下的page为正则匹配。regex为正则匹配规则，在java中可以通过为 `String.matches(regex)` 来验证。
+
+> **在无埋点页面的规则中，优先级为 *autotrackPage*接口 > page-list > page-match.**
+
+页面配置文件需要放在Android资源目录 **res->xml** 目录中，如 `growingio_page_setting.xml`, 那么配置化代码将如下所示：
+```kotlin
+val sConfiguration = AutotrackConfiguration("Your AccountId", "Your URLScheme")
+    .setDataCollectionServerHost("Your ServerHost")
+    .setDataSourceId("Your DataSourceId")
+    .setPageRuleXml(R.xml.growingio_page_setting)
+GrowingAutotracker.startWithConfiguration(this, sConfiguration)
+```

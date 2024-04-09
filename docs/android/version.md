@@ -2,6 +2,23 @@
 title: 版本记录
 sidebar_position: 0
 ---
+## RELEASE-4.2.0
+### Features
+
+- 使用CDP(3.0)的无埋点规则，与4.0同步最新的功能模块 ([#209](https://github.com/growingio/growingio-sdk-android-autotracker/pull/209))
+
+- 添加更多未知的设备id ([#210](https://github.com/growingio/growingio-sdk-android-autotracker/pull/210))
+
+- 无埋点SDK添加Page采集配置 ([#211](https://github.com/growingio/growingio-sdk-android-autotracker/pull/211))
+
+- 数据上报时body限制不超过2M ([#212](https://github.com/growingio/growingio-sdk-android-autotracker/pull/212))
+
+:::note 
+
+ 标签:**[v4.2.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.2.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2024-04-03** 
+
+:::
+
 ## RELEASE-4.1.0
 ### Features
 

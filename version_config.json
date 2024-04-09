@@ -1,7 +1,7 @@
 [
   {
     "name": "Android",
-    "version": "4.1.0",
+    "version": "4.2.0",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-autotracker/releases",
     "distPath": "docs/android/",
     "fileName": "version.md",
@@ -37,7 +37,7 @@
   },
   {
     "name": "GioKit Android",
-    "version": "2.0.0",
+    "version": "2.1.1",
     "releaseUrl": "https://api.github.com/repos/growingio/giokit-android/releases",
     "distPath": "docs/giokit/android/",
     "fileName": "version.md",

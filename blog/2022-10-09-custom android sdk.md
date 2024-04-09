@@ -48,7 +48,7 @@ buildscript {
     }
     dependencies {
         //无埋点注入插件
-        classpath "com.growingio.android:autotracker-gradle-plugin:4.0.0"
+        classpath "com.growingio.android:autotracker-gradle-plugin:4.2.0"
     }
 }
 ```
@@ -65,7 +65,7 @@ plugins {
 
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:4.0.0'
+	implementation 'com.growingio.android:autotracker-core:4.2.0'
 }
 
 ```
@@ -77,12 +77,12 @@ dependencies {
 ```groovy
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:4.0.0'
+	implementation 'com.growingio.android:autotracker-core:4.2.0'
 
 	//所需的模块
-	implementation 'com.growingio.android:okhttp3:4.0.0'
-	implementation 'com.growingio.android:database:4.0.0'
-	implementation 'com.growingio.android:protobuf:4.0.0'
+	implementation 'com.growingio.android:okhttp3:4.2.0'
+	implementation 'com.growingio.android:database:4.2.0'
+	implementation 'com.growingio.android:protobuf:4.2.0'
 }
 ```
 
@@ -93,23 +93,23 @@ dependencies {
 ```groovy
 dependencies {
 	//无埋点基础库
-	implementation 'com.growingio.android:autotracker-core:4.0.0'
+	implementation 'com.growingio.android:autotracker-core:4.2.0'
 
 	//所需的模块
-	implementation 'com.growingio.android:okhttp3:4.0.0'
-	implementation 'com.growingio.android:database:4.0.0'
-	implementation 'com.growingio.android:json:4.0.0'
+	implementation 'com.growingio.android:okhttp3:4.2.0'
+	implementation 'com.growingio.android:database:4.2.0'
+	implementation 'com.growingio.android:json:4.2.0'
 
 	//注解解析
-	implementation 'com.growingio.android:annotation:4.0.0'
-	annotationProcessor 'com.growingio.android:compiler:4.0.0'
+	implementation 'com.growingio.android:annotation:4.2.0'
+	annotationProcessor 'com.growingio.android:compiler:4.2.0'
 }
 ```
 
 :::tip kapt
 若使用kotlin，可以通过 kapt 来依赖注解器
 
-`kapt 'com.growingio.android:compiler:4.0.0'`
+`kapt 'com.growingio.android:compiler:4.2.0'`
 :::
 
 ### 4. 使用注解自定义SDK的属性
@@ -235,7 +235,7 @@ DemoAutotracker.start(this)
 
 ```txt
 !!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!
-!!! GrowingIO Tracker version: 4.0.0 !!!
+!!! GrowingIO Tracker version: 4.2.0 !!!
 ```
 和点击后出现 click 事件日志
 
@@ -245,7 +245,7 @@ DemoAutotracker.start(this)
     ║   "eventType": "VIEW_CLICK",
     ║   "timestamp": 1626847839398,
     ║   ...
-    ║   "sdkVersion": "4.0.0",
+    ║   "sdkVersion": "4.2.0",
     ║   "path": "/MainActivity",
     ║   "pageShowTimestamp": 1626839380613,
     ║   "xpath": "/MainActivity/LinearLayout/FrameLayout/ActionBarOverlayLayout/ContentFrameLayout/CoordinatorLayout/FloatingActionButton",
@@ -283,11 +283,11 @@ DemoAutotracker.start(this)
 ```groovy
 dependencies {
 	//埋点基础库
-	implementation 'com.growingio.android:tracker-core:4.0.0'
+	implementation 'com.growingio.android:tracker-core:4.2.0'
 
 	//注解解析
-	implementation 'com.growingio.android:annotation:4.0.0'
-	annotationProcessor 'com.growingio.android:compiler:4.0.0'
+	implementation 'com.growingio.android:annotation:4.2.0'
+	annotationProcessor 'com.growingio.android:compiler:4.2.0'
 }
 ```
 
