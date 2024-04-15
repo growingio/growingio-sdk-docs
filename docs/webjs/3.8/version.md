@@ -5,6 +5,10 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：<https://github.com/growingio/growingio-sdk-webjs-autotracker/releases>
 
+### V3.8.7 - 2024/04/10
+
+- 🐞 修复web和hybrid中点击事件xpath取值不一致的问题。
+
 ### V3.8.6 - 2023/11/15
 
 - 🐞 修复在某些情况下上报请求降级发送仍失败时进程卡住的问题。
