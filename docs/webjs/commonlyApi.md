@@ -204,7 +204,7 @@ gdp('clearGeneralProps', []);
 
 ### 10、设置页面变更回调(setPageListener)
 
-当您有需要为页面设置页面属性，或需要根据SDK的页面变更做一些事情（例如发送埋点）时，可以设置页面变更回调。在SDK触发页面变更时会调用该回调。一般建议配合关闭 trackPage 后手动调用 sendPage 来实现某些复杂的场景。**请勿执行复杂度过高的运算逻辑或异步运算，可能会导致报错或无法获取准确值。**
+当您有需要为页面设置页面属性，或需要根据SDK的页面变更做一些事情（例如发送埋点）时，可以设置页面变更回调。在SDK触发页面变更时会调用该回调。一般建议配合关闭 trackPage 后手动调用 sendPage 来实现某些复杂的场景。**请勿执行复杂度过高的运算逻辑或异步运算，可能会导致报错或无法获取准确值。SDK版本大于等于 4.1.2 支持。**
 
 ```js
 gdp('setPageListener', callback: (pageProps: { path: string, query: string, title: string } ) => void);
@@ -250,7 +250,7 @@ gdp('setPageListener', ({ path, query, title }) => {
 ### 11、设置页面属性(setPageAttributes)
 
 有时我们需要通过区分于页面参数的页面属性来进行拆分分析，这时就调用该方法设置页面属性。<br />
-**仅在初始化配置项关闭 trackPage时可用。**
+**仅在初始化配置项关闭 trackPage时可用。SDK版本大于等于 4.1.2 支持。**
 
 ```js
 gdp('setPageAttributes', properties: object);
@@ -266,12 +266,12 @@ gdp('setPageAttributes', {
 ```
 
 **<font color="#FC5F3A">注意：</font>**<br />
-设置页面属性后，仅在下次手动发送的页面访问事件生效。如需对所有页面访问事件生效，请参考`setPageListener`配合使用。
+**设置页面属性后，仅在下次手动发送的页面访问事件生效。如需对所有页面访问事件生效，请参考`setPageListener`配合使用。**
 
 ### 12、手动发送页面访问事件(sendPage)
 
 当您需要手动设置页面属性或手动发送页面访问事件时，可以调用此api触发发送页面访问事件。<br />
-**仅在初始化配置项关闭 trackPage时可用。**
+**仅在初始化配置项关闭 trackPage时可用。SDK版本大于等于 4.1.2 支持。**
 
 ```js
 gdp('sendPage');
@@ -289,8 +289,7 @@ gdp('sendPage');
 gdp('sendPage', { title: 'MyCustomTitle' });
 ```
 
-**<font color="#FC5F3A">注意：</font>**<br />
-仅支持页面标题title字段的自定义，其他字段无法修改。并且使用时强烈建议配合`setPageListener`使用。
+**<font color="#FC5F3A">注意：</font>仅支持页面标题title字段的自定义，其他字段无法修改。并且使用时强烈建议配合`setPageListener`使用。**
 
 ### 13、获取SDK当前配置(getOption)
 

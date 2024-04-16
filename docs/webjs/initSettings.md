@@ -49,7 +49,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
 ### dataCollect
 
@@ -80,7 +80,7 @@ gdp('init', accountId, datasourceId, {
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
 ### forceLogin
 
@@ -127,7 +127,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
 ### ignoreFields
 
@@ -161,7 +161,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
 ### packageName
 
@@ -245,7 +245,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
 ### trackBot
 
@@ -269,7 +269,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**关闭该配置项，会导致页面访问时长，页面跳出率等与页面相关的分析数据异常，请充分了解影响后操作。
+**<font color="#FC5F3A">注意：</font>关闭该配置项，会导致页面访问时长，页面跳出率等与页面相关的分析数据异常，请充分了解影响后操作。**
 
 ### version
 
