@@ -5,7 +5,7 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
-### V4.1.0 - 2024/04/21
+### V4.1.0 - 2024/04/18
 
 - 🐞 修复某些低版本微信基础库下可能出现报错的问题。
 - 🌟 优化初始化逻辑，以避免和其他第三方SDK和逻辑的冲突导致运行异常。
