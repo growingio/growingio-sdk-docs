@@ -41,6 +41,11 @@ gdp('registerPlugins', [
 用于A/B测试功能的插件。<br />
 [参考文档](/docs/miniprogram/plugins/abtest)
 
+### 多实例（gioMultipleInstances）
+
+当您的小程序需要使用两套不同采集逻辑和数据双发时使用的插件。<br/>
+[参考文档](/docs/miniprogram/plugins/multipleInstances)
+
 ### 性能监控（gioPerformance）
 
 提供小程序首屏加载监控、错误监控和网络请求监控的全方位性能监控采集插件。<br/>
