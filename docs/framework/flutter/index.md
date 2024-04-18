@@ -10,6 +10,7 @@ Flutter SDK 提供了 [无埋点SDK](/docs/framework/flutter/index.md) 和 [埋�
 ## 版本记录
 |    版本    | 说明 |  日期  |
 |:-------:| :----  |  :-------:  |
+| v2.1.0 | 适配Android 版本 4.2.0<br/>支持 Fluter 全页面自动采集 | 2024-03-29 |
 | v2.0.1 | 稳定性优化，包括：<br/>- 在导航返回时补发 page<br/>- 重命名 advertModule/advertConfig 为 adsModule/adsConfig<br/>- 添加 analytics adapter 模块<br/>- 升级 iOS SDK 版本为 4.2.0 | 2024-03-19 |
 | v2.0.0 | 新版本 与 GrowingIO SDK 4.0 同步，添加新的接口和参数<br/>- Flutter 的 Page 不再基于 Router，由 mixin 类实现，更加清晰的生命周期逻辑和代码结构；<br/>- 圈选的元素只有在定义为 Page 的页面下才能发送元素；<br/>- 无埋点点击事件现在异步发送。 | 2024-01-25 |
 

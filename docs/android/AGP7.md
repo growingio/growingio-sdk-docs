@@ -57,7 +57,7 @@ plugins {
 
     ···
     // 添加GrowingIO 无埋点 SDK 插件
-    id 'com.growingio.android.autotracker' version '4.0.0' apply false
+    id 'com.growingio.android.autotracker' version '4.2.0' apply false
 }
 ```
 
@@ -132,7 +132,7 @@ growingAutotracker {
         trackerCalledMethod "com.growingio.android.tracker#trackCumtomEvent"
         autoAttachEnabled true
         releaseEnabled false
-        autoInstallVersion "2.0.0"
+        autoInstallVersion "2.1.1"
     }
 }
 ```

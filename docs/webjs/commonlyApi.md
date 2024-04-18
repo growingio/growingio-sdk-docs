@@ -106,13 +106,21 @@ gdp('getDeviceId', callback: (deviceId: string) => void);
 
 ### 4、设置登录用户Id(setUserId)
 
-当用户登录之后调用`setUserId`，设置登录用户ID。
+当用户登录之后调用，设置登录用户ID
+:::info
+* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 **同时在初始化 SDK 时设置`idMapping`为`true`**
+
+:::
+
+#### 参数说明
+| 参数      | 参数类型 | 说明                                                            |
+| :-------- | :------- | :-------------------------------------------------------------- |
+| `userId`  | _String_ | 长度限制大于0且小于等于1000，如果大于长度1000将只截取前1000长度 |
+| `userKey` | _String_ | 适用于ID-MAPPING,可设置 userId 的类型, 默认不传|
 
 ```js
 gdp('setUserId', userId: string | number, userKey?: string | number, callback?: function);
 ```
-
-**<font color="#FC5F3A">注意：</font>设置`userKey`时需SDK初始化时设置 `idMapping` 为 `true`，否则不生效。**
 
 ### 5、清除登录用户Id(clearUserId)
 

@@ -169,6 +169,10 @@ growing_tracker = GrowingTracker.consumer(default_consumer)
 ### 埋点事件
 发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性
 
+:::info
+* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
+:::
+
 **参数说明**
 
 | 参数           | 是否必选  | 类型   | 默认值 | 说明                                                                         |
@@ -176,7 +180,7 @@ growing_tracker = GrowingTracker.consumer(default_consumer)
 | event_name     | true  | string |        | 埋点事件标识符                                                               |
 | event_time     | false | long   |        | 事件发生时间(毫秒)；<br/>需要开启“自定义event_time上报”功能方可生效，请联系技术支持确认 |
 | anonymous_id   | false | string |        | 访问用户ID，与登录用户ID，不能同时为空 |
-| login_user_key | false | string |        | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| login_user_key | false | string |        | 登录用户KEY (选填，需有规划并在平台配置后再上报)，传此参数时，同时需传登录用户ID |
 | login_user_id  | false | string |        | 登录用户ID，与访问用户ID，不能同时为空 |
 | attributes     | false | dict   | None   | 事件发生时,所伴随的维度信息；<br/> value支持 string\|double\|int\|array,array中元素支持string\|double\|int |
 
@@ -195,12 +199,16 @@ growing_tracker.track_custom_event("test", login_user_id='cpacm', login_user_key
 以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析<br/>
 在添加登录用户属性代码之前，需要在CDP平台用户管理界面中创建用户属性
 
+:::info
+* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
+:::
+
 **参数说明**
 
 | 参数           | 必选  | 类型   | 默认值 | 说明                        |
 | :------------- | :---- | :----- | :----- | --------------------------- |
 | login_user_id  | true  | string |        | 登录用户ID，与访问用户ID，不能同时为空 |
-| login_user_key | false | string |        | 登录用户KEY，传此参数时，同时需传登录用户ID |
+| login_user_key | false | string |        | 登录用户KEY (选填，需有规划并在平台配置后再上报)，传此参数时，同时需传登录用户ID |
 | event_time     | false | long   |        | 当前时间戳(毫秒)  |
 | anonymous_id   | false | string |        | 访问用户ID，与登录用户ID，不能同时为空 |
 | attributes     | false | dict   | None   | 用户属性维度信息；<br/>value支持 string\|double\|int\|array,array中元素支持string\|double\|int |

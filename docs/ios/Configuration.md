@@ -74,7 +74,8 @@ import TabItem from '@theme/TabItem';
 
 #### 10. **idMappingEnabled**
 
-多用户身份上报，是否支持多用户身份上报，默认不支持。与 API 接口`setLoginUserId:userKey:`对应，开启时，userKey 会在每次上报数据时携带；关闭时，接口与`setLoginUserId`作用相同
+是否支持多用户身份上报, 默认不支持。
+是否支持多用户身份上报, 与 API 接口`setLoginUserId:userKey:`对应，需要上报 userkey 时开启； 开启时，userKey会在每次上报数据时携带；关闭时，userKey不上报。
 
 #### 11. **urlScheme**
 
