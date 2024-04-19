@@ -56,7 +56,7 @@ npm i gio-miniprogram-sdk --save
 // 下载集成方式
 import gdp from './utils/gio/gio-taobao.js';
 // npm集成方式
-import gdp from 'gio-miniprogram-sdk/gio-taobao';
+import gdp from 'gio-miniprogram-sdk/taobao';
 
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {

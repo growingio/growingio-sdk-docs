@@ -115,7 +115,7 @@ import App from './App.vue';
 // 下载集成方式
 import gdp from './utils/gio/gio-uniapp.js';
 // npm集成方式
-import gdp from 'gio-miniprogram-sdk/gio-uniapp';
+import gdp from 'gio-miniprogram-sdk/uniapp';
 
 App.mpType = 'app';
 
@@ -143,7 +143,7 @@ import { createApp } from 'vue';
 // 下载集成方式
 import gdp from './utils/gio/gio-uniapp.js';
 // npm集成方式
-import gdp from 'gio-miniprogram-sdk/gio-uniapp';
+import gdp from 'gio-miniprogram-sdk/uniapp';
 
 export function createApp() {
   // 注意vue3中app实例在初始化之前
@@ -215,7 +215,7 @@ import Taro, { Component } from '@tarojs/taro';
 // 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
 // npm集成方式
-import gdp from 'gio-miniprogram-sdk/gio-taro';
+import gdp from 'gio-miniprogram-sdk/taro';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
@@ -238,7 +238,7 @@ import React, { Component } from 'react';
 // 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
 // npm集成方式
-import gdp from 'gio-miniprogram-sdk/gio-taro';
+import gdp from 'gio-miniprogram-sdk/taro';
 
 const taroRuntime = require('@tarojs/runtime');
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
@@ -263,7 +263,7 @@ import Taro from '@tarojs/taro';
 // 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
 // npm集成方式
-import gdp from 'gio-miniprogram-sdk/gio-taro';
+import gdp from 'gio-miniprogram-sdk/taro';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
@@ -290,7 +290,7 @@ import Taro from '@tarojs/taro';
 // 下载集成方式
 import gdp from './utils/gio/gio-taro.js';
 // npm集成方式
-import gdp from 'gio-miniprogram-sdk/gio-taro';
+import gdp from 'gio-miniprogram-sdk/taro';
 
 const taroRuntime = require('@tarojs/runtime');
 
