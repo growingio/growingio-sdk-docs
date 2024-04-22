@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">Saas升级指南 | 一站式数据增长引擎</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://growingio.github.io/growingio-sdk-docs/docs/webjs/upgrade/saas"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Saas升级指南 | 一站式数据增长引擎"><meta data-rh="true" name="description" content="平台版本确认"><meta data-rh="true" property="og:description" content="平台版本确认"><link data-rh="true" rel="icon" href="/growingio-sdk-docs/img/favicon.png"><link data-rh="true" rel="canonical" href="https://growingio.github.io/growingio-sdk-docs/docs/webjs/upgrade/saas"><link data-rh="true" rel="alternate" href="https://growingio.github.io/growingio-sdk-docs/docs/webjs/upgrade/saas" hreflang="en"><link data-rh="true" rel="alternate" href="https://growingio.github.io/growingio-sdk-docs/docs/webjs/upgrade/saas" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/growingio-sdk-docs/blog/rss.xml" title="一站式数据增长引擎 RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/growingio-sdk-docs/blog/atom.xml" title="一站式数据增长引擎 Atom Feed"><link rel="stylesheet" href="/growingio-sdk-docs/assets/css/styles.fa513506.css">
-<script src="/growingio-sdk-docs/assets/js/runtime~main.85df9619.js" defer="defer"></script>
-<script src="/growingio-sdk-docs/assets/js/main.e3fe2f4d.js" defer="defer"></script>
+<script src="/growingio-sdk-docs/assets/js/runtime~main.022788c7.js" defer="defer"></script>
+<script src="/growingio-sdk-docs/assets/js/main.9a4fdacf.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const a=new URLSearchParams(window.location.search).entries();for(var[t,e]of a)if(t.startsWith("docusaurus-data-")){var n=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(n,e)}}catch(t){}}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script>
@@ -25,16 +25,16 @@
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="1修改集成代码">1、修改集成代码<a href="#1修改集成代码" class="hash-link" aria-label="Direct link to 1、修改集成代码" title="Direct link to 1、修改集成代码">​</a></h3>
 <p>如果您使用标准CDN集成方式（即直接复制原2.0文档的集成代码方式）进行集成，请参考<a href="/growingio-sdk-docs/docs/webjs/integrate">集成文档</a>重新集成SDK。</p>
 <p>如果您是下载SDK至本地项目集成，请<a href="https://github.com/growingio/growingio-sdk-webjs-autotracker/releases" target="_blank" rel="noopener noreferrer">前往下载地址</a>下载4.0版本SDK并加载至项目中。</p>
-<p>提示：4.0版本的SDK默认方法名为 <strong><code>gdp</code></strong>，如果您想继续沿用 **<code>gio</code>**的名称，请<a href="/growingio-sdk-docs/docs/webjs/encyclopedia/advancedFeatures#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4">参考文档</a>修改自定义命名空间。</p>
+<p>提示：4.0版本的SDK默认方法名为 <strong><code>gdp</code></strong>，如果您想继续沿用 <strong><code>gio</code></strong> 的名称，请<a href="/growingio-sdk-docs/docs/webjs/encyclopedia/advancedFeatures#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4">参考文档</a>修改自定义命名空间。</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="2检查初始化配置项">2、检查初始化配置项<a href="#2检查初始化配置项" class="hash-link" aria-label="Direct link to 2、检查初始化配置项" title="Direct link to 2、检查初始化配置项">​</a></h3>
 <p>移除已废弃的配置项：<code>imp</code>、<code>manualImp</code>、<code>impAttrSeparator</code>。未使用则忽略。如果您想禁用半自动采集浏览事件，请<strong>按需集成SDK</strong>，<strong>不要注册</strong>半自动采集浏览插件即可。</p>
 <p>其他配置项请<a href="/growingio-sdk-docs/docs/webjs/initSettings">参考文档</a>按需配置功能，如果您不确定是否需要对应配置项，请咨询我们的技术支持。</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="3检查api调用">3、检查api调用<a href="#3检查api调用" class="hash-link" aria-label="Direct link to 3、检查api调用" title="Direct link to 3、检查api调用">​</a></h3>
-<p>以下步骤仅列出需要改动的点，没有列出的api或内容即为自动兼容无需  更改。</p>
+<p>以下步骤仅列出需要改动的点，没有列出的api或内容即为自动兼容无需更改。</p>
 <ol>
-<li>移除**<code>send</code>**方法调用。4.0版本已不再需要它，SDK在初始化完成后且<code>dataCollect</code>开启状态下自动上报数据。</li>
-<li>移除**<code>setConfig</code>、<code>config</code>**方法调用。SDK仅支持<code>init</code>方法进行初始化和初始化配置。如需在运行过程中动态修改配置，请使用 <code>setOption</code> <a href="/growingio-sdk-docs/docs/webjs/commonlyApi#%E5%8A%A8%E6%80%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%8E%A5%E5%8F%A3setoption">参考文档</a>。未使用则忽略。</li>
-<li>移除**<code>page.set</code>**方法调用。4.0版本已不再支持它，如需使用页面级变量，参考以下两种方式修改。未使用则忽略。</li>
+<li>移除 <strong><code>send</code></strong> 方法调用。4.0版本已不再需要它，SDK在初始化完成后且<code>dataCollect</code>开启状态下自动上报数据。</li>
+<li>移除 <strong><code>setConfig</code>、<code>config</code></strong> 方法调用。SDK仅支持<code>init</code>方法进行初始化和初始化配置。如需在运行过程中动态修改配置，请使用 <code>setOption</code> <a href="/growingio-sdk-docs/docs/webjs/commonlyApi#%E5%8A%A8%E6%80%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%8E%A5%E5%8F%A3setoption">参考文档</a>。未使用则忽略。</li>
+<li>移除 <strong><code>page.set</code></strong> 方法调用。4.0版本已不再支持它，如需使用页面级变量，参考以下两种方式修改。未使用则忽略。</li>
 </ol>
 <ul>
 <li>
@@ -49,13 +49,13 @@
 </li>
 </ul>
 <ol start="4">
-<li>移除**<code>evar.set</code>**方法调用。如需使用转化变量，请将转化变量放在埋点事件属性（track）中进行上报。未使用则忽略。</li>
-<li>移除**<code>visitor.set</code>**方法调用。如需使用访问用户变量，请将访问用户变量放在用户属性（setUserAttributes）中进行上报。未使用则忽略。</li>
-<li>重命名替换**<code>people.set</code><strong>为</strong><code>setUserAttributes</code>**，调用方式不变。未使用则忽略。</li>
-<li>重命名替换**<code>setUser</code><strong>为</strong><code>setUserAttributes</code>**，调用方式不变。未使用则忽略。</li>
-<li>重命名替换**<code>hybridSetUserId</code><strong>为</strong><code>setUserId</code>**，调用方式不变。未使用则忽略。</li>
-<li>重命名替换**<code>hybridClearUserId</code><strong>为</strong><code>clearUserId</code>**，调用方式不变。未使用则忽略。</li>
-<li>修改**<code>getVisitUserId</code><strong>为</strong><code>getDeviceId</code>**，调用方式变更，请<a href="/growingio-sdk-docs/docs/webjs/commonlyApi#3%E8%8E%B7%E5%8F%96%E8%AE%BF%E9%97%AE%E7%94%A8%E6%88%B7idgetdeviceid">参考文档</a>修改使用方式。未使用则忽略。</li>
+<li>移除 <strong><code>evar.set</code></strong> 方法调用。如需使用转化变量，请将转化变量放在埋点事件属性（track）中进行上报。未使用则忽略。</li>
+<li>移除 <strong><code>visitor.set</code></strong> 方法调用。如需使用访问用户变量，请将访问用户变量放在用户属性（setUserAttributes）中进行上报。未使用则忽略。</li>
+<li>重命名替换 <strong><code>people.set</code></strong> 为 <strong><code>setUserAttributes</code></strong>，调用方式不变。未使用则忽略。</li>
+<li>重命名替换 <strong><code>setUser</code></strong> 为 <strong><code>setUserAttributes</code></strong>，调用方式不变。未使用则忽略。</li>
+<li>重命名替换 <strong><code>hybridSetUserId</code></strong> 为 <strong><code>setUserId</code></strong>，调用方式不变。未使用则忽略。</li>
+<li>重命名替换 <strong><code>hybridClearUserId</code></strong> 为 <strong><code>clearUserId</code></strong>，调用方式不变。未使用则忽略。</li>
+<li>修改 <strong><code>getVisitUserId</code></strong> 为 <strong><code>getDeviceId</code></strong>，调用方式变更，请<a href="/growingio-sdk-docs/docs/webjs/commonlyApi#3%E8%8E%B7%E5%8F%96%E8%AE%BF%E9%97%AE%E7%94%A8%E6%88%B7idgetdeviceid">参考文档</a>修改使用方式。未使用则忽略。</li>
 </ol>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="4检查半自动采集浏览事件曝光事件">4、检查半自动采集浏览事件（曝光事件）<a href="#4检查半自动采集浏览事件曝光事件" class="hash-link" aria-label="Direct link to 4、检查半自动采集浏览事件（曝光事件）" title="Direct link to 4、检查半自动采集浏览事件（曝光事件）">​</a></h3>
 <p>请<a href="/growingio-sdk-docs/docs/webjs/plugins/impressionTracking">参考文档</a>检查半自动采集浏览事件的定义方式是否符合新版本要求。<br><strong>不再支持自定义分隔符，仅支持JSON格式数据或单字段定义的方式</strong>。</p>
