@@ -18,7 +18,7 @@ gdp('registerPlugins', [
 ```
 
 插件合集：
-**<font size="3">[https://assets.giocdn.com/sdk/minip/4.0.1/plugins.zip](https://assets.giocdn.com/sdk/minip/4.0.1/plugins.zip)</font>**<br/>
+**<font size="3">[https://assets.giocdn.com/sdk/minip/4.1.0/plugins.zip](https://assets.giocdn.com/sdk/minip/4.1.0/plugins.zip)</font>**<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ### 无埋点（gioEventAutoTracking）
@@ -40,6 +40,11 @@ gdp('registerPlugins', [
 
 用于A/B测试功能的插件。<br />
 [参考文档](/docs/miniprogram/plugins/abtest)
+
+### 多实例（gioMultipleInstances）
+
+当您的小程序需要使用两套不同采集逻辑和数据双发时使用的插件。<br/>
+[参考文档](/docs/miniprogram/plugins/multipleInstances)
 
 ### 性能监控（gioPerformance）
 

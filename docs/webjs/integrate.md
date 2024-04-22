@@ -189,13 +189,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 - 优点：复杂度低，理解成本低，快速集成。
 - 缺点：SDK 较大，约 75-80KB ，会增加打包产物的大小，可能会拖慢加载速度。
 
-**1、运行命令安装最新的 SDK**
-
-```bash
-npm i gio-webjs-sdk --save
-```
-
-**2、在入口文件（例如：app.js、index.js）代码中引用并开始初始化使用 SDK**
+**在入口文件（例如：app.js、index.js）代码中引用并开始初始化使用 SDK**
 
 ```js
 import gdp from 'gio-webjs-sdk/gdp-full';

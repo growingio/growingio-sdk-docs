@@ -38,15 +38,14 @@ import TabItem from '@theme/TabItem';
 | :------------------------------------------- | :------------- | :----:  | :------ | :-------------------------------- | ------- |
 | setImpressionScale [#](#1-setimpressionscale) |    _float_    |   否    | `0`     | 元素曝光事件中的比例因子,范围 [0-1]    |         |
 | setWebViewBridgeEnabled [#](#2-setwebviewbridgeenabled)| _boolean_|  否 | `true`   | 是否全量采集 hybrid 数据            |         |
-| enableFragmentTag [#](#3-enableFragmentTag) |    _boolean_    |   否    | `false`     | 是否将Fragment的tag作为无埋点路径的记号 |    |
-| setPageRuleXml [#](#4-setPageRuleXml)       |    _int_    |   是        | `xml id`     | 用于自动采集无埋点页面 |    |
-
+| enableFragmentTag [#](#3-enablefragmenttag) |    _boolean_    |   否    | `false`     | 是否将Fragment的tag作为无埋点路径的记号 |    |
+| setPageRuleXml [#](#4-setpagerulexml)       |    _int_    |   是        | `xml id`     | 用于自动采集无埋点页面 |    |
 
 ## 通用配置说明
 
 ### 1. SDK必需参数
 
-**accountId，** **urlScheme，** **setDataSourceId，** 
+**accountId，** **urlScheme，** **setDataSourceId，**
 这三个参数为用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 
 **setDataCollectionServerHost** 默认域名为 `napi.growingio.com`，若是OP客户，需要设置自己的ServerHost。
@@ -129,6 +128,7 @@ class CustomEventFilterInterceptor implements EventFilterInterceptor {
     }
 }
 ```
+
 之后再调用该接口设置拦截器
 
 ```java
@@ -157,6 +157,7 @@ SDK 是否能获取应用多进程ID。默认不获取，在应用有多进程�
 是否支持多用户身份上报, 与 API 接口`setLoginUserId(String userId, String userKey)`对应，需要上报 userkey 时开启； 开启时，userKey会在每次上报数据时携带；关闭时，userKey不上报。
 
 ### 13. addPreloadComponent
+
 注册功能模块，为 Growingio SDK 添加更多的额外功能。
 
 ```java
@@ -170,9 +171,11 @@ GrowingAutotracker.startWithConfiguration(this,
 
 );
 ```
+
 模块列表请参考 [功能模块一览](/docs/android/modules)
 
 ### 14. setRequestTimeout
+
 设置请求超时时长，默认30s。
 
 ```java
@@ -188,7 +191,6 @@ GrowingAutotracker.startWithConfiguration(this,
 
 > 当使用默认 Okhttp 请求库时，可以使用 `setRequestDetailTimeout(10, 10, 10, TimeUnit.SECONDS)` 接口，其值分别对应 Okhttp 网络库的请求超时设置 `connectTimeout`, `readTimeout`, `writeTimeout`
 
-
 ## 无埋点配置说明
 
 ### 1. setImpressionScale
@@ -196,19 +198,23 @@ GrowingAutotracker.startWithConfiguration(this,
 曝光比例。与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
 
 ### 2. setWebViewBridgeEnabled
+
 是否全量采集 hybrid 数据（默认为 true）
 
 无埋点默认会采集对应 webview 的 hybrid 事件，设置为 false，可以关闭采集 hybrid 数据。<br/>
 如果需要设置采集单个 webview 的 hybrid 事件，可以通过运行时 API 接口`bridgeWebView(View webView)`开启采集。
 
 ### 3. enableFragmentTag
+
 在使用一些库时会导致Fragment的Tag不可预计，比如在高版本 Navigation 库，Navigation库会对所有的导航 Fragment 赋予一个 UUID 生成的随机TAG。为了保证无埋点路径的准确，取消无埋点路径xcontent中对tag的支持，现在默认取 Fragment 的id为xcontent路径。
 若客户需要tag支持，可打开 enableFragmentTag(true)。
 
 ### 4. setPageRuleXml
+
 在无埋点SDK中，该方法通过一个 xml 配置文件来自动采集无埋点页面。在页面配置文件中有两种规则，一种是指定页面的完整路径和页面名称，另一种是正则匹配页面路径，页面名称默认取页面的类名，如"com.growingio.demo.MainActicity"文件，取 "MainActivity" 为页面名称。
 
 页面配置xml固定格式如下所示：
+
 ```xml
 <growingio-setting xmlns:android="http://schemas.android.com/apk/res/android">
     <page-rule>
@@ -227,12 +233,14 @@ GrowingAutotracker.startWithConfiguration(this,
     </page-rule>
 </growingio-setting>
 ```
+
 * page-list 节点下的page为指定页面配置，name 表示为页面的名称，path表示为类的路径，在java中对应方法为 `getClass().getName()`;
 * page-match 节点下的page为正则匹配。regex为正则匹配规则，在java中可以通过为 `String.matches(regex)` 来验证。
 
-> **在无埋点页面的规则中，优先级为 *autotrackPage*接口 > page-list > page-match.**
+> **在无埋点页面的规则中，优先级为 _autotrackPage_接口 > page-list > page-match.**
 
 页面配置文件需要放在Android资源目录 **res->xml** 目录中，如 `growingio_page_setting.xml`, 那么配置化代码将如下所示：
+
 ```kotlin
 val sConfiguration = AutotrackConfiguration("Your AccountId", "Your URLScheme")
     .setDataCollectionServerHost("Your ServerHost")

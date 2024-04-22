@@ -11,6 +11,7 @@ title: 初始化配置
 
 | **字段名**        | **参数取值**             | **默认值**                    | **说明**                     |
 |------------------|-------------------------|------------------------------|----------------------------|
+| `appId`          | `string`                | `-`                          | 指定打通的小程序appId         |
 | `cookieDomain`   | `string`                | `当前站点的一级域名`            | 自定义cookie存储的域         |
 | `dataCollect`    | `boolean`               | `true`                       | 是否开启数据采集             |
 | `debug`          | `boolean`               | `false`                      | 是否开启调试模式             |
@@ -19,6 +20,7 @@ title: 初始化配置
 | `hashtag`        | `boolean`               | `false`                      | 是否开启hash解析             |
 | `ignoreFields`   | `string[]`              | `[]`                         | 上报忽略字段                 |
 | `originalSource` | `boolean`               | `true`                       | 访问事件是否使用原始进入数据 |
+| `packageName`    | `string`                | `-`                          | 指定打通的移动端包名         |
 | `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
 | `requestTimeout` | `number`                | `5000`                       | 请求超时时长                 |
 | `sendType`       | `string`                | `beacon`                     | 数据上报优先方式             |
@@ -29,6 +31,10 @@ title: 初始化配置
 | `version`        | `string`                | `1.0.0`                      | 应用版本号                   |
 
 ## 配置项详解
+
+### appId
+
+当您的站点是作为一个H5内嵌在小程序中时，默认webview环境是互相隔离的。如果您想让H5页面作为小程序的一部分，即打通用户访问信息时，需要在配置项中指定打通的小程序appId供SDK判断切换模式。同时，您还需要确保集成了 `gioEmbeddedAdapter` 插件。具体使用方式请[参考文档](/docs/webjs/plugins/embeddedAdapter)。
 
 ### cookieDomain
 
@@ -43,7 +49,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
 ### dataCollect
 
@@ -74,7 +80,7 @@ gdp('init', accountId, datasourceId, {
 
 您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
 ### forceLogin
 
@@ -121,7 +127,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
 ### ignoreFields
 
@@ -155,7 +161,11 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
+
+### packageName
+
+当您的站点是作为一个H5内嵌在移动端中时，默认webview环境是互相隔离的。如果您想让H5页面作为移动端的一部分，即打通用户访问信息时，需要在配置项中指定打通的移动端packageName供SDK判断切换模式。同时，您还需要确保集成了 `gioHybridAdapter` 插件。具体使用方式请[参考文档](/docs/webjs/plugins/hybridAdapter)。
 
 ### platform
 
@@ -235,7 +245,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。
+**<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
 ### trackBot
 
@@ -250,7 +260,7 @@ gdp('init', accountId, datasourceId, {
 
 ### trackPage
 
-默认情况下，SDK会采集页面访问事件，包括页面跳转、查询参数变更、hash变更等场景。可以在平台上查看到页面访问时长，页面跳出率等分析数据。如果您确认不需要采集，可关闭该配置项。
+默认情况下，SDK会采集页面访问事件，包括页面跳转、查询参数变更、hash变更等场景。可以在平台上查看到页面访问时长，页面跳出率等分析数据。如果您确认不需要采集，或配合设置页面属性等特殊场景时可关闭该配置项。
 
 ```js
 gdp('init', accountId, datasourceId, {
@@ -259,7 +269,7 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**关闭该配置项，会导致页面访问时长，页面跳出率等与页面相关的分析数据异常，请充分了解影响后操作。
+**<font color="#FC5F3A">注意：</font>关闭该配置项，会导致页面访问时长，页面跳出率等与页面相关的分析数据异常，请充分了解影响后操作。**
 
 ### version
 

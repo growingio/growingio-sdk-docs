@@ -33,3 +33,21 @@ import gioHybridAdapter from "gio-webjs-sdk/plugins/gioHybridAdapter"
 gdp('registerPlugins', [gioHybridAdapter]);
 gdp('init', xxxx);
 ```
+
+### 3、修改初始化代码
+
+在init方法中传入**主体移动端的 `accountId` 和 `packageName` 字段**。
+
+```js
+gdp('init', 'your app accountId', 'your dataSourceId', {
+  packageName: 'your app packageName',
+  serverUrl: 'your server url',
+  version: 'your website version'
+});
+```
+
+## 打通影响
+
+1、web端调用 `setUserId`、`clearUserId` 将会直接影响移动端上报的数据。
+
+2、web端不再发送事件，转而由移动端生成和发送事件。
