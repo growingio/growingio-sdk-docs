@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Flutter SDK 插件
 ---
 
-Flutter SDK 插件虽然提供了 无埋点SDK 和 埋点SDK 两个版本，但是在使用 Flutter 无埋点SDK前需要按照 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect) 才能使无埋点功能生效。
+Flutter SDK 插件同时具备 无埋点SDK 和 埋点SDK 功能，但是在使用 Flutter 无埋点功能前需要按照 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect) 才能使无埋点功能生效。
 
 ---
 
@@ -25,34 +25,12 @@ import TabItem from '@theme/TabItem';
 
 以工程`flutter_app`为例，在`pubspec.yaml`文件中添加依赖。
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
 
 ```c
 dependencies:
-  growingio_autotracker_flutter_plugin: '2.0.1'
+  growingio_flutter_plugin: '4.0.0'
 ```
 
-</TabItem>
-
-<TabItem value="tracker">
-
-```c
-dependencies:
-  growingio_tracker_flutter_plugin: '2.0.1'
-```
-
-</TabItem>
-
-</Tabs>
 
 然后执行 `flutter pub get` 指令安装插件。
 
