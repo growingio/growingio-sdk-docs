@@ -25,34 +25,12 @@ import TabItem from '@theme/TabItem';
 
 以工程`flutter_app`为例，在`pubspec.yaml`文件中添加依赖。
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
 
 ```c
 dependencies:
-  growingio_autotracker_flutter_plugin: '4.0.0'
+  growingio_flutter_plugin: '4.0.0'
 ```
 
-</TabItem>
-
-<TabItem value="tracker">
-
-```c
-dependencies:
-  growingio_tracker_flutter_plugin: '4.0.0'
-```
-
-</TabItem>
-
-</Tabs>
 
 然后执行 `flutter pub get` 指令安装插件。
 
