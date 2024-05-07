@@ -297,7 +297,7 @@ GrowingTracker.sharedInstance().cleanLocation()
 
 
 ### 7. 设置埋点事件 
-`Autotracker.track(_ eventName: String, attributes: [String: String]?)`<br/>
+`Autotracker.track(_ eventName: String, attributes: [String: Any]?)`<br/>
 发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在 CDP 平台事件管理界面创建埋点事件以及关联事件属性；<br/>
 如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP 平台版本>= 2.1 ）
 
@@ -306,7 +306,7 @@ GrowingTracker.sharedInstance().cleanLocation()
 | 参数         | 参数类型              | 说明                       |
 | :----------- | :------------------ | :------------------------- |
 | `eventName`  | `String`            | 事件名，事件标识符         |
-| `attributes` | `[String: String]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
 
 #### 示例
 
@@ -370,7 +370,7 @@ GrowingTracker.sharedInstance().trackCustomEvent("eventName", withAttributes: ["
 `resumeTimer(_ timerId: String)`<br/>
 恢复事件计时器，参数为 trackTimer 返回的唯一标识
 
-`endTimer(_ timerId: String, attributes: [String: String]?)`<br/>
+`endTimer(_ timerId: String, attributes: [String: Any]?)`<br/>
 停止事件计时器，参数为 trackTimer 返回的唯一标识。调用该接口会自动触发删除定时器。
 
 `removeTimer(_ timerId: String)`<br/>
@@ -386,7 +386,7 @@ GrowingTracker.sharedInstance().trackCustomEvent("eventName", withAttributes: ["
 | 参数        | 参数类型   | 说明               |
 | :---------- | :--------- | :----------------- |
 | `eventName` | `String` | 事件名，事件标识符 |
-| `attributes` | `[String: String]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
 
 
 | 参数      | 参数类型   | 说明                                      |
@@ -492,14 +492,14 @@ event_duration 时间统计不会计算后台时间
 :::
 
 ### 9. 设置登录用户属性 
-`setLoginUserAttributes(_ attributes: [String: String])`<br/>
+`setLoginUserAttributes(_ attributes: [String: Any])`<br/>
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。
 
 #### 参数说明
 
 | 参数         | 参数类型                           | 说明         |
 | :----------- | :--------------------------------- | :----------- |
-| `attributes` | `[String: String]` | 用户属性信息 |
+| `attributes` | `[String: Any]` | 用户属性信息 |
 
 #### 示例
 
@@ -591,7 +591,7 @@ NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
 
 
 ### 11. 追踪页面展示事件
-`autotrackPage(_ viewController: UIViewController, alias: String, attributes: [String: String]?)`<br/>
+`autotrackPage(_ viewController: UIViewController, alias: String, attributes: [String: Any]?)`<br/>
 追踪页面展示事件，需要在 viewDidAppear 执行之前调用
 
 #### 参数说明
@@ -600,7 +600,7 @@ NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
 | :----------- | :--------------------------------- | :----------- |
 | `viewController` | `UIViewController` | 被追踪页面 |
 | `alias` | `String` | 页面别名 |
-| `attributes` | `[String: String]?` | 事件发生时所伴随的维度信息（可选） |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的维度信息（可选） |
 
 #### 示例
 
