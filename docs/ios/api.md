@@ -297,7 +297,7 @@ GrowingTracker.sharedInstance().cleanLocation()
 
 
 ### 7. 设置埋点事件 
-`Autotracker.track(_ eventName: String, attributes: [String: String]?)`<br/>
+`Autotracker.track(_ eventName: String, attributes: [String: Any]?)`<br/>
 发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在 CDP 平台事件管理界面创建埋点事件以及关联事件属性；<br/>
 如果事件属性需关联维度表，请在事件属性下关联维度表（ CDP 平台版本>= 2.1 ）
 
@@ -306,7 +306,7 @@ GrowingTracker.sharedInstance().cleanLocation()
 | 参数         | 参数类型              | 说明                       |
 | :----------- | :------------------ | :------------------------- |
 | `eventName`  | `String`            | 事件名，事件标识符         |
-| `attributes` | `[String: String]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
 
 #### 示例
 
@@ -370,7 +370,7 @@ GrowingTracker.sharedInstance().trackCustomEvent("eventName", withAttributes: ["
 `resumeTimer(_ timerId: String)`<br/>
 恢复事件计时器，参数为 trackTimer 返回的唯一标识
 
-`endTimer(_ timerId: String, attributes: [String: String]?)`<br/>
+`endTimer(_ timerId: String, attributes: [String: Any]?)`<br/>
 停止事件计时器，参数为 trackTimer 返回的唯一标识。调用该接口会自动触发删除定时器。
 
 `removeTimer(_ timerId: String)`<br/>
@@ -386,7 +386,7 @@ GrowingTracker.sharedInstance().trackCustomEvent("eventName", withAttributes: ["
 | 参数        | 参数类型   | 说明               |
 | :---------- | :--------- | :----------------- |
 | `eventName` | `String` | 事件名，事件标识符 |
-| `attributes` | `[String: String]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
 
 
 | 参数      | 参数类型   | 说明                                      |
@@ -492,14 +492,14 @@ event_duration 时间统计不会计算后台时间
 :::
 
 ### 9. 设置登录用户属性 
-`setLoginUserAttributes(_ attributes: [String: String])`<br/>
+`setLoginUserAttributes(_ attributes: [String: Any])`<br/>
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。
 
 #### 参数说明
 
 | 参数         | 参数类型                           | 说明         |
 | :----------- | :--------------------------------- | :----------- |
-| `attributes` | `[String: String]` | 用户属性信息 |
+| `attributes` | `[String: Any]` | 用户属性信息 |
 
 #### 示例
 
@@ -591,7 +591,7 @@ NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
 
 
 ### 11. 追踪页面展示事件
-`autotrackPage(_ viewController: UIViewController, alias: String, attributes: [String: String]?)`<br/>
+`autotrackPage(_ viewController: UIViewController, alias: String, attributes: [String: Any]?)`<br/>
 追踪页面展示事件，需要在 viewDidAppear 执行之前调用
 
 #### 参数说明
@@ -600,7 +600,7 @@ NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
 | :----------- | :--------------------------------- | :----------- |
 | `viewController` | `UIViewController` | 被追踪页面 |
 | `alias` | `String` | 页面别名 |
-| `attributes` | `[String: String]?` | 事件发生时所伴随的维度信息（可选） |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的维度信息（可选） |
 
 #### 示例
 
@@ -834,20 +834,25 @@ view.growingViewCustomContent = @"content";
 
 ### 17. 设置埋点通用属性
 
-`setGeneralProps(_ props: [String: String])`<br/>
-设置埋点通用属性
+`setGeneralProps(_ props: [String: Any])`<br/>
+设置埋点通用属性，属性值支持 String、Number、Date、Set、Array
 
 `removeGeneralProps(_ keys: [String])`<br/>
 清除指定字段的埋点通用属性
 
 `clearGeneralProps()`<br/>
-清除所有埋点通用属性
+清除埋点通用属性
+
+`setDynamicGeneralProps(_ closure: (() -> [String: Any])?)`<br/>
+设置动态埋点通用属性，属性值支持 String、Number、Date、Set、Array
+
+**<font color="#FC5F3A">注意：</font>SDK 版本 >= 4.3.0 支持**
 
 #### 参数说明
 
 | 参数        | 参数类型   | 说明               |
 | :---------- | :--------- | :----------------- |
-| `props` | `[String: String]` | 事件通用属性，相同字段的新值将覆盖旧值 |
+| `props` | `[String: Any]` | 事件通用属性，相同字段的新值将覆盖旧值 |
 | `keys` | `[String]` | 通用属性指定字段 |
 
 #### 示例
@@ -860,11 +865,19 @@ view.growingViewCustomContent = @"content";
 Autotracker.setGeneralProps(["property": "value"])
 Autotracker.removeGeneralProps(["key1", "key2"])
 Autotracker.clearGeneralProps()
+Autotracker.setDynamicGeneralProps {
+    ["key" : "value"]
+}
+Autotracker.setDynamicGeneralProps(nil)
 
 // 埋点
 Tracker.setGeneralProps(["property": "value"])
 Tracker.removeGeneralProps(["key1", "key2"])
 Tracker.clearGeneralProps()
+Tracker.setDynamicGeneralProps {
+    ["key" : "value"]
+}
+Tracker.setDynamicGeneralProps(nil)
 ```
 
   </TabItem>
@@ -872,14 +885,22 @@ Tracker.clearGeneralProps()
 
 ```swift
 // 无埋点
-GrowingAutotracker.sharedInstance().setGeneralProps(["property": "value"])
-GrowingAutotracker.sharedInstance().removeGeneralProps(["key1", "key2"])
-GrowingAutotracker.sharedInstance().clearGeneralProps()
+GrowingAutotracker.setGeneralProps(["property": "value"])
+GrowingAutotracker.removeGeneralProps(["key1", "key2"])
+GrowingAutotracker.clearGeneralProps()
+GrowingAutotracker.setDynamicGeneralProps {
+    ["key" : "value"]
+}
+GrowingAutotracker.setDynamicGeneralProps(nil)
 
 // 埋点
-GrowingTracker.sharedInstance().setGeneralProps(["property": "value"])
-GrowingTracker.sharedInstance().removeGeneralProps(["key1", "key2"])
-GrowingTracker.sharedInstance().clearGeneralProps()
+GrowingTracker.setGeneralProps(["property": "value"])
+GrowingTracker.removeGeneralProps(["key1", "key2"])
+GrowingTracker.clearGeneralProps()
+GrowingTracker.setDynamicGeneralProps {
+    ["key" : "value"]
+}
+GrowingTracker.setDynamicGeneralProps(nil)
 ```
 
   </TabItem>
@@ -887,72 +908,30 @@ GrowingTracker.sharedInstance().clearGeneralProps()
 
 ```objectivec
 // 无埋点
-[[GrowingAutotracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
-[[GrowingAutotracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
-[[GrowingAutotracker sharedInstance] clearGeneralProps];
+[GrowingAutotracker setGeneralProps:@{@"property": @"value"}];
+[GrowingAutotracker removeGeneralProps:@[@"key1", @"key2"]];
+[GrowingAutotracker clearGeneralProps];
+[GrowingAutotracker setDynamicGeneralPropsGenerator:^NSDictionary<NSString *,id> * _Nonnull{
+    return @{@"key": @"value"};
+}];
+[GrowingAutotracker setDynamicGeneralPropsGenerator:nil];
 
 // 埋点
-[[GrowingTracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
-[[GrowingTracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
-[[GrowingTracker sharedInstance] clearGeneralProps];
+[GrowingTracker setGeneralProps:@{@"property": @"value"}];
+[GrowingTracker removeGeneralProps:@[@"key1", @"key2"]];
+[GrowingTracker clearGeneralProps];
+[GrowingTracker setDynamicGeneralPropsGenerator:^NSDictionary<NSString *,id> * _Nonnull{
+    return @{@"key": @"value"};
+}];
+[GrowingTracker setDynamicGeneralPropsGenerator:nil];
 ```
 
   </TabItem>
 </Tabs>
-
-
-### 18. 属性工具 
-`GrowingAttributesBuilder`<br/>
-`GrowingAttributesBuilder<T>` 是 SDK 提供给用户协助设置属性的工具类，支持传入多种类型属性值(包含列表类型)<br/>
-`T` 可为 `NSString`、`NSNumber` 或 `AnyObject`
-
-`setString(_ value: String, forkey key: String)`<br/>
-设置一个字符串类型属性
-
-`setArray(_ value: [T], forkey key: String)`<br/>
-设置一个数组类型属性
-
-`build()`<br/>
-返回设置埋点事件API所需属性参数类型对应的数据结构
-
-#### 示例
-
-<Tabs groupId="integration" queryString>
-  <TabItem value="spm" label="Swift Package Manager" default>
-
-```swift
-let attrBuilder = GrowingAttributesBuilder<NSString>()
-attrBuilder.setString("value", forKey: "property")
-attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
-let attributes = attrBuilder.build()
-```
-
-  </TabItem>
-  <TabItem value="cocoapods" label="Cocoapods(Swift)">
-
-```swift
-let attrBuilder = GrowingAttributesBuilder<NSString>()
-attrBuilder.setString("value", forKey: "property")
-attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
-let attributes = attrBuilder.build()
-```
-
-  </TabItem>
-  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
-
-```objectivec
-GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"property"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
-NSDictionary *attributes = builder.build;
-```
-
-  </TabItem>
-</Tabs>
-
 
 :::caution 注意
 定义的通用属性名需要在平台上进行事件属性的创建并与埋点事件完成关联<br/>
+若需要作用于所有事件(包括首个访问事件)，请在初始化 SDK 之前调用<br/>
 该方法可多次调用，相同字段的新值将覆盖旧值<br/>
 通用属性存储在内存中，每次应用冷启动需要重新设置
 :::

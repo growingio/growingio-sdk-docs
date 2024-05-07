@@ -10,25 +10,27 @@ import TabItem from '@theme/TabItem';
 
 ### 配置表格
 
-| Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 |
-| :-------------------------   | :------   | :----:  |:------  |:------| :---: |
-| `accountId`                  | `String`  | 是      | `nil`   | 项目 ID(AccountID)，每个应用对应唯一值 | - |
-| `dataSourceId`            | `String`  | 是      | `nil`   | 应用的 DataSourceId，唯一值 | - |
-| `dataCollectionServerHost`| `String`  | 是      | `nil`   | 服务端部署后的  ServerHost | - |
-| `debugEnabled`            | `Bool` | 否      | `false`  | 调试模式，会打印 SDK log，抛出错误异常，在线上环境请关闭 | - |
-| `cellularDataLimit`       | `UInt`     | 否      | `10`     | 每天发送数据的流量限制，单位 MB | - |
-| `dataUploadInterval`      | `TimeInterval`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |
-| `sessionInterval`         | `TimeInterval`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |
-| `dataCollectionEnabled`   | `Bool` | 否      | `true`   | 是否采集数据 | - |
-| `excludeEvent`            | `UInt`     | 否      | `0`      | 设置事件过滤 | - |
-| `ignoreField`             | `UInt`     | 否      | `0`      | 设置事件属性过滤 | - |
-| `impressionScale`         | `Float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | <font color='red'>无埋点独有</font> |
-| `idMappingEnabled` | `Bool` | 否 | `false` | 是否开启多用户身份上报 | - |
-| `urlScheme` | `String` | 否 | `nil` | 自定义 URL Scheme | - |
-| `encryptEnabled` | `Bool` | 否 | `false` | 是否开启网络传输加密 | - |
-| `useProtobuf` | `Bool` | 否 | `true` | 是否采用 Protobuf 格式保存和上传事件数据 | - |
-| `autotrackEnabled` | `Bool` | 否 | `true` | 是否开启无埋点采集 | <font color='red'>无埋点独有</font> |
-| `autotrackAllPages` | `Bool` | 否 | `false` | 是否开启页面自动采集 | <font color='red'>无埋点独有</font> |
+| Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 | 版本 |
+| :-------------------------   | :------   | :----:  |:------  |:------| :---: | --------------------------   |
+| `accountId`                  | `String`  | 是      | `nil`   | 项目 ID(AccountID)，每个应用对应唯一值 | - |  |
+| `dataSourceId`            | `String`  | 是      | `nil`   | 应用的 DataSourceId，唯一值 | - |  |
+| `dataCollectionServerHost`| `String`  | 是      | `nil`   | 服务端部署后的  ServerHost | - |  |
+| `debugEnabled`            | `Bool` | 否      | `false`  | 调试模式，会打印 SDK log，抛出错误异常，在线上环境请关闭 | - |  |
+| `cellularDataLimit`       | `UInt`     | 否      | `10`     | 每天发送数据的流量限制，单位 MB | - |  |
+| `dataUploadInterval`      | `TimeInterval`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |  |
+| `sessionInterval`         | `TimeInterval`     | 否      | `30`     | 会话后台留存时长，单位秒 | - |  |
+| `dataCollectionEnabled`   | `Bool` | 否      | `true`   | 是否采集数据 | - |  |
+| `excludeEvent`            | `UInt`     | 否      | `0`      | 设置事件过滤 | - |  |
+| `ignoreField`             | `UInt`     | 否      | `0`      | 设置事件属性过滤 | - |  |
+| `impressionScale`         | `Float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | <font color='red'>无埋点独有</font> |  |
+| `idMappingEnabled` | `Bool` | 否 | `false` | 是否开启多用户身份上报 | - |  |
+| `urlScheme` | `String` | 否 | `nil` | 自定义 URL Scheme | - |  |
+| `encryptEnabled` | `Bool` | 否 | `false` | 是否开启网络传输加密 | - |  |
+| `compressEnabled` | `Bool` | 否 | `false` | 是否开启网络传输压缩 | - | >=4.3.0 |
+| `useProtobuf` | `Bool` | 否 | `true` | 是否采用 Protobuf 格式保存和上传事件数据 | - |  |
+| `autotrackEnabled` | `Bool` | 否 | `true` | 是否开启无埋点采集 | <font color='red'>无埋点独有</font> |  |
+| `autotrackAllPages` | `Bool` | 否 | `false` | 是否开启页面自动采集 | <font color='red'>无埋点独有</font> | >=4.2.0 |
+| `dataValidityPeriod`         | `NSUInteger`     | 否      | `7`     | 本地未上报的事件数据有效时长，单位天 | - | >=4.3.0 |
 
 ### 详细说明
 
@@ -79,20 +81,28 @@ import TabItem from '@theme/TabItem';
 
 #### 11. **urlScheme**
 
-自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该 [URL Scheme](/docs/ios/Introduce#添加-url-scheme)
+自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该 [URL Scheme](/docs/ios/Introduce#步骤-4-添加-url-scheme-ios-平台)
 
 #### 12. **encryptEnabled**
 
 设置为 true 时，网络传输内容将会加密，不会明文显示。
 
-#### 13. **useProtobuf**
+#### 13. **compressEnabled**
+
+设置为 true 时，网络传输内容将会使用 LZ4 进行压缩。
+
+#### 14. **useProtobuf**
 
 是否使用 [Google Protobuf](https://developers.google.cn/protocol-buffers) 格式保存和上传事件数据，默认为 true，为 false 则采用 JSON 格式
 
-#### 14. **autotrackEnabled**
+#### 15. **autotrackEnabled**
 
 当集成无埋点 SDK 时，设置为 false 将关闭无埋点功能和自动采集
 
-#### 15. **autotrackAllPages**
+#### 16. **autotrackAllPages**
 
 当集成无埋点 SDK 时，设置为 true 将开启页面自动采集，alias 默认为 ViewController 的类名；通过调用 `autotrackPage` 接口所配置的 alias 将覆盖默认值
+
+#### 17. **dataValidityPeriod**
+
+每当 SDK 初始化时，将根据所配置的事件有效时长，清除本地已过期的事件数据

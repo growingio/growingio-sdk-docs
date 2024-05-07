@@ -40,7 +40,7 @@ module.exports = {
           to: '/docs',
           items: [
             {to: '/docs/android/', label: 'Android'},
-            {to: '/docs/ios/', label: 'iOS'},
+            {to: '/docs/ios/', label: 'Apple'},
             {to: '/docs/webjs/', label: 'Web JS'},
             {to: '/docs/miniprogram/', label: '小程序'},
             {to: '/docs/framework/', label: '多平台'},
@@ -115,7 +115,7 @@ module.exports = {
               href: 'https://github.com/growingio/growingio-sdk-android-autotracker',
             },
             {
-              label: 'iOS SDK',
+              label: 'Apple SDK',
               href: 'https://github.com/growingio/growingio-sdk-ios-autotracker',
             },
             {
