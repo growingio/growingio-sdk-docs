@@ -834,20 +834,25 @@ view.growingViewCustomContent = @"content";
 
 ### 17. 设置埋点通用属性
 
-`setGeneralProps(_ props: [String: String])`<br/>
-设置埋点通用属性
+`setGeneralProps(_ props: [String: Any])`<br/>
+设置埋点通用属性，属性值支持 String、Number、Date、Set、Array
 
 `removeGeneralProps(_ keys: [String])`<br/>
 清除指定字段的埋点通用属性
 
 `clearGeneralProps()`<br/>
-清除所有埋点通用属性
+清除埋点通用属性
+
+`setDynamicGeneralProps(_ closure: (() -> [String: Any])?)`<br/>
+设置动态埋点通用属性，属性值支持 String、Number、Date、Set、Array
+
+**<font color="#FC5F3A">注意：</font>SDK 版本 >= 4.3.0 支持**
 
 #### 参数说明
 
 | 参数        | 参数类型   | 说明               |
 | :---------- | :--------- | :----------------- |
-| `props` | `[String: String]` | 事件通用属性，相同字段的新值将覆盖旧值 |
+| `props` | `[String: Any]` | 事件通用属性，相同字段的新值将覆盖旧值 |
 | `keys` | `[String]` | 通用属性指定字段 |
 
 #### 示例
@@ -860,11 +865,19 @@ view.growingViewCustomContent = @"content";
 Autotracker.setGeneralProps(["property": "value"])
 Autotracker.removeGeneralProps(["key1", "key2"])
 Autotracker.clearGeneralProps()
+Autotracker.setDynamicGeneralProps {
+    ["key" : "value"]
+}
+Autotracker.setDynamicGeneralProps(nil)
 
 // 埋点
 Tracker.setGeneralProps(["property": "value"])
 Tracker.removeGeneralProps(["key1", "key2"])
 Tracker.clearGeneralProps()
+Tracker.setDynamicGeneralProps {
+    ["key" : "value"]
+}
+Tracker.setDynamicGeneralProps(nil)
 ```
 
   </TabItem>
@@ -872,14 +885,22 @@ Tracker.clearGeneralProps()
 
 ```swift
 // 无埋点
-GrowingAutotracker.sharedInstance().setGeneralProps(["property": "value"])
-GrowingAutotracker.sharedInstance().removeGeneralProps(["key1", "key2"])
-GrowingAutotracker.sharedInstance().clearGeneralProps()
+GrowingAutotracker.setGeneralProps(["property": "value"])
+GrowingAutotracker.removeGeneralProps(["key1", "key2"])
+GrowingAutotracker.clearGeneralProps()
+GrowingAutotracker.setDynamicGeneralProps {
+    ["key" : "value"]
+}
+GrowingAutotracker.setDynamicGeneralProps(nil)
 
 // 埋点
-GrowingTracker.sharedInstance().setGeneralProps(["property": "value"])
-GrowingTracker.sharedInstance().removeGeneralProps(["key1", "key2"])
-GrowingTracker.sharedInstance().clearGeneralProps()
+GrowingTracker.setGeneralProps(["property": "value"])
+GrowingTracker.removeGeneralProps(["key1", "key2"])
+GrowingTracker.clearGeneralProps()
+GrowingTracker.setDynamicGeneralProps {
+    ["key" : "value"]
+}
+GrowingTracker.setDynamicGeneralProps(nil)
 ```
 
   </TabItem>
@@ -887,72 +908,30 @@ GrowingTracker.sharedInstance().clearGeneralProps()
 
 ```objectivec
 // 无埋点
-[[GrowingAutotracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
-[[GrowingAutotracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
-[[GrowingAutotracker sharedInstance] clearGeneralProps];
+[GrowingAutotracker setGeneralProps:@{@"property": @"value"}];
+[GrowingAutotracker removeGeneralProps:@[@"key1", @"key2"]];
+[GrowingAutotracker clearGeneralProps];
+[GrowingAutotracker setDynamicGeneralPropsGenerator:^NSDictionary<NSString *,id> * _Nonnull{
+    return @{@"key": @"value"};
+}];
+[GrowingAutotracker setDynamicGeneralPropsGenerator:nil];
 
 // 埋点
-[[GrowingTracker sharedInstance] setGeneralProps:@{@"property": @"value"}];
-[[GrowingTracker sharedInstance] removeGeneralProps:@[@"key1", @"key2"]];
-[[GrowingTracker sharedInstance] clearGeneralProps];
+[GrowingTracker setGeneralProps:@{@"property": @"value"}];
+[GrowingTracker removeGeneralProps:@[@"key1", @"key2"]];
+[GrowingTracker clearGeneralProps];
+[GrowingTracker setDynamicGeneralPropsGenerator:^NSDictionary<NSString *,id> * _Nonnull{
+    return @{@"key": @"value"};
+}];
+[GrowingTracker setDynamicGeneralPropsGenerator:nil];
 ```
 
   </TabItem>
 </Tabs>
-
-
-### 18. 属性工具 
-`GrowingAttributesBuilder`<br/>
-`GrowingAttributesBuilder<T>` 是 SDK 提供给用户协助设置属性的工具类，支持传入多种类型属性值(包含列表类型)<br/>
-`T` 可为 `NSString`、`NSNumber` 或 `AnyObject`
-
-`setString(_ value: String, forkey key: String)`<br/>
-设置一个字符串类型属性
-
-`setArray(_ value: [T], forkey key: String)`<br/>
-设置一个数组类型属性
-
-`build()`<br/>
-返回设置埋点事件API所需属性参数类型对应的数据结构
-
-#### 示例
-
-<Tabs groupId="integration" queryString>
-  <TabItem value="spm" label="Swift Package Manager" default>
-
-```swift
-let attrBuilder = GrowingAttributesBuilder<NSString>()
-attrBuilder.setString("value", forKey: "property")
-attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
-let attributes = attrBuilder.build()
-```
-
-  </TabItem>
-  <TabItem value="cocoapods" label="Cocoapods(Swift)">
-
-```swift
-let attrBuilder = GrowingAttributesBuilder<NSString>()
-attrBuilder.setString("value", forKey: "property")
-attrBuilder.setArray(["value1", "value2", "value3"], forKey: "property2")
-let attributes = attrBuilder.build()
-```
-
-  </TabItem>
-  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
-
-```objectivec
-GrowingAttributesBuilder *builder = GrowingAttributesBuilder.new;
-[builder setString:@"value" forKey:@"property"];
-[builder setArray:@[@"value1", @"value2", @"value3"] forKey:@"property2"];
-NSDictionary *attributes = builder.build;
-```
-
-  </TabItem>
-</Tabs>
-
 
 :::caution 注意
 定义的通用属性名需要在平台上进行事件属性的创建并与埋点事件完成关联<br/>
+若需要作用于所有事件(包括首个访问事件)，请在初始化 SDK 之前调用<br/>
 该方法可多次调用，相同字段的新值将覆盖旧值<br/>
 通用属性存储在内存中，每次应用冷启动需要重新设置
 :::
