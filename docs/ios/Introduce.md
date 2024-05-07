@@ -72,7 +72,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 在您的 Podfile 文件中添加
 
 ```ruby
-pod 'GrowingAnalytics/Autotracker', '~> 4.2.0'
+pod 'GrowingAnalytics/Autotracker', '~> 4.3.0'
 ```
 
 打开终端，切换到项目目录
@@ -211,7 +211,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 在您的 Podfile 文件中添加
 
 ```ruby
-pod 'GrowingAnalytics/Tracker', '~> 4.2.0'
+pod 'GrowingAnalytics/Tracker', '~> 4.3.0'
 ```
 
 打开终端，切换到项目目录
