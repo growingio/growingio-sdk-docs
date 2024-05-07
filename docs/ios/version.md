@@ -3,6 +3,13 @@ title: 版本记录
 sidebar_position: 0
 ---
 ----
+# [3.8.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.0...3.8.1) (2024-05-07)
+
+
+### Bug Fixes
+
+* UICollectionView/UITableView swizzle bug ([#315](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/315))
+
 # [3.8.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.7.1...3.8.0) (2023-11-17)
 
 
