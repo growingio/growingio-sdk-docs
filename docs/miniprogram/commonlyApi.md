@@ -322,7 +322,15 @@ Page({
 SDK提供了清除页面属性的方法，调用该方法移除指定字段或所有页面属性。
 
 ```js
-gdp('clearPageAttributes', propertyNames: string[], callback?: function);
+gdp('clearPageAttributes', propertyNames?: string[]);
+```
+
+#### 示例
+
+```js
+gdp('clearPageAttributes', ['nick_name_var', 'index_var']);
+// 或传空数组清空所有页面属性
+gdp('clearPageAttributes', []);
 ```
 
 **仅清除当前所在页面的页面属性。SDK版本大于等于 4.2.0 支持。**
