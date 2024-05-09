@@ -5,6 +5,12 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.2.0 - 2024/05/08
+
+- 🌟 插件内容单独添加版本号。
+- 🌟 修改`setGeneralProps`和`setPageAttributes`的适用范围。
+- 🎉 新增`clearPageAttributes` api，允许移除指定字段或所有页面属性。
+
 ### V4.1.0 - 2024/04/18
 
 - 🐞 修复部分逻辑某些低版本微信基础库下可能出现报错的问题。
