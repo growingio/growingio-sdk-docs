@@ -178,7 +178,7 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:4.3.0'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:4.2.0'
     }
 }
 
