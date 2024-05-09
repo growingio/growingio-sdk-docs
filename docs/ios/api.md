@@ -832,21 +832,19 @@ view.growingViewCustomContent = @"content";
 </Tabs>
 
 
-### 17. 设置埋点通用属性
+### 17. 设置通用属性
 
 `setGeneralProps(_ props: [String: Any])`<br/>
-设置埋点通用属性，属性值支持 String、Number、Date、Set、Array
+设置通用属性，属性值支持 String、Number、Date、Set、Array
 
 `removeGeneralProps(_ keys: [String])`<br/>
-清除指定字段的埋点通用属性
+清除指定字段的通用属性
 
 `clearGeneralProps()`<br/>
-清除埋点通用属性
+清除通用属性
 
 `setDynamicGeneralProps(_ closure: (() -> [String: Any])?)`<br/>
-设置动态埋点通用属性，属性值支持 String、Number、Date、Set、Array
-
-**<font color="#FC5F3A">注意：</font>SDK 版本 >= 4.3.0 支持**
+设置动态通用属性，属性值支持 String、Number、Date、Set、Array
 
 #### 参数说明
 
@@ -931,7 +929,9 @@ GrowingTracker.setDynamicGeneralProps(nil)
 
 :::caution 注意
 定义的通用属性名需要在平台上进行事件属性的创建并与埋点事件完成关联<br/>
-若需要作用于所有事件(包括首个访问事件)，请在初始化 SDK 之前调用<br/>
+SDK 版本 < 4.3.0，不支持设置动态通用属性，且仅作用于埋点事件类型<br/>
+SDK 版本 >= 4.3.0，可作用于所有事件类型，若需要作用于首个访问事件，请在初始化 SDK 之前调用<br/>
+配置后，对所有后续生成的事件生效<br/>
 该方法可多次调用，相同字段的新值将覆盖旧值<br/>
 通用属性存储在内存中，每次应用冷启动需要重新设置
 :::
