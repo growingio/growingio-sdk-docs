@@ -46,13 +46,9 @@ import TabItem from '@theme/TabItem';
 
 1. 移除 **`send`** 方法调用。4.0版本已不再需要它，SDK在初始化完成后且`dataCollect`开启状态下自动上报数据。
 2. 移除 **`setConfig`、`config`** 方法调用。SDK仅支持`init`方法进行初始化和初始化配置。如需在运行过程中动态修改配置，请使用 `setOption` [参考文档](/docs/webjs/commonlyApi#动态修改配置接口setoption)。未使用则忽略。
-3. 移除 **`page.set`** 方法调用。4.0版本已不再支持它，如需使用页面级变量，参考以下两种方式修改。未使用则忽略。
-
-* 1. 将变量加入页面参数query中，作为页面参数的一部分上报，平台会自动解析处理。**注意该方式需要在页面跳转之前完成，跳转完成后再修改query可能会导致多发页面访问事件。**
-* 2. 使用设置通用属性和清除通用属性手动控制页面中的埋点是否都带上某些属性字段。[参考文档](/docs/webjs/commonlyApi#8设置埋点通用属性setgeneralprops)
-
-4. 移除 **`evar.set`** 方法调用。如需使用转化变量，请将转化变量放在埋点事件属性（track）中进行上报。未使用则忽略。
-5. 移除 **`visitor.set`** 方法调用。如需使用访问用户变量，请将访问用户变量放在用户属性（setUserAttributes）中进行上报。未使用则忽略。
+3. 移除 **`evar.set`** 方法调用。如需使用转化变量，请将转化变量放在埋点事件属性（track）中进行上报。未使用则忽略。
+4. 移除 **`visitor.set`** 方法调用。如需使用访问用户变量，请将访问用户变量放在用户属性（setUserAttributes）中进行上报。未使用则忽略。
+5. 重命名替换 **`page.set`** 为 **`setPageAttributes`**，并且需要[参考文档](/docs/webjs/commonlyApi#10设置页面变更回调setpagelistener) **`setPageListener`** 进行相应的修改。
 6. 重命名替换 **`people.set`** 为 **`setUserAttributes`**，调用方式不变。未使用则忽略。
 7. 重命名替换 **`setUser`** 为 **`setUserAttributes`**，调用方式不变。未使用则忽略。
 8. 重命名替换 **`hybridSetUserId`** 为 **`setUserId`**，调用方式不变。未使用则忽略。
