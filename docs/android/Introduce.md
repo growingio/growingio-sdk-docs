@@ -10,8 +10,8 @@ import TabItem from '@theme/TabItem';
 
 ## 准备
 目前所有的 GrowingIO Autotracker Android SDK 都已经发布至公开的仓库中，请在集成前添加代码库依赖的仓库地址至您的配置文件中。<br/>
-集成 GrowingIO Autotracker Android SDK 时需要添加 `mavenCentral()` 仓库地址到您的 gradle 配置文件中。<br/>
-集成无埋点功能时还需要添加额外的 Gradle 插件，集成插件需要添加 `gradlePluginPortal()`仓库地址到gradle配置文件中，以便正确下载插件依赖。
+* 集成 GrowingIO Autotracker Android SDK 时需要添加 `mavenCentral()` 仓库地址到您的 gradle 配置文件中。<br/>
+* 集成无埋点功能时还需要添加额外的 Gradle 插件，集成插件需要添加 `gradlePluginPortal()`仓库地址到gradle配置文件中，以便正确下载插件依赖。
 
 <Tabs
   groupId="AGP"

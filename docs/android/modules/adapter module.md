@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| adapter  | 只适用于无埋点SDK<br />需要手动集成 | 无 | 无 | - |
+| adapter  | 需要集成 GrowingIO Gradle 插件<br />需要手动集成 | 无 | 无 | - |
 
 ### 依赖方式
 <Tabs

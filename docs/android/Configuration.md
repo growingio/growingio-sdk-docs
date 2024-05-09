@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 | setAndroidIdEnabled [#](#10-setandroididenabled) | _boolean_ |    否   | `false` | SDK 是否能获取 AndroidId                   | |
 | addPreloadComponent [#](#13-addpreloadcomponent) | _LibraryGioModule_,<br/>[_Configurable_] |否| `null` | 注册自定义/预定义模块及其配置文件 | |
 | setRequestTimeout [#](#14-setrequesttimeout) | _int_,_TimeUnit_ |否| `30s` | 网络数据发送超时设置 | |
-| setDataValidityPeriod [#](#15-setdatavalidperiod) | _int_    |    否    | `7` | 未发送的数据保留在数据库的时间，单位：天数 | 4.3.0 |
+| setDataValidityPeriod [#](#15-setdatavalidityperiod) | _int_    |    否    | `7` | 未发送的数据保留在数据库的时间，单位：天数 | 4.3.0 |
 
 ### 无埋点功能配置
 
@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
 | setWebViewBridgeEnabled [#](#2-setwebviewbridgeenabled)| _boolean_|  否 | `true`   | 是否全量采集 hybrid 数据            |         |
 | enableFragmentTag [#](#3-enablefragmenttag) |    _boolean_    |   否    | `false`     | 是否将Fragment的tag作为无埋点路径的记号 |    |
 | setPageRuleXml [#](#4-setpagerulexml)       |    _int_        |   否        | `xml id`     | 用于自动采集无埋点页面 |  4.2.0  |
-| setAutotrack [#](#4-setautotrack)           |    _boolean_    |   否        | `true`     | 用于控制是否打开无埋点功能 |  4.3.0  |
+| setAutotrack [#](#5-setautotrack)           |    _boolean_    |   否        | `true`     | 用于控制是否打开无埋点功能 |  4.3.0  |
 
 ## 通用配置说明
 
