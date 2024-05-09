@@ -135,7 +135,7 @@ keytool -list -v -keystore release.keystore
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:ads:4.2.0'
+	implementation 'com.growingio.android:ads:4.3.0'
 }
 ```
 </TabItem>
@@ -145,7 +145,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.0')
 
   implementation 'com.growingio.android:ads'
 }
@@ -174,16 +174,6 @@ config.setDeepLinkHost("Your DeepLinkHost")
 
 ### 使用方式
 
-<Tabs groupId="sdk-type"
-  defaultValue="autotrack"
-  values={[
-    {label: '无埋点', value: 'autotrack'},
-    {label: '埋点', value: 'track'},
-  ]
-}>
-
-<TabItem value="autotrack">
-
 ```java
 // 初始化无埋点SDK时, 调用方法注册广告模块
 GrowingAutotracker.startWithConfiguration(this,
@@ -191,20 +181,6 @@ GrowingAutotracker.startWithConfiguration(this,
                 //...
                 .addPreloadComponent(new AdsLibraryGioModule(), config));
 ```
-
-</TabItem>
-<TabItem value="track">
-
-```java
-// 初始化埋点SDK时, 调用方法注册广告模块
-GrowingTracker.startWithConfiguration(this,
-                new TrackConfiguration("accountId", "urlScheme")
-                //...
-                .addPreloadComponent(new AdsLibraryGioModule(), config));
-```
-
-</TabItem>
-</Tabs>
 
 ### 主动调用DeepLink接口
 可以通过该方法手动发送DeepLink事件，该接口常用于应用内部广告获客接收。

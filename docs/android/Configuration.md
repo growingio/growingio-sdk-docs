@@ -31,15 +31,17 @@ import TabItem from '@theme/TabItem';
 | setAndroidIdEnabled [#](#10-setandroididenabled) | _boolean_ |    否   | `false` | SDK 是否能获取 AndroidId                   | |
 | addPreloadComponent [#](#13-addpreloadcomponent) | _LibraryGioModule_,<br/>[_Configurable_] |否| `null` | 注册自定义/预定义模块及其配置文件 | |
 | setRequestTimeout [#](#14-setrequesttimeout) | _int_,_TimeUnit_ |否| `30s` | 网络数据发送超时设置 | |
+| setDataValidityPeriod [#](#15-setdatavalidperiod) | _int_    |    否    | `7` | 未发送的数据保留在数据库的时间，单位：天数 | 4.3.0 |
 
-### 无埋点配置
+### 无埋点功能配置
 
 | 配置方法                                       |   参数类型     | 是否必填 | 默认值  | 说明                               | 版本     |
 | :------------------------------------------- | :------------- | :----:  | :------ | :-------------------------------- | ------- |
 | setImpressionScale [#](#1-setimpressionscale) |    _float_    |   否    | `0`     | 元素曝光事件中的比例因子,范围 [0-1]    |         |
 | setWebViewBridgeEnabled [#](#2-setwebviewbridgeenabled)| _boolean_|  否 | `true`   | 是否全量采集 hybrid 数据            |         |
 | enableFragmentTag [#](#3-enablefragmenttag) |    _boolean_    |   否    | `false`     | 是否将Fragment的tag作为无埋点路径的记号 |    |
-| setPageRuleXml [#](#4-setpagerulexml)       |    _int_    |   是        | `xml id`     | 用于自动采集无埋点页面 |    |
+| setPageRuleXml [#](#4-setpagerulexml)       |    _int_        |   否        | `xml id`     | 用于自动采集无埋点页面 |  4.2.0  |
+| setAutotrack [#](#4-setautotrack)           |    _boolean_    |   否        | `true`     | 用于控制是否打开无埋点功能 |  4.3.0  |
 
 ## 通用配置说明
 
@@ -132,7 +134,7 @@ class CustomEventFilterInterceptor implements EventFilterInterceptor {
 之后再调用该接口设置拦截器
 
 ```java
-GrowingTracker.startWithConfiguration(this,
+GrowingAutotracker.startWithConfiguration(this,
     new AutotrackConfiguration("accountId", "urlScheme")
         ...
        .setEventFilterInterceptor(new CustomEventFilterInterceptor())
@@ -191,6 +193,19 @@ GrowingAutotracker.startWithConfiguration(this,
 
 > 当使用默认 Okhttp 请求库时，可以使用 `setRequestDetailTimeout(10, 10, 10, TimeUnit.SECONDS)` 接口，其值分别对应 Okhttp 网络库的请求超时设置 `connectTimeout`, `readTimeout`, `writeTimeout`
 
+### 15. setDataValidityPeriod
+
+设置未发送的数据保留在数据库的时间，单位：天数，默认7天。
+
+```java
+GrowingAutotracker.startWithConfiguration(this,
+        new AutotrackConfiguration("accountId", "urlScheme")
+        // 设置未发送事件缓存时长
+        .setDataValidityPeriod(7)
+
+);
+```
+
 ## 无埋点配置说明
 
 ### 1. setImpressionScale
@@ -247,4 +262,15 @@ val sConfiguration = AutotrackConfiguration("Your AccountId", "Your URLScheme")
     .setDataSourceId("Your DataSourceId")
     .setPageRuleXml(R.xml.growingio_page_setting)
 GrowingAutotracker.startWithConfiguration(this, sConfiguration)
+```
+
+### 5. setAutotrack
+若是不需要无埋点相关功能，客户可以通过在初始化时关闭无埋点来实现。请注意，关闭无埋点功能后，无埋点事件包括页面事件，自动点击事件，Imp曝光事件不再上报以及圈选功能都将一起关闭。
+
+```java
+GrowingAutotracker.startWithConfiguration(this,
+        new AutotrackConfiguration("accountId", "urlScheme")
+        // 关闭无埋点功能
+        .setAutotrack(false)
+);
 ```

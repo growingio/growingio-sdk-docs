@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:abtest:4.2.0'
+	implementation 'com.growingio.android:abtest:4.3.0'
 }
 ```
 </TabItem>
@@ -41,7 +41,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.0')
 
   implementation 'com.growingio.android:abtest'
 }
@@ -68,16 +68,6 @@ config.setAbTestTimeout(5,TimeUnit.SECONDS);
 
 ### 使用方式
 
-<Tabs groupId="sdk-type"
-  defaultValue="autotrack"
-  values={[
-    {label: '无埋点', value: 'autotrack'},
-    {label: '埋点', value: 'track'},
-  ]
-}>
-
-<TabItem value="autotrack">
-
 ```java
 // 初始化无埋点SDK时, 调用方法注册A/B模块
 GrowingAutotracker.startWithConfiguration(this,
@@ -86,19 +76,6 @@ GrowingAutotracker.startWithConfiguration(this,
                 .addPreloadComponent(new ABTestLibraryGioModule(), config));
 ```
 
-</TabItem>
-<TabItem value="track">
-
-```java
-// 初始化埋点SDK时, 调用方法注册A/B模块
-GrowingTracker.startWithConfiguration(this,
-                new TrackConfiguration("accountId", "urlScheme")
-                //...
-                .addPreloadComponent(new ABTestLibraryGioModule(), config));
-```
-
-</TabItem>
-</Tabs>
 
 ### 通过接口获取 A/B 分组实验
 可以通过以下方法通过传入实验层Id获取具体的A/B分组实验数据。
@@ -110,23 +87,9 @@ GrowingTracker.startWithConfiguration(this,
 | layerId | _String_     | 是      | 实验层ID,用于向服务端请求实验组数据 |
 | abTestCallback | _ABTestCallback_      | 是    | 接口回调，实验组数据将会在该回调中返回 |
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```kotlin
 GrowingAutotracker.get().getAbTest(layerId,
-    object : ABTestCallback {
-        override fun onABExperimentReceived(experiment: ABExperiment, dataType: Int) {
-            
-        }
-
-        override fun onABExperimentFailed(error: Exception) {
-        }
-    },
-)
-```
-
-**埋点SDK示例代码：**
-```kotlin
-GrowingTracker.get().getAbTest(layerId,
     object : ABTestCallback {
         override fun onABExperimentReceived(experiment: ABExperiment, dataType: Int) {
             

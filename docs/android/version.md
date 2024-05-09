@@ -2,6 +2,22 @@
 title: 版本记录
 sidebar_position: 0
 ---
+## RELEASE-4.3.0
+Features：
+1. SDK添加无埋点功能开关，可以直接切换至埋点SDK (#213)
+2. 添加全局动态通用属性功能 (#215)
+3. 添加配置项由于配置数据缓存时间 (#216)
+
+Bug Fixes：
+1. 当在Debug环境下输出的json日志过大时缩减其文本；
+2. 网路请求返回 413 时将删除上传时错误的数据。
+
+:::note 
+
+ 标签:**[v4.3.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.3.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2024-05-09** 
+
+:::
+
 ## RELEASE-4.2.0
 ### Features
 

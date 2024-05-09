@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:encoder:4.2.0'
+	implementation 'com.growingio.android:encoder:4.3.0'
 }
 ```
 </TabItem>
@@ -44,7 +44,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.0')
 
   implementation 'com.growingio.android:encoder'
 }
@@ -55,16 +55,6 @@ dependencies {
 
 ### 使用方式
 
-<Tabs groupId="sdk-type"
-  defaultValue="autotrack"
-  values={[
-    {label: '无埋点', value: 'autotrack'},
-    {label: '埋点', value: 'track'},
-  ]
-}>
-
-<TabItem value="autotrack">
-
 ```java
 // 初始化无埋点SDK时, 调用方法注册加密模块
 GrowingAutotracker.startWithConfiguration(this,
@@ -72,21 +62,6 @@ GrowingAutotracker.startWithConfiguration(this,
                 //...
                 .addPreloadComponent(new EncoderLibraryGioModule()));
 ```
-
-</TabItem>
-<TabItem value="track">
-
-```java
-// 初始化埋点SDK时, 调用方法注册加密模块
-GrowingTracker.startWithConfiguration(this,
-                new TrackConfiguration("accountId", "urlScheme")
-                //...
-                .addPreloadComponent(new EncoderLibraryGioModule()));
-```
-
-</TabItem>
-</Tabs>
-
 
 ### 示例
 数据结果如下图所示：

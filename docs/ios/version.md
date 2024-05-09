@@ -23,11 +23,14 @@ sidebar_position: 0
 
 # [4.2.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.1.0...4.2.0) (2024-03-14)
 
+
 ### Features
 
 * **autotrack:** autotrack-page white list ([#301](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/301)) ([5cb409b](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/5cb409b7fbabf6256a91670a1bd5db4843f8b1ac))
 
+
 # [4.1.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.0.0...4.1.0) (2024-01-25)
+
 
 ### Features
 
@@ -47,5 +50,4 @@ sidebar_position: 0
 * Enhancing Autotrack Core in SDK 4.x ([#268](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/268))
 
 ---
-
 ## 更多发布细节请参考 [SDK Releases in Github](https://github.com/growingio/growingio-sdk-ios-autotracker/releases)
