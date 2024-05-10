@@ -8,7 +8,7 @@ title: 圈选模块
 圈选的教程请参考 [产品教程-无埋点事件](https://docs.growingio.com/op-help/docs/4.0/product-manual/user-behavior-analytics/data-management/data-management/auto-track/app-data-definition)
 
 :::info
-当你集成无埋点SDK时，圈选模块会默认集成到SDK中，且只在无埋点SDK中有效，不支持埋点SDK。
+只有在无埋点SDK功能打开时有效。
 
 若不想要在生产环境中集成圈选模块，可参考 [基于 GrowingIO 现有 SDK 基础上的二次开发](/blog/custom%20android%20sdk)，自定义SDK模块。
 :::
@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| circler  | 无埋点自动集成 | `Circler` | `WebService` | - |
+| circler  | 自动集成 | `Circler` | `WebService` | - |
 
 ### 依赖方式
 <Tabs
@@ -36,7 +36,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:circler:4.2.0'
+	implementation 'com.growingio.android:circler:4.3.0'
 }
 ```
 </TabItem>
@@ -46,7 +46,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.0')
 
   implementation 'com.growingio.android:circler'
 }

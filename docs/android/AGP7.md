@@ -9,7 +9,7 @@ Android Gradle Plugin 高版本说明及其使用方法
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Growingio Sdk Gradle Plugin 4.0 具有以下的功能特性：
+GrowingIO Sdk Gradle Plugin 4.0 具有以下的功能特性：
 * 适配 AGP 8.0 Instrumentation API；
 * 兼容 AGP4.2及其更早版本的 Transform API；
 * 在插件中可以配置集成Giokit;
@@ -75,7 +75,7 @@ plugins {
 
 ## 插件配置说明
 
-为了满足插件在不同项目环境下能够正常使用，Growingio 插件提供了以下配置。（非必需情况下可以不用添加）
+为了满足插件在不同项目环境下能够正常使用，GrowingIO SDK 插件提供了以下配置。（非必需情况下可以不用添加）
 
 | Extension                    | 参数类型         | 是否必填 | 默认值 | 说明 |  版本 |
 | :-------------------------   | :------         | :----:  |:------  |:------| --------------------------   |
@@ -118,7 +118,7 @@ dependencies {
 | trackerCalledMethod        | _Array\<String\>_ | 否      | 默认为SDK相应接口   | 要查找的类和方法,类名与方法名使用#连接  |
 | autoAttachEnabled          | _Boolean_       | 否      | `true`  |  GioKit 是否自动依附在Activity上，若设为false，需要自行调用api打开GioKit  |
 | releaseEnabled             | _Boolean_       | 否      | `false`   |  **请不要打开**，否则会在 Release 打包中包含 GioKit 代码    |
-| autoInstallVersion         | _String_        | 否      | `2.0.0`   |  自动依赖的GioKit版本号             |
+| autoInstallVersion         | _String_        | 否      | `2.1.2`   |  自动依赖的GioKit版本号             |
 
 现在SDK不用再额外引入 Giokit，只需要在插件中开启即可。示例如下：
 
@@ -132,7 +132,7 @@ growingAutotracker {
         trackerCalledMethod "com.growingio.android.tracker#trackCumtomEvent"
         autoAttachEnabled true
         releaseEnabled false
-        autoInstallVersion "2.1.1"
+        autoInstallVersion "2.1.2"
     }
 }
 ```

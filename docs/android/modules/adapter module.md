@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| adapter  | 只适用于无埋点SDK<br />需要手动集成 | 无 | 无 | - |
+| adapter  | 需要集成 GrowingIO Gradle 插件<br />需要手动集成 | 无 | 无 | - |
 
 ### 依赖方式
 <Tabs
@@ -49,7 +49,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.0')
 
   implementation 'com.growingio.android:analytics-fa'
   implementation 'com.growingio.android:analytics-ga'
@@ -65,16 +65,6 @@ dependencies {
 
 ### 使用方式
 
-<Tabs groupId="sdk-type"
-  defaultValue="autotrack"
-  values={[
-    {label: '无埋点', value: 'autotrack'},
-    {label: '埋点', value: 'track'},
-  ]
-}>
-
-<TabItem value="autotrack">
-
 ```java
 // 初始化SDK时，将模块注册到SDK中 
 GrowingAutotracker.startWithConfiguration(this,
@@ -86,23 +76,6 @@ GrowingAutotracker.startWithConfiguration(this,
 
 );
 ```
-
-</TabItem>
-<TabItem value="track">
-
-```java
-// 初始化SDK时，将模块注册到SDK中 
-GrowingTracker.startWithConfiguration(this,
-        new CdpTrackConfiguration("accountId", "urlScheme")
-        //...
-        .addPreloadComponent(new GoogleAnalyticsLibraryModule())) //Google Analytics 3
-        // 或者
-        .addPreloadComponent(new FirebaseAnalyticsLibraryModule())) //Firebase Analytics
-);
-```
-
-</TabItem>
-</Tabs>
 
 同时需要在无埋点插件配置里启用对应的转发服务
 

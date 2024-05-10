@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| flutter  | 需要手动集成 | `EventFlutter` | `Void` | 4.1.0 |
+| flutter  | 需要手动集成 | `EventFlutter` | `Void` | 4.3.0 |
 
 ### 依赖方式
 <Tabs
@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:flutter:4.2.0'
+	implementation 'com.growingio.android:flutter:4.3.0'
 }
 ```
 </TabItem>
@@ -38,7 +38,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.0')
 
   implementation 'com.growingio.android:flutter'
 }
@@ -49,16 +49,6 @@ dependencies {
 
 ### 使用方式
 
-<Tabs groupId="sdk-type"
-  defaultValue="autotrack"
-  values={[
-    {label: '无埋点', value: 'autotrack'},
-    {label: '埋点', value: 'track'},
-  ]
-}>
-
-<TabItem value="autotrack">
-
 ```java
 GrowingAutotracker.startWithConfiguration(this,
                 new AutotrackConfiguration("accountId", "urlScheme")
@@ -66,15 +56,3 @@ GrowingAutotracker.startWithConfiguration(this,
                 .addPreloadComponent(new FlutterLibraryGioModule()));
 ```
 
-</TabItem>
-<TabItem value="track">
-
-```java
-GrowingTracker.startWithConfiguration(this,
-                new TrackConfiguration("accountId", "urlScheme")
-                //...
-                .addPreloadComponent(new FlutterLibraryGioModule()));
-```
-
-</TabItem>
-</Tabs>

@@ -2,6 +2,15 @@
 title: 版本记录
 sidebar_position: 0
 ---
+## V2.1.2
+1. 修复当请求内容为空时，giokit 报错导致无法发送请求的问题。
+
+:::note 
+
+ 标签:**[V2.1.2](https://github.com/growingio/giokit-android/releases/tag/V2.1.2)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2024-05-08** 
+
+:::
+
 ## V2.1.1
 1. 事件库中添加丢弃的事件类型，表示为事件未入库；
 2. 事件库中事件删除延迟至 10天。

@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:oaid:4.2.0'
+	implementation 'com.growingio.android:oaid:4.3.0'
 }
 ```
 </TabItem>
@@ -47,7 +47,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.0')
 
   implementation 'com.growingio.android:oaid'
 }
@@ -92,16 +92,6 @@ oaidConfig.setProvideCertCallback(new OaidConfig.OnProvideCertCallback() {
 
 ### 使用方式
 
-<Tabs groupId="sdk-type"
-  defaultValue="autotrack"
-  values={[
-    {label: '无埋点', value: 'autotrack'},
-    {label: '埋点', value: 'track'},
-  ]
-}>
-
-<TabItem value="autotrack">
-
 ```java
 // 初始化SDK时，可以提前注册 oaid 模块
 GrowingAutotracker.startWithConfiguration(this,
@@ -111,21 +101,6 @@ GrowingAutotracker.startWithConfiguration(this,
 
 );
 ```
-
-</TabItem>
-<TabItem value="track">
-
-```java
-// 初始化SDK时，可以提前注册 oaid 模块
-GrowingTracker.startWithConfiguration(this,
-        new TrackConfiguration("accountId", "urlScheme")
-        //...
-        .addPreloadComponent(new OaidLibraryGioModule(), oaidConfig)
-);
-```
-
-</TabItem>
-</Tabs>
 
 ### 示例
 配置完成后之后会在 `Visit` 事件中添加 `oaid` 字段：

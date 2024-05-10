@@ -30,7 +30,7 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 
 ## 注册模块代码
 
-** 初始化配置时集成模块 **
+**初始化配置时集成模块**
 ```java
 // 初始化SDK时，可以注册对应模块
 GrowingAutotracker.startWithConfiguration(this,
@@ -43,7 +43,7 @@ GrowingAutotracker.startWithConfiguration(this,
 );
 ```
 
-** 运行时注册模块 **
+**运行时注册模块**
 
 所有的模块都可以在运行中注册替换。
 

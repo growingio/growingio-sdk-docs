@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## API列表
-### 无埋点SDK API列表一览
+### 通用API列表一览
 ```java
 GrowingAutotracker.get().setDataCollectionEnabled(true)
 GrowingAutotracker.get().setLoginUserId("userId")
@@ -26,11 +26,17 @@ GrowingAutotracker.get().trackTimerEnd("timerId")
 GrowingAutotracker.get().removeTimer("timerId")
 GrowingAutotracker.get().clearTrackTimer()
 GrowingAutotracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
-GrowingAutotracker.get().registerComponent(module,<config>)
+GrowingAutotracker.get().registerComponent(module, <config>)
 GrowingAutotracker.get().setGeneralProps(new HashMap<>())
 GrowingAutotracker.get().removeGeneralProps("key1", "key2")
 GrowingAutotracker.get().clearGeneralProps()
+GrowingAutotracker.get().setDynamicGeneralPropsGenerator(new DynamicGeneralPropsGenerator())
+```
 
+### 无埋点功能 API 列表一览
+以下API需要SDK开启无埋点功能后才能生效（默认开启）。
+
+```java
 GrowingAutotracker.get().autotrackPage(activity, "alias", new HashMap<>())
 GrowingAutotracker.get().autotrackPage(androidx.fragment.app.Fragment, "alias", new HashMap<>())
 GrowingAutotracker.get().autotrackSystemPage(android.app.Fragment, "alias", new HashMap<>())
@@ -47,41 +53,8 @@ GrowingAutotracker.get().ignoreViewClick(view, true)
 GrowingAutotracker.get().trackEditText(editText, true)
 ```
 
-### 埋点SDK API列表一览
-```java
-GrowingTracker.get().setDataCollectionEnabled(true)
-GrowingTracker.get().setLoginUserId("userId")
-GrowingTracker.get().setLoginUserId("userId", "userKey")
-GrowingTracker.get().cleanLoginUserId()
-GrowingTracker.get().setLocation(20.11, 20.11)
-GrowingTracker.get().cleanLocation()
-GrowingTracker.get().trackCustomEvent("eventName")
-GrowingTracker.get().setLoginUserAttributes(new HashMap<>())
-GrowingTracker.get().getDeviceId()
-GrowingTracker.get().bridgeWebView(webview)
-GrowingTracker.get().trackTimerStart("timer")
-GrowingTracker.get().trackTimerPause("timerId")
-GrowingTracker.get().trackTimerResume("timerId")
-GrowingTracker.get().trackTimerEnd("timerId")
-GrowingTracker.get().removeTimer("timerId")
-GrowingTracker.get().clearTrackTimer()
-GrowingTracker.get().doDeepLinkByUrl("Your DeepLinkUrl", new DeepLinkCallback())
-GrowingTracker.get().registerComponent(module,<config>)
-GrowingTracker.get().setGeneralProps(new HashMap<>())
-GrowingTracker.get().removeGeneralProps("key1", "key2")
-GrowingTracker.get().clearGeneralProps()
-```
 ## 通用 API 详细说明
-无埋点SDK和埋点SDK中都可以使用通用API，唯一的区别在于调用的主体不同，比如说在配置SDK模块的接口上：
-
-**无埋点SDK示例代码：**
-```java
-GrowingAutotracker.get().registerComponent(module,<config>)
-```
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().registerComponent(module,<config>)
-```
+SDK中无论是否开启无埋点功能都可以使用通用API。
 
 ### 1. 数据采集开关
 `setDataCollectionEnabled`<br/>
@@ -92,17 +65,10 @@ GrowingTracker.get().registerComponent(module,<config>)
 | `enabled` | _boolean_ | `true`打开数据采集，`false`关闭数据采集，默认 `true` |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().setDataCollectionEnabled(true)
 ```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().setDataCollectionEnabled(true)
-```
-
-
 
 ### 2. 设置登录用户ID 
 `setLoginUserId`<br/>
@@ -121,33 +87,22 @@ GrowingTracker.get().setDataCollectionEnabled(true)
 | `userKey` | _String_ | 适用于ID-MAPPING,可设置 userId 的类型, 默认不传|
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().setLoginUserId("112333445")
 GrowingAutotracker.get().setLoginUserId("112333445","phone")
 ```
 
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().setLoginUserId("112333445")
-GrowingTracker.get().setLoginUserId("112333445","phone")
-```
 
 ### 3. 清除登录用户ID
 `cleanLoginUserId`<br/>
 当用户登出之后调用，清除已经设置的登录用户ID。
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
-GrowingAutotracker.get().cleanLoginUserId()
+GrowingAutotracker.get().cleanLoginUserId();
 ```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().cleanLoginUserId()
-```
-
 
 ### 4. 设置用户的地理位置 
 `setLocation`<br/>
@@ -159,30 +114,19 @@ GrowingTracker.get().cleanLoginUserId()
 | `longitude` | _double_ | 地理坐标点经度 |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().setLocation(39.9, 116.3)
 ```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().setLocation(39.9, 116.3)
-```
-
 
 ### 5. 清除用户的地理位置 
 `cleanLocation`<br/>
 清除用户当前的地理位置
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().cleanLocation()
-```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().cleanLocation()
 ```
 
 
@@ -196,7 +140,7 @@ GrowingTracker.get().cleanLocation()
 | `attributes` | _Map{'<'}String, String{'>'}_ | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)（可选） |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -232,42 +176,6 @@ GrowingAutotracker.get().trackCustomEvent("registerSuccess", map)
 </TabItem>
 </Tabs>
 
-**埋点SDK示例代码：**
-<Tabs
-  groupId="code-language"
-  defaultValue="kotlin"
-  values={[
-    {label: 'java', value: 'java'},
-    {label: 'kotlin', value: 'kotlin'},
-  ]
-}>
-
-<TabItem value="java">
-
-```java
-GrowingTracker.get().trackCustomEvent("registerSuccess");
-
-Map<String, String> map = new HashMap<>();
-map.put("name", "June");
-map.put("age", "12");
-GrowingTracker.get().trackCustomEvent("registerSuccess", map);
-```
-
-</TabItem>
-<TabItem value="kotlin">
-
-```kotlin
-GrowingTracker.get().trackCustomEvent("registerSuccess")
-
-val map: MutableMap<String, String> = HashMap()
-map["name"] = "June"
-map["age"] = "12"
-GrowingTracker.get().trackCustomEvent("registerSuccess", map)
-```
-
-</TabItem>
-</Tabs>
-
 :::info
 
 详细使用示例:[埋点事件示例](/knowledge/basicknowledge/trackEventUse#埋点事件示例)
@@ -285,7 +193,7 @@ GrowingTracker.get().trackCustomEvent("registerSuccess", map)
 | `attributes` | _Map{'<'}String, String{'>'}_ | 用户属性信息 |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -317,37 +225,6 @@ GrowingAutotracker.get().setLoginUserAttributes(map)
 </TabItem>
 </Tabs>
 
-**埋点SDK示例代码：**
-<Tabs
-  groupId="code-language"
-  defaultValue="kotlin"
-  values={[
-    {label: 'java', value: 'java'},
-    {label: 'kotlin', value: 'kotlin'},
-  ]
-}>
-
-<TabItem value="java">
-
-```java
-Map<String, String> map = new HashMap<>();
-map.put("gender", "male");
-map.put("age", "12");
-GrowingTracker.get().setLoginUserAttributes(map);
-```
-
-</TabItem>
-<TabItem value="kotlin">
-
-```kotlin
-val map: MutableMap<String, String> = HashMap()
-map["gender"] = "male"
-map["age"] = "12"
-GrowingTracker.get().setLoginUserAttributes(map)
-```
-
-</TabItem>
-</Tabs>
 
 :::info
 
@@ -362,14 +239,9 @@ GrowingTracker.get().setLoginUserAttributes(map)
 如果没有初始化SDK 或者关闭采集开关可能返回值为null，且可能有IO操作。
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().getDeviceId()
-```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().getDeviceId()
 ```
 
 ### 9. WebView桥接 
@@ -384,14 +256,9 @@ GrowingTracker.get().getDeviceId()
 | `view` | _View_   | 可选为 `webview`、`ucwebview`和`x5webview` |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().bridgeWebView(webview)
-```
-
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().bridgeWebView(webview)
 ```
 
 ### 10. 事件计时器
@@ -429,7 +296,7 @@ GrowingTracker.get().bridgeWebView(webview)
 | `timerId` | _String_ | 计时器唯一标识 |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 //初始化一个事件计时器
 String timerId = GrowingAutotracker.get().trackTimerStart('eventName');
@@ -449,25 +316,6 @@ GrowingAutotracker.get().removeTimer(timerId);
 GrowingAutotracker.get().clearTrackTimer();
 ```
 
-**埋点SDK示例代码：**
-```java
-//初始化一个事件计时器
-String timerId = GrowingTracker.get().trackTimerStart('eventName')
-//暂停事件计时器
-GrowingTracker.get().trackTimerPause(timerId);
-//恢复事件计时器
-GrowingTracker.get().trackTimerResume(timerId);
-
-//停止事件计时器
-GrowingTracker.get().trackTimerEnd(timerId);
-//停止事件计时器携带事件属性
-GrowingTracker.get().trackTimerEnd(timerId, new HashMap<>());
-
-//删除事件计时器
-GrowingTracker.get().removeTimer(timerId);
-//清除事件计时器
-GrowingTracker.get().clearTrackTimer();
-```
 
 :::caution 注意
 trackTimerEnd时发送CUSTOM事件上报数据：
@@ -487,7 +335,8 @@ event_duration 时间统计不会计算后台时间：
 
 ### 12. 注册模块组件 
 `registerComponent`<br/>
-可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
+可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册。
+模块列表可以参考[模块列表](/docs/android/modules)。
 #### 参数说明
 | 参数     | 参数类型           | 说明 |
 | :------- | :----------------- | :--- |
@@ -495,59 +344,97 @@ event_duration 时间统计不会计算后台时间：
 | `config` | _Configuration_ | 模块的配置类(可选参数) |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
-GrowingAutotracker.get().registerComponent(module,<config>)
-```
-**埋点SDK示例代码：**
-```java
-GrowingTracker.get().registerComponent(module,<config>)
+GrowingAutotracker.get().registerComponent(module, <config>)
 ```
 
-### 13. 全局通用属性
+### 13. 全局静态通用属性
+当设置了静态属性后将会为所有的事件添加属性，直到调用删除通用属性接口来清空。
+静态属性值只保存在内存中，不会保存至应用数据存储中，所以需要应用每次启动后重新设置。
+
 `setGeneralProps`<br/>
-设置全局通用属性
+设置全局静态通用属性
 
 `clearGeneralProps`<br/>
-清空全局通用属性
+清空全局静态通用属性
 
 `removeGeneralProps`<br/>
-删除指定通用属性
+删除指定静态通用属性
 
 #### 参数说明
 | 参数        | 参数类型 | 说明                 |
 | :---------- | :------- | :------------------- |
-| `variables` | _Map{'<'}String, String{'>'}_ | 设置通用属性信息 |
-| `keys`      | _String..._ | 删除指定通用属性|
+| `variables` | _Map{'<'}String, String{'>'}_ | 设置静态通用属性信息 |
+| `keys`      | _String..._ | 删除指定静态通用属性|
 
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
-// 设置全局通用属性
+// 设置全局静态通用属性
 Map<String, String> map = new HashMap<>();
 map.put("gender", "male");
 map.put("age", "12");
 GrowingAutotracker.get().setGeneralProps(map);
-// 删除指定全局通用属性
+// 删除指定全局静态通用属性
 GrowingAutotracker.get().removeGeneralProps("gender", "age");
-// 清空全局通用属性
+// 清空全局静态通用属性
 GrowingAutotracker.get().clearGeneralProps();
 ```
 
-**埋点SDK示例代码：**
+### 14. 全局动态通用属性
+与全局静态通用属性相似，设置后将会为所有的事件添加属性。不同的是全局动态通用属性传入的为回调函数，每次获取时会调用函数动态获取相应的值。
+
+`setDynamicGeneralPropsGenerator`<br/>
+设置动态通用属性回调
+
+#### 参数说明
+| 参数        | 参数类型 | 说明                 |
+| :---------- | :------- | :------------------- |
+| `generator` | _DynamicGeneralPropsGenerator_ | 设置动态通用属性回调 |
+
+#### 示例
+
+**SDK示例代码：**
+<Tabs
+  groupId="code-language"
+  defaultValue="kotlin"
+  values={[
+    {label: 'java', value: 'java'},
+    {label: 'kotlin', value: 'kotlin'},
+  ]
+}>
+
+<TabItem value="java">
+
 ```java
-Map<String, String> map = new HashMap<>();
-map.put("gender", "male");
-map.put("age", "12");
-GrowingTracker.get().setGeneralProps(map);
-// 删除指定全局通用属性
-GrowingTracker.get().removeGeneralProps("gender", "age");
-// 清空全局通用属性
-GrowingTracker.get().clearGeneralProps();
+// 设置全局静态通用属性
+GrowingAutotracker.get().setDynamicGeneralPropsGenerator(new DynamicGeneralPropsGenerator() {
+    @Override
+    public Map<String, String> generateDynamicGeneralProps() {
+        HashMap map = getYourMapLogic();
+        return map;
+    }
+});
 ```
 
-### 14. 属性工具
+</TabItem>
+<TabItem value="kotlin">
+
+```kotlin
+GrowingAutotracker.get().setDynamicGeneralPropsGenerator(object : DynamicGeneralPropsGenerator {
+    override fun generateDynamicGeneralProps(): Map<String, String>? {
+        val map = getYourMapLogic();
+        return map
+    }
+})
+```
+
+</TabItem>
+</Tabs>
+
+### 15. 属性工具
 AttributesBuilder是SDK提供给用户协助设置属性的工具类，支持传入多种类型属性值(包含列表类型)
 
 `addAttribute`<br/>
@@ -567,7 +454,7 @@ AttributesBuilder是SDK提供给用户协助设置属性的工具类，支持传
 
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 AttributesBuilder builder = new AttributesBuilder();
 // 设置属性
@@ -590,35 +477,15 @@ builder.size();
 GrowingAutotracker.get().trackCustomEvent("registerSuccess", builder.build());
 ```
 
-**埋点SDK示例代码：**
-```java
-AttributesBuilder builder = new AttributesBuilder();
-// 设置属性
-Map<String, Object> map = new HashMap<>();
-map.put("Key", "Value");
-builder.addAttribute(map);
-builder.addAttribute("String", "1");
-builder.addAttribute("List", Arrays.asList("1", "2"));
-builder.addAttribute("Set", Set.of("1", "2"));
-builder.addAttribute("JSONArray", new JSONArray());
-builder.addAttribute("SparseArray", new SparseArray<>());
-builder.addAttribute("String[]", new String[]{"1", "2"});
-// 删除指定属性
-builder.removeAttribute("Key");
-// 清除属性
-builder.clear();
-// 返回当前设置的属性个数
-builder.size();
-// 发送埋点
-GrowingTracker.get().trackCustomEvent("registerSuccess", builder.build());
-```
 
 ## 无埋点 API 详细说明
-无埋点 API 是用户集成无埋点SDK后可以调用的接口，主要用于辅助无埋点事件的采集和发送。
+无埋点 API 是用户开启无埋点功能后才生效的接口，主要用于辅助无埋点事件的采集和发送。
 
 ### 1. 采集页面事件
 `autotrackPage`, `autotrackSystemPage`, `autotrackSupportPage`<br/>
-从 4.0 版本开始，无埋点SDK不再自动采集App的内部页面，需要开发者手动调用接口声明才会发送 `Page` 事件。
+从 4.0.0 版本开始，无埋点SDK不再自动采集App的内部页面，需要开发者手动调用接口声明才会发送 `Page` 事件。
+
+> 从 4.2.0 开始，在初始化配置时通过接口 `setPageRuleXml` 配置页面规则也可以发送 `Page` 事件。
 
 #### 参数说明
 | 参数    | 参数类型                  | 是否必填 | 说明          |
@@ -632,7 +499,7 @@ GrowingTracker.get().trackCustomEvent("registerSuccess", builder.build());
 
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -685,7 +552,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 | `attributes` | _Map{'<'}String, String{'>'}_     | 属性信息      |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -737,7 +604,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 | `attributes`          | _Map{'<'}String, String{'>'}_ | 曝光的事件属性             |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 <Tabs
   groupId="code-language"
   defaultValue="kotlin"
@@ -780,7 +647,7 @@ GrowingAutotracker.get().trackViewImpression(view, "buttonShowed", map)
 | `trackedView` | _View_   | 需要停止采集曝光事件的View对象 |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().stopTrackViewImpression(trackedView)
 ```
@@ -795,7 +662,7 @@ GrowingAutotracker.get().stopTrackViewImpression(trackedView)
 | `tag`  | _String_ | 需要设置的Tag             |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
 ```
@@ -810,7 +677,7 @@ GrowingAutotracker.get().setUniqueTag(button, "homeTabButton")
 | `policy` | _IgnorePolicy_ | 1. `IGNORE_SELF` 只忽略自己 <br />2. `IGNORE_CHILD` 只忽略该View的子View <br />3. `IGNORE_ALL` 忽略所有，包括自己和该View的子View |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().ignoreView(view, IgnorePolicy.IGNORE_SELF)
 ```
@@ -825,7 +692,7 @@ GrowingAutotracker.get().ignoreView(view, IgnorePolicy.IGNORE_SELF)
 | `isIgnore` | _boolean_    |   是否不再产生该View的点击事件 |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().ignoreViewClick(view, true)
 ```
@@ -840,7 +707,7 @@ GrowingAutotracker.get().ignoreViewClick(view, true)
 | `track` | _boolean_    |   是否采集编辑框文字 |
 #### 示例
 
-**无埋点SDK示例代码：**
+**SDK示例代码：**
 ```java
 GrowingAutotracker.get().trackEditText(editText, true)
 ```

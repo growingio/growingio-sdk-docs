@@ -7,9 +7,8 @@ title: H5混合模块
 
 若需要 H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通，请参考 [Hybrid内嵌页打通插件](/docs/webjs/plugins/hybridAdapter)
 
-如果集成的是[**无埋点SDK**](/docs/android/Introduce#集成无埋点sdk)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
-
-如果集成的是[**埋点SDK**](/docs/android/Introduce#集成埋点sdk)，则项目需要添加 hybrid 模块依赖(和 SDK 依赖同级)
+如果已集成 SDK Gradle 插件，则不需要做设置，SDK 会自动注入桥接代码，实现数据打通。
+否则需要调用SDK接口 `GrowingAutotracker.get().bridgeWebView(webview)` 手动与 WebView 进行数据打通。
 
 :::tip
 hybrid 模块目前支持系统Webview，[X5WebView](https://x5.tencent.com/docs/webview.html)，[UCWebView](https://help.aliyun.com/document_detail/49762.html)
@@ -22,7 +21,7 @@ import TabItem from '@theme/TabItem';
 ### SDK说明
 | 关键词   | 是否集成|  输入数据类 | 输出数据类 | 最低SDK版本 |
 | :------- | :------:   | --:|  ---:| :---|
-| hybrid  | 埋点SDK中，手动集成<br />无埋点中自动注入 | 1. `HybridBridge` <br /> 2. `HybridDom` | 1. `Boolean` <br /> 2.`HybridJson` | - |
+| hybrid  | 自动集成<br /> | 1. `HybridBridge` <br /> 2. `HybridDom` | 1. `Boolean` <br /> 2.`HybridJson` | - |
 
 ### 依赖方式
 <Tabs
@@ -38,7 +37,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:hybrid:4.2.0'
+	implementation 'com.growingio.android:hybrid:4.3.0'
 }
 ```
 </TabItem>
@@ -48,7 +47,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.2.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.0')
 
   implementation 'com.growingio.android:hybrid'
 }
@@ -58,25 +57,13 @@ dependencies {
 </Tabs>
 
 ### 使用方式
-在埋点SDK中需要手动集成 Hybrid 模块才能实现与内嵌 H5 的数据互通。
-
-**埋点SDK示例代码：**
-
-```java
-// 在初始化SDK时，可以提前注册hybrid模块
-// hybrid模块需要依赖对应 hybrid模块包 hybrid
-GrowingTracker.startWithConfiguration(this,
-                new TrackConfiguration("accountId", "urlScheme")
-                //...
-                .addPreloadComponent(new HybridLibraryGioModule()));
-```
-
+如果未集成 SDK Gradle 插件，则需要手动调用接口才能实现与内嵌 H5 的数据互通。
 需要在 WebView 初始化之后调用桥接代码，实现访问用户数据打通:
 
-**埋点SDK示例代码：**
+**SDK示例代码：**
 
 ```java
-GrowingTracker.get().bridgeWebView(webview)
+GrowingAutotracker.get().bridgeWebView(webview)
 ```
 
 ### 结果
