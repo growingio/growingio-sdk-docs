@@ -590,9 +590,9 @@ NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
 </Tabs>
 
 
-### 11. 追踪页面展示事件
+### 11. 采集页面事件
 `autotrackPage(_ viewController: UIViewController, alias: String, attributes: [String: Any]?)`<br/>
-追踪页面展示事件，需要在 viewDidAppear 执行之前调用
+采集页面事件，需要在 viewDidAppear 执行之前调用
 
 #### 参数说明
 
