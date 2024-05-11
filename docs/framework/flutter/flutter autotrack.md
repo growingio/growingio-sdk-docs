@@ -26,7 +26,7 @@ MaterialApp(
 ```
 
 ### 获取 Route 信息
-为了获取Route中的页面信息，GrowingIO Flutter SDK扩展了Route的实现，方便SDK计算页面的属性的路径，所以需要在集成时对Route做额外处理，下面列举了几种比较常见且推荐的Route实现方式。
+为了获取Route中的页面信息，GrowingIO Flutter SDK扩展了Route的实现，方便SDK计算页面的属性和路径，所以需要在集成时对Route做额外处理，下面列举了几种比较常见且推荐的Route实现方式。
 
 #### 示例一：Route
 对应方法为 `Navigator.push(context, route)`。
@@ -38,7 +38,7 @@ class AppNavigator {
 }
 ```
 
-此时需要将 `MaterialPageRoute` 替换为 `GrowingMaterialPageRoute`,来帮助 GrowingIO Flutter SDK获取到页面信息，如下所示
+在SDK中需要将 `MaterialPageRoute` 替换为 `GrowingMaterialPageRoute`，来帮助 GrowingIO Flutter SDK获取到页面信息，如下所示
 
 ```dart
 import 'package:growingio_flutter_plugin/growingio_autotracker_interface.dart';
@@ -63,9 +63,9 @@ Navigator.of(context).push(AppNavigator.page1);
 对应方法为 `Navigator.pushNamed(context, '/page');`
 该示例通常会为每一个路由定义一个路径名称，然后跳转时直接调用名称即可。
 
-同样的也使用 `GrowingMaterialPageRoute` 替换原来的 `MaterialPageRoute` 或者 `GrowingCupertinoPageRoute` 替换原来的 `CupertinoPageRoute`。
+同样的可以使用 `GrowingMaterialPageRoute` 替换原来的 `MaterialPageRoute` 或者 `GrowingCupertinoPageRoute` 替换原来的 `CupertinoPageRoute`。
 
-举例说说嘛
+举例说明
 ```dart
 import 'package:growingio_flutter_plugin/growingio_autotracker_interface.dart';
 
@@ -113,7 +113,7 @@ Navigator.pushNamed(context, AppNavigator.home);
 > 注意，在声明 Route 的时候，请传入 `RouteSettings` 以方便我们定义页面的名称并作为页面事件的 `alias`。
 
 #### 示例三：自定义Route
-若客户中已经自定义了 Route 并扩展了其功能，无法直接替换，这时候可以使用 `GrowingPageRouteMixin` 类进行扩展。
+若客户在应用中已经自定义了 Route 并扩展了其功能，无法直接替换，这时候可以使用 `GrowingPageRouteMixin` 类进行扩展。
 
 比如我们自定义一个 `CustomRoute` 类来增加 Route 的功能，其实现如下所示：
 ```dart

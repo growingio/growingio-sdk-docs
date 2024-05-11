@@ -89,7 +89,7 @@ void main() async {
 | dataSourceId          | String           |    是    | null  | 应用的DataSourceId，唯一值        |  -  |
 | urlScheme             | String           |    是    | null  | 应用特有的URLScheme，用于外部应用拉起应用，如圈选   | -          |
 | dataCollectionServerHost  | String       |    否    | null  | 服务端部署后的 ServerHost     |  -  |
-| autoTrackAllRoutePage  | bool            |    否    | false  | 是否自动开启页面采集，无埋点独有     |  -  |
+| autoTrackAllRoutePage  | bool            |    否    | true  | 是否自动开启页面采集     |  -  |
 | debugEnabled              | bool         |    否    | false | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |
 | cellularDataLimit         | int          |    否    | 10    | 每天发送数据的流量限制，单位MB        | -  |
 | dataUploadInterval        | int          |    否    | 15    | 数据发送的间隔，单位秒                | -          |
