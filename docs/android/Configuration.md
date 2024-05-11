@@ -80,7 +80,7 @@ import TabItem from '@theme/TabItem';
 
 ### 5. setDataUploadInterval
 
-上报间隔。GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15秒的情况下向服务器发送事件包（最大50条事件）。
+上报间隔。GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15秒的情况下向服务器发送事件包（最大100条事件）。
 
 ### 6. setSessionInterval
 
