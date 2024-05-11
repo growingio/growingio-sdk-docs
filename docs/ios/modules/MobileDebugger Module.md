@@ -10,6 +10,8 @@ GrowingIO SDK 支持的 Mobile Debugger 工具，可对应用中集成的SDK事�
 :::info
 当你集成无埋点 / 埋点 SDK 时，Debugger 模块会默认集成到 SDK 中。
 
+SDK 延迟初始化时，扫码 Debugger 在冷启动情况下 (先唤起应用再初始化 SDK) 无法正常使用，请使用热启动方式。
+
 若不想要在生产环境中集成 Debugger 模块，可参考 [基于 GrowingIO 现有 SDK 基础上的二次开发](/blog/custom%20ios%20sdk)，自定义 SDK 模块。
 :::
 
