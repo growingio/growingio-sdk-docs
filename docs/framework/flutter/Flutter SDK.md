@@ -3,19 +3,17 @@ sidebar_position: 1
 title: Flutter SDK 插件
 ---
 
-Flutter SDK 插件同时具备 无埋点SDK 和 埋点SDK 功能，但是在使用 Flutter 无埋点功能前需要按照 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect) 才能使无埋点功能生效。
+Flutter SDK 插件时集成后，即可以使用SDK的埋点功能，若是需要无埋点功，需要在集成插件后再做额外的页面配置才能使其生效。
 
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## 环境配置
-
 :::info
 
 * Flutter SDK 插件的更新日志，可参阅 [Release Notes](/docs/framework/flutter/index.md#版本记录)
-* Flutter SDK 无埋点如何生效，请阅读 [Flutter Aspect 集成](/docs/framework/flutter/Flutter%20Aspect)
+* Flutter SDK 无埋点如何生效，请阅读 [Flutter 无埋点](/docs/framework/flutter/flutter%20autotrack)
 
 :::
 
@@ -23,12 +21,12 @@ import TabItem from '@theme/TabItem';
 
 ### 添加依赖
 
-以工程`flutter_app`为例，在`pubspec.yaml`文件中添加依赖。
+在 Flutter 项目的`pubspec.yaml`文件中 dependencies 里面添加 `growingio_flutter_plugin` 依赖。
 
 
 ```c
 dependencies:
-  growingio_flutter_plugin: '4.0.0'
+  growingio_flutter_plugin: '^4.0.0'
 ```
 
 
@@ -39,129 +37,85 @@ dependencies:
 
   | Flutter 插件版本 |  Android SDK 版本范围   |  Apple SDK 版本范围  |
   | :-------------- | :----------------- | :------: |
-  | >= v1.1.3 | >= v3.5.0 | >= v3.5.0 |
-  | = v2.0.0 | >= v4.1.0 | >= v4.1.0 |
+  | = v4.0.0 | >= v4.3.0 | >= v4.3.0 |
 
 </details>
 
 :::info 原生+Flutter
-若是纯 Flutter 应用，上述集成就可以使用了。若是项目中同时具有原生代码和Flutter，且原生也需要支持无埋点功能，那么就需要基于[无埋点初始化配置](/docs/android/Introduce#sdk初始化配置)集成原生的SDK。
-Flutter和原生共用一套SDK逻辑，不会初始化两次。
-
-> 在Android中， Gradle Plugin 若出现 'no growingio autotracker sdk dependency was found' 的编译错误，可以将插件的配置项 skipDependencyCheck 设置为true。
+若是纯 Flutter 应用，上述集成就可以使用了,Flutter和原生共用一套SDK逻辑，不会重复初始化两次。  
+若是在 Android 项目中同时包含了原生界面，且需要无埋点功能支持，那么就需要额外在 Android 配置中添加 [GrowingIO Gradle 插件](/docs/android/AGP7)才能使原生无埋点生效。 
+在 iOS 项目中则无需其他操作。
 
 :::
 
 ### Flutter 插件初始化
 
-GrowingIO Flutter SDK 支持在 Flutter 中初始化 SDK，也同时支持在原生代码中初始化。如果需要更多的功能设置，我们更推荐您在原生端实现初始化。
+GrowingIO Flutter SDK 需要在 Flutter 中初始化 SDK。
 
-#### 原生端初始化
-
-原生端初始化请参考各端的初始化文档：
-
-* Android: [无埋点初始化配置](/docs/android/Introduce#sdk初始化配置)、[埋点初始化配置](/docs/android/Introduce#sdk初始化配置-1)，另外，在 Android 原生初始化需要额外添加 [Flutter 模块](/docs/android/modules/flutter%20module#使用方式)
-* iOS: [无埋点初始化配置](/docs/ios/Introduce#添加无埋点-sdk-到您的应用)、[埋点初始化配置](/docs/ios/Introduce#添加埋点-sdk-到您的应用)
 
 #### Flutter 初始化
 
-在 Flutter 端进行初始化，请将 SDK 的初始化代码放入 `main.dart` 的 `main` 中，代码示例如下：
+在 Flutter 端进行初始化，推荐将 SDK 的初始化代码放入 `main.dart` 的 `main` 中，代码示例如下：
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
 
 ```dart
 
 void main() async {
-  ...
-  WidgetsFlutterBinding.ensureInitialized();
-  GrowingAutotracker.startWithConfiguration(
-    projectId: "Your ProjectId",
-    dataCollectionServerHost: "Your collection server host",
-    dataSourceId: "Your datasourceid",
-    urlScheme: "Yoour Url Scheme",
-    debugEnabled: true,
-    modules: {
-      AdvertLibraryGioModule(config: AdvertConfig()),
-    },
-    dataCollectionEnabled: true,
-    autoTrackAllRoutePage: false,
-    idMappingEnabled: true,
-    cellularDataLimit: 10,
-    dataUploadInterval: 15,
-    sessionInterval: 20,
-  );
-  ...
+  /// 代码中的 <ProjectId>、<DataSourceId>、<UrlScheme>请自行替换为自己项目的对应值。
+  var option = AutotrackerConfiguration("<ProjectId>", "<DataSourceId>", "<UrlScheme>");
+  option.dataCollectServerHost = "https://napi.growingio.com";
+  option.debugEnabled = false;
+  option.dataCollectionEnable = true;
+  option.androidConfig = AndroidConfiguration(
+      channel: "应用宝", androidIdEnabled: true, imeiEnabled: false, requireAppProcessesEnabled: true);
+      
+  option.addGioComponent(EncoderLibraryGioModule());
+
+  /// 设置完配置后，调用该接口进行初始化
+  GrowingAutotracker.startWithConfiguration(option);
+
+
   runApp(MyApp());
 }
 ```
-
-</TabItem>
-
-<TabItem value="tracker">
-
-```dart
-void main() async {
-  ...
-  WidgetsFlutterBinding.ensureInitialized();
-  GrowingTracker.startWithConfiguration(
-    projectId: "Your ProjectId",
-    dataCollectionServerHost: "Your collection server host",
-    dataSourceId: "Your datasourceid",
-    urlScheme: "Yoour Url Scheme",
-    debugEnabled: true,
-    modules: {
-      AdvertLibraryGioModule(config: AdvertConfig()),
-      ProtobufLibraryModule()
-    },
-    dataCollectionEnabled: true,
-    idMappingEnabled: true,
-    cellularDataLimit: 10,
-    dataUploadInterval: 15,
-    sessionInterval: 20,
-  );
-  ...
-  runApp(MyApp());
-}
-```
-
-</TabItem>
-
-</Tabs>
 
 ## 初始化配置说明
 
-在 Flutter 初始化中会传入各式的参数，参数配置如下表所示：
+在 Flutter 初始化中会传入各式的参数，`AutotrackerConfiguration` 参数配置如下表所示：
 
 | 配置项                   | 参数类型  | 是否必填 | 默认值  | 说明  | 版本 |
 | :-----------------------| :------: | :------: | :------: | :------ | :------ |
 | projectId             | String           |    是    | null  | 项目ID，每个应用对应唯一值 | -     |
-| urlScheme             | String           |    是    | null  | Android 应用特有的URLScheme，用于外部应用拉起应用，如圈选   | -          |
 | dataSourceId          | String           |    是    | null  | 应用的DataSourceId，唯一值        |  -  |
-| dataCollectionServerHost  | String           |    是    | null  | 服务端部署后的 ServerHost     |  -  |
-| autoTrackAllRoutePage  | bool           |    否    | false  | 是否自动开启页面采集，无埋点独有     |  >=4.1.0  |
-| channel                   | String           |    否    | null  | 应用的分发渠道     | -          |
-| debugEnabled              | bool          |    否    | false | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |
-| cellularDataLimit         | int             |    否    | 10    | 每天发送数据的流量限制，单位MB        | -  |
-| dataUploadInterval        | int              |    否    | 15    | 数据发送的间隔，单位秒                | -          |
-| sessionInterval           | int              |    否    | 30   | 会话后台留存时长，单位秒  |  - |
-| dataCollectionEnabled     | bool          |    否    | true  | 是否采集数据               |  - |
+| urlScheme             | String           |    是    | null  | 应用特有的URLScheme，用于外部应用拉起应用，如圈选   | -          |
+| dataCollectionServerHost  | String       |    否    | null  | 服务端部署后的 ServerHost     |  -  |
+| autoTrackAllRoutePage  | bool            |    否    | false  | 是否自动开启页面采集，无埋点独有     |  -  |
+| debugEnabled              | bool         |    否    | false | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |
+| cellularDataLimit         | int          |    否    | 10    | 每天发送数据的流量限制，单位MB        | -  |
+| dataUploadInterval        | int          |    否    | 15    | 数据发送的间隔，单位秒                | -          |
+| sessionInterval           | int          |    否    | 30   | 会话后台留存时长，单位秒  |  - |
+| dataCollectionEnabled     | bool         |    否    | true  | 是否采集数据               |  - |
 | requestTimeout            | int          |    否    | 30  | 设置数据上报请求的超时时间，单位秒               |  - |
-| androidIdEnabled     | bool          |    否    | false  | 是否在 Android 设备上采集 AndroidId           |  - |
-| imeiEnabled     | bool          |    否    | false  | 是否在 Android 设备上采集 imei          |  - |
-| modules  | `Set<LibraryGioModule>` | 否 | empty | 模块集成，具体请阅读下方的模块说明 | - |
+| dataValidityPeriod        | int          |    否    | 7  | 设置为上报数据在数据库的缓存时间，单位天               |  - |
+| idMappingEnabled          | bool         |    否    | false  | 是否开启多用户身份上报               |  - |
+| autotrackEnabled          | bool         |    否    | true  | 设置原生端是否打开无埋点功能               |  - |
+| modules  | `Set<LibraryGioModule>`       |    否    | empty | 模块集成，具体请阅读下方的模块说明 | - |
+| androidConfig  | `AndroidConfiguration`  |    否    | null | 用于配置Android设备上特有的一些属性 | - |
+| iosConfig      | `IosConfiguration`      |    否    | null | 用于配置iOS设备上特有的一些属性 | - |
 
-### urlScheme 说明
+`AndroidConfiguration` 参数特有配置如下表所示
+| 配置项                   | 参数类型  | 是否必填 | 默认值  | 说明  | 版本 |
+| :-----------------------| :------: | :------: | :------: | :------ | :------ |
+| channel                   | String       |    否    | null  | Android 应用的分发渠道     | -          |
+| androidIdEnabled          | bool         |    否    | false  | 是否允许在 Android 设备上采集 AndroidId           |  - |
+| imeiEnabled               | bool         |    否    | false  | 是否允许在 Android 设备上采集 imei          |  - |
+| requireAppProcessesEnabled   | bool      |    否    | false  | 是否允许在 Android 设备上获取应用进程名称          |  - |
 
-在使用 GrowingIO SDK 的Mobile Debugger 和圈选功能时，需要外部浏览器通过扫描二维码来拉起应用。
+`IosConfiguration` 目前暂无特有配置。
+
+### urlScheme 配置说明
+
+在使用 GrowingIO SDK 的 Mobile Debugger 和圈选功能时，用于外部浏览器通过扫描二维码来拉起应用。
 
 * [Android 端 URLScheme 配置说明](/docs/android/Introduce#添加url-scheme)
 * [iOS 端 URLScheme 配置说明](/docs/ios/Introduce#步骤-4-添加-url-scheme-ios-平台)
@@ -175,44 +129,32 @@ GrowingIO SDK 利用模块来实现SDK核心功能以外的额外功能，在 Fl
 #### 广告功能
 
 ```dart
-GrowingTracker.startWithConfiguration(
-    //....
-    modules: {
-      AdvertLibraryGioModule(
-        config: AdvertConfig(readClipBoardEnable: true, /// 是否打开剪切板
-          deepLinkHost: "Your deepLinkHost", /// 深度链接配置地址, SaaS取默认值 “https://link.growingio.com”
-          asaEnabled: true, /// 仅iOS端使用
-          deepLinkCallback:(Map<String,String> params,int error,int time){
-            ///监听深度链接中的地址参数
-          },
-      )),
-    },
-    //....
-  );
+  option.addGioComponent(AdsLibraryGioModule(
+      config: AdsConfig(
+          readClipBoardEnable: true,
+          asaEnabled: true,
+          deepLinkHost: "https://ads-uat.growingio.cn",
+          deepLinkCallback: (Map params, int error, int time) {
+            print("deeplink params: $params");
+          })));
 
 ```
 
 广告模块包括激活事件和深度链接，能帮助客户提供广告，活动的引导跳转和下载。
 
 :::info
-在 Flutter SDK 启动广告模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
+什么是广告模块，请参考原生端说明：
 
-* [Android 端 引入广告模块](/docs/android/modules/advert%20module)
-* [iOS 端 引入广告模块](/docs/ios/modules/Ads%20Module)
+* [Android 已默认引入广告模块](/docs/android/modules/advert%20module)
+* [iOS 端 需引入广告模块](/docs/ios/modules/Ads%20Module)
+
 
 :::
 
 #### 加密模块
 
 ```dart
-GrowingTracker.startWithConfiguration(
-    //....
-    modules: {
-      EncoderLibraryGioModule(),
-    },
-    //....
-  );
-
+option.addGioComponent(EncoderLibraryGioModule());
 ```
 
 加密模块用于数据网络上传数据的加密。
@@ -220,14 +162,7 @@ GrowingTracker.startWithConfiguration(
 #### Json 模块
 
 ```dart
-GrowingTracker.startWithConfiguration(
-    //....
-    modules: {
-      JsonLibraryModule(),
-    },
-    //....
-  );
-
+option.addGioComponent(JsonLibraryModule());
 ```
 
 Json 数据模块将会使用 Json 格式保存和上传事件数据。
@@ -235,13 +170,7 @@ Json 数据模块将会使用 Json 格式保存和上传事件数据。
 #### H5混合模块
 
 ```dart
-GrowingTracker.startWithConfiguration(
-    //....
-    modules: {
-      HybridLibraryGioModule(),
-    },
-    //....
-  );
+option.addGioComponent(HybridLibraryGioModule());
 
 ```
 
@@ -249,75 +178,35 @@ GrowingTracker.startWithConfiguration(
 :::info
 在 Flutter SDK 启动H5混合模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
 
-* Android 端 默认已引入H5混合模块
+* Android 端 默认已引入H5混合模块；
 * [iOS 端 需引入H5混合模块](/docs/ios/modules/Hybrid%20Module)
 
 :::
 
 ## API说明
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
 
 ```dart
-GrowingAutotracker.get().setDataCollectionEnabled(true)
-GrowingAutotracker.get().setLoginUserId(userId: "cpacm",userKey: "name")
-GrowingAutotracker.get().cleanLoginUserId()
-GrowingAutotracker.get().setLoginUserAttributes(attributes: {"sex":"female"});
-GrowingAutotracker.get().setLocation(latitude: 20.11,longitude: 20.11)
-GrowingAutotracker.get().cleanLocation()
-GrowingAutotracker.get().getDeviceId()
-GrowingAutotracker.get().trackCustomEvent(eventName: "eventName", attributes: {"age":"18"})
-String? timerId =await GrowingAutotracker.get().trackTimerStart(eventName: "custom");
-GrowingAutotracker.get().trackTimerPause(timerId: timerId!);
-GrowingAutotracker.get().trackTimerResume(timerId: timerId);
-GrowingAutotracker.get().trackTimerEnd(timerId: timerId,attributes: {});
-GrowingAutotracker.get().removeTimer(timerId: timerId);
-GrowingAutotracker.get().clearTrackTimer();
-GrowingAutotracker.get().setGeneralProps(props:{});
-GrowingAutotracker.get().removeGeneralProps(keys:["col1 row1", "key1"]);
-GrowingAutotracker.get().clearGeneralProps();
+GrowingAutotracker.getContext().setDataCollectionEnabled(true)
+GrowingAutotracker.getContext().setLoginUserId(userId: "cpacm",userKey: "name")
+GrowingAutotracker.getContext().cleanLoginUserId()
+GrowingAutotracker.getContext().setLoginUserAttributes(attributes: {"sex":"female"});
+GrowingAutotracker.getContext().setLocation(latitude: 20.11,longitude: 20.11)
+GrowingAutotracker.getContext().cleanLocation()
+GrowingAutotracker.getContext().getDeviceId()
+GrowingAutotracker.getContext().trackCustomEvent(eventName: "eventName", attributes: {"age":"18"})
+String? timerId =await GrowingAutotracker.getContext().trackTimerStart(eventName: "custom");
+GrowingAutotracker.getContext().trackTimerPause(timerId: timerId!);
+GrowingAutotracker.getContext().trackTimerResume(timerId: timerId);
+GrowingAutotracker.getContext().trackTimerEnd(timerId: timerId,attributes: {});
+GrowingAutotracker.getContext().removeTimer(timerId: timerId);
+GrowingAutotracker.getContext().clearTrackTimer();
+GrowingAutotracker.getContext().setGeneralProps(props:{});
+GrowingAutotracker.getContext().removeGeneralProps(keys:["col1 row1", "key1"]);
+GrowingAutotracker.getContext().clearGeneralProps();
 
-GrowingAutotracker.get().registerComponent(module);
+GrowingAutotracker.getContext().registerComponent(module);
 ```
-
-</TabItem>
-
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().setDataCollectionEnabled(true)
-GrowingTracker.get().setLoginUserId(userId: "cpacm",userKey: "name")
-GrowingTracker.get().cleanLoginUserId()
-GrowingTracker.get().setLocation(latitude: 20.11,longitude: 20.11)
-GrowingTracker.get().cleanLocation()
-GrowingTracker.get().setLoginUserAttributes(attributes: {"sex":"female"})
-GrowingTracker.get().getDeviceId()
-GrowingTracker.get().trackCustomEvent(eventName: "custom",attributes: {"item":"exp"});
-String? timerId =await GrowingTracker.get().trackTimerStart(eventName: "custom");
-GrowingTracker.get().trackTimerPause(timerId: timerId!);
-GrowingTracker.get().trackTimerResume(timerId: timerId);
-GrowingTracker.get().trackTimerEnd(timerId: timerId,attributes: {});
-GrowingTracker.get().removeTimer(timerId: timerId);
-GrowingTracker.get().clearTrackTimer();
-GrowingTracker.get().setGeneralProps(props:{});
-GrowingTracker.get().removeGeneralProps(keys:["col1 row1", "key1"]);
-GrowingTracker.get().clearGeneralProps();
-
-GrowingTracker.get().registerComponent(module);
-```
-
-</TabItem>
-
-</Tabs>
 
 ### 1. 数据采集开关
 
@@ -332,32 +221,10 @@ GrowingTracker.get().registerComponent(module);
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
-
 ```dart
-GrowingAutotracker.get().setDataCollectionEnabled(true);
+GrowingAutotracker.getContext().setDataCollectionEnabled(true);
 ```
 
-</TabItem>
-
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().setDataCollectionEnabled(true);
-```
-
-</TabItem>
-
-</Tabs>
 
 ### 2. 设置登录用户ID
 
@@ -379,31 +246,9 @@ GrowingTracker.get().setDataCollectionEnabled(true);
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
-
 ```dart
-GrowingAutotracker.get().setLoginUserId(userId: "cpacm",userKey: "name");
+GrowingAutotracker.getContext().setLoginUserId(userId: "cpacm",userKey: "name");
 ```
-
-</TabItem>
-
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().setLoginUserId(userId: "cpacm",userKey: "name");
-```
-
-</TabItem>
-</Tabs>
 
 ### 3. 清除登录用户ID
 
@@ -412,30 +257,9 @@ GrowingTracker.get().setLoginUserId(userId: "cpacm",userKey: "name");
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
-
 ```dart
-GrowingAutotracker.get().cleanLoginUserId();
+GrowingAutotracker.getContext().cleanLoginUserId();
 ```
-
-</TabItem>
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().cleanLoginUserId();
-```
-
-</TabItem>
-</Tabs>
 
 ### 4. 设置用户的地理位置
 
@@ -451,30 +275,9 @@ GrowingTracker.get().cleanLoginUserId();
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
-
 ```dart
-GrowingAutotracker.get().setLocation(latitude: 20.11,longitude: 20.11);
+GrowingAutotracker.getContext().setLocation(latitude: 20.11,longitude: 20.11);
 ```
-
-</TabItem>
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().setLocation(latitude: 20.11,longitude: 20.11);
-```
-
-</TabItem>
-</Tabs>
 
 ### 5. 清除用户的地理位置
 
@@ -483,30 +286,9 @@ GrowingTracker.get().setLocation(latitude: 20.11,longitude: 20.11);
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
-
 ```dart
-GrowingAutotracker.get().cleanLocation();
+GrowingAutotracker.getContext().cleanLocation();
 ```
-
-</TabItem>
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().cleanLocation();
-```
-
-</TabItem>
-</Tabs>
 
 ### 6. 设置登录用户属性
 
@@ -522,30 +304,10 @@ GrowingTracker.get().cleanLocation();
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
 
 ```dart
-GrowingAutotracker.get().setLoginUserAttributes(attributes: {"sex":"female"});
+GrowingAutotracker.getContext().setLoginUserAttributes(attributes: {"sex":"female"});
 ```
-
-</TabItem>
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().setLoginUserAttributes(attributes: {"sex":"female"});
-```
-
-</TabItem>
-</Tabs>
 
 ### 7. 设置埋点事件
 
@@ -562,30 +324,9 @@ GrowingTracker.get().setLoginUserAttributes(attributes: {"sex":"female"});
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
-
 ```dart
-GrowingAutotracker.get().trackCustomEvent(eventName: "custom",attributes: {"item":"exp"});
+GrowingAutotracker.getContext().trackCustomEvent(eventName: "custom",attributes: {"item":"exp"});
 ```
-
-</TabItem>
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().trackCustomEvent(eventName: "custom",attributes: {"item":"exp"});
-```
-
-</TabItem>
-</Tabs>
 
 ### 8. 获取设备ID
 
@@ -595,30 +336,10 @@ GrowingTracker.get().trackCustomEvent(eventName: "custom",attributes: {"item":"e
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
-
 ```dart
-GrowingAutotracker.get().getDeviceId();
+GrowingAutotracker.getContext().getDeviceId();
 ```
 
-</TabItem>
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().getDeviceId();
-```
-
-</TabItem>
-</Tabs>
 
 ### 9. 事件化计时器
 
@@ -657,40 +378,15 @@ GrowingTracker.get().getDeviceId();
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
-
 ```dart
-String? timerId =await GrowingAutotracker.get().trackTimerStart(eventName: "custom");
-GrowingAutotracker.get().trackTimerPause(timerId: timerId!);
-GrowingAutotracker.get().trackTimerResume(timerId: timerId);
-GrowingAutotracker.get().trackTimerEnd(timerId: timerId,attributes: {});
-GrowingAutotracker.get().removeTimer(timerId: timerId);
-GrowingAutotracker.get().clearTrackTimer();
+String? timerId =await GrowingAutotracker.getContext().trackTimerStart(eventName: "custom");
+GrowingAutotracker.getContext().trackTimerPause(timerId: timerId!);
+GrowingAutotracker.getContext().trackTimerResume(timerId: timerId);
+GrowingAutotracker.getContext().trackTimerEnd(timerId: timerId,attributes: {});
+GrowingAutotracker.getContext().removeTimer(timerId: timerId);
+GrowingAutotracker.getContext().clearTrackTimer();
 ```
 
-</TabItem>
-<TabItem value="tracker">
-
-```dart
-String? timerId =await GrowingTracker.get().trackTimerStart(eventName: "custom");
-GrowingTracker.get().trackTimerPause(timerId: timerId!);
-GrowingTracker.get().trackTimerResume(timerId: timerId);
-GrowingTracker.get().trackTimerEnd(timerId: timerId,attributes: {});
-GrowingTracker.get().removeTimer(timerId: timerId);
-GrowingTracker.get().clearTrackTimer();
-```
-
-</TabItem>
-</Tabs>
 
 ### 10. 通用属性
 
@@ -703,34 +399,12 @@ GrowingTracker.get().clearTrackTimer();
 `clearGeneralProps()`<br/>
 清除所有已经设置的通用属性。
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
 
 ```dart
-GrowingAutotracker.get().setGeneralProps(props:{"key1":"name"});
-GrowingAutotracker.get().removeGeneralProps(keys:["xxx", "key1"]);
-GrowingAutotracker.get().clearGeneralProps();
+GrowingAutotracker.getContext().setGeneralProps(props:{"key1":"name"});
+GrowingAutotracker.getContext().removeGeneralProps(keys:["xxx", "key1"]);
+GrowingAutotracker.getContext().clearGeneralProps();
 ```
-
-</TabItem>
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().setGeneralProps(props:{"key1":"name"});
-GrowingTracker.get().removeGeneralProps(keys:["xxx", "key1"]);
-GrowingTracker.get().clearGeneralProps();
-```
-
-</TabItem>
-</Tabs>
 
 ### 11. 注册模块组件
 
@@ -746,34 +420,13 @@ GrowingTracker.get().clearGeneralProps();
 
 #### 示例
 
-<Tabs
-  groupId="sdk-type"
-  defaultValue="autotracker"
-  values={[
-    {label: '无埋点', value: 'autotracker'},
-    {label: '埋点', value: 'tracker'},
-  ]
-}>
-
-<TabItem value="autotracker">
-
 ```dart
-GrowingAutotracker.get().registerComponent(JsonLibraryModule());
+GrowingAutotracker.getContext().registerComponent(JsonLibraryModule());
 ```
-
-</TabItem>
-<TabItem value="tracker">
-
-```dart
-GrowingTracker.get().registerComponent(JsonLibraryModule());
-```
-
-</TabItem>
-</Tabs>
 
 ### 12. 无埋点页面事件
 
-Flutter的 Page事件不再基于 Router，而是用开发者通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来实现。
+Flutter的 Page事件可以通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来手动实现。
 
 1. 在 `StatefulWidget` 中，可以将其 State 声明为 Page页面，如下：
 
@@ -801,4 +454,4 @@ class SplashScreen extends StatelessWidget with GrowingPageStatelessMixin {
 
 alias 对应页面的名称，attributes为页面属性。
 
-> 另外，可以直接在 Page 下调用 `trackCustomEvent` 方法，发送的自定义事件就会携带事件属性，如不需要则可以调用`GrowingAutotracker.get().trackCustomEvent`.
+> 另外，可以直接在 Page 下调用 `trackCustomEvent` 方法，发送的自定义事件就会携带事件属性，如不需要则可以调用`GrowingAutotracker.getContext().trackCustomEvent`.

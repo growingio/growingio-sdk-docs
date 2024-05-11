@@ -3,10 +3,12 @@ slug: /framework/flutter
 title: Flutter SDK
 ---
 
-Flutter SDK 提供了插件集成，将与原生SDK一起将 Flutter 事件发送至数据端。 
+GrowingIO Flutter Plugin 插件 growingio_flutter_plugin，封装了GrowingIO Android 和 iOS SDK 常用的 API，使用此插件，可以完成代码埋点的统计和上报。
+
 
 ## 版本记录
-将会与SDK 4.3.0 一起发布。
+|    版本    | 说明 |  日期  |
+| v4.0.0 | 新版本 与 GrowingIO SDK 4.3.0 同步，添加新的接口和参数<br/>- Flutter 的 Page 可以基于 Router发送，也可以手动结合 mixin 类实现，更加清晰的生命周期逻辑和代码结构；<br/>- 圈选的元素只有在定义为 Page 的页面下才能发送元素； | 2024-05-12 |
 
 :::info
 **Dart SDK**： >=2.16.0 
@@ -14,15 +16,14 @@ Flutter SDK 提供了插件集成，将与原生SDK一起将 Flutter 事件发�
 :::
 
 ## 集成准备
-### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
+### 获取SDK初始化必传参数：Account ID、DataSource ID、URL Scheme
 :::info
 AccountID：项目ID，代表一个项目<br/>
 DataSourceID：数据源ID，代表一个数据源<br/>
 URL Scheme： 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识<br/>
-Host：采集数据上报的服务器地址<br/>
 
-Account ID、DataSource ID、URL Scheme 需要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
-Host 需要服务端部署，如不清楚请联系您的专属项目经理或技术支持
+
+Account ID、DataSource ID、URL Scheme 需要在GrowingIO 平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系您的专属项目经理或技术支持<br/>
 :::
 ##### 创建
 <ImageLoader path="img/common/createapplication" />
