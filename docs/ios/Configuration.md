@@ -12,9 +12,9 @@ import TabItem from '@theme/TabItem';
 
 | Config                       | 参数类型 | 是否必填 | 默认值 | 说明 | 其它 | 版本 |
 | :-------------------------   | :------   | :----:  |:------  |:------| :---: | :------------------------:   |
-| `projectId`                  | `NSString`  | 是      | `null`   | 项目 ID(AccountID)，每个应用对应唯一值 | - | - |
-| `dataSourceId`            | `NSString`  | 是      | `null`   | 应用的 DataSourceId，唯一值 | - | - |
-| `dataCollectionServerHost`| `NSString`  | 是      | `null`   | 服务端部署后的  ServerHost | - | - |
+| `projectId`                  | `NSString`  | 是      | `nil`   | 项目 ID(AccountID)，每个应用对应唯一值 | - | - |
+| `dataSourceId`            | `NSString`  | 是      | `nil`   | 应用的 DataSourceId，唯一值 | - | - |
+| `dataCollectionServerHost`| `NSString`  | 是      | `nil`   | 服务端部署后的  ServerHost | - | - |
 | `debugEnabled`            | `BOOL` | 否      | `NO`  | 调试模式，会打印 SDK log，抛出错误异常，在线上环境请关闭 | - | - |
 | `cellularDataLimit`       | `NSUInteger`     | 否      | `10`     | 每天发送数据的流量限制，单位 MB | - | - |
 | `dataUploadInterval`      | `NSTimeInterval`     | 否      | `15`     | 数据发送的间隔，单位秒 | - | - |
@@ -24,15 +24,15 @@ import TabItem from '@theme/TabItem';
 | `ignoreField`             | `int`     | 否      | `0`      | 设置事件属性过滤 | - | <font color='red'>>=3.2.1</font> |
 | `impressionScale`         | `float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | <font color='red'>无埋点独有</font> | - |
 | `idMappingEnabled` | `BOOL` | 否 | `NO` | 是否开启多用户身份上报 | - | <font color='red'>>=3.3.0</font> |
-| `urlScheme` | `NSString` | 否 | `nil` | 自定义 URL Scheme | - | <font color='red'>>=3.3.0</font> |
+| `urlScheme` | `NSString` | 否 | `您在 Info.plist 配置的 GrowingIO URL Scheme` | 自定义 URL Scheme | - | <font color='red'>>=3.3.0</font> |
 | `encryptEnabled` | `BOOL` | 否 | `NO` | 是否开启网络传输加密 | - | <font color='red'>>=3.3.2</font> |
 | `requestTimeout` | `NSTimeInterval` | 否 | `30` | 事件请求超时时长，单位秒 | - | <font color='red'>>=3.8.0</font> |
 
 ### 详细说明
 
-#### 1. **projectId**， **urlScheme**， **setDataSourceId**， **setDataCollectionServerHost**
+#### 1. **projectId**，**dataSourceId**， **dataCollectionServerHost**
 
-urlScheme 是 SDK 3.3.0 及其之后必传参数，其他参数为必传参数，若不清楚具体数值请询问相关服务端对接的开发同事。
+这些为必传参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 
 #### 2. **debugEnabled**
 
@@ -82,7 +82,7 @@ urlScheme 是 SDK 3.3.0 及其之后必传参数，其他参数为必传参数�
 
 > SDK 版本>=3.3.0
 
-自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该 [URL Scheme](/docs/ios/Introduce#添加-url-scheme)
+自定义运行时 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在 Info.plist 中添加各环境对应的 [URL Scheme](/docs/ios/Introduce#添加-url-scheme)
 
 #### 12. **encryptEnabled**
 

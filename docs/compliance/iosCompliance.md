@@ -35,13 +35,50 @@ GIO移动端 SDK
 ```
 
 ## 合规步骤
+
 1.您需要确保 App 有《隐私协议》，并且在用户第一次启动 App 时就能向用户展示并取得用户同意；
 
 2.请务必告知用户您使用了 GrowingIO SDK，请在 《隐私协议》 中添加隐私条款，参考[隐私协议填写](#隐私协议填写)
 
-3.延迟初始化
+3.集成 [iOS SDK](/docs/ios/Introduce)，请在用户同意《隐私协议》后 [打开 SDK 的数据收集开关（推荐）](#方式一设置数据收集开关) 或 [延迟初始化 SDK](#方式二延迟初始化)。
 
-集成 [iOS SDK](/docs/ios/Introduce)，请在用户同意《隐私协议》之后再初始化 GrowingIO SDK。 
+4.集成了 GrowingIO SDK，默认会尝试获取 `IDFA`、`IDFV` 信息，用于统计分析用户在 App 内的使用效果。
+参考：[App Store 提交应用注意事项​​](/docs/ios/Introduce#app-store提交应用注意事项)
+
+## 初始化
+
+### 方式一、设置数据收集开关
+
+示例代码如下：
+```c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // 1. dataCollectionEnabled 设置为 NO
+    // 设置禁止数据采集代码
+    configuration.dataCollectionEnabled = NO;
+    
+    // 2.初始化 GrowingIO SDK
+    // 初始化代码
+  
+    ...
+    return YES;
+}
+​
+// 某一时刻同意数据采集(比如用户同意隐私协议，或者获取到 IDFA 权限之后)
+- (void)userAcceptDataCollection {
+    ...
+    // 3. dataCollectionEnabled 设置为 YES
+    // 设置开启数据采集代码
+    [[GrowingAutotracker sharedInstance] setDataCollectionEnabled:YES];
+    ...
+}
+```
+
+:::caution 注意
+需要根据您集成是无埋点SDK还是埋点SDK，调整调用类名
+:::
+
+### 方式二、延迟初始化
+
 示例代码如下：
 ```c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -54,9 +91,6 @@ GIO移动端 SDK
     return YES;
 }
 ```
-
-4.集成了 GrowingIO SDK，默认会尝试获取 `IDFA`、`IDFV` 信息，用于统计分析用户在 App 内的使用效果。
-参考：[App Store 提交应用注意事项​​](/docs/ios/Introduce#app-store提交应用注意事项)
 
 ## iOS 权限说明
 | 权限 | 用途 | 
@@ -78,28 +112,7 @@ iOS SDK 采集的用户行为数据支持设置发送间隔(最小可设置5秒)
 
 ### 关于 GDPR
 为符合
-[​General Data Protection Regulation 欧盟通用数据保护条例](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)​，GrowingIO SDK 提供 `dataCollectionEnabled` 设置接口，可在用户不同意数据采集时，设置为 `NO` 禁止数据采集；在用户同意数据采集时，设置为 `YES`，开启数据采集。示例代码如下：
-```c
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // 1. dataCollectionEnabled 设置为 NO
-    // 设置禁止数据采集代码
-    
-    // 2.初始化 GrowingIO SDK
-    // 初始化代码
-  
-    ...
-    return YES;
-}
-​
-// 某一时刻同意数据采集
-- (void)userAcceptDataCollection {
-    ...
-    // 3. dataCollectionEnabled 设置为 YES
-    // 设置开启数据采集代码
-    ...
-}
-
-```
+[​General Data Protection Regulation 欧盟通用数据保护条例](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)​，请参考 [方式一设置数据收集开关](#方式一设置数据收集开关)
 
 
 ### 关于 IDFA 广告标识符

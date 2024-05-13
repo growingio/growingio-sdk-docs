@@ -10,7 +10,7 @@ APP 内嵌 H5 页面如果也需要进行数据采集，H5 页面需要集成 We
 若需要 H5 页面 Web JS SDK 采集的数据与 APP 中 GIO SDK 采集的用户等数据打通，请参考：<br/>
 WebJS：[Hybrid内嵌页打通插件](/docs/webjs/3.8/plugins/hybridAdapter)。
 
-如果 APP 集成的是[**无埋点 SDK**](/docs/ios/Introduce#无埋点sdk集成)， 不需要做设置，SDK 会自动注入桥接代码，实现数据打通；
+如果 APP 集成的是[**无埋点 SDK**](/docs/ios/Introduce#无埋点sdk集成)， 不需要做设置，SDK 初始化后会自动注入桥接代码，实现数据打通；
 
 如果 APP 集成的是[**埋点 SDK**](/docs/ios/Introduce#埋点sdk集成)，则需要您添加 Hybrid 依赖
 
