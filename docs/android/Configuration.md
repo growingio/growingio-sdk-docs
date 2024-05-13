@@ -47,10 +47,10 @@ import TabItem from '@theme/TabItem';
 
 ### 1. SDK必需参数
 
-**accountId，** **urlScheme，** **setDataSourceId，**
+**accountId，** **urlScheme，** **dataSourceId，**
 这三个参数为用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 
-**setDataCollectionServerHost** 默认域名为 `napi.growingio.com`，若是OP客户，需要设置自己的ServerHost。
+**dataCollectionServerHost** 默认域名为 `napi.growingio.com`，若是OP客户，需要设置自己的ServerHost。
 
 ### 2. setChannel
 
