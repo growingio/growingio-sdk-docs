@@ -306,7 +306,7 @@ GrowingTracker.sharedInstance().cleanLocation()
 | 参数         | 参数类型              | 说明                       |
 | :----------- | :------------------ | :------------------------- |
 | `eventName`  | `String`            | 事件名，事件标识符         |
-| `attributes` | `[String: Any]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的属性信息，属性值支持 String、Number、Date、Set、Array；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
 
 #### 示例
 
@@ -386,7 +386,7 @@ GrowingTracker.sharedInstance().trackCustomEvent("eventName", withAttributes: ["
 | 参数        | 参数类型   | 说明               |
 | :---------- | :--------- | :----------------- |
 | `eventName` | `String` | 事件名，事件标识符 |
-| `attributes` | `[String: Any]?` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的属性信息，属性值支持 String、Number、Date、Set、Array；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
 
 
 | 参数      | 参数类型   | 说明                                      |
@@ -499,7 +499,7 @@ event_duration 时间统计不会计算后台时间
 
 | 参数         | 参数类型                           | 说明         |
 | :----------- | :--------------------------------- | :----------- |
-| `attributes` | `[String: Any]` | 用户属性信息 |
+| `attributes` | `[String: Any]` | 用户属性信息，属性值支持 String、Number、Date、Set、Array |
 
 #### 示例
 
@@ -600,7 +600,7 @@ NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
 | :----------- | :--------------------------------- | :----------- |
 | `viewController` | `UIViewController` | 被追踪页面 |
 | `alias` | `String` | 页面别名 |
-| `attributes` | `[String: Any]?` | 事件发生时所伴随的维度信息（可选） |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的维度信息（可选），属性值支持 String、Number、Date、Set、Array |
 
 #### 示例
 
@@ -835,7 +835,7 @@ view.growingViewCustomContent = @"content";
 ### 17. 设置通用属性
 
 `setGeneralProps(_ props: [String: Any])`<br/>
-设置通用属性，属性值支持 String、Number、Date、Set、Array
+设置通用属性
 
 `removeGeneralProps(_ keys: [String])`<br/>
 清除指定字段的通用属性
@@ -844,13 +844,13 @@ view.growingViewCustomContent = @"content";
 清除通用属性
 
 `setDynamicGeneralProps(_ closure: (() -> [String: Any])?)`<br/>
-设置动态通用属性，属性值支持 String、Number、Date、Set、Array
+设置动态通用属性
 
 #### 参数说明
 
 | 参数        | 参数类型   | 说明               |
 | :---------- | :--------- | :----------------- |
-| `props` | `[String: Any]` | 事件通用属性，相同字段的新值将覆盖旧值 |
+| `props` | `[String: Any]`  | 事件通用属性，属性值支持 String、Number、Date、Set、Array；多次调用，相同字段的新值将覆盖旧值 |
 | `keys` | `[String]` | 通用属性指定字段 |
 
 #### 示例
