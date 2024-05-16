@@ -18,8 +18,8 @@ import 'package:growingio_flutter_plugin/growingio_autotracker_interface.dart';
 MaterialApp(
   title: 'Flutter Project',
 
-  // 添加 Growingio 路由监听器 GrowingioNavigatorObserver
-  navigatorObservers: [GrowingioNavigatorObserver()],
+  // 添加 Growingio 路由监听器 GrowingNavigatorObserver
+  navigatorObservers: [GrowingNavigatorObserver()],
 
   builder: (context, child) {}
 )
