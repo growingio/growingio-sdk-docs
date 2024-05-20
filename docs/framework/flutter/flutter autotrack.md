@@ -140,7 +140,7 @@ class CustomRoute extends PageRouteBuilder with GrowingPageRouteMixin {
 
 #### 示例四：面对Dialog,BottomSheet等弹出框
 在 GrowingIO Flutter SDK 中也将Dialog和BottomSheet视为一个页面，通常我们打开一个弹出框会使用 `showDialog` 或 `showModalBottomSheet` 之类的快速方法。
-这类方法会在内部生成一个随机名字的 Route，所以为了控制这些页面我们需要传入一个 `RouteSettings` 作为名称。在 GrowingIO Flutter SDK 中则需要使用 `showDialogWithPage` 或者 `showModalBottomSheetWithPage` 进行替代。
+为了更好识别这些页面我们需要传入一个 `RouteSettings` 作为页面的名称以保证其唯一性。在 GrowingIO Flutter SDK 中则需要使用 `showDialogWithPage` 或者 `showModalBottomSheetWithPage` 进行替代。
 
 ```dart
   /// 使用SDK的 showDialogWithPage 替换原来的 showDialog 方法。
@@ -149,7 +149,7 @@ showDialogWithPage(
   elevation: 10,
   context: context,
 
-  /// 定义 Page 的名称，否则为系统随机生成。
+  /// 定义 Page 的名称
   routeSettings: const RouteSettings(name: "screen_info"),
 
   builder: (b) {
