@@ -140,23 +140,24 @@ class CustomRoute extends PageRouteBuilder with GrowingPageRouteMixin {
 
 #### 示例四：面对Dialog,BottomSheet等弹出框
 在 GrowingIO Flutter SDK 中也将Dialog和BottomSheet视为一个页面，通常我们打开一个弹出框会使用 `showDialog` 或 `showModalBottomSheet` 之类的快速方法。
-这类方法会在内部生成一个随机名字的 Route，所以为了控制这些页面我们需要传入一个 `RouteSettings` 作为名称。在 GrowingIO Flutter SDK 中则需要使用 `GrowingRouteSettings` 进行替代。
+这类方法会在内部生成一个随机名字的 Route，所以为了控制这些页面我们需要传入一个 `RouteSettings` 作为名称。在 GrowingIO Flutter SDK 中则需要使用 `showDialogWithPage` 或者 `showModalBottomSheetWithPage` 进行替代。
 
 ```dart
-showModalBottomSheet(
+  /// 使用SDK的 showDialogWithPage 替换原来的 showDialog 方法。
+showDialogWithPage(
   isScrollControlled: true,
   elevation: 10,
   context: context,
 
-  /// 传入SDK的 GrowingRouteSettings 以及额外的 context 参数。
-  routeSettings: GrowingRouteSettings(context, name: "screen_info"),
+  /// 定义 Page 的名称，否则为系统随机生成。
+  routeSettings: const RouteSettings(name: "screen_info"),
 
   builder: (b) {
     return ModalDraggable(width: width, index: index);
   });
 ```
 
-除此之外，Flutter 路由器也支持 `Navigator.of(context, rootNavigator: useRootNavigator).push(DialogRoute | ModalBottomSheetRoute)` 方式打开弹出框，要做的也是声明Route时将 `GrowingRouteSettings`作为 routeSettings 传入。
+除此之外，Flutter 路由器也支持 `Navigator.of(context, rootNavigator: useRootNavigator).push(DialogRoute | ModalBottomSheetRoute)` 方式打开弹出框，此时若使用了自定义的 `DialogRoute | ModalBottomSheetRoute` 则可以使用相应的扩展为该路由添上Page信息：`GrowingDialogRouteMixin`和`GrowingModalBottomSheetRouteMixin`。
 
 > 目前 GrowingIO Flutter SDK 不支持 DropDown，MenuAnchor下的弹窗，这部分的无埋点事件需要客户自行调用SDK `GrowingAutotracker.getContext().trackCustomEvent(eventName: "eventName");` 接口来进行手动埋点。
 
