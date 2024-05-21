@@ -98,9 +98,9 @@ void main() async {
 | requestTimeout            | int          |    否    | 30  | 设置数据上报请求的超时时间，单位秒               |  - |
 | dataValidityPeriod        | int          |    否    | 7  | 设置为上报数据在数据库的缓存时间，单位天               |  - |
 | idMappingEnabled          | bool         |    否    | false  | 是否开启多用户身份上报               |  - |
-| autoTrackAllRoutePage     | bool         |    否    | true  | 设置是否发送 Route 页面上的Page事件              |  - |
+| autotrackAllRoutePage     | bool         |    否    | true  | 设置是否发送 Route 页面上的Page事件              |  - |
 | autotrackEnabled          | bool         |    否    | true  | 设置原生端是否打开无埋点功能               |  - |
-| autoTrackAllNativePage    | bool         |    否    | false  | 设置原生端是否自动发送Page事件            |  - |
+| autotrackAllNativePage    | bool         |    否    | false  | 设置原生端是否自动发送Page事件            |  - |
 | modules  | `Set<LibraryGioModule>`       |    否    | empty | 模块集成，具体请阅读下方的模块说明 | - |
 | androidConfig  | `AndroidConfiguration`  |    否    | null | 用于配置Android设备上特有的一些属性 | - |
 | iosConfig      | `IosConfiguration`      |    否    | null | 用于配置iOS设备上特有的一些属性 | - |
