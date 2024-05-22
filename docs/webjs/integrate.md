@@ -189,7 +189,13 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 - 优点：复杂度低，理解成本低，快速集成。
 - 缺点：SDK 较大，约 75-80KB ，会增加打包产物的大小，可能会拖慢加载速度。
 
-**在入口文件（例如：app.js、index.js）代码中引用并开始初始化使用 SDK**
+**1、运行命令安装最新的 SDK**
+
+```bash
+npm i gio-webjs-sdk --save
+```
+
+**2、在入口文件（例如：app.js、index.js）代码中引用并开始初始化使用 SDK**
 
 ```js
 import gdp from 'gio-webjs-sdk/gdp-full';
@@ -211,9 +217,11 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 #### 其他注意事项
 
-**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/initSettings)。
+**1）** `init`初始化方法其他配置项请见[参考文档](/docs/webjs/initSettings)。
 
-**2）**SDK **默认使用 esm** 格式进行打包，若您的站点需要使用 umd 格式的 SDK，请修改为`gio-webjs-sdk/gdp.umd.js`（`gio-webjs-sdk/gdp-full.umd.js`）即可引用 umd 格式的 SDK。
+**2）** SDK **默认使用 esm** 格式进行打包，若您的站点需要使用 umd 格式的 SDK，请修改为`gio-webjs-sdk/gdp.umd.js`（`gio-webjs-sdk/gdp-full.umd.js`）即可引用 umd 格式的 SDK。
+
+**3）** 如果您使用了 TypeScript 开发，且遇到了类似 `找不到模块"gio-webjs-sdk"或其相应的类型声明` 的错误提示时，在您全局的 d.ts 文件中添加 `declare module 'gio-webjs-sdk';` 模块定义即可。
 </TabItem>
 </Tabs>
 
