@@ -8,7 +8,7 @@ sidebar_position: 0
 
 ### Bug Fixes
 
-* 修复在 iPad 上 UIAlertController(actionSheet style) 当点击空白处触发 dismiss 会崩溃 (https://github.com/growingio/growingio-sdk-ios-autotracker/commit/cd7f2e0ff253108b3ff08fef169e662c229356bb)
+* 修复在 iPad 上 UIAlertController(actionSheet style) 当点击空白处触发 dismiss 会崩溃 ([cd7f2e0](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/cd7f2e0ff253108b3ff08fef169e662c229356bb))
 
 # [3.8.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.0...3.8.1) (2024-05-07)
 
