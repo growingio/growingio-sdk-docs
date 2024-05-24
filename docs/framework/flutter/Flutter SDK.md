@@ -168,15 +168,6 @@ option.addGioComponent(JsonLibraryModule());
 
 Json 数据模块将会使用 Json 格式保存和上传事件数据。
 
-#### H5混合模块
-
-```dart
-option.addGioComponent(HybridLibraryGioModule());
-
-```
-
-若使用了原生的WebView,且内嵌 H5 页面如果也需要进行数据采集（H5 页面已经集成 Web JS SDK），则可以开启该 H5混合模块。
-
 ## API说明
 
 
