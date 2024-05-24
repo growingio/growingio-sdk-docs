@@ -47,10 +47,10 @@ import TabItem from '@theme/TabItem';
 
 ### 1. SDK必需参数
 
-**accountId，** **urlScheme，** **setDataSourceId，**
+**accountId，** **urlScheme，** **dataSourceId，**
 这三个参数为用户必须要设置的参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 
-**setDataCollectionServerHost** 默认域名为 `napi.growingio.com`，若是OP客户，需要设置自己的ServerHost。
+**dataCollectionServerHost** 默认域名为 `napi.growingio.com`，若是OP客户，需要设置自己的ServerHost。
 
 ### 2. setChannel
 
@@ -80,7 +80,7 @@ import TabItem from '@theme/TabItem';
 
 ### 5. setDataUploadInterval
 
-上报间隔。GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15秒的情况下向服务器发送事件包（最大50条事件）。
+上报间隔。GrowingIO SDK 会先将事件存入数据库中，然后以每隔默认时间15秒的情况下向服务器发送事件包（最大100条事件）。
 
 ### 6. setSessionInterval
 

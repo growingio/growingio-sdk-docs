@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 | :-------------------------   | :------   | :----:  |:------  |:------| :---: | --------------------------   |
 | `accountId`                  | `String`  | 是      | `nil`   | 项目 ID(AccountID)，每个应用对应唯一值 | - |  |
 | `dataSourceId`            | `String`  | 是      | `nil`   | 应用的 DataSourceId，唯一值 | - |  |
-| `dataCollectionServerHost`| `String`  | 是      | `nil`   | 服务端部署后的  ServerHost | - |  |
+| `dataCollectionServerHost`| `String`  | 否      | `napi.growingio.com`   | 服务端部署后的  ServerHost | - |  |
 | `debugEnabled`            | `Bool` | 否      | `false`  | 调试模式，会打印 SDK log，抛出错误异常，在线上环境请关闭 | - |  |
 | `cellularDataLimit`       | `UInt`     | 否      | `10`     | 每天发送数据的流量限制，单位 MB | - |  |
 | `dataUploadInterval`      | `TimeInterval`     | 否      | `15`     | 数据发送的间隔，单位秒 | - |  |
@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 | `ignoreField`             | `UInt`     | 否      | `0`      | 设置事件属性过滤 | - |  |
 | `impressionScale`         | `Float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | <font color='red'>无埋点独有</font> |  |
 | `idMappingEnabled` | `Bool` | 否 | `false` | 是否开启多用户身份上报 | - |  |
-| `urlScheme` | `String` | 否 | `nil` | 自定义 URL Scheme | - |  |
+| `urlScheme` | `String` | 否 | 您在 Info.plist 配置的 GrowingIO URL Scheme | 自定义 URL Scheme | - |  |
 | `encryptEnabled` | `Bool` | 否 | `false` | 是否开启网络传输加密 | - |  |
 | `compressEnabled` | `Bool` | 否 | `false` | 是否开启网络传输压缩 | - | >=4.3.0 |
 | `useProtobuf` | `Bool` | 否 | `true` | 是否采用 Protobuf 格式保存和上传事件数据 | - |  |
@@ -34,11 +34,11 @@ import TabItem from '@theme/TabItem';
 
 ### 详细说明
 
-#### 1. **accountId**， **setDataSourceId**， **setDataCollectionServerHost**
+#### 1. **accountId**， **dataSourceId**， **dataCollectionServerHost**
 
 这些为必传参数，若不清楚具体数值请询问相关服务端对接的开发同事。
 
-**setDataCollectionServerHost** 默认域名为 `napi.growingio.com`，若是OP客户，需要设置自己的ServerHost。
+**dataCollectionServerHost** 默认域名为 SaaS 收数地址，若是 OP 客户，需要设置自己的 ServerHost。
 
 #### 2. **debugEnabled**
 
@@ -81,7 +81,7 @@ import TabItem from '@theme/TabItem';
 
 #### 11. **urlScheme**
 
-自定义 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在工程中添加该 [URL Scheme](/docs/ios/Introduce#步骤-4-添加-url-scheme-ios-平台)
+自定义运行时 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在 Info.plist 中添加各环境对应的 [URL Scheme](/docs/ios/Introduce#步骤-4-添加-url-scheme-ios-平台)
 
 #### 12. **encryptEnabled**
 
