@@ -89,7 +89,6 @@ void main() async {
 | dataSourceId          | String           |    是    | null  | 应用的DataSourceId，唯一值        |  -  |
 | urlScheme             | String           |    是    | null  | 应用特有的URLScheme，用于外部应用拉起应用，如圈选   | -          |
 | dataCollectionServerHost  | String       |    否    | null  | 服务端部署后的 ServerHost     |  -  |
-| autoTrackAllRoutePage  | bool            |    否    | true  | 是否自动开启页面采集     |  -  |
 | debugEnabled              | bool         |    否    | false | 调试模式，会打印SDK log，抛出错误异常，在线上环境请关闭 | - |
 | cellularDataLimit         | int          |    否    | 10    | 每天发送数据的流量限制，单位MB        | -  |
 | dataUploadInterval        | int          |    否    | 15    | 数据发送的间隔，单位秒                | -          |
@@ -177,13 +176,6 @@ option.addGioComponent(HybridLibraryGioModule());
 ```
 
 若使用了原生的WebView,且内嵌 H5 页面如果也需要进行数据采集（H5 页面已经集成 Web JS SDK），则可以开启该 H5混合模块。
-:::info
-在 Flutter SDK 启动H5混合模块同时，原生端（包括Android和iOS端）都需要引入相应的模块代码，请参考：
-
-* Android 端 默认已引入H5混合模块；
-* [iOS 端 需引入H5混合模块](/docs/ios/modules/Hybrid%20Module)
-
-:::
 
 ## API说明
 
