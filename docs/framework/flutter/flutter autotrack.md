@@ -13,7 +13,7 @@ title: Flutter 无埋点功能
 
 ```dart
 
-import 'package:growingio_flutter_plugin/growingio_autotracker_interface.dart';
+import 'package:growingio_flutter_plugin/growingio_flutter_plugin.dart';
 
 MaterialApp(
   title: 'Flutter Project',
@@ -41,7 +41,7 @@ class AppNavigator {
 在SDK中需要将 `MaterialPageRoute` 替换为 `GrowingMaterialPageRoute`，来帮助 GrowingIO Flutter SDK获取到页面信息，如下所示
 
 ```dart
-import 'package:growingio_flutter_plugin/growingio_autotracker_interface.dart';
+import 'package:growingio_flutter_plugin/growingio_flutter_plugin.dart';
 
 class AppNavigator {
   static Route page1 = GrowingMaterialPageRoute(builder: (context) => Page1Screen(), settings: const RouteSettings(name: "page1"));
@@ -67,7 +67,7 @@ Navigator.of(context).push(AppNavigator.page1);
 
 举例说明
 ```dart
-import 'package:growingio_flutter_plugin/growingio_autotracker_interface.dart';
+import 'package:growingio_flutter_plugin/growingio_flutter_plugin.dart';
 
 class AppNavigator {
   static const String home = '/home';
@@ -117,7 +117,7 @@ Navigator.pushNamed(context, AppNavigator.home);
 
 比如我们自定义一个 `CustomRoute` 类来增加 Route 的功能，其实现如下所示：
 ```dart
-import 'package:growingio_flutter_plugin/growingio_autotracker_interface.dart';
+import 'package:growingio_flutter_plugin/growingio_flutter_plugin.dart';
 
 class CustomRoute extends PageRouteBuilder with GrowingPageRouteMixin {
   MaterialPageRoute? route;
@@ -200,7 +200,7 @@ alias 对应页面的名称，attributes为页面属性。
 为了能够全局获取到点击事件的产生，需要为整个 App 添加事件监听器，如下所示：
 
 ```dart
-import 'package:growingio_flutter_plugin/growingio_autotracker_interface.dart';
+import 'package:growingio_flutter_plugin/growingio_flutter_plugin.dart';
 
 void main() async {
   runApp(GrowingWidget(child: MyApp()));
