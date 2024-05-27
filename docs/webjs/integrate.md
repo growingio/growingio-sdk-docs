@@ -128,15 +128,15 @@ values={[
 
 #### 其他注意事项
 
-**1）**`init`初始化方法其他配置项请见[参考文档](/docs/webjs/initSettings)。
+**1）** `init`初始化方法其他配置项请见[参考文档](/docs/webjs/initSettings)。
 
-**2）**SDK 默认使用`es5`版本进行打包，直接支持 **IE11** 等不兼容 es6 的旧版浏览器。
+**2）** SDK默认使用`es5`语法版本进行打包，直接支持 **IE11** 等不兼容 es6 的旧版浏览器。
 
-**3）**SDK 默认使用`umd`格式进行打包，若您的站点需要使用`esm`格式的 SDK，请修改为`gdp.es.js`或`gdp-full.es.js`即可引用 es 格式的 SDK。
-
-**4）**如果您希望不受 CDN（内容分发网络）影响，请下载 SDK 至本地集成，并修改上述集成代码中的 SDK CDN 地址为您本地的相对地址。
+**3）** SDK默认使用`umd`格式进行打包，若您的站点需要使用`esm`格式的 SDK；或者如果您希望不受 CDN（内容分发网络）影响，请下载 SDK 至本地集成，并修改上述集成代码中的 SDK CDN 地址为您本地的相对地址。
 
 WebJS SDK 下载：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
+
+注意github上的SDK产物为了方便模块化开发，默认是`esm`格式，如需引用`umd`格式的SDK，请到包内名为umd的文件内查找引用。
 
   </TabItem>
   <TabItem value="npm">

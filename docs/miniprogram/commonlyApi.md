@@ -150,6 +150,12 @@ gdp('setUserAttributes', {
 });
 ```
 
+:::info
+
+详细使用示例:[用户属性事件示例](/knowledge/basicknowledge/trackEventUse#用户属性事件示例)
+
+:::
+
 #### 微信用户属性设置
 
 Gio平台系统中用户属性默认预定义的微信用户属性如下表：

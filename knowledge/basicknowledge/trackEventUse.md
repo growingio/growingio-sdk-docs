@@ -46,15 +46,15 @@ import TabItem from '@theme/TabItem';
 <ImageLoader path="img/basicKnowledge/dimensionTable" />
 
 :::info 说明
-| 名词 | 说明 |
-| :-: | :---- |
-| Identifier | 埋点事件标识符 |
-| Event Name | 埋点事件名称 |
-| Event Variable Label | 事件属性标识符 |
-| Event Variable Name | 事件属性名称 |
-| Trigger | 埋点事件的触发时机 |
-| Type | 事件属性的类型 |
-| Description | 事件属性的描述 |
+|         名词         | 说明               |
+|:--------------------:|:-----------------|
+|      Identifier      | 埋点事件标识符     |
+|      Event Name      | 埋点事件名称       |
+| Event Variable Label | 事件属性标识符     |
+| Event Variable Name  | 事件属性名称       |
+|       Trigger        | 埋点事件的触发时机 |
+|         Type         | 事件属性的类型     |
+|     Description      | 事件属性的描述     |
 :::
 
 ### 平台配置
@@ -263,6 +263,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 3. "eventName": "purchaseProduct" 表示埋点事件标识符是 purchaseProduct，确保正确。<br/>
 4. attributes 中的 key 对应事件属性，value 对应事件属性的值，确保 key 和 value 都正确。<br/>
 数据关注点请参考[校验时需关注字段和说明](/knowledge/debugverify#校验时需关注字段和说明)。
+
 :::info
 即时校验确保采集SDK发送的数据是正确的<br/>
 **服务端SDK在 debug 模式下，会输出事件数据日志，但是事件数据不会上报至服务端数据库**
@@ -340,6 +341,18 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 用户属性可用来标记用户群体
 
 例如，为登录用户添加年龄和等级属性，用于标记登录用户的年龄和等级信息
+
+预置用户属性中，部分属性的字段格式有要求，见如下说明：
+
+| 用户属性       | 标识符                     | 说明                                      |
+|--------------|----------------------------|-----------------------------------------|
+| 出生年月日     | $basic_birthday            | 日期，格式：yyyy-MM-dd                      |
+| 性别           | $basic_gender              | 字符串，枚举值：UNKNOWN,MALE,FEMALE         |
+| 地址           | $basic_address list        | 格式，用英文逗号分隔，例如：中国,北京,朝阳区 |
+| 注册时间       | $basic_createdAt           | 时间戳格式（毫秒级），默认值 false           |
+| 关注公众号     | $wechat_subscribeList list | 格式，用英文逗号分隔 ，例如：GrowingIO,易数  |
+| 支付宝学生认证 | $alipay_isStudentCertified | boolean 类型（true 或 false），默认值 false  |
+| 支付宝实名认证 | $alipay_isCertified        | boolean 类型（true 或 false），默认值 false  |
 
 #### 规划方案示例
 
@@ -467,6 +480,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
 1. 触发时机需要和规划方案规划一致<br/>
 2. "eventType": "LOGIN_USER_ATTRIBUTES" 表示事件类型为用户属性事件。<br/>
 3. attributes 中的 key 对应用户属性，value 对应用户属性的值，确保 key 和 value 都正确。<br/>
+
 :::info
 即时校验只是确保采集SDK发送的数据是正确的<br/>
 **服务端SDK在 debug 模式下，会输出事件日志，但是事件数据不会上报至服务端数据库**

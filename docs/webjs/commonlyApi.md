@@ -140,6 +140,12 @@ gdp('clearUserId', callback?: function);
 gdp('setUserAttributes', userAttributes, callback?: function);
 ```
 
+:::info
+
+详细使用示例:[用户属性事件示例](/knowledge/basicknowledge/trackEventUse#用户属性事件示例)
+
+:::
+
 ### 7、埋点事件(track)
 
 发送一个埋点事件。在添加所需要发送的事件代码之前，需要在平台中配置事件以及事件属性。[埋点使用规范](/knowledge/basicknowledge/trackEventUse)
@@ -170,6 +176,7 @@ gdp('track', 'order', {
 :::info
 
 数据平台中定义的事件属性的数据类型为日期时，传入字符串格式可以为如下格式
+
 1. 毫秒时间戳
 2. yyyy-MM-dd
 3. yyyy-MM-dd HH

@@ -21,6 +21,12 @@ title: App内嵌页打通
 <script src="https://assets.giocdn.com/sdk/webjs/plugins/gioHybridAdapter.js"></script>
 ```
 
+**提示：** 上述地址中的SDK插件默认使用`umd`格式进行打包，若您的站点需要使用`esm`格式的SDK插件；或者如果您希望不受 CDN（内容分发网络）影响，请下载至本地集成，并修改引用为您本地项目的相对地址。
+
+WebJS SDK 插件下载：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
+
+注意github上的SDK产物为了方便模块化开发，默认是`esm`格式，如需引用`umd`格式的SDK，请到包内名为umd的文件内查找引用。
+
 #### npm集成引入
 
 ```js
