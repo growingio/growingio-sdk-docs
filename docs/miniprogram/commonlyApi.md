@@ -252,6 +252,20 @@ gdp('track', 'order', {
 
 提示：您可以使用多实例的能力将埋点同时上报给其他实例 [参考文档](/docs/webjs/plugins/multipleInstances#4埋点埋点计时半自动埋点浏览多发)
 
+:::info
+
+数据平台中定义的事件属性的数据类型为日期时，传入字符串格式可以为如下格式
+1. 毫秒时间戳
+2. yyyy-MM-dd
+3. yyyy-MM-dd HH
+4. yyyy-MM-dd HH:mm
+5. yyyy-MM-dd HH:mm:ss
+6. yyyy-MM-dd HH:mm:ss.SSS
+7. yyyy/MM/dd
+8. dd/MM/yyyy
+
+:::
+
 ### 9、设置全局通用属性(setGeneralProps)
 
 有时我们在上报埋点和其他事件时可能需要大量的业务属性，但需要每次调用时都进行传值，这给埋点工作带来了一定程度上的无用重复劳动。现在我们可以通过`setGeneralProps`来给后续产生的**所有事件**加上通用属性，从而免去一些不必要的重复劳动。也可以利用该方法为所有的事件进行动态设置通用属性。

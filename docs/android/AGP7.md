@@ -108,6 +108,8 @@ dependencies {
 }
 ```
 
+> 在Android项目编译中，若出现 'no growingio autotracker sdk dependency was found' 的编译问题，则需要检查SDK是否正确依赖。如果依赖正确或者已经在子模块中依赖则可以将插件的配置项 `skipDependencyCheck` 设置为true来避免该问题。
+
 ### Giokit 配置
 
 | Extension                    | 参数类型         | 是否必填 | 默认值 | 说明 |

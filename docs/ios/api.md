@@ -358,6 +358,16 @@ GrowingTracker.sharedInstance().trackCustomEvent("eventName", withAttributes: ["
 
 :::info
 
+数据平台中定义的事件属性的数据类型为日期时，传入字符串格式可以为如下格式
+1. 毫秒时间戳
+2. yyyy-MM-dd
+3. yyyy-MM-dd HH
+4. yyyy-MM-dd HH:mm
+5. yyyy-MM-dd HH:mm:ss
+6. yyyy-MM-dd HH:mm:ss.SSS
+7. yyyy/MM/dd
+8. dd/MM/yyyy
+
 详细使用示例:[埋点事件示例](/knowledge/basicknowledge/trackEventUse#埋点事件示例)
 
 :::
