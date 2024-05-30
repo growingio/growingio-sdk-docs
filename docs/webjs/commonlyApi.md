@@ -342,7 +342,43 @@ gdp('sendPage', { title: 'MyCustomTitle' });
 
 **<font color="#FC5F3A">注意：</font>仅支持页面标题title字段的自定义，其他字段无法修改。并且使用时强烈建议配合`setPageListener`使用。**
 
-### 14、获取SDK当前配置(getOption)
+### 14、设置事件发送前拦截回调(setBeforeSendListener)
+
+当您需要对部分事件在SDK自动构建完成并在发送前进行拦截修改部分属性的时候可使用该方法。仅支持修改 **`path`、`query`、`title`、`attributes`** 4个预定义属性，修改其他值无效。修改`attributes`中的值时，依然需要在平台中配置事件以及事件属性。
+
+```js
+gdp('setBeforeSendListener', (event) => {
+  // do somthing here
+  return event;
+});
+```
+
+#### 示例
+
+```js
+gdp('setBeforeSendListener', (event) => {
+  // 单独给某个名称的埋点添加自定义属性，可方便在多个页面调用时，设一次值
+  if (event.eventType === 'CUSTOM' && event.eventName === 'imp_var') {
+    event.attributes.extraVar = '单独给这个埋点额外添加属性';
+  }
+  // 单独给某个名称的埋点删除所有自定义属性，将值修改为空对象即可
+  if (event.eventType === 'CUSTOM' && event.eventName === 'no_var') {
+    event.attributes = {};
+  }
+  // 在不手动发送Page事件时，单独修改Page事件的标题
+  if(event.eventType === 'PAGE') {
+    event.title = '自定义的标题';
+  }
+  return event;
+});
+```
+
+**<font color="#FC5F3A">注意：</font>**<br/>
+**1、传入的回调函数必须返回合法的事件对象，否则SDK会按原预定的事件进行发送。**<br/>
+**2、单独给某个名称的埋点删除所有自定义属性，将attributes值修改为空对象即可。（path、query、title的值无法删除或指定为空值，除非实际就是空值）**<br/>
+**3、SDK版本大于等于 4.2.2 支持。**
+
+### 15、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
