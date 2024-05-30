@@ -92,3 +92,13 @@ classpath("com.growingio.android:autotracker-gradle-plugin:3.3.5") {
 
 ### 12. SDK如何支持合规和第三方安全检测，以及GDPR（欧盟《一般数据保护条例》）？
 **A：** 参考[Android SDK合规说明](/knowledge/compliance/androidCompliance)
+
+### 13. SDK集成无埋点/[H5混合模块](/docs/android/modules/hybrid%20module)后，发现WebView数据打通未生效？
+**A：**
+检查项目中是否有依赖听云SDK插件/火山SDK插件
+```groovy
+// 请保证无埋点相关插件在听云SDK插件/火山SDK插件前面
+apply plugin: 'com.growingio.android.autotracker'
+apply plugin: 'com.bytedance.std.tracker'
+apply plugin: 'newlens'
+```
