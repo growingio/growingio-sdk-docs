@@ -146,7 +146,7 @@ plugins {
 
     ···
     // 添加GrowingIO 无埋点 SDK 插件
-    id 'com.growingio.android.autotracker' version '4.2.0' apply false
+    id 'com.growingio.android.autotracker' version '4.3.0' apply false
 }
 ```
 
@@ -178,7 +178,7 @@ buildscript {
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
-        classpath 'com.growingio.android:autotracker-gradle-plugin:4.2.0'
+        classpath 'com.growingio.android:autotracker-gradle-plugin:4.3.0'
     }
 }
 
