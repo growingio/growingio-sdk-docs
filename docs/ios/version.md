@@ -2,6 +2,15 @@
 title: 版本记录
 sidebar_position: 0
 ---
+
+# [4.3.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.0...4.3.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* visionOS 平台使用 Cocoapods 集成支持，以及稳定性优化 ([#317](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/317)) ([9ab87ec](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/9ab87ec8fc3710e2d7574afd84aa8ccd214a1116))
+
+
 # [4.3.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.2.0...4.3.0) (2024-05-07)
 
 
