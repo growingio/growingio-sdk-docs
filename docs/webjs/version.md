@@ -8,6 +8,7 @@ SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs
 ### V4.2.2 - 2024/06/03
 
 - 🎉 新增`setBeforeSendListener` api，允许对部分事件在SDK自动构建完成并在发送前进行拦截修改部分属性。
+- 🌟 优化初始化成功提示，可以清晰获知是否与小程序或者移动端打通成功。
 
 ### V4.2.1 - 2024/05/27
 
