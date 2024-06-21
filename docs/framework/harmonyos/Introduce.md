@@ -34,24 +34,36 @@ ohpm install ./GrowingAnalytics.har
 ```
 
 #### 初始化
-在 Ability 的 onCreate 方法中初始化 SDK (Stage 模型)：
+在 AbilityStage 的 onCreate 方法中初始化 SDK (Stage 模型)：
 ```typescript
+import AbilityStage from '@ohos.app.ability.AbilityStage'
+import type Want from '@ohos.app.ability.Want'
 import { GrowingAnalytics, GrowingConfig } from '@growingio/analytics'
 
-async startAnalytics() {
-  let config = new GrowingConfig(
-    'Your AccountId',
-    'Your DataSourceId',
-    'Your UrlScheme',
-    'Your DataCollectionServerHost<Optional>'
-  )
-  await GrowingAnalytics.start(this.context, config)
-}
+// Entry类型的module对应配置的srcEntry
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    // 应用的HAP在首次加载的时，为该Module初始化操作
+    this.startAnalytics()
+  }
+  onAcceptWant(want: Want): string {
+    // 仅specified模式下触发
+    return 'MyAbilityStage'
+  }
 
-onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-  this.startAnalytics()
+  async startAnalytics() {
+    let config = new GrowingConfig().NewSaaS(
+      'Your AccountId',
+      'Your DataSourceId',
+      'Your UrlScheme',
+      'Your DataCollectionServerHost<Optional>'
+    )
+    await GrowingAnalytics.start(this.context, config)
+  }
 }
 ```
+
+> 注意：如若需要，可在用户同意隐私协议之后，再进行初始化 SDK
 > 其中 accountId/dataSourceId/urlScheme 为必填项，dataCollectionServerHost 为可选项，若不清楚请联系您的专属项目经理或技术支持
 
 其他初始化配置项见[表格](/docs/framework/harmonyos/Configuration)，在 start 方法调用前通过`config.<配置项> = 对应值`进行配置
