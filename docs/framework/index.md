@@ -1,6 +1,6 @@
 ---
 slug: /framework
-title: 跨平台SDK
+title: 多平台SDK
 ---
 
 
