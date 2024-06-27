@@ -3,20 +3,30 @@ sidebar_position: 1
 title: 如何集成
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ### SDK 集成
 
-#### 通过 ohpm 集成
+<Tabs>
+  <TabItem value="remote" label="通过 ohpm 中心仓集成" default>
+
 ```c
 ohpm install @growingio/analytics
 ```
 
-#### 通过本地 har 集成
+  </TabItem>
+  <TabItem value="local" label="通过本地 har 集成">
+
 首先请联系您的专属项目经理或技术支持，获取最新 SDK har 静态共享包下载地址并下载，再执行以下命令：
 ```c
 ohpm install <您所下载的 har 文件路径>
 ```
 
-#### 初始化
+  </TabItem>
+</Tabs>
+
+### 初始化
 在 AbilityStage 的 onCreate 方法中初始化 SDK (Stage 模型)：
 ```typescript
 import AbilityStage from '@ohos.app.ability.AbilityStage'
