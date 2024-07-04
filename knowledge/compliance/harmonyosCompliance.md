@@ -40,7 +40,7 @@ GrowingIO HarmonyOS SDK
    
 2.请务必告知用户您使用了 GrowingIO SDK，请在 《隐私协议》 中添加隐私条款，参考[隐私协议填写](#隐私协议填写)
    
-3.集成 [HarmonyOS SDK](/docs/framework/HarmonyOS)，请在用户同意《隐私协议》后 [延迟初始化 SDK](#延迟初始化)。
+3.集成 [HarmonyOS SDK](/docs/framework/HarmonyOS)，请在用户同意《隐私协议》后 [打开 SDK 的数据采集开关（推荐）](#方式一设置数据采集开关) 或 [延迟初始化 SDK](#方式二延迟初始化)。
 ​
 ## 采集详情
 
@@ -49,25 +49,57 @@ GrowingIO HarmonyOS SDK
 | 权限 | 用途 | 
 | :--: | :-- | 
 | ohos.permission.INTERNET | 允许应用程序联网和发送统计数据的权限，以便提供统计分析服务。必须权限| 
+| ohos.permission.GET_NETWORK_INFO | 获取当前联网方式的权限，以便提供统计分析服务。必须权限| 
 
-## 延迟初始化
-在同意《隐私协议》后调用 `await GrowingAnalytics.start(this.context, config)` 进行 SDK 的初始化
+## 初始化
 
+### 方式一、设置数据采集开关
+
+在 AbilityStage 的 onCreate 方法中初始化 SDK (Stage 模型)：
 ```typescript
-// 在 UIAbility 中同意隐私条款后初始化 SDK
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    // 应用的HAP在首次加载的时，为该Module初始化操作
+    this.startAnalytics()
+  }
+  onAcceptWant(want: Want): string {
+    // 仅specified模式下触发
+    return 'MyAbilityStage'
+  }
+
+  async startAnalytics() {
+    let config = ...
+    // 1.dataCollectionEnabled 设置为 false
+    config.dataCollectionEnabled = false
+    // 2.初始化 GrowingIO SDK
+    // GrowingIO SDK 初始化代码
+    await GrowingAnalytics.start(this.context, config)
+  }
+}
+```
+
+某一时刻，用户同意隐私协议后:
+```typescript
+GrowingAnalytics.setDataCollectionEnabled(true)
+```
+
+### 方式二、延迟初始化
+
+在 EntryAbility 的 onCreate 方法中同意隐私协议后初始化 SDK (Stage 模型)：
+```typescript
 export default class EntryAbility extends UIAbility {
-    onCreate(want, launchParam) {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         if (<未同意隐私协议>){
         	// 展示隐私协议弹窗，等待用户同意
             ...
 
         	if (<用户同意了隐私协议>){
-        		//GrowingIO SDK 初始化代码
+        		// GrowingIO SDK 初始化代码
 		        ...
         	}
         } else {
             //用户已经同意隐私协议
-            //GrowingIO SDK 初始化代码
+            // GrowingIO SDK 初始化代码
             ...
         }
     }
