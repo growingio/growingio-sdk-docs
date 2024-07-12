@@ -7,12 +7,14 @@ GrowingIO Flutter Plugin 插件 growingio_flutter_plugin，封装了GrowingIO An
 
 
 ## 版本记录
+
 |    版本    | 说明 |  日期  |
+| v4.1.0 | 提供低版本Flutter的兼容性; 修改无埋点弹窗的api接口；添加 Flutter 鸿蒙平台；| 2024-07-12 |
 | v4.0.0 | 新版本 与 GrowingIO SDK 4.3.0 同步，添加新的接口和参数<br/>- Flutter 的 Page 可以基于 Router发送，也可以手动结合 mixin 类实现，更加清晰的生命周期逻辑和代码结构；<br/>- 圈选的元素只有在定义为 Page 的页面下才能发送元素； | 2024-05-12 |
 
 :::info
-**Dart SDK**： >=2.16.0 
-**Flutter 版本**：>=2.10.0<br/>
+**Dart SDK**： >=2.17.0 
+**Flutter 版本**：>=3.0.0<br/>
 :::
 
 ## 集成准备
