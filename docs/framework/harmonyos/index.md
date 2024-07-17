@@ -4,22 +4,31 @@ title: "HarmonyOS SDK"
 ---
 
 **GrowingIO OpenHarmony/HarmonyOS SDK** 自动采集用户访问事件，并支持手动调用相应埋点 APIs 采集埋点事件。
-- 支持 HarmonyOS 3.1.0
-- 支持 OpenHarmony API Level 9、API Level 10
+- 支持 HarmonyOS 4.0.0 - HarmonyOS NEXT
+- 支持 OpenHarmony API Level 10 - 12
 
 :::info
 **开发环境:** <br/>
-DevEco Studio 3.1.0 及以上  
-API 9 Release 及以上  
+DevEco Studio 5.0.3.200 及以上  
+OpenHarmony API 10 及以上  
 :::
 
-## 约束与限制
+## 集成准备
+### 获取 SDK 初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
+:::info
+AccountID：项目 ID，代表一个项目<br/>
+DataSourceID：数据源 ID，代表一个数据源<br/>
+URL Scheme： 是 GrowingIO SDK 从外部唤醒应用时使用的唯一标识<br/>
+Host：采集数据上报的服务器地址，非平台地址<br/>
 
-在下述版本验证通过：
+Account ID、DataSource ID、URL Scheme 需要在 GrowingIO 平台上新建数据源，或从已创建的数据源中获取，如不清楚或无权限请联系您的专属项目经理或技术支持
+:::
 
-- DevEco Studio: 4.0.0.600, SDK: API 10 Release(4.0.10.13)
-- DevEco Studio: 3.1.0.501, SDK: API 9 Release(3.2.13.5)
+##### 创建
+<ImageLoader path="img/common/createapplication" />
 
+##### 查看
+<ImageLoader path="img/common/showappdatasourceid" />
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';

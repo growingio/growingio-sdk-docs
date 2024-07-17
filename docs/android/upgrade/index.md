@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+slug: /android/upgrade
 title: 升级指南
 ---
 
@@ -21,6 +21,8 @@ import TabItem from '@theme/TabItem';
 
 ## 关于老SaaS(2.0版本)
 为了能够快速的将集成我们老SaaS(2.0版本)的项目迁移到新SaaS(4.0版本)中，可以集成我们的 `autotracker-saas` 库，该库兼容了大部分2.0版本SaaS的API接口，并且能够无缝调用4.0SDK的所有接口，可以作为过渡的手段。
+
+详情API比对可以参考[2.0 API 对照](/docs/android/upgrade/Api2)文档。
 
 ### 如何集成
 请参考[如何集成](/docs/android/Introduce)的文档进行集成，在集成SDK的步骤中引入 `autotracker-saas`。

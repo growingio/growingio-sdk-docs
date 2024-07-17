@@ -25,7 +25,9 @@ GrowingAnalytics.setDataCollectionEnabled(true)
 
 ### 设置登录用户 ID
 
-`static setLoginUserId(userId: string, userKey: string = '')`
+`static setLoginUserId(userId: string, userKey?: string)`
+
+当用户登录之后调用，设置登录用户 ID 和用户 Key
 
 :::info
 * 如果您的App每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在用户每次升级App版本后初次访问时重新调用setLoginUserId方法
@@ -212,11 +214,11 @@ GrowingAnalytics.setLoginUserAttributes({
 let deviceId = GrowingAnalytics.getDeviceId()
 ```
 
-### 埋点事件通用属性
+### 事件通用属性
 
 `static setGeneralProps(props: { [key: string]: string | number | boolean | string[] | number[] | boolean[] })`
 
-为所有自定义埋点事件设置通用属性，多次调用，相同字段的新值将覆盖旧值；需在分析云平台事件管理界面关联事件属性
+为所有自定义埋点事件设置通用属性，多次调用，相同字段的新值将覆盖旧值
 
 `static removeGeneralProps(keys: string[])`
 
@@ -225,6 +227,10 @@ let deviceId = GrowingAnalytics.getDeviceId()
 `static clearGeneralProps()`
 
 移除所有埋点事件通用属性
+
+`static setDynamicGeneralProps(generator: () => { [key: string]: string | number | boolean | string[] | number[] | boolean[] })`
+
+设置动态通用属性
 
 #### 参数说明
 
@@ -235,6 +241,7 @@ let deviceId = GrowingAnalytics.getDeviceId()
 #### 示例
 
 ```typescript
+// 设置通用属性
 GrowingAnalytics.setGeneralProps({
   'prop1': 10,
   'prop2': 'name',
@@ -242,6 +249,186 @@ GrowingAnalytics.setGeneralProps({
   'prop4': ['a', 'b', 'c'],
   'name': 'banana'
 })
+// 清除指定字段的通用属性
 GrowingAnalytics.removeGeneralProps(['prop1', 'prop2', 'prop3'])
+// 清除通用属性
 GrowingAnalytics.clearGeneralProps()
+// 设置动态通用属性
+GrowingAnalytics.setDynamicGeneralProps(() => {
+  return {'dynamicProp' : Util.formatDate(new Date()) }
+})
+// 清除动态通用属性
+GrowingAnalytics.setDynamicGeneralProps(() => ({}))
 ```
+
+### Hybrid 打通
+
+```typescript
+static createHybridProxy(controller: webview.WebviewController): {
+object: object;
+name: string;
+methodList: Array<string>;
+controller: WebviewController;
+} | undefined
+```
+
+在 webView 控件中注入 hybrid 实现打通 (javaScriptAccess 和 domStorageAccess 需同时设置为 true)：
+```typescript
+let url = 'https://www.example.com'
+Web({ src: url, controller: this.controller})
+  .javaScriptAccess(true)
+  .domStorageAccess(true)
+  .javaScriptProxy(GrowingAnalytics.createHybridProxy(this.controller))
+```
+
+对应的 H5 页面需要集成 Web JS SDK 以及 App 内嵌页打通插件才能生效
+
+### 多实例采集
+
+#### 初始化多实例
+
+```typescript
+let config = new GrowingConfig(
+'SubTracker AccountId',
+'SubTracker DataSourceId',
+'SubTracker UrlScheme',
+'SubTracker DataCollectionServerHost<Optional>'
+)
+GrowingAnalytics.startSubTracker(trackerId, config)
+```
+
+初始化配置中，`accountId/dataSourceId/dataCollectionServerHost` 都可与主实例不同，具体如下表格：
+
+| 配置项                        | 子实例是否能单独配置 |
+| ----------------------------- | -------------------- |
+| accountId                     | 是                   |
+| dataSourceId                  | 是                   |
+| urlScheme                     | 是                   |
+| dataCollectionServerHost      | 是                   |
+| debugEnabled                  | 否，以主实例为准     |
+| sessionInterval               | 是                   |
+| dataUploadInterval            | 是                   |
+| dataCollectionEnabled         | 是                   |
+| idMappingEnabled              | 是                   |
+| requestOptions.connectTimeout | 是                   |
+| requestOptions.readTimeout    | 是                   |
+| dataValidityPeriod            | 否，以主实例为准     |
+| encryptEnabled                | 是                   |
+| compressEnabled               | 是                   |
+
+**注意：初始化子实例前必须先初始化主实例**
+
+#### 兼容 APIs
+
+子实例可单独调用以下接口，其逻辑与其他实例相互隔离
+```typescript
+export interface GrowingAnalyticsInterface {
+  isInitializedSuccessfully(): boolean
+  setDataCollectionEnabled(enabled: boolean): void
+  setLoginUserId(userId: string, userKey?: string): void
+  cleanLoginUserId(): void
+  
+  setLoginUserAttributes(attributes: AttributesType): void
+  track(eventName: string, attributes: AttributesType, sendTo?: string[]): void
+  trackTimerStart(eventName: string): Promise<string>
+  trackTimerPause(timerId: string): void
+  trackTimerResume(timerId: string): void
+  trackTimerEnd(timerId: string, attributes: AttributesType, sendTo?: string[]): void
+  removeTimer(timerId: string): void
+  clearTrackTimer(): void
+}
+```
+
+假设子实例的 `trackerId` 为 `subTrackerId_01`，调用方式如下：
+```typescript
+// 获取子实例，需要先初始化该子实例，否则下述接口将无法生效
+let subTracker = GrowingAnalytics.tracker('subTrackerId_01')
+
+// 返回是否初始化成功
+let success = subTracker.isInitializedSuccessfully()
+if (!success) {
+  return
+}
+
+// 数据采集开关
+subTracker.setDataCollectionEnabled(true)
+
+// 登录用户ID
+subTracker.setLoginUserId('user')
+subTracker.setLoginUserId('user', 'harmony')
+subTracker.cleanLoginUserId()
+
+// 设置埋点事件
+subTracker.track('buyProduct1')
+subTracker.track('buyProduct2', {
+  'name': 'apple',
+  'money': 1000,
+  'num': 100,
+  'from': ['sichuan', 'guizhou', 'hunan']
+})
+
+// 事件计时器
+let timerId = await subTracker.trackTimerStart('eventName')
+subTracker.trackTimerPause(timerId)
+subTracker.trackTimerResume(timerId)
+subTracker.trackTimerEnd(timerId)
+let timerId2 = await subTracker.trackTimerStart('eventName2')
+subTracker.trackTimerEnd(timerId2, {
+  'property': 'value',
+  'property2': 100
+})
+subTracker.removeTimer(timerId)
+subTracker.clearTrackTimer()
+
+// 设置登录用户属性
+subTracker.setLoginUserAttributes({
+  'name': 'ben',
+  'age': 30
+})
+
+// Hybrid 打通
+subTracker.createHybridProxy(this.controller)
+```
+
+#### SendTo
+
+可使用 sendTo 功能将主实例或子实例的自定义事件转发到其他子实例：
+```typescript
+// 主实例track转发
+GrowingAnalytics.track('buyProduct1', {}, ['subTrackerId_01', 'subTrackerId_02'])
+GrowingAnalytics.track('buyProduct2', {
+  'name': 'apple',
+  'money': 1000,
+  'num': 100,
+  'from': ['sichuan', 'guizhou', 'hunan']
+}, ['subTrackerId_01', 'subTrackerId_02'])
+
+// 主实例事件计时器转发
+let timerId = await GrowingAnalytics.trackTimerStart('eventName')
+GrowingAnalytics.trackTimerEnd(timerId, {}, ['subTrackerId_01', 'subTrackerId_02'])
+let timerId2 = await GrowingAnalytics.trackTimerStart('eventName2')
+GrowingAnalytics.trackTimerEnd(timerId2, {
+  'property': 'value',
+  'property2': 100
+}, ['subTrackerId_01', 'subTrackerId_02'])
+
+// 子实例track转发
+let subTracker = GrowingAnalytics.tracker('subTrackerId_01')
+subTracker.track('buyProduct1', {}, ['subTrackerId_02'])
+subTracker.track('buyProduct2', {
+  'name': 'apple',
+  'money': 1000,
+  'num': 100,
+  'from': ['sichuan', 'guizhou', 'hunan']
+}, ['subTrackerId_02'])
+
+// 子实例事件计时器转发
+let timerId = await subTracker.trackTimerStart('eventName')
+subTracker.trackTimerEnd(timerId, {}, ['subTrackerId_02'])
+let timerId2 = await subTracker.trackTimerStart('eventName2')
+subTracker.trackTimerEnd(timerId2, {
+  'property': 'value',
+  'property2': 100
+}, ['subTrackerId_02'])
+```
+> 当前仅 track 和 trackTimerEnd 接口支持 sendTo 转发
