@@ -219,6 +219,7 @@ gdp('init', accountId, datasourceId, appId, {
 ```js
 gdp('init',accountId, dataSourceId, appId, {
   tbConfig: {
+      cloud,                           // 淘宝小程序官方的请求SDK
       cloudFuncSend: true,             // 是否使用云函数进行数据单发，默认为 false
       cloudFuncName: 'httpTunnel'      // 调用的云函数名称，默认为 httpTunnel
       cloudFuncHandler: 'main'         // 指定云函数的handler，默认为 main
@@ -232,7 +233,8 @@ gdp('init',accountId, dataSourceId, appId, {
 ```js
 gdp('init', accountId, dataSourceId, appId, {
   tbConfig: {
-    cloudAppId: 'xxxxxx', // 云应用Id，无默认值
+    cloud,                                // 淘宝小程序官方的请求SDK
+    cloudAppId: 'xxxxxx',                 // 云应用Id，无默认值
     path: 'your cloudApp interface path', // 云应用数据接口，无默认值
   },
   ...其他配置项,

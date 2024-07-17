@@ -53,6 +53,7 @@ npm i gio-miniprogram-sdk --save
 
 ```js
 // app.js
+import cloud from '@tbmp/mp-cloud-sdk';
 // 下载集成方式
 import gdp from './utils/gio/gio-taobao.js';
 // npm集成方式
@@ -64,7 +65,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     // OP私有部署客户请填写serverUrl，Saas客户请忽略
     serverUrl: 'your server url',
     // tbConfig 为必填项，详情参考文档
-    tbConfig: { ... },
+    tbConfig: { cloud, ... },
     ...other settings
 });
 
@@ -99,6 +100,7 @@ npm i gio-miniprogram-sdk --save
 
 ```js
 // myComponent.js
+import cloud from '@tbmp/mp-cloud-sdk';
 import gdp from './utils/gio/gio-taobao.js';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
@@ -108,7 +110,7 @@ gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     // 开启插件模式
     pluginMode: true,
     // tbConfig 为必填项，详情参考文档
-    tbConfig: { ... },
+    tbConfig: { cloud, ... },
     ...other settings
 });
 
@@ -138,19 +140,13 @@ Component({ ... });
 
 <ImageLoader path="img/miniprogram/taobao_debug" />
 
-## 添加白名单
+## 添加白名单和上报方式选择
 
 ### 使用云函数上报
 
 由于淘宝小程序对使用云函数对外上报的方式要求严格，因此需要具体域名和字段需要与我们沟通确认后由开发主体申请白名单 [参考文档](https://miniapp.open.taobao.com/docV3.htm?docId=118444&docType=1)
 
 **注意不要轻易尝试申请！会浪费您的申请资源！请与我们充分沟通需求后再实践。**
-
-### 使用云应用转发上报
-
-无需申请白名单。**注意请与我们充分沟通需求后再实践。**
-
-## 云函数上报
 
 这里我们给出云函数上报在代码中的调用实现供参考：
 
@@ -172,3 +168,7 @@ exports.main = async (context) => {
   return { success: true, msg: result };
 };
 ```
+
+### 使用云应用转发上报
+
+无需申请白名单。但需要您的服务端提供一个接口地址，将SDK上报的数据通过您的服务端直接转发给我们的数据采集地址，接口开发内容请与我们充分沟通需求后再实践。

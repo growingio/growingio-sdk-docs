@@ -254,7 +254,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 
 ## 在 APP 内嵌页面中集成
 
-全量集成 SDK 时，参考 Web 站点集成即可，无需做额外操作，已内置 App 内嵌页打通功能。
+全量集成 SDK 时，需在 Web 站点集成的基础之上，修改初始化配置即可，无需再次集成插件，已内置 App 内嵌页打通功能。[参考文档](/docs/webjs/plugins/hybridAdapter)
 
 按需集成 SDK 时，需在 Web 站点集成的基础之上，注册添加 App 内嵌页打通插件。[参考文档](/docs/webjs/plugins/hybridAdapter)
 
