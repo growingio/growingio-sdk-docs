@@ -4,6 +4,13 @@ sidebar_position: 0
 ---
 ----
 
+# [3.8.4](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.3...3.8.4) (2024-07-24)
+
+
+### Bug Fixes
+
+* Mobile Debugger 意外崩溃 ([4fe4558](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4fe4558965a2f2f95d0f48d82501d49b1ac3cd0f))
+
 # [3.8.3](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.2...3.8.3) (2024-07-18)
 
 
