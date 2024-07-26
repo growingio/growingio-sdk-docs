@@ -3,6 +3,12 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [1.2.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/1.2.0) (2024-07-26)
+
+### Features
+
+* 适配 Flutter on HarmonyOS (3.7.12-ohos)
+
 ## [1.1.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/1.1.0) (2024-06-21)
 
 ### Features

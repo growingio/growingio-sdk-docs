@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Flutter SDK 插件
 ---
 
-Flutter SDK 插件时集成后，即可以使用SDK的埋点功能，若是需要无埋点功，需要在集成插件后再做额外的页面配置才能使其生效。
+Flutter SDK 插件时集成后，即可以使用SDK的埋点功能，若是需要无埋点功能，需要在集成插件后再做额外的页面配置才能使其生效。
 
 ---
 
@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 
 ```c
 dependencies:
-  growingio_flutter_plugin: '^4.0.0'
+  growingio_flutter_plugin: '^4.1.0'
 ```
 
 
@@ -38,6 +38,7 @@ dependencies:
   | Flutter 插件版本 |  Android SDK 版本范围   |  Apple SDK 版本范围  |
   | :-------------- | :----------------- | :------: |
   | = v4.0.0 | >= v4.3.0 | >= v4.3.0 |
+  | = v4.1.0 | >= v4.3.0 | >= v4.3.2 |
 
 </details>
 

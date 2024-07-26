@@ -3,6 +3,14 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+# [4.3.2](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.1...4.3.2) (2024-07-26)
+
+
+### Bug Fixes
+
+* 移除编译产物中的 NSLog 符号 ([074e9cd](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/074e9cd020b0f956c2fdd22803e499265cedc707))
+* 在 Flutter 应用中，当 Session 状态未处于 active 时，不发送 PAGE 事件 ([de4b5bc](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/de4b5bc015a194c4f84ae1b70f8c11b88e349cfb))
+
 # [4.3.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.0...4.3.1) (2024-05-31)
 
 
