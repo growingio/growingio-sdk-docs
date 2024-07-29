@@ -42,22 +42,19 @@ dependencies:
 
 </details>
 
-:::info 原生+Flutter
-若是纯 Flutter 应用，上述集成就可以使用了,Flutter和原生共用一套SDK逻辑，不会重复初始化两次。  
-若是在 Android 项目中同时包含了原生界面，且需要无埋点功能支持，那么就需要额外在 Android 配置中添加 [GrowingIO Gradle 插件](/docs/android/AGP7)才能使原生无埋点生效。 
-在 iOS 项目中则无需其他操作。
-
-:::
-
 ### Flutter 插件初始化
 
-GrowingIO Flutter SDK 需要在 Flutter 中初始化 SDK。
+GrowingIO Flutter SDK 需要在 Flutter 端初始化 SDK。
 
+:::info 原生+Flutter
+若您的 Flutter 应用是混编应用，在进入 Flutter 页面之前已经在原生进行了原生 SDK 的初始化，您还应当在 Flutter 端再进行一次 Flutter SDK 的初始化，以使得插件桥接生效。<br/>
+注意：原生端或 Flutter 端，以先初始化的配置项为主。<br/>
+如果是 Android 平台且需要无埋点功能支持，还应当在 Android 配置中添加 [GrowingIO Gradle 插件](/docs/android/AGP7) 才能使原生无埋点生效。 
+:::
 
 #### Flutter 初始化
 
 在 Flutter 端进行初始化，推荐将 SDK 的初始化代码放入 `main.dart` 的 `main` 中，代码示例如下：
-
 
 ```dart
 
@@ -77,6 +74,34 @@ void main() async {
 
 
   runApp(MyApp());
+}
+```
+
+#### Flutter On HarmonyOS 配置上下文
+
+如果您的 Flutter 应用需要在 HarmonyOS 平台运行，您还需要在项目中 FlutterAbility 子类的 `configureFlutterEngine(flutterEngine: FlutterEngine)` 方法中配置 HarmonyOS 插件上下文：
+
+首先，定义一个包含上下文的插件类型 `AsGrowingAnalytics`：
+
+```typescript
+interface AsGrowingAnalytics extends FlutterPlugin {
+  context: Context
+}
+```
+
+其次，配置 HarmonyOS 插件上下文，注意配置代码需要在 `GeneratedPluginRegistrant.registerWith(flutterEngine)` 之后：
+
+```typescript
+configureFlutterEngine(flutterEngine: FlutterEngine) {
+  super.configureFlutterEngine(flutterEngine)
+  GeneratedPluginRegistrant.registerWith(flutterEngine)
+
+  // 配置 HarmonyOS 插件上下文
+  let plugins = flutterEngine.getPlugins()
+  if (plugins && plugins.has('FlutterGrowingAutotrackerPlugin')) {
+    let analytics = plugins.get('FlutterGrowingAutotrackerPlugin') as AsGrowingAnalytics
+    analytics.context = this.context
+  }
 }
 ```
 
