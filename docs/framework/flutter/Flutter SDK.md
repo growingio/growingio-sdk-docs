@@ -47,8 +47,8 @@ dependencies:
 GrowingIO Flutter SDK 需要在 Flutter 端初始化 SDK。
 
 :::info 原生+Flutter
-若您的 Flutter 应用是混编应用，在进入 Flutter 页面之前已经在原生进行了原生 SDK 的初始化，您还应当在 Flutter 端再进行一次 Flutter SDK 的初始化，以使得插件桥接生效。
-注意：原生端或 Flutter 端，以先初始化的配置项为主。
+若您的 Flutter 应用是混编应用，在进入 Flutter 页面之前已经在原生进行了原生 SDK 的初始化，您还应当在 Flutter 端再进行一次 Flutter SDK 的初始化，以使得插件桥接生效。<br/>
+注意：原生端或 Flutter 端，以先初始化的配置项为主。<br/>
 如果是 Android 平台且需要无埋点功能支持，还应当在 Android 配置中添加 [GrowingIO Gradle 插件](/docs/android/AGP7) 才能使原生无埋点生效。 
 :::
 
