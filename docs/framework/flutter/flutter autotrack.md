@@ -33,7 +33,7 @@ MaterialApp(
 import 'package:growingio_flutter_plugin/growingio_flutter_plugin.dart';
 
 void main() async {
-  runApp(GrowingWidget(child: MyApp()));
+  runApp(const GrowingWidget(child:const MyApp()));
 }
 ```
 
