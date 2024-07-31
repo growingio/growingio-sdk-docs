@@ -92,16 +92,23 @@ GrowingAnalytics.cleanLocation()
 
 ### 设置埋点事件
 
-`static track(eventName: string, attributes: { [key: string]: string | number | boolean | string[] | number[] | boolean[] } = {})`
+`static track(eventName: string, attributes: GrowingAttrType = {})`
 
 发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在分析云平台事件管理界面创建埋点事件以及关联事件属性
 
+:::info
+`GrowingAttrType` 为 SDK 限定的事件属性类型，实际为：
+```
+{ [key: string]: string | number | boolean | string[] | number[] | boolean[] }
+```
+:::
+
 #### 参数说明
 
-| 参数         | 参数类型                                                                                                | 说明                                                    |
-| ------------ |-----------------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| `eventName`  | `string`                                                                                            | 事件名，事件标识符                                             |
-| `attributes` | string : string &#124; number &#124; boolean &#124; string[] &#124; number[] &#124; boolean[]| 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
+| 参数         | 参数类型          | 说明                                                         |
+| ------------ | ----------------- | ------------------------------------------------------------ |
+| `eventName`  | `string`          | 事件名，事件标识符                                           |
+| `attributes` | `GrowingAttrType` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
 
 #### 示例
 
@@ -114,6 +121,10 @@ GrowingAnalytics.track('buyProduct2', {
   'num': 100,
   'from': ['sichuan', 'guizhou', 'hunan']
 })
+
+let attributes: GrowingAttrType = {}
+attributes['a'] = 'b'
+GrowingAnalytics.track('buyProduct3', attributes)
 ```
 
 > 详细使用示例：[埋点事件示例](https://growingio.github.io/growingio-sdk-docs/knowledge/basicknowledge/trackEventUse#埋点事件示例)
@@ -132,7 +143,7 @@ GrowingAnalytics.track('buyProduct2', {
 
 恢复事件计时器，参数为 trackTimer 返回的唯一标识
 
-`static async trackTimerEnd(timerId: string, attributes: { [key: string]: string | number | boolean | string[] | number[] | boolean[] } = {})`
+`static async trackTimerEnd(timerId: string, attributes: GrowingAttrType = {})`
 
 停止事件计时器，参数为 trackTimer 返回的唯一标识。调用该接口会自动触发删除定时器。
 
@@ -151,7 +162,7 @@ GrowingAnalytics.track('buyProduct2', {
 | 参数         | 参数类型                                                                                                | 说明                                                    |
 | ------------ |-----------------------------------------------------------------------------------------------------|-------------------------------------------------------|
 | `eventName`  | `string`                                                                                            | 事件名，事件标识符                                             |
-| `attributes` | string: string &#124; number &#124; boolean &#124; string[] &#124; number[] &#124; boolean[]  | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
+| `attributes` | `GrowingAttrType` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID)（可选） |
 | `timerId`    | `string`                                                                                            | 计时器唯一标识符，由`trackTimerStart`返回                         |
 
 #### 示例
@@ -183,15 +194,15 @@ GrowingAnalytics.clearTrackTimer()
 
 ### 设置登录用户属性
 
-`static setLoginUserAttributes(attributes: { [key: string]: string | number | boolean | string[] | number[] | boolean[] })`
+`static setLoginUserAttributes(attributes: GrowingAttrType)`
 
 以登录用户的身份定义登录用户属性，用于用户信息相关分析
 
 #### 参数说明
 
-| 参数         | 参数类型                                                                                                | 说明         |
-| ------------ |-----------------------------------------------------------------------------------------------------| ------------ |
-| `attributes` | string: string &#124; number &#124; boolean &#124; string[] &#124; number[] &#124; boolean[] | 用户属性信息 |
+| 参数         | 参数类型          | 说明         |
+| ------------ | ----------------- | ------------ |
+| `attributes` | `GrowingAttrType` | 用户属性信息 |
 
 #### 示例
 
@@ -216,7 +227,7 @@ let deviceId = GrowingAnalytics.getDeviceId()
 
 ### 事件通用属性
 
-`static setGeneralProps(props: { [key: string]: string | number | boolean | string[] | number[] | boolean[] })`
+`static setGeneralProps(props: GrowingAttrType)`
 
 为所有自定义埋点事件设置通用属性，多次调用，相同字段的新值将覆盖旧值
 
@@ -228,15 +239,15 @@ let deviceId = GrowingAnalytics.getDeviceId()
 
 移除所有埋点事件通用属性
 
-`static setDynamicGeneralProps(generator: () => { [key: string]: string | number | boolean | string[] | number[] | boolean[] })`
+`static setDynamicGeneralProps(generator: () => GrowingAttrType)`
 
 设置动态通用属性
 
 #### 参数说明
 
-| 参数    | 参数类型                                                                                                | 说明                                                |
-| ------- |-----------------------------------------------------------------------------------------------------|---------------------------------------------------|
-| `props` | string: string &#124; number &#124; boolean &#124; string[] &#124; number[] &#124; boolean[]| 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID) |
+| 参数    | 参数类型          | 说明                                                         |
+| ------- | ----------------- | ------------------------------------------------------------ |
+| `props` | `GrowingAttrType` | 事件发生时所伴随的属性信息；当事件属性关联有维度表时，属性值为对应的维度表模型 ID(记录 ID) |
 
 #### 示例
 
