@@ -9,6 +9,7 @@ title: Flutter 无埋点
 
 ## 基于 Route 的页面事件
 
+### 设置页面监听器
 为了能够识别 Flutter 中页面的进入与退出，我们需要对 Flutter 系统的 `navigator` 进行监听。一般是在 `MaterialApp` 下的`navigatorObservers`添加。
 
 ```dart
@@ -24,6 +25,13 @@ MaterialApp(
   builder: (context, child) {}
 )
 ```
+### 设置要监听的页面
+目前 GrowingIO Flutter SDK 4.0 只对已经设置页面属性的组件发送页面事件，未设置的页面既不会发送页面事件也不会发送无埋点点击事件。
+
+如何设置监听页面，可以从下列方式中选择合适的方法：
+1. 扩展Route: 使用 GrowingIO Flutter SDK 提供的类扩展 Flutter 中的 Route，将其标识为要采集的页面，可以参考[示例一](#示例一route)，[示例二](#示例二route-name)，[示例三](#示例三自定义route);
+2. 使用代码将 Widget 标识为要采集的页面，参考[示例五](#示例五-非-route-页面)
+3. 将Dialog,BottomSheet等弹出框标识为页面，参考[示例四](#示例四面对dialogbottomsheet等弹出框)
 
 ## 基于页面的无埋点点击事件
 
@@ -40,7 +48,6 @@ void main() async {
 请注意以下几个问题：
 1. 当前 GrowingIO Flutter SDK 只监听 onTap 事件，未对滑动的动作进行监听，所以比如像 `Slider`,`ProgressBar`之类控件的滑动埋点事件无法自动生成，请客户手动进行埋点；
 2. 为了保证点击事件捕获的准确性，只会在已经声明为页面（即可发送页面事件）的界面做无埋点点击事件捕获，非页面的点击无法生成无埋点点击事件。
-
 
 
 ## 关于 Flutter Route 无埋点页面的说明
@@ -178,7 +185,7 @@ showModalBottomSheet<void>(
 
 ### 示例五: 非 Route 页面
 
-若是客户希望将一个 Widget 标记为页面，则可以通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来手动扩展实现。
+若是客户希望将一个 Widget 标记为页面，则可以通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来进行扩展实现。
 
 1. 在 `StatefulWidget` 中，可以将其 State 声明为 Page页面，如下：
 

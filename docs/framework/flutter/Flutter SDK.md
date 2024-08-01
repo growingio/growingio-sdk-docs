@@ -438,7 +438,7 @@ GrowingAutotracker.getContext().registerComponent(JsonLibraryModule());
 
 ### 12. 无埋点页面事件
 
-在配置了 Flutter 无埋点既可以通过路由监听器和替换Route类自动实现，也可以通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来手动实现。
+在配置了 Flutter 无埋点既可以通过路由监听器和替换Route类自动实现，也可以通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来使用代码实现。
 
 1. 在 `StatefulWidget` 中，可以将其 State 声明为 Page页面，如下：
 
