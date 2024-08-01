@@ -65,8 +65,9 @@ void main() async {
   option.debugEnabled = false;
   option.dataCollectionEnable = true;
   option.androidConfig = AndroidConfiguration(
-      channel: "应用宝", androidIdEnabled: true, imeiEnabled: false, requireAppProcessesEnabled: true);
-      
+      channel: "应用宝", androidIdEnabled: true, imeiEnabled: false, requireAppProcessesEnabled: false);
+  
+  /// 添加相应的模块
   option.addGioComponent(EncoderLibraryGioModule());
 
   /// 设置完配置后，调用该接口进行初始化
@@ -437,7 +438,7 @@ GrowingAutotracker.getContext().registerComponent(JsonLibraryModule());
 
 ### 12. 无埋点页面事件
 
-Flutter的 Page事件可以通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来手动实现。
+在配置了 Flutter 无埋点既可以通过路由监听器和替换Route类自动实现，也可以通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来使用代码实现。
 
 1. 在 `StatefulWidget` 中，可以将其 State 声明为 Page页面，如下：
 
@@ -466,3 +467,16 @@ class SplashScreen extends StatelessWidget with GrowingPageStatelessMixin {
 alias 对应页面的名称，attributes为页面属性。
 
 > 另外，可以直接在 Page 下调用 `trackCustomEvent` 方法，发送的自定义事件就会携带事件属性，如不需要则可以调用`GrowingAutotracker.getContext().trackCustomEvent`.
+
+
+### 13. 无埋点点击事件
+
+如是想要自动获取无埋点点击事件，需要为整个 App 添加事件监听器，如下所示：
+
+```dart
+import 'package:growingio_flutter_plugin/growingio_flutter_plugin.dart';
+
+void main() async {
+  runApp(const GrowingWidget(child:const MyApp()));
+}
+```
