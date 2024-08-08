@@ -26,6 +26,20 @@ ohpm install <您所下载的 har 文件路径>
   </TabItem>
 </Tabs>
 
+### 配置权限
+
+在 module.json5 中配置所需权限：
+```typescript
+"requestPermissions": [
+  {
+    "name": "ohos.permission.INTERNET"
+  },
+  {
+    "name": "ohos.permission.GET_NETWORK_INFO"
+  }
+]
+```
+
 ### 初始化
 在 AbilityStage 的 onCreate 方法中初始化 SDK (Stage 模型)：
 ```typescript
