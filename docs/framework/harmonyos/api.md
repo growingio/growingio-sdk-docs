@@ -299,7 +299,7 @@ Web({ src: url, controller: this.controller})
 #### 初始化多实例
 
 ```typescript
-let config = new GrowingConfig(
+let config = new GrowingConfig().NewSaaS(
 'SubTracker AccountId',
 'SubTracker DataSourceId',
 'SubTracker UrlScheme',
