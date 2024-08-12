@@ -2,11 +2,25 @@
 title: 版本记录
 sidebar_position: 0
 ---
+## RELEASE-4.3.1
+Features：
+1. 默认新Saas域名配置由 http 改为 https;
+2. 项目上的配置包括kotlin,gradle等升级；[#218](https://github.com/growingio/growingio-sdk-android-autotracker/pull/218)
+
+Bug Fixes：
+1. 修复上传 hybrid 页面事件时未携带 orientation 属性的问题。
+
+:::note 
+
+ 标签:**[v4.3.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.3.1)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2024-08-09** 
+
+:::
+
 ## RELEASE-4.3.0
 Features：
-1. SDK添加无埋点功能开关，可以直接切换至埋点SDK ([#213](https://github.com/growingio/growingio-sdk-android-autotracker/pull/213))
-2. 添加全局动态通用属性功能 ([#215](https://github.com/growingio/growingio-sdk-android-autotracker/pull/215))
-3. 添加配置项用于配置数据缓存时间 ([#216](https://github.com/growingio/growingio-sdk-android-autotracker/pull/216))
+1. SDK添加无埋点功能开关，可以直接切换至埋点SDK [#213](https://github.com/growingio/growingio-sdk-android-autotracker/pull/213)
+2. 添加全局动态通用属性功能 [#215](https://github.com/growingio/growingio-sdk-android-autotracker/pull/215)
+3. 添加配置项用于配置数据缓存时间 [#216](https://github.com/growingio/growingio-sdk-android-autotracker/pull/216)
 
 Bug Fixes：
 1. 当在Debug环境下输出的json日志过大时缩减其文本；
