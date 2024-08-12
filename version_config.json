@@ -24,7 +24,7 @@
     "distPath": "docs/ios/",
     "fileName": "version.md",
     "fromId": 135048692,
-    "enable": true
+    "enable": false
   },
   {
     "name": "webjs",
