@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 在4.0新版本，CDP私有部署将会和SaaS一起合并至SDK中，原有的集成逻辑会做相应的更改，如：
 
-* 引入SDK `implementation 'com.growingio.android:autotracker-cdp:4.3.0'` 变更为 `implementation 'com.growingio.android:autotracker:4.3.0'`；
+* 引入SDK `implementation 'com.growingio.android:autotracker-cdp:4.3.1'` 变更为 `implementation 'com.growingio.android:autotracker:4.3.1'`；
 * 初始化配置由 `CdpAutotrackConfiguration` 变更为 `AutotrackConfiguration`。
 
 ## 关于老SaaS(2.0版本)
@@ -42,7 +42,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.3.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.1')
 
   //GrowingIO 无埋点 SDK 适配版
   implementation 'com.growingio.android:autotracker-saas'
@@ -57,7 +57,7 @@ dependencies {
 apply plugin: 'com.android.application'
 
 dependencies {
-    implementation 'com.growingio.android:autotracker-saas:4.3.0'
+    implementation 'com.growingio.android:autotracker-saas:4.3.1'
 }
 ```
 
