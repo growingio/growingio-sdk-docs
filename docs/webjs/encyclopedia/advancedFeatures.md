@@ -67,6 +67,11 @@ npm集成时，利用 es6 require 的模块化引入赋值即可。
 ```js
 import gdp from 'gio-webjs-sdk';
 // 此处示例将 gdp 修改为 abc ↓↓↓
+const abc = require('gio-webjs-sdk').default;
+
+
+import gdp from 'gio-webjs-sdk/gdp-full';
+// 此处示例将 gdp 修改为 abc ↓↓↓
 const abc = require('gio-webjs-sdk/gdp-full').default;
 ```
 
