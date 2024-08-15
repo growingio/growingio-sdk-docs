@@ -23,7 +23,7 @@ gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking
 
 ### 无埋点（gioEventAutoTracking）
 
-自动采集 `click`、`change`、`submit` 事件的插件。<br/>
+自动采集 `click`、`change` 事件的插件。<br/>
 [参考文档](/docs/webjs/plugins/eventAutoTracking)
 
 ### 小程序内嵌页打通（gioEmbeddedAdapter）

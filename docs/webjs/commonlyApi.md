@@ -440,9 +440,9 @@ trackTimerEnd时发送CUSTOM事件上报数据：
 
 * eventName  埋点事件标识符（trackTimerStart传入）
 * attributes 用户自定义事件属性（trackTimerEnd传入）
-* event_duration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;event_duration 按照秒上报，小数点精度保证到毫秒<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;event_duration 变量及其值会自动添加在 attributes 中<br/>
+* eventDuration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;eventDuration 按照秒上报，小数点精度保证到毫秒<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;eventDuration 变量及其值会自动添加在 attributes 中<br/>
 * eventName 对应的埋点事件需要在平台中**绑定**标识符名为 event_duration， 且类型为小数的事件属性
 :::
 
