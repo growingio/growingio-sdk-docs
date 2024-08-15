@@ -62,9 +62,9 @@ gdp('init', xxxx);
 
 ```html
 <div>
-  <div data-growing-index="1">节点1</li>
-  <div data-growing-index="2">节点2</li>
-  <div data-growing-index="3">节点3</li>
+  <div data-growing-index="1">节点1</div>
+  <div data-growing-index="2">节点2</div>
+  <div data-growing-index="3">节点3</div>
 </div>
 ```
 
