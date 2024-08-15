@@ -5,6 +5,16 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.3.0 - 2024/08/15
+
+- 🐞 修复淘宝小程序云函数发送失败重试逻辑。
+- 🐞 修复支付宝、淘宝小程序存储逻辑错误导致取值首次来源取值错误的问题。
+- 🐞 修复快应用集成华为真机报错问题。
+- 🐞 修复小程序App生命周期的埋点自定义参数被全局参数覆盖的问题。
+- 🐞 修复taro框架生命周期执行逻辑问题。
+- 🌟 改造小程序的页面信息取值(path、query、title)逻辑。
+- 🎉 新增小程序跳转小程序时来源上报。
+
 ### V4.2.0 - 2024/05/08
 
 - 🌟 插件内容单独添加版本号。
