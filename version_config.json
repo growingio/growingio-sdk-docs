@@ -1,7 +1,7 @@
 [
   {
     "name": "Android",
-    "version": "4.3.0",
+    "version": "4.3.1",
     "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-android-autotracker/releases",
     "distPath": "docs/android/",
     "fileName": "version.md",
@@ -24,7 +24,7 @@
     "distPath": "docs/ios/",
     "fileName": "version.md",
     "fromId": 135048692,
-    "enable": true
+    "enable": false
   },
   {
     "name": "webjs",
