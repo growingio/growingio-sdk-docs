@@ -62,12 +62,17 @@ window.abc('track', xxxxx, xxxxx);
 </TabItem>
 <TabItem value="npm">
 
-npm集成时，利用 es6 的模块化引入规则，直接修改引入名称即可。
+npm集成时，利用 es6 require 的模块化引入赋值即可。
 
 ```js
 import gdp from 'gio-webjs-sdk';
 // 此处示例将 gdp 修改为 abc ↓↓↓
-import * as abc from 'gio-webjs-sdk';
+const abc = require('gio-webjs-sdk').default;
+
+
+import gdp from 'gio-webjs-sdk/gdp-full';
+// 此处示例将 gdp 修改为 abc ↓↓↓
+const abc = require('gio-webjs-sdk/gdp-full').default;
 ```
 
 后续即可通过 `abc` 调用我们的方法。
