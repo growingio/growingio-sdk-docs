@@ -222,6 +222,8 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 **2）** SDK **默认使用 esm** 格式进行打包，若您的站点需要使用 umd 格式的 SDK，请修改为`gio-webjs-sdk/gdp.umd.js`（`gio-webjs-sdk/gdp-full.umd.js`）即可引用 umd 格式的 SDK。
 
 **3）** 如果您使用了 TypeScript 开发，且遇到了类似 `找不到模块"gio-webjs-sdk"或其相应的类型声明` 的错误提示时，在您全局的 d.ts 文件中添加 `declare module 'gio-webjs-sdk';` 模块定义即可。
+
+**4）** 如果您在引入过程中遇到找不到 `gio-webjs-sdk/gdp-full` 类似的情况，可以尝试使用 `gio-webjs-sdk/dist/gdp-full` 的路径解决。
 </TabItem>
 </Tabs>
 

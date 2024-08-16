@@ -62,17 +62,63 @@ window.abc('track', xxxxx, xxxxx);
 </TabItem>
 <TabItem value="npm">
 
-npm集成时，利用 es6 require 的模块化引入赋值即可。
+此处多种方式示例将 gdp 修改为 abc。
+
+#### 方式一
+
+直接引入后重新定义变量赋值。
 
 ```js
 import gdp from 'gio-webjs-sdk';
-// 此处示例将 gdp 修改为 abc ↓↓↓
+const abc = gdp;
+```
+
+#### 方式二
+
+在支持 require 的CommonJS语法中直接引入赋值即可。
+
+```js
+import gdp from 'gio-webjs-sdk';
+
 const abc = require('gio-webjs-sdk').default;
+```
+
+#### 方式三
+
+在Webpack或Vite类似构建工具中。
+
+```js
+/**
+ * Webpack示例
+ */
+// 在你的webpack.config.js文件中，添加或修改resolve.alias部分
+module.exports = {
+  // 其他配置...
+  resolve: {
+    alias: {
+      'abc': 'gio-webjs-sdk' // 设置别名
+    }
+  }
+};
+// 在你的代码中，你可以直接使用别名来导入
+import abc from 'abc';
 
 
-import gdp from 'gio-webjs-sdk/gdp-full';
-// 此处示例将 gdp 修改为 abc ↓↓↓
-const abc = require('gio-webjs-sdk/gdp-full').default;
+/**
+ * Vite示例
+ */
+// 在你的vite.config.js 或 vite.config.ts文件中，添加或修改resolve.alias部分
+import { defineConfig } from 'vite';
+export default defineConfig({
+  // 其他配置...
+  resolve: {
+    alias: {
+      'abc': 'gio-webjs-sdk', // 设置别名
+    }
+  },
+});
+// 在你的代码中，你可以直接使用别名来导入
+import abc from 'abc';
 ```
 
 后续即可通过 `abc` 调用我们的方法。
