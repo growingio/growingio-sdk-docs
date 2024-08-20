@@ -337,7 +337,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 ## 添加白名单
 
-由于阿里(支付宝)小程序对网络请求的限制[参考文档](https://opendocs.alipay.com/mini/008gq6)，您需要在「支付宝小程序管理中心-小程序详情-设置-开发设置-服务器域名白名单」中添加 request 合法域名。[支付宝小程序管理中心](https://open.alipay.com/mini/dev/list)
+由于阿里(支付宝)小程序对网络请求的限制[参考文档](https://opendocs.alipay.com/mini/api/owycmh?pathHash=c91640f8)，您需要在「支付宝小程序管理中心-小程序详情-设置-开发设置-服务器域名白名单」中添加 request 合法域名。[支付宝小程序管理中心](https://open.alipay.com/mini/dev/list)
 
 **<font color="#FC5F3A">注意：</font>请在正式生产环境发布前完成白名单的添加，上线后再添加白名单可能会出现 SDK 无法上报数据的情况，重新发布小程序即可解决。**
 

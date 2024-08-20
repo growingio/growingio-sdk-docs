@@ -99,7 +99,7 @@ Page({
 });
 ```
 
-提示：阿里(支付宝)和淘宝小程序中是`setNavigationBar` [参考文档](https://opendocs.alipay.com/mini/api/xwq8e6)
+提示：阿里(支付宝)和淘宝小程序中是`setNavigationBar` [参考文档](https://opendocs.alipay.com/mini/api/xwq8e6?pathHash=8eaec8e2)
 
 **<font color="#FC5F3A">注意：</font>**
 

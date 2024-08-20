@@ -33,7 +33,7 @@ Web端：首次访问时生成 session，当用户30分钟内无操作行为，�
 
 **A：**页面的一次浏览行为，通过Page事件来统计的
 
-- H5、Web：集成代码中的gdp('send'), 监听history及hashtag
+- H5、Web：监听history及hashtag（即浏览器地址变更）
 - 小程序：onShow
 - 安卓：onResume
 - Apple：viewDidAppear
@@ -73,7 +73,7 @@ Apple 和 Android 失败后数据还在数据库中会再次发送请求；web �
     缺点是数据不受主观因素控制，与开发技术框架关连比较紧密，采集的数据价值密度低（和业务相关性低；目前支持的有原生 Android、原生 Apple、小程序、Web）
 - 无埋点SDK是包含埋点SDK全部功能的；区别在于是否支持无埋点数据采集；
 - 埋点SDK默认仅自动采集预定义的访问量、访问属性数据。行为数据、业务数据需要通过埋点采集实现。（事件：VISIT、CUSTOM、LOGIN_USER_ATTRIBUTES、APP_CLOSED）
-- 无埋点SDK是全量自动采集用户行为数据，同时包含埋点SDK；（事件：VISIT、CUSTOM、LOGIN_USER_ATTRIBUTES、APP_CLOSED、PAGE、VIEW_CLICK、FROM_SUBMIT）
+- 无埋点SDK是全量自动采集用户行为数据，同时包含埋点SDK；（事件：VISIT、CUSTOM、LOGIN_USER_ATTRIBUTES、APP_CLOSED、PAGE、VIEW_CLICK）
 - 无埋点SDK接入简单，只需要开人员发引入SDK，完成初始化，就可以全量的采集用户行为数据。适用于全量的，初期的分析数据采集。后期有自己的一套埋点采集方案，再加入埋点也是支持的。
 - 埋点SDK具有针对性的数据采集，适合有一整套埋点方案体系的专业分析。这样采集的数据更干净、准确、具有分析的针对性；采集数据量相对少，可减少服务器成本。
 - 对于一些使用第三方框架开发的APP，由于暂不支持无埋点采集，原生部分需要使用埋点SDK，第三方框架中使用对应的第三方SDK，也可以自定义适配插件，支持第三方框架的数据采集。
@@ -108,16 +108,16 @@ String deviceId = null;
 
 String adId = getAndroidId();
 deviceId = UUID.nameUUIDFromBytes(adId.getBytes(Charset.forName("UTF-8"))).toString();
-        
+
 String imi = getImei();
 deviceId = UUID.nameUUIDFromBytes(imi.getBytes(Charset.forName("UTF-8"))).toString();
 
 deviceId = UUID.randomUUID().toString();
 ```
 
-小程序：如果SDK设置了强制登录模式，小程序打开时调用 wx.login 获取openid或unionId，且调用 identify 上报openid，会使用 openid 作为 DeviceID ，否则会自动生成 随机访问用户ID 作为 DeviceID。存储在 storage 里面，删除小程序再次进入 DeviceID 会改变（DeviceID不是 openid的情况下）。参考[强制登录模式](/docs/miniprogram/initSettings#forcelogin)
+小程序：如果SDK设置了强制登录模式，小程序打开时调用 wx.login 获取openid或unionId，且调用 identify 上报openid，会使用 openid 作为 DeviceID ，否则会自动生成 随机访问用户ID 作为 DeviceID。存储在 storage 里面，删除小程序再次进入 DeviceID 会重新随机生成（DeviceID不是 openid的情况下）。参考[强制登录模式](/docs/miniprogram/initSettings#forcelogin)
 
-Web: 随机访问用户ID  存储在 localStorage 中，永久有效。<br/>
+Web: 随机访问用户ID 默认存储在 Cookie 中，初始化设置 storageType 时，根据设值存储。<br/>
 这样复杂逻辑的目的是尽量使用 DeviceID 标识唯一一台设备，将同一台设备上的访问用户标识为同一个用户。
 
 ### 11. 移动端 SDK 2.0升3.0版本SDK 与 2.0SDK、3.0SDK的关系是什么？
