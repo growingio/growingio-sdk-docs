@@ -131,19 +131,19 @@ GrowingAnalytics.track('buyProduct3', attributes)
 
 ### 事件计时器
 
-`static async trackTimerStart(eventName: string): Promise<string>`
+`static trackTimerStart(eventName: string): string`
 
 初始化一个事件计时器，参数为计时事件的事件名称，返回值为该事件计时器唯一标识
 
-`static async trackTimerPause(timerId: string)`
+`static trackTimerPause(timerId: string)`
 
 暂停事件计时器，参数为 trackTimer 返回的唯一标识
 
-`static async trackTimerResume(timerId: string)`
+`static trackTimerResume(timerId: string)`
 
 恢复事件计时器，参数为 trackTimer 返回的唯一标识
 
-`static async trackTimerEnd(timerId: string, attributes: GrowingAttrType = {})`
+`static trackTimerEnd(timerId: string, attributes: GrowingAttrType = {})`
 
 停止事件计时器，参数为 trackTimer 返回的唯一标识。调用该接口会自动触发删除定时器。
 
@@ -168,7 +168,7 @@ GrowingAnalytics.track('buyProduct3', attributes)
 #### 示例
 
 ```typescript
-let timerId = await GrowingAnalytics.trackTimerStart('eventName')
+let timerId = GrowingAnalytics.trackTimerStart('eventName')
 GrowingAnalytics.trackTimerPause(timerId)
 GrowingAnalytics.trackTimerResume(timerId)
 GrowingAnalytics.trackTimerEnd(timerId)
@@ -292,7 +292,29 @@ Web({ src: url, controller: this.controller})
   .javaScriptProxy(GrowingAnalytics.createHybridProxy(this.controller))
 ```
 
-对应的 H5 页面需要集成 Web JS SDK 以及 App 内嵌页打通插件才能生效
+> 对应的 H5 页面需要集成 Web JS SDK 以及 App 内嵌页打通插件才能生效
+
+如果您需要注入多个 JavaScript 对象或者通过 permission 配置权限管控，请在 `onControllerAttached` 回调中使用 `registerJavaScriptProxy` 进行注入 hybrid：
+```typescript
+let url = 'https://www.example.com'
+// 通过permission配置权限管控
+let permission = 'Your Permission'
+Web({ src: url, controller: this.controller})
+  .javaScriptAccess(true)
+  .domStorageAccess(true)
+  .onControllerAttached(() => {
+    let proxy = GrowingAnalytics.createHybridProxy(this.controller)
+    if (proxy) {
+      this.controller.registerJavaScriptProxy(proxy.object, proxy.name, proxy.methodList, [], permission)
+    }
+
+    // 如果需要注入多个JavaScript对象
+    let yourProxy = new YourProxy()
+    if (yourProxy) {
+      this.controller.registerJavaScriptProxy(yourProxy.object, yourProxy.name, yourProxy.methodList, yourProxy.asyncMethodList, permission)
+    }
+  })
+```
 
 ### 多实例采集
 
@@ -322,7 +344,7 @@ GrowingAnalytics.startSubTracker(trackerId, config)
 | dataCollectionEnabled         | 是                   |
 | idMappingEnabled              | 是                   |
 | requestOptions.connectTimeout | 是                   |
-| requestOptions.readTimeout    | 是                   |
+| requestOptions.transferTimeout| 是                   |
 | dataValidityPeriod            | 否，以主实例为准     |
 | encryptEnabled                | 是                   |
 | compressEnabled               | 是                   |
@@ -339,12 +361,12 @@ export interface GrowingAnalyticsInterface {
   setLoginUserId(userId: string, userKey?: string): void
   cleanLoginUserId(): void
   
-  setLoginUserAttributes(attributes: AttributesType): void
-  track(eventName: string, attributes: AttributesType, sendTo?: string[]): void
-  trackTimerStart(eventName: string): Promise<string>
+  setLoginUserAttributes(attributes: GrowingAttrType): void
+  track(eventName: string, attributes: GrowingAttrType, sendTo?: string[]): void
+  trackTimerStart(eventName: string): string
   trackTimerPause(timerId: string): void
   trackTimerResume(timerId: string): void
-  trackTimerEnd(timerId: string, attributes: AttributesType, sendTo?: string[]): void
+  trackTimerEnd(timerId: string, attributes: GrowingAttrType, sendTo?: string[]): void
   removeTimer(timerId: string): void
   clearTrackTimer(): void
 }
@@ -379,11 +401,11 @@ subTracker.track('buyProduct2', {
 })
 
 // 事件计时器
-let timerId = await subTracker.trackTimerStart('eventName')
+let timerId = subTracker.trackTimerStart('eventName')
 subTracker.trackTimerPause(timerId)
 subTracker.trackTimerResume(timerId)
 subTracker.trackTimerEnd(timerId)
-let timerId2 = await subTracker.trackTimerStart('eventName2')
+let timerId2 = subTracker.trackTimerStart('eventName2')
 subTracker.trackTimerEnd(timerId2, {
   'property': 'value',
   'property2': 100
@@ -415,9 +437,9 @@ GrowingAnalytics.track('buyProduct2', {
 }, ['subTrackerId_01', 'subTrackerId_02'])
 
 // 主实例事件计时器转发
-let timerId = await GrowingAnalytics.trackTimerStart('eventName')
+let timerId = GrowingAnalytics.trackTimerStart('eventName')
 GrowingAnalytics.trackTimerEnd(timerId, {}, ['subTrackerId_01', 'subTrackerId_02'])
-let timerId2 = await GrowingAnalytics.trackTimerStart('eventName2')
+let timerId2 = GrowingAnalytics.trackTimerStart('eventName2')
 GrowingAnalytics.trackTimerEnd(timerId2, {
   'property': 'value',
   'property2': 100
@@ -434,9 +456,9 @@ subTracker.track('buyProduct2', {
 }, ['subTrackerId_02'])
 
 // 子实例事件计时器转发
-let timerId = await subTracker.trackTimerStart('eventName')
+let timerId = subTracker.trackTimerStart('eventName')
 subTracker.trackTimerEnd(timerId, {}, ['subTrackerId_02'])
-let timerId2 = await subTracker.trackTimerStart('eventName2')
+let timerId2 = subTracker.trackTimerStart('eventName2')
 subTracker.trackTimerEnd(timerId2, {
   'property': 'value',
   'property2': 100
