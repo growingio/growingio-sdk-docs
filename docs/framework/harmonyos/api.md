@@ -187,9 +187,9 @@ GrowingAnalytics.clearTrackTimer()
 > - eventName 埋点事件标识符（trackTimerStart 传入）
 > - attributes 用户自定义事件属性（trackTimerEnd 传入）
 > - event_duration 事件时长 （SDK 内部根据 timerId 自动计算获取 ）
-    >   event_duration 按照秒上报，小数点精度保证到毫秒
-    >   event_duration 变量及其值会自动添加在 attributes 中
-    >   event_duration 时间统计不会计算后台时间
+>   - event_duration 按照秒上报，小数点精度保证到毫秒
+>   - event_duration 变量及其值会自动添加在 attributes 中
+>   - event_duration 时间统计不会计算后台时间
 > - eventName 对应的埋点事件需要在平台中**绑定**标识符为 event_duration， 且类型为小数的事件属性
 
 ### 设置登录用户属性

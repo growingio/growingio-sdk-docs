@@ -103,4 +103,6 @@ export default class MyAbilityStage extends AbilityStage {
 
 若在初始化中 `debugEnabled` 设置为 true，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
 
-至此，就完成了 HarmonyOS SDK 的集成。
+至此，就完成了 HarmonyOS NEXT SDK 的集成。
+
+另外，您可使用 [GioKit 辅助插件](/docs/giokit/harmonyos) 进行集成验证。
