@@ -3,7 +3,7 @@ title: 版本记录
 sidebar_position: 0
 ---
 
-## [2.0.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.0.0) (2024-09-14)
+## [2.0.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.0.0) (2024-09-10)
 
 从 2.0.0 开始，本 SDK 基于将于 2024 年第四季度发布的 HarmonyOS NEXT(5.0.0, API 12) 商业稳定版本进行开发，废弃 1.x 版本对 OpenHarmony 和 HarmonyOS(4.x, API 10-11) 的兼容 (对应 API 版本可以通过集成 Android SDK 进行采集)：
 
