@@ -33,7 +33,7 @@ sidebar_position: 0
 
 ### Features 功能
 
-* feat: 添加 AppClosed 事件，在应用进入后台时触发，多实例情况下，各个实例都会发送
+* feat: 添加 APP_CLOSED 事件，在应用进入后台时触发，多实例情况下，各个实例都会发送
 
 ### Bug Fixes 修复
 
