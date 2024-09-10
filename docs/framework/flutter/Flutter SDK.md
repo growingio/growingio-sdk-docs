@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 
 ```c
 dependencies:
-  growingio_flutter_plugin: '^4.1.0'
+  growingio_flutter_plugin: '^4.2.0'
 ```
 
 
@@ -35,10 +35,11 @@ dependencies:
 <details>
   <summary>点击查看 GrowingIO Flutter 插件和 SDK 版本的依赖关系</summary>
 
-  | Flutter 插件版本 |  Android SDK 版本范围   |  Apple SDK 版本范围  |
-  | :-------------- | :----------------- | :------: |
-  | = v4.0.0 | >= v4.3.0 | >= v4.3.0 |
-  | = v4.1.0 | >= v4.3.0 | >= v4.3.2 |
+| Flutter 插件版本 |  Android SDK 版本范围   |  Apple SDK 版本范围  | HarmonyOS NEXT SDK 版本范围 |
+| :-------------- | :----------------- | :------- | :-------------- |
+| = v4.0.0 | >= v4.3.0 | >= v4.3.0 | - |
+| = v4.1.0 | >= v4.3.0 | >= v4.3.2 | - |
+| = v4.2.0 | >= v4.3.0 | >= v4.3.2 | >= v2.0.0 |
 
 </details>
 
