@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: HarmonyOS SDK 合规说明
+title: HarmonyOS NEXT SDK 合规说明
 ---
 
 ## 隐私协议
@@ -20,7 +20,7 @@ title: HarmonyOS SDK 合规说明
 ```
 可在第三方SDK列表中增加如下内容(设备信息按照**实际情况**填写)：
 ```
-GrowingIO HarmonyOS SDK
+GrowingIO HarmonyOS NEXT SDK
 用途：分析收集移动应用程序(App)用户的使用情况
 收集个人信息类型：设备类型，设备版本，系统版本，地理位置信息，网络设备制造商，IP地址，网络模式
 提供方：北京易数科技有限公司
@@ -40,7 +40,7 @@ GrowingIO HarmonyOS SDK
    
 2.请务必告知用户您使用了 GrowingIO SDK，请在 《隐私协议》 中添加隐私条款，参考[隐私协议填写](#隐私协议填写)
    
-3.集成 [HarmonyOS SDK](/docs/framework/HarmonyOS)，请在用户同意《隐私协议》后 [打开 SDK 的数据采集开关（推荐）](#方式一设置数据采集开关) 或 [延迟初始化 SDK](#方式二延迟初始化)。
+3.集成 [HarmonyOS NEXT SDK](/docs/framework/HarmonyOS)，请在用户同意《隐私协议》后 [打开 SDK 的数据采集开关（推荐）](#方式一设置数据采集开关) 或 [延迟初始化 SDK](#方式二延迟初始化)。
 ​
 ## 采集详情
 
@@ -67,13 +67,13 @@ export default class MyAbilityStage extends AbilityStage {
     return 'MyAbilityStage'
   }
 
-  async startAnalytics() {
+  startAnalytics() {
     let config = ...
     // 1.dataCollectionEnabled 设置为 false
     config.dataCollectionEnabled = false
     // 2.初始化 GrowingIO SDK
     // GrowingIO SDK 初始化代码
-    await GrowingAnalytics.start(this.context, config)
+    GrowingAnalytics.start(this.context, config)
   }
 }
 ```
@@ -107,4 +107,4 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## 数据存储发送策略说明
-HarmonyOS SDK 采集的用户行为数据支持设置发送间隔，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 500 条行为数据），如果待发送行为数据量大于500条，则发送至所有数据发送完成，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
+HarmonyOS NEXT SDK 采集的用户行为数据支持设置发送间隔，默认15秒，SDK 会先将行为数据存入 App 本地 sqlite 数据库中，然后以每隔间隔时间向服务器发送行为数据包（最大 500 条行为数据），如果待发送行为数据量大于500条，则发送至所有数据发送完成，行为数据发送成功后将在数据库中删除。数据库中未发送的行为数据会在7天之后删除。
