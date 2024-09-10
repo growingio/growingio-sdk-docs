@@ -26,6 +26,25 @@ ohpm install <您所下载的 har 文件路径>
   </TabItem>
 </Tabs>
 
+### 配置标准化 OHMUrl
+
+在工程级 build-profile.json5 中配置 useNormalizedOHMUrl 为 true
+```typescript
+{
+  "app": {
+    "products": [
+      {
+        "buildOption": {
+          "strictMode": {
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
 ### 配置权限
 
 在 module.json5 中配置所需权限：
@@ -41,6 +60,7 @@ ohpm install <您所下载的 har 文件路径>
 ```
 
 ### 初始化
+
 在 AbilityStage 的 onCreate 方法中初始化 SDK (Stage 模型)：
 ```typescript
 import AbilityStage from '@ohos.app.ability.AbilityStage'
@@ -58,14 +78,14 @@ export default class MyAbilityStage extends AbilityStage {
     return 'MyAbilityStage'
   }
 
-  async startAnalytics() {
+  startAnalytics() {
     let config = new GrowingConfig().CDP(
       'Your AccountId',
       'Your DataSourceId',
       'Your UrlScheme',
       'Your DataCollectionServerHost'
     )
-    await GrowingAnalytics.start(this.context, config)
+    GrowingAnalytics.start(this.context, config)
   }
 }
 ```
@@ -83,4 +103,6 @@ export default class MyAbilityStage extends AbilityStage {
 
 若在初始化中 `debugEnabled` 设置为 true，打开了 Debug ，则可以在日志中看到每个事件的 log 日志输出。
 
-至此，就完成了 HarmonyOS SDK 的集成。
+至此，就完成了 HarmonyOS NEXT SDK 的集成。
+
+另外，您可使用 [GioKit 辅助插件](/docs/giokit/harmonyos) 进行集成验证。
