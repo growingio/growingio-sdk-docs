@@ -7,6 +7,7 @@ title: JAVA SDK
 
 |    版本    | 说明 |  日期  |
 |:-------:| :----  |  :-------:  |
+| 1.0.16-cdp | 1.支持非用户主体事件上报<br/> 2.用户属性事件和维度表事件属性支持map类型<br/> |  2024-09-24 |
 | 1.0.14-cdp | 1.维度表支持列表属性<br/> 2.支持埋点事件预置属性<br/> |  2023-08-11 |
 | 1.0.13-cdp | 1.修复initConfig不生效<br/> 2.升级pb版本为3.27.1<br/> |  2023-03-27 |
 | 1.0.12-cdp | 支持埋点事件事件变量、用户变量可传列表类型 |  2022-04-20 |
@@ -58,7 +59,7 @@ pom.xml
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.14-cdp</version>
+        <version>1.0.16-cdp</version>
     </dependency>
 </dependencies>
 ```
@@ -69,7 +70,7 @@ pom.xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.14-cdp</version>
+    <version>1.0.16-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
@@ -83,13 +84,13 @@ pom.xml
 如果使用gradle依赖，可以使用如下集成方式
 
 ```gradle
-implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.14-cdp'
+implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.16-cdp'
 ```
 
 若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone
 
 ```gradle
-implementation('io.growing.sdk.java:growingio-java-sdk:1.0.14-cdp:standalone') {
+implementation('io.growing.sdk.java:growingio-java-sdk:1.0.16-cdp:standalone') {
     exclude module: 'protobuf-java'
 }
 ```
@@ -246,6 +247,16 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
                     .build();
 ```
 
+```java
+// 非用户主体事件，访问用户ID和登录用户ID可不设置，需要指定登录用户key为指定值
+GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
+                .eventKey("payOrder")
+                .loginUserKey(GioCdpEventMessage.XEI_USER_KEY)
+                .addEventVariable("prod_id", "0001")
+                .addEventVariable("money", "15.52")
+                .build()
+```
+
 :::info
 
 详细使用示例:[埋点事件示例](/knowledge/basicknowledge/trackEventUse#埋点事件示例)
@@ -271,6 +282,7 @@ GioCdpEventMessage msg = new GioCdpEventMessage.Builder()
 | loginUserId      | string                        | 是       | 登录用户ID，与访问用户ID，不能同时为空 |
 | addUserVariable  | (string, object)              | 否       | 登录用户属性；<br/>object支持 string\|double\|int\|List,List中元素支持string\|double\|int      |
 | addUserVariables | map{'<'}string, object{'>'}            | 否       | 登录用户属性集合；<br/>object支持 string\|double\|int\|List,List 中元素支持string\|double\|int   |
+| addUserVariables | (string, map{'<'}string, string{'>'})            | 否       | 登录用户属性, 支持单层map类型|
 
 **代码示例**
 
@@ -284,6 +296,7 @@ GioCdpUserMessage msg = new GioCdpUserMessage.Builder()
                 .addUserVariable("gender", "man")      // 登录用户属性 (选填)
                 .addUserVariable("education", Arrays.asList("本科", "硕士"))      // 登录用户属性 (选填)
                 .addUserVariables(map)                 // 登录用户属性集合 (选填)
+                .addUserVariables('certificates', map)        // 登录用户属性, 支持单层map类型
                 .build();
 ```
 
@@ -421,7 +434,7 @@ Protobuf 从 3.6.0 版本开始不再支持 java 6，相关信息参见[Drop jav
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.13-cdp</version>
+    <version>1.0.16-cdp</version>
     <exclusions>
         <exclusion>
             <groupId>com.google.protobuf</groupId>
