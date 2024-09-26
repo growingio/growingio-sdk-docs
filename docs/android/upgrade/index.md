@@ -12,6 +12,8 @@ import TabItem from '@theme/TabItem';
 
 本文将介绍如何从不同的版本安全无损地升级至 Android SDK 4.0。
 
+相关功能与协议均遵循新版本定义，如埋点事件不再主动关联上报page相关字段(path、ptm等字段)，参考[埋点事件测量协议](/knowledge/measurement#埋点事件custom)
+
 ## 关于 CDP
 
 在4.0新版本，CDP私有部署将会和SaaS一起合并至SDK中，原有的集成逻辑会做相应的更改，如：

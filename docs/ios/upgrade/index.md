@@ -14,6 +14,8 @@ import TabItem from '@theme/TabItem';
 
 下文中的版本皆为 SDK 版本
 
+相关功能与协议均遵循新版本定义，如埋点事件不再主动关联上报page相关字段(path、ptm等字段)，参考[埋点事件测量协议](/knowledge/measurement#埋点事件custom)
+
 :::
 
 ### 从 CDP 3.x 升级至 CDP 4.x
