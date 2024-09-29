@@ -3,7 +3,15 @@ title: 版本记录
 sidebar_position: 0
 ---
 
-# [4.3.2](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.1...4.3.2) (2024-07-26)
+## [4.4.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.2...4.4.0) (2024-09-29)
+
+
+### Features
+
+* **ABTesting:** AB实验新增预置属性 ([#326](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/326)) ([1fbfb4c](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/1fbfb4ca0aeeab2920d8a3688b878f4677dafe05))
+* 埋点事件新增path属性 ([#329](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/329)) ([05a01a8](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/05a01a8872117612a4f8a8ae85f2f1d7ec5f4813))
+
+## [4.3.2](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.1...4.3.2) (2024-07-26)
 
 
 ### Bug Fixes
@@ -11,7 +19,7 @@ sidebar_position: 0
 * 移除编译产物中的 NSLog 符号 ([074e9cd](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/074e9cd020b0f956c2fdd22803e499265cedc707))
 * 在 Flutter 应用中，当 Session 状态未处于 active 时，不发送 PAGE 事件 ([de4b5bc](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/de4b5bc015a194c4f84ae1b70f8c11b88e349cfb))
 
-# [4.3.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.0...4.3.1) (2024-05-31)
+## [4.3.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.0...4.3.1) (2024-05-31)
 
 
 ### Bug Fixes
@@ -19,7 +27,7 @@ sidebar_position: 0
 * visionOS 平台使用 Cocoapods 集成支持，以及稳定性优化 ([#317](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/317)) ([9ab87ec](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/9ab87ec8fc3710e2d7574afd84aa8ccd214a1116))
 
 
-# [4.3.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.2.0...4.3.0) (2024-05-07)
+## [4.3.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.2.0...4.3.0) (2024-05-07)
 
 
 ### Bug Fixes
@@ -38,7 +46,7 @@ sidebar_position: 0
 * 新增配置项 dataValidityPeriod ([#310](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/310)) ([a52fefa](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a52fefa7a7bf7a3590c49c501f193449aa94f631))
 * 新增 watchOS/tvOS/visionOS/SwiftUI 支持 ([#300](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/300)) ([0ef1b26](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/0ef1b260915febb12b080edac0f5b13e08b1e592))
 
-# [4.2.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.1.0...4.2.0) (2024-03-14)
+## [4.2.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.1.0...4.2.0) (2024-03-14)
 
 
 ### Features
@@ -46,7 +54,7 @@ sidebar_position: 0
 * **autotrack:** 新增配置项 autotrackAllPages ([#301](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/301)) ([5cb409b](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/5cb409b7fbabf6256a91670a1bd5db4843f8b1ac))
 
 
-# [4.1.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.0.0...4.1.0) (2024-01-25)
+## [4.1.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.0.0...4.1.0) (2024-01-25)
 
 
 ### Features
@@ -54,7 +62,7 @@ sidebar_position: 0
 * 新增 App Extension 支持 ([#296](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/296)) ([4a9d038](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4a9d038323b68393dd62f9edffd39955a3d85e45))
 * 更新 Flutter 模块逻辑 ([#295](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/295)) ([a52bc94](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/a52bc94c31048920ce701edfc13f177e4aa1f14b))
 
-# [4.0.0](https://github.com/growingio/growingio-sdk-ios-autotracker/tree/4.0.0) (2023-12-25)
+## [4.0.0](https://github.com/growingio/growingio-sdk-ios-autotracker/tree/4.0.0) (2023-12-25)
 
 ### Features
 

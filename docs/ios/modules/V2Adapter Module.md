@@ -64,3 +64,7 @@ pod 'GrowingAnalytics/V2AdapterTrackOnly'
 // 初始化 SDK
 ...
 ```
+
+### 自定义埋点事件关联页面
+
+当前 SDK 不再主动将自定义埋点事件关联到页面，若有相关需求，请在 SDK 初始化时设置配置项 `customEventWithPath` 为 `true` 开启

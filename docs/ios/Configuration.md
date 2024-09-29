@@ -31,6 +31,7 @@ import TabItem from '@theme/TabItem';
 | `autotrackEnabled` | `Bool` | 否 | `true` | 是否开启无埋点采集 | <font color='red'>无埋点独有</font> |  |
 | `autotrackAllPages` | `Bool` | 否 | `false` | 是否开启页面自动采集 | <font color='red'>无埋点独有</font> | >=4.2.0 |
 | `dataValidityPeriod`         | `NSUInteger`     | 否      | `7`     | 本地未上报的事件数据有效时长，单位天 | - | >=4.3.0 |
+| `customEventWithPath`         | `Bool`     | 否      | `false`     | 自定义埋点事件是否自动关联上一个页面 | - | >=4.4.0 |
 
 ### 详细说明
 
@@ -106,3 +107,7 @@ import TabItem from '@theme/TabItem';
 #### 17. **dataValidityPeriod**
 
 每当 SDK 初始化时，将根据所配置的事件有效时长，清除本地已过期的事件数据
+
+#### 18. **customEventWithPath**
+
+设置为 true 时，自定义埋点事件将通过 path 字段，自动关联上一个页面，默认为 false
