@@ -64,3 +64,8 @@ pod 'GrowingAnalytics/V2AdapterTrackOnly'
 // 初始化 SDK
 ...
 ```
+
+### 页面事件、自定义埋点事件
+
+- 当前 SDK 不再自动发送页面浏览事件，可通过设置配置项 `autotrackAllPages` 为 `true` 开启，或通过 autotrackPage 系列接口主动上报
+- 当前 SDK 不再主动将自定义埋点事件关联到页面，若有相关需求，请在 SDK 初始化时设置配置项 `customEventWithPath` 为 `true` 开启
