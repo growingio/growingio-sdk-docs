@@ -4,14 +4,21 @@ sidebar_position: 0
 ---
 ----
 
-# [3.8.4](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.3...3.8.4) (2024-07-24)
+## [3.8.5](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.4...3.8.5) (2024-09-29)
+
+
+### Bug Fixes
+
+* 添加 DEFINES_MODULE 到 pod_target_xcconfig，避免未模块化导致编译错误 ([#328](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/328)) ([25fe0b2](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/25fe0b2cfead877a228d5fed62133898c23851d5))
+
+## [3.8.4](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.3...3.8.4) (2024-07-24)
 
 
 ### Bug Fixes
 
 * Mobile Debugger 意外崩溃 ([4fe4558](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4fe4558965a2f2f95d0f48d82501d49b1ac3cd0f))
 
-# [3.8.3](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.2...3.8.3) (2024-07-18)
+## [3.8.3](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.2...3.8.3) (2024-07-18)
 
 
 ### Bug Fixes
@@ -19,35 +26,35 @@ sidebar_position: 0
 * 移除编译产物中的 NSLog 符号 ([b0c2c6a](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/b0c2c6a24c811a8ffe1c5d31d89ddd17aa7c1b32))
 * 在 Flutter 应用中，当 Session 状态未处于 active 时，不发送 PAGE 事件 ([1ae98f0](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/1ae98f066d979c724aba9598f038e4781dac38d9))
 
-# [3.8.2](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.1...3.8.2) (2024-05-23)
+## [3.8.2](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.1...3.8.2) (2024-05-23)
 
 
 ### Bug Fixes
 
 * 修复在 iPad 上 UIAlertController(actionSheet style) 当点击空白处触发 dismiss 会崩溃 ([cd7f2e0](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/cd7f2e0ff253108b3ff08fef169e662c229356bb))
 
-# [3.8.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.0...3.8.1) (2024-05-07)
+## [3.8.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.8.0...3.8.1) (2024-05-07)
 
 
 ### Bug Fixes
 
 * UICollectionView/UITableView swizzle bug ([#315](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/315))
 
-# [3.8.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.7.1...3.8.0) (2023-11-17)
+## [3.8.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.7.1...3.8.0) (2023-11-17)
 
 
 ### Features
 
 * 添加初始化配置项 requestTimeout ([#293](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/293))
 
-# [3.7.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.7.0...3.7.1) (2023-11-1)
+## [3.7.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.7.0...3.7.1) (2023-11-1)
 
 
 ### Bug Fixes
 
 * 进一步适配 Swift 项目在 Cocoapods 下集成 ([#290](https://github.com/growingio/growingio-sdk-ios-autotracker/pull/290))
 
-# [3.7.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.6.0...3.7.0) (2023-09-19)
+## [3.7.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.6.0...3.7.0) (2023-09-19)
 
 
 ### Bug Fixes
@@ -76,7 +83,7 @@ sidebar_position: 0
 
 
 
-# [3.6.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.5.0...3.6.0) (2023-08-16)
+## [3.6.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.5.0...3.6.0) (2023-08-16)
 
 
 ### Features
@@ -87,7 +94,7 @@ sidebar_position: 0
 
 
 
-# [3.5.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.8...3.5.0) (2023-07-06)
+## [3.5.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/3.4.8...3.5.0) (2023-07-06)
 
 ### Bug Fixes
 
