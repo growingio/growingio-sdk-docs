@@ -55,6 +55,7 @@ module.exports = {
             {to: '/docs/server/Java SDK', label: 'Java SDK'},
             {to: '/docs/server/PHP SDK', label: 'PHP SDK'},
             {to: '/docs/server/Python SDK', label: 'Python SDK'},
+            {to: '/docs/server/Go SDK', label: 'Go SDK'},
           ],
         },
         {
