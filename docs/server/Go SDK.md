@@ -63,30 +63,30 @@ import sdk "github.com/growingio/growingio-sdk-go"
 
 // 方式1：使用初始化配置项进行初始化
 func initAnalytics() {
-	config := &sdk.Config{
-		SdkConfig: sdk.SdkConfig{
-			AccountId:    "Your AccountId",
-			DataSourceId: "Your DataSourceId",
-			LogLevel:     sdk.DebugLogLevel,
-		},
-		HttpConfig: sdk.HttpConfig{
-			ServerHost:     "Your Server Host",
-			RequestTimeout: 5,
-		},
-		BatchConfig: sdk.BatchConfig{
-			Enable:     true,
-			MaxSize:    100,
-			FlushAfter: 5,
-      RoutineCount: 16,
-      MaxCacheSize: 10240,
-		},
-	}
-	sdk.InitAnalytics(config)
+    config := &sdk.Config{
+        SdkConfig: sdk.SdkConfig{
+            AccountId:    "Your AccountId",
+            DataSourceId: "Your DataSourceId",
+            LogLevel:     sdk.DebugLogLevel,
+        },
+        HttpConfig: sdk.HttpConfig{
+            ServerHost:     "Your Server Host",
+            RequestTimeout: 5,
+        },
+        BatchConfig: sdk.BatchConfig{
+            Enable:       true,
+            MaxSize:      100,
+            FlushAfter:   5,
+            RoutineCount: 16,
+            MaxCacheSize: 10240,
+        },
+    }
+    sdk.InitAnalytics(config)
 }
 
 // 方式2：使用配置文件进行初始化
 func initAnalyticsByConfigFile() {
-	sdk.InitAnalyticsByConfigFile("example/yml/config.yml")
+    sdk.InitAnalyticsByConfigFile("example/yml/config.yml")
 }
 ```
 
@@ -115,13 +115,14 @@ Go SDK 使用 protobuf 数据格式进行上报，并采用 golang/snappy 进行
 ## API接口使用
 
 ### 埋点事件
+
 发送一个埋点事件。在添加发送的埋点事件代码之前，需在CDP平台事件管理界面创建埋点事件以及关联事件属性
 
 :::info
-* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
+当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
 :::
 
-**参数说明**
+#### 参数说明
 
 | 参数           | 是否必选  | 类型   | 说明  |
 | :------------- | :----: | :-----: | ------ |
@@ -132,35 +133,36 @@ Go SDK 使用 protobuf 数据格式进行上报，并采用 golang/snappy 进行
 | LoginUserId  | false | string | 登录用户ID，与访问用户ID，不能同时为空 |
 | Attributes     | false | map[string]interface{}   | 事件发生时,所伴随的维度信息；<br/> value 支持 string\|bool\|int\|float64 等等基础数据类型，以及 map[string]string 和数组，数组中元素支持 string\|bool\|int\|float64 等等基础数据类型|
 
-**代码示例**
+#### 代码示例
 
 ```go
 func trackCustomEvent() {
-	builder := sdk.NewCustomEvent("launch")
-	builder.AnonymousId = "70C4B9C6-7B9B-675A-5E6B-4D823F5696E3"
-	builder.Attributes = map[string]interface{}{
-		"name":   "david",
-		"age":    100,
-		"hobby": []string{
-			"football",
-			"pingpong",
-		},
-	}
-	sdk.TrackCustomEvent(builder)
+    builder := sdk.NewCustomEvent("launch")
+    builder.AnonymousId = "70C4B9C6-7B9B-675A-5E6B-4D823F5696E3"
+    builder.Attributes = map[string]interface{}{
+        "name":   "david",
+        "age":    100,
+        "hobby": []string{
+            "football",
+            "pingpong",
+        },
+    }
+    sdk.TrackCustomEvent(builder)
 }
 
 func trackCustomEventByChaining() {
-	sdk.TrackCustomEvent(
-		sdk.NewCustomEvent("userInfo").WithLoginUserId("david").WithAttributes(map[string]interface{}{
-			"name":   "david",
-			"age":    100,
-			"hobby": []string{
-				"football",
-				"pingpong",
-			},
-		}))
+    sdk.TrackCustomEvent(
+        sdk.NewCustomEvent("userInfo").WithLoginUserId("david").WithAttributes(map[string]interface{}{
+            "name":   "david",
+            "age":    100,
+            "hobby": []string{
+                "football",
+                "pingpong",
+            },
+    }))
 }
 ```
+
 :::info
 
 详细使用示例:[埋点事件示例](/knowledge/basicknowledge/trackEventUse#埋点事件示例)
@@ -168,14 +170,15 @@ func trackCustomEventByChaining() {
 :::
 
 ### 登录用户属性事件
+
 以登录用户的身份定义登录用户属性，比如年龄、性别、会员等级等，用于用户信息相关分析<br/>
 在添加登录用户属性代码之前，需要在CDP平台用户管理界面中创建用户属性
 
 :::info
-* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
+当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 
 :::
 
-**参数说明**
+#### 参数说明
 
 | 参数           | 必选  | 类型   | 说明                        |
 | :------------- | :---- | :----- | --------------------------- |
@@ -185,16 +188,17 @@ func trackCustomEventByChaining() {
 | AnonymousId   | false | string | 访问用户ID，与登录用户ID，不能同时为空 |
 | Attributes     | false | map[string]interface{}   | 用户属性维度信息；<br/> value 支持 string\|bool\|int\|float64 等等基础数据类型，以及 map[string]string 和数组，数组中元素支持 string\|bool\|int\|float64 等等基础数据类型 |
 
-**代码示例**
+#### 代码示例
 
 ```go
 func trackUser() {
-	sdk.TrackUser(
-		sdk.NewUser("jack").WithEventTime(time.Now().UnixMilli()).WithAttributes(map[string]interface{}{
-			"key": "value",
-		}))
+    sdk.TrackUser(
+        sdk.NewUser("jack").WithEventTime(time.Now().UnixMilli()).WithAttributes(map[string]interface{}{
+            "key": "value",
+    }))
 }
 ```
+
 :::info
 
 详细使用示例:[用户属性事件示例](/knowledge/basicknowledge/trackEventUse#用户属性事件示例)
@@ -202,9 +206,10 @@ func trackUser() {
 :::
 
 ### 维度表
+
 上传一个维度表记录。在添加所需要上传维度表记录代码之前，需要在维度表管理界面中创建对应维度表及其属性
 
-**参数说明**
+#### 参数说明
 
 | 参数       | 必选  | 类型   | 说明             |
 | :--------- | :---- | :----- | ---------------- |
@@ -212,17 +217,16 @@ func trackUser() {
 | ItemKey    | true  | string | 维度表标识符      |
 | Attributes | false | map[string]interface{}   | 维度表属性及值 |
 
-**代码示例**
+#### 代码示例
 
 ```go
 func submitItem() {
-	sdk.SubmitItem(
-		sdk.NewItem("num100", "apple").WithAttributes(map[string]interface{}{
-			"key": "value",
-		}))
+    sdk.SubmitItem(
+        sdk.NewItem("num100", "apple").WithAttributes(map[string]interface{}{
+            "key": "value",
+    }))
 }
 ```
-
 
 ## 集成代码示例一览
 
@@ -230,145 +234,148 @@ func submitItem() {
 package main
 
 import (
-	"sync"
-	"time"
+    "sync"
+    "time"
 
-	sdk "github.com/growingio/growingio-sdk-go"
+    sdk "github.com/growingio/growingio-sdk-go"
 )
 
 func main() {
-	// 通过创建Config对象初始化
-	initAnalytics()
+    // 通过创建Config对象初始化
+    initAnalytics()
 
-	// 通过本地配置文件生成Config对象初始化
-	// initAnalyticsByConfigFile()
+    // 通过本地配置文件生成Config对象初始化
+    // initAnalyticsByConfigFile()
 
-	// 埋点事件
-	trackCustomEvent()
-	trackCustomEventByChaining()
-	trackCustomEventWithLargeAttributes()
+    // 埋点事件
+    trackCustomEvent()
+    trackCustomEventByChaining()
+    trackCustomEventWithLargeAttributes()
 
-	// 用户登录属性事件
-	trackUser()
+    // 用户登录属性事件
+    trackUser()
 
-	// 维度表
-	submitItem()
+    // 维度表
+    submitItem()
 
-	// example调试时，运行完会直接退出，增加延时，等待sdk中的异步实现（发送埋点数据）执行完成
-	waitGoroutineInSdk()
+    // example调试时，运行完会直接退出，增加延时，等待sdk中的异步实现（发送埋点数据）执行完成
+    waitGoroutineInSdk()
 }
 
 func initAnalytics() {
-	config := &sdk.Config{
-		SdkConfig: sdk.SdkConfig{
-			AccountId:    "0a1b4118dd954ec3bcc69da5138bdb96",
-			DataSourceId: "ab555003531e0fd1",
-			LogLevel:     sdk.DebugLogLevel,
-		},
-		HttpConfig: sdk.HttpConfig{
-			ServerHost:     "https://napi.growingio.com/",
-			RequestTimeout: 5,
-		},
-		BatchConfig: sdk.BatchConfig{
-			Enable:     true,
-			MaxSize:    100,
-			FlushAfter: 5,
-		},
-	}
-	sdk.InitAnalytics(config)
+    config := &sdk.Config{
+        SdkConfig: sdk.SdkConfig{
+            AccountId:    "Your AccountId",
+            DataSourceId: "Your DataSourceId",
+            LogLevel:     sdk.DebugLogLevel,
+        },
+        HttpConfig: sdk.HttpConfig{
+            ServerHost:     "Your Server Host",
+            RequestTimeout: 5,
+        },
+        BatchConfig: sdk.BatchConfig{
+            Enable:       true,
+            MaxSize:      100,
+            FlushAfter:   5,
+            RoutineCount: 16,
+            MaxCacheSize: 10240,
+        },
+    }
+    sdk.InitAnalytics(config)
 }
 
+// 方式2：使用配置文件进行初始化
 func initAnalyticsByConfigFile() {
-	sdk.InitAnalyticsByConfigFile("example/yml/config.yml")
+    sdk.InitAnalyticsByConfigFile("example/yml/config.yml")
 }
 
 func trackCustomEvent() {
-	builder := sdk.NewCustomEvent("launch")
-	builder.AnonymousId = "70C4B9C6-7B9B-675A-5E6B-4D823F5696E3"
-	builder.Attributes = map[string]interface{}{
-		"name":   "richMan",
-		"age":    100,
-		"isRich": true,
-		"hobby": []string{
-			"football",
-			"pingpong",
-		},
-	}
-	sdk.TrackCustomEvent(builder)
+    builder := sdk.NewCustomEvent("launch")
+    builder.AnonymousId = "70C4B9C6-7B9B-675A-5E6B-4D823F5696E3"
+    builder.Attributes = map[string]interface{}{
+        "name":   "richMan",
+        "age":    100,
+        "isRich": true,
+        "hobby": []string{
+            "football",
+            "pingpong",
+        },
+    }
+    sdk.TrackCustomEvent(builder)
 }
 
 func trackCustomEventWithLargeAttributes() {
-	builder := sdk.NewCustomEvent("launch")
-	builder.AnonymousId = "70C4B9C6-7B9B-675A-5E6B-4D823F5696E3"
-	builder.Attributes = largeAttributes()
-	sdk.TrackCustomEvent(builder)
+    builder := sdk.NewCustomEvent("launch")
+    builder.AnonymousId = "70C4B9C6-7B9B-675A-5E6B-4D823F5696E3"
+    builder.Attributes = largeAttributes()
+    sdk.TrackCustomEvent(builder)
 }
 
 func trackCustomEventByChaining() {
-	sdk.TrackCustomEvent(
-		sdk.NewCustomEvent("userInfo").WithLoginUserId("david").WithAttributes(map[string]interface{}{
-			"name":   "richMan",
-			"age":    100,
-			"isRich": true,
-			"hobby": []string{
-				"football",
-				"pingpong",
-			},
-		}))
+    sdk.TrackCustomEvent(
+        sdk.NewCustomEvent("userInfo").WithLoginUserId("david").WithAttributes(map[string]interface{}{
+            "name":   "richMan",
+            "age":    100,
+            "isRich": true,
+            "hobby": []string{
+                "football",
+                "pingpong",
+            },
+        }))
 }
 
 func trackUser() {
-	sdk.TrackUser(
-		sdk.NewUser("jack").WithEventTime(time.Now().UnixMilli()).WithAttributes(map[string]interface{}{
-			"key": "value",
-		}))
+    sdk.TrackUser(
+        sdk.NewUser("jack").WithEventTime(time.Now().UnixMilli()).WithAttributes(map[string]interface{}{
+            "key": "value",
+        }))
 }
 
 func submitItem() {
-	sdk.SubmitItem(
-		sdk.NewItem("num100", "apple").WithAttributes(map[string]interface{}{
-			"key": "value",
-		}))
+    sdk.SubmitItem(
+        sdk.NewItem("num100", "apple").WithAttributes(map[string]interface{}{
+            "key": "value",
+        }))
 }
 
 func largeAttributes() map[string]interface{} {
-	return map[string]interface{}{
-		"key":  "value",
-		"key2": true,
-		"key3": 100,
-		"key4": 23.45,
-		"key5": []string{
-			"good", "bad",
-		},
-		"key6": []int{
-			1, 2, 3, 4,
-		},
-		"key7": []float64{
-			1.11, 2.22, 3.33, 4.44,
-		},
-		"key8": map[string]string{
-			"subKey": "subValue",
-		},
-		"key9": map[string]interface{}{
-			"subKey2": sdk.Config{},
-		},
-		"key10": map[string]interface{}{
-			"subKey3": map[string]interface{}{
-				"subKey4": "subValue4",
-			},
-		},
-		"key11": nil,
-	}
+    return map[string]interface{}{
+        "key":  "value",
+        "key2": true,
+        "key3": 100,
+        "key4": 23.45,
+        "key5": []string{
+            "good", "bad",
+        },
+        "key6": []int{
+            1, 2, 3, 4,
+        },
+        "key7": []float64{
+            1.11, 2.22, 3.33, 4.44,
+        },
+        "key8": map[string]string{
+            "subKey": "subValue",
+        },
+        "key9": map[string]interface{}{
+            "subKey2": sdk.Config{},
+        },
+        "key10": map[string]interface{}{
+            "subKey3": map[string]interface{}{
+                "subKey4": "subValue4",
+            },
+        },
+        "key11": nil,
+    }
 }
 
 func waitGoroutineInSdk() {
-	var wg sync.WaitGroup
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		time.Sleep(20 * time.Second)
-	}()
-	wg.Wait()
+    var wg sync.WaitGroup
+    wg.Add(1)
+    go func() {
+        defer wg.Done()
+        time.Sleep(20 * time.Second)
+    }()
+    wg.Wait()
 }
-```
 
+```
