@@ -192,10 +192,19 @@ func trackCustomEventByChaining() {
 
 ```go
 func trackUser() {
+    builder := sdk.NewUser("mike")
+    builder.EventTime = time.Now().UnixMilli()
+    builder.Attributes = map[string]interface{}{
+        "key1": "value1",
+    }
+    sdk.TrackUser(builder)
+}
+
+func trackUserByChaining() {
     sdk.TrackUser(
         sdk.NewUser("jack").WithEventTime(time.Now().UnixMilli()).WithAttributes(map[string]interface{}{
-            "key": "value",
-    }))
+            "key2": "value2",
+        }))
 }
 ```
 
@@ -221,10 +230,18 @@ func trackUser() {
 
 ```go
 func submitItem() {
+    builder := sdk.NewItem("num99", "banana")
+    builder.Attributes = map[string]interface{}{
+        "key1": "value1",
+    }
+    sdk.SubmitItem(builder)
+}
+
+func submitItemByChaining() {
     sdk.SubmitItem(
         sdk.NewItem("num100", "apple").WithAttributes(map[string]interface{}{
-            "key": "value",
-    }))
+            "key2": "value2",
+        }))
 }
 ```
 
@@ -250,13 +267,14 @@ func main() {
     // 埋点事件
     trackCustomEvent()
     trackCustomEventByChaining()
-    trackCustomEventWithLargeAttributes()
 
     // 用户登录属性事件
     trackUser()
+    trackUserByChaining()
 
     // 维度表
     submitItem()
+    submitItemByChaining()
 
     // example调试时，运行完会直接退出，增加延时，等待sdk中的异步实现（发送埋点数据）执行完成
     waitGoroutineInSdk()
@@ -265,26 +283,23 @@ func main() {
 func initAnalytics() {
     config := &sdk.Config{
         SdkConfig: sdk.SdkConfig{
-            AccountId:    "Your AccountId",
-            DataSourceId: "Your DataSourceId",
+            AccountId:    "123456",
+            DataSourceId: "654321",
             LogLevel:     sdk.DebugLogLevel,
         },
         HttpConfig: sdk.HttpConfig{
-            ServerHost:     "Your Server Host",
+            ServerHost:     "https://www.example.com/",
             RequestTimeout: 5,
         },
         BatchConfig: sdk.BatchConfig{
-            Enable:       true,
-            MaxSize:      100,
-            FlushAfter:   5,
-            RoutineCount: 16,
-            MaxCacheSize: 10240,
+            Enable:     true,
+            MaxSize:    100,
+            FlushAfter: 5,
         },
     }
     sdk.InitAnalytics(config)
 }
 
-// 方式2：使用配置文件进行初始化
 func initAnalyticsByConfigFile() {
     sdk.InitAnalyticsByConfigFile("example/yml/config.yml")
 }
@@ -293,9 +308,8 @@ func trackCustomEvent() {
     builder := sdk.NewCustomEvent("launch")
     builder.AnonymousId = "70C4B9C6-7B9B-675A-5E6B-4D823F5696E3"
     builder.Attributes = map[string]interface{}{
-        "name":   "richMan",
+        "name":   "david",
         "age":    100,
-        "isRich": true,
         "hobby": []string{
             "football",
             "pingpong",
@@ -304,68 +318,47 @@ func trackCustomEvent() {
     sdk.TrackCustomEvent(builder)
 }
 
-func trackCustomEventWithLargeAttributes() {
-    builder := sdk.NewCustomEvent("launch")
-    builder.AnonymousId = "70C4B9C6-7B9B-675A-5E6B-4D823F5696E3"
-    builder.Attributes = largeAttributes()
-    sdk.TrackCustomEvent(builder)
-}
-
 func trackCustomEventByChaining() {
     sdk.TrackCustomEvent(
         sdk.NewCustomEvent("userInfo").WithLoginUserId("david").WithAttributes(map[string]interface{}{
-            "name":   "richMan",
+            "name":   "david",
             "age":    100,
-            "isRich": true,
             "hobby": []string{
                 "football",
                 "pingpong",
             },
-        }))
+    }))
 }
 
 func trackUser() {
+    builder := sdk.NewUser("mike")
+    builder.EventTime = time.Now().UnixMilli()
+    builder.Attributes = map[string]interface{}{
+        "key1": "value1",
+    }
+    sdk.TrackUser(builder)
+}
+
+func trackUserByChaining() {
     sdk.TrackUser(
         sdk.NewUser("jack").WithEventTime(time.Now().UnixMilli()).WithAttributes(map[string]interface{}{
-            "key": "value",
+            "key2": "value2",
         }))
 }
 
 func submitItem() {
-    sdk.SubmitItem(
-        sdk.NewItem("num100", "apple").WithAttributes(map[string]interface{}{
-            "key": "value",
-        }))
+    builder := sdk.NewItem("num99", "banana")
+    builder.Attributes = map[string]interface{}{
+        "key1": "value1",
+    }
+    sdk.SubmitItem(builder)
 }
 
-func largeAttributes() map[string]interface{} {
-    return map[string]interface{}{
-        "key":  "value",
-        "key2": true,
-        "key3": 100,
-        "key4": 23.45,
-        "key5": []string{
-            "good", "bad",
-        },
-        "key6": []int{
-            1, 2, 3, 4,
-        },
-        "key7": []float64{
-            1.11, 2.22, 3.33, 4.44,
-        },
-        "key8": map[string]string{
-            "subKey": "subValue",
-        },
-        "key9": map[string]interface{}{
-            "subKey2": sdk.Config{},
-        },
-        "key10": map[string]interface{}{
-            "subKey3": map[string]interface{}{
-                "subKey4": "subValue4",
-            },
-        },
-        "key11": nil,
-    }
+func submitItemByChaining() {
+    sdk.SubmitItem(
+        sdk.NewItem("num100", "apple").WithAttributes(map[string]interface{}{
+            "key2": "value2",
+        }))
 }
 
 func waitGoroutineInSdk() {
@@ -377,5 +370,4 @@ func waitGoroutineInSdk() {
     }()
     wg.Wait()
 }
-
 ```
