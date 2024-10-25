@@ -24,6 +24,11 @@ Account ID、DataSource ID、URL Scheme 需要在 GrowingIO 平台上新建数�
 ##### 查看
 <ImageLoader path="img/common/showappdatasourceid" />
 
+
+:::tip 开源信息
+HarmonyOS NEXT SDK 代码已在 [Github](https://github.com/growingio/growingio-sdk-harmonyos) 上开源，可以详细查看代码实现细节，欢迎 star, fork。
+:::
+
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
