@@ -25,6 +25,11 @@ Host 需要服务端部署，如不清楚请联系您的专属项目经理或技
 ##### 查看
 <ImageLoader path="img/common/showappdatasourceid" />
 
+
+:::tip 开源信息
+HarmonyOS NEXT SDK 代码已在 [Github](https://github.com/growingio/growingio-sdk-harmonyos) 上开源，可以详细查看代码实现细节，欢迎 star, fork。
+:::
+
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
