@@ -20,7 +20,7 @@ GrowingIO 帮助客户提升数据驱动能力，实现更好的增长。
 
 ### SDK支持范围
 
-SDK 包括客户端SDK和服务端SDK。目前客户端SDK支持Android和iOS原生，Web JS，小程序，以及众多第三方混合开发框架。服务端SDK支持Java、PHP、Python。
+SDK 包括客户端SDK和服务端SDK。目前客户端SDK支持Android和iOS原生，Web JS，小程序，以及众多第三方混合开发框架。服务端SDK支持Java、PHP、Python、Go。
 
 小程序支持微信小程序、阿里(支付宝)小程序、百度小程序、抖音小程序、QQ小程序、淘宝小程序、快手小程序、京东小程序、快应用。
 
@@ -85,6 +85,7 @@ QQ小程序支持的开发框架如下：
 |Java        | - | - | - | - | - | ✅ | ✅ | - | - | - |
 |PHP         | - | - | - | - | - | ✅ | ✅ | - | - | - |
 |Python      | - | - | - | - | - | ✅ | ✅ | - | - | - |
+|Go          | - | - | - | - | - | ✅ | ✅ | - | - | - |
 
 :::info 注意
 关于事件类型说明请查看[**事件模型**](/docs/basicknowledge/eventModel)，事件包含字段信息请查看[**测量协议**](/docs/Measurement%20Protocol) <br/>
