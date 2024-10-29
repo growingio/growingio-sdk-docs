@@ -2,6 +2,25 @@
 title: 版本记录
 sidebar_position: 0
 ---
+## RELEASE-4.3.2
+### Features
+
+- 增加配置项，支持对 webview 注入 js sdk  ([#222](https://github.com/growingio/growingio-sdk-android-autotracker/pull/222))
+
+- 增加配置项，支持 Custom 事件携带上一个 Page 事件的path ([#221](https://github.com/growingio/growingio-sdk-android-autotracker/pull/221))
+
+- abtest返回结果和入组事件添加实验名称 ([#220](https://github.com/growingio/growingio-sdk-android-autotracker/pull/220))
+
+### Bug Fixes
+
+- 偶现调用 ContentProviderClient.release() 空异常  ([#223](https://github.com/growingio/growingio-sdk-android-autotracker/pull/223))
+
+:::note 
+
+ 标签:**[v4.3.2](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.3.2)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2024-10-29** 
+
+:::
+
 ## RELEASE-4.3.1
 Features：
 1. 默认新Saas域名配置由 http 改为 https;
