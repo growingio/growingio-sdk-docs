@@ -11,12 +11,12 @@ slug: /
 
 <center><img src={require('/img/conversion.gif').default} alt="SDK Banner" /></center>
 
-GrowingIO 是我们于 2015 年发布的新一代数据分析产品，无需埋点即可采集全量实时用户行为数据，我们希望通过提供一个简单、迅速和规模化的产品，帮助企业快速建立业务数据分析体系，让企业里面的每个人都能用数据去驱动业务增长。千里之行，始于足下，数据采集是数据分析的基础和入口。目前在数据采集方面，GrowingIO 不仅提供了无埋点的轻量级客户端 JavaScript、Apple 和 Android SDK，同时也提供打点的服务端 Java、Python、Ruby、Node 等语言 SDK，方便与企业内部数据打通。
+GrowingIO 是我们于 2015 年发布的新一代数据分析产品，无需埋点即可采集全量实时用户行为数据，我们希望通过提供一个简单、迅速和规模化的产品，帮助企业快速建立业务数据分析体系，让企业里面的每个人都能用数据去驱动业务增长。千里之行，始于足下，数据采集是数据分析的基础和入口。目前在数据采集方面，GrowingIO 不仅提供了无埋点的轻量级客户端 JavaScript、Apple 和 Android SDK，同时也提供打点的服务端 Java、Python、Go、Ruby、Node 等语言 SDK，方便与企业内部数据打通。
 
 
 ### SDK 支持范围
 
-SDK 包括客户端 SDK 和服务端 SDK。目前客户端 SDK 支持 Android 和 Apple 原生，Web JS，小程序，以及众多第三方混合开发框架。服务端 SDK 支持 Java、PHP、Python。
+SDK 包括客户端 SDK 和服务端 SDK。目前客户端 SDK 支持 Android 和 Apple 原生，Web JS，小程序，以及众多第三方混合开发框架。服务端 SDK 支持 Java、PHP、Python、Go。
 
 小程序支持微信小程序、阿里(支付宝)小程序、百度小程序、抖音小程序、QQ 小程序、淘宝小程序、快手小程序、京东小程序、快应用。
 
