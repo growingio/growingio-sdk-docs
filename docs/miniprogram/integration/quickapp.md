@@ -10,9 +10,9 @@ import TabItem from '@theme/TabItem';
 
 ## 准备工作
 
-1、在 GrowingIO 平台中新数据源并获取**`accountId`和`dataSourceId`**。
+1、在 GrowingIO 平台中新数据源并获取 **`accountId`和`dataSourceId`**。
 
-2、在您的快应用中获取**`packageName`**。
+2、在您的快应用中获取 **`packageName`**。
 
 3、下载对应的 SDK 文件存放在项目中集成。
 
