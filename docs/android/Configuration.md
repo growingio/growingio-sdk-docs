@@ -42,6 +42,8 @@ import TabItem from '@theme/TabItem';
 | enableFragmentTag [#](#3-enablefragmenttag) |    _boolean_    |   否    | `false`     | 是否将Fragment的tag作为无埋点路径的记号 |    |
 | setPageRuleXml [#](#4-setpagerulexml)       |    _int_        |   否        | `xml id`     | 用于自动采集无埋点页面 |  4.2.0  |
 | setAutotrack [#](#5-setautotrack)           |    _boolean_    |   否        | `true`     | 用于控制是否打开无埋点功能 |  4.3.0  |
+| setCustomEventWithPath [#](#6-setcustomeventwithpath)  |    _boolean_    |   否        | `false`  | 所有自定义事件将携带上一个 Page 事件的path |  4.3.2  |
+| setAutoJsSdkInject [#](#7-setautojssdkinject) |    _boolean_    |   否        | `false`  | 自动为所有内部Webview注入GrwoingIO Web Js |  4.3.2  |
 
 ## 通用配置说明
 
@@ -264,6 +266,8 @@ val sConfiguration = AutotrackConfiguration("Your AccountId", "Your URLScheme")
 GrowingAutotracker.startWithConfiguration(this, sConfiguration)
 ```
 
+> 如果想要快速设置采集App内部全部页面，可调用 `addPageMatchRule(".*")` 即可。
+
 ### 5. setAutotrack
 若是不需要无埋点相关功能，客户可以通过在初始化时关闭无埋点来实现。请注意，关闭无埋点功能后，无埋点事件包括页面事件，自动点击事件，Imp曝光事件不再上报以及圈选功能都将一起关闭。
 
@@ -272,5 +276,28 @@ GrowingAutotracker.startWithConfiguration(this,
         new AutotrackConfiguration("accountId", "urlScheme")
         // 关闭无埋点功能
         .setAutotrack(false)
+);
+```
+
+### 6. setCustomEventWithPath
+打开该接口将会为每一个自定义事件添加上一个页面事件的路径属性，(即 `CustomEvent` 中增加 `path`)。建议在需要统计每一个自定义埋点事件发送页面时打开，平常状态下请关闭此配置。
+
+```java
+GrowingAutotracker.startWithConfiguration(this,
+        new AutotrackConfiguration("accountId", "urlScheme")
+        // 携带上一个 Page 事件的path路径
+        .setCustomEventWithPath(true)
+);
+```
+
+
+### 7. setAutoJsSdkInject
+在无埋点SDK初始化中设置：`setAutoJsSdkInject(true)` 时将会自动将 webjs sdk 加载至所有的webview中。如同时开启`WebViewBridge`，即可将webview上的埋点事件通过App上报。
+
+```java
+GrowingAutotracker.startWithConfiguration(this,
+        new AutotrackConfiguration("accountId", "urlScheme")
+        // 打开 webjs sdk 自动加载
+        .setAutoJsSdkInject(true)
 );
 ```
