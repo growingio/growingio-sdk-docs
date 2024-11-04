@@ -23,7 +23,7 @@ sidebar_position: 4
 | eventSequenceId | long | ✅ | 事件请求编号 |
 | dataSourceId | string | ✅ | CDP特有，只有在cdp上面才是必须字段 |
 | gioId | string | ❌ | CDP特有，idMapping使用 |
-| networkState | string | ✅ | 网络类型：**2G**,**3G**,**4G**,**5G**,**WIFI**,**UNKNOWN** |
+| networkState | string | ✅ | 网络类型：**2G**,**3G**,**4G**,**5G**,**WIFI**,**UNKNOWN**（Web端该字段为空） |
 | appChannel | string | ❌ | 应用渠道（Android 特有）|
 | screenHeight | int | ✅ | 屏幕高度 |
 | screenWidth | int | ✅ | 屏幕宽度 |
