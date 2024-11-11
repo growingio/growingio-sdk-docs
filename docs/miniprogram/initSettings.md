@@ -16,6 +16,7 @@ title: 初始化配置
 | `followShare`    | `boolean`    | `true`                       | 是否跟踪分享数据                                   |
 | `forceLogin`     | `boolean`    | `false`                      | 是否开启强制登录模式                               |
 | `ignoreFields`   | `string[]`   | `[]`                         | 上报忽略字段                                       |
+| `keepAlive`      | `number`     | `5`                          | 后台保活时长                                      |
 | `requestTimeout` | `number`     | `5000`                       | 上报请求超时时长                                       |
 | `serverUrl`      | `string`     | `https://napi.growingio.com` | 数据上报的服务端地址                               |
 | `taro`           | `any`        | `-`                          | 使用 Taro 开发时使用的实例，参考集成示例代码        |
@@ -75,8 +76,6 @@ gdp('init', accountId, dataSourceId, appId, {
 | appChannel  | 场景值   | language     | 语言     | networkState    | 网络类型     |
 | deviceBrand | 设备品牌 | screenWidth  | 屏幕宽度 | operatingSystem | 系统类型     |
 | deviceModel | 设备型号 | screenHeight | 屏幕高度 | platformVersion | 操作系统版本 |
-
-#### 示例
 
 ```js
 gdp('init', accountId, dataSourceId, appId, {
@@ -145,8 +144,6 @@ gdp('identify', openId / unionId);
 | deviceModel  | 设备型号 | screenWidth     | 屏幕宽度 |
 | networkState | 网络类型 | screenHeight    | 屏幕高度 |
 
-#### 示例
-
 ```js
 gdp('init', accountId, dataSourceId, appId, {
   ignoreFields: [
@@ -162,6 +159,19 @@ gdp('init', accountId, dataSourceId, appId, {
 ```
 
 **<font color="#FC5F3A">注意：</font>如果 extraParams 和 ignoreFields 中同时指定了同一字段，getGioInfo 将不再获取到指定的字段，即 ignoreFields 优先级更高。**
+
+### keepAlive
+
+默认情况下，小程序从前台至后台挂起时，SDK的保活时长为默认5分钟，超时后再拉起即视为一次新的访问。早期微信官方的默认保活时长也是5分钟，以保证不会占用过多的运行内存，后来因为手机性能的发展，运行内存变得不再吃紧，微信官方移除了这一限制。SDK为了保持向下兼容，保留了这以设置。如果您需要修改保活时长，可修改该配置项。
+
+配置项取值：整数大于0，小于 60 * 24（即24小时），单位分钟。
+
+```js
+gdp('init', accountId, dataSourceId, appId, {
+  keepAlive: 10,
+  ...其他配置项,
+});
+```
 
 ### requestTimeout
 
