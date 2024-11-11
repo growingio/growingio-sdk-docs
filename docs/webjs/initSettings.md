@@ -19,6 +19,7 @@ title: 初始化配置
 | `idMapping`      | `boolean`               | `false`                      | 是否开启多用户身份上报       |
 | `hashtag`        | `boolean`               | `false`                      | 是否开启hash解析             |
 | `ignoreFields`   | `string[]`              | `[]`                         | 上报忽略字段                 |
+| `impressionScale`| `number  `              | `0`                          | 曝光比例                     |
 | `originalSource` | `boolean`               | `true`                       | 访问事件是否使用原始进入数据 |
 | `packageName`    | `string`                | `-`                          | 指定打通的移动端包名         |
 | `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
@@ -145,6 +146,21 @@ gdp('init', accountId, datasourceId, {
   ...其他配置项,
 });
 ```
+
+### impressionScale
+
+设置曝光内容的曝光比例，与曝光插件结合使用。曝光比例是指当一个需要曝光的元素出现在屏幕可见范围的部分占据自身尺寸的比例。值为 0 表示只要出现（哪怕只有一条边）即产生曝光事件，若设为 1 则表示需要整个元素完整地出现在屏幕可见范围才产生曝光事件。使用该配置项时，应当**确保已集成半自动埋点浏览插件**。[参考文档](/docs/webjs/plugins/impressionTracking)
+
+**允许设值范围 0 ~ 1 之间的任意小数；默认 0。**
+
+```js
+gdp('init', accountId, dataSourceId, appId, {
+  impressionScale: 0.5, // 元素一半的面积出现在屏幕可见范围中才触发曝光事件
+  ...其他配置项,
+});
+```
+
+**<font color="#FC5F3A">注意：</font>SDK、插件版本 >= 4.2.3 支持。**
 
 ### originalSource
 

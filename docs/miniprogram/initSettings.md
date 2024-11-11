@@ -16,8 +16,10 @@ title: 初始化配置
 | `followShare`    | `boolean`    | `true`                       | 是否跟踪分享数据                                   |
 | `forceLogin`     | `boolean`    | `false`                      | 是否开启强制登录模式                               |
 | `ignoreFields`   | `string[]`   | `[]`                         | 上报忽略字段                                       |
+| `impressionScale`| `number`   | `0`                            | 曝光比例                                      |
 | `keepAlive`      | `number`     | `5`                          | 后台保活时长                                      |
 | `requestTimeout` | `number`     | `5000`                       | 上报请求超时时长                                       |
+| `originalSource` | `boolean`    | `true`                       | VISIT事件是否使用初始来源                           |
 | `serverUrl`      | `string`     | `https://napi.growingio.com` | 数据上报的服务端地址                               |
 | `taro`           | `any`        | `-`                          | 使用 Taro 开发时使用的实例，参考集成示例代码        |
 | `taroVue`        | `any`        | `-`                          | 使用 Taro3vue2/3 开发时使用的实例，参考集成示例代码 |
@@ -159,6 +161,21 @@ gdp('init', accountId, dataSourceId, appId, {
 ```
 
 **<font color="#FC5F3A">注意：</font>如果 extraParams 和 ignoreFields 中同时指定了同一字段，getGioInfo 将不再获取到指定的字段，即 ignoreFields 优先级更高。**
+
+### impressionScale
+
+设置曝光内容的曝光比例，与曝光插件结合使用。曝光比例是指当一个需要曝光的元素出现在屏幕可见范围的部分占据自身尺寸的比例。值为 0 表示只要出现（哪怕只有一条边）即产生曝光事件，若设为 1 则表示需要整个元素完整地出现在屏幕可见范围才产生曝光事件。使用该配置项时，应当**确保已集成半自动埋点浏览插件**。[参考文档](/docs/miniprogram/plugins/impressionTracking)
+
+**允许设值范围 0 ~ 1 之间的任意小数；默认 0。**
+
+```js
+gdp('init', accountId, dataSourceId, appId, {
+  impressionScale: 0.5, // 元素一半的面积出现在屏幕可见范围中才触发曝光事件
+  ...其他配置项,
+});
+```
+
+**<font color="#FC5F3A">注意：</font>SDK、插件版本 >= 4.3.1 支持。**
 
 ### keepAlive
 
