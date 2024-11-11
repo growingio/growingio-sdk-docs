@@ -51,7 +51,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:3.5.3')
+  implementation platform('com.growingio.android:autotracker-bom:3.5.4')
 
   implementation 'com.growingio.android:analytics-fa'
   implementation 'com.growingio.android:analytics-ga'

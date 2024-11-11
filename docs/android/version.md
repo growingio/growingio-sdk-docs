@@ -15,6 +15,20 @@ sidebar_position: 0
 
 </details>
 
+## RELEASE-3.5.4
+
+### Bug Fix
+
+- 调用ContentProviderClient.release()时在某些机型上（比如oppo）会出现 IBinder 已经释放的情况导致出现空异常。([#223](https://github.com/growingio/growingio-sdk-android-autotracker/pull/223))
+
+- android gradle plugin 插件同步升级至 3.5.4，修复未在visitEnd调用super方法导致的编译失败问题. ([#27](https://github.com/growingio/growingio-sdk-android-plugin/pull/27))
+
+:::note 
+
+ 标签:**[v3.5.4](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v3.5.4)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2023-11-17** 
+
+:::
+
 ## RELEASE-3.5.3
 
 ### Feature
