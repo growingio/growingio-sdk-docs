@@ -72,6 +72,7 @@ GrowingIO CDP 产品是集**服务端数据分析和客户端自动埋点一体�
 | OP-2.7.0  |   支持服务端 SDK 埋点事件可传 eventTime 参数   |      Java SDK v1.0.11-cdp<br/> PHP SDK v1.0.2<br/> Python SDK v1.0.1    |
 | New SaaS  |  新无埋点、埋点    |    >=4.0.0    |
 | OP-4.2  |  新无埋点、埋点    |    >=4.0.0    |
+| OP-4.4, OP-2.12  |  支持鸿蒙数据源   |    HarmonyOS NEXT SDK    |
 
 :::info
 如果使用采集数据加密解密功能产品需要升级到 14.3.0 之后， Android SDK 3.3.0 之后， Apple SDK 3.3.0 之后

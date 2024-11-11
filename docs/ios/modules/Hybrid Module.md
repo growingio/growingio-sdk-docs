@@ -217,7 +217,6 @@ BOOL enabled = [[GrowingHybridModule sharedInstance] isBridgeForWebViewEnabled:w
 当触发了打通规则，实现打通设置后，H5 内嵌页采集的数据经 APP 中 GIO SDK 发送数据。以下字段变化如下：<br/>
 deviceId: 使用原生 App 的d eviceId<br/>
 sessionId: 使用原生 App 的 sessionId<br/>
-gioId: 使用原生 App 的 gioId <br/>
 userId: 使用原生 App 的 userId<br/>
 userKey: 使用原生 App 的 userKey<br/>
 dataSourceId: 使用原生 App 的 dataSourceId<br/>

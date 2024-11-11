@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:hybrid:4.3.1'
+	implementation 'com.growingio.android:hybrid:4.3.2'
 }
 ```
 </TabItem>
@@ -47,7 +47,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.3.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.3.2')
 
   implementation 'com.growingio.android:hybrid'
 }
@@ -71,7 +71,7 @@ GrowingAutotracker.get().bridgeWebView(webview)
 **1. H5页面 Web JS SDK 采集的数据与APP 中 GIO SDK采集的用户等数据打通规则：**
 - 两者 accountId 一致时，H5与APP打通，此时H5页面上采集的数据仅由 APP 中 GIO SDK 发送
 - 两者 accountId 不一致时，H5页面上采集的数据同时由 Web JS SDK 和 APP 中 GIO SDK发送
-满足打通设置时，H5 页面调用 setUserID，cleanUserID 会调用 APP 的 setLoginUserID，cleanUserID。
+- 满足打通设置时，H5 页面调用 setUserID，cleanUserID 会调用 APP 的 setLoginUserID，cleanUserID。
 
 **2. 打通成功效果**
 
@@ -79,7 +79,6 @@ GrowingAutotracker.get().bridgeWebView(webview)
 当触发了打通规则，实现打通设置后，h5内嵌页采集的数据经 APP 中 GIO SDK发送数据。以下字段变化如下：<br/>
 deviceId: 使用原生App的deviceId<br/>
 sessionId: 使用原生App的sessionId<br/>
-gioId: 使用原生App的gioId <br/>
 userId: 使用原生App的userId<br/>
 userKey: 使用原生App的userKey<br/>
 dataSourceId: 使用原生App的dataSourceId<br/>
