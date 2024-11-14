@@ -346,6 +346,7 @@ GrowingAnalytics.startSubTracker(trackerId, config)
 | requestOptions.connectTimeout | 是                   |
 | requestOptions.transferTimeout| 是                   |
 | dataValidityPeriod            | 否，以主实例为准     |
+| useProtobuf                   | 是                   |
 | encryptEnabled                | 是                   |
 | compressEnabled               | 是                   |
 
