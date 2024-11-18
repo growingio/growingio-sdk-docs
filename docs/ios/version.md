@@ -3,6 +3,18 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [4.5.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.4.0...4.5.0) (2024-11-18)
+
+
+### Bug Fixes
+
+* 替换 swift-protobuf 已废弃接口 ([#332](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/332)) ([2311e91](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2311e9190eceb38693a695b29c166b80f393a4dd))
+
+
+### Features
+
+* **ads:** ANLSPI-22249 支持 CAID 归因分析 ([#336](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/336)) ([4c5bbba](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4c5bbba765794b26636f2f30a610f00b974fc4f1))
+
 ## [4.4.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.2...4.4.0) (2024-09-29)
 
 

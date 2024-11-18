@@ -67,6 +67,7 @@ import TabItem from '@theme/TabItem';
 | `readClipboardEnabled` | `Bool`     |    否    | `true` | 是否允许读取剪切板的应用信息 |
 | `deepLinkHost`         | `String`   |    否    | `https://link.growingio.com`  | 深度链接配置地址，SaaS取默认值   |
 | `deepLinkCallback`     | `Closures` |    否    | `nil`  | 监听深度链接中的地址参数     |
+| `caidFetchBlock`       | `Closures` |    否    | `nil`  | 若需要通过 CAID 进行归因分析时传入，具体见下方 CAID 配置，SDK 版本需 >=4.5.0 |
 
 ```swift
 let config = AutotrackConfig(accountId: "YourAccountId")
@@ -124,6 +125,46 @@ Autotracker.start(config!, launchOptions: launchOptions)
 
 <ImageLoader path="img/ios/adservices_framework" />
 
+### CAID 配置
+
+如您需要使用 CAID 进行归因分析，在 SDK 初始化时传入 caidFetchBlock：
+
+```swift
+let config = AutotrackConfig(accountId: "YourAccountId")
+config?.dataCollectionServerHost = "YourServerHost"
+config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
+
+// 传入 CAID 获取闭包
+config?.caidFetchBlock = { (didCompleteBlock: @escaping (String) -> Void) -> Void in
+    // 请求 CAID 接口，获取 CAID
+    let caid = ...
+
+    // 当获取 CAID 成功后，将得到的 CAID JSON 字符串作为参数，传入 SDK
+    didCompleteBlock(caid)
+}
+
+Autotracker.start(config!, launchOptions: launchOptions)
+```
+
+传入的 CAID 需转为 JSON 字符串格式，示例：
+
+```swift
+let caid = """
+[
+    {"caid":"507b36cb169864220bc22a8c522532fa","version":"20220111"},
+    {"caid":"e18a100398425c5026591525e844f7a7","version":"20230330"}
+]
+"""
+```
+
+:::info 注意
+
+- 正常初始化情况下，SDK 会尝试通过该「CAID 获取闭包」获取 CAID，传入 SDK 的 CAID 将作为 ACTIVATE 事件的事件属性上报。
+- 延迟初始化情况下，直到 SDK 初始化且同意 SDK 数据采集 (`dataCollectionEnabled` 为 `true`) 后，SDK 才尝试通过该「CAID 获取闭包」获取 CAID。
+- 当超时 5 秒未调用 `didCompleteBlock`，则此前生成的 ACTIVATE 事件将使用上次获取到的通过内存缓存的 CAID(如果有)
+:::
+
   </TabItem>
   <TabItem value="cocoapods" label="Cocoapods集成">
 
@@ -148,6 +189,7 @@ pod 'GrowingAnalytics/Ads'
 | `readClipboardEnabled` | `BOOL`     |    否    | `YES`  | 是否允许读取剪切板的应用信息 |
 | `deepLinkHost`         | `NSString` |    是    | `nil`  | 深度链接配置地址，示例：https://n.datayi.cn   |
 | `deepLinkCallback`     | `Block`    |    否    | `nil`  | 监听深度链接中的地址参数     |
+| `CAIDFetchBlock`       | `Block`    |    否    | `nil`  | 若需要通过 CAID 进行归因分析时传入，具体见下方 CAID 配置，SDK 版本需 >=4.5.0 |
 
 ```objectivec
 GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
@@ -204,6 +246,44 @@ configuration.ASAEnabled = YES;
 在 Target -> Build Phases -> Link Binary With Libraries，添加 **iAd.framework** 和 **AdServices.framework**，并设置 AdServices.framework status 为 **Optional**
 
 <ImageLoader path="img/ios/adservices_framework" />
+
+### CAID 配置
+
+如您需要使用 CAID 进行归因分析，在 SDK 初始化时传入 caidFetchBlock：
+
+```objectivec
+GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
+configuration.dataCollectionServerHost = @"YourServerHost";
+configuration.dataSourceId = @"YourDatasourceId";
+configuration.urlScheme = @"YourURLScheme";
+
+// 传入 CAID 获取闭包
+configuration.CAIDFetchBlock = ^(void (^ _Nonnull didCompleteBlock)(NSString * _Nonnull)) {
+    // 请求 CAID 接口，获取 CAID
+    NSString *caid = ...
+
+    // 当获取 CAID 成功后，将得到的 CAID JSON 字符串作为参数，传入 SDK
+    didCompleteBlock(caid);
+};
+
+[GrowingAutotracker startWithConfiguration:configuration launchOptions:launchOptions];
+```
+
+传入的 CAID 需转为 JSON 字符串格式，示例：
+
+```objectivec
+NSString *caid =  @"["
+@"{\"caid\":\"507b36cb169864220bc22a8c522532fa\",\"version\":\"20220111\"},"
+@"{\"caid\":\"e18a100398425c5026591525e844f7a7\",\"version\":\"20230330\"}"
+@"]";
+```
+
+:::info 注意
+
+- 正常初始化情况下，SDK 会尝试通过该「CAID 获取闭包」获取 CAID，传入 SDK 的 CAID 将作为 ACTIVATE 事件的事件属性上报。
+- 延迟初始化情况下，直到 SDK 初始化且同意 SDK 数据采集 (`dataCollectionEnabled` 为 `true`) 后，SDK 才尝试通过该「CAID 获取闭包」获取 CAID。
+- 当超时 5 秒未调用 `didCompleteBlock`，则此前生成的 ACTIVATE 事件将使用上次获取到的通过内存缓存的 CAID(如果有)
+:::
 
   </TabItem>
 </Tabs>
