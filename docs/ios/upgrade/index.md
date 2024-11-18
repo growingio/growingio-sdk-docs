@@ -34,7 +34,7 @@ pod 'GrowingAnalytics-cdp/Autotracker'
 
 更改为：
 ```ruby
-pod 'GrowingAnalytics/Autotracker', '~> 4.4.0'
+pod 'GrowingAnalytics/Autotracker', '~> 4.5.0'
 ```
 
 **如果您通过 SwiftPM 集成**：
@@ -55,7 +55,7 @@ pod 'GrowingAnalytics-cdp/Tracker'
 
 更改为：
 ```ruby
-pod 'GrowingAnalytics/Tracker', '~> 4.4.0'
+pod 'GrowingAnalytics/Tracker', '~> 4.5.0'
 ```
 
 **如果您通过 SwiftPM 集成**：
