@@ -3,9 +3,15 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [2.1.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.1.0) (2024-11-14)
+
+### Features
+
+* feat: 支持 protobuf 数据格式传输
+
 ## [2.0.1](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.0.1) (2024-10-25)
 
-### Bug Fixes 修复
+### Bug Fixes
 
 * fix: start、track、trackTimerEnd 方法签名修正
 
