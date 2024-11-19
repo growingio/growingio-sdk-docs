@@ -5,6 +5,14 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.3.1 - 2024/11/19
+
+- 🌟 优化部分细节逻辑。
+- 🎉 新增abtest上报字段。
+- 🎉 新增`keepAlive` 初始化配置，允许自定义session超时时长。
+- 🎉 新增`impressionScale` 初始化配置，允许对半自动埋点曝光事件设置曝光比例。
+
+
 ### V4.3.0 - 2024/08/15
 
 - 🐞 修复淘宝小程序云函数发送失败重试逻辑。

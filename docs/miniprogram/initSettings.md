@@ -16,7 +16,7 @@ title: 初始化配置
 | `followShare`    | `boolean`    | `true`                       | 是否跟踪分享数据                                   |
 | `forceLogin`     | `boolean`    | `false`                      | 是否开启强制登录模式                               |
 | `ignoreFields`   | `string[]`   | `[]`                         | 上报忽略字段                                       |
-| `impressionScale`| `number`   | `0`                            | 曝光比例                                      |
+| `impressionScale`| `number`     | `0`                            | 曝光比例                                      |
 | `keepAlive`      | `number`     | `5`                          | 后台保活时长                                      |
 | `requestTimeout` | `number`     | `5000`                       | 上报请求超时时长                                       |
 | `originalSource` | `boolean`    | `true`                       | VISIT事件是否使用初始来源                           |
