@@ -19,10 +19,11 @@ title: 初始化配置
 | `idMapping`      | `boolean`               | `false`                      | 是否开启多用户身份上报       |
 | `hashtag`        | `boolean`               | `false`                      | 是否开启hash解析             |
 | `ignoreFields`   | `string[]`              | `[]`                         | 上报忽略字段                 |
+| `impressionScale`| `number`                | `0`                          | 曝光比例（小数）                  |
 | `originalSource` | `boolean`               | `true`                       | 访问事件是否使用原始进入数据 |
 | `packageName`    | `string`                | `-`                          | 指定打通的移动端包名         |
 | `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
-| `requestTimeout` | `number`                | `5000`                       | 请求超时时长                 |
+| `requestTimeout` | `number`                | `5000`                       | 请求超时时长（毫秒）           |
 | `sendType`       | `string`                | `beacon`                     | 数据上报优先方式             |
 | `serverUrl`      | `string`                | `https://napi.growingio.com` | 数据上报的服务端地址         |
 | `storageType`    | `cookie / localStorage` | `cookie`                     | SDK信息的持久化存储的类型    |
@@ -146,6 +147,21 @@ gdp('init', accountId, datasourceId, {
 });
 ```
 
+### impressionScale
+
+设置曝光内容的曝光比例，与曝光插件结合使用。曝光比例是指当一个需要曝光的元素出现在屏幕可见范围的部分占据自身尺寸的比例。值为 0 表示只要出现（哪怕只有一条边）即产生曝光事件，若设为 1 则表示需要整个元素完整地出现在屏幕可见范围才产生曝光事件。配置全局生效，所有的曝光内容都会按此比例执行。使用该配置项时，应当**确保已集成半自动埋点浏览插件**。[参考文档](/docs/webjs/plugins/impressionTracking)
+
+**取值范围：0 ~ 1 之间的任意小数；默认 0。**
+
+```js
+gdp('init', accountId, dataSourceId, appId, {
+  impressionScale: 0.5, // 元素一半的面积出现在屏幕可见范围中才触发曝光事件
+  ...其他配置项,
+});
+```
+
+**<font color="#FC5F3A">注意：</font>SDK、插件版本 >= 4.2.3 支持。**
+
 ### originalSource
 
 默认情况下，SDK发送访问事件（VISIT）时，会使用用户初始进入站点时的`path`和`query`信息，以保证能正确上报utm参数等进入信息。但是需要注意的点是，当您的站点不是在用户进入的页面发送访问事件时，会导致VISIT事件和PAGE事件上报的path和query不一致，从而平台的页面跳出率数据会异常。
@@ -191,7 +207,7 @@ gdp('init', accountId, datasourceId, {
 
 默认情况下，SDK的上报请求在`XHR`和`图片`的形式下超时时长为 5000毫秒（即5秒），超时即自动失败。当您需要控制数据上报请求超时时长时可修改。
 
-配置项取值：**整数大于0**，单位毫秒，默认值`5000`。
+**单位：毫秒；取值范围：整数大于0；默认值`5000`（即 5 秒）。**
 
 ```js
 gdp('init', accountId, datasourceId, {

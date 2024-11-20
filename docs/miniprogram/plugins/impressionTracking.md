@@ -26,7 +26,7 @@ title: 半自动埋点浏览
 #### 下载集成引入
 
 - 下载插件包并复制至项目中：
-  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.3.0/plugins/gioImpressionTracking.js](https://assets.giocdn.com/sdk/minip/4.3.0/plugins/gioImpressionTracking.js)</font>**<br/>
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.3.1/plugins/gioImpressionTracking.js](https://assets.giocdn.com/sdk/minip/4.3.1/plugins/gioImpressionTracking.js)</font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ```js
@@ -48,9 +48,9 @@ gdp('init', xxxx);
 
 ## 使用方法
 
-**1、**在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
+**1、** 在需要标记的元素上添加 **`growing_collect_imp`** 样式名。
 
-**2、**在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`属性，并分别对应 `track` 方法中的参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/commonlyApi#6埋点事件track)。
+**2、** 在节点上添加 `data-gio-imp-track`、`data-gio-imp-attrs`属性，并分别对应 `track` 方法中的参数进行设置，参数规则参考[埋点事件](/docs/miniprogram/commonlyApi#6埋点事件track)。
 
 #### 使用对象变量或 JSON 字符串赋值
 
@@ -92,7 +92,7 @@ gdp(
 );
 ```
 
-**3、**如果您的曝光事件只需要统计一次或触发过于频繁导致曝光事件量过大，可以在节点上添加`data-gio-imp-type="once"`并设置唯一的`节点id`，来使得曝光逻辑变为单次上报。
+**3、** 如果您的曝光事件只需要统计一次或触发过于频繁导致曝光事件量过大，可以在节点上添加`data-gio-imp-type="once"`并设置唯一的`节点id`，来使得曝光逻辑变为单次上报。
 
 ```html
 <view
@@ -158,7 +158,7 @@ Page({
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>**如果您是在自定义组件中为自定义组件更新曝光监听，请传入 **`this`** 对象。
+**<font color="#FC5F3A">注意：</font>如果您是在自定义组件中为自定义组件更新曝光监听，请传入 `this`对象。** 
 
 #### 示例
 
@@ -172,6 +172,14 @@ Component({
   }
 });
 ```
+
+## 设置曝光比例
+
+曝光比例是指当一个需要曝光的元素出现在屏幕可见范围的部分占据自身尺寸的比例。值为 0 表示只要出现（哪怕只有一条边）即产生曝光事件，若设为 1 则表示需要整个元素完整地出现在屏幕可见范围才产生曝光事件。
+
+设置曝光比例需要您在SDK初始化时配置完成。[参考文档](/docs/miniprogram/initSettings#impressionscale)
+
+**<font color="#FC5F3A">注意：</font>SDK、插件版本 >= 4.3.1 支持。**
 
 ## 注意
 

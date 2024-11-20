@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 ## 准备工作
 
-1、在 GrowingIO 平台中新建数据源并获取**`accountId`和`dataSourceId`**。
+1、在 GrowingIO 平台中新建数据源并获取 **`accountId`和`dataSourceId`**。
 
 2、在下列选项中选择对应的集成方式，并根据示例进行集成。
 
@@ -60,19 +60,18 @@ values={[
 <!-- Copyright 2015-2023 GrowingIO, Inc. More info available at http://www.growingio.com -->
 <script type="text/javascript">
   !(function (e, n, t, s, c) {
-    var o;
     e[s] =
       e[s] ||
       function () {
         (e[s].q = e[s].q || []).push(arguments);
       };
-    (c = c || 'vds'),
-      (e._gio_local_vds = c),
-      (e[c] = null !== (o = e[c]) && void 0 !== o ? o : {}),
+    (e._gio_local_vds = c = c || 'vds'),
+      (e[c] = e[c] || {}),
       (e[c].namespace = s);
     var d = n.createElement('script');
     var i = n.getElementsByTagName('script')[0];
-    (d.async = !0), (d.src = t), i.parentNode.insertBefore(d, i);
+    (d.async = !0), (d.src = t);
+    i ? i.parentNode.insertBefore(d, i) : n.head.appendChild(d);
   })(window, document, 'https://assets.giocdn.com/sdk/webjs/gdp.js', 'gdp');
 
   gdp('init', 'your accountId', 'your dataSourceId', {
@@ -99,19 +98,18 @@ values={[
 <!-- Copyright 2015-2023 GrowingIO, Inc. More info available at http://www.growingio.com -->
 <script type="text/javascript">
   !(function (e, n, t, s, c) {
-    var o;
     e[s] =
       e[s] ||
       function () {
         (e[s].q = e[s].q || []).push(arguments);
       };
-    (c = c || 'vds'),
-      (e._gio_local_vds = c),
-      (e[c] = null !== (o = e[c]) && void 0 !== o ? o : {}),
+    (e._gio_local_vds = c = c || 'vds'),
+      (e[c] = e[c] || {}),
       (e[c].namespace = s);
     var d = n.createElement('script');
     var i = n.getElementsByTagName('script')[0];
-    (d.async = !0), (d.src = t), i.parentNode.insertBefore(d, i);
+    (d.async = !0), (d.src = t);
+    i ? i.parentNode.insertBefore(d, i) : n.head.appendChild(d);
   })(window, document, 'https://assets.giocdn.com/sdk/webjs/gdp-full.js', 'gdp');
 
   gdp('init', 'your accountId', 'your dataSourceId', {
@@ -252,7 +250,7 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your appId', {
 });
 ```
 
-另外，如果您有访问用户Id需替换成 `openId/unionId` 的需求，请在初始化配置项中添加 **`forceLogin: true`**的配置项，具体使用方法，请[参考文档](/docs/webjs/initSettings#forcelogin)。
+另外，如果您有访问用户Id需替换成 `openId/unionId` 的需求，请在初始化配置项中添加 **`forceLogin: true`** 的配置项，具体使用方法，请[参考文档](/docs/webjs/initSettings#forcelogin)。
 
 ## 在 APP 内嵌页面中集成
 

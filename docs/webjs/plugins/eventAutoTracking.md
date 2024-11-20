@@ -112,7 +112,7 @@ SDK会自动忽略 `type="password"` 类型的input框的内容采集；如果�
 
 有时我们会根据业务中不同的需要使用一些自己开发的组件或第三方组件，可能会触发SDK的 `VIEW_CHANGE` 事件，但我们并不期望它发生。
 
-此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。**注意标记在事件绑定的节点上，没事件绑定的节点默认不会采集。**例：
+此时，我们可以通过忽略采集标记 `data-growing-ignore` 来让SDK忽略对该组件的数据采集。**注意标记在事件绑定的节点上，没事件绑定的节点默认不会采集。** 例：
 
 ```html
 <div data-growing-ignore onclick="onLinkTap()">要忽略的节点</div>
