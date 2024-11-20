@@ -9,7 +9,7 @@ SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-minip
 
 - 🌟 优化部分细节逻辑。
 - 🎉 新增abtest上报字段。
-- 🎉 新增`keepAlive` 初始化配置，允许自定义session超时时长。
+- 🎉 新增`keepAlive` 初始化配置，允许自定义后台保活时长。
 - 🎉 新增`impressionScale` 初始化配置，允许对半自动埋点曝光事件设置曝光比例。
 
 
