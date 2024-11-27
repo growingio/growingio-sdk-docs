@@ -102,7 +102,7 @@ dependencies {
 </Tabs>
 
 ## 数据格式库
-默认使用 `protobuf` 来做数据传输的格式。通过数据格式转换可以将输入 `EventFormatData` 转为字节数组数据 `EventByteArray` 方便网络数据上传。
+默认使用 `protobuf` 来做数据传输的格式。通过数据格式转换可以将输入 `EventFormatData` 转为字节数组数据 `EventByteArray` 方便网络数据上传。若发生pb版本冲突，可参考 [Android-常见问题-14](/docs/question/android) 解决
 
 ### 依赖方式
 <Tabs
