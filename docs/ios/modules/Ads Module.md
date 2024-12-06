@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-平台版本 >=4.0 支持，产品使用文档可参考 [深度链接](https://docs.growingio.com/op-help/docs/4.0/product-manual/acquisition-analytics/acquisition-tracing/tracking-deeplink)
+平台版本 >=4.0 支持。
 
 **使用时注意模块版本需要与采集 SDK 版本保持一致**
 :::

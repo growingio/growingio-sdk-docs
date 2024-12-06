@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 在深度链接技术场景中，可以直接唤起 App 并跳转至指定页面，同时根据条件判断用户跳转路径，当用户已经安装 App 时可以直接唤起 App，当用户未安装 App 时会引导用户下载 App。
 
 :::info
-平台版本>=4.0支持，产品使用文档可参考 [深度链接](https://docs.growingio.com/op-help/docs/4.0/product-manual/acquisition-analytics/acquisition-tracing/tracking-deeplink)
+平台版本>=4.0支持。
 :::
 
 
