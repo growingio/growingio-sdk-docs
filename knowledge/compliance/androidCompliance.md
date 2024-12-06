@@ -15,7 +15,7 @@ title: Android SDK 合规说明
 
 在您的APP《隐私协议》中收集和获得的个人信息栏目中根据**实际情况**填写如下内容：
 ```
-我们的产品集成了 GrowingIO SDK，我们会通过 GrowingIO SDK 收集您的设备信息（例如：操作系统、设备型号、系统版本、`AndroidID`、`IMEI` 、IP地址）用于统计分析您在 App 内的使用效果，从而改进我们的产品和服务。 
+我们的产品集成了 GrowingIO SDK，我们会通过 GrowingIO SDK 收集您的设备信息（例如：操作系统、设备型号、系统版本、`AndroidID`、`IMEI`）用于统计分析您在 App 内的使用效果，从而改进我们的产品和服务。 
 ```
 可在第三方SDK列表中增加如下内容(设备信息按照**实际情况**填写)：
 ```
@@ -30,7 +30,7 @@ GIO移动端 SDK
 
 在您的APP《隐私协议》中的与授权合作伙伴共享栏目中根据**实际情况**填写如下内容:
 ```
-我们的产品集成了 GrowingIO SDK，我们会通过 GrowingIO SDK 收集您的设备信息（例如：操作系统、设备型号、系统版本、`AndroidID`、`IMEI` 、IP地址）用于统计分析您在 App 内的使用效果，从而改进我们的产品和服务。
+我们的产品集成了 GrowingIO SDK，我们会通过 GrowingIO SDK 收集您的设备信息（例如：操作系统、设备型号、系统版本、`AndroidID`、`IMEI`）用于统计分析您在 App 内的使用效果，从而改进我们的产品和服务。
 ```
 
 ## 合规步骤
@@ -67,18 +67,18 @@ GIO移动端 SDK
 
 ### Android 设备权限
 
-| 权限 | 用途 | 
-| :--: | :-- | 
-| android.permission.INTERNET | 允许应用程序联网和发送统计数据的权限，以便提供统计分析服务。必须权限| 
-| android.permission.ACCESS_NETWORK_STATE | 检测联网方式，在网络异常状态下避免数据发送，节省流量和电量。必须权限| 
-| android.permission.ACCESS_WIFI_STATE | 获取WIFI网络类型，检测联网方式，节省流量和电量。必须权限 | 
-| android.permission.READ_PHONE_STATE | 获取用户设备的IMEI，通过IMEI对用户进行唯一标识，以便提供统计分析服务。(只在Android 10以下可用，10以上已无法获取)。可选权限| 
+| 权限 | 用途 | 权限申请时机 |
+| :--: | :-- | :-- | 
+| android.permission.INTERNET | 允许应用程序联网和发送统计数据的权限，以便提供统计分析服务。必须权限| 数据分析时需要申请，例如上报相关数据 | 
+| android.permission.ACCESS_NETWORK_STATE | 检测联网方式，在网络异常状态下避免数据发送，节省流量和电量。必须权限| 数据分析时需要申请，例如在不同网络状态下上报相关数据 | 
+| android.permission.ACCESS_WIFI_STATE | 获取WIFI网络类型，检测联网方式，节省流量和电量。必须权限 | 数据分析时需要申请，例如在不同网络状态下上报相关数据 | 
+| android.permission.READ_PHONE_STATE | 获取用户设备的IMEI，通过IMEI对用户进行唯一标识，以便提供统计分析服务。(只在Android 10以下可用，10以上已无法获取)。可选权限| 数据分析时需要申请，例如需要对终端生成唯一标识或进行广告归因时，如果需要采集还需要在SDK初始化之前配置开启相关功能（默认均为关闭）| 
 
 
 ## 初始化
 
 ### 方式一、设置数据收集开关
-GrowingIO SDK 提供 `setDataCollectionEnabled`接口，可在用户不同意数据采集时，调用该接口，设置 `false` 禁止数据采集；在用户同意数据采集时，调用该接口，设置 `true` 开启数据采集
+GrowingIO SDK 提供 `setDataCollectionEnabled`接口，可在用户不同意数据采集时，调用该接口，设置 `false` 禁止数据采集（禁止数据采集时不会获取任何信息，等同于仅初始化SDK，不会执行基础信息收集及数据上报）；在用户同意数据采集时，调用该接口，设置 `true` 开启数据采集
 
 ```java
 // Application 的 onCreate() 方法中主线程初始化 SDK
@@ -194,3 +194,15 @@ CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("AccountId", "U
 ​为符合 [General Data Protection Regulation 欧盟通用数据保护条例​](https://zh.wikipedia.org/wiki/%E6%AD%90%E7%9B%9F%E4%B8%80%E8%88%AC%E8%B3%87%E6%96%99%E4%BF%9D%E8%AD%B7%E8%A6%8F%E7%AF%84)，
 请参考 [方式一设置数据收集开关](#方式一设置数据收集开关)
 
+### 关于获取剪切板信息
+如果集成了广告SDK，广告推广中需要使用剪切板信息来判断来源是否是公司推广链接下载，默认情况下 SDK 不获取相关信息，如果您有相关需求，需要在隐私协议中主动声明，在客户同意后通过相关配置开启获取，相关配置方式如下所示(参见：[广告模块的配置](/docs/android/modules/advert%20module#模块配置))
+
+```java
+AdsConfig config = new AdsConfig();
+config.setDeepLinkHost("Your DeepLinkHost")
+        // 默认为 false，SDK 不主动采集相关信息
+        .setReadClipBoardEnable(true)
+        .setDeepLinkCallback((params, error, appAwakePassedTime) -> {
+            // accept deeplink params
+        });
+```
