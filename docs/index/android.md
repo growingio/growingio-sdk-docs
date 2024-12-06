@@ -13,7 +13,10 @@ GrowingIO Autotracker Android SDK 可以通过 [如何集成教程](/docs/androi
 无埋点包名：com.growingio.android.sdk.autotrack <br/>
 最新版本：4.3.2 <br/>
 更新时间：2024-10-29 <br/>
-下载地址：https://repo1.maven.org/maven2/com/growingio/android/ <br/>
+下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
+个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
+使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
+合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
 :::
 
 :::tip 开源信息

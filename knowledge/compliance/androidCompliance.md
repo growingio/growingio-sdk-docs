@@ -67,18 +67,18 @@ GIO移动端 SDK
 
 ### Android 设备权限
 
-| 权限 | 用途 | 
-| :--: | :-- | 
-| android.permission.INTERNET | 允许应用程序联网和发送统计数据的权限，以便提供统计分析服务。必须权限| 
-| android.permission.ACCESS_NETWORK_STATE | 检测联网方式，在网络异常状态下避免数据发送，节省流量和电量。必须权限| 
-| android.permission.ACCESS_WIFI_STATE | 获取WIFI网络类型，检测联网方式，节省流量和电量。必须权限 | 
-| android.permission.READ_PHONE_STATE | 获取用户设备的IMEI，通过IMEI对用户进行唯一标识，以便提供统计分析服务。(只在Android 10以下可用，10以上已无法获取)。可选权限（申请时机：该权限为非必需权限，如果用户希望采集该信息应当在SDK初始化之前向客户申请相关权限）| 
+| 权限 | 用途 | 权限申请时机 |
+| :--: | :-- | :-- | 
+| android.permission.INTERNET | 允许应用程序联网和发送统计数据的权限，以便提供统计分析服务。必须权限| 数据分析时需要申请，例如上报相关数据 | 
+| android.permission.ACCESS_NETWORK_STATE | 检测联网方式，在网络异常状态下避免数据发送，节省流量和电量。必须权限| 数据分析时需要申请，例如在不同网络状态下上报相关数据 | 
+| android.permission.ACCESS_WIFI_STATE | 获取WIFI网络类型，检测联网方式，节省流量和电量。必须权限 | 数据分析时需要申请，例如在不同网络状态下上报相关数据 | 
+| android.permission.READ_PHONE_STATE | 获取用户设备的IMEI，通过IMEI对用户进行唯一标识，以便提供统计分析服务。(只在Android 10以下可用，10以上已无法获取)。可选权限| 数据分析时需要申请，例如需要对终端生成唯一标识或进行广告归因时，如果需要采集还需要在SDK初始化之前配置开启相关功能（默认均为关闭）| 
 
 
 ## 初始化
 
 ### 方式一、设置数据收集开关
-GrowingIO SDK 提供 `setDataCollectionEnabled`接口，可在用户不同意数据采集时，调用该接口，设置 `false` 禁止数据采集；在用户同意数据采集时，调用该接口，设置 `true` 开启数据采集
+GrowingIO SDK 提供 `setDataCollectionEnabled`接口，可在用户不同意数据采集时，调用该接口，设置 `false` 禁止数据采集（禁止数据采集时不会获取任何信息，等同于仅初始化SDK，不会执行基础信息收集及数据上报）；在用户同意数据采集时，调用该接口，设置 `true` 开启数据采集
 
 ```java
 // Application 的 onCreate() 方法中主线程初始化 SDK
