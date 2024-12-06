@@ -7,18 +7,6 @@ GrowingIO Autotracker Android SDK 可以通过 [如何集成教程](/docs/androi
 * 埋点功能：只自动采集用户访问事件，需要开发同学调用相应埋点 API 采集埋点事件;
 * 无埋点功能：具备自动采集基本用户行为事件，如页面访问，点击事件等。
 
-:::tip SDK下载信息
-类型：统计类 <br/>
-开发者：北京易数科技有限公司 <br/>
-无埋点包名：com.growingio.android.sdk.autotrack <br/>
-最新版本：4.3.2 <br/>
-更新时间：2024-10-29 <br/>
-下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
-个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
-使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
-合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
-:::
-
 :::tip 开源信息
 GrowingIO Autotracker Android SDK 代码已在 [Github](https://github.com/growingio/growingio-sdk-android-autotracker) 上开源，可以详细查看代码实现细节，欢迎 star, fork。
 :::
