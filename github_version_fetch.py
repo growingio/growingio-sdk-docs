@@ -34,7 +34,7 @@ def android_releases(releases, fromId, complianceInfo = True):
 无埋点包名：com.growingio.android.sdk.autotrack <br/>
 最新版本：{version} <br/>
 更新时间：{date} <br/>
-功能说明：GrowingIO Autotracker SDK具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
+功能说明：GrowingIO用户行为数据采集软件开发工具包（CDP）具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
 下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
 个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
 使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
