@@ -357,7 +357,7 @@ GioCdpUserMappingMessage msg = new GioCdpUserMappingMessage.Builder()
 ### 完成埋点事件的配置
 
 在GrowingIO【数据】>【数据管理】中创建埋点事件及事件属性/登录用户属性，如图所示。
-![custom data](https://3953104361-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M2qbZInaXgdm8kkNosp%2F-M3jX91jAu6IT2O2PJVo%2F-M3jYpHFW7WpKIaXRTx1%2Fimage.png?alt=media&token=a2dae343-1204-4d36-ad08-9c7099016b11)
+![custom data](/img/common/sdk-custom-data.webp)
 
 ### 测试程序配置
 
@@ -370,7 +370,7 @@ GioCdpUserMappingMessage msg = new GioCdpUserMappingMessage.Builder()
 gio message is [{"cs1": "10324", "t": "cstm", "var": {"product_name": "苹果"}, "tm": 1575895053509, "n": "order"}]
 ```
 
-![code](https://3953104361-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M2qbZInaXgdm8kkNosp%2F-M3jX91jAu6IT2O2PJVo%2F-M3jZ7JgLc5nEzRbIQQh%2Fimage.png?alt=media&token=02d9d860-892b-43f5-b90c-4c8a9155401a)
+![code](/img/common/java-code.png)
 
 完成以上测试步骤后：
 
