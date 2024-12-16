@@ -30,7 +30,7 @@ iOS 设备，可使用相机或自带的扫码应用扫码唤起APP。<br/>
 ### 通过“事件流”页签查看请求数据
 如下图，可以查看上报事件属性的请求数据
 
-![Mobile Debugger](https://3953104361-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M2qbZInaXgdm8kkNosp%2F-MeZBV6ixYnoiiYfOOUd%2F-MeZPOkRVBIr9mSewTl5%2F%E4%BA%8B%E4%BB%B6%E6%B5%81%E9%A1%B5%E9%9D%A2.png?alt=media&token=8dce6e01-5f54-48d0-8e62-b500c6c5004d)
+![Mobile Debugger](/img/debugverify/mobile_debugger.webp)
 
 1. 图片中序号1：可查看当前连接的用户及设备等基本信息
 2. 图片中序号2：筛选器中展示的是系统中已定义的事件标识符列表，如果筛选后无数据，说明本次连接未上报数据
@@ -38,7 +38,8 @@ iOS 设备，可使用相机或自带的扫码应用扫码唤起APP。<br/>
 ### 通过“SDK运行日志”查看SDK运行中的信息/警告/错误三种日志
 如下图，可以点击日志发生的时间查看相应的日志
 
-![连接成功后进入SDK运行日志](https://3953104361-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M2qbZInaXgdm8kkNosp%2F-MeZBV6ixYnoiiYfOOUd%2F-MeZRF90xKX8ecHudHtf%2FSDK%E6%97%A5%E5%BF%97.png?alt=media&token=e0069156-124e-464b-bf0d-6c88ab8cdd5c)
+
+![连接成功后进入SDK运行日志](/img/debugverify/mobile_debugger_log.webp)
 
 1. 图片中序号1：可点击暂停按钮，停止同步SDK产生的日志，便于查看当前遇到的问题；再次点击继续按钮，则同步所有产生的SDK日志，并展示最新的一条日志数据
 2. 图片中序号2：点击清屏按钮，清除当前所有产生的日志
