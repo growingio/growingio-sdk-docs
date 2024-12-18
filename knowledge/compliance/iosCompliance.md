@@ -195,7 +195,9 @@ GrowingIO SDK 会采集 `IDFA` 和 `IDFV` 字段上传，如果您的项目中�
 
 <ImageLoader path="img/compliance/datacollect_location_identity" />
 
-**3. 根据您 App 实际情况选择是否用于追踪目的**
+**3. 选择「否，我们不会将精确位置数据用于追踪目的」**
+
+<ImageLoader path="img/compliance/datacollect_location_track" />
 
 :::info
 若您传入 SDK 的是粗略位置，请按照上述步骤配置粗略位置
@@ -293,5 +295,5 @@ GrowingIO SDK 会采集 `IDFA` 和 `IDFV` 字段上传，如果您的项目中�
 
 ### 其他
 
-该隐私报告的填写是可以更改的。**请根据自己 App 业务的调整及时更新隐私报告**。
+该隐私报告的填写是可以更改的。**以上填写内容仅根据 GrowingIO SDK 所涉及的部分，若您的 App 有更多的隐私数据使用场景，请根据实际情况，按需调整隐私报告**。
 
