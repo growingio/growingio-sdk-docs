@@ -376,7 +376,8 @@ gdp('setBeforeSendListener', (event) => {
 **<font color="#FC5F3A">注意：</font>**<br/>
 **1、传入的回调函数必须返回合法的事件对象，否则SDK会按原预定的事件进行发送。**<br/>
 **2、单独给某个名称的埋点删除所有自定义属性，将attributes值修改为空对象即可。（path、query、title的值无法删除或指定为空值，除非实际就是空值）**<br/>
-**3、SDK版本大于等于 4.2.2 支持。**
+**3、请勿在该回调中调用 sendPage 方法。**
+**4、SDK版本大于等于 4.2.2 支持。**
 
 ### 15、获取SDK当前配置(getOption)
 

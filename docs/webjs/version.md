@@ -5,8 +5,15 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
 
+### V4.2.4 - 2024/12/20
+
+- 🐞 修复部分框架下静态曝光节点在首屏出现时不触发的问题。
+- 🌟 优化添加事件拦截回调中不能手动发page给予提示。
+- 🌟 优化曝光事件对动态生成的节点的自动监听逻辑。
+
 ### V4.2.3 - 2024/11/19
 
+- 🐞 修复多实例插件后注册时不生效的问题。
 - 🌟 优化全局vds中添加小程序或者移动端打通标记。
 - 🌟 优化初始化提示，错误使用已废弃的配置host时给予提示。
 - 🎉 新增abtest上报字段。
