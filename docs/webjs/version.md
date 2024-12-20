@@ -13,6 +13,7 @@ SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs
 
 ### V4.2.3 - 2024/11/19
 
+- 🐞 修复多实例插件后注册时不生效的问题。
 - 🌟 优化全局vds中添加小程序或者移动端打通标记。
 - 🌟 优化初始化提示，错误使用已废弃的配置host时给予提示。
 - 🎉 新增abtest上报字段。
