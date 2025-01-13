@@ -190,6 +190,8 @@ gdp('init', accountId, dataSourceId, appId, {
 });
 ```
 
+**<font color="#FC5F3A">注意：</font>SDK版本 >= 4.3.1 支持。**
+
 ### requestTimeout
 
 默认情况下，SDK的上报请求超时时长为 5000毫秒（即5秒），超时即自动失败。当您需要控制数据上报请求超时时长时可修改，以避免一些意外的网络请求阻塞的问题。
