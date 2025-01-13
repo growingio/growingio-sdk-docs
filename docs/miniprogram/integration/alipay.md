@@ -37,7 +37,7 @@ values={[
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-阿里(支付宝)原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.3.1/gio-alipay.js](https://assets.giocdn.com/sdk/minip/4.3.1/gio-alipay.js)<br/>
+阿里(支付宝)原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.3.2/gio-alipay.js](https://assets.giocdn.com/sdk/minip/4.3.2/gio-alipay.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -76,7 +76,7 @@ const gdp = require('./utils/gio/gio-alipay.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-uniapp 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.3.1/gio-uniapp.js](https://assets.giocdn.com/sdk/minip/4.3.1/gio-uniapp.js)<br/>
+uniapp 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.3.2/gio-uniapp.js](https://assets.giocdn.com/sdk/minip/4.3.2/gio-uniapp.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -175,7 +175,7 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-Taro 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.3.1/gio-taro.js](https://assets.giocdn.com/sdk/minip/4.3.1/gio-taro.js)<br/>
+Taro 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.3.2/gio-taro.js](https://assets.giocdn.com/sdk/minip/4.3.2/gio-taro.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -343,4 +343,8 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 ## 注意
 
-如果您将SDK使用在 mPaaS 中，请注意使用 **`基础库2.0`** 进行开发，低版本基础库可能会出现网络请求被意外中断的问题。开发者工具 -> 设置 -> 小程序配置 -> 启用小程序基础库2.0构建
+如果您将SDK使用在 mPaaS 中，请注意使用 **`基础库2.0`** 进行开发，低版本基础库可能会出现网络请求被意外中断的问题。开发者工具 -> 设置 -> 小程序配置 -> 启用小程序基础库2.0构建。
+
+参考信息：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/issues/3](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/issues/3)
+
+另外，由于部分客户的mPaaS小程序依赖的基线版本过低，导致无法主动升级基础库，我们也提供了兼容版本 SDK >= 4.3.2。但您必须知晓的是，一旦您使用了低版本基础库的mPaaS时，SDK的主动请求超时逻辑也会同时无法生效。从而可能导致在极端情况下上报接口被卡住时，SDK会一直占用请求资源，直到小程序自身判定请求失败。

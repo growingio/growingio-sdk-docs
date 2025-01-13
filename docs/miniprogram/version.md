@@ -5,13 +5,17 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.3.2 - 2025/01/10
+
+- 🐞 修复快应用卡片在真机上报错的问题。
+- 🌟 优化mPaas小程序在基线和基础库版本过低时请求的处理逻辑。
+
 ### V4.3.1 - 2024/11/19
 
 - 🌟 优化部分细节逻辑。
 - 🎉 新增abtest上报字段。
 - 🎉 新增`keepAlive` 初始化配置，允许自定义后台保活时长。
 - 🎉 新增`impressionScale` 初始化配置，允许对半自动埋点曝光事件设置曝光比例。
-
 
 ### V4.3.0 - 2024/08/15
 
