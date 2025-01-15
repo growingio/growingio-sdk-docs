@@ -145,98 +145,155 @@ GrowingIO SDK 会采集 `IDFA` 和 `IDFV` 字段上传，如果您的项目中�
 
 当使用 `IDFA` 时有一定的合规风险，但是考虑到采集的准确性，GrowingIO SDK 仍然提供`IDFA`的采集方法，如果不需要采集`IDFA`，请在项目工程中去除 `AdSupport.framework` 的引用，并且不要在项目中导入 `AdSupport` 相关头文件。
 
-如果需要发布儿童级应用，完全不需要相关 `IDFA` 的获取逻辑，参考[禁用IDFA](/docs/ios/Configuration#1-禁用idfa)。
-
 ## App Store 隐私问题
 
-苹果在 iOS 14.3 系统更新了隐私协议，要求 App 更新或发布时需要发布者填写一份隐私报告。此时如果 App 集成 GrowingIO SDK 应该如何填写:
+苹果要求 App 更新或发布时需要发布者填写一份隐私报告。此时如果 App 集成 GrowingIO SDK 应该如何填写:
 
-### 1. 是否会从此 App 中收集数据
+### 是否会从此 App 中收集数据
+
 **选择 「是，会从此 App 中收集数据」**
 
 <ImageLoader path="img/compliance/datacollect_enable" />
-​​
 
-### 2. 位置数据收集
-**GrowingIO SDK 不会主动申请采集位置信息，如果客户的App申请获取了位置信息，GrowingIO就会采集位置信息用于定位用户城市级别的位置，需要勾选 「精准位置」**
+### 收集的数据类型
 
-:::info
-如果您想禁用位置信息获取，需调用 `+setEnableLocationTrack:`为 `NO`
-:::
+#### 位置
+
+**GrowingIO SDK 不会主动申请采集位置信息，如果您的 App 申请获取了位置信息，并调用设置用户的地理位置接口传入 SDK，请按照您所获取的位置信息类型选择精确位置或粗略位置**
+
 <ImageLoader path="img/compliance/datacollect_location" />
 
-### 3. 标识符和使用数据收集
+#### 标识符
 
 **默认情况下只需选择 「设备 ID」**
 
-**如果使用用户关联，即调用 设置登录用户ID 接口则还需勾选 「用户 ID」**
+**如果使用用户关联，即调用设置登录用户 ID 接口则还需选择 「用户 ID」**
 
-**如果使用的是 无埋点SDK 需继续勾选 「产品交互」**
+<ImageLoader path="img/compliance/datacollect_idenfiers" />
 
-<ImageLoader path="img/compliance/datacollect_idenfier" />​​
+#### 使用数据
 
-### 4.1. 位置
+**如果使用的是无埋点 SDK 需选择「产品交互」**
 
-#### 1. 请在 「位置」面板中，勾选 「分析」
+**如果使用了广告模块还需选择「广告数据」**
 
-<ImageLoader path="img/compliance/datacollect_location_analyze" />​​
+<ImageLoader path="img/compliance/datacollect_usage_data" />
 
-#### 2. 然后下一步，勾选「是，从此 App 中收集的精确位置数据与用户身份关联」
+#### 诊断
 
-<ImageLoader path="img/compliance/datacollect_location_identifier" />
+**如果使用了性能监控模块需选择「崩溃数据」和「性能数据」**
 
-#### 3. 根据您App实际情况选择是否用于追踪目的
+<ImageLoader path="img/compliance/datacollect_diagnostics" />
 
-### 4.2 用户 ID
+### 位置（若将位置信息传入 SDK）
 
-#### 1. GrowingIO SDK 会在调用 设置登录用户ID 接口时收集用户 ID 用于分析功能，因此这里选择「分析」，如图
+**1. 请在「精确位置」面板中 ，选择「分析」**
 
-<ImageLoader path="img/compliance/datacollect_identifier_analyze" />
+<ImageLoader path="img/compliance/datacollect_location_analyze" />
 
-#### 2. 勾选后点击下一步，选择「是，从此 App 中收集的用户 ID 与用户身份关联」，这里根据具体的业务进行勾选，如图
+**2. 下一步，选择「否，从此 App 中收集的精确位置数据未与用户身份关联」**
 
-<ImageLoader path="img/compliance/datacollect_identifier_id" />​​
+<ImageLoader path="img/compliance/datacollect_location_identity" />
 
-#### 3. 点击下一步，需要选择「是，我们会将用户 ID 用于追踪目的」​
-<ImageLoader path="img/compliance/datacollect_track_id" />
+**3. 选择「否，我们不会将精确位置数据用于追踪目的」**
 
-### 4.3 设备
+<ImageLoader path="img/compliance/datacollect_location_track" />
 
-#### 1. GrowingIO SDK 收集设备 ID 用于收集用户登录前的数据，因此这里继续选择「分析」，如图
+:::info
+若您传入 SDK 的是粗略位置，请按照上述步骤配置粗略位置
+:::
 
-<ImageLoader path="img/compliance/datacollect_id_analyze" />
+### 标识符
 
-#### 2. 点击下一步，因为收集到的数据会与设备 id 绑定，所以此处继续选择「是」
+#### 用户 ID (若使用用户关联)
 
-<ImageLoader path="img/compliance/datacollect_id_associate" />
+**1. GrowingIO SDK 会在调用设置登录用户 ID 接口时收集用户 ID 用于分析功能，因此这里选择「分析」**
 
-#### 3. 继续下一步，同用户 ID ， 会使用 IDFA 与第三方数据相关联以用于定向广告或广告评估目的，如图
+<ImageLoader path="img/compliance/datacollect_user_id_analyze" />
 
-<ImageLoader path="img/compliance/datacollect_track_deviceID" />
+**2. 下一步，选择「是，从此 App 中收集的用户 ID 与用户身份关联」，这里根据具体的业务进行勾选，如图**
 
-### 4.4 产品交互
+<ImageLoader path="img/compliance/datacollect_user_id_identity" />
 
-#### 1. 使用 GrowingIO 无埋点SDK后，会收集 APP启动，APP退出，用户点击，页面浏览等相关行为用于分析产品，因此这里继续选择「分析」，如图
+**3. 选择「否，我们不会将用户 ID 用于追踪目的」，GrowingIO SDK 不会将用户 ID 用于在其他公司的 App 和网站中追踪**
 
-<ImageLoader path="img/compliance/datacollect_interface_analyze" />
+<ImageLoader path="img/compliance/datacollect_user_id_track" />
 
-#### 2. 点击下一步，继续选择是，如图
+#### 设备 ID
 
-<ImageLoader path="img/compliance/datacollect_interface_id" />
+**1. GrowingIO SDK 收集设备 ID 用于收集用户登录前的数据，因此这里选择「分析」**
 
-#### 3. 最后追踪目的，请根据您实际情况选择，是否要用于追踪目的
+<ImageLoader path="img/compliance/datacollect_device_id_analyze" />
 
-### 5. GrowingIO SDK 合规性说明
+**2. 下一步，因为收集到的数据会与设备 ID 绑定，所以此处选择「是，从此 App 中收集的设备 ID 与用户身份关联」**
 
-GrowingIO SDK 默认收集的数据类型只有「设备 ID」和「用户 ID」主要用于追踪，其他的数据类型采集需要根据自己的采集业务以及选择的SDK 功能来做相应选择：
+<ImageLoader path="img/compliance/datacollect_device_id_identity" />
 
-* 调用 设置登录用户ID 接口：需选择「用户 ID」
+**3. 选择「否，我们不会将设备 ID 用于追踪目的」，GrowingIO SDK 不会将设备 ID 用于在其他公司的 App 和网站中追踪**
 
-* 使用无埋点 SDK：需选择「产品交互」
+<ImageLoader path="img/compliance/datacollect_device_id_track" />
 
-* 开启崩溃收集：需选择「崩溃数据」
+### 使用数据
 
-* 开启经纬度采集：需选择「精确位置」
+#### 产品交互
 
-另，该隐私协议的填写是可以更改的。**请根据自己 App 业务的调整及时更新隐私协议**。
+**1. 使用 GrowingIO 无埋点 SDK 后，会收集 APP 启动，APP 退出，用户点击，页面浏览等相关行为用于分析产品，因此这里选择「分析」**
+
+<ImageLoader path="img/compliance/datacollect_product_interaction_analyze" />
+
+**2. 下一步，选择「否，从此 App 中收集的产品交互数据未与用户身份关联」**
+
+<ImageLoader path="img/compliance/datacollect_product_interaction_identity" />
+
+**3. 选择「否，我们不会将产品交互数据用于追踪目的」**
+
+<ImageLoader path="img/compliance/datacollect_product_interaction_track" />
+
+#### 广告数据 (若使用广告模块)
+
+**1. 请在「广告数据」面板中 ，选择「分析」**
+
+<ImageLoader path="img/compliance/datacollect_ads_analyze" />
+
+**2. 下一步，选择「否，从此 App 中收集的广告数据未与用户身份关联」**
+
+<ImageLoader path="img/compliance/datacollect_ads_identity" />
+
+**3. 选择「否，我们不会将广告数据用于追踪目的」**
+
+<ImageLoader path="img/compliance/datacollect_ads_track" />
+
+### 诊断
+
+#### 崩溃数据 (若使用性能监控模块)
+
+**1. 请在「崩溃数据」面板中 ，选择「分析」**
+
+<ImageLoader path="img/compliance/datacollect_crash_data_analyze" />
+
+**2. 下一步，选择「否，从此 App 中收集的崩溃数据未与用户身份关联」**
+
+<ImageLoader path="img/compliance/datacollect_crash_data_identity" />
+
+**3. 选择「否，我们不会将崩溃数据用于追踪目的」**
+
+<ImageLoader path="img/compliance/datacollect_crash_data_track" />
+
+#### 性能数据 (若使用性能监控模块)
+
+**1. 请在「性能数据」面板中 ，选择「分析」**
+
+<ImageLoader path="img/compliance/datacollect_perf_data_analyze" />
+
+**2. 下一步，选择「否，从此 App 中收集的性能数据未与用户身份关联」**
+
+<ImageLoader path="img/compliance/datacollect_perf_data_identity" />
+
+**3. 选择「否，我们不会将性能数据用于追踪目的」**
+
+<ImageLoader path="img/compliance/datacollect_perf_data_track" />
+
+### 其他
+
+该隐私报告的填写是可以更改的。**以上填写内容仅根据 GrowingIO SDK 所涉及的部分，若您的 App 有更多的隐私数据使用场景，请根据实际情况，按需调整隐私报告**。
 

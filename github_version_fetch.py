@@ -9,24 +9,44 @@ readme_header = "---\ntitle: 版本记录\nsidebar_position: 0\n---\n"
 readme_item_foot = ":::note \n\n 标签:**[{name}]({url})** &nbsp;&nbsp;&nbsp;&nbsp;日期: **{date}** \n\n:::"
 readme_footer = "---\n## 更多发布细节请参考 [SDK Releases in Github]({url})"
 
-def android_releases(releases, fromId):
+def android_releases(releases, fromId, complianceInfo = True):
     android_header_append = readme_header
     android_item_foot = readme_item_foot
     content = android_header_append
     for release in releases:
+        tag_name = release["tag_name"]
+        date = release["published_at"].split("T")[0]
         release_name = release["name"]
         if release["id"] < fromId:
             continue
         if release_name is None or release_name == "":
-            release_name = release["tag_name"]
+            release_name = tag_name
         if hotfix_version(release_name):
             continue
         if release["prerelease"] == True:
             continue
+        if (complianceInfo):
+            complianceInfo = False
+            insert_text = """
+:::tip SDK下载信息
+类型：统计类 <br/>
+开发者：北京易数科技有限公司 <br/>
+无埋点包名：com.growingio.android.sdk.autotrack <br/>
+最新版本：{version} <br/>
+更新时间：{date} <br/>
+功能说明：GrowingIO用户行为数据采集软件开发工具包（CDP）具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
+下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
+个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
+使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
+合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
+:::
+
+""".format(version=tag_name, date=date)
+            content += insert_text
         content += "## " + release_name.upper() +"\n"
         content += release["body"] +"\n\n"
-        content += android_item_foot.format(name=release["tag_name"], url=release["html_url"],
-                                                    date=release["published_at"].split("T")[0])
+        content += android_item_foot.format(name=tag_name, url=release["html_url"],
+                                                    date=date)
         content += "\n\n"
     return content
 
@@ -53,8 +73,10 @@ def github_release(platform):
         response = request.urlopen(req)
         releases = json.loads(response.read().decode("utf-8"))
         readme = ""
-        if platform['name'] == "Android" or platform['name'] == "GioKit Android":
+        if platform['name'] == "Android":
             readme = android_releases(releases, platform['fromId'])
+        elif platform['name'] == "GioKit Android":
+            readme = android_releases(releases, platform['fromId'], False)
         elif platform['name'] == "iOS":
             readme = iOS_releases(releases, platform['fromId'])
         else:
@@ -78,8 +100,7 @@ def github_release(platform):
         pass
     return newest_tag
 
-
-android_replace_pattern = r'(com\.growingio\.android:[\w-]+:)([\d\.]+)'
+android_replace_pattern = r'(com\.growingio\.android:(?!autotracker-gradle-plugin\b)[\w-]+:)([\d\.]+)'
 giokit_android_replace_pattern = r'(com\.growingio\.giokit:[\w-]+:)([\d\.]+)'
 
 
@@ -137,7 +158,6 @@ def replace_giokit_android_version(dir, version):
                     print("update file:<" + md + "> to newest version:" + version)
                     pass
     pass
-
 
 version_pattern = r'\d+\.(?:\d+\.)*\d+'
 

@@ -11,7 +11,7 @@ slug: /server/
 
 GrowingIO 是我们于 2015 年发布的新一代数据分析产品，无需埋点即可采集全量实时用户行为数据，我们希望通过提供一个简单、迅速和规模化的产品，帮助企业快速建立业务数据分析体系，让企业里面的每个人都能用数据去驱动业务增长。千里之行，始于足下，数据采集是数据分析的基础和入口。目前在数据采集方面，GrowingIO 不仅提供了无埋点的轻量级客户端 JavaScript、Apple 和 Android SDK，同时也提供打点的服务端 Java、Python、Go、Ruby、Node 等语言 SDK，方便与企业内部数据打通。
 
-![slogan](https://docs.growingio.com/.gitbook/assets/-LGNxeGABUADKiTWTaEM-LIEN5IgjD_lm1zFG-YX-LIEN8O7RZ9ipiI48vpk45_4_conversion_1_.gif)
+![slogan](/img/conversion.gif)
 
 
 目前服务端已支持的SDK包括：Java，PHP，Python 和 Go 等。

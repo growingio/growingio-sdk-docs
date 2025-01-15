@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-平台版本 >=4.0 支持，产品使用文档可参考 [深度链接](https://docs.growingio.com/op-help/docs/4.0/product-manual/acquisition-analytics/acquisition-tracing/tracking-deeplink)
+平台版本 >=4.0 支持。
 
 **使用时注意模块版本需要与采集 SDK 版本保持一致**
 :::
@@ -127,7 +127,7 @@ Autotracker.start(config!, launchOptions: launchOptions)
 
 ### CAID 配置
 
-如您需要使用 CAID 进行归因分析，在 SDK 初始化时传入 caidFetchBlock：
+SDK 不采集 CAID，如您需要使用 CAID 进行归因分析，请自行获取后在 SDK 初始化时传入 caidFetchBlock：
 
 ```swift
 let config = AutotrackConfig(accountId: "YourAccountId")
@@ -249,7 +249,7 @@ configuration.ASAEnabled = YES;
 
 ### CAID 配置
 
-如您需要使用 CAID 进行归因分析，在 SDK 初始化时传入 caidFetchBlock：
+SDK 不采集 CAID，如您需要使用 CAID 进行归因分析，请自行获取后在 SDK 初始化时传入 caidFetchBlock：
 
 ```objectivec
 GrowingAutotrackConfiguration *configuration = [GrowingAutotrackConfiguration configurationWithAccountId:@"YourAccountId"];
