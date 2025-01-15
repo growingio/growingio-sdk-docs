@@ -57,7 +57,7 @@ plugins {
 
     ···
     // 添加GrowingIO 无埋点 SDK 插件
-    id 'com.growingio.android.autotracker' version '4.3.0' apply false
+    id 'com.growingio.android.autotracker' version '4.4.0' apply false
 }
 ```
 

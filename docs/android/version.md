@@ -7,13 +7,29 @@ sidebar_position: 0
 类型：统计类 <br/>
 开发者：北京易数科技有限公司 <br/>
 无埋点包名：com.growingio.android.sdk.autotrack <br/>
-最新版本：v4.3.2 <br/>
-更新时间：2024-10-29 <br/>
+最新版本：v4.4.0 <br/>
+更新时间：2025-01-08 <br/>
 功能说明：GrowingIO用户行为数据采集软件开发工具包（CDP）具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
 下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
 个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
 使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
 合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
+:::
+
+## RELEASE-4.4.0
+### Features
+Growingio Android 无埋点 SDK 支持 Jetpack Compose 框架([#219](https://github.com/growingio/growingio-sdk-android-autotracker/pull/219))：
+- 初始化时添加 `ComposeLibraryGioModule` 模块引入功能；
+- 需要手动指定 Compose 页面来发送无埋点事件与支持无埋点圈选；
+- 支持与 Android 原生 View 体系页面嵌套。
+
+### Bug Fixes
+- 修复在圈选过程中打开 Flutter 界面无法进入 Flutter 圈选的问题。
+
+:::note 
+
+ 标签:**[v4.4.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.4.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2025-01-08** 
+
 :::
 
 ## RELEASE-4.3.2
