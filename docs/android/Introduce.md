@@ -97,7 +97,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.4.0')
+  implementation platform('com.growingio.android:autotracker-bom:4.4.1')
 
   //GrowingIO 无埋点 SDK
   implementation 'com.growingio.android:autotracker'
@@ -112,7 +112,7 @@ dependencies {
 apply plugin: 'com.android.application'
 
 dependencies {
-    implementation 'com.growingio.android:autotracker:4.4.0'
+    implementation 'com.growingio.android:autotracker:4.4.1'
 }
 ```
 
@@ -313,7 +313,7 @@ class MyApplication : Application() {
 
 ```shell
 !!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!
-!!! GrowingIO Tracker version: 4.4.0 !!!
+!!! GrowingIO Tracker version: 4.4.1 !!!
 ```
 
 则说明SDK已经集成成功。
