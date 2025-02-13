@@ -67,7 +67,7 @@ GIO移动端 SDK
 
 ## 初始化
 
-### 方式一、设置数据收集开关
+### 设置数据收集开关
 
 示例代码如下：
 ```swift
@@ -96,20 +96,6 @@ func userAcceptDataCollection() {
 需要根据您的集成方式(Cocoapods/SwiftPM)，SDK类型(无埋点/埋点)，调整调用类名
 :::
 
-### 方式二、延迟初始化
-
-示例代码如下：
-```swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    if <用户未同意隐私协议> {
-      // 展示隐私协议弹框，等待用户同意后，添加 GrowingIO SDK 初始化代码
-    } else {
-        //  GrowingIO SDK 初始化代码
-    }
-    ...
-    return true;
-}
-```
 
 ## iOS 权限说明
 | 权限 | 用途 | 
