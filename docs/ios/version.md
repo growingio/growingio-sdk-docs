@@ -3,6 +3,13 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [4.6.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.5.0...4.6.0) (2025-02-13)
+
+
+### Features
+
+* **ABTesting:** 分流请求添加新设备参数 ([#340](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/340)) ([2518804](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2518804dde8fb34ae9d1a6fa256b80fc6a9b093c))
+
 ## [4.5.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.4.0...4.5.0) (2024-11-18)
 
 
