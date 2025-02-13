@@ -7,13 +7,23 @@ sidebar_position: 0
 类型：统计类 <br/>
 开发者：北京易数科技有限公司 <br/>
 无埋点包名：com.growingio.android.sdk.autotrack <br/>
-最新版本：v4.4.0 <br/>
-更新时间：2025-01-08 <br/>
+最新版本：v4.4.1 <br/>
+更新时间：2025-02-13 <br/>
 功能说明：GrowingIO用户行为数据采集软件开发工具包（CDP）具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
 下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
 个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
 使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
 合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
+:::
+
+## RELEASE-4.4.1
+### Features
+- AB测试模块在判断为新设备时添加 newDevice 请求参数 ([#225](https://github.com/growingio/growingio-sdk-android-autotracker/pull/225))
+
+:::note 
+
+ 标签:**[v4.4.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.4.1)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2025-02-13** 
+
 :::
 
 ## RELEASE-4.4.0
