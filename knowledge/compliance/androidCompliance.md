@@ -77,7 +77,6 @@ GIO移动端 SDK
 
 ## 初始化
 
-### 方式一、设置数据收集开关
 GrowingIO SDK 提供 `setDataCollectionEnabled`接口，可在用户不同意数据采集时，调用该接口，设置 `false` 禁止数据采集（禁止数据采集时不会获取任何信息，等同于仅初始化SDK，不会执行基础信息收集及数据上报）；在用户同意数据采集时，调用该接口，设置 `true` 开启数据采集
 
 ```java
@@ -88,11 +87,11 @@ public class MyApplication extends Application {
         super.onCreate();
 
         boolean isAgreePolicy = <用户是否同意了隐私协议>;
-    	CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("AccountId", "URLScheme")
+    	AutotrackConfiguration sConfiguration = new AutotrackConfiguration("AccountId", "URLScheme")
             .setDataCollectionServerHost("ServerHost")
             .setDataSourceId("DataSourceId")
             .setDataCollectionEnabled(isAgreePolicy);
-    	GrowingTracker.startWithConfiguration(this, sConfiguration);
+    	GrowingAutotracker.startWithConfiguration(this, sConfiguration);
     }
 }
 ```
@@ -114,48 +113,8 @@ public class MyActivity extends Activity {
 }
 ```
 
-### 方式二、延迟初始化
-在同意《隐私协议》后调用 `GrowingTracker.startWithConfiguration` 进行SDK的初始化，此后在 Application 的 onCreate() 方法主线程中初始化 SDK。
-```java
-// 在 Activity 中同意隐私条款后初始化 SDK
-public class MyActivity extends Activity {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (<未同意隐私协议>){
-        	// 展示隐私协议弹窗，等待用户同意
-        	if (<用户已经同意隐私协议>){
-        		//GrowingIO SDK 初始化代码
-		        
-        	}
-        }
-    }
-}
-```
-
-```java
-// Application 的 onCreate() 方法中主线程初始化 SDK
-public class MyApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        if (<用户已经同意隐私协议>){
-            //GrowingIO SDK 初始化代码
-
-        }
-
-    }
-}
-```
-
-:::warning注意
-需要根据您集成是无埋点SDK还是埋点SDK，调整调用类名
-:::
-
 ## 数据加密传输说明
-采集 SDK 版本 >=3.3.0 使用时注意模块版本需要与采集SDK版本保持一致。
+使用时注意模块版本需要与采集SDK版本保持一致。
 使用请参考[SDK数据加密传输](/docs/android/modules/encoder%20module)。
 
 ## 数据存储发送策略说明
@@ -171,7 +130,7 @@ GrowingIO SDK 默认允许 App 能在多进程环境下进行数据的统计和�
 
 ```java
 // 需要根据您集成是无埋点SDK还是埋点SDK，调整调用类名
-CdpTrackConfiguration sConfiguration = new CdpTrackConfiguration("AccountId", "URLScheme")
+AutotrackConfiguration sConfiguration = new AutotrackConfiguration("AccountId", "URLScheme")
     .setDataCollectionServerHost("ServerHost")
     .setDataSourceId("DataSourceId")
     // 关闭 SDK 获取应用进程的操作
