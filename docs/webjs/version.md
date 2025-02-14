@@ -5,6 +5,13 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
 
+### V4.2.5 - 2025/02/13
+
+- 🐞 修复无埋点点击图片时hyperlink取值逻辑。
+- 🐞 修复与小程序打通时客户参数被encode的问题。
+- 🎉 新增abtest请求字段标识是否为新设备。
+- 🎉 新增 `rewriteQuery` 初始化配置，允许与小程序打通时不自动处理gioInfo参数。
+
 ### V4.2.4 - 2024/12/20
 
 - 🐞 修复部分框架下静态曝光节点在首屏出现时不触发的问题。
