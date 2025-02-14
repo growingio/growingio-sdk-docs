@@ -24,6 +24,7 @@ title: 初始化配置
 | `packageName`    | `string`                | `-`                          | 指定打通的移动端包名         |
 | `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
 | `requestTimeout` | `number`                | `5000`                       | 请求超时时长（毫秒）           |
+| `rewriteQuery`   | `boolean`               | `true`                       | 与小程序做打通操作时是否自动删除gioInfo参数|
 | `sendType`       | `string`                | `beacon`                     | 数据上报优先方式             |
 | `serverUrl`      | `string`                | `https://napi.growingio.com` | 数据上报的服务端地址         |
 | `storageType`    | `cookie / localStorage` | `cookie`                     | SDK信息的持久化存储的类型    |
@@ -217,6 +218,17 @@ gdp('init', accountId, datasourceId, {
 ```
 
 **<font color="#FC5F3A">注意：</font>该配置项仅在`XHR`和`图片`请求时生效，`beacon`请求无法控制。**
+
+### rewriteQuery
+
+默认情况下，SDK在与小程序做打通操作时，会自动删除携带的 gioInfo 参数，即默认值为 `true`。以保证不会干扰客户页面的正常地址和上报数据的准确性。如果您需要保留 gioInfo 参数，可以设置该配置项为 `false`。但同时您需要注意的是，gioInfo参数有点长，加上您的站点页面参数可能会超出浏览器限制，从而导致您的页面参数不正确。请注意检查整个url链接的长度。
+
+```js
+gdp('init', accountId, datasourceId, {
+  rewriteQuery: false,
+  ...其他配置项,
+});
+```
 
 ### sendType
 

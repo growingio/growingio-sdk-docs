@@ -5,6 +5,10 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.3.3 - 2025/02/13
+
+- 🎉 新增abtest请求字段标识是否为新设备。
+
 ### V4.3.2 - 2025/01/10
 
 - 🐞 修复快应用卡片在真机上报错的问题。
