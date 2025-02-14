@@ -73,6 +73,8 @@ GrowingIO CDP 产品是集**服务端数据分析和客户端自动埋点一体�
 | New SaaS  |  新无埋点、埋点    |    >=4.0.0    |
 | OP-4.2  |  新无埋点、埋点    |    >=4.0.0    |
 | OP-4.4, OP-2.11.9  |  支持鸿蒙数据源   |    HarmonyOS NEXT SDK    |
+| OP-4.3 |  支持abtest   |    >=4.0.0    |
+| OP-4.8  |  支持abtest预置分群新设备   |    Android SDK 4.4.1<br/>Apple SDK 4.6.0<br/>Web JS SDK 4.2.5<br/>小程序 SDK 4.3.3<br/>    |
 
 :::info
 如果使用采集数据加密解密功能产品需要升级到 14.3.0 之后， Android SDK 3.3.0 之后， Apple SDK 3.3.0 之后
