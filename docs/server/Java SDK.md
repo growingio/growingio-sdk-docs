@@ -7,6 +7,7 @@ title: JAVA SDK
 
 |    版本    | 说明 |  日期  |
 |:-------:| :----  |  :-------:  |
+| 1.0.18-cdp | 1.修复IDE Plugin环境下找不到配置文件<br/> 2.支持ABTest<br/> |   2025-02-28 |
 | 1.0.16-cdp | 1.支持非用户主体事件上报<br/> 2.用户属性事件和维度表事件属性支持map类型<br/> |  2024-09-24 |
 | 1.0.14-cdp | 1.维度表支持列表属性<br/> 2.支持埋点事件预置属性<br/> |  2023-08-11 |
 | 1.0.13-cdp | 1.修复initConfig不生效<br/> 2.升级pb版本为3.27.1<br/> |  2023-03-27 |
@@ -59,7 +60,7 @@ pom.xml
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.16-cdp</version>
+        <version>1.0.18-cdp</version>
     </dependency>
 </dependencies>
 ```
@@ -70,7 +71,7 @@ pom.xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.16-cdp</version>
+    <version>1.0.18-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
@@ -84,13 +85,13 @@ pom.xml
 如果使用gradle依赖，可以使用如下集成方式
 
 ```gradle
-implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.16-cdp'
+implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.18-cdp'
 ```
 
 若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone
 
 ```gradle
-implementation('io.growing.sdk.java:growingio-java-sdk:1.0.16-cdp:standalone') {
+implementation('io.growing.sdk.java:growingio-java-sdk:1.0.18-cdp:standalone') {
     exclude module: 'protobuf-java'
 }
 ```
@@ -114,7 +115,7 @@ msg.store.queue.size=500
 #日志级别输出 (debug | error)
 logger.level=debug
 #自定义日志输出实现类
-logger.implemention=io.growing.sdk.java.logger.GioLoggerImpl
+logger.implementation=io.growing.sdk.java.logger.GioLoggerImpl
 #运行模式，test:仅输出消息体，不发送消息，production: 发送消息
 run.mode=test
 # 设置代理, 如果不设置，默认为不使用代理
@@ -134,6 +135,15 @@ run.mode=test
 # 队列负载率，当为0.5时，表明，队列中元素达到一半时，会出现debug日志，并会使用新线程加速消费队列。队列负载降低到0.5以下后，恢复
 # 此值越大，队列越接近满状态，加速线程执行的时间越提前。"加速"可能对接口接收服务造成压力，谨慎使用！
 # msg.store.queue.load_factor=0.5
+
+# 是否开启abtest
+ab.enabled=false
+# abtest的服务地址
+ab.api.host=https://ab.growingio.com
+# ab请求连接超时时间
+ab.connection.timeout=5000
+# ab请求读取时间
+ab.read.timeout=5000
 ```
 
 :::info 注意
@@ -350,6 +360,72 @@ GioCdpUserMappingMessage msg = new GioCdpUserMappingMessage.Builder()
         .build();
 ```
 
+### AB分组实验
+
+分析云A/B实验产品能力，SDK侧配合提供A/B Test SDK。帮助开发者在应用程序中进行A/B测试，验证不同版本的功能效果。
+配置文件中新增如下配置
+```properties
+# 是否开启abtest，默认为false
+ab.enabled=false
+# abtest的服务地址，默认为https://ab.growingio.com
+ab.api.host=https://ab.growingio.com
+# ab请求连接超时时间，默认为5000ms
+ab.connection.timeout=5000
+# ab请求读取时间，默认为5000ms
+ab.read.timeout=5000
+```
+
+**参数说明**
+
+| 参数名称        | 类型               | 是否必填 | 说明                               |
+| --------------- | ------------------ | -------- | ---------------------------------- |
+| layerId          | string             | 是       | 实验层ID               |
+| datasourceId     | string             | 是       | 数据源ID                       |
+| distinctId       | string             | 是      | 设备ID               |
+| callback       | ABTestCallback             | 是      |  接口回调，实验组数据将会在该回调中返回           |
+| isNewDevice       | boolean             | 否      |  默认为false，标识是否是新设备           |
+
+ABExperiment接口信息
+
+| 方法名称         | 说明                               |
+| --------------- | ---------------------------------- |
+| getLayerId      | 获取实验层ID               |
+| getExperimentId | 获取实验ID               |
+| getStrategyId   | 获取实验分组ID               |
+| getExpLayerName      | 获取实验层名称           |
+| getExpName      | 获取实验名称               |
+| getExpStrategyName  | 获取实验分组名称           |
+| getVariables      | 获取实验变量      |
+
+**代码示例**
+
+```java
+// getABTestSync同步方法，getABTest为异步方法
+sender.getABTestSync(layerId, datasourceId, distinctId, new ABTestCallback() {
+
+            @Override
+            public void onABExperimentReceived(ABExperiment experiment) {
+                try {
+                    System.out.println(experiment.getLayerId());
+                    System.out.println(experiment.getExperimentId());
+                    System.out.println(experiment.getStrategyId());
+                    System.out.println(experiment.getExpName());
+                    System.out.println(experiment.getExpStrategyName());
+                    System.out.println(experiment.getExpLayerName());
+                    System.out.println(experiment.getVariables());
+                } catch (Exception e) {
+                    mException = e;
+                }
+                countDownLatch.countDown();
+            }
+
+            @Override
+            public void onABExperimentFailed(Exception error) {
+                error.printStackTrace();
+            }
+        }, true);
+```
+
 ## 程序测试
 
 请按照如下步骤进行埋点数据的开发联调。
@@ -434,7 +510,7 @@ Protobuf 从 3.6.0 版本开始不再支持 java 6，相关信息参见[Drop jav
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.16-cdp</version>
+    <version>1.0.18-cdp</version>
     <exclusions>
         <exclusion>
             <groupId>com.google.protobuf</groupId>
