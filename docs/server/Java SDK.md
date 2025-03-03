@@ -7,7 +7,8 @@ title: JAVA SDK
 
 |    版本    | 说明 |  日期  |
 |:-------:| :----  |  :-------:  |
-| 1.0.18-cdp | 1.修复IDE Plugin环境下找不到配置文件<br/> 2.支持ABTest<br/> |   2025-02-28 |
+| 1.0.19-cdp | 1.支持ABTest的newDevice参数 |   2025-03-03 |
+| 1.0.17-cdp | 1.修复IDE Plugin环境下找不到配置文件<br/> 2.支持ABTest<br/> |   2025-02-28 |
 | 1.0.16-cdp | 1.支持非用户主体事件上报<br/> 2.用户属性事件和维度表事件属性支持map类型<br/> |  2024-09-24 |
 | 1.0.14-cdp | 1.维度表支持列表属性<br/> 2.支持埋点事件预置属性<br/> |  2023-08-11 |
 | 1.0.13-cdp | 1.修复initConfig不生效<br/> 2.升级pb版本为3.27.1<br/> |  2023-03-27 |
@@ -60,7 +61,7 @@ pom.xml
     <dependency>
         <groupId>io.growing.sdk.java</groupId>
         <artifactId>growingio-java-sdk</artifactId>
-        <version>1.0.18-cdp</version>
+        <version>1.0.19-cdp</version>
     </dependency>
 </dependencies>
 ```
@@ -71,7 +72,7 @@ pom.xml
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.18-cdp</version>
+    <version>1.0.19-cdp</version>
     <classifier>standalone</classifier>
     <exclusions>
         <exclusion>
@@ -85,13 +86,13 @@ pom.xml
 如果使用gradle依赖，可以使用如下集成方式
 
 ```gradle
-implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.18-cdp'
+implementation 'io.growing.sdk.java:growingio-java-sdk:1.0.19-cdp'
 ```
 
 若出现依赖冲突的问题（例如运行时找不到类），可以选择使用 standalone
 
 ```gradle
-implementation('io.growing.sdk.java:growingio-java-sdk:1.0.18-cdp:standalone') {
+implementation('io.growing.sdk.java:growingio-java-sdk:1.0.19-cdp:standalone') {
     exclude module: 'protobuf-java'
 }
 ```
@@ -510,7 +511,7 @@ Protobuf 从 3.6.0 版本开始不再支持 java 6，相关信息参见[Drop jav
 <dependency>
     <groupId>io.growing.sdk.java</groupId>
     <artifactId>growingio-java-sdk</artifactId>
-    <version>1.0.18-cdp</version>
+    <version>1.0.19-cdp</version>
     <exclusions>
         <exclusion>
             <groupId>com.google.protobuf</groupId>
