@@ -376,7 +376,7 @@ class MyApplication : Application() {
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
-        val sConfiguration = TrackConfiguration("Your AccountId", "Your URLScheme")
+        val sConfiguration = AutotrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG)
@@ -386,7 +386,7 @@ class MyApplication : Application() {
 
                 // 关闭无埋点功能
                 .setAutotrack(false)
-        GrowingTracker.startWithConfiguration(this, sConfiguration)
+        GrowingAutotracker.startWithConfiguration(this, sConfiguration)
     }
 }
 ```
