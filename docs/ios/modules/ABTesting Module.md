@@ -58,13 +58,6 @@ Autotracker.start(config!, launchOptions: launchOptions)
 ABTesting.fetchExperiment(_ layerId: String, completedBlock: (ABTExperiment?) -> Void)
 ```
 
-<details>
-  <summary>点击查看如何获取layerId(实验层ID)</summary>
-
-  <ImageLoader path="img/common/get_abtesting_layer_id" />
-
-</details>
-
 | 参数             | 参数类型                                    | 是否必填 | 默认值 | 说明                                                         |
 | :--------------- | :------------------------------------------ | :------: | :----- | :----------------------------------------------------------- |
 | `layerId`        | `String`                                  |    是    | `nil`  | 实验层 id                                                    |
@@ -137,13 +130,6 @@ configuration.networkConfig = networkConfig;
 ```objectivec
 + (void)fetchExperiment:(NSString *)layerId completedBlock:(void (^)(GrowingABTExperiment *_Nullable))completedBlock;
 ```
-
-<details>
-  <summary>点击查看如何获取layerId(实验层ID)</summary>
-
-  <ImageLoader path="img/common/get_abtesting_layer_id" />
-
-</details>
 
 | 参数             | 参数类型                                    | 是否必填 | 默认值 | 说明                                                         |
 | :--------------- | :------------------------------------------ | :------: | :----- | :----------------------------------------------------------- |
