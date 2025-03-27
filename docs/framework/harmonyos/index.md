@@ -1,11 +1,9 @@
 ---
 slug: /framework/HarmonyOS
-title: "HarmonyOS NEXT SDK"
+title: "HarmonyOS 5 SDK"
 ---
 
-**GrowingIO HarmonyOS NEXT SDK** 自动采集用户访问事件，并支持手动调用相应埋点 APIs 采集埋点事件。
-
-> 支持 HarmonyOS NEXT，基于 OpenHarmony API 12
+**GrowingIO HarmonyOS 5 SDK** 自动采集用户访问事件，并支持手动调用相应埋点 APIs 采集埋点事件。
 
 ## 集成准备
 ### 获取 SDK 初始化必传参数：Account ID、DataSource ID、URL Scheme、Host
@@ -26,7 +24,7 @@ Account ID、DataSource ID、URL Scheme 需要在 GrowingIO 平台上新建数�
 
 
 :::tip 开源信息
-HarmonyOS NEXT SDK 代码已在 [Github](https://github.com/growingio/growingio-sdk-harmonyos) 上开源，可以详细查看代码实现细节，欢迎 star, fork。
+HarmonyOS 5 SDK 代码已在 [Github](https://github.com/growingio/growingio-sdk-harmonyos) 上开源，可以详细查看代码实现细节，欢迎 star, fork。
 :::
 
 ```mdx-code-block
