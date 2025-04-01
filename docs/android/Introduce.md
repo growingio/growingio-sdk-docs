@@ -97,7 +97,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.4.1')
+  implementation platform('com.growingio.android:autotracker-bom:4.4.2')
 
   //GrowingIO 无埋点 SDK
   implementation 'com.growingio.android:autotracker'
@@ -112,7 +112,7 @@ dependencies {
 apply plugin: 'com.android.application'
 
 dependencies {
-    implementation 'com.growingio.android:autotracker:4.4.1'
+    implementation 'com.growingio.android:autotracker:4.4.2'
 }
 ```
 
@@ -313,7 +313,7 @@ class MyApplication : Application() {
 
 ```shell
 !!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!
-!!! GrowingIO Tracker version: 4.4.1 !!!
+!!! GrowingIO Tracker version: 4.4.2 !!!
 ```
 
 则说明SDK已经集成成功。
@@ -376,7 +376,7 @@ class MyApplication : Application() {
         // Your URLScheme eg: growing.xxxxxxxxxxx
         // YourServerHost eg: https://api.growingio.com 需要填写完整的url地址
         // YourDatasourceId eg: 11223344aabbcc
-        val sConfiguration = TrackConfiguration("Your AccountId", "Your URLScheme")
+        val sConfiguration = AutotrackConfiguration("Your AccountId", "Your URLScheme")
                 .setDataCollectionServerHost("Your ServerHost")
                 .setDataSourceId("Your DataSourceId")
                 .setDebugEnabled(BuildConfig.DEBUG)
@@ -386,7 +386,7 @@ class MyApplication : Application() {
 
                 // 关闭无埋点功能
                 .setAutotrack(false)
-        GrowingTracker.startWithConfiguration(this, sConfiguration)
+        GrowingAutotracker.startWithConfiguration(this, sConfiguration)
     }
 }
 ```

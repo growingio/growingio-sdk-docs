@@ -14,7 +14,7 @@ GrowingIO 性能监控模块目前提供了 App 崩溃分析，应用启动时�
 
 --------
 
-:::caution
-如想试用性能分析功能，请与您的客户成功经理或销售人员取得联系。
+:::info
+GrowingIO APM 插件已经在 GitHub 开源，地址：https://github.com/growingio/growingio-sdk-ios-performance
 
 :::
