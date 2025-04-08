@@ -26,25 +26,6 @@ ohpm install <您所下载的 har 文件路径>
   </TabItem>
 </Tabs>
 
-### 配置标准化 OHMUrl
-
-在工程级 build-profile.json5 中配置 useNormalizedOHMUrl 为 true
-```typescript
-{
-  "app": {
-    "products": [
-      {
-        "buildOption": {
-          "strictMode": {
-            "useNormalizedOHMUrl": true
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
 ### 配置权限
 
 在 module.json5 中配置所需权限：
@@ -90,8 +71,15 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-> 注意：如若需要，可在用户同意隐私协议之后，再进行初始化 SDK
 > 其中 accountId/dataSourceId/urlScheme 为必填项，dataCollectionServerHost 为可选项，若不清楚请联系您的专属项目经理或技术支持
+
+### 延迟初始化
+
+若您的应用需要延迟初始化 SDK，请使用 deferStart 进行初始化，需确保传入的是 UIAbilityContext：
+
+```typescript
+GrowingAnalytics.deferStart(getContext(this) as common.UIAbilityContext, config)
+```
 
 其他初始化配置项见[表格](/docs/framework/harmonyos/Configuration)，在 start 方法调用前通过`config.<配置项> = 对应值`进行配置
 

@@ -3,15 +3,32 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [2.2.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.2.0) (2025-04-08)
+
+### Features 功能
+
+* feat: 支持 Mobile Debugger
+* chore: buildOption.arkOptions.byteCodeHar 改为 false，不再作为字节码 har 发布
+* feat: 支持配置页面属性 growing_attributes
+
+### Bug Fixes 修复
+
+* fix: Debug 调试模式下，dataUploadInterval 默认为 1000ms
+* fix: SaaS 模式下，移除部分不必要的日志输出
+* fix: 修复首次 VISIT 事件偶现多发
+* fix(CDP): 修复 Flutter 侧传递点击事件到鸿蒙时，丢失 pageShowTimestamp 字段
+* fix: 修复当返回 NavPathStack 首页时，未发送 Page 事件
+* fix: 修复当应用从后台返回前台时，未发送基于 Navigation 的 Page 事件（基于 Router 会发）
+
 ## [2.1.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.1.0) (2024-11-14)
 
-### Features
+### Features 功能
 
 * feat: 支持 protobuf 数据格式传输
 
 ## [2.0.1](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.0.1) (2024-10-25)
 
-### Bug Fixes
+### Bug Fixes 修复
 
 * fix: start、track、trackTimerEnd 方法签名修正
 
