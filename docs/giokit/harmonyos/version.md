@@ -3,6 +3,18 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [1.2.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.2.0) (2025-04-08)
+
+### Features 功能
+
+* feat: 支持 UseInRelease
+* feat: 增加显示是否延迟初始化，是否正确集成无埋点
+* chore: buildOption.arkOptions.byteCodeHar 改为 false，不再作为字节码 har 发布
+
+### Bug Fixes 修复
+
+* fix: 修复 GioKit Window 占用焦点导致 router 跳转等功能异常
+
 ## [1.1.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.1.0) (2024-11-14)
 
 ### Features
