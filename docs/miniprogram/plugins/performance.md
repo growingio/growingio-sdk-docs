@@ -28,34 +28,27 @@ title: 性能监控
 - 页面跳转异常错误
 - 网络请求错误
 
-<!-- ### 3、网络请求监控
+### 3、网络请求监控
 
 含以下内容监控：
 
 - 请求地址
 - 请求时长
-- 请求错误码 -->
+- 请求错误码
 
 ## 小程序兼容性
 
 当前仅支持 `微信小程序`。
 
-## 使用
-
-:::caution
-如想试用性能分析功能，请与您的客户成功经理或销售人员取得联系。
-:::
-
-<!--
 ## 集成
 
 ### 1、引入
 
 #### 下载集成引入
 
-- 下载插件包并复制至项目中：
-**<font size="3"><https://assets.giocdn.com/sdk/minip/cdp/3.8.16/plugins.zip></font>**<br/>
-**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+- 下载插件并复制至项目中：
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.3.4/plugins/gioPerformance.js](https://assets.giocdn.com/sdk/minip/4.3.4/plugins/gioPerformance.js)</font>**<br/>
+  **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 - 引入插件
 
@@ -78,7 +71,7 @@ gdp('init', xxxx);
 
 ## 配置
 
-集成性能采集插件时，默认开启 `小程序启动/页面加载监控` 和 `错误监控`。如您不需要其中某项监控内容，在初始化配置项选择指定内容关闭。
+集成性能采集插件时，默认开启 `小程序启动/页面加载监控` 和 `错误监控`，默认关闭 `网络监控` 。若您不需要其中某项监控内容，在初始化配置项选择指定内容关闭。
 
 ### 关闭小程序启动/页面加载监控
 
@@ -96,16 +89,6 @@ gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
 gdp('init', 'your accountId', 'your dataSourceId', 'your AppId', {
     ...other settings
     performance: { exception: false }
-  }
-);
-```
-
- ### 关闭请求监控
-
-```js
-gdp('init', 'your accountId', 'your dataSourceId', {
-    ...other settings
-    performance: { network: false }
   }
 );
 ```
@@ -136,6 +119,6 @@ gdp('init', 'your accountId', 'your dataSourceId', {
 
 2、页面 FCP 和 LCP 的指标是根据微信提供的能力获取，可能会存在无值或时长比页面加载时长略大的情况。
 
-3、如果您对请求监控设置了排除名单，使用纯字符串校验时应尽可能使用长且准确的字符，过短的字符串可能会使得其他请求被误过滤。
+3、如果您对请求监控设置了排除名单，使用纯字符串校验时应尽可能使用长且准确的字符，过短的字符串可能会使得其他请求被匹配误过滤。
 
-4、请求监控强制过滤了Gio上报的请求。 -->
+4、请求监控强制过滤了Gio上报的请求。
