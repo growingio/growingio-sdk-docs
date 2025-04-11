@@ -5,6 +5,14 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.3.4 - 2025/04/10
+
+- 🐞 修复集成性能监控时`navigateBack`不传参报错的问题。
+- 🌟 优化淘宝小程序云应用上报逻辑。
+- 🌟 优化页面标题获取逻辑。
+- 🌟 优化`identify`调用提示。
+- 🎉 新增小程序鸿蒙平台的识别（目前仅支持微信、支付宝）。
+
 ### V4.3.3 - 2025/02/13
 
 - 🎉 新增abtest请求字段标识是否为新设备。
