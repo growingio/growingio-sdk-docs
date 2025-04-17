@@ -133,10 +133,6 @@ module.exports = {
               label: '官网',
             },
             {
-              label: '分析云增长平台',
-              href: 'https://docs.growingio.com/op-help/',
-            },
-            {
               label: '旧文档地址',
               href: 'https://growingio.github.io/growingio-sdk-docs-v3/',
             },
