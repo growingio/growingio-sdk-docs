@@ -5,6 +5,10 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
 
+### V4.3.0 - 2025/04/28
+
+- 🎉 新增小程序内嵌页新版圈选支持。
+
 ### V4.2.6 - 2025/04/01
 
 - 🐞 修复setUserId相关逻辑。
