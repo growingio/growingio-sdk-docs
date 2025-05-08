@@ -10,6 +10,7 @@ GrowingIO Flutter Plugin 插件 growingio_flutter_plugin，封装了GrowingIO An
 
 |    版本    | 说明 |  日期  |
 | :-----  | :-----   | :----:  |
+| v4.3.1 | - Android SDK 版本升级 | 2025-05-08 |
 | v4.3.0 | - 修复 App 圈选相关问题 | 2025-01-10 |
 | v4.2.0 | - 适配 HarmonyOS 5 SDK 2.0.0 | 2024-09-10 |
 | v4.1.0 | - 增加 Flutter SDK 的兼容性，最低版本到 3.0.0；<br/>- 更改 Flutter 弹窗的页面事件配置；<br/>- 多平台添加鸿蒙版本，鸿蒙版本需要指定 [flutter 分支](https://gitee.com/openharmony-sig/flutter_flutter/tree/dev/)；| 2024-07-26 |
