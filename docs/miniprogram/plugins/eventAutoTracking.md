@@ -20,7 +20,7 @@ title: 无埋点
 #### 下载集成引入
 
 - 下载插件并复制至项目中：
-  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.3.4/plugins/gioEventAutoTracking.js](https://assets.giocdn.com/sdk/minip/4.3.4/plugins/gioEventAutoTracking.js)</font>**<br/>
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.4.0/plugins/gioEventAutoTracking.js](https://assets.giocdn.com/sdk/minip/4.4.0/plugins/gioEventAutoTracking.js)</font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ```js
@@ -141,6 +141,16 @@ Page({
 ```html
 <view data-growing-ignore bindtap="onLinkTap">要忽略的节点</view>
 ```
+
+## 圈选
+
+自2025年5月13日起，我们在平台上线了新版的小程序圈选。使用新版圈选前，您必须升级SDK至4.4.0及以上版本并集成本插件。
+
+升级完成后，请在「小程序后台-开发-开发设置-服务器域名」中添加 `https://portal.growingio.com` 为 request 合法域名。[小程序后台](https://mp.weixin.qq.com/)
+
+如果您的小程序中含H5内嵌页，Web SDK的版本需同步升级至4.3.0及以上版本。且注意将内嵌页域名添加为 request 合法域名。
+
+**提示：圈选目前暂仅支持微信小程序，其他小程序支持正在努力加急开发中**
 
 ## 注意
 
