@@ -3,7 +3,9 @@ sidebar_position: 14
 title: 系统信息模块
 ---
 
-GrowingIO SDK 默认系统为Android，通过系统信息模块可以进一步区分当前系统（目前仅支持Harmony）
+GrowingIO SDK 默认系统为Android，通过系统信息模块可以进一步区分当前系统（目前仅支持Harmony）。
+
+在新的更新版本（4.4.3）中添加了新的设备类型(deviceType)识别：TV 和 FOLD，并且在 FOLD 类型设备下分辨率会及时刷新。
 
 :::info
 客户可以使用自定义模块的方式扩展SDK的系统信息识别方式，作用于系统和系统版本。
@@ -34,7 +36,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:platform:4.4.2'
+	implementation 'com.growingio.android:platform:4.4.3'
 }
 ```
 </TabItem>
@@ -44,7 +46,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.4.2')
+  implementation platform('com.growingio.android:autotracker-bom:4.4.3')
 
   implementation 'com.growingio.android:platform'
 }
@@ -53,6 +55,22 @@ dependencies {
 </TabItem>
 </Tabs>
 
+### 模块配置
+在系统信息模块中提供了配置可以控制模块所需要的功能。
+
+
+| 配置接口                    | 参数类型         | 是否必填 | 默认值 | 说明 
+| :-------------------------   | :------         | :----:  |:------  |:------| 
+| setHarmonyPlatformEnabled | _Boolean_       | 否      | `true`  | 是否区分当前系统为Harmony  |
+| setDeviceTypeCheckEnabled  | _Boolean_ | 否      |  `true`  | 是否添加新的设备类型识别：TV 和 FOLD    |
+
+```java
+PlatformConfig config = new PlatformConfig();
+config.setHarmonyPlatformEnabled(true)
+    .setHarmonyPlatformEnabled(true)
+    );
+```
+
 ### 使用方式
 
 ```java
@@ -60,5 +78,6 @@ dependencies {
 GrowingAutotracker.startWithConfiguration(this,
                 new AutotrackConfiguration("accountId", "urlScheme")
                 //...
-                .addPreloadComponent(new PlatformLibraryGioModule()));
+                .addPreloadComponent(new PlatformLibraryGioModule(), config));
 ```
+
