@@ -25,7 +25,7 @@ SDK 可以通过集成不同的模块实现功能的自定义，在 GrowingIO �
 | Flutter | 当应用需要使用Growingio Flutter SDK，需要在原生SDK中集成生效 | [Flutter模块](/docs/android/modules/flutter%20module) |
 | Android Jetpack Compose | 当应用使用Compose构造界面时，同时需要Compose界面上的无埋点事件，需要在集成生效 | [Compose模块](/docs/android/modules/compose%20module) |
 | A/B分组实验-abtest | 当应用需要使用A/B分组实验功能时，需要在原生SDK中集成生效 | [A/B分组测试模块](/docs/android/modules/abtest%20module) |
-| 系统信息-platform | 当应用需要进一步区分系统时（如Android、Harmony等），需要在原生SDK中集成生效 | [系统信息模块](/docs/android/modules/platform%20module) |
+| 系统信息-platform | 当应用需要进一步区分系统和设备类型时（如Android、Harmony等），需要在原生SDK中集成生效 | [系统信息模块](/docs/android/modules/platform%20module) |
 | 更多开发中... |
 
 ## 注册模块代码

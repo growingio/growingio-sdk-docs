@@ -135,7 +135,7 @@ keytool -list -v -keystore release.keystore
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:ads:4.4.2'
+	implementation 'com.growingio.android:ads:4.4.3'
 }
 ```
 </TabItem>
@@ -145,7 +145,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.4.2')
+  implementation platform('com.growingio.android:autotracker-bom:4.4.3')
 
   implementation 'com.growingio.android:ads'
 }
