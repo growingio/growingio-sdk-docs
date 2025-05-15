@@ -230,13 +230,13 @@ growing_tracker.track_user(login_user_id='user', login_user_key='email',
 
 | 参数       | 必选  | 类型   | 默认值 | 说明             |
 | :--------- | :---- | :----- | :----- | ---------------- |
-| item_id   | true  | string |        | 维度表模型ID(记录ID) |
 | item_key    | true  | string |        | 维度表标识符      |
+| item_id   | true  | string |        | 维度表模型ID(记录ID) |
 | item_attrs | false | dict   | None   | 维度表属性及值 |
 
 **代码示例**
 ```php
-growing_tracker.submit_item('item_id', 'item_key', item_attrs={'attr': 'item'})
+growing_tracker.submit_item('item_key', 'item_id', item_attrs={'attr': 'item'})
 ```
 
 
