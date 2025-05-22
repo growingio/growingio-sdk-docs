@@ -250,7 +250,7 @@ gdp('track', 'order', {
 });
 ```
 
-提示：您可以使用多实例的能力将埋点同时上报给其他实例 [参考文档](/docs/webjs/plugins/multipleInstances#4埋点埋点计时半自动埋点浏览多发)
+提示：您可以使用多实例的能力将埋点同时上报给其他实例 [参考文档](/docs/miniprogram/plugins/multipleInstances#4埋点埋点计时半自动埋点浏览多发)
 
 :::info
 
@@ -356,7 +356,7 @@ gdp('clearPageAttributes', []);
 
 **仅清除当前所在页面的页面属性。SDK版本大于等于 4.2.0 支持。**
 
-### 12、与h5打通用户数据(getGioInfo)
+### 13、与h5打通用户数据(getGioInfo)
 
 当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下9个字段的数据。
 
@@ -425,7 +425,7 @@ Page({
 
 **H5页面集成SDK参考[在小程序内嵌页面中集成](/docs/webjs/integrate#在小程序内嵌页面中集成)**
 
-### 13、获取SDK当前配置(getOption)
+### 14、获取SDK当前配置(getOption)
 
 当调试时需要获取SDK当前的配置信息或状态时，可调用此接口。配置项名称不传时获取的为全量的配置信息。
 
@@ -480,7 +480,7 @@ gdp('trackTimerEnd', 'timerId123');
 gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2: 2 });
 ```
 
-提示：您可以使用多实例的能力将埋点计时同时上报给其他实例 [参考文档](/docs/webjs/plugins/multipleInstances)
+提示：您可以使用多实例的能力将埋点计时同时上报给其他实例 [参考文档](/docs/miniprogram/plugins/multipleInstances)
 
 :::caution 注意
 trackTimerEnd时发送CUSTOM事件上报数据：
