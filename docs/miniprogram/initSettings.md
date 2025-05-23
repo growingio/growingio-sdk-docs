@@ -32,7 +32,7 @@ title: 初始化配置
 
 ### dataCollect
 
-默认情况下，数据采集开关默认开启。如果您需要初始化时暂时关闭数据采集（例如隐私协议的场景），可以通过指定 `dataCollect: false` 关闭，需要开启数据采集时再通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/commonlyApi#2开启关闭数据采集datacollect)
+默认情况下，数据采集开关默认开启。如果您需要初始化时暂时关闭数据采集（例如隐私协议的场景），可以通过指定 `dataCollect: false` 关闭，需要开启数据采集时再通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/commonlyApi#1开启关闭数据采集datacollect)
 
 初始化关闭数据采集后，至您打开数据采集之前都不会采集数据和上报。
 
@@ -60,7 +60,7 @@ gdp('init', accountId, dataSourceId, appId, {
 
 ### idMapping
 
-多用户身份上报，是否开启多用户身份上报，默认不开启。需要上报 userkey 时开启，开启后，调用设置登录用户 ID 接口时，设置 userKey，服务端调用用户身份融合 API 时，可将不同的登录用户 ID 识别为同一用户。开启多用户身份上报后，需要在设置登录用户 ID 时设置 userKey。[参考文档](/docs/miniprogram/commonlyApi#设置登录用户idsetuserid)
+多用户身份上报，是否开启多用户身份上报，默认不开启。需要上报 userkey 时开启，开启后，调用设置登录用户 ID 接口时，设置 userKey，服务端调用用户身份融合 API 时，可将不同的登录用户 ID 识别为同一用户。开启多用户身份上报后，需要在设置登录用户 ID 时设置 userKey。[参考文档](/docs/miniprogram/commonlyApi#4设置登录用户idsetuserid)
 
 ```js
 gdp('init', accountId, dataSourceId, appId, {
@@ -71,7 +71,7 @@ gdp('init', accountId, dataSourceId, appId, {
 
 ### extraParams
 
-当调用[`getGioInfo`](./commonlyApi#7与h5打通用户数据getgioinfo)时，除了默认字段以外，可增加以下小程序 SDK 字段。
+当调用[`getGioInfo`](/docs/miniprogram/commonlyApi#13与h5打通用户数据getgioinfo)时，除了默认字段以外，可增加以下小程序 SDK 字段。
 
 | 可选字段    | 字段含义 | 可选字段     | 字段含义 | 可选字段        | 字段含义     |
 |-------------|-------|--------------|--------|-----------------|----------|
@@ -132,7 +132,7 @@ gdp('identify', openId / unionId);
 
 :::caution 注意：
 如果打开小程序后没有调用 `wx.login` 获取 openId 或 unionId，没有调用 `identify` 方法，但是小程序 SDK 配置了 `forceLogin` 为 `true`，会导致 SDK 不能上报数据，访问数据将大幅减少。如果您不能确定是否要设置这个参数，请先咨询我们技术支持。<br/>
-如果小程序首页中使用的是内嵌 H5 页面，需要使用[内嵌 H5 用户数据打通](/docs/miniprogram/commonlyApi#9与h5打通用户数据getgioinfo)功能。该场景下，需要在小程序冷启动时，使用开屏页(在小程序首页 page 前增加一个 page 开屏页)作为过渡。
+如果小程序首页中使用的是内嵌 H5 页面，需要使用[内嵌 H5 用户数据打通](/docs/miniprogram/commonlyApi#13与h5打通用户数据getgioinfo)功能。该场景下，需要在小程序冷启动时，使用开屏页(在小程序首页 page 前增加一个 page 开屏页)作为过渡。
 :::
 
 ### ignoreFields
@@ -231,7 +231,7 @@ gdp('init', accountId, datasourceId, appId, {
 });
 ```
 
-您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/commonlyApi#5修改请求协议scheme)
+您也可以通过调用动态修改配置接口来修改它。[参考文档](/docs/miniprogram/commonlyApi#3修改数据上报请求地址serverurl)
 
 **<font color="#FC5F3A">注意：</font>与3.x版本的SDK不同的是，您需要填写携带协议头的完整服务地址。**
 
