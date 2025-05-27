@@ -132,7 +132,7 @@ Go SDK 使用 protobuf 数据格式进行上报，并采用 golang/snappy 进行
 | AnonymousId   | false | string | 访问用户ID，与登录用户ID，不能同时为空 |
 | LoginUserKey | false | string | 登录用户KEY (选填，需有规划并在平台配置后再上报)，传此参数时，同时需传登录用户ID |
 | LoginUserId  | false | string | 登录用户ID，与访问用户ID，不能同时为空 |
-| Attributes     | false | map[string]interface{}   | 事件发生时所伴随的属性信息；<br/> value 支持 string\|bool\|int\|float64 等等基础数据类型，以及 map[string]string 和数组，数组中元素支持 string\|bool\|int\|float64 等等基础数据类型|
+| Attributes     | false | map[string]interface{}   | 事件发生时所伴随的属性信息；<br/> value 支持 string\|bool\|int\|float64 等等基础数据类型，以及 map[string]string 和数组，数组中元素支持 string\|bool\|int\|float64 等等基础数据类型；<br/>当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID) |
 
 #### 代码示例
 

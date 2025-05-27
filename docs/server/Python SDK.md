@@ -182,7 +182,7 @@ growing_tracker = GrowingTracker.consumer(default_consumer)
 | anonymous_id   | false | string |        | 访问用户ID，与登录用户ID，不能同时为空 |
 | login_user_key | false | string |        | 登录用户KEY (选填，需有规划并在平台配置后再上报)，传此参数时，同时需传登录用户ID |
 | login_user_id  | false | string |        | 登录用户ID，与访问用户ID，不能同时为空 |
-| attributes     | false | dict   | None   | 事件发生时所伴随的属性信息；<br/> value支持 string\|double\|int\|array,array中元素支持string\|double\|int |
+| attributes     | false | dict   | None   | 事件发生时所伴随的属性信息；<br/> value支持 string\|double\|int\|array,array中元素支持string\|double\|int；<br/>当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID) |
 
 **代码示例**
 ```python

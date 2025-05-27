@@ -92,7 +92,7 @@ $gio = GrowingIO::getInstance($accountID, $host, $dataSourceId, $props);
 | anonymousId  |   false  | string           |      | 访问用户ID，与登录用户ID，不能同时为空 |
 | loginUserId  | false  | string |                  | 登录用户ID，与访问用户ID，不能同时为空 |
 | eventKey     | true  | string |                  | 埋点事件标识符 |
-| properties   | false | array  | array()          | 事件发生时所伴随的属性信息；<br/>value支持 string\|double\|int\|数组,数组中元素支持string\|double\|int    |
+| properties   | false | array  | array()          | 事件发生时所伴随的属性信息；<br/>value支持 string\|double\|int\|数组,数组中元素支持string\|double\|int；<br/>当事件属性关联有维度表时，属性值为对应的维度表模型ID(记录ID)    |
 **代码示例**
 ```php
 $gio->trackCustomEvent($gio->getCustomEventFactory('loginUserId', 'eventName')
