@@ -31,14 +31,14 @@ ImpressionTrack 模块中提供了如下接口：
 
 #### 1.开启某元素的曝光采集
 
-`trackImp(_ eventName: String, attributes: [String: String]?)`<br/>
+`trackImp(_ eventName: String, attributes: [String: Any]?)`<br/>
 采集元素曝光，在元素展示前调用即可，SDK 负责监听元素展示并触发事件<br/>
 事件类型为自定义事件 (CUSTOM)，请在主线程调用
 
 | 参数      | 参数类型    | 是否可选    | 说明              |
 | --------- | ----------- | ----------- | ----------------- |
 | `eventName` | `String` |  否 | 自定义事件名称 |
-| `attributes` | `[String: String]?` |  是 | 自定义属性 |
+| `attributes` | `[String: Any]?` |  是 | 事件发生时所伴随的维度信息（可选），属性值支持 String、Number、Date、Set、Array |
 
 ##### 示例
 
@@ -89,7 +89,7 @@ ImpressionTrack 模块中提供了如下接口：
 | 参数      | 参数类型    | 说明              |
 | --------- | ----------- | ----------------- |
 | `eventName` | `NSString` | 自定义事件名称 |
-| `attributes` | `NSDictionary<NSString *, NSString *> *` | 自定义属性 |
+| `attributes` | `NSDictionary<NSString *, id> *` | 事件发生时所伴随的维度信息（可选），属性值支持 NSString、NSNumber、NSDate、NSSet、NSArray |
 
 ##### 示例
 
