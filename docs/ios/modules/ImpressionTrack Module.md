@@ -38,7 +38,7 @@ ImpressionTrack 模块中提供了如下接口：
 | 参数      | 参数类型    | 是否可选    | 说明              |
 | --------- | ----------- | ----------- | ----------------- |
 | `eventName` | `String` |  否 | 自定义事件名称 |
-| `attributes` | `[String: Any]?` |  是 | 事件发生时所伴随的维度信息（可选），属性值支持 String、Number、Date、Set、Array |
+| `attributes` | `[String: Any]?` |  是 | 事件发生时所伴随的属性信息（可选），属性值支持 String、Number、Date、Set、Array |
 
 ##### 示例
 
@@ -89,7 +89,7 @@ ImpressionTrack 模块中提供了如下接口：
 | 参数      | 参数类型    | 说明              |
 | --------- | ----------- | ----------------- |
 | `eventName` | `NSString` | 自定义事件名称 |
-| `attributes` | `NSDictionary<NSString *, id> *` | 事件发生时所伴随的维度信息（可选），属性值支持 NSString、NSNumber、NSDate、NSSet、NSArray |
+| `attributes` | `NSDictionary<NSString *, id> *` | 事件发生时所伴随的属性信息（可选），属性值支持 NSString、NSNumber、NSDate、NSSet、NSArray |
 
 ##### 示例
 

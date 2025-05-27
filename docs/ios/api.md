@@ -612,7 +612,7 @@ NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
 | :----------- | :--------------------------------- | :----------- |
 | `viewController` | `UIViewController` | 被追踪页面 |
 | `alias` | `String` | 页面别名 |
-| `attributes` | `[String: Any]?` | 事件发生时所伴随的维度信息（可选），属性值支持 String、Number、Date、Set、Array |
+| `attributes` | `[String: Any]?` | 事件发生时所伴随的属性信息（可选），属性值支持 String、Number、Date、Set、Array |
 
 #### 示例
 
