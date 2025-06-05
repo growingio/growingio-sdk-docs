@@ -137,6 +137,14 @@ router.pushUrl({
 > 组件标识:  <br/>
 > *https://developer.huawei.com/consumer/cn/doc/harmonyos-references/ts-universal-attributes-component-id*
 
+
+
+另外，当无法圈选某个可以触发点击事件的组件时，请对该组件添加组件唯一标识符，且添加 GrowingAutotrackElementID 标记，使得 SDK 认定该组件可以圈选：
+
+```typescript
+Button('Not focusable').id('uniqueID-xxx-' + GrowingAutotrackElementID)
+```
+
 ### 设置页面别名
 
 如果您的应用中有 NavDestination 页面名称相同，或 Router 目标命名路由页面名称相同的情况，请通过设置页面别名来避免数据分析异常
