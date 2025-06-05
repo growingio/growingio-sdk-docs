@@ -3,6 +3,17 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [2.3.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.3.0) (2025-06-05)
+
+### Features 功能
+
+* feat: 支持原生无埋点圈选(仅 New SaaS，需要开启无埋点采集)
+
+### Bug Fixes 修复
+
+* fix: 优化圈选/Mobile Debugger 截图功能的性能，增加防抖机制，减小截图大小
+* fix: 内部 emit 机制中，eventId 使用 string 类型替代原先的 number 类型，避免误触发
+
 ## [2.2.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.2.0) (2025-04-08)
 
 ### Features 功能
