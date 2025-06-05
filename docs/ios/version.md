@@ -3,6 +3,20 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [4.7.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.6.0...4.7.0) (2025-06-05)
+
+
+### Bug Fixes
+
+* ANLSPI-26449 GitHub Workflow 升级至 Xcode 16 ([#342](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/342)) ([00a3755](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/00a3755b31aaa172ffdb34c54370af33eded2399))
+* ANLSPI-27446 VIEW_CLICK 事件忽略 TextInputUI 下的私有组件 ([#346](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/346)) ([128520f](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/128520f693a48bc194924459188495bfcb153a32))
+* ANLSPI-27507 移除使用 GrowingUtils 中已废弃的接口 ([#347](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/347)) ([2394f11](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2394f11104cb1bc05a7a545decc465e62555dfd9))
+
+
+### Features
+
+* ANLSPI-27402 改用系统通知来监听 VIEW_CHANGE 事件 ([#344](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/344)) ([81283c0](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/81283c0e7ec7d921227f5712a29b64cc60df80d5))
+
 ## [4.6.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.5.0...4.6.0) (2025-02-13)
 
 
