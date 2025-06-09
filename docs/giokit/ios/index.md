@@ -56,27 +56,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
  <img alt="实时事件" src={useBaseUrl('/img/giokit/ios/sdkrealtime.gif')}/>
 
-## 性能监控
+ ### H5_GioKit (SDK >= 2.1.0)
 
-:::caution 注意
-
-版本要求：1.0.9 及以上版本
-
-性能相关监控需要您按照集成文档[打开监控开关](./integrate.md#3开启性能监控)。
-
-:::
-
-### 错误报告
-
-在通用设置中开启该功能后，将以 Crash Log 的形式记录 App 开发期间的意外崩溃，方便开发者及时排查问题根源。
-
- <img alt="错误报告" src={useBaseUrl('/img/giokit/ios/sdkcrashmonitor.gif')}/>
-
-### 启动耗时
-
-在通用设置中开启该功能后，将实时记录 App / ViewController 启动耗时，兼容 [iOS 15+ prewarming](https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_the_launch_of_your_app/about_the_app_launch_sequence#3894431)。
-
- <img alt="启动耗时" src={useBaseUrl('/img/giokit/ios/sdklaunchtime.gif')}/>
+点击后，将对页面中最后一个 WKWebView 注入 WebJS GioKit 插件，用于在移动端排查 Web JS SDK 运行状态。
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
