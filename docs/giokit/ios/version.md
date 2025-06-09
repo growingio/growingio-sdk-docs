@@ -3,6 +3,23 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V2.1.0 - 2025/06/09
+
+[v2.1.0](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/2.1.0)
+
+### Bug Fixes
+
+* fix: GitHub Workflow 升级至 Xcode 16
+* fix: ANLSPI-27611 移除 APM 模块
+* fix: ANLSPI-27614 移除 SDK30202 模块
+* fix: ANLSPI-27613 移除 SDK2nd 模块
+* fix: ANLSPI-27650 重命名 resource bundle，修复在低版本系统出现访问图片资源异常
+* fix(xpath): 仅 main frame 自动注入 Hybrid 插件
+
+### Features
+
+* feat: 新增 Hybrid GioKit 手动注入模块
+
 ## V2.0.0 - 2023/12/27
 
 [v2.0.0](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/2.0.0)
