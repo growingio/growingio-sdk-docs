@@ -86,7 +86,7 @@ values={[
   </TabItem>
   <TabItem value="全量引入">
 
-全量引入集成，SDK 将<font size="4" color="#FC5F3A"><b>包含 除了多实例和性能监控之外 的其他所有功能</b></font>，功能全覆盖，简单快速集成。
+全量引入集成，SDK 将 **<font color="#FC5F3A">包含所有的标品功能</font>**，功能全覆盖，简单快速集成。查看标品功能与非标品功能的区别 [查看文档](/docs/webjs/plugins)
 
 - 优点：复杂度低，理解成本低，快速集成。
 - 缺点：SDK 较大，约 75-80KB ，可能会拖慢加载速度。
@@ -182,7 +182,7 @@ gdp('init', 'your accountId', 'your dataSourceId', {
   </TabItem>
   <TabItem value="全量引入">
 
-全量引入集成，SDK 将<font size="4" color="#FC5F3A"><b>包含 除了多实例和性能监控之外 的其他所有功能</b></font>，功能全覆盖，简单快速集成。
+全量引入集成，SDK 将 **<font color="#FC5F3A">包含所有的标品功能</font>**，功能全覆盖，简单快速集成。查看标品功能与非标品功能的区别 [查看文档](/docs/webjs/plugins)
 
 - 优点：复杂度低，理解成本低，快速集成。
 - 缺点：SDK 较大，约 75-80KB ，会增加打包产物的大小，可能会拖慢加载速度。
