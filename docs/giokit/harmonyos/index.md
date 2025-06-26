@@ -7,7 +7,7 @@ title: 功能介绍
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## SDK 简介
-**GrowingIO HarmonyOS 5 SDK ToolsKit** GrowingToolsKit 旨在帮助用户提高集成 GrowingIO SDK 效率，在使用 SDK 的开发过程中，便于排查问题，为用户提供最好的埋点服务。
+**GrowingIO HarmonyOS SDK ToolsKit** GrowingToolsKit 旨在帮助用户提高集成 GrowingIO SDK 效率，在使用 SDK 的开发过程中，便于排查问题，为用户提供最好的埋点服务。
 
 ### SDK 信息
 

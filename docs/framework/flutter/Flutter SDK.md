@@ -35,7 +35,7 @@ dependencies:
 <details>
   <summary>点击查看 GrowingIO Flutter 插件和 SDK 版本的依赖关系</summary>
 
-| Flutter 插件版本 |  Android SDK 版本范围   |  Apple SDK 版本范围  | HarmonyOS 5 SDK 版本范围 |
+| Flutter 插件版本 |  Android SDK 版本范围   |  Apple SDK 版本范围  | HarmonyOS SDK 版本范围 |
 | :-------------- | :----------------- | :------- | :-------------- |
 | = v4.0.0 | >= v4.3.0 | >= v4.3.0 | - |
 | = v4.1.0 | >= v4.3.0 | >= v4.3.2 | - |
