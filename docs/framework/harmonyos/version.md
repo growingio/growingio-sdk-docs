@@ -90,7 +90,7 @@ sidebar_position: 0
 * docs: 更新、优化所有文档描述
 * feat: 添加 GioKit 插件，包括 SDK 信息、事件库、网络记录等功能，支持多实例下展示
 
-## 附：HarmonyOS 5 SDK 2.0.0 升级说明
+## 附：HarmonyOS SDK 2.0.0 升级说明
 
 > * 最低适配 HarmonyOS NEXT(5.0.0, API 12) 商业稳定版本，compatibleSdkVersion: 5.0.0(12)
 > * 2.0.0 与 1.x 版本的事件数据库不兼容，集成 2.0.0 之后 1.x 版本未发送的事件将丢弃

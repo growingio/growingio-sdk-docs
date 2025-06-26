@@ -27,7 +27,7 @@ ohpm install <您所下载的 har 文件路径>
 </Tabs>
 
 ### 初始化
-在初始化 GrowingIO HarmonyOS 5 SDK 时添加 GrowingToolsKit：
+在初始化 GrowingIO HarmonyOS SDK 时添加 GrowingToolsKit：
 
 ```typescript
 let config = new GrowingConfig().NewSaaS(
