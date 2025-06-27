@@ -105,9 +105,10 @@ apply plugin: 'newlens'
 
 ### 14. SDK的`protobuf`库与项目的冲突了怎么处理？
 **A：**
-GrowingIO Android SDK 使用的为Google Protobuf3，也是目前使用率比较高的协议，如果冲突了可以考虑以下处理方法：
-1. 升级项目的pb协议；
-2. 排除掉SDK所携带的pb第三方库，使用JSON数据格式发送数据，流程如下：
+GrowingIO Android SDK 使用的为 `Google Protobuf java-lite` 版本，也是目前使用率比较高的协议，如果冲突了可以考虑选择其中一项处理方法：
+1. 升级项目的pb协议与SDK保持一致；
+2. 排除掉SDK所携带的pb第三方库，使用自己项目依赖的 Protobuf 依赖库，参考 [数据格式库](/docs/android/modules/core%20module#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%BA%93)
+3. 排除掉SDK所携带的pb第三方库，使用JSON数据格式发送数据（不推荐），流程如下：
 
 ```groovy
 // 1. 先排除掉 GrowingIO SDK 自带的pb第三方库：

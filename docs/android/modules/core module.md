@@ -102,7 +102,7 @@ dependencies {
 </Tabs>
 
 ## 数据格式库
-默认使用 `protobuf` 来做数据传输的格式。通过数据格式转换可以将输入 `EventFormatData` 转为字节数组数据 `EventByteArray` 方便网络数据上传。若发生pb版本冲突，可参考 [Android-常见问题-14](/docs/question/android) 解决
+默认使用 `protobuf` 来做数据传输的格式。通过数据格式转换可以将输入 `EventFormatData` 转为字节数组数据 `EventByteArray` 方便网络数据上传。
 
 ### 依赖方式
 <Tabs
@@ -136,3 +136,52 @@ dependencies {
 
 </TabItem>
 </Tabs>
+
+
+### protobuf 依赖库
+
+`protobuf java` 有两个版本的依赖库，`protobuf-javalite` 和 `protobuf-java`。而在Android中通常使用`protobuf-javalite`，sdk也选择`protobuf-javalite`作为默认的 protobuf 依赖库。若是项目中选择了`protobuf-java` 作为依赖库可以通过以下方式解决库的冲突。
+
+<Tabs
+  groupId="code-language"
+  defaultValue="common"
+  values={[
+    {label: '依赖', value: 'common'},
+    {label: 'BoM', value: 'bom'},
+  ]
+}>
+
+<TabItem value="common">
+
+```groovy
+dependencies {
+    implementation('com.growingio.android:autotracker:4.4.3') {
+        exclude group: "com.google.protobuf", module: "protobuf-javalite"
+    }
+
+    // 您的 protobuf 依赖库，如：
+    implementation "com.google.protobuf:protobuf-java:4.31.1"
+}
+```
+</TabItem>
+
+<TabItem value="bom">
+
+```groovy
+dependencies {
+  // Import the BoM for the GrowingIO platform
+  implementation(platform('com.growingio.android:autotracker-bom:4.4.3'))
+  implementation('com.growingio.android:autotracker') {
+      exclude group: "com.google.protobuf", module: "protobuf-javalite"
+  }
+
+  // 您的 protobuf 依赖库，如：
+  implementation "com.google.protobuf:protobuf-java:4.31.1"
+}
+```
+
+</TabItem>
+</Tabs>
+
+> 更古早的 `protobuf-lite` 早已停止更新，不再支持请尽早升级。
+
