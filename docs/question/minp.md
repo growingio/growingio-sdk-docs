@@ -5,7 +5,7 @@ title: 小程序 常见问题
 
 ### 1.小程序SDK的预定义埋点事件都有哪些？
 
-**A:** onShareAppMessage设置转发分享给朋友，onShareTimeline分享到朋友圈，onAddToFavorites添加收藏。具体支持情况请参考各个小程序官方文档。
+**A:** 在 `onShareAppMessage` 设置转发分享给朋友，onShareTimeline分享到朋友圈，onAddToFavorites添加收藏。具体支持情况请参考各个小程序官方文档。
 
 ### 2.集成SDK后，接收不到数据？
 

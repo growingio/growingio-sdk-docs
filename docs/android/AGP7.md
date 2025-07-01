@@ -32,7 +32,7 @@ pluginManagement {
         // 添加gradle仓库
         gradlePluginPortal()
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://central.sonatype.com/repository/maven-snapshots/" }
         google()
       
     }
@@ -41,7 +41,7 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://central.sonatype.com/repository/maven-snapshots/" }
         mavenCentral()
         google()
     }

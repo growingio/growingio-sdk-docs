@@ -67,8 +67,8 @@ dependencies {
 ```java
 PlatformConfig config = new PlatformConfig();
 config.setHarmonyPlatformEnabled(true)
-    .setHarmonyPlatformEnabled(true)
-    );
+    .setDeviceTypeCheckEnabled(true)
+);
 ```
 
 ### 使用方式

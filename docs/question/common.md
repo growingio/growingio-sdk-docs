@@ -5,11 +5,11 @@ title: SDK 共性问题
 
 ### 1. Release 版本与 Hotfix 版本怎么区别？
 
-**A：**release 版本是正式版本；例如：release-3.3.1；hotfix版本是非正式版本，是所在版本的 Bug 紧急修复版本；Android 的 hotfix 版本对应带有日期的SNAPSHOT版本，例如：release-3.2.3-09141-SNAPSHOT； 下一个release 版本会包含上个版本的所有 hotfix 版本的内容。
+**A：** 只有 Release 版本是正式版本；例如：release-3.3.1；hotfix版本是非正式版本，是所在版本的 Bug 紧急修复版本；Android 的 hotfix 版本对应带有日期的SNAPSHOT版本，例如：release-3.2.3-09141-SNAPSHOT； 下一个release 版本会包含上个版本的所有 hotfix 版本的内容。
 
 ### 2.  SDK 初始化参数 AccountID、DataSourceID、Host 获取方式
 
-**A：**AccountID、DataSourceID需要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系项目经理；操作步骤参考[帮助文档](/docs/android/)。
+**A：** 需要的AccountID、DataSourceID要在CDP增长平台上新建数据源，或从已创建的数据源中获取, 如不清楚或无权限请联系项目经理；操作步骤参考[帮助文档](/docs/android/)。
 
 Host需要服务端部署，如不清楚请联系该项目的运维或项目经理。
 
@@ -24,14 +24,14 @@ Host需要服务端部署，如不清楚请联系该项目的运维或项目经�
   
 ### 4. 访问事件的计算口径是什么，各端的Session周期是怎样的？
 
-**A：** Session 由各端SDK维护
+**A：** 各端的 Session 由各端SDK维护
 Web端：首次访问时生成 session，当用户30分钟内无操作行为，之后有操作行为，刷新 session。<br/>
 移动端：冷启动时生成 session，当App进入后台30秒后再次启动，刷新session。<br/>
 小程序：冷启动时生成 session，当小程序进入后台5分钟后再次启动，刷新session。<br/>
   
 ### 5. 页面浏览事件的生成时机口径是什么？
 
-**A：**页面的一次浏览行为，通过Page事件来统计的
+**A：** 页面的一次浏览行为，通过Page事件来统计的
 
 - H5、Web：监听history及hashtag（即浏览器地址变更）
 - 小程序：onShow
@@ -40,7 +40,7 @@ Web端：首次访问时生成 session，当用户30分钟内无操作行为，�
   
 ### 6. 采集数据接收的服务器(即Host)停掉之后，移动端采集到的数据会存多长时间呢。其他端的数据是否直接就丢掉了？
 
-**A：**各端SDK侧存储时间：
+**A：** 各端SDK侧存储时间：
 
 - Android 2.0/3.0/4.0 7天
 - Apple 3.0/4.0 7天，2.0 持久化存储不做删除

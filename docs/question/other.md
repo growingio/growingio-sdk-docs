@@ -12,16 +12,3 @@ title: 三方框架 常见问题
 无埋点SDK API调用类：Android、Apple API调用类为 GrowingAutotracker；
 埋点SDK API调用类：Android、Apple API调用类为 GrowingTracker;
 如果客户需要APP集成无埋点SDK，同时也需要集成第三方框架采集SDK，则需要修改第三方框架中的API调用类；即将 GrowingTracker 替换为 GrowingAutotracker
-
-## Flutter
-### 1. flutter sdk 不是null safe模式。我们会调整适配吗？
-**A:**  flutter_growingio_track:
-```
-  git:
-    url: https://github.com/growingio/flutter-growingio-track.git
-    ref: 2.7.0
-```
-依赖方式有所改变，修改pub依赖为 2.7.0 版本以上，适配null safety，初次 pub get 错误时请将ref变更为master以拉取远端tag更新，再变为2.7.0即可
-## React Native
-### 1.  请问RN和React有区别吗，客户的小程序是React写的，需要集成什么sdk呢?
-**A:** RN是写app用的，react是写小程序或者web用的；小程序是React写的那还是小程序的sdk；小程序不管是原生还是vue还是react，到最后还是要编译成原生来运行的，所以小程序不管用什么框架最后还是用小程序sdk
