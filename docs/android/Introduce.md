@@ -32,7 +32,7 @@ pluginManagement {
         // 添加 gradle plugin 依赖的仓库地址
         gradlePluginPortal()
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://central.sonatype.com/repository/maven-snapshots/" }
     }
 }
 dependencyResolutionManagement {
@@ -41,7 +41,7 @@ dependencyResolutionManagement {
         // 添加 sdk 依赖的 maven 仓库地址
         mavenCentral()
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://central.sonatype.com/repository/maven-snapshots/" }
     }
 }
 ```
@@ -58,7 +58,7 @@ buildscript {
         // 添加 gradle plugin 依赖的仓库地址
         gradlePluginPortal()
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://central.sonatype.com/repository/maven-snapshots/" }
     }
 }
 
@@ -67,7 +67,7 @@ allprojects {
         // 添加maven仓库
         mavenCentral()
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://central.sonatype.com/repository/maven-snapshots/" }
     }
 }
 ```
@@ -174,7 +174,7 @@ buildscript {
         // 添加maven仓库
         mavenCentral()
         //如果使用 SNAPSHOT 版本，则需要使用如下该仓库。
-        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://central.sonatype.com/repository/maven-snapshots/" }
     }
     dependencies {
         //GrowingIO 无埋点 SDK plugin
