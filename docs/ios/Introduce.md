@@ -72,7 +72,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 在您的 Podfile 文件中添加
 
 ```ruby
-pod 'GrowingAnalytics/Autotracker', '~> 4.7.0'
+pod 'GrowingAnalytics/Autotracker', '~> 4.8.0'
 ```
 
 打开终端，切换到项目目录
@@ -211,7 +211,7 @@ https://github.com/growingio/growingio-sdk-ios-autotracker.git
 在您的 Podfile 文件中添加
 
 ```ruby
-pod 'GrowingAnalytics/Tracker', '~> 4.7.0'
+pod 'GrowingAnalytics/Tracker', '~> 4.8.0'
 ```
 
 打开终端，切换到项目目录
@@ -354,57 +354,65 @@ URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一�
 1. 选择工程 -> Target -> Info -> URL Types -> 点击 ➕ -> 添加您的 URL Scheme
 <ImageLoader path="img/ios/iOS_Setting_URLScheme" />
 
-2. 添加 URL Scheme 跳转以及 DeepLink 跳转的代理方法
+2. 适配 URL Scheme 跳转以及 DeepLink 跳转
 
-<Tabs>
-  <TabItem value="UIApplicationDelegate" label="UIApplicationDelegate" default>
+(1) 如果您的 App 适配 UIScene，请在 UIWindowSceneDelegate 实现类中添加以下代理方法:
 
-  ```swift
-  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-      return true
-  }
+```swift
+func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+}
 
-  func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-      return true
-  }
-  ```
+func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+}
+```
 
-  </TabItem>
-  <TabItem value="UISceneDelegate" label="UISceneDelegate">
+如果您的 App 基于 UIKit，且仅使用 UIApplicationDelegate，则在对应类中添加以下代理方法:
 
-  ```swift
-  func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-  }
+```swift
+func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    return true
+}
 
-  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-  }
-  ```
+func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    return true
+}
+```
 
-  </TabItem>
-  <TabItem value="SwiftUI" label="SwiftUI">
+如果您的 App 基于 SwiftUI，请手动调用 SDK 提供的 DeepLink 接口:
 
-  ```swift
-  @main
-  struct Example_SwiftUIApp: App {
-      @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+```swift
+@main
+struct Example_SwiftUIApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
-      var body: some Scene {
-          WindowGroup {
-              ContentView()
-                  // 添加下列方法实现
-                  .onOpenURL(perform: { url in
-                      DeepLink.handle(url)
-                  })
-                  .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: { userActivity in
-                      DeepLink.handle(userActivity.webpageURL)
-                  })
-          }
-      }
-  }
-  ```
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                // 添加下列方法实现
+                .onOpenURL(perform: { url in
+                    DeepLink.handle(url)
+                })
+                .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: { userActivity in
+                    DeepLink.handle(userActivity.webpageURL)
+                })
+        }
+    }
+}
+```
 
-  </TabItem>
-</Tabs>
+(2) 自 SDK 4.8.0 起，如果您的 App 适配 UIScene，请在初始化 SDK 时，配置初始化配置项 sceneDelegateClass
+
+```swift
+let config = AutotrackConfig(accountId: "YourAccountId")
+config?.dataCollectionServerHost = "YourServerHost"
+config?.dataSourceId = "YourDatasourceId"
+config?.urlScheme = "YourURLScheme"
+
+// 配置 UIWindowSceneDelegate 实现类
+config?.sceneDelegateClass = YourSceneDelegate.self
+
+Autotracker.start(config!, launchOptions: launchOptions)
+```
 
 ## 步骤 5: 查看集成效果
 
