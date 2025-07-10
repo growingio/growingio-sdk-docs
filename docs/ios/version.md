@@ -3,6 +3,14 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [4.8.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.7.0...4.8.0) (2025-07-10)
+
+
+### Features
+
+* ANLSPI-28053 新增初始化配置项 sceneDelegateClass，适配更多 UIScene-based 应用场景 ([#348](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/348)) ([7affb64](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/7affb64fdb27384875a4e7999ed9d69ce2cc1dab))
+
+
 ## [4.7.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.6.0...4.7.0) (2025-06-05)
 
 
