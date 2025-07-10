@@ -3,6 +3,19 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## V2.2.0 - 2025/07/10
+
+[v2.2.0](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/2.2.0)
+
+### Bug Fixes
+
+* fix: 适配更多 UIScene-based App 场景
+* fix(sdkInfo): i18n
+
+### Features
+
+* feat(sdkInfo): 添加 sceneDelegateClass 配置展示
+
 ## V2.1.0 - 2025/06/09
 
 [v2.1.0](https://github.com/growingio/growingio-sdk-ios-toolskit/releases/tag/2.1.0)
