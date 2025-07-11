@@ -8,7 +8,7 @@ sidebar_position: 0
 
 ### Features
 
-* ANLSPI-28053 新增初始化配置项 sceneDelegateClass，适配更多 UIScene-based 应用场景 ([#348](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/348)) ([7affb64](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/7affb64fdb27384875a4e7999ed9d69ce2cc1dab))
+* 新增初始化配置项 sceneDelegateClass，适配更多 UIScene-based 应用场景 ([#348](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/348)) ([7affb64](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/7affb64fdb27384875a4e7999ed9d69ce2cc1dab))
 
 
 ## [4.7.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.6.0...4.7.0) (2025-06-05)
@@ -16,14 +16,14 @@ sidebar_position: 0
 
 ### Bug Fixes
 
-* ANLSPI-26449 GitHub Workflow 升级至 Xcode 16 ([#342](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/342)) ([00a3755](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/00a3755b31aaa172ffdb34c54370af33eded2399))
-* ANLSPI-27446 VIEW_CLICK 事件忽略 TextInputUI 下的私有组件 ([#346](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/346)) ([128520f](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/128520f693a48bc194924459188495bfcb153a32))
-* ANLSPI-27507 移除使用 GrowingUtils 中已废弃的接口 ([#347](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/347)) ([2394f11](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2394f11104cb1bc05a7a545decc465e62555dfd9))
+* GitHub Workflow 升级至 Xcode 16 ([#342](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/342)) ([00a3755](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/00a3755b31aaa172ffdb34c54370af33eded2399))
+* VIEW_CLICK 事件忽略 TextInputUI 下的私有组件 ([#346](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/346)) ([128520f](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/128520f693a48bc194924459188495bfcb153a32))
+* 移除使用 GrowingUtils 中已废弃的接口 ([#347](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/347)) ([2394f11](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/2394f11104cb1bc05a7a545decc465e62555dfd9))
 
 
 ### Features
 
-* ANLSPI-27402 改用系统通知来监听 VIEW_CHANGE 事件 ([#344](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/344)) ([81283c0](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/81283c0e7ec7d921227f5712a29b64cc60df80d5))
+* 改用系统通知来监听 VIEW_CHANGE 事件 ([#344](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/344)) ([81283c0](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/81283c0e7ec7d921227f5712a29b64cc60df80d5))
 
 ## [4.6.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.5.0...4.6.0) (2025-02-13)
 
@@ -42,7 +42,7 @@ sidebar_position: 0
 
 ### Features
 
-* **ads:** ANLSPI-22249 支持 CAID 归因分析 ([#336](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/336)) ([4c5bbba](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4c5bbba765794b26636f2f30a610f00b974fc4f1))
+* **ads:** 支持 CAID 归因分析 ([#336](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/336)) ([4c5bbba](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/4c5bbba765794b26636f2f30a610f00b974fc4f1))
 
 ## [4.4.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.3.2...4.4.0) (2024-09-29)
 
