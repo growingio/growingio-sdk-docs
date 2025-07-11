@@ -23,10 +23,10 @@ sidebar_position: 0
 ### Bug Fixes
 
 * fix: GitHub Workflow 升级至 Xcode 16
-* fix: ANLSPI-27611 移除 APM 模块
-* fix: ANLSPI-27614 移除 SDK30202 模块
-* fix: ANLSPI-27613 移除 SDK2nd 模块
-* fix: ANLSPI-27650 重命名 resource bundle，修复在低版本系统出现访问图片资源异常
+* fix: 移除 APM 模块
+* fix: 移除 SDK30202 模块
+* fix: 移除 SDK2nd 模块
+* fix: 重命名 resource bundle，修复在低版本系统出现访问图片资源异常
 * fix(xpath): 仅 main frame 自动注入 Hybrid 插件
 
 ### Features
