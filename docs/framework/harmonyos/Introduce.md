@@ -83,6 +83,59 @@ GrowingAnalytics.deferStart(getContext(this) as common.UIAbilityContext, config)
 
 其他初始化配置项见[表格](/docs/framework/harmonyos/Configuration)，在 start 方法调用前通过`config.<配置项> = 对应值`进行配置
 
+### 添加 URL Scheme
+
+URL Scheme 是您在 GrowingIO 平台创建应用时生成的该应用的唯一标识。把 URL Scheme 添加到您的项目，以便使用 Mobile Debugger 等功能时唤醒您的应用。
+
+1. 在 module.json5 中 EntryAbility 对应的 skills 添加 URL Scheme：
+
+```typescript
+{
+  "module": {
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "skills": [
+          
+          // -- 添加 URL Scheme --
+          {
+            "actions": [
+              "ohos.want.action.viewData"
+            ],
+            "uris": [
+              {
+                "scheme":"Your URL Scheme", // 替换为您的应用的 URL Scheme
+                "host": "growingio/webservice"
+              }
+            ]
+          }
+          // -- 添加 URL Scheme --
+          
+        ]
+      },
+    ],
+  }
+}
+```
+
+2. 在 EntryAbility.ets 添加 URL Scheme 跳转处理方法
+
+```typescript
+onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  let uri = want?.uri
+  if (uri) {
+    GrowingAnalytics.handleOpenURL(uri)
+  }
+}
+
+onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  let uri = want?.uri
+  if (uri) {
+    GrowingAnalytics.handleOpenURL(uri)
+  }
+}
+```
+
 ### 查看集成效果
 
 运行应用，若日志中输出了  
