@@ -5,6 +5,11 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.4.2 - 2025/08/05
+
+- 🎉 新版抖音小程序圈选支持。
+- 🌟 优化初始化错误提示。
+
 ### V4.4.1 - 2025/05/22
 
 - 🐞 修复uniappvue3 setup动态逻辑点击事件失效的问题。
