@@ -3,6 +3,17 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [2.4.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.4.0) (2025-08-26)
+
+### Features 功能
+
+* feat: 添加事件大小限制，避免 sqlite 数据库操作异常
+
+### Performance 性能优化
+
+* perf: 并发处理事件发送前的序列化、压缩等逻辑
+* perf: 并发处理事件生命周期期间的数据库操作
+
 ## [2.3.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.3.0) (2025-06-05)
 
 ### Features 功能
