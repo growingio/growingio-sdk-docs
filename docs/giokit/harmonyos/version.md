@@ -3,6 +3,17 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [1.3.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.3.0) (2025-08-26)
+
+### Features 功能
+
+* feat: 添加 FPS 监控模块
+
+### Performance 性能优化
+
+* perf: 并发处理事件记录、网络请求记录等耗时功能(需要将项目的 compatibleSdkVersion 升级为 5.0.2(14) 以上)
+* perf: 展示事件详情、网络请求包详情时，如果文本过大，则进行适当截取
+
 ## [1.2.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.2.0) (2025-04-08)
 
 ### Features 功能
