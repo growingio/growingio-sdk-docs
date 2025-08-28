@@ -3,6 +3,13 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [2.4.1](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.4.1) (2025-08-28)
+
+### Bug Fixes 修复
+
+* fix: compatibleSdkVersion 降低为 API 12
+* fix: 添加 UseTsHar 标记，以适配 Sendable 的使用
+
 ## [2.4.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.4.0) (2025-08-26)
 
 ### Features 功能
