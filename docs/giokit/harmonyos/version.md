@@ -3,6 +3,12 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [1.3.1](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.3.1) (2025-08-28)
+
+### Bug Fixes 修复
+
+* fix: 添加 UseTsHar 标记，以适配 Sendable 的使用
+
 ## [1.3.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.3.0) (2025-08-26)
 
 ### Features 功能
