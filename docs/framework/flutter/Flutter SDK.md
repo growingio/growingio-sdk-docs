@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 
 ```c
 dependencies:
-  growingio_flutter_plugin: '^4.3.1'
+  growingio_flutter_plugin: '^4.3.3'
 ```
 
 
