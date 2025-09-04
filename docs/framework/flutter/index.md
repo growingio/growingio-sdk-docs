@@ -10,6 +10,7 @@ GrowingIO Flutter Plugin 插件 growingio_flutter_plugin，封装了GrowingIO An
 
 |    版本    | 说明 |  日期  |
 | :-----  | :-----   | :----:  |
+| v4.3.3 | - GrowingIO HarmonyOS SDK 升级到 2.4.1；<br/>- HarmonyOS 移除 GioKit 插件自动集成，若需要该插件，请手动集成；<br/>- Android jvm 最低版本要求降为 11； | 2025-09-04 |
 | v4.3.2 | - Android SDK 升级为4.4.3 | 2025-05-14 |
 | v4.3.0 | - 修复 App 圈选相关问题| 2025-01-10 |
 | v4.2.0 | - 适配 HarmonyOS SDK 2.0.0 | 2024-09-10 |
