@@ -313,7 +313,7 @@ class MyApplication : Application() {
 
 ```shell
 !!! Thank you very much for using GrowingIO. We will do our best to provide you with the best service. !!!
-!!! GrowingIO Tracker version: 4.4.3 !!!
+!!! GrowingIO Tracker version: 4.5.0 !!!
 ```
 
 则说明SDK已经集成成功。
