@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:compose:4.4.3'
+	implementation 'com.growingio.android:compose:4.5.0'
 }
 ```
 </TabItem>
@@ -38,7 +38,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.4.3')
+  implementation platform('com.growingio.android:autotracker-bom:4.5.0')
 
   implementation 'com.growingio.android:compose'
 }
@@ -64,7 +64,7 @@ GrowingAutotracker.startWithConfiguration(this,
 
 ```toml
 [plugins]
-growingio-compose-plugin = {id = "com.growingio.compose.plugin",version = "4.4.0"}
+growingio-compose-plugin = {id = "com.growingio.compose.plugin",version = "4.5.0"}
 ```
 
 ```groovy
