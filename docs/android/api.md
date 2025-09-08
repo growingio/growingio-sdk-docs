@@ -728,7 +728,7 @@ GrowingAutotracker.get().trackEditText(editText, true)
 
 ### 8. 设置页面标题
 `setPageTitle`, `setPageTitleSystem`, `setPageTitleSupport`<br/>
-给指定页面设置标题，与 `autotrackPagePage`接口对应，推荐在`onResume`生命周期之前调用。
+给指定页面设置标题，与 `autotrackPage`接口对应，推荐在`onResume`生命周期之前调用。
 
 #### 参数说明
 | 参数    | 参数类型              | 说明                      |
