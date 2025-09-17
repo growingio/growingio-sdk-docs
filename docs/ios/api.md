@@ -643,7 +643,48 @@ GrowingAutotracker.sharedInstance().autotrackPage(self, alias: "viewController",
   </TabItem>
 </Tabs>
 
-### 12. 忽略指定元素
+### 12. 手动标识页面标题
+
+`setPageTitle(_ title: String?, forPage: UIViewController)`<br/>
+手动标识页面标题，需要在 viewDidAppear 执行之前调用；设置 nil 时，使用原标题
+
+#### 参数说明
+
+| 参数         | 参数类型                           | 说明         |
+| :----------- | :--------------------------------- | :----------- |
+| `title` | `String?` | 自定义页面标题 |
+| `forPage` | `UIViewController` | 被追踪页面 |
+
+#### 示例
+
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
+
+```swift
+Autotracker.setPageTitle("customTitle", forPage: self)
+Autotracker.setPageTitle(nil, forPage: self)
+```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+GrowingAutotracker.sharedInstance().setPageTitle("customTitle", forPage: self)
+GrowingAutotracker.sharedInstance().setPageTitle(nil, forPage: self)
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
+```objectivec
+[[GrowingAutotracker sharedInstance] setPageTitle:@"custom_title" forPage:self];
+[[GrowingAutotracker sharedInstance] setPageTitle:nil forPage:self];
+```
+
+  </TabItem>
+</Tabs>
+
+### 13. 忽略指定元素
 
 `ignorePolicy`<br/>
 被设置忽略的元素，不再触发点击、曝光等任何事件，被忽略的 WebView 也不会采集 Hybrid 的事件。
@@ -691,7 +732,7 @@ view.growingViewIgnorePolicy = GrowingIgnoreNone;
   </TabItem>
 </Tabs>
 
-### 13. 忽略元素类型
+### 14. 忽略元素类型
 
 `ignore(_ clazz: AnyClass)`<br/>
 配置忽略对应可点击元素的追踪
@@ -728,7 +769,7 @@ GrowingAutotracker.sharedInstance().ignoreViewClass(UIButton.self)
   </TabItem>
 </Tabs>
 
-### 14. 忽略元素类型组
+### 15. 忽略元素类型组
 
 `ignore(_ classes: [AnyClass])`<br/>
 配置忽略数组内对应可点击元素的追踪
@@ -765,7 +806,7 @@ GrowingAutotracker.sharedInstance().ignoreViewClasses([UIButton.self, UISwitch.s
   </TabItem>
 </Tabs>
 
-### 15.设置元素唯一 Tag
+### 16.设置元素唯一 Tag
 
 `uniqueTag`<br/>
 给元素设置唯一的 Tag，方便点击等事件确定唯一的 View，一般用于动态布局的场景
@@ -804,7 +845,7 @@ view.growingUniqueTag = @"我是一个特别的view";
   </TabItem>
 </Tabs>
 
-### 16.设置元素采集内容
+### 17.设置元素采集内容
 
 `customContent`<br/>
 给元素设置自定义的采集内容，比如图片元素
@@ -843,7 +884,7 @@ view.growingViewCustomContent = @"content";
   </TabItem>
 </Tabs>
 
-### 17. 设置通用属性
+### 18. 设置通用属性
 
 `setGeneralProps(_ props: [String: Any])`<br/>
 设置通用属性
