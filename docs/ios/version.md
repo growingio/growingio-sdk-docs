@@ -3,6 +3,13 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [4.9.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.9.0...4.9.1) (2025-09-18)
+
+
+### Bug Fixes
+
+* 补充基于 SwiftPM 集成方式的 setPageTitle 接口 ([#353](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/353)) ([ae05ad6](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/ae05ad6496a97364660bc91caed6c878c86f14a1))
+
 ## [4.9.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.8.0...4.9.0) (2025-09-17)
 
 

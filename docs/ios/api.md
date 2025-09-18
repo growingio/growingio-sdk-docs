@@ -645,7 +645,7 @@ GrowingAutotracker.sharedInstance().autotrackPage(self, alias: "viewController",
 
 ### 12. 手动标识页面标题
 
-`setPageTitle(_ title: String?, forPage: UIViewController)`<br/>
+`setPageTitle(_ title: String?, for page: UIViewController)`<br/>
 手动标识页面标题，需要在 viewDidAppear 执行之前调用；设置 nil 时，使用原标题
 
 #### 参数说明
@@ -653,7 +653,7 @@ GrowingAutotracker.sharedInstance().autotrackPage(self, alias: "viewController",
 | 参数         | 参数类型                           | 说明         |
 | :----------- | :--------------------------------- | :----------- |
 | `title` | `String?` | 自定义页面标题 |
-| `forPage` | `UIViewController` | 被追踪页面 |
+| `page` | `UIViewController` | 被追踪页面 |
 
 #### 示例
 
@@ -661,8 +661,8 @@ GrowingAutotracker.sharedInstance().autotrackPage(self, alias: "viewController",
   <TabItem value="spm" label="Swift Package Manager" default>
 
 ```swift
-Autotracker.setPageTitle("customTitle", forPage: self)
-Autotracker.setPageTitle(nil, forPage: self)
+Autotracker.setPageTitle("customTitle", for: self)
+Autotracker.setPageTitle(nil, for: self)
 ```
 
   </TabItem>
