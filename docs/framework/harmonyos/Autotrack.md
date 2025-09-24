@@ -96,7 +96,7 @@ router.pushUrl({
 
 ## 设置页面标题
 
-#### 基于组件导航 (Navigation)
+### 基于组件导航 (Navigation)
 
 ```typescript
 let destination = new NavPathInfo(name, {
@@ -105,7 +105,7 @@ let destination = new NavPathInfo(name, {
 this.pageStack.pushDestination(destination)
 ```
 
-#### 基于页面路由 (@ohos.router)
+### 基于页面路由 (@ohos.router)
 
 ```typescript
 router.pushUrl({
