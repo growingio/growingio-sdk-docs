@@ -94,6 +94,28 @@ router.pushUrl({
 })
 ```
 
+### 设置页面标题
+
+#### 基于组件导航 (Navigation)
+
+```typescript
+let destination = new NavPathInfo(name, {
+  "growing_title": "home"
+} as Record<string, Object>)
+this.pageStack.pushDestination(destination)
+```
+
+#### 基于页面路由 (@ohos.router)
+
+```typescript
+router.pushUrl({
+  url: path,
+  params: {
+    "growing_title": "home"
+  }
+})
+```
+
 ## 设置页面属性
 
 通过手动设置页面属性为该页面添加事件发生时所伴随的属性信息
