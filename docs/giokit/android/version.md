@@ -2,6 +2,17 @@
 title: 版本记录
 sidebar_position: 0
 ---
+## V2.1.3
+1. 移除对SDK网络库 Volley 的支持；
+2. 适配对SDK Event分类的修改；
+3. 修改新的 MavenCentral 发版地址。
+
+:::note 
+
+ 标签:**[V2.1.3](https://github.com/growingio/giokit-android/releases/tag/V2.1.3)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2025-09-05** 
+
+:::
+
 ## V2.1.2
 1. 修复当请求内容为空时，giokit 报错导致无法发送请求的问题。
 
