@@ -61,7 +61,7 @@ ohpm install <您所下载的 har 文件路径>
 
 ### 配置混淆规则
 
-自 SDK 2.5.0 版本起，如果您的应用开启了混淆，请在应用模块的混淆规则配置文件 obfuscation-rules.txt 中配置以下保留项：
+自 SDK 2.5.0 版本起，请在应用模块的混淆规则配置文件 obfuscation-rules.txt 中配置以下保留项：
 ```typescript
 -keep ./../oh_modules/.ohpm/oh_modules/@ohos/protobufjs
 -keep ./../oh_modules/.ohpm/oh_modules/snappyjs
