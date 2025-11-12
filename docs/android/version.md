@@ -7,13 +7,48 @@ sidebar_position: 0
 类型：统计类 <br/>
 开发者：北京易数科技有限公司 <br/>
 无埋点包名：com.growingio.android.sdk.autotrack <br/>
-最新版本：v4.4.3 <br/>
-更新时间：2025-05-12 <br/>
+最新版本：v4.5.2 <br/>
+更新时间：2025-11-11 <br/>
 功能说明：GrowingIO用户行为数据采集软件开发工具包（CDP）具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
 下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
 个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
 使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
 合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
+:::
+
+## RELEASE-4.5.2
+## Features
+* 页面事件添加来源页面属性 [#236](https://github.com/growingio/growingio-sdk-android-autotracker/pull/236)
+
+
+:::note 
+
+ 标签:**[v4.5.2](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.5.2)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2025-11-11** 
+
+:::
+
+## RELEASE-4.5.1
+## Bug Fixes
+* 修复: 设备空间不足时，由于发送visit的标记无法在文件中修改导致循环发送visit事件 [#235](https://github.com/growingio/growingio-sdk-android-autotracker/pull/235)
+
+
+:::note 
+
+ 标签:**[v4.5.1](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.5.1)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2025-10-11** 
+
+:::
+
+## RELEASE-4.5.0
+### Features
+1. 优化数据库事件的发数逻辑，将已经发送失败的优先级下调为最后发送；
+2. 为无埋点添加新的接口：setPageTitle，用于手动设置页面的标题，设置null时取消已经设置的标题；
+3. 由于mavenCentral地址的变更，修改sdk的发布插件。
+
+
+:::note 
+
+ 标签:**[v4.5.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.5.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2025-09-05** 
+
 :::
 
 ## RELEASE-4.4.3

@@ -51,6 +51,10 @@ GrowingAutotracker.get().setUniqueTag(button, "UniqueTagName")
 GrowingAutotracker.get().ignoreView(view, IgnorePolicy.IGNORE_SELF)
 GrowingAutotracker.get().ignoreViewClick(view, true)
 GrowingAutotracker.get().trackEditText(editText, true)
+GrowingAutotracker.get().setPageTitle(activity, "title")
+GrowingAutotracker.get().setPageTitle(androidx.fragment.app.Fragment, "title")
+GrowingAutotracker.get().setPageTitleSystem(android.app.Fragment, "title")
+GrowingAutotracker.get().setPageTitleSupport(android.support.v4.app.Fragment, "title")
 ```
 
 ## 通用 API 详细说明
@@ -552,7 +556,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 </Tabs>
 
 ### 2. 设置页面属性
-`setPageAttributes`, `setPageAttributesSupport`, `setPageAttributesX`<br/>
+`setPageAttributes`, `setPageAttributesSupport`, `setPageAttributesSystem`<br/>
 给指定页面设置属性，与 `autotrackPagePage`接口对应，推荐在`onResume`生命周期之前调用。
 
 #### 参数说明
@@ -720,4 +724,32 @@ GrowingAutotracker.get().ignoreViewClick(view, true)
 **SDK示例代码：**
 ```java
 GrowingAutotracker.get().trackEditText(editText, true)
+```
+
+### 8. 设置页面标题
+`setPageTitle`, `setPageTitleSystem`, `setPageTitleSupport`<br/>
+给指定页面设置标题，与 `autotrackPage`接口对应，推荐在`onResume`生命周期之前调用。
+
+#### 参数说明
+| 参数    | 参数类型              | 说明                      |
+| :------ | :-------------------- | :----------------------|
+| `page`  | _Activity_ / _Fragment_ | 需要设置标题的页面对象 |
+| `title` | _String_   | 页面标题，可为空      |
+
+> Activity 默认取其本身的 `getTitle()` 值，该值可以由AndroidMainfest 里注册的activity 的label值决定也可以通过调用 setTitle() 决定，若无设置，将会取布局下的ToolBar标题，若以上都没有值则默认取AppName。Fragment由于无 `getTitle()` 接口，将会取布局下的ToolBar（若有）的title，没有则为空。
+
+> 添加新的 setPageTitle() 接口后，将会把 page 的 title 值固定为接口传进来的值，不再变动。如设置为空则恢复为默认取页面本身的 `getTitle()` 值。
+#### 示例
+
+**SDK示例代码：**
+
+```java
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ...
+        GrowingAutotracker.get().setPageTitle(this, "Home 页");
+        ...
+
+}
 ```

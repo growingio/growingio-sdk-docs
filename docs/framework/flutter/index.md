@@ -10,6 +10,7 @@ GrowingIO Flutter Plugin 插件 growingio_flutter_plugin，封装了GrowingIO An
 
 |    版本    | 说明 |  日期  |
 | :-----  | :-----   | :----:  |
+| v4.3.4 | - Android SDK 升级为4.5.2;<br/>-GrowingIO iOS SDK 升级到 4.10.0;<br/>-Flutter page 事件添加来源页面属性； | 2025-11-12 |
 | v4.3.3 | - GrowingIO HarmonyOS SDK 升级到 2.4.1；<br/>- HarmonyOS 移除 GioKit 插件自动集成，若需要该插件，请手动集成；<br/>- Android jvm 最低版本要求降为 11； | 2025-09-04 |
 | v4.3.2 | - Android SDK 升级为4.4.3 | 2025-05-14 |
 | v4.3.0 | - 修复 App 圈选相关问题| 2025-01-10 |

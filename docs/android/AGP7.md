@@ -57,7 +57,7 @@ plugins {
 
     ···
     // 添加GrowingIO 无埋点 SDK 插件
-    id 'com.growingio.android.autotracker' version '4.4.0' apply false
+    id 'com.growingio.android.autotracker' version '4.5.2' apply false
 }
 ```
 
@@ -120,7 +120,7 @@ dependencies {
 | trackerCalledMethod        | _Array\<String\>_ | 否      | 默认为SDK相应接口   | 要查找的类和方法,类名与方法名使用#连接  |
 | autoAttachEnabled          | _Boolean_       | 否      | `true`  |  GioKit 是否自动依附在Activity上，若设为false，需要自行调用api打开GioKit  |
 | releaseEnabled             | _Boolean_       | 否      | `false`   |  **请不要打开**，否则会在 Release 打包中包含 GioKit 代码    |
-| autoInstallVersion         | _String_        | 否      | `2.1.2`   |  自动依赖的GioKit版本号             |
+| autoInstallVersion         | _String_        | 否      | `2.1.4`   |  自动依赖的GioKit版本号             |
 
 现在SDK不用再额外引入 Giokit，只需要在插件中开启即可。示例如下：
 
@@ -134,7 +134,7 @@ growingAutotracker {
         trackerCalledMethod "com.growingio.android.tracker#trackCumtomEvent"
         autoAttachEnabled true
         releaseEnabled false
-        autoInstallVersion "2.1.2"
+        autoInstallVersion "2.1.4"
     }
 }
 ```
