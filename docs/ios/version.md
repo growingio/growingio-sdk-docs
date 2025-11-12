@@ -3,6 +3,14 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [4.10.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.9.1...4.10.0) (2025-11-12)
+
+
+### Features
+
+* 页面浏览事件新增页面来源属性上报 ([#354](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/354)) ([b3cac0a](https://github.com/growingio/growingio-sdk-ios-autotracker/commit/b3cac0a822af8205b1fb252cf5cfdd673141906c))
+
+
 ## [4.9.1](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.9.0...4.9.1) (2025-09-18)
 
 
