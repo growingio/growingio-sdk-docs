@@ -7,7 +7,7 @@ sidebar_position: 0
 
 ### Features 功能
 
-* feat: 新增 setPageTitle 接口，用于手动设置页面标题
+* feat: 新增手动设置页面标题的方式
 
 ### Bug Fixes 修复
 
