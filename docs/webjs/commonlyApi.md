@@ -395,6 +395,22 @@ gdp('getOption', 'version', (value: string) => {}); // 获取SDK版本号
 gdp('getOption', ''); // 获取所有支持查看的配置项值
 ```
 
+### 16、获取当前的增强型UserAgent(getUserAgent)
+
+当调试时需要获取SDK当前上报的增强型UserAgent时，可调用此接口。
+
+```js
+gdp('getUserAgent', (userAgent: string) => {});
+```
+
+#### 示例
+
+```js
+gdp('getUserAgent', (userAgent: string) => {
+  console.log(userAgent);
+});
+```
+
 ## 事件时长统计
 
 可以统计上报某一事件的持续时长（例如页面浏览时长）。我们提供了事件计时开始、事件计时暂停、事件计时恢复、事件计时停止、事件计时销毁几个方法提供调用。
