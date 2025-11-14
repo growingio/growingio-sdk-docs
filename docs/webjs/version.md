@@ -5,6 +5,12 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
 
+### V4.3.1 - 2025/11/13
+
+- 🐞 修复APM插件在某些情况下可能报错导致请求不可用的问题。
+- 🌟 添加TS类型及导出，便于TS开发。
+- 🎉 新增增强型UA的支持，能够相对更准确地识别 Windows 11 系统和浏览器版本。
+
 ### V4.3.0 - 2025/04/28
 
 - 🎉 新增小程序内嵌页新版圈选支持。

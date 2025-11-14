@@ -18,7 +18,7 @@ gdp('registerPlugins', [gioEventAutoTracking, gioCompress, gioImpressionTracking
 ```
 
 插件合集：
-**<font size="3">[https://assets.giocdn.com/sdk/webjs/cdp/plugins.zip](https://assets.giocdn.com/sdk/webjs/cdp/plugins.zip)</font>**<br/>
+**<font size="3">[https://assets.giocdn.com/sdk/webjs/plugins.zip](https://assets.giocdn.com/sdk/webjs/plugins.zip)</font>**<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 **<font color="#FC5F3A">当您集成的SDK是全量版本（即 gdp-full.js）时，会默认包含以下标品功能中的插件内容，若您想使用非标品功能，即使集成了全量版本也需要额外引入并注册对应非标功能的插件。</font>**
