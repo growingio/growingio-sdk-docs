@@ -15,6 +15,7 @@ title: 初始化配置
 | `cookieDomain`   | `string`                | `当前站点的一级域名`            | 自定义cookie存储的域         |
 | `dataCollect`    | `boolean`               | `true`                       | 是否开启数据采集             |
 | `debug`          | `boolean`               | `false`                      | 是否开启调试模式             |
+| `embeddedAdapter`| `object`                | `{}`                         | 与小程序打通时的配置项         |
 | `extraUA`        | `boolean`               | `true`                       | 是否开启增强型UA             |
 | `forceLogin`     | `boolean`               | `false`                      | 是否开启强制登录             |
 | `idMapping`      | `boolean`               | `false`                      | 是否开启多用户身份上报       |
@@ -85,6 +86,21 @@ gdp('init', accountId, datasourceId, {
 
 **<font color="#FC5F3A">注意：</font>使用多实例能力时，仅主实例设值生效，子实例设值无效且与主实例表现一致。**
 
+### embeddedAdapter
+
+与小程序打通时的配置项。在私部客户项目中需要作为小程序圈选的一部分时需要配置。其他信息请[参考文档](/docs/webjs/plugins/embeddedAdapter)。
+
+```js
+gdp('init', accountId, datasourceId, {
+  embeddedAdapter: {
+    circleServerUrl: ''
+  },
+  ...其他配置项,
+});
+```
+
+**<font color="#FC5F3A">注意：</font>SDK版本 >= 4.3.0 支持。Saas客户不需要做配置circleServerUrl。**
+
 ### extraUA
 
 开启增强型UA后，能够相对更准确地识别 Windows 11 系统和浏览器版本，默认开启。会在所有的事件中自动添加 `$userAgent` 属性，可能会少量增加上报的数据大小，注意自定义属性时请不要与我们的字段冲突。
@@ -98,7 +114,7 @@ gdp('init', accountId, datasourceId, {
 
 **<font color="#FC5F3A">注意：</font>**<br/>
 **<font>1、SDK版本 >= 4.3.1 支持。</font>**<br/>
-**<font>2、请在定义全局属性、页面属性和埋点事件属性时不要与预定义的属性冲突。</font>**
+**<font>2、请在定义全局属性、页面属性和埋点事件属性时不要与预定义的属性冲突。</font>**<br/>
 **<font>3、仅支持 `Chromium` 基础开发的浏览器，例如 Microsoft Edge、Opera、360等。IE 和 Safari 无法支持。</font>**
 
 ### forceLogin
@@ -246,6 +262,8 @@ gdp('init', accountId, datasourceId, {
   ...其他配置项,
 });
 ```
+
+**<font color="#FC5F3A">注意：</font>后续版本可能会废弃该配置项，请尽量避免使用。**
 
 ### sendType
 
