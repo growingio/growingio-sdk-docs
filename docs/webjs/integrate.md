@@ -277,6 +277,10 @@ window._gr_ignore_local_rule = true;
 gdp('init', xxx, xxx);
 ```
 
+## 使用TypeScript开发
+
+参考文档[https://github.com/growingio/growingio-sdk-webjs-autotracker/blob/HEAD/TYPESCRIPT_GUIDE.md]
+
 ## 数据校验
 
 ### 使用 GioKit 校验事件（推荐）

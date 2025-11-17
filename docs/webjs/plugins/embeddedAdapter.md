@@ -55,6 +55,30 @@ gdp('init', 'your miniprogram accountId', 'your dataSourceId', {
 });
 ```
 
+## 小程序圈选
+
+如果您的小程序内嵌页在打通时需要与小程序一起圈选事件，则需要配置 `circleServerUrl` ，配置方法如下：
+
+### 方式一：在注册插件时配置
+
+```js
+gdp('registerPlugins', [{ ...gioEmbeddedAdapter, options: { circleServerUrl: '' } }]);
+gdp('init', xxxx);
+```
+
+### 方式二：在SDK初始化时配置
+
+```js
+gdp('init', 'your miniprogram accountId', 'your dataSourceId', {
+  embeddedAdapter: {
+    circleServerUrl: ''
+  },
+  ...其他配置项
+});
+```
+
+**<font color="#FC5F3A">注意：</font>该配置项仅OP私有部署的客户需要填写，Saas客户请忽略。如果同时在注册插件时和在SDK初始化时配置时，优先使用SDK初始化配置。**
+
 ## 打通影响
 
 1、H5内嵌页中的 `setUserId、clearUserId` 方法调用将无效，只能使用从小程序继承来的登录用户ID。
