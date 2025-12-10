@@ -275,7 +275,7 @@ GrowingAnalytics.setDynamicGeneralProps(() => ({}))
 ### Hybrid 打通
 
 ```typescript
-static createHybridProxy(controller: webview.WebviewController): {
+static createHybridProxy(controller: webview.WebviewController, webviewId?: string): {
 object: object;
 name: string;
 methodList: Array<string>;
@@ -283,27 +283,31 @@ controller: WebviewController;
 } | undefined
 ```
 
-在 webView 控件中注入 hybrid 实现打通 (javaScriptAccess 和 domStorageAccess 需同时设置为 true)：
+在 Web 控件中注入 hybrid 实现打通 (javaScriptAccess 和 domStorageAccess 需同时设置为 true)：
 ```typescript
 let url = 'https://www.example.com'
+let webviewId = 'customWebviewId'
 Web({ src: url, controller: this.controller})
   .javaScriptAccess(true)
   .domStorageAccess(true)
-  .javaScriptProxy(GrowingAnalytics.createHybridProxy(this.controller))
+  .javaScriptProxy(GrowingAnalytics.createHybridProxy(this.controller, webviewId))
+  .id(webviewId)
 ```
 
 > 对应的 H5 页面需要集成 Web JS SDK 以及 App 内嵌页打通插件才能生效
+> webviewId 为可选参数，该配置目的在于进行无埋点圈选时，可以圈选 hybrid 页面；如需使用该功能，请将对应的 Web 控件的唯一标识 (id) 设为相同值，并保证 webviewId 全局唯一
 
 如果您需要注入多个 JavaScript 对象或者通过 permission 配置权限管控，请在 `onControllerAttached` 回调中使用 `registerJavaScriptProxy` 进行注入 hybrid：
 ```typescript
 let url = 'https://www.example.com'
 // 通过permission配置权限管控
 let permission = 'Your Permission'
+let webviewId = 'customWebviewId'
 Web({ src: url, controller: this.controller})
   .javaScriptAccess(true)
   .domStorageAccess(true)
   .onControllerAttached(() => {
-    let proxy = GrowingAnalytics.createHybridProxy(this.controller)
+    let proxy = GrowingAnalytics.createHybridProxy(this.controller, webviewId)
     if (proxy) {
       this.controller.registerJavaScriptProxy(proxy.object, proxy.name, proxy.methodList, [], permission)
     }
@@ -314,6 +318,7 @@ Web({ src: url, controller: this.controller})
       this.controller.registerJavaScriptProxy(yourProxy.object, yourProxy.name, yourProxy.methodList, yourProxy.asyncMethodList, permission)
     }
   })
+  .id(webviewId)
 ```
 
 ### 多实例采集
