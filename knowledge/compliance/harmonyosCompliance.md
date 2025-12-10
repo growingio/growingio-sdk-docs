@@ -171,9 +171,12 @@ export default class EntryAbility extends UIAbility {
 
 ```typescript
 let config = ...
-// 配置可选信息是否采集，以网络类型为例
-config.ignoreField = GrowingIgnoreFields.NetworkState
+// 配置可选信息是否采集，以忽略网络类型和操作系统版本为例
+config.ignoreField = GrowingIgnoreFields.NetworkState | GrowingIgnoreFields.PlatformVersion
 GrowingAnalytics.start(this.context, config)
+
+// 如果最终用户授权同意采集经纬度信息，请手动采集，SDK 不主动采集
+GrowingAnalytics.setLocation(latitude, longitude)
 ```
 
 ## 数据存储发送策略说明
