@@ -51,7 +51,7 @@ GrowingIO HarmonyOS SDK
 
    最终用户同意授权示例：
 
-   <ImageLoader path="img/compliance/privacy_popup" />
+   <ImageLoader path="img/compliance/privacy_popup" width='30%'/>
 
 3. 请务必告知最终用户，App 中集成并使用了 GrowingIO SDK。在《隐私协议》中，您需要特别添加关于 GrowingIO SDK 使用的个人隐私条款，协议链接为：https://accounts.growingio.com/user-privacy 明确说明 SDK 的提供方、详细信息、数据收集范围、目的、存储方式及安全保障措施等。
 
