@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: GrowingIO HarmonyOS SDK 合规说明
-
+sidebar_label: HarmonyOS SDK 合规说明
 ---
 
 ## SDK 业务功能
