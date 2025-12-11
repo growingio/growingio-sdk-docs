@@ -1,6 +1,6 @@
 ---
 slug: /framework/HarmonyOS
-title: "HarmonyOS SDK"
+title: "GrowingIO HarmonyOS SDK"
 ---
 
 **GrowingIO HarmonyOS SDK** 自动采集用户访问事件，并支持手动调用相应埋点 APIs 采集埋点事件。

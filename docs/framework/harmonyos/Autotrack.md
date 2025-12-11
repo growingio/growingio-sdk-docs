@@ -170,3 +170,7 @@ Button('Not focusable').id('uniqueID-xxx-' + GrowingAutotrackElementID)
 ### 设置页面别名
 
 如果您的应用中有 NavDestination 页面名称相同，或 Router 目标命名路由页面名称相同的情况，请通过设置页面别名来避免数据分析异常
+
+### Hybrid 页面的无埋点圈选
+
+如果您的应用中有 Hybrid 页面，需要进行无埋点圈选，请在 Hybrid 打通时传入 webviewId，具体请参考【Hybrid 打通】相关文档

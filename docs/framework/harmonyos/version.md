@@ -3,6 +3,18 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [2.6.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.6.0) (2025-12-11)
+
+### Features 功能
+
+* feat: 页面浏览事件新增页面来源属性上报
+* feat: 支持 Flutter、Hybrid 无埋点圈选
+* feat: 新增可选个人信息配置
+
+### Bug Fixes 修复
+
+* fix: 混淆规则保留项更新
+
 ## [2.5.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.5.0) (2025-09-24)
 
 ### Features 功能

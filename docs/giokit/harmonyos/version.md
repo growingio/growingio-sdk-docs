@@ -3,6 +3,12 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [1.4.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.4.0) (2025-12-11)
+
+### Features 功能
+
+* feat: 作为字节码 har 发布，添加混淆规则保留项配置，适配宿主 App 混淆场景
+
 ## [1.3.1](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.3.1) (2025-08-28)
 
 ### Bug Fixes 修复
