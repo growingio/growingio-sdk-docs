@@ -18,7 +18,9 @@ ohpm install @growingio/analytics
   </TabItem>
   <TabItem value="local" label="通过本地 har 集成">
 
-首先请联系您的专属项目经理或技术支持，获取最新 SDK har 静态共享包下载地址并下载，再执行以下命令：
+  <DownloadCard />
+
+请点击下载 har 文件，再执行以下命令：
 ```c
 ohpm install <您所下载的 har 文件路径>
 ```
