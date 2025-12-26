@@ -5,12 +5,12 @@ import styles from './DownloadCard.module.css';
 
 const sdkData = {
   details: [
-    { label: "SDK名称", value: "GrowingIO HarmonyOS SDK" },
+    { label: "SDK 名称", value: "GrowingIO HarmonyOS SDK" },
     { label: "包名", value: "@growingio/analytics" },
     { label: "版本号", value: "2.7.0" },
     { label: "更新日期", value: "2025-12-26" },
-    { label: "SDK大小", value: "xx.xMB" },
-    { label: "md5值", value: "xxxxxxxxxxxxxxxxxxxxxxxxxx" },
+    { label: "SDK 大小", value: "143KB" },
+    { label: "MD5 值", value: "6b2a41374d0bdd81f9fab7b49a599aa8" },
     { label: "开发者", value: "北京易数科技有限公司" },
   ],
   privacyPolicy: {
