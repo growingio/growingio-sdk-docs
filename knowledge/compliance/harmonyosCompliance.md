@@ -159,7 +159,7 @@ export default class EntryAbility extends UIAbility {
 | 页面标题             | 数据分析需要                                        | 默认采集                                                     |
 | UUID                 | 用于数据分析，SDK 根据设备识别码生成设备唯一标识 ID | 默认采集                                                     |
 | 屏幕分辨率、设备方向 | 数据分析需要                                        | 可选，默认采集，可使用配置接口忽略该信息采集                 |
-| 设备品牌、型号       | 数据分析需要，区分不同设备品牌和型号                | 可选，默认采集，可使用配置接口忽略该信息采集                 |
+| 设备品牌、型号、类型 | 数据分析需要，区分不同设备品牌、型号、类型          | 可选，默认采集，可使用配置接口忽略该信息采集                 |
 | 操作系统             | 数据分析需要，区分不同设备操作系统                  | 默认采集                                                     |
 | 操作系统版本         | 数据分析需要，区分不同设备操作系统版本              | 可选，默认采集，可使用配置接口忽略该信息采集                 |
 | 语言环境             | 数据分析需要，区分不同设备语言环境                  | 可选，默认采集，可使用配置接口忽略该信息采集                 |
@@ -171,8 +171,24 @@ export default class EntryAbility extends UIAbility {
 
 ```typescript
 let config = ...
-// 配置可选信息是否采集，以忽略网络类型和操作系统版本为例
-config.ignoreField = GrowingIgnoreFields.NetworkState | GrowingIgnoreFields.PlatformVersion
+// 配置可选信息是否采集
+// ----------
+// GrowingIgnoreFields.NetworkState     忽略网络类型
+// GrowingIgnoreFields.ScreenSize       忽略屏幕分辨率、设备方向
+// GrowingIgnoreFields.DeviceBrand      忽略设备品牌
+// GrowingIgnoreFields.DeviceModel      忽略设备型号
+// GrowingIgnoreFields.DeviceType       忽略设备类型
+// GrowingIgnoreFields.SystemLanguage   忽略语言环境
+// GrowingIgnoreFields.TimezoneOffset   忽略时区
+// GrowingIgnoreFields.PlatformVersion  忽略操作系统版本
+// ----------
+// 可按照实际用户授权场景调整，以忽略上述所有可选信息为例
+let ignoreField: number = (GrowingIgnoreFields.NetworkState | GrowingIgnoreFields.ScreenSize |
+GrowingIgnoreFields.DeviceBrand | GrowingIgnoreFields.DeviceModel | GrowingIgnoreFields.DeviceType |
+GrowingIgnoreFields.SystemLanguage | GrowingIgnoreFields.TimezoneOffset | GrowingIgnoreFields.PlatformVersion)
+
+config.ignoreField = ignoreField
+
 GrowingAnalytics.start(this.context, config)
 
 // 如果最终用户授权同意采集经纬度信息，请手动采集，SDK 不主动采集

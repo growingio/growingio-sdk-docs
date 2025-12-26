@@ -3,6 +3,12 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [2.7.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.7.0) (2025-12-26)
+
+### Features 功能
+
+* refactor: 将初始化 SDK 分为【初始化】+【开启数据采集】 2 个部分，以符合数据合规要求
+
 ## [2.6.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.6.0) (2025-12-11)
 
 ### Features 功能

@@ -18,7 +18,9 @@ ohpm install @growingio/analytics
   </TabItem>
   <TabItem value="local" label="通过本地 har 集成">
 
-首先请联系您的专属项目经理或技术支持，获取最新 SDK har 静态共享包下载地址并下载，再执行以下命令：
+  <DownloadCard />
+
+请点击下载 har 文件，再执行以下命令：
 ```c
 ohpm install <您所下载的 har 文件路径>
 ```
@@ -83,34 +85,42 @@ import { GrowingAnalytics, GrowingConfig } from '@growingio/analytics'
 // Entry类型的module对应配置的srcEntry
 export default class MyAbilityStage extends AbilityStage {
   onCreate(): void {
-    // 应用的HAP在首次加载的时，为该Module初始化操作
+    // 初始化 SDK
+    this.setupAnalytics()
+    
+    // 确保终端已授权个人隐私信息合规收集和处理后，开启 SDK 数据采集
     this.startAnalytics()
   }
+
   onAcceptWant(want: Want): string {
-    // 仅specified模式下触发
     return 'MyAbilityStage'
   }
 
-  startAnalytics() {
+  setupAnalytics() {
     let config = new GrowingConfig().NewSaaS(
       'Your AccountId',
       'Your DataSourceId',
       'Your UrlScheme',
       'Your DataCollectionServerHost<Optional>'
     )
-    GrowingAnalytics.start(this.context, config)
+    GrowingAnalytics.configure(config)
+  }  
+  
+  startAnalytics() {
+    GrowingAnalytics.startAnalytics(this.context)
   }
 }
 ```
 
 > 其中 accountId/dataSourceId/urlScheme 为必填项，dataCollectionServerHost 为可选项，若不清楚请联系您的专属项目经理或技术支持
 
-### 延迟初始化
+### 延迟数据采集
 
-若您的应用需要延迟初始化 SDK，请使用 deferStart 进行初始化，需确保传入的是 UIAbilityContext：
+若您的应用需要延迟 SDK 数据采集，请使用 deferStart 接口，需确保传入的是 UIAbilityContext：
 
 ```typescript
-GrowingAnalytics.deferStart(getContext(this) as common.UIAbilityContext, config)
+// 确保终端已授权个人隐私信息合规收集和处理后，开启 SDK 数据采集
+GrowingAnalytics.deferStart(getContext(this) as common.UIAbilityContext)
 ```
 
 其他初始化配置项见[表格](/docs/framework/harmonyos/Configuration)，在 start 方法调用前通过`config.<配置项> = 对应值`进行配置
