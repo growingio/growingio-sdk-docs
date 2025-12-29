@@ -6,6 +6,7 @@ import styles from './DownloadCard.module.css';
 const sdkData = {
   details: [
     { label: "SDK 名称", value: "GrowingIO HarmonyOS SDK" },
+    { label: "主要功能", value: "提供数据分析相关的服务，属于统计分析 SDK 类型" },
     { label: "包名", value: "@growingio/analytics" },
     { label: "版本号", value: "2.7.0" },
     { label: "更新日期", value: "2025-12-26" },

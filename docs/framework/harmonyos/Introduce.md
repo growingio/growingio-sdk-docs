@@ -88,7 +88,7 @@ export default class MyAbilityStage extends AbilityStage {
     // 初始化 SDK
     this.setupAnalytics()
     
-    // 确保终端已授权个人隐私信息合规收集和处理后，开启 SDK 数据采集
+    // 确保终端已授权个人隐私信息合规收集和处理后，开启 SDK 数据统计分析
     this.startAnalytics()
   }
 
@@ -114,12 +114,12 @@ export default class MyAbilityStage extends AbilityStage {
 
 > 其中 accountId/dataSourceId/urlScheme 为必填项，dataCollectionServerHost 为可选项，若不清楚请联系您的专属项目经理或技术支持
 
-### 延迟数据采集
+### 延迟数据统计分析
 
-若您的应用需要延迟 SDK 数据采集，请使用 deferStart 接口，需确保传入的是 UIAbilityContext：
+若您的应用需要延迟 SDK 数据统计分析，请使用 deferStart 接口，需确保传入的是 UIAbilityContext：
 
 ```typescript
-// 确保终端已授权个人隐私信息合规收集和处理后，开启 SDK 数据采集
+// 确保终端已授权个人隐私信息合规收集和处理后，开启 SDK 数据统计分析
 GrowingAnalytics.deferStart(getContext(this) as common.UIAbilityContext)
 ```
 
