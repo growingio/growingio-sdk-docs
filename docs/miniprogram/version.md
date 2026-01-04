@@ -5,6 +5,12 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.4.3 - 2026/01/04
+
+- 🐞 修复鸿蒙系统network取值错误导致数据异常的问题
+- 🐞 修复uniapp在setup中定义的方法，在遍历的节点上无埋点无法触发的问题
+- 🐞 修复taro3.x低版本无法触发无埋点的问题
+
 ### V4.4.2 - 2025/08/05
 
 - 🎉 新版抖音小程序圈选支持。
