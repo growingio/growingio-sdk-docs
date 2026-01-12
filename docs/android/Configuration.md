@@ -280,7 +280,7 @@ GrowingAutotracker.startWithConfiguration(this,
 ```
 
 ### 6. setCustomEventWithPath
-打开该接口将会为每一个自定义事件添加上一个页面事件的路径属性，(即 `CustomEvent` 中增加 `path`)。建议在需要统计每一个自定义埋点事件发送页面时打开，平常状态下请关闭此配置。
+打开该接口将会为每一个自定义事件添加所在页面浏览事件的路径属性，(即 `CustomEvent` 中增加 `path`)。建议在需要统计每一个自定义埋点事件发送页面时打开，平常状态下请关闭此配置。
 
 ```java
 GrowingAutotracker.startWithConfiguration(this,
