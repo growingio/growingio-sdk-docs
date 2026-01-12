@@ -110,4 +110,4 @@ import TabItem from '@theme/TabItem';
 
 #### 18. **customEventWithPath**
 
-设置为 true 时，自定义埋点事件将通过 path 字段，自动关联上一个页面，默认为 false
+设置为 true 时，自定义埋点事件将通过 path 字段，自动关联到埋点事件所在页面浏览事件上，默认为 false
