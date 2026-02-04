@@ -299,7 +299,54 @@ GrowingTracker.sharedInstance().cleanLocation()
   </TabItem>
 </Tabs>
 
-### 7. 设置埋点事件
+### 7. 事件 flush 上报
+
+`flushEvents()`<br/>
+手动触发将本地缓存的事件数据立即上报到服务器。适用于需要确保事件数据及时上报的场景
+
+:::info
+**SDK 版本 >= 4.11.0 支持**
+:::
+
+#### 示例
+
+<Tabs groupId="integration" queryString>
+  <TabItem value="spm" label="Swift Package Manager" default>
+
+```swift
+// 无埋点
+Autotracker.flushEvents()
+
+// 埋点
+Tracker.flushEvents()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods" label="Cocoapods(Swift)">
+
+```swift
+// 无埋点
+GrowingAutotracker.sharedInstance().flushEvents()
+
+// 埋点
+GrowingTracker.sharedInstance().flushEvents()
+```
+
+  </TabItem>
+  <TabItem value="cocoapods_oc" label="Cocoapods(Objective-C)">
+
+```objectivec
+// 无埋点
+[[GrowingAutotracker sharedInstance] flushEvents];
+
+// 埋点
+[[GrowingTracker sharedInstance] flushEvents];
+```
+
+  </TabItem>
+</Tabs>
+
+### 8. 设置埋点事件
 
 `Autotracker.track(_ eventName: String, attributes: [String: Any]?)`<br/>
 发送一个埋点事件；注意：在添加发送的埋点事件代码之前，需在 CDP 平台事件管理界面创建埋点事件以及关联事件属性；<br/>
@@ -372,7 +419,7 @@ GrowingTracker.sharedInstance().trackCustomEvent("eventName", withAttributes: ["
 
 :::
 
-### 8. 事件计时器
+### 9. 事件计时器
 
 `trackTimer(_ eventName: String)`<br/>
 初始化一个事件计时器，参数为计时事件的事件名称，返回值为该事件计时器唯一标识
@@ -503,7 +550,7 @@ event_duration 时间统计不会计算后台时间
 * eventName 对应的埋点事件需要在平台中**绑定**标识符为 event_duration， 且类型为小数的事件属性
 :::
 
-### 9. 设置登录用户属性
+### 10. 设置登录用户属性
 
 `setLoginUserAttributes(_ attributes: [String: Any])`<br/>
 以登录用户的身份定义登录用户属性，用于用户信息相关分析。
@@ -558,7 +605,7 @@ GrowingTracker.sharedInstance().setLoginUserAttributes(["property": "value"])
 
 :::
 
-### 10. 获取设备 ID
+### 11. 获取设备 ID
 
 `deviceId()`<br/>
 获取设备 id，又称为匿名用户 id，SDK 自动生成用来定义唯一设备。
@@ -601,7 +648,7 @@ NSString *deviceId = [[GrowingTracker sharedInstance] getDeviceId];
   </TabItem>
 </Tabs>
 
-### 11. 采集页面事件
+### 12. 采集页面事件
 
 `autotrackPage(_ viewController: UIViewController, alias: String, attributes: [String: Any]?)`<br/>
 采集页面事件，需要在 viewDidAppear 执行之前调用
@@ -643,7 +690,7 @@ GrowingAutotracker.sharedInstance().autotrackPage(self, alias: "viewController",
   </TabItem>
 </Tabs>
 
-### 12. 手动标识页面标题
+### 13. 手动标识页面标题
 
 `setPageTitle(_ title: String?, for page: UIViewController)`<br/>
 手动标识页面标题，需要在 viewDidAppear 执行之前调用；设置 nil 时，使用原标题
@@ -684,7 +731,7 @@ GrowingAutotracker.sharedInstance().setPageTitle(nil, forPage: self)
   </TabItem>
 </Tabs>
 
-### 13. 忽略指定元素
+### 14. 忽略指定元素
 
 `ignorePolicy`<br/>
 被设置忽略的元素，不再触发点击、曝光等任何事件，被忽略的 WebView 也不会采集 Hybrid 的事件。
@@ -732,7 +779,7 @@ view.growingViewIgnorePolicy = GrowingIgnoreNone;
   </TabItem>
 </Tabs>
 
-### 14. 忽略元素类型
+### 15. 忽略元素类型
 
 `ignore(_ clazz: AnyClass)`<br/>
 配置忽略对应可点击元素的追踪
@@ -769,7 +816,7 @@ GrowingAutotracker.sharedInstance().ignoreViewClass(UIButton.self)
   </TabItem>
 </Tabs>
 
-### 15. 忽略元素类型组
+### 16. 忽略元素类型组
 
 `ignore(_ classes: [AnyClass])`<br/>
 配置忽略数组内对应可点击元素的追踪
@@ -806,7 +853,7 @@ GrowingAutotracker.sharedInstance().ignoreViewClasses([UIButton.self, UISwitch.s
   </TabItem>
 </Tabs>
 
-### 16.设置元素唯一 Tag
+### 17.设置元素唯一 Tag
 
 `uniqueTag`<br/>
 给元素设置唯一的 Tag，方便点击等事件确定唯一的 View，一般用于动态布局的场景
@@ -845,7 +892,7 @@ view.growingUniqueTag = @"我是一个特别的view";
   </TabItem>
 </Tabs>
 
-### 17.设置元素采集内容
+### 18.设置元素采集内容
 
 `customContent`<br/>
 给元素设置自定义的采集内容，比如图片元素
@@ -884,7 +931,7 @@ view.growingViewCustomContent = @"content";
   </TabItem>
 </Tabs>
 
-### 18. 设置通用属性
+### 19. 设置通用属性
 
 `setGeneralProps(_ props: [String: Any])`<br/>
 设置通用属性
