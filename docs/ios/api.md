@@ -299,14 +299,12 @@ GrowingTracker.sharedInstance().cleanLocation()
   </TabItem>
 </Tabs>
 
-### 7. 事件 flush 上报
+### 7. 事件 flush 上报 (SDK 版本 >= 4.11.0)
 
 `flushEvents()`<br/>
-手动触发将本地缓存的事件数据立即上报到服务器。适用于需要确保事件数据及时上报的场景
+在每次调用 trackCustomEvent()、setLoginUserId() 等方法时，SDK 都会先将埋点事件保存在数据库中，并默认在15秒时间内判断是否向服务器上传数据：
 
-:::info
-**SDK 版本 >= 4.11.0 支持**
-:::
+如果追求数据采集的时效性，可以调用 flushEvents() 方法，强制将数据发送到服务端，例如：
 
 #### 示例
 
