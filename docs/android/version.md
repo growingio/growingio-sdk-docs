@@ -7,8 +7,8 @@ sidebar_position: 0
 类型：统计类 <br/>
 开发者：北京易数科技有限公司 <br/>
 无埋点包名：com.growingio.android.sdk.autotrack <br/>
-最新版本：v4.5.2 <br/>
-更新时间：2025-11-11 <br/>
+最新版本：v4.5.3 <br/>
+更新时间：2026-02-03 <br/>
 功能说明：GrowingIO用户行为数据采集软件开发工具包（CDP）具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
 下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
 个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
@@ -16,9 +16,20 @@ sidebar_position: 0
 合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
 :::
 
+## RELEASE-4.5.3
+## Features
+* feat: 添加新接口 flushEvents()，用于强制将事件发送至服务端。 [#237](https://github.com/growingio/growingio-sdk-android-autotracker/pull/237)
+
+
+:::note 
+
+ 标签:**[v4.5.3](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.5.3)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2026-02-03** 
+
+:::
+
 ## RELEASE-4.5.2
 ## Features
-* 页面事件添加来源页面属性 [#236](https://github.com/growingio/growingio-sdk-android-autotracker/pull/236)
+* feat: 页面事件添加来源页面属性 [#236](https://github.com/growingio/growingio-sdk-android-autotracker/pull/236)
 
 
 :::note 

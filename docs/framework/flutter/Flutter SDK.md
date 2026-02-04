@@ -217,6 +217,7 @@ GrowingAutotracker.getContext().clearTrackTimer();
 GrowingAutotracker.getContext().setGeneralProps(props:{});
 GrowingAutotracker.getContext().removeGeneralProps(keys:["col1 row1", "key1"]);
 GrowingAutotracker.getContext().clearGeneralProps();
+GrowingAutotracker.getContext().flushEvents();
 
 GrowingAutotracker.getContext().registerComponent(module);
 ```
@@ -419,7 +420,20 @@ GrowingAutotracker.getContext().removeGeneralProps(keys:["xxx", "key1"]);
 GrowingAutotracker.getContext().clearGeneralProps();
 ```
 
-### 11. 注册模块组件
+### 11. 事件 flush 上报
+
+`flushEvents`<br/>
+在每次调用 trackCustomEvent()、setLoginUserId() 等方法时，SDK 都会先将埋点事件保存在数据库中，并默认在15秒时间内判断是否向服务器上传数据：
+
+如果追求数据采集的时效性，可以调用 flushEvents() 方法，强制将数据发送到服务端.
+
+#### 示例
+
+```dart
+GrowingAutotracker.getContext().flushEvents();
+```
+
+### 12. 注册模块组件
 
 `registerComponent`<br/>
 可通过该方法手动注册SDK需要的可配置模块组件（推荐在初始化通过 `Configuration` 初始化时注册）。
@@ -437,7 +451,7 @@ GrowingAutotracker.getContext().clearGeneralProps();
 GrowingAutotracker.getContext().registerComponent(JsonLibraryModule());
 ```
 
-### 12. 无埋点页面事件
+### 13. 无埋点页面事件
 
 在配置了 Flutter 无埋点既可以通过路由监听器和替换Route类自动实现，也可以通过 mixin 类 `GrowingPageStateMixin` 或者 `GrowingPageStatelessMixin` 来使用代码实现。
 
@@ -470,7 +484,7 @@ alias 对应页面的名称，attributes为页面属性。
 > 另外，可以直接在 Page 下调用 `trackCustomEvent` 方法，发送的自定义事件就会携带事件属性，如不需要则可以调用`GrowingAutotracker.getContext().trackCustomEvent`.
 
 
-### 13. 无埋点点击事件
+### 14. 无埋点点击事件
 
 如是想要自动获取无埋点点击事件，需要为整个 App 添加事件监听器，如下所示：
 
