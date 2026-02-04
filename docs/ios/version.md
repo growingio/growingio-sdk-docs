@@ -13,7 +13,7 @@ sidebar_position: 0
 
 ### Features
 
-* 新增手动刷新事件接口（flush events API）([#360](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/360))
+* 添加新接口 flushEvents()，用于强制将事件发送至服务端 ([#360](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/360))
 
 ## [4.10.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.9.1...4.10.0) (2025-11-12)
 

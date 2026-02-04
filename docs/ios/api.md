@@ -299,7 +299,7 @@ GrowingTracker.sharedInstance().cleanLocation()
   </TabItem>
 </Tabs>
 
-### 7. 事件 flush 上报 (SDK 版本 >= 4.11.0)
+### 7. 事件 flush 上报
 
 `flushEvents()`<br/>
 在每次调用 trackCustomEvent()、setLoginUserId() 等方法时，SDK 都会先将埋点事件保存在数据库中，并默认在15秒时间内判断是否向服务器上传数据：
