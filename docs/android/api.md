@@ -31,6 +31,7 @@ GrowingAutotracker.get().setGeneralProps(new HashMap<>())
 GrowingAutotracker.get().removeGeneralProps("key1", "key2")
 GrowingAutotracker.get().clearGeneralProps()
 GrowingAutotracker.get().setDynamicGeneralPropsGenerator(new DynamicGeneralPropsGenerator())
+GrowingAutotracker.get().flushEvents()
 ```
 
 ### 无埋点功能 API 列表一览
@@ -491,6 +492,20 @@ builder.size();
 GrowingAutotracker.get().trackCustomEvent("registerSuccess", builder.build());
 ```
 
+### 16. 事件 flush 上报
+在每次调用 trackCustomEvent()、setLoginUserId() 等方法时，SDK 都会先将埋点事件保存在数据库中，并默认在15秒时间内判断是否向服务器上传数据：
+
+如果追求数据采集的时效性，可以调用 flushEvents() 方法，强制将数据发送到服务端，例如：
+
+```java
+// 记录自定义事件
+GrowingAutotracker.get().trackCustomEvent("CustomEvent");
+
+// 强制发送数据
+GrowingAutotracker.get().flushEvents();
+```
+
+同时在 App 进入后台状态或监听到网络切换有网络时，SDK 也会调用 flushEvents() 方法，将缓存的数据发送到服务端。
 
 ## 无埋点 API 详细说明
 无埋点 API 是用户开启无埋点功能后才生效的接口，主要用于辅助无埋点事件的采集和发送。
