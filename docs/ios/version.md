@@ -3,6 +3,18 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [4.11.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.10.0...4.11.0) (2026-02-04)
+
+
+### Bug Fixes
+
+* 修复 CTTelephonyNetworkInfo 阻塞主线程的问题 ([#358](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/358))
+
+
+### Features
+
+* 添加新接口 flushEvents()，用于强制将事件发送至服务端 ([#360](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/360))
+
 ## [4.10.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.9.1...4.10.0) (2025-11-12)
 
 
