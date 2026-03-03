@@ -3,6 +3,12 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [2.8.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.8.0) (2026-03-03)
+
+### Features 功能
+
+* feat: 支持 UniApp 框架采集
+
 ## [2.7.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/2.7.0) (2025-12-26)
 
 ### Features 功能
