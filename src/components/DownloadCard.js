@@ -8,10 +8,10 @@ const sdkData = {
     { label: "SDK 名称", value: "GrowingIO HarmonyOS SDK" },
     { label: "主要功能", value: "提供数据分析相关的服务，属于统计分析 SDK 类型" },
     { label: "包名", value: "@growingio/analytics" },
-    { label: "版本号", value: "2.7.0" },
-    { label: "更新日期", value: "2025-12-26" },
+    { label: "版本号", value: "2.8.0" },
+    { label: "更新日期", value: "2026-03-03" },
     { label: "SDK 大小", value: "143KB" },
-    { label: "MD5 值", value: "6b2a41374d0bdd81f9fab7b49a599aa8" },
+    { label: "MD5 值", value: "6bb3d0ddb146820bb0a437de71839c80" },
     { label: "开发者", value: "北京易数科技有限公司" },
   ],
   privacyPolicy: {
@@ -24,7 +24,7 @@ const sdkData = {
     text: "GrowingIO HarmonyOS SDK 合规说明",
     link: "https://growingio.github.io/growingio-sdk-docs/knowledge/compliance/harmonyosCompliance"
   },
-  downloadLink: "https://repo.harmonyos.com/ohpm/@growingio/analytics/-/analytics-2.7.0.har"
+  downloadLink: "https://repo.harmonyos.com/ohpm/@growingio/analytics/-/analytics-2.8.0.har"
 };
 
 export default function DownloadCard() {
