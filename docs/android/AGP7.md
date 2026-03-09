@@ -18,6 +18,18 @@ GrowingIO Sdk Gradle Plugin 4.0 具有以下的功能特性：
 Github 项目地址为 [GrowingIO Android SDK Plugin](https://github.com/growingio/growingio-sdk-android-plugin)，欢迎 star, fork。
 :::
 
+## 插件版本说明
+
+| 插件版本                    | 对应SDK版本         |  版本说明 |
+| :-------------------------   | :------         | :----:  |
+| 4.5.2 | 4.5.2 ~ | 升级 GioKit 版本 |
+| 4.5.0 | 4.5.0 - 4.5.1 | 修正 webview chrome 注入点缺少主体对象参数的问题;Compose Kotlin Compiler 升级到1.1.0;添加 Giokit 对 数据库更新的节点Hook，删除对Volley节点Hook |
+| 4.4.0 | 4.4.0 - 4.4.3 | 添加 Jetpack Compose 无埋点插件 |
+| 4.3.0 | 4.3.0 - 4.3.2 | 修复未在visitEnd调用super方法导致的编译失败问题 |
+| 4.2.0 | 4.2.0 | 适配第三方转发的接口 |
+| 4.1.0 | 4.1.0 | 无 |
+| 4.0.0 | 4.0.0 | 适配 4.0.0 大更新 |
+
 
 ## 如何集成
 这里只说明在 Android Gradle插件为7.0及以上版本时的集成方式，若是AGP7以下则按照 [插件集成](/docs/android/Introduce#添加插件) 集成即可。
