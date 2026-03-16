@@ -193,4 +193,6 @@ gdp('init', accountId, datasourceId, { ...实例初始化配置项 });
 
 ## 注意
 
-在使用埋点、埋点计时、半自动埋点浏览多发之前，您仍然需要在平台中每个实例的项目数据源中配置事件以及事件属性。[埋点使用规范](/knowledge/basicknowledge/trackEventUse)
+1、在使用埋点、埋点计时、半自动埋点浏览多发之前，您仍然需要在平台中每个实例的项目数据源中配置事件以及事件属性。[埋点使用规范](/knowledge/basicknowledge/trackEventUse)
+
+2、如果您同时使用了小程序打通插件进行打通，强烈建议开启`strict`配置项，以防止用户信息错乱。[参考文档](/docs/webjs/plugins/embeddedAdapter#插件配置)

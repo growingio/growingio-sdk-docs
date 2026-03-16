@@ -55,29 +55,45 @@ gdp('init', 'your miniprogram accountId', 'your dataSourceId', {
 });
 ```
 
-## 小程序圈选
 
-如果您的小程序内嵌页在打通时需要与小程序一起圈选事件，则需要配置 `circleServerUrl` ，配置方法如下：
+## 插件配置
 
-### 方式一：在注册插件时配置
+插件支持部分配置项，以适应不同的打通需求。
 
-```js
-gdp('registerPlugins', [{ ...gioEmbeddedAdapter, options: { circleServerUrl: '' } }]);
-gdp('init', xxxx);
-```
+#### `circleServerUrl`
 
-### 方式二：在SDK初始化时配置
+类型：string，默认值：''。
+
+OP私有部署时小程序圈选服务端地址，Saas客户请忽略。
+
+#### `rewriteQuery`
+
+类型：boolean，默认值：true。
+
+显式指定false则SDK不自动移除地址参数中的Gio参数。
+
+#### `strict`
+
+类型：boolean，默认值：false。
+
+开启后仅当小程序内嵌环境中尝试打通数据，严格隔离独立访问时的用户信息。该配置项是为了防止您的H5页面或者同域名的H5在小程序浏览器环境下（例如聊天中）打开时，超出预期地使用了与小程序共用的存储导致用户信息错乱。
+
+**<font color="#FC5F3A">注意：</font>如果您同时使用的多实例插件创建了多实例进行打通，强烈建议开启`strict`配置项，以防止用户信息错乱。**
+
+#### 配置示例：
 
 ```js
 gdp('init', 'your miniprogram accountId', 'your dataSourceId', {
   embeddedAdapter: {
-    circleServerUrl: ''
+    circleServerUrl: 'https://xxxxxx', // OP私有部署时需要填写，Saas客户请忽略
+    rewriteQuery: false, // 显式指定false则SDK不自动移除地址参数中的Gio参数
+    strict: true // 开启后仅在小程序内嵌环境中尝试打通数据且严格隔离独立访问时的用户信息
   },
   ...其他配置项
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>该配置项仅OP私有部署的客户需要填写，Saas客户请忽略。如果同时在注册插件时和在SDK初始化时配置时，优先使用SDK初始化配置。**
+**<font color="#FC5F3A">注意：</font>所有的插件配置项都不是必须的，如果您不配置，插件依然能按默认值正常执行。您也可以只配其中一项来覆盖默认值更改执行逻辑。**
 
 ## 打通影响
 

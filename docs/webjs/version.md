@@ -5,6 +5,11 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
 
+### V4.3.2 - 2026/03/13
+
+- 🌟 小程序打通插件新增严格模式用于控制是否区分H5和小程序内嵌环境以决定是否执行打通逻辑。
+
+
 ### V4.3.1 - 2025/11/13
 
 - 🐞 修复APM插件在某些情况下可能报错导致请求不可用的问题。
