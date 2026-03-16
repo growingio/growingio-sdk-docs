@@ -93,7 +93,10 @@ gdp('init', accountId, datasourceId, {
 ```js
 gdp('init', accountId, datasourceId, {
   embeddedAdapter: {
-    circleServerUrl: ''
+    circleServerUrl: '',
+    rewriteQuery: true,
+    ignoreFields: [],
+    strict: false
   },
   ...其他配置项,
 });
