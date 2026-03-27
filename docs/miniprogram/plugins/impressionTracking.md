@@ -26,7 +26,7 @@ title: 半自动埋点浏览
 #### 下载集成引入
 
 - 下载插件包并复制至项目中：
-  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.4.3/plugins/gioImpressionTracking.js](https://assets.giocdn.com/sdk/minip/4.4.3/plugins/gioImpressionTracking.js)</font>**<br/>
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioImpressionTracking.js](https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioImpressionTracking.js)</font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ```js
@@ -85,11 +85,7 @@ Page({
 对应产生的`CUSTOM`事件相当于： ↓↓↓
 
 ```js
-gdp(
-  'track',
-  'imp_picture_var',
-  { type: 'hjh', name: 'yue' },
-);
+gdp('track', 'imp_picture_var', { type: 'hjh', name: 'yue' });
 ```
 
 **3、** 如果您的曝光事件只需要统计一次或触发过于频繁导致曝光事件量过大，可以在节点上添加`data-gio-imp-type="once"`并设置唯一的`节点id`，来使得曝光逻辑变为单次上报。
@@ -158,7 +154,7 @@ Page({
 });
 ```
 
-**<font color="#FC5F3A">注意：</font>如果您是在自定义组件中为自定义组件更新曝光监听，请传入 `this`对象。** 
+**<font color="#FC5F3A">注意：</font>如果您是在自定义组件中为自定义组件更新曝光监听，请传入 `this`对象。**
 
 #### 示例
 
@@ -166,10 +162,10 @@ Page({
 const { gdp } = global;
 Component({
   lifetimes: {
-    attached: function(){
+    attached: function () {
       gdp('updateImpression', this);
-    }
-  }
+    },
+  },
 });
 ```
 

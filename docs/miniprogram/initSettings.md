@@ -7,26 +7,26 @@ title: 初始化配置
 
 下表中列出了所有小程序 SDK 的配置项，请按需设置。如您不确定是否需要，请咨询我们。
 
-| **字段名**       | **参数类型** | **默认值**                   | **说明**                                           |
-|------------------|--------------|------------------------------|--------------------------------------------------|
-| `dataCollect`    | `boolean`    | `true`                       | 是否开启数据采集                                   |
-| `debug`          | `boolean`    | `false`                      | 是否开启调试模式                                   |
-| `idMapping`      | `boolean`    | `false`                      | 是否开启多用户身份上报                             |
-| `extraParams`    | `string[]`   | `[]`                         | 与 H5 数据打通时额外获取的字段                     |
-| `followShare`    | `boolean`    | `true`                       | 是否跟踪分享数据                                   |
-| `forceLogin`     | `boolean`    | `false`                      | 是否开启强制登录模式                               |
-| `ignoreFields`   | `string[]`   | `[]`                         | 上报忽略字段                                       |
-| `impressionScale`| `number`     | `0`                          | 曝光比例（小数）                                      |
-| `keepAlive`      | `number`     | `5`                          | 后台保活时长（分钟）                               |
-| `requestTimeout` | `number`     | `5000`                       | 上报请求超时时长（毫秒）                             |
-| `originalSource` | `boolean`    | `true`                       | VISIT事件是否使用初始来源                           |
-| `serverUrl`      | `string`     | `https://napi.growingio.com` | 数据上报的服务端地址                               |
-| `taro`           | `any`        | `-`                          | 使用 Taro 开发时使用的实例，参考集成示例代码        |
-| `taroVue`        | `any`        | `-`                          | 使用 Taro3vue2/3 开发时使用的实例，参考集成示例代码 |
-| `tbConfig`       | `object`     | `-`                          | 淘宝小程序配置项                                   |
-| `uniVue`         | `any`        | `-`                          | 使用 uni-app 开发时使用的实例，参考集成示例代码     |
-| `uploadInterval` | `number`     | `1000`                       | SDK 上报数据的节流间隔时间（毫秒）                |
-| `version`        | `string`     | `1.0.0`                      | 小程序发版版本号(建议填写)                         |
+| **字段名**        | **参数类型** | **默认值**                   | **说明**                                            |
+| ----------------- | ------------ | ---------------------------- | --------------------------------------------------- |
+| `dataCollect`     | `boolean`    | `true`                       | 是否开启数据采集                                    |
+| `debug`           | `boolean`    | `false`                      | 是否开启调试模式                                    |
+| `idMapping`       | `boolean`    | `false`                      | 是否开启多用户身份上报                              |
+| `extraParams`     | `string[]`   | `[]`                         | 与 H5 数据打通时额外获取的字段                      |
+| `followShare`     | `boolean`    | `true`                       | 是否跟踪分享数据                                    |
+| `forceLogin`      | `boolean`    | `false`                      | 是否开启强制登录模式                                |
+| `ignoreFields`    | `string[]`   | `[]`                         | 上报忽略字段                                        |
+| `impressionScale` | `number`     | `0`                          | 曝光比例（小数）                                    |
+| `keepAlive`       | `number`     | `5`                          | 后台保活时长（分钟）                                |
+| `requestTimeout`  | `number`     | `5000`                       | 上报请求超时时长（毫秒）                            |
+| `originalSource`  | `boolean`    | `true`                       | VISIT事件是否使用初始来源                           |
+| `serverUrl`       | `string`     | `https://napi.growingio.com` | 数据上报的服务端地址                                |
+| `taro`            | `any`        | `-`                          | 使用 Taro 开发时使用的实例，参考集成示例代码        |
+| `taroVue`         | `any`        | `-`                          | 使用 Taro3vue2/3 开发时使用的实例，参考集成示例代码 |
+| `tbConfig`        | `object`     | `-`                          | 淘宝小程序配置项                                    |
+| `uniVue`          | `any`        | `-`                          | 使用 uni-app 开发时使用的实例，参考集成示例代码     |
+| `uploadInterval`  | `number`     | `1000`                       | SDK 上报数据的节流间隔时间（毫秒）                  |
+| `version`         | `string`     | `1.0.0`                      | 小程序发版版本号(建议填写)                          |
 
 ## 配置项详解
 
@@ -74,7 +74,7 @@ gdp('init', accountId, dataSourceId, appId, {
 当调用[`getGioInfo`](/docs/miniprogram/commonlyApi#13与h5打通用户数据getgioinfo)时，除了默认字段以外，可增加以下小程序 SDK 字段。
 
 | 可选字段    | 字段含义 | 可选字段     | 字段含义 | 可选字段        | 字段含义     |
-|-------------|-------|--------------|--------|-----------------|----------|
+| ----------- | -------- | ------------ | -------- | --------------- | ------------ |
 | appChannel  | 场景值   | language     | 语言     | networkState    | 网络类型     |
 | deviceBrand | 设备品牌 | screenWidth  | 屏幕宽度 | operatingSystem | 系统类型     |
 | deviceModel | 设备型号 | screenHeight | 屏幕高度 | platformVersion | 操作系统版本 |
@@ -122,7 +122,7 @@ gdp('init', accountId, dataSourceId, appId, {
 });
 ```
 
-强制登录模式适用于打开小程序就调用 `wx.login` ([参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)) 获取 openId 或 unionId 的小程序。 开启此模式并调用 `identity` 上报 openId 或 unionId，会将上报的 Id 作为访问用户 ID，有助于访问用户数据关联性分析。
+强制登录模式适用于打开小程序就调用 `wx.login` ([参考文档](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)) 获取 openId 或 unionId 的小程序。 开启此模式并调用 `identify` 上报 openId 或 unionId，会将上报的 Id 作为访问用户 ID，有助于访问用户数据关联性分析。
 
 设置`forceLogin`为`true`后，SDK 会暂停上报数据，待调用 `wx.login`后获取 openId 或 unionId，调用 `identify` 方法后开始数据上报。**调用 `identify` 会替换事件数据的 deviceId 为设定值（一般是小程序 openId 或 unionId），包括调用`identify`之前触发的事件。**
 
@@ -141,7 +141,7 @@ gdp('identify', openId / unionId);
 您可以指定一项或多项字段，但均需为数组格式进行设置。支持字段如下：
 
 | 可选字段     | 字段含义 | 可选字段        | 字段含义 |
-|--------------|------|-----------------|------|
+| ------------ | -------- | --------------- | -------- |
 | deviceBrand  | 设备品牌 | operatingSystem | 系统类型 |
 | deviceModel  | 设备型号 | screenWidth     | 屏幕宽度 |
 | networkState | 网络类型 | screenHeight    | 屏幕高度 |
@@ -181,7 +181,7 @@ gdp('init', accountId, dataSourceId, appId, {
 
 默认情况下，小程序从前台至后台挂起时，SDK的保活时长为默认5分钟，超时后再拉起即视为一次新的访问。早期微信官方的默认保活时长也是5分钟，以保证不会占用过多的运行内存，后来因为手机性能的发展，运行内存变得不再吃紧，微信官方移除了这一限制。SDK为了保持向下兼容，保留了这以设置。如果您需要修改保活时长，可修改该配置项。
 
-**单位：分钟；取值范围：整数大于0，小于 60 * 24（即24小时）；默认 5。**
+**单位：分钟；取值范围：整数大于0，小于 60 \* 24（即24小时）；默认 5。**
 
 ```js
 gdp('init', accountId, dataSourceId, appId, {
@@ -262,8 +262,8 @@ gdp('init',accountId, dataSourceId, appId, {
 ```js
 gdp('init', accountId, dataSourceId, appId, {
   tbConfig: {
-    cloud,                                // 淘宝小程序官方的请求SDK
-    cloudAppId: 'xxxxxx',                 // 云应用Id，无默认值
+    cloud, // 淘宝小程序官方的请求SDK
+    cloudAppId: 'xxxxxx', // 云应用Id，无默认值
     path: 'your cloudApp interface path', // 云应用数据接口，无默认值
   },
   ...其他配置项,

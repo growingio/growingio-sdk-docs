@@ -9,30 +9,30 @@ title: 初始化配置
 
 > <b>提示：所有的配置项均为非必填。</b>
 
-| **字段名**        | **参数取值**             | **默认值**                    | **说明**                     |
-|------------------|-------------------------|------------------------------|----------------------------|
-| `appId`          | `string`                | `-`                          | 指定打通的小程序appId         |
-| `cookieDomain`   | `string`                | `当前站点的一级域名`            | 自定义cookie存储的域         |
-| `dataCollect`    | `boolean`               | `true`                       | 是否开启数据采集             |
-| `debug`          | `boolean`               | `false`                      | 是否开启调试模式             |
-| `embeddedAdapter`| `object`                | `{}`                         | 与小程序打通时的配置项         |
-| `extraUA`        | `boolean`               | `true`                       | 是否开启增强型UA             |
-| `forceLogin`     | `boolean`               | `false`                      | 是否开启强制登录             |
-| `idMapping`      | `boolean`               | `false`                      | 是否开启多用户身份上报       |
-| `hashtag`        | `boolean`               | `false`                      | 是否开启hash解析             |
-| `ignoreFields`   | `string[]`              | `[]`                         | 上报忽略字段                 |
-| `impressionScale`| `number`                | `0`                          | 曝光比例（小数）                  |
-| `originalSource` | `boolean`               | `true`                       | 访问事件是否使用原始进入数据 |
-| `packageName`    | `string`                | `-`                          | 指定打通的移动端包名         |
-| `platform`       | `取值见表`               | `Web`                        | 平台类型                     |
-| `requestTimeout` | `number`                | `5000`                       | 请求超时时长（毫秒）           |
-| `rewriteQuery`   | `boolean`               | `true`                       | 与小程序做打通操作时是否自动删除gioInfo参数|
-| `sendType`       | `string`                | `beacon`                     | 数据上报优先方式             |
-| `serverUrl`      | `string`                | `https://napi.growingio.com` | 数据上报的服务端地址         |
-| `storageType`    | `cookie / localStorage` | `cookie`                     | SDK信息的持久化存储的类型    |
-| `trackBot`       | `boolean`               | `true`                       | 是否采集爬虫环境数据         |
-| `trackPage`      | `boolean`               | `true`                       | 是否自动采集页面访问事件       |
-| `version`        | `string`                | `1.0.0`                      | 应用版本号                   |
+| **字段名**        | **参数取值**            | **默认值**                   | **说明**                                    |
+| ----------------- | ----------------------- | ---------------------------- | ------------------------------------------- |
+| `appId`           | `string`                | `-`                          | 指定打通的小程序appId                       |
+| `cookieDomain`    | `string`                | `当前站点的一级域名`         | 自定义cookie存储的域                        |
+| `dataCollect`     | `boolean`               | `true`                       | 是否开启数据采集                            |
+| `debug`           | `boolean`               | `false`                      | 是否开启调试模式                            |
+| `embeddedAdapter` | `object`                | `{}`                         | 与小程序打通时的配置项                      |
+| `extraUA`         | `boolean`               | `true`                       | 是否开启增强型UA                            |
+| `forceLogin`      | `boolean`               | `false`                      | 是否开启强制登录                            |
+| `idMapping`       | `boolean`               | `false`                      | 是否开启多用户身份上报                      |
+| `hashtag`         | `boolean`               | `false`                      | 是否开启hash解析                            |
+| `ignoreFields`    | `string[]`              | `[]`                         | 上报忽略字段                                |
+| `impressionScale` | `number`                | `0`                          | 曝光比例（小数）                            |
+| `originalSource`  | `boolean`               | `true`                       | 访问事件是否使用原始进入数据                |
+| `packageName`     | `string`                | `-`                          | 指定打通的移动端包名                        |
+| `platform`        | `取值见表`              | `Web`                        | 平台类型                                    |
+| `requestTimeout`  | `number`                | `5000`                       | 请求超时时长（毫秒）                        |
+| `rewriteQuery`    | `boolean`               | `true`                       | 与小程序做打通操作时是否自动删除gioInfo参数 |
+| `sendType`        | `string`                | `beacon`                     | 数据上报优先方式                            |
+| `serverUrl`       | `string`                | `https://napi.growingio.com` | 数据上报的服务端地址                        |
+| `storageType`     | `cookie / localStorage` | `cookie`                     | SDK信息的持久化存储的类型                   |
+| `trackBot`        | `boolean`               | `true`                       | 是否采集爬虫环境数据                        |
+| `trackPage`       | `boolean`               | `true`                       | 是否自动采集页面访问事件                    |
+| `version`         | `string`                | `1.0.0`                      | 应用版本号                                  |
 
 ## 配置项详解
 
@@ -95,7 +95,7 @@ gdp('init', accountId, datasourceId, {
   embeddedAdapter: {
     circleServerUrl: '',
     rewriteQuery: true,
-    strict: false
+    strict: false,
   },
   ...其他配置项,
 });
@@ -130,7 +130,7 @@ gdp('init', accountId, dataSourceId, appId, {
 });
 ```
 
-强制登录模式适用于打开站点就在公众号H5中调用[网页授权](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html) 之后获取 openId 或 unionId 的微信公众号H5或内嵌页。 开启此模式并调用 `identity` 上报 openId 或 unionId，会将上报的 Id 作为访问用户 ID，有助于访问用户数据关联性分析。
+强制登录模式适用于打开站点就在公众号H5中调用[网页授权](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html) 之后获取 openId 或 unionId 的微信公众号H5或内嵌页。 开启此模式并调用 `identify` 上报 openId 或 unionId，会将上报的 Id 作为访问用户 ID，有助于访问用户数据关联性分析。
 
 设置`forceLogin`为`true`后，SDK 会暂停上报数据，待调用网页授权后获取 openId 或 unionId，调用 `identify` 方法后开始数据上报。**调用 `identify` 会替换事件数据的 deviceId 为设定值（一般是 openId 或 unionId），包括调用`identify`之前触发的事件。**
 
@@ -223,13 +223,13 @@ gdp('init', accountId, datasourceId, {
 
 默认情况下，SDK的平台取值为`Web`，当您的站点为微信内嵌页等其他场景时，可指定平台。
 
-| **取值** | **对应端**       | **取值**  | **对应端**       |
-|----------|----------------|-----------|---------------|
-| Web      | PC/H5站点        | baidup    | 百度小程序内嵌页 |
-| wxwv     | 微信公众号内嵌页 | qq        | QQ小程序内嵌页   |
-| Android  | 安卓内嵌页       | bytedance | 头条小程序内嵌页 |
-| iOS      | iOS内嵌页        | kuaishoup | 快手小程序内嵌页 |
-| Minp     | 微信小程序内嵌页 | jdp       | 京东小程序内嵌页 |
+| **取值** | **对应端**               | **取值**  | **对应端**       |
+| -------- | ------------------------ | --------- | ---------------- |
+| Web      | PC/H5站点                | baidup    | 百度小程序内嵌页 |
+| wxwv     | 微信公众号内嵌页         | qq        | QQ小程序内嵌页   |
+| Android  | 安卓内嵌页               | bytedance | 头条小程序内嵌页 |
+| iOS      | iOS内嵌页                | kuaishoup | 快手小程序内嵌页 |
+| Minp     | 微信小程序内嵌页         | jdp       | 京东小程序内嵌页 |
 | alip     | 阿里(支付宝)小程序内嵌页 |
 
 ```js

@@ -2,6 +2,7 @@
 sidebar_position: 6
 title: 多实例
 ---
+
 ## 简介（gioMultipleInstances）
 
 当您的小程序需要使用两套不同采集方案逻辑和数据双发时，我们提供了多实例的方案。
@@ -15,7 +16,7 @@ title: 多实例
 #### 下载集成引入
 
 - 下载插件并复制至项目中：
-  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.4.3/plugins/gioMultipleInstances.js](https://assets.giocdn.com/sdk/minip/4.4.3/plugins/gioMultipleInstances.js)</font>**<br/>
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioMultipleInstances.js](https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioMultipleInstances.js)</font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ```js
@@ -115,7 +116,7 @@ gdp('trackTimerEnd', 'timerId', {
 
 ### 1、初始化配置项
 
- `autotrack`、`debug`、`forceLogin`、`keepAlive`、`originalSource`、`performance`、`pluginMode`、`taro`、`taroVue`、`tbConfig` 和 `uniVue` 配置项**仅主实例设值生效**，即子实例的表现与主实例相同。因此您无法为子实例单独设置这些配置项。
+`autotrack`、`debug`、`forceLogin`、`keepAlive`、`originalSource`、`performance`、`pluginMode`、`taro`、`taroVue`、`tbConfig` 和 `uniVue` 配置项**仅主实例设值生效**，即子实例的表现与主实例相同。因此您无法为子实例单独设置这些配置项。
 
 除了以上几个初始化配置项子实例无法使用以外，其他初始化配置项均可单独为子实例进行配置。
 

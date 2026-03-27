@@ -32,14 +32,14 @@ values={[
 {label: 'MPX', value: 'MPX'},
 {label: '小程序插件', value: '小程序插件'},
 ]}
->
-<TabItem value="原生">
+
+> <TabItem value="原生">
 
 #### 1、加载 SDK
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.4.3/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.4.3/gio-wechat.js)<br/>
+微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.0/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.5.0/gio-wechat.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -79,7 +79,7 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-uniapp 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.4.3/gio-uniapp.js](https://assets.giocdn.com/sdk/minip/4.4.3/gio-uniapp.js)<br/>
+uniapp 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.0/gio-uniapp.js](https://assets.giocdn.com/sdk/minip/4.5.0/gio-uniapp.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -178,7 +178,7 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-Taro 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.4.3/gio-taro.js](https://assets.giocdn.com/sdk/minip/4.4.3/gio-taro.js)<br/>
+Taro 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.0/gio-taro.js](https://assets.giocdn.com/sdk/minip/4.5.0/gio-taro.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -325,7 +325,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.4.3/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.4.3/gio-wechat.js)<br/>
+微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.0/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.5.0/gio-wechat.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -334,57 +334,26 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 **<font size="4" color="#FC5F3A">注意不要随意修改初始化代码位置，SDK 不支持在小程序的任意生命周期中进行初始化。</font>**
 
-#### 3、全局替换方法
-
-**全局替换 MPX的`createApp`方法为`GioApp`、`createPage`方法为`GioPage`、`createComponent`方法为`GioComponent`。**
-
 #### 示例代码
 
 ```js
 // app.js
-import gdp, { GioApp } from './utils/gio/gio-wechat.js';
-import mpx from '@mpxjs/core';
+import gdp from './utils/mpx';
+import mpx, { createApp } from '@mpxjs/core';
 
 gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
     version: 'your miniProgram version',
     // OP私有部署客户请填写serverUrl，Saas客户请忽略
     serverUrl: 'your server url',
+    // 需要传入mpx实例
+    mpx: mpx,
     ...other settings
 });
 
-// 修改mpx的 createApp 方法为 GioApp ↓↓↓
-GioApp({ ... });
+createApp({ ... });
 ```
 
-```js
-// page.js
-import gdp, { GioPage } from '../utils/wechat';
-
-// 修改mpx的 createPage 方法为 GioPage ↓↓↓
-GioPage({
-  data: {...},
-  onShow() {
-    gdp('xxx', xxx);
-    ...
-  },
-  ...
-});
-```
-
-```js
-// component.js
-import gdp, { GioComponent } from '../utils/wechat';
-
-// 修改mpx的 createComponent 方法为 GioComponent ↓↓↓
-GioComponent({
-  data: {...},
-  onShow() {
-    gdp('xxx', xxx);
-    ...
-  },
-  ...
-});
-```
+**<font color="#FC5F3A">注意：</font>低版本升级时，请注意将`GioApp`替换回`createApp`、`GioPage`替换回`createPage`、`GioComponent`替换回`createComponent`的官方写法。**
 
 ```js
 原有 require 的引用方式依然可以使用。
@@ -398,7 +367,7 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.4.3/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.4.3/gio-wechat.js)<br/>
+微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.0/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.5.0/gio-wechat.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -409,7 +378,7 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
 
 #### 示例代码
 
-  <Tabs
+<Tabs
 groupId="4"
 defaultValue="页面应用型插件"
 values={[
@@ -417,7 +386,7 @@ values={[
 {label: '组件型插件', value: '组件型插件'},
 ]
 }>
-  <TabItem value="页面应用型插件">
+<TabItem value="页面应用型插件">
 
 页面应用型插件可视为一个独立的小程序进行集成，但由于其运行限制的特殊性，需要调用`GioPage`来运行页面。
 
@@ -447,14 +416,14 @@ GioPage({
   data: {},
   onShow() {
     gdp('xxx', xxx);
-  }
+  },
 });
 ```
 
   </TabItem>
   <TabItem value="组件型插件">
 
-  组件型插件因其只有一个Component组件，直接集成即可。
+组件型插件因其只有一个Component组件，直接集成即可。
 
 #### 示例代码
 
