@@ -5,6 +5,11 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.5.0 - 2026/03/26
+
+- 🌟 优化MPX框架适配新版本。
+- 🌟 修改配置接口(setOption)新增配置项ignoreFields，用于动态配置忽略上报的字段。
+
 ### V4.4.3 - 2026/01/04
 
 - 🐞 修复鸿蒙系统network取值错误导致数据异常的问题
@@ -78,7 +83,7 @@ SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-minip
 ### V4.0.1 - 2023/12/21
 
 - 🐞 修复taro3react集成时可能出现的框架报错的问题。<br/>
-**<font size="2">(自该版本起，集成SDK时不再需要`babel-plugin-setname`插件)</font>**
+  **<font size="2">(自该版本起，集成SDK时不再需要`babel-plugin-setname`插件)</font>**
 - 🐞 修复taro3react中，点击事件触发异常的问题。
 - 🐞 修复支付宝、百度、头条小程序半自动埋点触发异常的问题。
 - 🐞 修复淘宝小程序云函数上报请求异常的问题。

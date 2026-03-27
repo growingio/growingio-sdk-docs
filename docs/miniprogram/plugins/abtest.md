@@ -14,7 +14,7 @@ title: A/B测试
 #### 下载集成引入
 
 - 下载插件并复制至项目中：
-  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.4.3/plugins/gioABTest.js](https://assets.giocdn.com/sdk/minip/4.4.3/plugins/gioABTest.js)</font>**<br/>
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioABTest.js](https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioABTest.js)</font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ```js
@@ -38,7 +38,9 @@ import gioABTest from 'gio-miniprogram-sdk/plugins/gioABTest';
 ### 3、添加插件配置项并注册
 
 ```js
-gdp('registerPlugins', [{ ...gioABTest, options: { abServerUrl: 'server url' }}]);
+gdp('registerPlugins', [
+  { ...gioABTest, options: { abServerUrl: 'server url' } },
+]);
 gdp('init', xxxx);
 ```
 

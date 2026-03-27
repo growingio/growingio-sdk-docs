@@ -20,7 +20,7 @@ title: 无埋点
 #### 下载集成引入
 
 - 下载插件并复制至项目中：
-  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.4.3/plugins/gioEventAutoTracking.js](https://assets.giocdn.com/sdk/minip/4.4.3/plugins/gioEventAutoTracking.js)</font>**<br/>
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioEventAutoTracking.js](https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioEventAutoTracking.js)</font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ```js
@@ -69,10 +69,12 @@ gdp('init', xxxx);
 有时页面中有需要跳转的链接（尤其是navigator组件）时，为了上报完整的用户目标去向。此时，我们可以通过链接标记 `data-src` 来上报点击链接的目标去向。例：
 
 ```html
-<navigator url="/pages/h5/h5?from=navigate" data-src="/pages/h5/h5?from=navigate" bindtap="onNavigatorTap">
-  <view >
-     ...
-  </view>
+<navigator
+  url="/pages/h5/h5?from=navigate"
+  data-src="/pages/h5/h5?from=navigate"
+  bindtap="onNavigatorTap"
+>
+  <view> ... </view>
 </navigator>
 
 <view data-src="/pages/h5/h5?from=navigate" bindtap="onLinkTap">
@@ -116,12 +118,12 @@ Page({
 有时我们表单页面中可能需要获取用户选择框、单/多选框的值进行上报以准确分析用户行为。此时，我们可以通过数值采集标记 `data-growing-track` 来获取值。例：
 
 ```html
-<checkbox-group bindchange='checkboxChange' data-growing-track>
-  <label class='checkbox'>
-    <checkbox value='GrowingIO' checked='true' /> GrowingIO
+<checkbox-group bindchange="checkboxChange" data-growing-track>
+  <label class="checkbox">
+    <checkbox value="GrowingIO" checked="true" /> GrowingIO
   </label>
-  <label class='checkbox'>
-    <checkbox value='CDP' checked='false' /> GrowingIO CDP
+  <label class="checkbox">
+    <checkbox value="CDP" checked="false" /> GrowingIO CDP
   </label>
 </checkbox-group>
 ```
