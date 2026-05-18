@@ -5,6 +5,14 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.5.1 - 2026/05/18
+
+- 🐞 修复 trackTimerEnd 不会清掉计时器的问题。
+- 🐞 修复获取网络状态失败会报错崩溃的问题。
+- 🐞 修复 setLocation 经纬度校验错误的问题。
+- 🌟 优化部分逻辑，移除冗余代码。
+- 🎉 新增支付宝支持性能监控
+
 ### V4.5.0 - 2026/03/26
 
 - 🌟 优化MPX框架适配新版本。
