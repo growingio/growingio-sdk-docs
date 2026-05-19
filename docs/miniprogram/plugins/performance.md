@@ -38,7 +38,9 @@ title: 性能监控
 
 ## 小程序兼容性
 
-当前仅支持 `微信小程序`。
+当前仅支持 `微信小程序` 和 `支付宝小程序` 2.0 及以上基础库版本。
+
+`支付宝小程序` 仅在SDK 4.5.1 及以上版本支持。
 
 ## 集成
 
@@ -47,7 +49,7 @@ title: 性能监控
 #### 下载集成引入
 
 - 下载插件并复制至项目中：
-  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioPerformance.js](https://assets.giocdn.com/sdk/minip/4.5.0/plugins/gioPerformance.js)</font>**<br/>
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.5.1/plugins/gioPerformance.js](https://assets.giocdn.com/sdk/minip/4.5.1/plugins/gioPerformance.js)</font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 - 引入插件

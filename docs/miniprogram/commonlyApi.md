@@ -3,7 +3,6 @@ sidebar_position: 3
 title: 数据采集API
 ---
 
-
 通过 **`global.gdp`** 这个全局的方法可以调用到SDK中所有开放的接口。
 
 您可在页面头部进行解构获取gdp方法。**`const { gdp } = global;`**
@@ -29,9 +28,9 @@ SDK文档中指定参数值为 **Object类型** 时，请注意以下限制：**
 #### 示例
 
 ```js
-name: ['cola', 'milk', 'juice']
+name: ['cola', 'milk', 'juice'];
 // 上报时会自动转换为↓↓↓
-name: 'cola||milk||juice'
+name: 'cola||milk||juice';
 ```
 
 2、如果您的属性值是一个 json 格式，则可能会被强制转换为`[object Object]`。因此您需要调整数据格式。
@@ -107,9 +106,9 @@ const gioDeviceId: string = gdp('getDeviceId');
 当用户登录之后调用，设置登录用户ID
 :::info
 
-* 如果您的小程序每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在用户每次登录小程序访问时调用setUserId方法
+- 如果您的小程序每次用户升级版本时无需重新登录的话，为防止用户本地缓存被清除导致的无法被识别为登录用户，建议在用户每次登录小程序访问时调用setUserId方法
 
-* 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 **同时在初始化 SDK 时设置`idMapping`为`true`**
+- 当需要标记用户ID类型时，请先进行规划，并在平台的数据中心，添加新的用户身份类型，再设置userkey，误设会影响数据质量。 **同时在初始化 SDK 时设置`idMapping`为`true`**
 
 :::
 
@@ -118,7 +117,7 @@ const gioDeviceId: string = gdp('getDeviceId');
 | 参数      | 参数类型 | 说明                                                            |
 | :-------- | :------- | :-------------------------------------------------------------- |
 | `userId`  | _String_ | 长度限制大于0且小于等于1000，如果大于长度1000将只截取前1000长度 |
-| `userKey` | _String_ | 适用于ID-MAPPING,可设置 userId 的类型, 默认不传|
+| `userKey` | _String_ | 适用于ID-MAPPING,可设置 userId 的类型, 默认不传                 |
 
 ```js
 gdp('setUserId', userId: string | number, userKey?: string | number);
@@ -146,7 +145,7 @@ gdp('setUserAttributes', userAttributes);
 gdp('setUserAttributes', { name: 'Lily', age: 18 });
 gdp('setUserAttributes', {
   tags: ['clever', 'brave', 'strong'], // 仅支持字符串和数字的一维数组，其他类型会被强制转为字符串
-  age: 18
+  age: 18,
 });
 ```
 
@@ -161,7 +160,7 @@ gdp('setUserAttributes', {
 Gio平台系统中用户属性默认预定义的微信用户属性如下表：
 
 | 名称         | 标识符            | 名称             | 标识符                |
-|------------|-------------------|----------------|-----------------------|
+| ------------ | ----------------- | ---------------- | --------------------- |
 | 微信 openid  | $wechat_openId    | 微信用户所在国家 | $wechat_country       |
 | 微信 unionid | $wechat_unionId   | 微信用户所在省份 | $wechat_province      |
 | 微信昵称     | $wechat_nickName  | 微信用户所在城市 | $wechat_city          |
@@ -177,10 +176,10 @@ wx.getUserInfo({
     gdp('setUserAttributes', {
       $wechat_openId: user.openid,
       $wechat_unionId: user.unionid,
-      $wechat_nickName: user.nickname
+      $wechat_nickName: user.nickname,
     });
-  }
-})
+  },
+});
 ```
 
 #### 阿里(支付宝)小程序用户属性设置
@@ -188,7 +187,7 @@ wx.getUserInfo({
 Gio平台系统中用户属性默认预定义的阿里(支付宝)小程序用户属性如下表：
 
 | 名称               | 标识符           | 名称           | 标识符                     |
-|------------------|------------------|--------------|----------------------------|
+| ------------------ | ---------------- | -------------- | -------------------------- |
 | 支付宝用户 ID      | $alipay_userId   | 支付宝学生认证 | $alipay_isStudentCertified |
 | 支付宝头像         | $alipay_avatar   | 支付宝用户类型 | $alipay_userType           |
 | 支付宝用户所在省份 | $alipay_province | 支付宝用户状态 | $alipay_userStatus         |
@@ -205,7 +204,7 @@ my.getAuthUserInfo({
       $alipay_avatar: userInfo.avatar,
       $alipay_province: userInfo.province,
     });
-  }
+  },
 });
 ```
 
@@ -226,7 +225,7 @@ wx.getLocation({
   type: 'wgs84',
   success: ({ latitude, longitude }) => {
     gdp('setLocation', latitude, longitude);
-  }
+  },
 });
 ```
 
@@ -246,7 +245,7 @@ gdp('track', 'order', {
   type: 'drinks',
   name: ['cola', 'milk', 'juice'], // 支持字符串和数字的一维数组，其他类型会被强制转为字符串
   currency: 'RMB',
-  price: 3
+  price: 3,
 });
 ```
 
@@ -281,13 +280,13 @@ gdp('setGeneralProps', properties: object);
 
 ```js
 // 固定值
-gdp('setGeneralProps', { 'currency': 'RMB' });
+gdp('setGeneralProps', { currency: 'RMB' });
 
 // 变量
 let index = 0;
 gdp('setGeneralProps', {
-  'nick_name_var': 'Mike',
-  'index_var': () => index++
+  nick_name_var: 'Mike',
+  index_var: () => index++,
 });
 ```
 
@@ -318,7 +317,7 @@ gdp('clearGeneralProps', []);
 有时我们需要通过区分于页面参数的页面属性来进行拆分分析，这时就调用该方法设置页面属性。
 
 ```js
-gdp('setGeneralProps', properties: object);
+gdp('setPageAttributes', properties: object);
 ```
 
 #### 示例
@@ -328,9 +327,9 @@ Page({
   onLoad() {
     gdp('setPageAttributes', {
       page_type: 'page type',
-      page_level: 'page level'
+      page_level: 'page level',
     });
-  }
+  },
 });
 ```
 
@@ -360,10 +359,10 @@ gdp('clearPageAttributes', []);
 
 当有H5页面需要获取小程序SDK采集用户数据的需求时(将H5页面采集的数据需要与小程序采集的数据做关联分析)，调用此接口可将获取以下9个字段的数据。
 
-| 字段名 | 字段含义             | 字段名       | 字段含义    | 字段名          | 字段含义       |
-|--------|----------------------|--------------|-----------|-----------------|----------------|
+| 字段名     | 字段含义                                          | 字段名           | 字段含义                                 | 字段名              | 字段含义                                    |
+| ---------- | ------------------------------------------------- | ---------------- | ---------------------------------------- | ------------------- | ------------------------------------------- |
 | **giou**   | <font color="#4b5563">访问用户Id(deviceId)</font> | **giouserkey**   | <font color="#4b5563">用户Key</font>     | **gioplatform**     | <font color="#4b5563">小程序平台</font>     |
-| **gios**   | <font color="#4b5563">sessionId</font>            | **gioprojectid** | <font color="#4b5563">项目Id</font>      | **giodatasourceid** | <font color="#4b5563">数据源Id</font>   |
+| **gios**   | <font color="#4b5563">sessionId</font>            | **gioprojectid** | <font color="#4b5563">项目Id</font>      | **giodatasourceid** | <font color="#4b5563">数据源Id</font>       |
 | **giocs1** | <font color="#4b5563">登录用户Id</font>           | **gioappid**     | <font color="#4b5563">小程序appId</font> | **giodatacollect**  | <font color="#4b5563">小程序采集状态</font> |
 
 ```js
@@ -413,12 +412,12 @@ Page({
 
 ```js
 // H5 页面原有的 URL为 :
-'https://www.growingio.com/?foo=1#hash'
+'https://www.growingio.com/?foo=1#hash';
 ```
 
 ```js
 // 小程序WebView加载H5时的拼接示例为
-`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}#hash`
+`https://www.growingio.com/?foo=1&${gdp('getGioInfo')}#hash`;
 ```
 
 **3）数据打通后，打通H5页面的 dataCollect 数据采集开关由小程序SDK初始化配置项 dataCollect 控制。**
@@ -485,14 +484,14 @@ gdp('trackTimerEnd', 'timerId123', { extraVar1: 1, extraVar2: 2 });
 :::caution 注意
 trackTimerEnd时发送CUSTOM事件上报数据：
 
-* eventName  埋点事件标识符（trackTimerStart传入）
-* attributes 用户自定义事件属性（trackTimerEnd传入）
-* event_duration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;event_duration 按照秒单位上报，小数点精度保证到毫秒<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;event_duration 变量及其值会自动添加在 attributes 中<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;时间统计不会计算后台时间
-* eventName 对应的埋点事件需要在平台中**绑定**标识符为 event_duration 且类型为小数的事件属性
-:::
+- eventName 埋点事件标识符（trackTimerStart传入）
+- attributes 用户自定义事件属性（trackTimerEnd传入）
+- event_duration 事件时长 （SDK内部根据timerId自动计算获取 ）<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;event_duration 按照秒单位上报，小数点精度保证到毫秒<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;event_duration 变量及其值会自动添加在 attributes 中<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;时间统计不会计算后台时间
+- eventName 对应的埋点事件需要在平台中**绑定**标识符为 event_duration 且类型为小数的事件属性
+  :::
 
 ### 5、删除事件计时器(removeTimer)
 
