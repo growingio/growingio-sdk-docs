@@ -3,6 +3,12 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [1.4.1](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.4.1) (2026-05-19)
+
+### Features 功能
+
+* feat: 适配深色模式
+
 ## [1.4.0](https://github.com/growingio/growingio-sdk-harmonyos/tree/giokit-1.4.0) (2025-12-11)
 
 ### Features 功能
