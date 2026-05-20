@@ -32,14 +32,30 @@ dependencies:
 
 然后执行 `flutter pub get` 指令安装插件。
 
-<details>
-  <summary>点击查看 GrowingIO Flutter 插件和 SDK 版本的依赖关系</summary>
+:::info
 
-| Flutter 插件版本 |  Android SDK 版本范围   |  Apple SDK 版本范围  | HarmonyOS SDK 版本范围 |
-| :-------------- | :----------------- | :------- | :-------------- |
-| = v4.0.0 | >= v4.3.0 | >= v4.3.0 | - |
-| = v4.1.0 | >= v4.3.0 | >= v4.3.2 | - |
-| >= v4.2.0 | >= v4.3.0 | >= v4.3.2 | >= v2.0.0 |
+Flutter SDK 插件已通过 pub/CocoaPods/ohpm 自动集成 Android / iOS / HarmonyOS 原生 SDK，**无需在原生工程中重复添加 GrowingIO 原生 SDK 依赖**。如需指定原生 SDK 版本，请参考下方版本依赖关系表。
+
+注意：Android 平台若需开启原生无埋点能力，仍需在 Android 工程中配置 GrowingIO Gradle 插件，详见下方《Flutter 插件初始化》小节。
+
+:::
+
+<details>
+  <summary>点击查看 GrowingIO Flutter 插件和内置原生 SDK 版本对应关系</summary>
+
+| Flutter 插件版本 | Android SDK 版本 | iOS SDK 版本 | HarmonyOS SDK 版本 |
+| :-------------- | :--------------- | :----------- | :----------------- |
+| v4.0.0 | 4.3.0 | 4.3.0 | — |
+| v4.1.0 | 4.3.0 | 4.3.2 | — |
+| v4.2.0 | 4.3.0 | 4.3.2 | 2.0.x |
+| v4.3.0 | 4.4.0 | 4.3.2 | 2.0.x |
+| v4.3.1 | 4.4.2 | 4.6.x | 2.0.x |
+| v4.3.2 | 4.4.3 | 4.6.x | 2.0.x |
+| v4.3.3 | 4.4.3 | 4.6.x | 2.4.x |
+| v4.3.4 | 4.5.2 | 4.10.x | 2.4.x |
+| v4.3.5 | 4.5.3 | 4.11.x | 2.7.x |
+
+> Android SDK 由 Gradle BOM 锁定为单一版本；iOS / HarmonyOS SDK 受 CocoaPods `~>` 与 ohpm `~`/`^` 约束，会在同一 minor 版本内自动取最新补丁版本。
 
 </details>
 
