@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 
 ```c
 dependencies:
-  growingio_flutter_plugin: '^4.3.3'
+  growingio_flutter_plugin: '^4.3.6'
 ```
 
 
@@ -54,6 +54,7 @@ Flutter SDK 插件已通过 pub/CocoaPods/ohpm 自动集成 Android / iOS / Harm
 | v4.3.3 | 4.4.3 | 4.6.x | 2.4.x |
 | v4.3.4 | 4.5.2 | 4.10.x | 2.4.x |
 | v4.3.5 | 4.5.3 | 4.11.x | 2.7.x |
+| v4.3.6 | 4.5.3 | 4.11.x | 2.7.x |
 
 > Android SDK 由 Gradle BOM 锁定为单一版本；iOS / HarmonyOS SDK 受 CocoaPods `~>` 与 ohpm `~`/`^` 约束，会在同一 minor 版本内自动取最新补丁版本。
 
