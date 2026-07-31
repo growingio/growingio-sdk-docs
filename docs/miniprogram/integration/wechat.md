@@ -30,6 +30,7 @@ values={[
 {label: 'uni-app', value: 'uni-app'},
 {label: 'Taro', value: 'Taro'},
 {label: 'MPX', value: 'MPX'},
+{label: 'mpvue', value: 'mpvue'},
 {label: '小程序插件', value: '小程序插件'},
 ]}
 
@@ -39,7 +40,7 @@ values={[
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.1/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.5.1/gio-wechat.js)<br/>
+微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -79,7 +80,7 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-uniapp 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.1/gio-uniapp.js](https://assets.giocdn.com/sdk/minip/4.5.1/gio-uniapp.js)<br/>
+uniapp 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-uniapp.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-uniapp.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -178,7 +179,7 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-Taro 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.1/gio-taro.js](https://assets.giocdn.com/sdk/minip/4.5.1/gio-taro.js)<br/>
+Taro 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-taro.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-taro.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -325,7 +326,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.1/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.5.1/gio-wechat.js)<br/>
+微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -361,13 +362,71 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
 ```
 
   </TabItem>
+  <TabItem value="mpvue">
+
+#### 1、加载 SDK
+
+:::caution 注意
+4.0 版本发布时曾移除对 mpvue 的支持，v4.6.0 重新加入。如您从低版本升级，请按本文档重新集成。
+:::
+
+下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
+
+mpvue 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-mpvue.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-mpvue.js)<br/>
+**<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
+
+##### npm 集成
+
+```bash
+npm i gio-miniprogram-sdk --save
+```
+
+#### 2、使用`init`方法进行初始化
+
+参考示例代码在 main.js 小程序主文件中引用SDK并调用`init`方法进行初始化。
+
+**<font size="4" color="#FC5F3A">注意不要随意修改初始化代码位置，SDK 不支持在小程序的任意生命周期中进行初始化。</font>**
+
+#### 示例代码
+
+```js
+// main.js
+import Vue from 'vue';
+import App from './App';
+// 下载集成方式
+import gdp from './utils/gio/gio-mpvue.js';
+// npm集成方式
+import gdp from 'gio-miniprogram-sdk/mpvue';
+
+Vue.config.productionTip = false;
+App.mpType = 'app';
+
+gdp('init', 'your GrowingIO accountId', 'your dataSourceId', 'your AppId', {
+    version: 'your miniProgram version',
+    // OP私有部署客户请填写serverUrl，Saas客户请忽略
+    serverUrl: 'your server url',
+    // 必须传入 mpvue 实例
+    mpvue: Vue,
+    ...other settings
+});
+
+const app = new Vue(App);
+app.$mount();
+```
+
+```js
+原有 require 的引用方式依然可以使用。
+const gdp = require('./utils/gio/gio-mpvue.js').default;
+```
+
+  </TabItem>
   <TabItem value="小程序插件">
 
 #### 1、加载 SDK
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.5.1/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.5.1/gio-wechat.js)<br/>
+微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
