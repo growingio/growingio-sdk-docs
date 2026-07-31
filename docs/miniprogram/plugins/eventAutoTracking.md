@@ -20,7 +20,7 @@ title: 无埋点
 #### 下载集成引入
 
 - 下载插件并复制至项目中：
-  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.5.1/plugins/gioEventAutoTracking.js](https://assets.giocdn.com/sdk/minip/4.5.1/plugins/gioEventAutoTracking.js)</font>**<br/>
+  **<font size="3">[https://assets.giocdn.com/sdk/minip/4.6.0/plugins/gioEventAutoTracking.js](https://assets.giocdn.com/sdk/minip/4.6.0/plugins/gioEventAutoTracking.js)</font>**<br/>
   **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ```js
@@ -133,6 +133,38 @@ Page({
 :::
 
 **提示：SDK会自动忽略带有 `autoplay` 属性且值为 `true` 组件的 change 事件（例如swiper、video）。如果您期望采集它，请添加 `data-growing-track` 标记。**
+
+#### 4）picker 选中值上报（v4.6.0 新增）
+
+picker 组件的 change 事件默认只提供选中项的下标索引，而非显示文本。自 v4.6.0 起，您可以通过 `data-growing-picker-range` 属性指定选项范围数组，SDK 将自动上报对应下标的显示值，而非原始下标。
+
+```html
+<picker
+  mode="selector"
+  range="{{cityList}}"
+  bindchange="onCityChange"
+  data-growing-picker-range="{{cityList}}"
+  data-growing-track
+>
+  <view>选择城市</view>
+</picker>
+```
+
+如果选项数组的元素为对象，可通过 `data-growing-picker-range-key` 指定要取值的字段名：
+
+```html
+<picker
+  mode="selector"
+  range="{{cityList}}"
+  range-key="{{'name'}}"
+  bindchange="onCityChange"
+  data-growing-picker-range="{{cityList}}"
+  data-growing-picker-range-key="name"
+  data-growing-track
+>
+  <view>选择城市</view>
+</picker>
+```
 
 ### 3、采集黑名单标记
 

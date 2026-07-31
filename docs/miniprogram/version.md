@@ -5,6 +5,18 @@ title: 版本记录
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases](https://github.com/growingio/growingio-sdk-miniprogram-autotracker/releases)
 
+### V4.6.0 - 2026/07/30
+
+- 🎉 新增 mpvue 框架支持。
+- 🎉 新增 `clearLocation` API，用于清除手动设置的位置信息。
+- 🌟 优化初始化时的校验安全边界。
+- 🌟 优化微信小程序设备信息获取的逻辑。
+- 🌟 优化快应用存储逻辑，提升快应用平台数据可靠性。
+- 🌟 优化AB 测试插件和曝光插件数据处理逻辑。
+- 🌟 无埋点插件增强：picker 组件支持 `data-growing-picker-range` 自定义属性，可上报选中项的显示值而非下标。
+- 🐞 修复 onError 生命周期中自身抛错导致递归栈溢出的问题。
+- 🐞 修复性能监控插件中部分平台不存在 navigate API 时报错的问题。
+
 ### V4.5.1 - 2026/05/18
 
 - 🐞 修复 trackTimerEnd 不会清掉计时器的问题。

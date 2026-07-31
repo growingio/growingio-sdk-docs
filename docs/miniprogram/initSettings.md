@@ -18,6 +18,7 @@ title: 初始化配置
 | `ignoreFields`    | `string[]`   | `[]`                         | 上报忽略字段                                        |
 | `impressionScale` | `number`     | `0`                          | 曝光比例（小数）                                    |
 | `keepAlive`       | `number`     | `5`                          | 后台保活时长（分钟）                                |
+| `mpvue`           | `any`        | `-`                          | 使用 mpvue 开发时传入的 mpvue 实例（v4.6.0 新增）  |
 | `requestTimeout`  | `number`     | `5000`                       | 上报请求超时时长（毫秒）                            |
 | `originalSource`  | `boolean`    | `true`                       | VISIT事件是否使用初始来源                           |
 | `serverUrl`       | `string`     | `https://napi.growingio.com` | 数据上报的服务端地址                                |
@@ -214,7 +215,7 @@ gdp('init', accountId, dataSourceId, appId, {
 如果您不是上述场景，维持默认值即可；如果您是上述场景，不考虑utm相关信息丢失的问题且想保证跳出率准确，那么可以关闭该配置项。
 
 ```js
-gdp('init', accountId, datasourceId, appId, {
+gdp('init', accountId, dataSourceId, appId, {
   originalSource: false,
   ...其他配置项,
 });
@@ -225,7 +226,7 @@ gdp('init', accountId, datasourceId, appId, {
 Saas客户忽略此项配置；OP私有部署客户请填写此项，否则您的服务将无法收获行为数据上报。支持域名和IP地址。
 
 ```js
-gdp('init', accountId, datasourceId, appId, {
+gdp('init', accountId, dataSourceId, appId, {
   serverUrl: 'your server url',
   ...其他配置项,
 });
@@ -296,7 +297,7 @@ gdp('init', accountId, dataSourceId, appId, {
 该字段的含义为当前客户站点的版本号，建议填写，可用于分析不同版本之间数据的对比。如不填写，默认值则为1.0.0。
 
 ```js
-gdp('init', accountId, datasourceId, {
+gdp('init', accountId, dataSourceId, appId, {
   version: 'your miniprogram app version',
   ...其他配置项,
 });
