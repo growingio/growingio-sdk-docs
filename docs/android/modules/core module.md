@@ -9,10 +9,10 @@ title: 核心模块
 
 | 名称           |                                        说明                                         | 依赖                                           |
 | :------------- | :---------------------------------------------------------------------------------: | :--------------------------------------------- |
-| 埋点 Library   |                          埋点核心库，包含最基本的埋点逻辑                           | `com.growingio.android:tracker-core:4.5.3`     |
-| 无埋点 Library |                无埋点核心库，依赖于埋点核心库，包含无埋点的注入逻辑                 | `com.growingio.android:autotracker-core:4.5.3` |
-| 模块注解库     | 注解声明，通过注解可以自动生成 SDK 的初始化类来注册所有的模块和聚合模块内的配置类。 | `com.growingio.android:annotation:4.5.3`       |
-| 注解解析器     |                                 与上面注解配合使用                                  | `com.growingio.android:compiler:4.5.3`         |
+| 埋点 Library   |                          埋点核心库，包含最基本的埋点逻辑                           | `com.growingio.android:tracker-core:4.5.4`     |
+| 无埋点 Library |                无埋点核心库，依赖于埋点核心库，包含无埋点的注入逻辑                 | `com.growingio.android:autotracker-core:4.5.4` |
+| 模块注解库     | 注解声明，通过注解可以自动生成 SDK 的初始化类来注册所有的模块和聚合模块内的配置类。 | `com.growingio.android:annotation:4.5.4`       |
+| 注解解析器     |                                 与上面注解配合使用                                  | `com.growingio.android:compiler:4.5.4`         |
 
 --------
 import Tabs from '@theme/Tabs';
@@ -37,7 +37,7 @@ SDK 事件通过 `EventDatabase` 来传递到数据库并进行增删改查的�
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:database:4.5.3'
+	implementation 'com.growingio.android:database:4.5.4'
 }
 ```
 </TabItem>
@@ -47,7 +47,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.5.3')
+  implementation platform('com.growingio.android:autotracker-bom:4.5.4')
 
   implementation 'com.growingio.android:database'
 }
@@ -77,9 +77,9 @@ SDK 事件通过 `EventUrl` 指定请求方式、服务器请求地址，再通�
 ```groovy
 dependencies {
 	// 网络模块-okhttp3
-	implementation 'com.growingio.android:okhttp3:4.5.3'
+	implementation 'com.growingio.android:okhttp3:4.5.4'
 	// 可选网络模块-urlconnnection
-	implementation 'com.growingio.android:urlconnnection:4.5.3'
+	implementation 'com.growingio.android:urlconnnection:4.5.4'
 }
 ```
 </TabItem>
@@ -89,7 +89,7 @@ dependencies {
 ```groovy
 dependencies {
 	// Import the BoM for the GrowingIO platform
-	implementation platform('com.growingio.android:autotracker-bom:4.5.3')
+	implementation platform('com.growingio.android:autotracker-bom:4.5.4')
 
   // 网络模块-okhttp3
 	implementation 'com.growingio.android:okhttp3'
@@ -118,7 +118,7 @@ dependencies {
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:protobuf:4.5.3'
+	implementation 'com.growingio.android:protobuf:4.5.4'
 }
 ```
 </TabItem>
@@ -128,7 +128,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.5.3')
+  implementation platform('com.growingio.android:autotracker-bom:4.5.4')
 
   implementation 'com.growingio.android:protobuf'
 }
@@ -155,7 +155,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation('com.growingio.android:autotracker:4.5.3') {
+    implementation('com.growingio.android:autotracker:4.5.4') {
         exclude group: "com.google.protobuf", module: "protobuf-javalite"
     }
 
@@ -170,7 +170,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation(platform('com.growingio.android:autotracker-bom:4.5.3'))
+  implementation(platform('com.growingio.android:autotracker-bom:4.5.4'))
   implementation('com.growingio.android:autotracker') {
       exclude group: "com.google.protobuf", module: "protobuf-javalite"
   }
