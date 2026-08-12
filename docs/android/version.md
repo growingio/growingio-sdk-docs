@@ -7,13 +7,25 @@ sidebar_position: 0
 类型：统计类 <br/>
 开发者：北京易数科技有限公司 <br/>
 无埋点包名：com.growingio.android.sdk.autotrack <br/>
-最新版本：v4.5.3 <br/>
-更新时间：2026-02-03 <br/>
+最新版本：v4.5.4 <br/>
+更新时间：2026-08-12 <br/>
 功能说明：GrowingIO用户行为数据采集软件开发工具包（CDP）具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
 下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
 个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
 使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
 合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
+:::
+
+## RELEASE-4.5.4
+## Bug Fixes
+* fix: system_server 死亡时访问系统服务导致的 DeadSystemRuntimeException 崩溃 [#241](https://github.com/growingio/growingio-sdk-android-autotracker/pull/241)
+* fix: 使用非 UI Context 触发 StrictMode IncorrectContextUseViolation，涉及 Compose 点击采集与圈选提示条 [#242](https://github.com/growingio/growingio-sdk-android-autotracker/pull/242)
+* fix: Fragment 已 detach 时访问资源导致的崩溃，并将截图绘制改至主线程执行 [#240](https://github.com/growingio/growingio-sdk-android-autotracker/pull/240)
+
+:::note 
+
+ 标签:**[v4.5.4](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.5.4)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2026-08-12** 
+
 :::
 
 ## RELEASE-4.5.3
