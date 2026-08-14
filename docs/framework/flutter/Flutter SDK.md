@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 
 ```c
 dependencies:
-  growingio_flutter_plugin: '^4.3.6'
+  growingio_flutter_plugin: '^4.4.0'
 ```
 
 
@@ -34,7 +34,7 @@ dependencies:
 
 :::info
 
-Flutter SDK 插件已通过 pub/CocoaPods/ohpm 自动集成 Android / iOS / HarmonyOS 原生 SDK，**无需在原生工程中重复添加 GrowingIO 原生 SDK 依赖**。如需指定原生 SDK 版本，请参考下方版本依赖关系表。
+Flutter SDK 插件已通过 pub / SPM 或 CocoaPods / ohpm 自动集成 Android / iOS / HarmonyOS 原生 SDK，**无需在原生工程中重复添加 GrowingIO 原生 SDK 依赖**。如需指定原生 SDK 版本，请参考下方版本依赖关系表。
 
 注意：Android 平台若需开启原生无埋点能力，仍需在 Android 工程中配置 GrowingIO Gradle 插件，详见下方《Flutter 插件初始化》小节。
 
@@ -55,10 +55,38 @@ Flutter SDK 插件已通过 pub/CocoaPods/ohpm 自动集成 Android / iOS / Harm
 | v4.3.4 | 4.5.2 | 4.10.x | 2.4.x |
 | v4.3.5 | 4.5.3 | 4.11.x | 2.7.x |
 | v4.3.6 | 4.5.3 | 4.11.x | 2.7.x |
+| v4.4.0 | 4.5.3 | 4.12.x | 2.7.x |
 
-> Android SDK 由 Gradle BOM 锁定为单一版本；iOS / HarmonyOS SDK 受 CocoaPods `~>` 与 ohpm `~`/`^` 约束，会在同一 minor 版本内自动取最新补丁版本。
+> Android SDK 由 Gradle BOM 锁定为单一版本；iOS / HarmonyOS SDK 受 SPM 版本区间、CocoaPods `~>` 与 ohpm `~`/`^` 约束，会在同一 minor 版本内自动取最新补丁版本。
 
 </details>
+
+### iOS 集成方式说明
+
+从 v4.4.0 起，插件同时支持 Swift Package Manager（SPM）与 CocoaPods 两种 iOS 原生依赖管理方式。
+
+**Flutter 3.44 及以上（默认 SPM 模式）**
+
+添加依赖后无需任何额外操作，构建时 Flutter 会自动通过 SPM 引入插件及原生 GrowingAnalytics SDK（要求原生 SDK ≥ 4.12.0）。旧工程首次构建时 Flutter 会自动完成 SPM 集成迁移。
+
+:::caution
+如果 Podfile 中曾手动添加过 `pod 'GrowingAnalytics/...'`，SPM 模式下必须删除这些行，否则 SDK 会被集成两份，链接时报 duplicate symbols。
+:::
+
+**Flutter 3.44 以下，或手动禁用了 SPM**
+
+继续通过 CocoaPods 集成，行为与旧版本完全一致，同样无需额外操作。禁用 SPM 的方式：
+
+```yaml
+# pubspec.yaml
+flutter:
+  config:
+    enable-swift-package-manager: false
+```
+
+**原生 + Flutter 混合开发**
+
+CocoaPods 模式下原生代码可直接 `import GrowingAutotracker`；SPM 模式下插件的依赖对 app target 默认不可见，若原生代码需要直接调用 SDK API，请在 Xcode 中 File → Add Package Dependencies… → 输入 `https://github.com/growingio/growingio-sdk-ios-autotracker.git`（版本 4.12.0 起）→ 勾选 `GrowingAutotracker` 产品添加到 app target。SPM 会自动与插件已依赖的同一个包去重，不会产生重复代码。
 
 ### Flutter 插件初始化
 
@@ -187,6 +215,13 @@ GrowingIO SDK 利用模块来实现SDK核心功能以外的额外功能，在 Fl
 ```
 
 广告模块包括激活事件和深度链接，能帮助客户提供广告，活动的引导跳转和下载。
+
+iOS 端需额外引入原生广告库，按集成模式二选一：
+
+* **SPM 模式**：Xcode 打开 iOS 工程 → File → Add Package Dependencies… → 输入 `https://github.com/growingio/growingio-sdk-ios-autotracker.git`（版本 4.12.0 起）→ 产品列表中勾选 `GrowingModule_Ads` 添加到 app target（SPM 会自动与插件已依赖的同一个包去重）
+* **CocoaPods 模式**：Podfile 中添加 `pod 'GrowingAnalytics/Ads'`
+
+未引入广告库时调用 `doDeepLinkByUrl` 会静默降级并在控制台提示“广告模块未集成”，不会崩溃。
 
 :::info
 什么是广告模块，请参考原生端说明：
