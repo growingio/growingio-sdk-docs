@@ -10,6 +10,7 @@ GrowingIO Flutter Plugin 插件 growingio_flutter_plugin，封装了GrowingIO An
 
 |    版本    | 说明 |  日期  |
 | :-----  | :-----   | :----:  |
+| v4.4.0 | - iOS 支持 Swift Package Manager 集成，CocoaPods 集成方式保持兼容；<br/>- GrowingIO iOS SDK 升级到 4.12.0；<br/>- iOS 广告模块改为运行时解耦，未集成时 doDeepLinkByUrl 安全降级不再崩溃； | 2026-08-14 |
 | v4.3.6 | - 修复Android SDK当trackCustomEvent attributes传入empty map时丢失cstm事件； | 2026-05-26 |
 | v4.3.5 | - Android SDK 升级为4.5.3;<br/>-GrowingIO iOS SDK 升级到 4.11.0;<br/>-GrowingIO HarmonyOS SDK 升级到 2.7.0;<br/>-添加新接口 flushEvents； | 2026-02-04 |
 | v4.3.4 | - Android SDK 升级为4.5.2;<br/>-GrowingIO iOS SDK 升级到 4.10.0;<br/>-Flutter page 事件添加来源页面属性； | 2025-11-12 |
