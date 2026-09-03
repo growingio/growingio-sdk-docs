@@ -5,6 +5,12 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
 
+### V4.4.0 - 2026/03/13
+
+- 🐞 修复cookieDomain设置二级域名后不能setUserId的问题。
+- 🌟 优化依赖版本。
+- 🎉 新增 `destroy` api，支持SDK卸载。
+
 ### V4.3.2 - 2026/03/13
 
 - 🌟 小程序打通插件新增严格模式用于控制是否区分H5和小程序内嵌环境以决定是否执行打通逻辑。
