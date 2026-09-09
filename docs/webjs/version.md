@@ -5,8 +5,9 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
 
-### V4.4.0 - 2026/03/13
+### V4.4.1 - 2026/09/09
 
+- 🐞 修复与低于此版本混用时，设备Id，userId，userKey加解密错误导致用户量暴增的问题。
 - 🐞 修复cookieDomain设置二级域名后不能setUserId的问题。
 - 🌟 优化依赖版本。
 - 🎉 新增 `destroy` api，支持SDK卸载。
