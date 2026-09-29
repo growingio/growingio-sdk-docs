@@ -8,6 +8,13 @@ import TabItem from '@theme/TabItem';
 
 分析云A/B实验产品能力，SDK侧配合提供A/B Test SDK。帮助开发者在应用程序中进行A/B测试，验证不同版本的功能效果。
 
+:::note
+自 4.6.0 起：
+
+- 分流请求将按当前登录用户身份（userId/userKey，混淆加密后上传）进行分流；实验缓存按用户身份隔离，切换登录账号后不再复用其他身份的分流结果
+- 缓存过期（超 TTL 或跨自然日）且请求失败时，不再返回过期数据（`ABTEST_EXPIRED` 已标记 `@Deprecated`），统一回调 `onABExperimentFailed`
+- 关闭数据采集（`dataCollectionEnabled`）后，`getAbTest` 直接失败回调，不再发起网络请求或读取缓存
+:::
 
 --------
 
@@ -31,7 +38,7 @@ import TabItem from '@theme/TabItem';
 
 ```groovy
 dependencies {
-	implementation 'com.growingio.android:abtest:4.5.4'
+	implementation 'com.growingio.android:abtest:4.6.0'
 }
 ```
 </TabItem>
@@ -41,7 +48,7 @@ dependencies {
 ```groovy
 dependencies {
   // Import the BoM for the GrowingIO platform
-  implementation platform('com.growingio.android:autotracker-bom:4.5.4')
+  implementation platform('com.growingio.android:autotracker-bom:4.6.0')
 
   implementation 'com.growingio.android:abtest'
 }

@@ -7,13 +7,32 @@ sidebar_position: 0
 类型：统计类 <br/>
 开发者：北京易数科技有限公司 <br/>
 无埋点包名：com.growingio.android.sdk.autotrack <br/>
-最新版本：v4.5.4 <br/>
-更新时间：2026-08-12 <br/>
+最新版本：v4.6.0 <br/>
+更新时间：2026-09-29 <br/>
 功能说明：GrowingIO用户行为数据采集软件开发工具包（CDP）具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
 下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
 个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
 使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
 合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
+:::
+
+## RELEASE-4.6.0
+## Features
+* feat: AB 测试分流请求支持按登录用户（userId / userKey）分流，混淆加密后上传；实验缓存按登录身份隔离，切换登录账号后不再复用其他身份的分流结果 [#244](https://github.com/growingio/growingio-sdk-android-autotracker/pull/244)
+* feat: Hybrid 桥接新增 getNativeIdentity，向内嵌页下发原生身份（deviceId / userId / userKey / isNewDevice）与采集开关状态（AB 打通配套） [#244](https://github.com/growingio/growingio-sdk-android-autotracker/pull/244)
+
+## Bug Fixes
+* fix: 首次请求实验时清理过期的 AB 实验缓存 [#244](https://github.com/growingio/growingio-sdk-android-autotracker/pull/244)
+
+:::caution 行为变更
+* 缓存过期（超 TTL 或跨自然日）且请求失败时，由返回过期数据（`ABTEST_EXPIRED`，已标记 `@Deprecated`，不再回调）改为失败回调 `onABExperimentFailed`，与 iOS 行为一致；依赖过期兜底做弱网降级的宿主需自行缓存上一次结果
+* `dataCollectionEnabled == false` 时 `getAbTest` 一律失败回调（`IllegalStateException`），不再发起请求、不读取缓存；同意前使用实验的页面需改为默认组
+:::
+
+:::note 
+
+ 标签:**[v4.6.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.6.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2026-09-29** 
+
 :::
 
 ## RELEASE-4.5.4
