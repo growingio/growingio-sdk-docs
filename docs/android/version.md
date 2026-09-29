@@ -25,7 +25,7 @@ sidebar_position: 0
 * fix: 首次请求实验时清理过期的 AB 实验缓存 [#244](https://github.com/growingio/growingio-sdk-android-autotracker/pull/244)
 
 :::caution 行为变更
-* 缓存过期（超 TTL 或跨自然日）且请求失败时，由返回过期数据（`ABTEST_EXPIRED`，已标记 `@Deprecated`，不再回调）改为失败回调 `onABExperimentFailed`，与 iOS 行为一致；依赖过期兜底做弱网降级的宿主需自行缓存上一次结果
+* 缓存过期（超 TTL 或跨自然日）且请求失败时，由返回过期数据（`ABTEST_EXPIRED`，已标记 `@Deprecated`，不再回调）改为失败回调 `onABExperimentFailed`；依赖过期兜底做弱网降级的宿主需自行缓存上一次结果
 * `dataCollectionEnabled == false` 时 `getAbTest` 一律失败回调（`IllegalStateException`），不再发起请求、不读取缓存；同意前使用实验的页面需改为默认组
 :::
 
