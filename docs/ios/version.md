@@ -3,6 +3,20 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [4.13.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.12.0...4.13.0) (2026-09-29)
+
+
+### Features
+
+* AB 测试支持按登录用户身份分流，并加密上传 userId/userKey ([#366](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/366))
+
+## [4.12.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.11.0...4.12.0) (2026-07-10)
+
+
+### Features
+
+* Swift Package 新增 GrowingModule_Flutter 库 ([#362](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/362))
+
 ## [4.11.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.10.0...4.11.0) (2026-02-04)
 
 
