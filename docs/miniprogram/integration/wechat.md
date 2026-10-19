@@ -40,7 +40,7 @@ values={[
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js)<br/>
+微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.1/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.6.1/gio-wechat.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -80,7 +80,7 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-uniapp 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-uniapp.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-uniapp.js)<br/>
+uniapp 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.1/gio-uniapp.js](https://assets.giocdn.com/sdk/minip/4.6.1/gio-uniapp.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -179,7 +179,7 @@ const gdp = require('./utils/gio/gio-uniapp.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-Taro 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-taro.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-taro.js)<br/>
+Taro 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.1/gio-taro.js](https://assets.giocdn.com/sdk/minip/4.6.1/gio-taro.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### 方式二：npm 集成
@@ -326,7 +326,7 @@ const gdp = require('./utils/gio/gio-taro.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js)<br/>
+微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.1/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.6.1/gio-wechat.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
@@ -372,7 +372,7 @@ const gdp = require('./utils/gio/gio-wechat.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-mpvue 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-mpvue.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-mpvue.js)<br/>
+mpvue 框架 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.1/gio-mpvue.js](https://assets.giocdn.com/sdk/minip/4.6.1/gio-mpvue.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 ##### npm 集成
@@ -426,7 +426,7 @@ const gdp = require('./utils/gio/gio-mpvue.js').default;
 
 下载SDK添加至项目目录中，下文中以`utils/gio`目录作为下载集成的示例目录(目录和 SDK 文件可自定义重命名)。
 
-微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.6.0/gio-wechat.js)<br/>
+微信原生 SDK 下载：[https://assets.giocdn.com/sdk/minip/4.6.1/gio-wechat.js](https://assets.giocdn.com/sdk/minip/4.6.1/gio-wechat.js)<br/>
 **<font size="2">(如果您点击链接在浏览器中直接打开了文件并不是下载文件，请尝试右键点击链接，选择 `链接存储为...` 即可正常触发下载)</font>**
 
 #### 2、使用`init`方法进行初始化
