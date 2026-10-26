@@ -5,6 +5,18 @@ sidebar_position: 0
 
 SDK 历史版本下载地址：[https://github.com/growingio/growingio-sdk-webjs-autotracker/releases](https://github.com/growingio/growingio-sdk-webjs-autotracker/releases)
 
+### V4.4.2 - 2026/10/19
+
+- 🐞 修复 A/B 实验切换账号后可能读取到上一账号实验结果的问题。
+- 🐞 修复 A/B 实验获取失败后无法及时重试、实验命中重复上报的问题。
+- 🐞 修复页面切换后，手动采集仍使用旧页面信息的问题。
+- 🐞 修复上报内容包含特殊字符时，数据可能不完整的问题。
+- 🐞 修复部分字段过滤不生效、多实例用户身份配置相互影响的问题。
+- 🌟 优化 App 和小程序内嵌页的用户身份衔接及新老设备判断。
+- 🌟 优化小程序内嵌页圈选稳定性，减少页面跳转和网络异常造成的中断。
+- 🌟 优化旧浏览器兼容性及 SDK 卸载后的稳定性。
+- 🎉 新增 A/B 实验按登录用户分流的支持。
+
 ### V4.4.1 - 2026/09/09
 
 - 🐞 修复与低于此版本混用时，设备Id，userId，userKey加解密错误导致用户量暴增的问题。
