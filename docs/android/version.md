@@ -18,7 +18,7 @@ sidebar_position: 0
 
 ## RELEASE-4.7.0
 ## Features
-* feat: 元素曝光采集支持可见面积阈值（impressionScale）与停留时长（stayDuration），可通过 `AutotrackConfiguration.setImpressionConfig` 全局配置；曝光采集改由 `setImpressionEnabled` 控制，与无埋点开关解绑；修正顶部被裁剪时可见面积占比的计算 [#245](https://github.com/growingio/growingio-sdk-android-autotracker/pull/245)
+* feat: 元素曝光采集支持可见面积阈值（impressionScale）与停留时长（stayDuration），可通过 `AutotrackConfiguration.setImpressionConfig` 全局配置；新增 `setImpressionEnabled` 开关，可在无埋点开启时单独关闭曝光采集（关闭无埋点时曝光同样不采集）；修正顶部被裁剪时可见面积占比的计算 [#245](https://github.com/growingio/growingio-sdk-android-autotracker/pull/245)
 
 ## Bug Fixes
 * fix: SDK 未初始化时调用 `doDeepLinkByUrl`、`registerComponent` 抛出 NullPointerException [#247](https://github.com/growingio/growingio-sdk-android-autotracker/pull/247)
