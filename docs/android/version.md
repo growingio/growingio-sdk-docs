@@ -7,13 +7,27 @@ sidebar_position: 0
 类型：统计类 <br/>
 开发者：北京易数科技有限公司 <br/>
 无埋点包名：com.growingio.android.sdk.autotrack <br/>
-最新版本：v4.6.0 <br/>
-更新时间：2026-09-29 <br/>
+最新版本：v4.7.0 <br/>
+更新时间：2026-10-29 <br/>
 功能说明：GrowingIO用户行为数据采集软件开发工具包（CDP）具备自动采集基本的用户行为事件，比如访问和行为数据等。目前支持代码埋点、无埋点、可视化圈选、热图等功能。<br/>
 下载地址：[Maven官方仓库](https://repo1.maven.org/maven2/com/growingio/android/) <br/>
 个人信息处理规则：[隐私协议](https://accounts.growingio.com/user-privacy) <br/>
 使用说明：[SDK集成文档](/docs/android/Introduce) <br/>
 合规说明：[SDK合规说明](/knowledge/compliance/androidCompliance) <br/>
+:::
+
+## RELEASE-4.7.0
+## Features
+* feat: 元素曝光采集支持可见面积阈值（impressionScale）与停留时长（stayDuration），可通过 `AutotrackConfiguration.setImpressionConfig` 全局配置；曝光采集改由 `setImpressionEnabled` 控制，与无埋点开关解绑；修正顶部被裁剪时可见面积占比的计算 [#245](https://github.com/growingio/growingio-sdk-android-autotracker/pull/245)
+
+## Bug Fixes
+* fix: SDK 未初始化时调用 `doDeepLinkByUrl`、`registerComponent` 抛出 NullPointerException [#247](https://github.com/growingio/growingio-sdk-android-autotracker/pull/247)
+* fix: 网络回调数量超过系统上限（`ConnectivityManager$TooManyRequestsException`）导致 SDK 初始化崩溃 [#246](https://github.com/growingio/growingio-sdk-android-autotracker/pull/246)
+
+:::note 
+
+ 标签:**[v4.7.0](https://github.com/growingio/growingio-sdk-android-autotracker/releases/tag/v4.7.0)** &nbsp;&nbsp;&nbsp;&nbsp;日期: **2026-10-29** 
+
 :::
 
 ## RELEASE-4.6.0
