@@ -22,7 +22,6 @@ import TabItem from '@theme/TabItem';
 | `dataCollectionEnabled`   | `Bool` | 否      | `true`   | 是否采集数据 | - |  |
 | `excludeEvent`            | `UInt`     | 否      | `0`      | 设置事件过滤 | - |  |
 | `ignoreField`             | `UInt`     | 否      | `0`      | 设置事件属性过滤 | - |  |
-| `impressionScale`         | `Float`   | 否      | `0`      | 元素曝光事件中的比例因子,范围 [0-1] | <font color='red'>无埋点独有</font> |  |
 | `idMappingEnabled` | `Bool` | 否 | `false` | 是否开启多用户身份上报 | - |  |
 | `urlScheme` | `String` | 否 | 您在 Info.plist 配置的 GrowingIO URL Scheme | 自定义 URL Scheme | - |  |
 | `encryptEnabled` | `Bool` | 否 | `false` | 是否开启网络传输加密 | - |  |
@@ -69,49 +68,39 @@ import TabItem from '@theme/TabItem';
 
 事件属性过滤，事件属性指上报事件中携带的属性参数。可过滤事件属性可以参考 [GrowingFieldsIgnore](https://github.com/growingio/growingio-sdk-ios-autotracker/blob/master/GrowingTrackerCore/Public/GrowingFieldsIgnore.h)
 
-#### 9. **impressionScale**
-
-> 无埋点 SDK 独有
-
-曝光比例，与曝光事件结合使用。曝光比例是指当一个曝光的 View 出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为 1 则表示要整个 View 都出现在屏幕中。
-
-:::note
-该配置仅对旧版曝光模块 ImpressionTrack 生效；[曝光采集模块](/docs/ios/modules/ViewImpression%20Module) 请使用 `viewImpressionConfig` 配置。
-:::
-
-#### 10. **idMappingEnabled**
+#### 9. **idMappingEnabled**
 
 是否支持多用户身份上报, 默认不支持。
 是否支持多用户身份上报, 与 API 接口`setLoginUserId:userKey:`对应，需要上报 userkey 时开启； 开启时，userKey会在每次上报数据时携带；关闭时，userKey不上报。
 
-#### 11. **urlScheme**
+#### 10. **urlScheme**
 
 自定义运行时 URL Scheme，如存在多环境配置，可基于不同环境进行自定义，需同时在 Info.plist 中添加各环境对应的 [URL Scheme](/docs/ios/Introduce#步骤-4-添加-url-scheme-ios-平台)
 
-#### 12. **encryptEnabled**
+#### 11. **encryptEnabled**
 
 设置为 true 时，网络传输内容将会加密，不会明文显示。
 
-#### 13. **compressEnabled**
+#### 12. **compressEnabled**
 
 设置为 true 时，网络传输内容将会使用 LZ4 进行压缩。
 
-#### 14. **useProtobuf**
+#### 13. **useProtobuf**
 
 是否使用 [Google Protobuf](https://developers.google.cn/protocol-buffers) 格式保存和上传事件数据，默认为 true，为 false 则采用 JSON 格式
 
-#### 15. **autotrackEnabled**
+#### 14. **autotrackEnabled**
 
 当集成无埋点 SDK 时，设置为 false 将关闭无埋点功能和自动采集
 
-#### 16. **autotrackAllPages**
+#### 15. **autotrackAllPages**
 
 当集成无埋点 SDK 时，设置为 true 将开启页面自动采集，alias 默认为 ViewController 的类名；通过调用 `autotrackPage` 接口所配置的 alias 将覆盖默认值
 
-#### 17. **dataValidityPeriod**
+#### 16. **dataValidityPeriod**
 
 每当 SDK 初始化时，将根据所配置的事件有效时长，清除本地已过期的事件数据
 
-#### 18. **customEventWithPath**
+#### 17. **customEventWithPath**
 
 设置为 true 时，自定义埋点事件将通过 path 字段，自动关联到埋点事件所在页面浏览事件上，默认为 false
