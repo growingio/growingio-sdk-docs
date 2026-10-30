@@ -219,3 +219,7 @@ configuration.viewImpressionCheckInterval = 0.5;
 
 - 不做遮挡检测，被上层视图完全盖住的元素仍按可见处理
 - 元素或其祖先设置了 `transform` 时，面积占比的判定不准确
+
+## 旧版曝光模块
+
+4.14.0 之前的曝光采集由 ImpressionTrack 模块提供，该模块已废弃。仍在使用旧版本的集成可参考 [旧版曝光模块（ImpressionTrack）文档](/docs/ios/modules/ImpressionTrack%20Module)。

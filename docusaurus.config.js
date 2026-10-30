@@ -191,17 +191,5 @@ module.exports = {
       }
     ],
     './src/components/feedback',
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          // 4.14.0 起旧版 ImpressionTrack 文档已移除，统一指向曝光采集模块（ViewImpression）
-          {
-            from: '/docs/ios/modules/ImpressionTrack Module',
-            to: '/docs/ios/modules/ViewImpression Module',
-          },
-        ],
-      },
-    ],
   ],
 };
