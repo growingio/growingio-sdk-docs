@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: 元素曝光模块
+title: 曝光采集模块
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 :::
 
 :::caution
-本模块与 [曝光采集模块（ImpressionTrack）](/docs/ios/modules/ImpressionTrack%20Module) 互斥。两者同时集成时由 ViewImpression 接管，ImpressionTrack 自动禁用并输出错误日志。从 ImpressionTrack 迁移请参考 [从 ImpressionTrack 迁移](#从-impressiontrack-迁移)。
+自 4.14.0 起，本模块替代旧版曝光模块 ImpressionTrack，两者互斥：同时集成时由 ViewImpression 接管，ImpressionTrack 自动禁用并输出错误日志。仍在使用 ImpressionTrack 的请参考 [从 ImpressionTrack 迁移](#从-impressiontrack-迁移)。
 :::
 
 --------
