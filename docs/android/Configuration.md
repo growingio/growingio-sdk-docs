@@ -44,6 +44,9 @@ import TabItem from '@theme/TabItem';
 | setAutotrack [#](#5-setautotrack)           |    _boolean_    |   否        | `true`     | 用于控制是否打开无埋点功能 |  4.3.0  |
 | setCustomEventWithPath [#](#6-setcustomeventwithpath)  |    _boolean_    |   否        | `false`  | 所有自定义事件将携带上一个 Page 事件的path |  4.3.2  |
 | setAutoJsSdkInject [#](#7-setautojssdkinject) |    _boolean_    |   否        | `false`  | 自动为所有内部Webview注入GrwoingIO Web Js |  4.3.2  |
+| setImpressionEnabled [#](#8-setimpressionenabled) |    _boolean_    |   否        | `true`  | 元素曝光采集开关 |  4.7.0  |
+| setImpressionConfig [#](#9-setimpressionconfig) |    _ImpressionConfig_    |   否        | `ImpressionConfig.create(0, 0)`  | 元素曝光条件：可见面积比例与停留时长 |  4.7.0  |
+| setImpressionCheckInterval [#](#10-setimpressioncheckinterval) |    _long_    |   否        | `500`  | 曝光检测的节流间隔，单位毫秒 |  4.7.0  |
 
 ## 通用配置说明
 
@@ -214,6 +217,8 @@ GrowingAutotracker.startWithConfiguration(this,
 
 曝光比例。与曝光事件结合使用。曝光比例是指当一个曝光的View出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为1则表示要整个View都出现在屏幕中。
 
+自 4.7.0 起，该方法等同于设置 [setImpressionConfig](#9-setimpressionconfig) 中的 `impressionScale`。
+
 ### 2. setWebViewBridgeEnabled
 
 是否全量采集 hybrid 数据（默认为 true）
@@ -299,5 +304,46 @@ GrowingAutotracker.startWithConfiguration(this,
         new AutotrackConfiguration("accountId", "urlScheme")
         // 打开 webjs sdk 自动加载
         .setAutoJsSdkInject(true)
+);
+```
+
+### 8. setImpressionEnabled
+元素曝光采集开关，默认开启。关闭后 `trackViewImpression` 等曝光接口均不生效。
+
+曝光采集属于无埋点能力的一部分，[setAutotrack(false)](#5-setautotrack) 关闭无埋点时曝光同样不采集；此开关用于在无埋点开启的前提下单独关闭曝光采集。
+
+```java
+GrowingAutotracker.startWithConfiguration(this,
+        new AutotrackConfiguration("accountId", "urlScheme")
+        // 单独关闭元素曝光采集
+        .setImpressionEnabled(false)
+);
+```
+
+### 9. setImpressionConfig
+设置元素曝光条件的全局默认值，对所有通过 [`trackViewImpression`](/docs/android/api#3-设置采集view的曝光事件) 标记的元素生效。
+
+| 配置项 | 说明 | 默认值 |
+| :--- | :--- | :--- |
+| `impressionScale` | 可见面积占元素自身面积的比例阈值，有效范围 [0-1]，超出范围将被截断 | `0`，露出即算曝光 |
+| `stayDuration` | 连续可见需要满足的最小时长，单位毫秒；元素滑过、未停留足够时长时不会曝光 | `0`，无需停留 |
+
+```java
+GrowingAutotracker.startWithConfiguration(this,
+        new AutotrackConfiguration("accountId", "urlScheme")
+        // 元素可见面积达到 50% 且连续可见 1 秒后才算一次曝光
+        .setImpressionConfig(ImpressionConfig.create(0.5f, 1000L))
+);
+```
+
+`ImpressionConfig` 位于 `com.growingio.android.sdk.autotrack.impression` 包下。
+
+### 10. setImpressionCheckInterval
+曝光检测的节流间隔，单位毫秒，默认 `500`。设为 `0` 表示每次视图状态变化时都进行检测。
+
+```java
+GrowingAutotracker.startWithConfiguration(this,
+        new AutotrackConfiguration("accountId", "urlScheme")
+        .setImpressionCheckInterval(500)
 );
 ```

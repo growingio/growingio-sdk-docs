@@ -75,6 +75,10 @@ import TabItem from '@theme/TabItem';
 
 曝光比例，与曝光事件结合使用。曝光比例是指当一个曝光的 View 出现在屏幕时可见的部分占据自身尺寸的比例，比如说若设为 0 则表示只要出现即产生曝光事件，若设为 1 则表示要整个 View 都出现在屏幕中。
 
+:::note
+该配置仅对 [曝光采集模块（ImpressionTrack）](/docs/ios/modules/ImpressionTrack%20Module) 生效；[元素曝光模块（ViewImpression）](/docs/ios/modules/ViewImpression%20Module) 请使用 `viewImpressionConfig` 配置。
+:::
+
 #### 10. **idMappingEnabled**
 
 是否支持多用户身份上报, 默认不支持。
