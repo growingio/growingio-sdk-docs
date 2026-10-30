@@ -13,8 +13,7 @@ title: 模块列表
 | 混合开发数据收集 - Hybrid | 混合开发模式，默认集成在无埋点 SDK 中；埋点 SDK 需要集成生效 | [H5混合模块](/docs/ios/modules/Hybrid%20Module)    |
 | 无埋点圈选 - WebCircle      |         基于无埋点的圈选插件，默认集成在无埋点 SDK 中          | [圈选模块](/docs/ios/modules/WebCircle%20Module)       |
 | 数据调试 - MobileDebugger       |         数据调试 Mobile Debugger，默认集成在无埋点/埋点 SDK 中         | [Debugger 模块](/docs/ios/modules/MobileDebugger%20Module) |
-| 元素曝光 - ViewImpression   |         元素曝光采集，支持可见面积比例与停留时长，需要集成生效（4.14.0 起）         | [元素曝光模块](/docs/ios/modules/ViewImpression%20Module) |
-| 曝光采集 - ImpressionTrack   |         曝光采集，需要集成生效         | [曝光采集模块](/docs/ios/modules/ImpressionTrack%20Module) |
+| 曝光采集 - ViewImpression   |         元素曝光采集，支持可见面积比例与停留时长，需要集成生效         | [曝光采集模块](/docs/ios/modules/ViewImpression%20Module) |
 | 广告 - Ads             |           添加激活事件和 DeepLink 功能，需要集成生效           | [广告模块](/docs/ios/modules/Ads%20Module)        |
 | 性能监控 - APM            |          用于监控应用的性能和错误分析，需要集成生效          | [性能监控模块](/docs/ios/modules/APM%20Module)     |
 | A/B 测试 - ABTesting            |          A/B测试，需要集成生效          | [A/B测试模块](/docs/ios/modules/ABTesting%20Module)     |
@@ -27,5 +26,5 @@ title: 模块列表
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
-<DocCardList items={useCurrentSidebarCategory().items}/>
+<DocCardList items={useCurrentSidebarCategory().items.filter((item) => item.className !== 'sidebar-hidden')}/>
 ```

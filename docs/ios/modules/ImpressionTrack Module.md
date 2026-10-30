@@ -1,6 +1,7 @@
 ---
-sidebar_position: 4.1
-title: 曝光采集模块
+sidebar_position: 99
+sidebar_class_name: sidebar-hidden
+title: 旧版曝光模块（已废弃）
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -11,8 +12,10 @@ import TabItem from '@theme/TabItem';
 **使用时注意模块版本需要与采集 SDK 版本保持一致**
 :::
 
-:::tip
-自 4.14.0 起推荐使用 [元素曝光模块（ViewImpression）](/docs/ios/modules/ViewImpression%20Module)，支持按可见面积比例和停留时长配置曝光条件。两个模块互斥，同时集成时 ImpressionTrack 自动禁用。
+:::danger 已废弃
+自 4.14.0 起 ImpressionTrack 模块已废弃，不再更新，请使用新的 [曝光采集模块（ViewImpression）](/docs/ios/modules/ViewImpression%20Module)，支持按可见面积比例和停留时长配置曝光条件。两个模块互斥，同时集成时 ImpressionTrack 自动禁用。迁移方式请参考 [从 ImpressionTrack 迁移](/docs/ios/modules/ViewImpression%20Module#从-impressiontrack-迁移)。
+
+本文档仅供尚未升级的旧版本集成参考。
 :::
 
 --------
