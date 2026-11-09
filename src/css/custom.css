@@ -146,3 +146,8 @@ article > header > h2 > a {
 article > header > h1{
   font-size: 3rem;
 }
+
+/* 已废弃、仅保留直达链接的文档，从侧边栏中隐藏（front matter: sidebar_class_name: sidebar-hidden） */
+.sidebar-hidden {
+  display: none !important;
+}

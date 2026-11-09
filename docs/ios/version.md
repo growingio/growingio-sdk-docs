@@ -3,6 +3,13 @@ title: 版本记录
 sidebar_position: 0
 ---
 
+## [4.14.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.13.0...4.14.0) (2026-10-29)
+
+
+### Features
+
+* 新增 ViewImpression 元素曝光模块，支持按可见比例和停留时长配置曝光条件 ([#372](https://github.com/growingio/growingio-sdk-ios-autotracker/issues/372))
+
 ## [4.13.0](https://github.com/growingio/growingio-sdk-ios-autotracker/compare/4.12.0...4.13.0) (2026-09-29)
 
 

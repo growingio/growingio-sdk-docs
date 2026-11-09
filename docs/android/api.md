@@ -625,6 +625,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ### 3. 设置采集View的曝光事件 
 `trackViewImpression`<br/>
 当被设置的View出现在屏幕内时将触发曝光事件
+
+曝光条件（可见面积比例、停留时长）可通过初始化配置 [setImpressionConfig](/docs/android/Configuration#9-setimpressionconfig) 全局设置。默认支持重复曝光：元素满足条件发送一次事件后，离开可视区再次进入时会再发送一次。以下情况不会重复发送：
+
+* 元素一直停留在可视区内
+* App 退到后台再回到前台，期间元素没有离开可视区
+* 对同一 View 重复标记，但事件名和属性都没有变化（列表刷新时对可见元素原样重新标记是安全的）
 #### 参数说明
 | 参数                  | 参数类型              | 说明                       |
 | :-------------------- | :-------------------- | :------------------------- |

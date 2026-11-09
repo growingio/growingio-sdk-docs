@@ -1,5 +1,6 @@
 ---
 sidebar_position: 9
+pagination_next: null
 title: V2Adapter模块
 ---
 import Tabs from '@theme/Tabs';
