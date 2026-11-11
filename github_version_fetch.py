@@ -103,8 +103,10 @@ def uniapp_releases(releases, platform):
         newest_tag = newest_tag or tag_name
         date = published_at.split("T")[0]
         body = (release.get("body") or "").replace("\r\n", "\n").rstrip()
-        # 仅修正首发说明中的已知错误，保留其余 GitHub 发布正文。
+        # 让首发版本记录和鸿蒙文档的对外范围一致。
         if tag_name == "v1.0.0":
+            body = body.replace('首个版本发布，支持 HarmonyOS App：', '首个版本仅支持传统 uni-app（Vue 3）的 HarmonyOS App。')
+            body = body.replace('、`getGioInfo`', '')
             body = body.replace(
                 '`id` 生成 `id#事件名` 形式的 xpath，`data-title` 写入 `textValue`，'
                 '`data-index` 写入 `index`，`data-src` 写入 `hyperlink`。',
@@ -113,10 +115,13 @@ def uniapp_releases(releases, platform):
             )
             body = body.replace(
                 '歧义 listener 表达式、直接函数引用及 `.nvue` 页面保持源码原样并产生构建告警，业务行为不变。',
-                '有歧义的监听器表达式及 `.nvue` 页面会跳过对应插桩并产生构建告警。'
+                '有歧义的监听器表达式会跳过对应插桩并产生构建告警。'
                 'HarmonyOS App 可插桩 Vue 会缓存的直接函数引用，如 `@tap="submit"`。',
             )
-            body = body.replace('密码框保留事件但不上报 `textValue`', '密码框的 `VIEW_CHANGE` 事件省略 `textValue`')
+            body = body.replace(
+                '密码框保留事件但不上报 `textValue`，`file` 与无法确认类型的动态 `:type` 输入框拒绝整条采集。',
+                '密码框的 `VIEW_CHANGE` 事件省略 `textValue`。无法确认类型的动态 `:type` 输入框会跳过采集。',
+            )
         assets = [a for a in release.get("assets", []) if a["name"] != "release.json"]
         content += "## " + release_name.upper() + " - " + date + "\n\n"
         if body:

@@ -3,11 +3,9 @@ sidebar_position: 3
 title: 初始化配置
 ---
 
-本文档说明应用入口初始化方式、全部初始化配置项、会话模型及初始化验证。
+本页说明 HarmonyOS App 的初始化方式、配置项和会话行为。
 
 ## 配置一览表
-
-下表列出 HarmonyOS App 的初始化配置项。
 
 > <b>提示：`uniVue` 为必填项，其余配置项均为非必填。</b>
 
@@ -92,7 +90,7 @@ gdp('init', 'account-id', 'data-source-id', {
 ```ts
 gdp('init', 'account-id', 'data-source-id', {
   uniVue: app,
-  appChannel: 'app-store',
+  appChannel: 'appgallery',
 })
 ```
 
@@ -159,7 +157,7 @@ gdp('setUserId', 'user-1001', 'account') // account 为平台已配置的身份�
 
 ### forceLogin
 
-默认情况下，SDK 会自动生成访问用户 ID 来标识访问用户。如您希望使用业务侧获取的稳定标识（如账号体系 ID、第三方登录返回的 openId / unionId）作为访问用户 ID，可以通过指定 `forceLogin: true` 来打开强制登录模式。
+SDK 默认生成访问用户 ID。如果鸿蒙应用需要使用业务侧分配的稳定访问标识，请在初始化时设置 `forceLogin: true`。
 
 ```ts
 gdp('init', 'account-id', 'data-source-id', {
@@ -171,7 +169,7 @@ gdp('init', 'account-id', 'data-source-id', {
 开启后，SDK 暂停发送事件。获取到稳定标识后，调用 `identify` 分配设备 ID 并恢复发送。
 
 ```ts
-gdp('identify', 'openId-or-unionId')
+gdp('identify', 'stable-visitor-id')
 ```
 
 - `identify` 成功执行后，SDK 更新设备 ID 和本次运行中等待上报的事件。冷启动恢复的历史事件保留原设备 ID。

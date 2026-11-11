@@ -3,18 +3,16 @@ sidebar_position: 2
 title: 集成
 ---
 
-本文档说明 SDK 的安装方式、完整的工程集成示例与平台支持。初始化参数请参阅[初始化配置](./configuration.md)，无埋点插件配置请参阅[无埋点采集](./plugins/event-autotracking.md)。
+以下步骤适用于传统 uni-app（Vue 3）开发的 HarmonyOS App。初始化参数请参阅[初始化配置](./configuration.md)。
 
 ## 1. 环境要求
 
 | 项目 | 要求 |
 | --- | --- |
-| uni-app 编译基准 | HBuilderX `5.24` / uni-app CLI `3.0.0-5020420260812001`（Vue `3.4.21`） |
-| Vue 版本 | Vue 3（工程必须使用 `createSSRApp` 创建应用） |
-| 构建工具 | Node ≥ `20.19`（构建机器需要） |
+| HBuilderX | `5.24` 或更高版本，`1.0.0` 鸿蒙端验收使用 `5.34` |
+| 应用工程 | 传统 uni-app Vue 3 工程，使用 `.vue` 页面和 `createSSRApp` |
+| 构建工具 | Node.js `20.19.0` 或更高版本 |
 | 编译目标 | HarmonyOS App |
-
-> 不承诺 Vue2、Web、nvue 或 uni-app x 兼容。
 
 ## 2. 安装方式
 
@@ -68,7 +66,7 @@ gio-uniapp-autotracker/
 
 ## 4. 完整集成示例
 
-以下示例采用标准 CLI 工程目录。HBuilderX 创建的工程将 `src/` 内的应用文件放在项目根目录。
+以下示例采用编译到 HarmonyOS 的 CLI 工程目录。HBuilderX 创建的工程将 `src/` 内的应用文件放在项目根目录。
 
 ### 4.1 工程目录结构
 
@@ -173,21 +171,7 @@ function onLogout() {
 | `src/App.vue` | 无需改动 |
 | 各页面 | 按需调用 `gdp()`；无埋点交互自动采集 |
 
-## 5. 平台支持
-
-| 平台 | 状态 | 说明 |
-| --- | --- | --- |
-| HarmonyOS App | 可用 | 基础采集、公开 API 与无埋点均在支持范围 |
-
-> Android App、iOS App 及各小程序平台暂不支持。
-
-HarmonyOS App 注意事项：
-
-- SDK 通过 `uni` 宿主 API 读取系统信息、网络状态、执行存储和上报请求；宿主缺失必需 API（如 `getStorageSync`、`request`、`getDeviceInfo` 等）时初始化会失败。
-- 无埋点插桩只作用于 Vue 模板编译产物；`.nvue` 页面不在插桩范围内，编译时会产生构建告警。
-- 每次升级 SDK、Vite 配置或 uni-app 模板后，都要重新编译 HarmonyOS 目标，并完成一次初始化、页面浏览、交互和上报验证；自动化测试和编译通过不能替代真实端验证。
-
-## 6. 集成验证
+## 5. 集成验证
 
 1. 在初始化配置中设置 `debug: true`，使用 HBuilderX 编译并运行 HarmonyOS 目标。
 2. 进入应用首页后，查看控制台中带 `[GrowingIO Debug]:` 前缀的 `VISIT` 和 `PAGE` 发送日志。
@@ -199,3 +183,5 @@ HarmonyOS App 注意事项：
    ```
 
 5. 确认采集服务收到事件后，移除或关闭 `debug` 配置。
+
+升级 SDK 或修改 Vite 配置、页面模板后，重新编译 HarmonyOS 目标并复验这些步骤。

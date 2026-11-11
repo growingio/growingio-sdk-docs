@@ -3,7 +3,7 @@ sidebar_position: 1
 title: 功能插件总览
 ---
 
-SDK 的扩展能力通过插件提供。在 `main.ts` 中先调用 `gdp('registerPlugins', plugins)`，再调用 `gdp('init', ...)`。
+在 HarmonyOS App 的 `main.ts` 中先调用 `gdp('registerPlugins', plugins)`，再调用 `gdp('init', ...)`。
 
 ```ts
 gdp('registerPlugins', [{ name: 'gioEventAutoTracking' }])
@@ -12,11 +12,11 @@ gdp('init', 'account-id', 'data-source-id', {
 })
 ```
 
-## 当前可用插件
+## 内置插件
 
-| 插件名 | 说明 | 适用平台 |
-| --- | --- | --- |
-| `gioEventAutoTracking` | 无埋点采集，支持模板点击、控件变更和原生 TabBar 点击 | HarmonyOS App |
+| 插件名 | 说明 |
+| --- | --- |
+| `gioEventAutoTracking` | 无埋点采集，支持模板点击、控件变更和原生 TabBar 点击 |
 
 ## 客户插件
 

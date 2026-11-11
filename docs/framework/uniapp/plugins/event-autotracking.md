@@ -73,14 +73,13 @@ gioUniappAutoTrack({ runtimeImport: '@/custom-path/gio-uniapp-autotracker/autotr
 | 事件类型 | 上报事件 | 说明 |
 | --- | --- | --- |
 | 点击类 `@click`、`@tap` | `VIEW_CLICK` | 白名单内置组件的静态点击监听 |
-| 变更类 `@change` | `VIEW_CHANGE` | 支持 `input`、`textarea`、`switch`、`slider`、`radio-group`、`checkbox-group`、`picker`、`picker-view` 和 `swiper`。`input` 和 `textarea` 也支持 `@blur`、`@confirm` |
+| 控件变更 `@change` | `VIEW_CHANGE` | 支持 `switch`、`slider`、`radio-group`、`checkbox-group`、`picker`、`picker-view` 和 `swiper` |
+| 输入完成 `@blur` 或 `@confirm` | `VIEW_CHANGE` | 支持 `input` 和 `textarea` |
 | 原生 TabBar 点击 | `VIEW_CLICK` | 页面 `onTabItemTap` 触发时采集。`xpath` 固定为 `#onTabItemTap`，`index` 从 `1` 开始。宿主提供的标签文案和页面路径分别写入 `textValue` 和 `hyperlink` |
 
 ### 输入框完成事件
 
-`input` 和 `textarea` 按 `blur → confirm → change` 的顺序选择第一个已声明的完成事件。选中的监听仍须满足插桩条件。
-
-鸿蒙 App 的输入框使用 `@blur` 或 `@confirm` 采集输入完成事件。仅声明 `@change` 时保留兼容插桩，宿主未触发该事件时不会产生采集记录。原有监听均保留。
+在 `input` 和 `textarea` 上绑定 `@blur` 或 `@confirm` 来采集输入完成事件。两者都声明时，编译器优先选择 `@blur`。选中的监听须满足[插桩条件](#插桩边界)。
 
 ## 元素标识与维度
 
@@ -199,16 +198,12 @@ gioUniappAutoTrack({ runtimeImport: '@/custom-path/gio-uniapp-autotracker/autotr
 | 场景 | 行为 |
 | --- | --- |
 | 密码框（`password`、安全密码及动态 `:password`） | 保留 `VIEW_CHANGE` 事件，但始终不读取、不上报 `textValue` |
-| `file` 输入框 | 拒绝整条采集 |
 | 无法确认类型的动态 `:type` 输入框 | 拒绝整条采集 |
 | `swiper` 的 autoplay 变更事件 | 默认忽略。原生事件 `target.dataset` 含已启用的 `data-growing-track` 标记时才允许采集 |
 
 ```vue
 <!-- 密码框：事件照常上报，输入内容永不上报 -->
 <input password @blur="onPwdBlur" />
-
-<!-- 文件选择：整条事件不采集 -->
-<input type="file" @change="onFileChange" />
 ```
 
 ## 插桩边界
@@ -224,7 +219,6 @@ gioUniappAutoTrack({ runtimeImport: '@/custom-path/gio-uniapp-autotracker/autotr
 | 歧义 listener 表达式 | handler 含多条副作用语句、复杂嵌套调用 | 外层包裹可能改变求值顺序 |
 | 无法缓存的函数引用 | `v-once` 内的 `@tap="submit"`，`v-for` 内的 `@tap="item.submit"`，引用插槽变量的监听 | Vue 在渲染时解析引用，插件保留其原有行为 |
 | 无法静态分析的 Options API 组件配置 | `export default defineComponent(...)`、展开 `methods` | 无法安全注册探针方法 |
-| `.nvue` 页面 | `.nvue` 文件内的模板 | 不在模板插桩范围内 |
 
 ### 可安全插桩场景
 
@@ -237,9 +231,7 @@ gioUniappAutoTrack({ runtimeImport: '@/custom-path/gio-uniapp-autotracker/autotr
 
 ### 无法插桩时的替代方案
 
-需要精确采集上述交互时，可在业务原有 handler 中调用 `gdp('track', ...)` 上报代码埋点。
-
-**注意：** 代码埋点上报的事件为普通埋点事件，**不能被圈选**，只能通过事件名（event）在分析中使用；圈选能力仅适用于无埋点自动采集的 `VIEW_CLICK` / `VIEW_CHANGE` 模板事件。因此替代方案无法还原元素的圈选体验，仅适合补充采集无法插桩的交互行为。事件命名请使用业务化名称，**不要使用 `VIEW_CLICK` / `VIEW_CHANGE` 等无埋点事件类型名**，避免与分析模型中的系统事件混淆：
+需要采集这类交互时，在原有业务监听器中调用 `gdp('track', ...)`，使用业务事件名上报 `CUSTOM` 事件。
 
 ```ts
 // 动态事件绑定场景：在业务 handler 中手动上报

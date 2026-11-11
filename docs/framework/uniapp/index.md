@@ -4,7 +4,7 @@ title: GrowingIO uni-app SDK（HarmonyOS）
 slug: /framework/uniapp
 ---
 
-本文档介绍 GrowingIO uni-app SDK 在传统 uni-app（Vue 3）工程中的集成方式、初始化配置、数据采集 API 和功能插件。
+GrowingIO uni-app SDK `1.0.0` 仅面向使用传统 uni-app（Vue 3）开发的 HarmonyOS App。
 
 ## 简介
 
@@ -19,26 +19,11 @@ SDK 以 ESM JavaScript 和 `.d.ts` 交付，提供 npm 包 `gio-uniapp-sdk` 和 
 - 模板交互的无埋点采集需要在 `vite.config.ts` 中配置 SDK 的 Vite 插件，并将其排在 uni-app 插件之前。TabBar 点击由已注册的无埋点插件通过页面生命周期采集。
 - 根入口会在客户项目中自动声明全局 `gdp`，无需额外的 `.d.ts` 文件。
 
-支持平台：
-
-| 平台 | 状态 |
-| --- | --- |
-| HarmonyOS App | 可用 |
-
-> Android、iOS 及各小程序平台暂不支持，接入时请勿选择对应编译目标。
-
-HarmonyOS 端说明：
-
-- SDK 通过 `uni` 宿主 API 完成系统信息、网络状态、存储和请求等平台能力调用；宿主缺失必需 API 时初始化会失败。
-- 输入框的完成事件按 `blur → confirm → change` 的优先级选择插桩。传统 App 不转发输入框的原生 `change`，业务应使用 `@blur` 或 `@confirm`。
-- `.nvue` 页面不在模板插桩范围内，编译时会产生构建告警。
-- 每次升级 SDK、Vite 配置或 uni-app 模板后，都应重新编译 HarmonyOS 目标并完成一次真实编译与上报验证。
-
 ## 文档导航
 
 | 文档 | 说明 |
 | --- | --- |
-| [集成](./integration.md) | 安装方式、uni_modules 目录、无埋点构建依赖与平台支持 |
+| [集成](./integration.md) | 鸿蒙工程的安装方式、`uni_modules` 路径和集成验证 |
 | [初始化配置](./configuration.md) | 入口初始化、全部初始化配置项、会话模型与初始化验证 |
 | [数据采集 API](./apis.md) | `track`、用户身份、用户属性、动态开关、地理位置、插件注册 |
 | [功能插件](./plugins/index.md) | 无埋点采集 `gioEventAutoTracking` |
@@ -62,7 +47,7 @@ export function createApp() {
 }
 ```
 
-## 公开能力一览
+## HarmonyOS App API 一览
 
 ```ts
 gdp('registerPlugins', plugins)
@@ -71,7 +56,6 @@ gdp('track', eventName, attributes?)
 gdp('setUserId', userId, userKey?)
 gdp('clearUserId')
 gdp('identify', deviceId)
-gdp('getGioInfo')
 gdp('setUserAttributes', attributes)
 gdp('setOptions', { dataCollect })
 gdp('setLocation', latitude, longitude)
@@ -80,7 +64,7 @@ gdp('clearLocation')
 
 ## 数据发送前提
 
-- `init` 返回 `true` 后，SDK 可暂存部分生命周期和 API 调用，待运行时就绪后处理。身份未就绪时，`getGioInfo` 返回 `null`。
+- `init` 返回 `true` 后，SDK 可暂存部分生命周期和 API 调用，待运行时就绪后处理。
 - `dataCollect: false` 时，新的行为事件不会进入上报队列。历史队列的发送时机见[采集开关](./apis.md#1开启关闭数据采集datacollect)。
 - `forceLogin: true` 且 `identify` 尚未调用成功时，事件只入队不上报。
 - 调试阶段可设置 `debug: true`，控制台输出 `[GrowingIO Debug]:` 前缀的操作标签与即将派发的协议事件数组；不会输出队列内部元数据，也不会改变隐私、重试或采集行为。

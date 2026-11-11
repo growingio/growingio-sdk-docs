@@ -3,7 +3,7 @@ sidebar_position: 4
 title: 数据采集 API
 ---
 
-SDK 对外统一使用 `gdp(command, ...)` 命令式入口。`main.ts` 导入 SDK 根入口后，uni-app 页面可直接使用全局 `gdp`，也可以从 npm 包默认导入。
+本页列出 HarmonyOS App 可用的 `gdp(command, ...)` 命令。`main.ts` 导入 SDK 根入口后，应用页面可直接使用全局 `gdp`，也可以从 npm 包默认导入。
 
 ```ts
 import gdp from 'gio-uniapp-sdk'
@@ -46,17 +46,17 @@ gdp('track', 'order', {
 
 ## 回调方法
 
-SDK 通过返回值表示是否接受调用。`true` 表示已接受，`false` 表示已拒绝。`getGioInfo` 返回 `string | null`。
+SDK 通过返回值表示是否接受调用。`true` 表示已接受，`false` 表示已拒绝。
 
 **<font color="#FC5F3A">注意：</font>返回 true 时，仅表示SDK已接受对应调用，不保证对应事件触发并上报成功。**
 
-除 `registerPlugins` 和 `init` 外，请在 `gdp('init', ...)` 返回 `true` 后调用 API。异步初始化期间，SDK 可暂存部分调用，`getGioInfo` 要等运行时就绪后才可能返回查询串。
+除 `registerPlugins` 和 `init` 外，请在 `gdp('init', ...)` 返回 `true` 后调用 API。异步初始化期间，SDK 可暂存部分调用。
 
 通用失败条件：
 
 | 条件 | 返回值 | 行为 |
 | --- | --- | --- |
-| SDK 未初始化 | `false`（`getGioInfo` 为 `null`） | 不执行对应 API。 |
+| SDK 未初始化 | `false` | 不执行对应 API。 |
 | 命令名不存在 | `false` | 不执行对应 API。 |
 | 参数未通过该命令的校验 | `false` | 各命令的校验条件见下文。 |
 
@@ -182,7 +182,7 @@ gdp('setUserId', 'user-1001', 'account') // account 为平台已配置的身份�
 
 ### 3、设置访问用户Id(identify)
 
-访问用户Id，又称为匿名用户Id/设备Id。在 uni-app 中，该方法用于 `forceLogin` 模式下为本次等待上传的事件分配设备身份，并释放暂停的上报队列。
+在 `forceLogin` 模式下为本次等待上传的事件分配访问用户 ID（设备 ID），并释放暂停的上报队列。
 
 :::info
 
@@ -198,7 +198,7 @@ gdp('setUserId', 'user-1001', 'account') // account 为平台已配置的身份�
 | `deviceId` | `string \| number` | 是 | 标识值。接受有效的非空字符串或有限正数，字符串最多 1000 个 Unicode 码点。 |
 
 ```ts
-gdp('identify', 'assignment-id-or-openid')
+gdp('identify', 'stable-visitor-id')
 ```
 
 生效行为：
@@ -220,38 +220,7 @@ gdp('identify', 'assignment-id-or-openid')
 | `deviceId` 超过 1000 个 Unicode 码点或包含非法 Unicode 代理项 | `false` |
 | 更换设备 ID 后，事件或队列超过容量限制 | `false` |
 
-### 4、获取身份查询串(getGioInfo)
-
-获取用于 App 和 H5 身份打通的查询串。请将查询串传给受信任的 H5 页面。在 H5 端初始化 WebJS SDK 前注册 `gioEmbeddedAdapter`，初始化时使用与 App 一致的 `accountId`，并将 `appId` 设置为鸿蒙应用的包名。[WebJS 插件集成说明](/docs/webjs/plugins/embeddedAdapter)
-
-```ts
-function buildH5Url(h5Url: string): string | null {
-  const gioInfo = gdp('getGioInfo')
-  if (gioInfo === null) return null
-
-  const hashIndex = h5Url.indexOf('#')
-  const baseUrl = hashIndex < 0 ? h5Url : h5Url.slice(0, hashIndex)
-  const fragment = hashIndex < 0 ? '' : h5Url.slice(hashIndex)
-  const queryIndex = baseUrl.indexOf('?')
-  let separator = '?'
-  if (queryIndex >= 0) {
-    separator = queryIndex === baseUrl.length - 1 || baseUrl.endsWith('&') ? '' : '&'
-  }
-
-  return `${baseUrl}${separator}${gioInfo}${fragment}`
-}
-
-const webViewUrl = buildH5Url('https://h5.example.com/?source=app#/home')
-```
-
-生效行为：
-
-- SDK 尚未就绪或应用包名不可用时返回 `null`。采集开启时，如果会话尚未建立或仍在等待 `identify`，也返回 `null`。
-- 采集开启且身份就绪时，返回包含当前身份和会话的查询串。
-- `dataCollect: false` 时，查询串只包含应用、账户、数据源及关闭采集的标记。
-- H5 SDK 初始化时读取 URL 中的采集状态。App 后续调整采集开关时，已打开的 H5 页面需要同步处理自己的采集开关。
-
-### 5、清除登录用户Id(clearUserId)
+### 4、清除登录用户Id(clearUserId)
 
 当用户登出之后调用 `clearUserId`，清除已经设置的登录用户ID。
 
@@ -269,7 +238,7 @@ gdp('clearUserId')
 | --- | --- |
 | SDK 未初始化 | `false` |
 
-### 6、用户属性(setUserAttributes)
+### 5、用户属性(setUserAttributes)
 
 用于记录当前登录用户的属性。请先调用 `setUserId` 设置登录用户 ID，再提交属性。SDK 也可接受未设置登录用户 ID 时的调用，此时事件不携带 `userId`。
 
