@@ -3,27 +3,28 @@ sidebar_position: 4
 title: 数据采集 API
 ---
 
-SDK 对外统一使用 `gdp(command, ...)` 命令式入口。`main.ts` 导入 SDK 根入口后，uni-app 页面可直接使用由 SDK 声明的全局 `gdp`，也可以默认导入：
+SDK 对外统一使用 `gdp(command, ...)` 命令式入口。`main.ts` 导入 SDK 根入口后，uni-app 页面可直接使用全局 `gdp`，也可以从 npm 包默认导入。
 
 ```ts
-import gdp from 'gio-uniapp-autotracker'
+import gdp from 'gio-uniapp-sdk'
 ```
+
+通过 `uni_modules` 集成时，请使用[模块导入路径](./integration.md)。
 
 ## 参数限制
 
 ### Object 参数限制
 
-文档中指定参数值为 **Object 类型**（`track` 的 `attributes`、`setUserAttributes` 的 `attributes`）时，请注意以下限制：**(非指定类型的属性值会被丢弃；String / boolean 超长会被截断；数组超过 100 项时整条属性被丢弃)**
+此限制适用于 `track` 和 `setUserAttributes` 的 `attributes` 对象。
 
-**`key:` String，length ≤ 100（按 Unicode 码点截断）；**
-
-**`value:` String / boolean 时 length ≤ 1000（超长截断）；Array 时 length ≤ 100（超限丢弃该属性）；**
+- 属性名最多保留 100 个 Unicode 码点。
+- 属性值支持字符串、布尔值、有限数字、有效的 `Date`、`null`、`undefined` 和由这些值组成的一维数组。SDK 将支持的值转成字符串，最多保留 1000 个 Unicode 码点。
 
 ### 上报参数说明
 
 调用 埋点事件(`track`) 和 登录用户属性(`setUserAttributes`) 时：
 
-1、如果属性值是由字符串组成的一维数组，上报时会自动转换为 `Array.join('||')` 的字符串，便于服务端进行拆分解析。拼接后的字符串总长度大于 1000 时会被截断；数组长度大于 100 时该属性会被丢弃。因此需要控制数组中总体元素数量和总体字符串长度。
+1、一维数组的每一项先转换为字符串，再用 `||` 拼接。数组超过 100 项或含有不支持的值时，SDK 丢弃整个属性。
 
 #### 示例
 
@@ -37,7 +38,7 @@ gdp('track', 'order', {
 
 2、如果属性值是嵌套对象或函数，SDK 无法解析，会直接丢弃该属性。因此需要提前把数据调整为简单类型。
 
-3、`number` 中的 `NaN`、`Infinity` 等非有限数值，以及无效的 `Date`，都会被丢弃，不会上报。
+3、有限数字和布尔值转为字符串，有效的 `Date` 转为 ISO 8601 字符串。非有限数值（如 `NaN`、`Infinity`）和无效日期会被丢弃。
 
 4、`null` / `undefined` 会转为空字符串上报。
 
@@ -45,11 +46,11 @@ gdp('track', 'order', {
 
 ## 回调方法
 
-除少数与返回值、参数相关的接口外，SDK 的 API 不提供回调，统一通过**返回值**确认执行结果：返回 `true` 表示 SDK 接受本次调用，返回 `false` 表示 SDK 拒绝本次调用；`getGioInfo` 返回 `string | null`。
+SDK 通过返回值表示是否接受调用。`true` 表示已接受，`false` 表示已拒绝。`getGioInfo` 返回 `string | null`。
 
 **<font color="#FC5F3A">注意：</font>返回 true 时，仅表示SDK已接受对应调用，不保证对应事件触发并上报成功。**
 
-调用时机：除 `registerPlugins` 和 `init` 外，所有 API 都必须在 `gdp('init', ...)` 返回 `true` 后调用。
+除 `registerPlugins` 和 `init` 外，请在 `gdp('init', ...)` 返回 `true` 后调用 API。异步初始化期间，SDK 可暂存部分调用，`getGioInfo` 要等运行时就绪后才可能返回查询串。
 
 通用失败条件：
 
@@ -57,7 +58,7 @@ gdp('track', 'order', {
 | --- | --- | --- |
 | SDK 未初始化 | `false`（`getGioInfo` 为 `null`） | 不执行对应 API。 |
 | 命令名不存在 | `false` | 不执行对应 API。 |
-| 参数类型不符合 API 要求 | `false` | 不执行对应 API。 |
+| 参数未通过该命令的校验 | `false` | 各命令的校验条件见下文。 |
 
 TS 类型说明：
 
@@ -89,19 +90,19 @@ gdp('init', 'YOUR_ACCOUNT_ID', 'YOUR_DATA_SOURCE_ID', {
 
 生效行为：
 
-- 返回 `true`：初始化成功，基础自动采集已启用，`registerPlugins` 暂存的插件已安装。
-- 返回 `false`：初始化失败，SDK 不采集事件。
-- `init` 只允许成功调用一次；重复调用输出告警并返回 `false`，保留首次实例与配置。
+- 返回 `true` 表示配置已通过同步校验，SDK 已安装生命周期接入，并开始异步恢复运行状态。控制台输出“Gio uni-app SDK 初始化完成”时，运行时已就绪。
+- 首次调用返回 `false` 时，初始化尚未启动。修正配置或宿主环境后可以重试。
+- 初始化进行中或运行时已就绪时，重复调用会输出告警并返回 `false`。如果异步恢复失败，可以在修正问题后重新调用 `init`，SDK 会复用已安装的生命周期和插件。
 
 失败条件：
 
 | 条件 | 返回值 |
 | --- | --- |
-| `accountId` / `dataSourceId` 不是字符串 | `false` |
+| `accountId` / `dataSourceId` 不是有效的非空字符串 | `false` |
 | `options` 不是对象 | `false` |
 | `options.uniVue` 不是可安装 mixin 的 Vue 应用 | `false` |
 | 宿主 `uni` 缺失必需 API（存储、网络、系统信息等） | `false` |
-| SDK 已初始化 | `false` |
+| SDK 正在初始化或运行时已就绪 | `false` |
 
 ## 功能接口
 
@@ -121,24 +122,25 @@ gdp('track', 'purchase_completed', {
 
 | 参数 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `eventName` | `string` | 是 | 事件名。以字母或下划线开头，只能包含字母、数字和下划线，长度不超过 100 个字符。 |
+| `eventName` | `string` | 是 | 事件名。以英文字母或下划线开头，只能包含英文字母、数字和下划线，长度不超过 100 个字符。 |
 | `attributes` | `GioAttributes` | 否 | 事件属性。按通用属性归一规则处理。 |
 
 生效行为：
 
 - 返回 `true`：SDK 接受事件，事件类型为 `CUSTOM`；`true` 表示本地接纳或暂存，不代表服务端接收成功。
 - 返回 `false`：事件不入队。
-- 事件发送前会重新检查 session，必要时先补发当前 session 的 `VISIT`。
-- `dataCollect: false` 时，API 仍可返回 `true`，但事件不会进入上报队列，且 SDK 不会读取属性值。
+- 自定义事件沿用当前 App 会话。首个会话建立前，SDK 可暂存事件。
+- `dataCollect: false` 时返回 `false`，且 SDK 不读取属性值。
 
 失败条件：
 
 | 条件 | 返回值 |
 | --- | --- |
 | SDK 未初始化 | `false` |
+| 数据采集已关闭 | `false` |
 | `eventName` 不是字符串或格式不合法 | `false` |
 
-属性值不符合校验规则（如 `NaN`、无效 `Date`、嵌套对象、超过 100 项的数组）时，SDK 丢弃该属性但事件仍被接纳，返回 `true`。
+SDK 会丢弃无效属性。JavaScript 调用如果传入非对象的 `attributes`，SDK 会按未提供属性处理。事件仍可被接纳。
 
 ### 2、设置登录用户Id(setUserId)
 
@@ -155,20 +157,20 @@ gdp('track', 'purchase_completed', {
 
 | 参数 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `userId` | `string` | 是 | 登录用户 ID。长度需大于 0 且不超过 1000，超过长度限制时调用会被拒绝。 |
-| `userKey` | `string \| null` | 否 | 适用于ID-MAPPING，可设置 userId 的类型，默认不传。 |
+| `userId` | `string` | 是 | 登录用户 ID，最多 1000 个 Unicode 码点。传空字符串时退出登录。 |
+| `userKey` | `string \| null` | 否 | 平台配置的登录用户身份类型，最多 1000 个 Unicode 码点，默认不传。 |
 
 ```ts
 gdp('setUserId', 'user-1001')
-gdp('setUserId', 'user-1001', 'union-key-1001')
+gdp('setUserId', 'user-1001', 'account') // account 为平台已配置的身份类型
 ```
 
 生效行为：
 
-- 返回 `true`：SDK 更新并持久化 `userId`；`idMapping: true` 时同时保存 `userKey`。
-- 新 `userId` 与当前登录身份不同时，SDK 切换新 session，并在后续事件前补发新的 `VISIT`。
+- 返回 `true` 表示 SDK 已接受身份更新。执行时更新内存中的 `userId`，`idMapping: true` 时也更新 `userKey`，并尝试异步写入宿主存储。
+- 首次登录和退出沿用当前会话。应用首次进入前台后，如果登录用户从 A 切换到 B，SDK 会建立新会话，采集开启时生成新的 `VISIT`。退出 A 再登录 B 也会触发该规则。
 - 传入空字符串时，SDK 清除当前登录字段（等同 `clearUserId`），保留设备身份与内部最近登录身份。
-- 通过本 API 修改身份时，持久化存储与运行期内存缓存会同步更新。不要绕过 SDK 直接修改身份存储 key。
+- 请通过 SDK API 修改身份，避免直接写入 SDK 的存储键。
 
 失败条件：
 
@@ -176,7 +178,7 @@ gdp('setUserId', 'user-1001', 'union-key-1001')
 | --- | --- |
 | SDK 未初始化 | `false` |
 | `userId` 不是字符串或超过长度限制 | `false` |
-| `userKey` 不是字符串且不为 `null` / `undefined` | `false` |
+| `userKey` 不是字符串且不为 `null` / `undefined`，或字符串超过长度限制 | `false` |
 
 ### 3、设置访问用户Id(identify)
 
@@ -184,8 +186,8 @@ gdp('setUserId', 'user-1001', 'union-key-1001')
 
 :::info
 
-**1）若使用此接口需要在初始化时将 `forceLogin` 设置为 `true`。[参考文档](./configuration.md#forcelogin)**
-**2）该方法仅可合法地调用一次，多次调用无效。**
+- 初始化时需设置 [`forceLogin: true`](./configuration.md#forcelogin)。
+- 每次应用运行期间仅可成功分配一次设备 ID。
 
 :::
 
@@ -193,7 +195,7 @@ gdp('setUserId', 'user-1001', 'union-key-1001')
 
 | 参数 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `deviceId` | `string \| number` | 是 | 标识值。不能为空或非法值，最长保留 1000 个字符。 |
+| `deviceId` | `string \| number` | 是 | 标识值。接受有效的非空字符串或有限正数，字符串最多 1000 个 Unicode 码点。 |
 
 ```ts
 gdp('identify', 'assignment-id-or-openid')
@@ -201,9 +203,9 @@ gdp('identify', 'assignment-id-or-openid')
 
 生效行为：
 
-- 返回 `true`：SDK 将该标识写为设备 ID（包括积压事件的 `deviceId`），关闭 `forceLogin`，并补发积压事件。
-- 返回 `false`：不修改设备 ID，不释放队列。
-- 每个运行期只允许成功调用一次；初始化失败恢复期间调用会被暂存，待状态就绪后补执行。
+- 返回 `true` 表示 SDK 已接受分配请求。执行成功后更新设备 ID 和本次运行中等待上报的事件，并恢复发送。冷启动恢复的历史事件保留原设备 ID。
+- 分配失败时，设备 ID 与队列保持原状，可修正问题后重试。
+- 初始化恢复期间，调用可能先暂存，待运行时就绪后执行。
 
 失败条件：
 
@@ -215,24 +217,39 @@ gdp('identify', 'assignment-id-or-openid')
 | `deviceId` 不是 `string` 或 `number` | `false` |
 | `deviceId` 为 `number` 时不是有限正数 | `false` |
 | `deviceId` 为 `string` 时为空白，或为 `-`、`null`、`undefined` 等字面量字符串 | `false` |
-| `deviceId` 超过 1000 个字符 | `false` |
+| `deviceId` 超过 1000 个 Unicode 码点或包含非法 Unicode 代理项 | `false` |
+| 更换设备 ID 后，事件或队列超过容量限制 | `false` |
 
 ### 4、获取身份查询串(getGioInfo)
 
-获取当前身份查询串，用于拼入受信任的 H5 URL，实现 App 与 H5 页面的身份打通。
+获取用于 App 和 H5 身份打通的查询串。请将查询串传给受信任的 H5 页面。在 H5 端初始化 WebJS SDK 前注册 `gioEmbeddedAdapter`，初始化时使用与 App 一致的 `accountId`，并将 `appId` 设置为鸿蒙应用的包名。[WebJS 插件集成说明](/docs/webjs/plugins/embeddedAdapter)
 
 ```ts
-const gioInfo = gdp('getGioInfo')
-if (gioInfo !== null) {
-  h5Url = `${h5Url}?${gioInfo}`
+function buildH5Url(h5Url: string): string | null {
+  const gioInfo = gdp('getGioInfo')
+  if (gioInfo === null) return null
+
+  const hashIndex = h5Url.indexOf('#')
+  const baseUrl = hashIndex < 0 ? h5Url : h5Url.slice(0, hashIndex)
+  const fragment = hashIndex < 0 ? '' : h5Url.slice(hashIndex)
+  const queryIndex = baseUrl.indexOf('?')
+  let separator = '?'
+  if (queryIndex >= 0) {
+    separator = queryIndex === baseUrl.length - 1 || baseUrl.endsWith('&') ? '' : '&'
+  }
+
+  return `${baseUrl}${separator}${gioInfo}${fragment}`
 }
+
+const webViewUrl = buildH5Url('https://h5.example.com/?source=app#/home')
 ```
 
 生效行为：
 
-- 返回 `string | null`：已初始化且身份就绪时返回查询串。
-- 开启 `dataCollect` 且正在等待 `identify` 分配设备身份时，不提供身份快照，返回 `null`。
-- `dataCollect: false` 时仍会返回身份查询串，但其中采集状态标记为关闭。
+- SDK 尚未就绪或应用包名不可用时返回 `null`。采集开启时，如果会话尚未建立或仍在等待 `identify`，也返回 `null`。
+- 采集开启且身份就绪时，返回包含当前身份和会话的查询串。
+- `dataCollect: false` 时，查询串只包含应用、账户、数据源及关闭采集的标记。
+- H5 SDK 初始化时读取 URL 中的采集状态。App 后续调整采集开关时，已打开的 H5 页面需要同步处理自己的采集开关。
 
 ### 5、清除登录用户Id(clearUserId)
 
@@ -244,7 +261,7 @@ gdp('clearUserId')
 
 生效行为：
 
-- 返回 `true`：SDK 清除已保存的 `userId` 和 `userKey`；设备身份不会被清除。
+- 返回 `true` 表示 SDK 已接受清除请求。执行时清除当前 `userId` 和 `userKey`，保留设备身份。
 
 失败条件：
 
@@ -254,9 +271,10 @@ gdp('clearUserId')
 
 ### 6、用户属性(setUserAttributes)
 
-以登录用户的身份定义登录用户属性，用于用户信息相关分析。
+用于记录当前登录用户的属性。请先调用 `setUserId` 设置登录用户 ID，再提交属性。SDK 也可接受未设置登录用户 ID 时的调用，此时事件不携带 `userId`。
 
 ```ts
+gdp('setUserId', 'user-1001')
 gdp('setUserAttributes', {
   vip: true,
   level: 'gold',
@@ -277,7 +295,7 @@ gdp('setUserAttributes', {
 
 生效行为：
 
-- 返回 `true`：SDK 生成事件类型 `LOGIN_USER_ATTRIBUTES` 的用户属性事件。
+- 返回 `true` 表示 SDK 已接受调用，可生成或暂存 `LOGIN_USER_ATTRIBUTES` 事件。
 - 返回 `false`：用户属性事件不入队。
 - 属性归一后为空对象时事件不入队。
 
@@ -286,17 +304,25 @@ gdp('setUserAttributes', {
 | 条件 | 返回值 |
 | --- | --- |
 | SDK 未初始化 | `false` |
-| `attributes` 不是对象 | `false` |
-| 属性归一后为空 | `false` |
+| 数据采集已关闭 | `false` |
+| 已建立首个 App 会话，且 `attributes` 不是对象或属性归一后为空 | `false` |
 
 ## 动态修改配置接口(setOptions)
 
 ### 1、开启/关闭数据采集(dataCollect)
 
-默认开启数据采集。当设置为 **`false`** 时，SDK 将不会采集和上报事件；由关闭修改为开启时，视为一次新的访问，自动补发 `VISIT`，有当前页时补发 `PAGE`。
+默认开启数据采集。动态设置为 `false` 后，SDK 停止生成新的行为事件，之前已入队或正在发送的事件仍可能上报。恢复采集时，SDK 按应用生命周期建立新的会话。
+
+关闭采集时调用以下命令。
 
 ```ts
-gdp('setOptions', { dataCollect: true | false })
+gdp('setOptions', { dataCollect: false })
+```
+
+恢复采集时调用以下命令。
+
+```ts
+gdp('setOptions', { dataCollect: true })
 ```
 
 可配置项：
@@ -309,7 +335,7 @@ gdp('setOptions', { dataCollect: true | false })
 
 - 返回 `true`：配置被接受。
 - 参数对象必须且只能包含 `dataCollect` 一个布尔字段。
-- `dataCollect` 从 `false` 恢复为 `true` 时，SDK 按生命周期建立新会话，有当前页时补发 `PAGE`。
+- `dataCollect` 从 `false` 恢复为 `true` 时，SDK 按生命周期建立新会话并生成 `VISIT`，有当前页时生成 `PAGE`。
 - 传入值与当前值相同时返回 `true`，不重复更新状态。
 
 失败条件：
@@ -386,20 +412,20 @@ gdp('registerPlugins', [{ name: 'gioEventAutoTracking' }])
 | --- | --- | --- | --- |
 | `plugins` | `readonly GioPluginRegistration[]` | 是 | 插件数组。 |
 | `plugins[].name` | `string` | 是 | 插件名。当前可用插件见[功能插件](./plugins/index.md)。 |
-| `plugins[].install` | `(growingio: GioPluginRuntime) => void` | 否 | 客户插件安装函数，仅在显式注册的客户插件上提供。 |
+| `plugins[].install` | `(growingio: GioPluginRuntime) => void` | 客户插件必填 | 客户插件安装函数。内置插件只需按其文档传入名称和所需配置。 |
 
 生效行为：
 
-- 返回 `true`：全部插件校验通过并暂存，等待首次初始化成功后安装。
+- 返回 `true`：全部插件校验通过并暂存，等待首次通过同步校验的 `init` 调用。
 - 返回 `false`：整批注册失败。
-- 首次有效初始化后，SDK 按注册顺序安装插件；单个客户插件 `install` 抛错不会阻止其他插件安装，仅输出告警。
+- 首次 `init` 通过同步校验并安装生命周期后，SDK 按注册顺序调用客户插件的 `install`。此时运行时可能仍在异步恢复。单个客户插件的 `install` 抛错时，SDK 会输出告警并继续安装其余客户插件。
 - 客户插件在 `install(growingio)` 中收到内部实例 `GioPluginRuntime`；页面代码仍只能调用 `gdp()`。
 
 失败条件：
 
 | 条件 | 返回值 |
 | --- | --- |
-| SDK 已初始化 | `false` |
+| SDK 已接受首次 `init` 调用 | `false` |
 | `plugins` 不是数组 | `false` |
 | 存在非法插件项（缺 `name` 或客户插件缺 `install`） | `false` |
 | 插件名重复 | `false` |
@@ -408,9 +434,9 @@ gdp('registerPlugins', [{ name: 'gioEventAutoTracking' }])
 
 | 事件 | 触发时机 | 说明 |
 | --- | --- | --- |
-| `VISIT` | 应用首次创建 session、session 过期重建、用户身份切换或恢复采集 | 携带当前页面上下文或基础身份信息 |
-| `PAGE` | 页面 `onShow` | 携带页面路由 `path`、`query`、`title` 和上一页 `referralPage` |
-| `APP_CLOSED` | 应用进入后台（`onHide`）时尽力上报 | 携带 `appState: 'BACKGROUND'`，复用当前页面的 `path` 和 `query`；进程被系统直接终止时事件可能无法送达 |
+| `VISIT` | App 冷启动进入前台、后台超时后回到前台、切换登录用户或恢复采集 | 携带会话和身份信息，页面路由及查询参数见 `PAGE` |
+| `PAGE` | 页面 `onShow` | 携带页面路由 `path`，有对应数据时包含 `query`、`title` 和上一页 `referralPage` |
+| `APP_CLOSED` | 应用进入后台（`onHide`）时尽力上报 | 携带 `appState: 'BACKGROUND'`，有当前页面信息时复用其 `path` 和 `query`。进程被系统直接终止时事件可能无法送达 |
 
 自动事件与 `track` 自定义事件共用统一的请求体结构，业务属性归一化后映射到事件的 `attributes` 字段。
 

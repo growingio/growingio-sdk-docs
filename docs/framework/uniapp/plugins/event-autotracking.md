@@ -3,7 +3,7 @@ sidebar_position: 2
 title: 无埋点采集
 ---
 
-无埋点采集由内置插件 `gioEventAutoTracking` 提供，基于 Vite 构建期模板插桩实现：编译阶段扫描业务模板中的事件监听，插入 SDK 采集代码，运行阶段无需页面代码配合。
+HarmonyOS App 的无埋点采集由内置插件 `gioEventAutoTracking` 提供。模板交互通过 Vite 在编译期插桩，原生 TabBar 点击通过页面生命周期采集。
 
 ## 接入步骤
 
@@ -18,100 +18,91 @@ gdp('init', 'account-id', 'data-source-id', { uniVue: app })
 
 ### 步骤 2：配置 Vite 插件
 
-无埋点的模板插桩发生在应用代码编译之前，Vite 插件必须配置在业务工程根目录的 `vite.config.ts` 中，且必须排在 `uni()` 之前。构建机器要求 Node ≥ `20.19`。
+在业务工程根目录的 `vite.config.ts` 中配置无埋点插件，并将它放在 uni-app 插件之前。构建环境要求 Node.js `20.19.0` 或以上版本。
 
-现有工程如果没有声明 `"type": "module"`，Vite 5 会按 CommonJS 加载配置，不能直接静态导入仅支持 ESM 的 npm 入口，使用异步配置即可兼容两种模块类型：
+Vite 5 在 CommonJS 工程中加载配置时，需要用 `import()` 加载 ESM 格式的 SDK 插件。以下异步配置也适用于 ESM 工程。
 
 ```ts
 import { defineConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 
-// 异步 import 在 CommonJS 工程中得到的是模块命名空间，需兼容 default 导出
+// 兼容 @dcloudio/vite-plugin-uni 的 CommonJS 默认导出
 const uniPlugin = (uni as unknown as { default?: typeof uni }).default ?? uni
 
 export default defineConfig(async () => {
-  // npm 接入；uni_modules 接入改为
+  // HBuilderX 工程通过 uni_modules 接入时，改为
   // const { gioUniappAutoTrack } = await import('./uni_modules/gio-uniapp-autotracker/vite.js')
-  const { gioUniappAutoTrack } = await import('gio-uniapp-autotracker/vite')
+  // CLI 工程通过 uni_modules 接入时，改为
+  // const { gioUniappAutoTrack } = await import('./src/uni_modules/gio-uniapp-autotracker/vite.js')
+  const { gioUniappAutoTrack } = await import('gio-uniapp-sdk/vite')
 
   return {
-    // 顺序必须是：无埋点插件在前，uni() 在后
     plugins: [gioUniappAutoTrack(), uniPlugin()],
   }
 })
 ```
 
-已经使用 ESM 配置（声明了 `"type": "module"`）的工程可以继续静态导入：
+声明了 `"type": "module"` 的工程也可以静态导入 SDK 插件。
 
 ```ts
 import { defineConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
-import { gioUniappAutoTrack } from 'gio-uniapp-autotracker/vite'
+import { gioUniappAutoTrack } from 'gio-uniapp-sdk/vite'
+// HBuilderX 工程通过 uni_modules 接入时，改为
+// import { gioUniappAutoTrack } from './uni_modules/gio-uniapp-autotracker/vite.js'
+// CLI 工程通过 uni_modules 接入时，改为
+// import { gioUniappAutoTrack } from './src/uni_modules/gio-uniapp-autotracker/vite.js'
+
+const uniPlugin = (uni as unknown as { default?: typeof uni }).default ?? uni
 
 export default defineConfig({
-  // ESM 静态导入直接得到插件函数，无需兼容 default 导出
-  plugins: [gioUniappAutoTrack(), uni()],
+  plugins: [gioUniappAutoTrack(), uniPlugin()],
 })
 ```
 
-非标准目录（例如把 uni_modules 模块放到了其他路径）可通过 `runtimeImport` 覆盖探针入口，该入口必须与主 SDK 来自同一份安装：
+从其他目录加载 SDK 时，可用 `runtimeImport` 指定探针入口。探针与主 SDK 必须来自同一份安装。
 
 ```ts
 gioUniappAutoTrack({ runtimeImport: '@/custom-path/gio-uniapp-autotracker/autotrack.js' })
 ```
 
-说明：
-
-- 编译插件包含自己的解析器，不要求业务工程额外安装 Vue / Babel 编译依赖。
-- 两种安装渠道的 Vite 导入路径：npm 为 `gio-uniapp-autotracker/vite`，uni_modules 为 `./uni_modules/gio-uniapp-autotracker/vite.js`（相对于项目根目录的 `vite.config.ts`）。
-- 不配置 Vite 插件时，插件注册不会报错，基础采集和 `gdp()` API 不受影响，但模板不会被插桩，无埋点事件不生效。
+编译插件已包含解析器。只注册运行时插件时，基础采集、`gdp()` API 和原生 TabBar 采集可用。模板交互需要完成 Vite 插桩才会产生无埋点事件。
 
 ## 采集范围
-
-无埋点处理白名单内置组件的静态 `@click`、`@tap` 与 `@change` 监听：
-
-- 普通模板 `xpath` 在运行时按小程序口径生成 `id#eventName`。
-- `uni-link` 组件使用 `#openURL` 标识，tabBar 点击使用 `#onTabItemTap`。
-- 点击、变更事件上报为 `VIEW_CLICK` / `VIEW_CHANGE` 等模板事件，携带元素路径与元素内容。
-
-### 事件类型
 
 | 事件类型 | 上报事件 | 说明 |
 | --- | --- | --- |
 | 点击类 `@click`、`@tap` | `VIEW_CLICK` | 白名单内置组件的静态点击监听 |
-| 变更类 `@change`（含输入框 `@blur`、`@confirm`） | `VIEW_CHANGE` | 变更事件默认不采集组件值，需 `data-growing-track` 开启 |
+| 变更类 `@change` | `VIEW_CHANGE` | 支持 `input`、`textarea`、`switch`、`slider`、`radio-group`、`checkbox-group`、`picker`、`picker-view` 和 `swiper`。`input` 和 `textarea` 也支持 `@blur`、`@confirm` |
+| 原生 TabBar 点击 | `VIEW_CLICK` | 页面 `onTabItemTap` 触发时采集。`xpath` 固定为 `#onTabItemTap`，`index` 从 `1` 开始。宿主提供的标签文案和页面路径分别写入 `textValue` 和 `hyperlink` |
 
 ### 输入框完成事件
 
-input / textarea 的输入完成采集按 `blur → confirm → change` 优先级只选择一个已声明的完成事件插桩：
+`input` 和 `textarea` 按 `blur → confirm → change` 的顺序选择第一个已声明的完成事件。选中的监听仍须满足插桩条件。
 
-- 优先使用 `@blur`，未声明时使用 `@confirm`，仅声明 `@change` 时保留兼容插桩路径。
-- 传统 App 不转发输入框的原生 `change`；仅绑定 `@change` 时不会补发事件，业务应改用 `@blur` / `@confirm`。
-- 原业务 handler 全部保留，业务行为不受插桩影响。
+鸿蒙 App 的输入框使用 `@blur` 或 `@confirm` 采集输入完成事件。仅声明 `@change` 时保留兼容插桩，宿主未触发该事件时不会产生采集记录。原有监听均保留。
 
 ## 元素标识与维度
 
-无埋点事件通过以下字段标识触发元素及其业务维度：
-
 | 维度 | 上报字段 | 来源标记 | 说明 |
 | --- | --- | --- | --- |
-| 元素路径 | `xpath` | `id` 属性 | 同名 handler 且无 `id` 时使用相同标识，无法区分；重要交互入口应补充稳定的 `id`，运行时生成 `id#事件名` 形式的 xpath |
-| 元素文案 | `textValue` | `data-title` | 补充节点文案，便于圈选与分析时识别元素 |
+| 元素路径 | `xpath` | `id` 和监听表达式 | 使用 `id#探针事件名` 标识模板交互 |
+| 元素文案 | `textValue` | `data-title` | 用于点击文案。`swiper` 变更事件缺少可上报的下标时也可使用该文案 |
 | 列表序号 | `index` | `data-index` | 区分列表中结构相同、xpath 一致的节点，取值为规范正整数（大于 0 且小于 2147483647） |
-| 目标地址 | `hyperlink` | `data-src` | 记录点击后的目标地址，动态链接由业务显式提供 |
-
-各维度的详细说明：
+| 目标地址 | `hyperlink` | `data-src` 或 `uni-link` 的静态 `href` | 记录点击后的目标地址，动态链接由业务显式提供 |
 
 ### 元素路径（xpath）
 
-`xpath` 是元素定位的核心维度，按节点嵌套层级生成。设置 `id` 后，xpath 会包含 `id#事件名` 标识，例如 `id="order-submit"`、`@click` 对应 `order-submit#click`。
+模板事件的 `xpath` 由事件节点的 `id` 和探针事件名组成。SDK 优先取 `currentTarget`，该节点缺失时取 `target`。能够提取业务函数名时使用函数路径，无法提取时回退到原生事件名。
 
-- 同名 handler 且无 `id` 的元素共享相同标识，圈选时会互相影响，这类元素必须补充 `id`。
-- `id` 应保持稳定、唯一，避免使用随机值或随业务状态变化的值。
+- `id="order-submit"` 配合 `@click="submitOrder($event)"` 生成 `order-submit#submitOrder`。
+- `id="order-submit"` 配合 `@click="handlers[action]($event)"` 生成 `order-submit#click`。
+- 事件节点缺少 `id` 时得到 `#探针事件名`。需要区分使用同一函数的元素时，为各元素设置稳定、唯一的 `id`。
+- `uni-link` 未声明 `click`、`tap` 或动态监听时，插件会补充使用 `openURL` 的点击探针。显式监听按普通模板规则生成标识。
 
 ### 元素文案（textValue）
 
-通过 `data-title` 补充元素文案：
+通过 `data-title` 补充点击事件的元素文案。
 
 ```vue
 <button data-title="提交订单" @click="submitOrder">提交</button>
@@ -137,7 +128,7 @@ input / textarea 的输入完成采集按 `blur → confirm → change` 优先�
 
 ### 目标地址（hyperlink）
 
-`data-src` 记录点击目标地址，适合 `navigator`、链接卡片和自定义跳转入口：
+用 `data-src` 记录 `navigator` 等入口的点击目标地址。`uni-link` 可使用静态 `href` 作为默认值，动态地址请绑定 `:data-src`。
 
 ```vue
 <navigator
@@ -152,11 +143,11 @@ input / textarea 的输入完成采集按 `blur → confirm → change` 优先�
 
 ## 隐私与忽略规则
 
-无埋点采集通过三层机制控制隐私边界：**忽略标记**（决定事件是否采集）、**敏感标记**（决定事件是否整条丢弃）、**值采集授权**（决定变更事件是否上报组件值）。优先级为：敏感标记 > 密码保护 > 值采集授权。
+忽略标记和敏感标记均会丢弃整条事件。通过这两项检查后，SDK 再应用密码保护和变更值采集规则。
 
 ### 1. 采集忽略标记（data-growing-ignore）
 
-`data-growing-ignore` 忽略该元素的自动采集，编译器保留原监听，不再报告采集边界告警。
+`data-growing-ignore` 让运行时丢弃对应的无埋点事件。业务监听照常执行。编译器能静态确认忽略且绑定不会覆盖该值时，会省略采集边界告警，仍会报告缺少监听表达式等诊断。
 
 ```vue
 <!-- 静态忽略：内部调试入口不产生任何无埋点事件 -->
@@ -175,14 +166,14 @@ input / textarea 的输入完成采集按 `blur → confirm → change` 优先�
 - 裸属性、`"true"`、`"1"` 表示忽略；`"false"`、`"0"` 表示不忽略。
 - 动态控制时使用 `:data-growing-ignore="...布尔表达式"`；不要依赖其他字符串的兼容性语义。
 - `false` / `0` 取值、动态 ignore 或可能被 `v-bind` 覆盖的标记仍会保留编译诊断，便于发现误配。
-- 标记必须写在实际绑定事件的节点上。
+- 若要忽略某个监听器对应的所有事件，请在绑定该监听器的节点上添加标记。SDK 也检查原生事件目标 `target`，因此点击带标记的子节点也能抑制冒泡触发的采集。
 
 ### 2. 敏感标记（data-growing-sensitive）
 
-`data-growing-sensitive` 是显式敏感标记，匹配的元素整条事件忽略采集，且该优先级高于 `data-growing-track`：
+`data-growing-sensitive` 会丢弃整条无埋点事件，优先于 `data-growing-track`。取值规则与忽略标记一致。
 
 ```vue
-<!-- 点击事件不采集，也不产生构建告警 -->
+<!-- 丢弃无埋点事件，保留业务点击 -->
 <button data-growing-sensitive @click="openPrivacyPolicy">
   查看隐私政策
 </button>
@@ -190,18 +181,15 @@ input / textarea 的输入完成采集按 `blur → confirm → change` 优先�
 
 ### 3. 值采集授权（data-growing-track）
 
-默认情况下，变更事件只记录组件发生了变化，不读取组件值。为非敏感组件添加 `data-growing-track` 后才允许上报当前值：
+变更事件默认只记录变化，`swiper` 仍可使用 `data-title` 提供的文案。为非敏感组件启用 `data-growing-track` 后，SDK 可读取并上报当前值。以下开关的值会以 `"true"` 或 `"false"` 写入 `textValue`。
 
 ```vue
-<input data-growing-track @blur="onPhoneBlur" placeholder="联系电话" />
-
-<switch data-title="接收通知" data-growing-track @change="onNoticeChange" />
+<switch id="notice-switch" data-growing-track @change="onNoticeChange" />
 ```
 
 注意：
 
 - `data-growing-track` 不能覆盖密码保护或敏感规则：密码框即使标记也不会上报 `textValue`。
-- 标记 `data-growing-track` 同时允许 autoplay 触发的 `change` 继续上报。
 - 裸属性、`"true"`、`"1"` 表示开启；`"false"`、`"0"` 表示关闭；动态控制使用 `:data-growing-track="enabled"`。
 
 ### 4. 内置隐私保护
@@ -213,7 +201,7 @@ input / textarea 的输入完成采集按 `blur → confirm → change` 优先�
 | 密码框（`password`、安全密码及动态 `:password`） | 保留 `VIEW_CHANGE` 事件，但始终不读取、不上报 `textValue` |
 | `file` 输入框 | 拒绝整条采集 |
 | 无法确认类型的动态 `:type` 输入框 | 拒绝整条采集 |
-| autoplay 触发的变更事件 | 默认忽略，显式 `data-growing-track` 后才采集 |
+| `swiper` 的 autoplay 变更事件 | 默认忽略。原生事件 `target.dataset` 含已启用的 `data-growing-track` 标记时才允许采集 |
 
 ```vue
 <!-- 密码框：事件照常上报，输入内容永不上报 -->
@@ -225,7 +213,7 @@ input / textarea 的输入完成采集按 `blur → confirm → change` 优先�
 
 ## 插桩边界
 
-业务行为不变是插桩的前提。插桩只在原事件监听外层包裹采集代码，不改变业务 handler 的执行时机、参数与返回值；无法保证这一前提的场景保持源码原样、不插桩并产生构建告警。
+插桩保留业务监听器的执行时机、参数和返回值。编译器无法安全改写的监听器保持原样，并会产生相应诊断。
 
 ### 不插桩场景
 
@@ -234,15 +222,17 @@ input / textarea 的输入完成采集按 `blur → confirm → change` 优先�
 | 动态事件绑定 | `@[eventName]="onTap"`、`v-on:[eventName]` | 编译期无法确定事件名，运行时事件名回退会引入行为差异 |
 | 自定义组件 | `<my-button @click="onTap" />` | 组件内部如何触发事件不受 SDK 控制 |
 | 歧义 listener 表达式 | handler 含多条副作用语句、复杂嵌套调用 | 外层包裹可能改变求值顺序 |
-| 直接函数引用 | `@tap="submit"` | 表达式即回调本身，无法在不改写的情况下插桩 |
+| 无法缓存的函数引用 | `v-once` 内的 `@tap="submit"`，`v-for` 内的 `@tap="item.submit"`，引用插槽变量的监听 | Vue 在渲染时解析引用，插件保留其原有行为 |
+| 无法静态分析的 Options API 组件配置 | `export default defineComponent(...)`、展开 `methods` | 无法安全注册探针方法 |
 | `.nvue` 页面 | `.nvue` 文件内的模板 | 不在模板插桩范围内 |
 
 ### 可安全插桩场景
 
-以下场景会正常插桩，事件名回退原生事件名：
+鸿蒙构建支持以下写法，事件命名遵循上文的 `xpath` 规则。
 
+- 可缓存的直接函数引用，例如 `@tap="submit"`。
 - 显式调用：`@tap="save($event)"`。
-- 带简单首参数的同步函数：如 `@tap="open(item.id)"`。
+- 带简单参数的调用，例如 `@tap="open(item.id)"`。
 - 两侧均为显式调用的简单条件表达式：如 `@tap="isLogin ? save($event) : goLogin($event)"`。
 
 ### 无法插桩时的替代方案
@@ -269,25 +259,23 @@ const onTap = (e: CustomEvent) => {
 
 ### 事件修饰符
 
-事件修饰符随 handler 一并插桩，语义与原生 Vue 一致：
+事件修饰符保持 Vue 原有语义。采集探针位于监听器内。以 `.self` 为例，只有事件满足修饰符条件，监听器和探针才会执行。
 
 ```vue
-<!-- stop / prevent 等修饰符保留，采集代码在修饰逻辑之外执行 -->
-<button @click.stop="onTap">提交</button>
+<button @click.stop="onTap($event)">提交</button>
 ```
 
 ### 动态绑定
 
-动态绑定（getter、计算属性等）由原模板求值，SDK 不在事件时重新求值 getter 或其他绑定，确保事件触发时刻的数据与业务实际使用的数据一致：
+动态 `data-*` 元数据由原模板求值。SDK 从原生事件的 `dataset` 读取这些值。可缓存的计算成员监听遵循 Vue 原有的引用求值规则。以下示例使用原生事件名 `tap`，因为编译时无法确定被调用的业务函数名。
 
 ```vue
-<!-- expr 的求值、传参均由原模板完成，SDK 只读取最终结果 -->
 <view @tap="handlers[currentType]">动态入口</view>
 ```
 
-### picker 数据源的例外
+### 选择器文案
 
-唯一例外是 picker 的 `:range` / `:range-key` 与 picker-view 列的 `v-for` 数据源：
+`picker` 的 `:range`、`:range-key` 和 `picker-view` 列的 `v-for` 数据源可用于解析选中项文案。
 
 - 数据源写成普通成员路径（如 `cities`、`state.cities`）时，只在通过隐私与 track 授权检查后于事件时读取一次，用于取选中项文案。
 - 含调用、计算键或可选访问的 range、读取失败或超出范围预算时，使用下标回退，即上报选中项下标而非文案。
@@ -302,5 +290,4 @@ const onTap = (e: CustomEvent) => {
 
 ## 版本与升级
 
-- schema v2 与旧编译探针互不兼容，升级时必须整体重新构建应用。
-- 升级 SDK、Vite 配置或 uni-app 模板后，需重新编译 HarmonyOS 目标，并完成一次真实编译、交互与上报验证。
+升级 SDK、Vite 配置或 uni-app 模板后，重新构建 HarmonyOS App，并验证实际交互和上报。

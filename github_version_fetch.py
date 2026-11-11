@@ -71,60 +71,74 @@ def iOS_releases(releases, fromId):
     return content
 
 def repo_web_url(platform):
-    """把 releases api 地址转换为 github 仓库的网页地址
-
-    :param platform: 平台配置字典
-    :return: 形如 https://github.com/owner/repo 的仓库地址
-    """
+    """把 GitHub Releases API 地址转换为发布列表的网页地址。"""
     return platform['releaseUrl'].replace("api.github.com/repos/", "github.com/")
 
 
-def uniapp_releases(releases, platform):
-    """生成 uni-app 的版本记录，附带各版本发布包的 GitHub 下载地址
+def fetch_uniapp_releases(url, headers):
+    """获取全部 UniApp Release，避免刷新页面时丢掉较早的版本。"""
+    releases = []
+    while url:
+        with request.urlopen(request.Request(url, headers=headers)) as response:
+            releases.extend(json.load(response))
+            next_page = re.search(r'<([^>]+)>;\s*rel="next"', response.getheader("Link", ""))
+            url = next_page.group(1) if next_page else None
+    return releases
 
-    :param releases: github releases 接口返回的列表
-    :param platform: 平台配置字典
-    :return: version.md 的完整内容
-    """
+
+def uniapp_releases(releases, platform):
+    """生成 UniApp 版本记录，并返回页面所列的首个正式版标签。"""
     content = uniapp_header
-    content += "\n`gio-uniapp-autotracker` 的历史版本记录。`uni_modules` 发布包可从 GitHub Release 下载，npm 渠道可直接升级依赖版本。\n\n"
-    # 完整的发布包下载列表入口，放在版本列表之前
-    content += "全部历史版本下载地址：[SDK Releases in Github]({url})\n\n".format(url=repo_web_url(platform))
+    content += "\nnpm 包名为 `gio-uniapp-sdk`，`uni_modules` 模块 ID 为 `gio-uniapp-autotracker`。\n\n"
+    content += "[在 GitHub 查看所有版本]({url})\n\n".format(url=repo_web_url(platform))
+    newest_tag = None
     for release in releases:
         tag_name = release["tag_name"]
-        date = release["published_at"].split("T")[0]
-        release_name = release["name"]
-        if release["id"] < platform['fromId']:
+        release_name = release.get("name") or tag_name
+        published_at = release.get("published_at")
+        if release["id"] < platform['fromId'] or release.get("draft") or release.get("prerelease") or not published_at:
             continue
-        if release_name is None or release_name == "":
-            release_name = tag_name
-        if hotfix_version(release_name):
+        if hotfix_version(release_name) or hotfix_version(tag_name):
             continue
-        if release["prerelease"] == True:
-            continue
-        # release.json 为发布流水线的元数据，不作为业务下载包展示
+        newest_tag = newest_tag or tag_name
+        date = published_at.split("T")[0]
+        body = (release.get("body") or "").replace("\r\n", "\n").rstrip()
+        # 仅修正首发说明中的已知错误，保留其余 GitHub 发布正文。
+        if tag_name == "v1.0.0":
+            body = body.replace(
+                '`id` 生成 `id#事件名` 形式的 xpath，`data-title` 写入 `textValue`，'
+                '`data-index` 写入 `index`，`data-src` 写入 `hyperlink`。',
+                '`xpath` 形如 `id#探针事件名`，探针事件名优先取监听器的业务函数路径，无法提取函数路径时回退到原生事件名。'
+                '`data-title` 主要用于点击文案，写入 `textValue`。点击事件的 `data-index` 和 `data-src` 分别写入 `index` 和 `hyperlink`。',
+            )
+            body = body.replace(
+                '歧义 listener 表达式、直接函数引用及 `.nvue` 页面保持源码原样并产生构建告警，业务行为不变。',
+                '有歧义的监听器表达式及 `.nvue` 页面会跳过对应插桩并产生构建告警。'
+                'HarmonyOS App 可插桩 Vue 会缓存的直接函数引用，如 `@tap="submit"`。',
+            )
+            body = body.replace('密码框保留事件但不上报 `textValue`', '密码框的 `VIEW_CHANGE` 事件省略 `textValue`')
         assets = [a for a in release.get("assets", []) if a["name"] != "release.json"]
         content += "## " + release_name.upper() + " - " + date + "\n\n"
-        if release["body"].strip() != "":
-            content += release["body"] + "\n\n"
-        if len(assets) > 0:
+        if body:
+            content += body + "\n\n"
+        if assets:
             content += "**下载地址**\n\n"
             for asset in assets:
                 content += uniapp_download_item.format(name=asset["name"], url=asset["browser_download_url"]) + "\n"
             content += "\n"
-        content += readme_item_foot.format(name=tag_name, url=release["html_url"], date=date)
-        content += "\n\n"
-    content += readme_footer.format(url=repo_web_url(platform))
-    return content
+        content += "[GitHub Release {tag_name}]({html_url})\n\n".format(**release)
+    return content.rstrip() + "\n", newest_tag
 
 
 def github_release(platform):
-    newest_tag = None
     try:
         headers = {"User-Agent": "urllib"}  # header 字典形式
-        req = request.Request(url=platform['releaseUrl'], headers=headers, method='GET')
-        response = request.urlopen(req)
-        releases = json.loads(response.read().decode("utf-8"))
+        if platform['name'] == "uni-app":
+            releases = fetch_uniapp_releases(platform['releaseUrl'], headers)
+        else:
+            req = request.Request(url=platform['releaseUrl'], headers=headers, method='GET')
+            response = request.urlopen(req)
+            releases = json.loads(response.read().decode("utf-8"))
         readme = ""
         if platform['name'] == "Android":
             readme = android_releases(releases, platform['fromId'])
@@ -133,7 +147,9 @@ def github_release(platform):
         elif platform['name'] == "iOS":
             readme = iOS_releases(releases, platform['fromId'])
         elif platform['name'] == "uni-app":
-            readme = uniapp_releases(releases, platform)
+            readme, newest_tag = uniapp_releases(releases, platform)
+            if newest_tag is None:
+                return None
         else:
             readme = iOS_releases(releases, platform['fromId'])
 
@@ -141,8 +157,7 @@ def github_release(platform):
         if platform['name'] != "uni-app":
             readme += readme_footer.format(
                 url=platform['releaseUrl'].replace("api.github.com", "github.com").replace("repos/growingio", "growingio"))
-
-        newest_tag = releases[0]["tag_name"]
+            newest_tag = releases[0]["tag_name"]
 
         if not os.path.exists(platform["distPath"]):
             os.makedirs(platform["distPath"])
@@ -151,11 +166,11 @@ def github_release(platform):
             f.write(readme)
 
         print("update release in " + platform["distPath"] + platform["fileName"])
+        return newest_tag
 
     except Exception as e:
         print(e)
-        pass
-    return newest_tag
+        return None
 
 android_replace_pattern = r'(com\.growingio\.android:(?!autotracker-gradle-plugin\b)[\w-]+:)([\d\.]+)'
 giokit_android_replace_pattern = r'(com\.growingio\.giokit:[\w-]+:)([\d\.]+)'

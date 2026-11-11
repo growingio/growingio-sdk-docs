@@ -23,52 +23,58 @@ title: 集成
 ### 方式一：npm
 
 ```bash
-pnpm add gio-uniapp-autotracker
+pnpm add gio-uniapp-sdk
 ```
 
 运行时从包名导入：
 
 ```ts
-import gdp from 'gio-uniapp-autotracker'
+import gdp from 'gio-uniapp-sdk'
 ```
 
 ### 方式二：uni_modules
 
-从 [GitHub Release](https://github.com/growingio/growingio-sdk-uniapp-autotracker/releases) 下载 `gio-uniapp-autotracker-版本-uni_modules.tgz`，解压后将 `uni_modules/gio-uniapp-autotracker` 完整放入项目根目录。
+从[版本记录](./version.md)下载 `gio-uniapp-autotracker-版本-uni_modules.tgz`，解压并完整复制模块目录。`gio-uniapp-sdk-版本.tgz` 是 npm 渠道的发布包。
 
-各版本的发布包下载地址见[版本记录](./version.md)，`gio-uniapp-sdk-版本.tgz` 为 npm 包产物，`uni_modules` 接入请使用 `gio-uniapp-autotracker-版本-uni_modules.tgz`。
+| 工程类型 | 模块目录（相对于项目根目录） |
+| --- | --- |
+| HBuilderX 创建的工程 | `uni_modules/gio-uniapp-autotracker/` |
+| 标准 CLI 工程 | `src/uni_modules/gio-uniapp-autotracker/` |
 
-运行时导入：
+两种工程的 `@` 都指向应用源码目录，运行时使用同一导入路径。
 
 ```ts
 import gdp from '@/uni_modules/gio-uniapp-autotracker/index.js'
 ```
 
-两种渠道均为 ESM JavaScript + `.d.ts`，共用公共代码，仅包元数据不同。升级 `uni_modules` 时必须完整替换模块目录，不能覆盖安装后留下旧文件。
+两种渠道均提供 ESM JavaScript 和 `.d.ts`，公开 API 相同。升级 `uni_modules` 时请完整替换模块目录，避免留下旧文件。
 
 ## 3. uni_modules 目录结构
 
 发布或复制插件时请保留完整目录，不要从发布包中挑选文件：
 
 ```text
-uni_modules/gio-uniapp-autotracker/
+gio-uniapp-autotracker/
   package.json                 # SDK 清单，事件 sdkVersion 来源
   index.js / index.d.ts        # 运行时入口
   autotrack.js                 # 无埋点运行时模块
   vite.js                      # 构建期插桩插件
+  vite-runtime.js              # 构建期解析与插桩实现
+  src/                         # SDK 内部模块
+  ...
 ```
 
 `package.json` 中的版本号会作为事件的 `sdkVersion` 上报；不要手工修改。
 
 ## 4. 完整集成示例
 
-以下示例展示一个标准 uni-app Vue 3 工程接入 SDK 的全部改动点。
+以下示例采用标准 CLI 工程目录。HBuilderX 创建的工程将 `src/` 内的应用文件放在项目根目录。
 
 ### 4.1 工程目录结构
 
 ```text
 my-uniapp-app/
-├── src/                        # CLI 工程；HBuilderX 工程为项目根目录
+├── src/
 │   ├── main.ts                 # 步骤 1：注册插件并初始化 SDK
 │   ├── App.vue                 # 无需改动，SDK 通过 mixin 接管生命周期
 │   ├── pages/
@@ -76,8 +82,10 @@ my-uniapp-app/
 │   │     └── index.vue         # 步骤 2：页面中调用 gdp()
 │   ├── manifest.json
 │   ├── pages.json
+│   ├── uni_modules/            # 仅 uni_modules 接入时添加
+│   │   └── gio-uniapp-autotracker/
 │   └── uni.scss
-├── vite.config.ts              # （仅启用无埋点时需要，见功能插件文档）
+├── vite.config.ts              # 在这里配置模板无埋点插件
 └── package.json
 ```
 
@@ -88,7 +96,7 @@ my-uniapp-app/
 ```ts
 import { createSSRApp } from 'vue'
 import App from './App.vue'
-import gdp from 'gio-uniapp-autotracker'
+import gdp from 'gio-uniapp-sdk'
 
 // uni_modules 接入时改为：
 // import gdp from '@/uni_modules/gio-uniapp-autotracker/index.js'
@@ -96,7 +104,7 @@ import gdp from 'gio-uniapp-autotracker'
 export function createApp() {
   const app = createSSRApp(App)
 
-  // registerPlugins 必须在首次 init 之前调用
+  // 启用无埋点时，在首次 init 之前注册插件。
   gdp('registerPlugins', [{ name: 'gioEventAutoTracking' }])
 
   gdp('init', 'YOUR_ACCOUNT_ID', 'YOUR_DATA_SOURCE_ID', {
@@ -115,7 +123,8 @@ export function createApp() {
 - 初始化完成后，所有页面可以直接使用全局 `gdp`，无需逐页导入。
 - 不需要额外的 `.d.ts` 文件，根入口已声明全局 `gdp` 类型。
 - 初始化配置的完整说明见[初始化配置](./configuration.md)。
-- 启用无埋点时，还需在业务工程根目录 `vite.config.ts` 配置 Vite 插件，完整配置方法见[无埋点采集](./plugins/event-autotracking.md)。
+- 需要等待用户同意时，请在初始化时设置 [`dataCollect: false`](./configuration.md#datacollect)。
+- 启用模板交互无埋点时，还需在项目根目录的 `vite.config.ts` 中配置 Vite 插件。[无埋点采集](./plugins/event-autotracking.md)列出了 npm、CLI 工程和 HBuilderX 工程的导入路径。
 
 ### 4.3 步骤 2：页面中调用 SDK
 
@@ -146,6 +155,7 @@ function onLogout() {
   <view>
     <button @tap="onPurchase">购买</button>
     <button @tap="onLogin('user-1001')">登录</button>
+    <button @tap="onLogout">退出登录</button>
   </view>
 </template>
 ```
@@ -156,10 +166,10 @@ function onLogout() {
 
 | 文件 | 改动 |
 | --- | --- |
-| `package.json` | npm 接入时新增 `gio-uniapp-autotracker` 依赖 |
-| `uni_modules/gio-uniapp-autotracker/` | uni_modules 接入时完整复制模块目录 |
+| `package.json` | npm 接入时新增 `gio-uniapp-sdk` 依赖 |
+| `src/uni_modules/gio-uniapp-autotracker/` | CLI 工程使用 uni_modules 接入时完整复制模块目录，HBuilderX 创建的工程放在根目录下的 `uni_modules/` |
 | `src/main.ts` | 导入 SDK、注册插件、调用 `init` |
-| `vite.config.ts` | 配置 `gioUniappAutoTrack()`（仅启用无埋点时需要，见[无埋点采集](./plugins/event-autotracking.md)） |
+| `vite.config.ts` | 启用模板交互无埋点时配置 `gioUniappAutoTrack()`，见[无埋点采集](./plugins/event-autotracking.md) |
 | `src/App.vue` | 无需改动 |
 | 各页面 | 按需调用 `gdp()`；无埋点交互自动采集 |
 
@@ -179,13 +189,13 @@ HarmonyOS App 注意事项：
 
 ## 6. 集成验证
 
-1. 使用 HBuilderX 编译并运行 HarmonyOS 目标。
-1. 初始化成功后，进入应用首页，控制台出现 `VISIT` / `PAGE` 事件日志（`debug: true` 时输出 `[GrowingIO Debug]:` 前缀）。
-1. 切换页面、点击按钮，验证自动事件与无埋点事件。
-1. 调用一次自定义事件并检查网络请求：
+1. 在初始化配置中设置 `debug: true`，使用 HBuilderX 编译并运行 HarmonyOS 目标。
+2. 进入应用首页后，查看控制台中带 `[GrowingIO Debug]:` 前缀的 `VISIT` 和 `PAGE` 发送日志。
+3. 切换页面并点击已启用无埋点的按钮，验证页面和交互事件。
+4. 调用一次自定义事件并检查网络请求。
 
-```ts
-gdp('track', 'integration_test', { source: 'manual' })
-```
+   ```ts
+   gdp('track', 'integration_test', { source: 'manual' })
+   ```
 
-1. 确认采集服务收到事件后，移除或关闭 `debug` 配置。
+5. 确认采集服务收到事件后，移除或关闭 `debug` 配置。
