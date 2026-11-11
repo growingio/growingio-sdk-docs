@@ -9,6 +9,11 @@ readme_header = "---\ntitle: 版本记录\nsidebar_position: 0\n---\n"
 readme_item_foot = ":::note \n\n 标签:**[{name}]({url})** &nbsp;&nbsp;&nbsp;&nbsp;日期: **{date}** \n\n:::"
 readme_footer = "---\n## 更多发布细节请参考 [SDK Releases in Github]({url})"
 
+# uni-app 文档的 front matter 使用固定的侧边栏顺序
+uniapp_header = "---\ntitle: 版本记录\nsidebar_position: 5\n---\n"
+# uni-app 各版本下载卡片，列出 github release 中上传的发布包
+uniapp_download_item = "- `{name}`：[下载]({url})"
+
 def android_releases(releases, fromId, complianceInfo = True):
     android_header_append = readme_header
     android_item_foot = readme_item_foot
@@ -65,6 +70,54 @@ def iOS_releases(releases, fromId):
         content += release["body"] +"\n\n"
     return content
 
+def repo_web_url(platform):
+    """把 releases api 地址转换为 github 仓库的网页地址
+
+    :param platform: 平台配置字典
+    :return: 形如 https://github.com/owner/repo 的仓库地址
+    """
+    return platform['releaseUrl'].replace("api.github.com/repos/", "github.com/")
+
+
+def uniapp_releases(releases, platform):
+    """生成 uni-app 的版本记录，附带各版本发布包的 GitHub 下载地址
+
+    :param releases: github releases 接口返回的列表
+    :param platform: 平台配置字典
+    :return: version.md 的完整内容
+    """
+    content = uniapp_header
+    content += "\n`gio-uniapp-autotracker` 的历史版本记录。`uni_modules` 发布包可从 GitHub Release 下载，npm 渠道可直接升级依赖版本。\n\n"
+    # 完整的发布包下载列表入口，放在版本列表之前
+    content += "全部历史版本下载地址：[SDK Releases in Github]({url})\n\n".format(url=repo_web_url(platform))
+    for release in releases:
+        tag_name = release["tag_name"]
+        date = release["published_at"].split("T")[0]
+        release_name = release["name"]
+        if release["id"] < platform['fromId']:
+            continue
+        if release_name is None or release_name == "":
+            release_name = tag_name
+        if hotfix_version(release_name):
+            continue
+        if release["prerelease"] == True:
+            continue
+        # release.json 为发布流水线的元数据，不作为业务下载包展示
+        assets = [a for a in release.get("assets", []) if a["name"] != "release.json"]
+        content += "## " + release_name.upper() + " - " + date + "\n\n"
+        if release["body"].strip() != "":
+            content += release["body"] + "\n\n"
+        if len(assets) > 0:
+            content += "**下载地址**\n\n"
+            for asset in assets:
+                content += uniapp_download_item.format(name=asset["name"], url=asset["browser_download_url"]) + "\n"
+            content += "\n"
+        content += readme_item_foot.format(name=tag_name, url=release["html_url"], date=date)
+        content += "\n\n"
+    content += readme_footer.format(url=repo_web_url(platform))
+    return content
+
+
 def github_release(platform):
     newest_tag = None
     try:
@@ -79,11 +132,15 @@ def github_release(platform):
             readme = android_releases(releases, platform['fromId'], False)
         elif platform['name'] == "iOS":
             readme = iOS_releases(releases, platform['fromId'])
+        elif platform['name'] == "uni-app":
+            readme = uniapp_releases(releases, platform)
         else:
             readme = iOS_releases(releases, platform['fromId'])
 
-        readme += readme_footer.format(
-            url=platform['releaseUrl'].replace("api.github.com", "github.com").replace("repos/growingio", "growingio"))
+        # uni-app 的版本记录已包含 github 链接，无需再拼接页脚
+        if platform['name'] != "uni-app":
+            readme += readme_footer.format(
+                url=platform['releaseUrl'].replace("api.github.com", "github.com").replace("repos/growingio", "growingio"))
 
         newest_tag = releases[0]["tag_name"]
 

@@ -5,11 +5,9 @@ sidebar_position: 5
 
 `gio-uniapp-autotracker` 的历史版本记录。`uni_modules` 发布包可从 GitHub Release 下载，npm 渠道可直接升级依赖版本。
 
-:::info
-事件的 `sdkVersion` 取自 SDK 包内 `package.json` 的版本号。升级 SDK 后必须完整替换 `uni_modules` 目录并重新编译 HarmonyOS 目标，已有构建产物不会自动包含新的插桩代码。
-:::
+全部历史版本下载地址：[SDK Releases in Github](https://github.com/growingio/growingio-sdk-uniapp-autotracker/releases)
 
-## V1.0.0 - 2026/11/09
+## V1.0.0 - 2026-11-11
 
 🎉 首个版本发布，支持 HarmonyOS App：
 

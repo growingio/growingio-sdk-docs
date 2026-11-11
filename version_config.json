@@ -52,5 +52,14 @@
     "fileName": "version.md",
     "fromId": 0,
     "enable": false
+  },
+  {
+    "name": "uni-app",
+    "version": "1.0.0",
+    "releaseUrl": "https://api.github.com/repos/growingio/growingio-sdk-uniapp-autotracker/releases",
+    "distPath": "docs/framework/uniapp/",
+    "fileName": "version.md",
+    "fromId": 0,
+    "enable": true
   }
 ]

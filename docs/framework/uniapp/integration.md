@@ -34,7 +34,9 @@ import gdp from 'gio-uniapp-autotracker'
 
 ### 方式二：uni_modules
 
-从 GitHub Release 下载 `gio-uniapp-autotracker-版本-uni_modules.tgz`，解压后将 `uni_modules/gio-uniapp-autotracker` 完整放入项目根目录。
+从 [GitHub Release](https://github.com/growingio/growingio-sdk-uniapp-autotracker/releases) 下载 `gio-uniapp-autotracker-版本-uni_modules.tgz`，解压后将 `uni_modules/gio-uniapp-autotracker` 完整放入项目根目录。
+
+各版本的发布包下载地址见[版本记录](./version.md)，`gio-uniapp-sdk-版本.tgz` 为 npm 包产物，`uni_modules` 接入请使用 `gio-uniapp-autotracker-版本-uni_modules.tgz`。
 
 运行时导入：
 
