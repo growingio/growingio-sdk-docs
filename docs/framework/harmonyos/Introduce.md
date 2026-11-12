@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 ### SDK 集成
 
 :::info
-SDK 自 2.10.0 起支持 HarmonyOS 智能手表（wearable），智能手表暂不支持无埋点。
+SDK 自 2.10.0 起支持 HarmonyOS 智能手表（wearable），智能手表暂未适配无埋点。
 :::
 
 <Tabs>
