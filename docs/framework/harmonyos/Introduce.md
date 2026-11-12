@@ -178,6 +178,20 @@ onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 }
 ```
 
+### 智能手表集成
+
+SDK 自 2.10.0 起支持 HarmonyOS 智能手表（`wearable`）设备类型，集成方式与手机一致。暂不支持轻量级智能穿戴设备（`liteWearable`，如运动手环）。
+
+结合手表屏幕小、续航有限的特点，建议：
+
+* **不开启无埋点**：保持 `autotrackEnabled` 为 `false`（默认值），并且**不要调用** `GrowingAnalytics.onWindowStageCreate`。不调用该方法时，SDK 不会注册任何 UI 监听；手动埋点、会话、事件上报等功能不受影响。
+* **适当放宽上报间隔**：如将 `dataUploadInterval` 设为 60 秒，以减少网络唤醒。手表上应用退到后台时，SDK 会立即上报一次，保证事件及时送达。
+* **不集成 GioKit**：GioKit 调试工具为悬浮窗形态，不适用于手表屏幕。
+
+:::info
+关闭无埋点后，SDK 不会产生页面浏览事件和点击事件，请使用[埋点 API](/docs/framework/harmonyos/api) 采集所需的业务事件。
+:::
+
 ### 查看集成效果
 
 运行应用，若日志中输出了  
