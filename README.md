@@ -22,12 +22,12 @@ clone 本站点后，若想在本地运行，请确保本地有以下环境：
 
 1. Node.js >= 18.0.0 或更高版本（可以通过运行 node -v 命令检查版本）。你可以使用 nvm 在一个计算机上管理多个版本的 Node.
 
-进入到站点目录，运行
+进入站点目录，按锁文件安装依赖，再构建和启动站点。
 
-```nodejs
-npm install //安装依赖软件包
-npm run build //检查构建是否成功
-npm run start //启动开发服务器
+```bash
+npm ci
+npm run build
+npm run start
 ```
 
 默认情况下，浏览器将打开 <http://localhost:3000/growingio-sdk-docs/> 地址。
@@ -44,6 +44,8 @@ python github_version_fetch.py
 
 该脚本会更新各个平台下的 `version.md` 文件。
 配置文件为 `version_config.json`,其中enable字段表示是否启用。
+
+UniApp SDK 的 GitHub Release 发布后，运行 `python3 github_version_fetch.py uni-app` 并提交版本页与配置文件的更新。
 
 ## 项目结构概要
 
